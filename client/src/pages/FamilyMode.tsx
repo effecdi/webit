@@ -7,7 +7,7 @@ import { useEvents } from "@/hooks/use-events";
 import { usePhotos, useCreatePhoto } from "@/hooks/use-photos";
 import { FloatingActionButton } from "@/components/FloatingActionButton";
 import { EventModal } from "@/components/EventModal";
-import { Calendar as CalendarIcon, Image as ImageIcon, MapPin, Clock, Loader2, Plus } from "lucide-react";
+import { Calendar as CalendarIcon, Image as ImageIcon, Clock, Loader2, Plus, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function FamilyMode() {
@@ -38,25 +38,35 @@ export default function FamilyMode() {
       createPhotoMutation.mutate({
         url,
         mode: "family",
-        userId: 1,
-        caption: "Family memory"
+        userId: "1",
+        caption: "가족 추억"
       });
     }
   };
 
   return (
     <div className="pb-24 pt-6 px-4 max-w-md mx-auto min-h-screen bg-background">
+      {/* Header - Clean, no + button */}
       <header className="mb-6 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-foreground font-display">Family</h1>
-        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-          <CalendarIcon className="w-5 h-5 text-primary" />
+        <div>
+          <h1 className="text-3xl font-bold text-foreground font-display">가족</h1>
+          <p className="text-muted-foreground text-sm">함께하는 소중한 시간</p>
+        </div>
+        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+          <Users className="w-6 h-6 text-primary" />
         </div>
       </header>
 
       <Tabs defaultValue="calendar" value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="grid w-full grid-cols-2 mb-6">
-          <TabsTrigger value="calendar">Calendar</TabsTrigger>
-          <TabsTrigger value="gallery">Gallery</TabsTrigger>
+          <TabsTrigger value="calendar" data-testid="tab-calendar">
+            <CalendarIcon className="w-4 h-4 mr-2" />
+            캘린더
+          </TabsTrigger>
+          <TabsTrigger value="gallery" data-testid="tab-gallery">
+            <ImageIcon className="w-4 h-4 mr-2" />
+            갤러리
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="calendar" className="space-y-6">
@@ -69,10 +79,11 @@ export default function FamilyMode() {
             />
           </Card>
 
+          {/* Events List - Like Love Mode / Marriage Mode */}
           <div className="space-y-3">
             <h3 className="font-semibold text-lg flex items-center gap-2">
               <Clock className="w-4 h-4 text-primary" />
-              {date ? format(date, "MMMM do") : "Select a date"}
+              {date ? format(date, "M월 d일") : "날짜를 선택하세요"}
             </h3>
             
             {eventsLoading ? (
@@ -86,16 +97,20 @@ export default function FamilyMode() {
                     animate={{ opacity: 1, y: 0 }}
                     whileHover={{ scale: 1.02 }}
                     onClick={() => handleEventClick(event.id)}
+                    data-testid={`event-item-${event.id}`}
                   >
                     <Card className="cursor-pointer hover:shadow-md transition-all border-l-4 border-l-primary">
-                      <CardContent className="p-4 flex flex-col gap-1">
-                        <span className="font-semibold text-foreground">{event.title}</span>
-                        {event.description && (
-                          <span className="text-sm text-muted-foreground line-clamp-1">{event.description}</span>
-                        )}
-                        <span className="text-xs text-muted-foreground mt-1 bg-accent self-start px-2 py-0.5 rounded-full">
-                          {format(new Date(event.date), "h:mm a")}
-                        </span>
+                      <CardContent className="p-4 flex justify-between items-start">
+                        <div className="flex flex-col gap-1">
+                          <span className="font-semibold text-foreground">{event.title}</span>
+                          {event.description && (
+                            <span className="text-sm text-muted-foreground line-clamp-1">{event.description}</span>
+                          )}
+                          <span className="text-xs text-muted-foreground mt-1 bg-accent self-start px-2 py-0.5 rounded-full">
+                            {format(new Date(event.date), "a h:mm")}
+                          </span>
+                        </div>
+                        <span className="text-xs text-primary font-medium">수정</span>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -103,11 +118,38 @@ export default function FamilyMode() {
               </div>
             ) : (
               <div className="text-center py-12 text-muted-foreground bg-accent/30 rounded-xl border border-dashed border-accent">
-                <p>No events scheduled</p>
-                <p className="text-xs mt-1">Tap + to add one</p>
+                <CalendarIcon className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                <p>예정된 일정이 없습니다</p>
+                <p className="text-xs mt-1">+ 버튼을 눌러 추가하세요</p>
               </div>
             )}
           </div>
+
+          {/* All Upcoming Events - Like Love Mode / Marriage Mode */}
+          {events && events.length > 0 && (
+            <div className="space-y-3 pt-4">
+              <h3 className="font-semibold text-lg">다가오는 일정</h3>
+              <div className="space-y-3">
+                {events.slice(0, 3).map((event) => (
+                  <Card 
+                    key={event.id} 
+                    className="border-l-4 border-l-green-500 cursor-pointer"
+                    onClick={() => handleEventClick(event.id)}
+                  >
+                    <CardContent className="p-4 flex justify-between items-center">
+                      <div>
+                        <p className="font-semibold">{event.title}</p>
+                        <p className="text-sm text-muted-foreground">{format(new Date(event.date), "yyyy년 M월 d일")}</p>
+                      </div>
+                      <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">
+                        {format(new Date(event.date), "a h:mm")}
+                      </span>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
         </TabsContent>
 
         <TabsContent value="gallery">
@@ -123,7 +165,7 @@ export default function FamilyMode() {
                   whileHover={{ scale: 1.05 }}
                   className="relative aspect-square rounded-xl overflow-hidden shadow-sm"
                 >
-                  <img src={photo.url} alt={photo.caption || "Family photo"} className="w-full h-full object-cover" />
+                  <img src={photo.url} alt={photo.caption || "가족 사진"} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-2">
                     <p className="text-white text-xs font-medium truncate">{photo.caption}</p>
                   </div>
@@ -133,7 +175,8 @@ export default function FamilyMode() {
               {(!photos || photos.length === 0) && (
                 <div className="col-span-2 text-center py-12 text-muted-foreground bg-accent/30 rounded-xl border border-dashed border-accent">
                   <ImageIcon className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                  <p>No photos yet</p>
+                  <p>사진이 없습니다</p>
+                  <p className="text-xs mt-1">+ 버튼을 눌러 추가하세요</p>
                 </div>
               )}
             </div>
@@ -141,12 +184,15 @@ export default function FamilyMode() {
         </TabsContent>
       </Tabs>
 
+      {/* FAB - Bottom above menu */}
       <FloatingActionButton 
         onClick={handleFabClick} 
         icon={createPhotoMutation.isPending ? Loader2 : Plus}
         className={createPhotoMutation.isPending ? "animate-pulse" : ""}
+        data-testid="fab-add"
       />
 
+      {/* Event Modal with Edit/Delete */}
       <EventModal
         open={isEventModalOpen}
         onOpenChange={setIsEventModalOpen}
