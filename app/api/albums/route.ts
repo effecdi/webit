@@ -7,8 +7,26 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const userId = searchParams.get('userId') || 'default';
   const mode = searchParams.get('mode') || 'dating';
+  const id = searchParams.get('id');
 
   try {
+    // If ID is specified, return single album
+    if (id) {
+      const [album] = await db.select().from(albums)
+        .where(eq(albums.id, parseInt(id)));
+      
+      if (!album) {
+        return NextResponse.json({ error: 'Album not found' }, { status: 404 });
+      }
+      
+      const [{ count: photoCount }] = await db.select({ count: count() })
+        .from(photos)
+        .where(eq(photos.albumId, album.id));
+      
+      return NextResponse.json({ ...album, photoCount: Number(photoCount) });
+    }
+
+    // Otherwise return all albums for user/mode
     const result = await db.select().from(albums)
       .where(and(eq(albums.userId, userId), eq(albums.mode, mode)))
       .orderBy(desc(albums.eventDate));

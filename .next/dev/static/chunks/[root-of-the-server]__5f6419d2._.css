@@ -1544,6 +1544,10 @@
     bottom: calc(var(--spacing) * 4);
   }
 
+  .bottom-5 {
+    bottom: calc(var(--spacing) * 5);
+  }
+
   .bottom-8 {
     bottom: calc(var(--spacing) * 8);
   }
@@ -2074,6 +2078,10 @@
     margin-left: calc(var(--spacing) * -4);
   }
 
+  .ml-0\.5 {
+    margin-left: calc(var(--spacing) * .5);
+  }
+
   .ml-1 {
     margin-left: calc(var(--spacing) * 1);
   }
@@ -2507,6 +2515,10 @@
 
   .max-h-80 {
     max-height: calc(var(--spacing) * 80);
+  }
+
+  .max-h-\[50vh\] {
+    max-height: 50vh;
   }
 
   .max-h-\[60vh\] {
@@ -4267,6 +4279,11 @@
     border-top-right-radius: var(--radius-3xl);
   }
 
+  .rounded-t-\[20px\] {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
   .rounded-t-\[24px\] {
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
@@ -4504,6 +4521,10 @@
     border-color: #38383a;
   }
 
+  .border-\[\#48484A\] {
+    border-color: #48484a;
+  }
+
   .border-\[\#202020\] {
     border-color: #202020;
   }
@@ -4684,6 +4705,16 @@
     }
   }
 
+  .border-white\/70 {
+    border-color: #ffffffb3;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-white\/70 {
+      border-color: color-mix(in oklab, var(--color-white) 70%, transparent);
+    }
+  }
+
   .border-t-transparent {
     border-top-color: #0000;
   }
@@ -4710,6 +4741,10 @@
 
   .bg-\[\#1C1C1E\] {
     background-color: #1c1c1e;
+  }
+
+  .bg-\[\#2C2C2E\] {
+    background-color: #2c2c2e;
   }
 
   .bg-\[\#2D2D3A\] {
@@ -4789,6 +4824,10 @@
 
   .bg-\[\#38383A\] {
     background-color: #38383a;
+  }
+
+  .bg-\[\#48484A\] {
+    background-color: #48484a;
   }
 
   .bg-\[\#B0B8C1\] {
@@ -5784,6 +5823,20 @@
   }
 
   .to-black\/60 {
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
+  .to-black\/70 {
+    --tw-gradient-to: #000000b3;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .to-black\/70 {
+      --tw-gradient-to: color-mix(in oklab, var(--color-black) 70%, transparent);
+    }
+  }
+
+  .to-black\/70 {
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
@@ -7115,6 +7168,10 @@
   .\[color\:red\]\/50\! {
     color: #ff000080 !important;
     color: lab(54.2905% 80.8049 69.891 / .5) !important;
+  }
+
+  .text-\[\#0A84FF\] {
+    color: #0a84ff;
   }
 
   .text-\[\#2D8B57\] {

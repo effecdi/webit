@@ -321,8 +321,9 @@ export function GalleryView() {
               </div>
             ) : (
               albums.map((album) => (
-                <div
+                <Link
                   key={album.id}
+                  href={`/dating/gallery/album/${album.id}`}
                   className="flex-shrink-0 w-28 rounded-[16px] overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-shadow"
                   data-testid={`album-card-${album.id}`}
                 >
@@ -343,7 +344,7 @@ export function GalleryView() {
                     <p className="text-[13px] font-medium text-[#191F28] truncate">{album.title}</p>
                     <p className="text-[11px] text-[#8B95A1]">{album.photoCount}장</p>
                   </div>
-                </div>
+                </Link>
               ))
             )}
           </div>
@@ -576,7 +577,7 @@ export function GalleryView() {
       {/* Album Selection Bottom Sheet */}
       {showAlbumSheet && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50 flex items-end justify-center"
+          className="fixed inset-0 z-[60] bg-black/50 flex items-end justify-center"
           onClick={() => setShowAlbumSheet(false)}
         >
           <div 
