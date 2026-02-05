@@ -1,10 +1,5 @@
 {
-  "/dating/gallery/page": "app/dating/gallery/page.js",
-  "/dating/page": "app/dating/page.js",
-  "/dating/profile/page": "app/dating/profile/page.js",
-  "/login/page": "app/login/page.js",
+  "/family/page": "app/family/page.js",
   "/onboarding/page": "app/onboarding/page.js",
-  "/page": "app/page.js",
-  "/splash/page": "app/splash/page.js",
-  "/wedding/page": "app/wedding/page.js"
+  "/page": "app/page.js"
 }
