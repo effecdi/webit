@@ -1,0 +1,46 @@
+**Role:** Senior React Native Developer.
+**Task:** Build a comprehensive "Travel Planning Module" (`app/travel`) and integrate entry points into all three main modes (Dating, Wedding, Family).
+
+**[1. Architecture Strategy]**
+Instead of duplicating code, create a centralized "Travel Hub".
+* **Path:** `app/travel/index.tsx` (List of all trips)
+* **Path:** `app/travel/[id].tsx` (Detail Planner for a specific trip)
+* **Component:** `components/TravelEntryCard.tsx` (Widget button to be placed on Home screens)
+
+**[2. Implementation Details]**
+
+**A. Shared Entry Widget (`components/TravelEntryCard.tsx`)**
+* **Design:** A sleek, "Boarding Pass" style card.
+* **Content:**
+    * Left: "Next Trip" label + "D-Day" (Calculated or static).
+    * Center: Destination Name (e.g., "Jeju Island").
+    * Right: A plane icon (`Lucide-react-native`).
+* **Action:** On press, navigate to `router.push('/travel')`.
+
+**B. Travel List Screen (`app/travel/index.tsx`)**
+* **Header:** "Our Trips" (Title) + "+" Button (FAB) to add a new trip.
+* **List Layout:** Vertical scroll of travel cards.
+    * **Upcoming:** Highlighted cards (Colorful).
+    * **Past:** Greyscale cards (Archived).
+* **Empty State:** If no trips, show a beautiful placeholder image with "Plan your first trip!" text.
+
+**C. Travel Detail Screen (`app/travel/[id].tsx`)**
+* **Tabs:** Implement a Top Tab Bar: `[Schedule]`, `[Checklist]`, `[Budget]`.
+* **Tab 1: Schedule**
+    * Vertical Timeline UI.
+    * Day selector chips (Day 1, Day 2...).
+* **Tab 2: Checklist**
+    * Categorized toggle list (Shared / Personal).
+* **Tab 3: Budget**
+    * Simple expense tracker with a visual progress bar (Spent vs Budget).
+
+**[3. Integration (The Most Important Part)]**
+After creating the module, **automatically update the following files** to include the `<TravelEntryCard />`:
+1.  `app/dating/index.tsx` (Add inside the main ScrollView, below the Calendar).
+2.  `app/wedding/index.tsx` (Add below the Budget summary).
+3.  `app/family/index.tsx` (Add below the Photo Gallery).
+
+**[Design Rules]**
+* Use `nativewind` for styling.
+* **Theme:** Clean, White/Gray background, Rounded corners (`rounded-2xl`), Subtle shadows.
+* **Accent Color:** Use `#3B82F6` (Blue) for Travel context to differentiate from other modes.

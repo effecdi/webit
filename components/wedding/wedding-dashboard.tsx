@@ -23,6 +23,7 @@ import {
   ArrowRightLeft
 } from "lucide-react"
 import { ModeSwitch } from "@/components/mode-switch"
+import { TravelEntryCard } from "@/components/travel/travel-entry-card"
 import { useBudget, type Expense } from "@/contexts/budget-context"
 import { useChecklist } from "@/contexts/checklist-context"
 import { Circle, CheckCircle2 } from "lucide-react"
@@ -218,6 +219,9 @@ export function WeddingDashboard() {
             )
           })}
         </div>
+
+        {/* Travel Entry Card */}
+        <TravelEntryCard mode="wedding" />
 
         {/* Tab Navigation */}
         <div className="flex border-b border-[#E5E8EB] -mx-5 px-5 sticky top-[52px] bg-[#F2F4F6] z-40 pt-2">

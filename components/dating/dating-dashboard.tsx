@@ -16,6 +16,7 @@ import {
   Send
 } from "lucide-react"
 import { ModeSwitch } from "@/components/mode-switch"
+import { TravelEntryCard } from "@/components/travel/travel-entry-card"
 
 interface TodoItem {
   id: string
@@ -196,6 +197,9 @@ export function DatingDashboard() {
             )
           })}
         </div>
+
+        {/* Travel Entry Card */}
+        <TravelEntryCard mode="dating" />
 
         {/* Today's Todo Card */}
         <div className="bg-white rounded-[24px] p-5 shadow-toss">

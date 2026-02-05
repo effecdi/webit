@@ -12,6 +12,7 @@ import {
   Plus,
   Home
 } from "lucide-react"
+import { TravelEntryCard } from "@/components/travel/travel-entry-card"
 
 const QUICK_ACTIONS = [
   { icon: Calendar, label: "일정 추가", color: "bg-green-50 text-green-600", href: "/family/calendar" },
@@ -191,6 +192,9 @@ export function FamilyTossDashboard() {
             </Link>
           </div>
         </div>
+
+        {/* Travel Entry Card */}
+        <TravelEntryCard mode="family" />
 
         {/* This Day Memory */}
         <div className="bg-white rounded-[24px] overflow-hidden shadow-toss">
