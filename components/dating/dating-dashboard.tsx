@@ -15,6 +15,9 @@ import {
   X,
   Send,
   Plus,
+  MoreHorizontal,
+  Pencil,
+  Trash2,
 } from "lucide-react";
 import { ModeSwitch } from "@/components/mode-switch";
 import { TravelEntryCard } from "@/components/travel/travel-entry-card";
@@ -98,6 +101,10 @@ export function DatingDashboard() {
   const [showAddTodo, setShowAddTodo] = useState(false);
   const isComposing = useRef(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingTodo, setEditingTodo] = useState<TodoItem | null>(null);
+  const [editText, setEditText] = useState("");
+  const [showTodoMenu, setShowTodoMenu] = useState<number | null>(null);
 
   const [myMood, setMyMood] = useState("👩");
   const [coupleNames, setCoupleNames] = useState({ my: "민지", partner: "준호" });
@@ -241,6 +248,43 @@ export function DatingDashboard() {
       comments: [...selectedTodo.comments, comment],
     });
     setNewComment("");
+  };
+
+  const openEditModal = (todo: TodoItem) => {
+    setEditingTodo(todo);
+    setEditText(todo.text);
+    setShowEditModal(true);
+    setShowTodoMenu(null);
+  };
+
+  const handleEditTodo = async () => {
+    if (!editingTodo || !editText.trim()) return;
+    
+    try {
+      await fetch('/api/todos', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: editingTodo.id, text: editText.trim() })
+      });
+      setTodos(todos.map((t) =>
+        t.id === editingTodo.id ? { ...t, text: editText.trim() } : t
+      ));
+      setShowEditModal(false);
+      setEditingTodo(null);
+      setEditText("");
+    } catch (error) {
+      console.error('Error editing todo:', error);
+    }
+  };
+
+  const handleDeleteTodo = async (id: number) => {
+    try {
+      await fetch(`/api/todos?id=${id}`, { method: 'DELETE' });
+      setTodos(todos.filter((t) => t.id !== id));
+      setShowTodoMenu(null);
+    } catch (error) {
+      console.error('Error deleting todo:', error);
+    }
   };
 
   const completedCount = todos.filter((t) => t.completed).length;
@@ -437,7 +481,7 @@ export function DatingDashboard() {
           ) : (
             <div className="space-y-1">
               {todos.slice(0, 5).map((todo) => (
-                <div key={todo.id} className="w-full flex items-center gap-3 py-3">
+                <div key={todo.id} className="w-full flex items-center gap-3 py-3 relative">
                   <button
                     onClick={() => toggleTodo(todo.id)}
                     className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
@@ -468,6 +512,35 @@ export function DatingDashboard() {
                       <span className="text-[12px] font-medium">{todo.comments.length}</span>
                     )}
                   </button>
+                  <div className="relative">
+                    <button
+                      onClick={() => setShowTodoMenu(showTodoMenu === todo.id ? null : todo.id)}
+                      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
+                      data-testid={`button-todo-menu-${todo.id}`}
+                    >
+                      <MoreHorizontal className="w-4 h-4 text-[#8B95A1]" />
+                    </button>
+                    {showTodoMenu === todo.id && (
+                      <div className="absolute right-0 top-full mt-1 bg-white rounded-[12px] shadow-lg border border-[#E5E8EB] overflow-hidden z-20 min-w-[120px]">
+                        <button
+                          onClick={() => openEditModal(todo)}
+                          className="w-full px-4 py-3 flex items-center gap-2 text-[14px] text-[#333D4B] hover:bg-[#F2F4F6] transition-colors"
+                          data-testid={`button-edit-todo-${todo.id}`}
+                        >
+                          <Pencil className="w-4 h-4" />
+                          수정
+                        </button>
+                        <button
+                          onClick={() => handleDeleteTodo(todo.id)}
+                          className="w-full px-4 py-3 flex items-center gap-2 text-[14px] text-red-500 hover:bg-red-50 transition-colors"
+                          data-testid={`button-delete-todo-${todo.id}`}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                          삭제
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -643,6 +716,79 @@ export function DatingDashboard() {
                 data-testid="button-send-comment"
               >
                 <Send className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showEditModal && editingTodo && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center px-5"
+          onClick={() => {
+            setShowEditModal(false);
+            setEditingTodo(null);
+            setEditText("");
+          }}
+        >
+          <div
+            className="bg-white rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-5 pt-5 pb-4 border-b border-[#F2F4F6]">
+              <div className="flex items-center justify-between">
+                <h3 className="text-[17px] font-bold text-[#191F28]">할 일 수정</h3>
+                <button
+                  onClick={() => {
+                    setShowEditModal(false);
+                    setEditingTodo(null);
+                    setEditText("");
+                  }}
+                  className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
+                  data-testid="button-close-edit-modal"
+                >
+                  <X className="w-5 h-5 text-[#8B95A1]" />
+                </button>
+              </div>
+            </div>
+            <div className="p-5">
+              <input
+                type="text"
+                value={editText}
+                onChange={(e) => setEditText(e.target.value)}
+                placeholder="할 일 입력"
+                className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-pink-300"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleEditTodo();
+                  }
+                }}
+                data-testid="input-edit-todo"
+                autoFocus
+              />
+            </div>
+            <div className="px-5 pb-5 flex gap-3">
+              <button
+                onClick={() => {
+                  setShowEditModal(false);
+                  setEditingTodo(null);
+                  setEditText("");
+                }}
+                className="flex-1 py-3 bg-[#F2F4F6] text-[#4E5968] font-medium rounded-[12px] transition-colors hover:bg-[#E5E8EB]"
+                data-testid="button-cancel-edit"
+              >
+                취소
+              </button>
+              <button
+                onClick={handleEditTodo}
+                disabled={!editText.trim()}
+                className={`flex-1 py-3 font-medium rounded-[12px] transition-colors ${
+                  editText.trim() ? "bg-pink-500 text-white hover:bg-pink-600" : "bg-[#E5E8EB] text-[#B0B8C1]"
+                }`}
+                data-testid="button-save-edit"
+              >
+                저장
               </button>
             </div>
           </div>
