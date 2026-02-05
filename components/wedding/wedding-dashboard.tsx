@@ -21,7 +21,8 @@ import {
   CreditCard,
   Banknote,
   ArrowRightLeft,
-  Plane
+  Plane,
+  Pencil
 } from "lucide-react"
 import { ModeSwitch } from "@/components/mode-switch"
 import { TravelEntryCard } from "@/components/travel/travel-entry-card"
@@ -72,7 +73,6 @@ interface Travel {
 }
 
 export function WeddingDashboard() {
-  const dday = calculateDday(WEDDING_DATE)
   const [activeTab, setActiveTab] = useState<"all" | "progress" | "done">("all")
   const [showExpenseModal, setShowExpenseModal] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
@@ -80,6 +80,11 @@ export function WeddingDashboard() {
   const [travels, setTravels] = useState<Travel[]>([])
   const [coupleNames, setCoupleNames] = useState({ my: "현정", partner: "주호" })
   const [daysTogether, setDaysTogether] = useState(0)
+  const [weddingDate, setWeddingDate] = useState(WEDDING_DATE)
+  const [venueName, setVenueName] = useState("예식장 미정")
+  const [showEditWeddingModal, setShowEditWeddingModal] = useState(false)
+  const [editWeddingDate, setEditWeddingDate] = useState("")
+  const [editVenueName, setEditVenueName] = useState("")
   const [newExpense, setNewExpense] = useState({
     title: "",
     amount: "",
@@ -88,12 +93,23 @@ export function WeddingDashboard() {
     method: "card" as "cash" | "card" | "transfer",
   })
   
+  const dday = calculateDday(weddingDate)
+  
   useEffect(() => {
     const myName = localStorage.getItem("survey_myName") || "현정"
     const partnerName = localStorage.getItem("survey_partnerName") || "주호"
     const savedDate = localStorage.getItem("survey_firstMeetDate")
+    const savedWeddingDate = localStorage.getItem("wedding_date")
+    const savedVenue = localStorage.getItem("wedding_venue")
     
     setCoupleNames({ my: myName, partner: partnerName })
+    
+    if (savedWeddingDate) {
+      setWeddingDate(savedWeddingDate)
+    }
+    if (savedVenue) {
+      setVenueName(savedVenue)
+    }
     
     if (savedDate) {
       const start = new Date(savedDate)
@@ -274,7 +290,20 @@ export function WeddingDashboard() {
           </div>
           <div className="flex items-center gap-2 text-[14px] text-[#4E5968] mb-2">
             <MapPin className="w-4 h-4 text-[#8B95A1]" />
-            <span>2025년 6월 15일 | 빌라 드 지디</span>
+            <span>
+              {weddingDate ? new Date(weddingDate).toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" }) : "날짜 미정"} | {venueName || "예식장 미정"}
+            </span>
+            <button
+              onClick={() => {
+                setEditWeddingDate(weddingDate)
+                setEditVenueName(venueName)
+                setShowEditWeddingModal(true)
+              }}
+              className="ml-1 p-1 rounded-full hover:bg-gray-100 transition-colors"
+              data-testid="button-edit-wedding-info"
+            >
+              <Pencil className="w-3.5 h-3.5 text-[#8B95A1]" />
+            </button>
           </div>
           {daysTogether > 0 && (
             <p className="text-[13px] text-pink-500 mb-4">
@@ -811,6 +840,74 @@ export function WeddingDashboard() {
                 data-testid="button-confirm-budget"
               >
                 설정 완료
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Wedding Info Modal */}
+      {showEditWeddingModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-5">
+          <div 
+            className="absolute inset-0 bg-black/40" 
+            onClick={() => setShowEditWeddingModal(false)} 
+          />
+          <div className="relative bg-white rounded-[24px] w-full max-w-sm p-6 shadow-xl">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-[19px] font-bold text-[#191F28]">결혼 정보 수정</h2>
+              <button 
+                onClick={() => setShowEditWeddingModal(false)}
+                className="w-8 h-8 flex items-center justify-center"
+                data-testid="button-close-edit-wedding-modal"
+              >
+                <X className="w-5 h-5 text-[#8B95A1]" />
+              </button>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="text-[13px] font-medium text-[#4E5968] mb-1.5 block">결혼식 날짜</label>
+                <input
+                  type="date"
+                  value={editWeddingDate}
+                  onChange={(e) => setEditWeddingDate(e.target.value)}
+                  className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
+                  data-testid="input-edit-wedding-date"
+                />
+              </div>
+              
+              <div>
+                <label className="text-[13px] font-medium text-[#4E5968] mb-1.5 block">예식장</label>
+                <div className="relative">
+                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B95A1]" />
+                  <input
+                    type="text"
+                    value={editVenueName}
+                    onChange={(e) => setEditVenueName(e.target.value)}
+                    placeholder="예: 더베일, 라비돌웨딩홀"
+                    className="w-full pl-12 pr-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
+                    data-testid="input-edit-venue-name"
+                  />
+                </div>
+              </div>
+              
+              <button
+                onClick={() => {
+                  if (editWeddingDate) {
+                    setWeddingDate(editWeddingDate)
+                    localStorage.setItem("wedding_date", editWeddingDate)
+                  }
+                  if (editVenueName) {
+                    setVenueName(editVenueName)
+                    localStorage.setItem("wedding_venue", editVenueName)
+                  }
+                  setShowEditWeddingModal(false)
+                }}
+                className="w-full py-4 bg-[#3182F6] text-white font-bold rounded-[12px] hover:bg-[#1B64DA] transition-all"
+                data-testid="button-confirm-edit-wedding"
+              >
+                저장하기
               </button>
             </div>
           </div>
