@@ -6,7 +6,7 @@ import { useState } from "react"
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
 import { 
   ArrowLeft, 
-  Settings, 
+  Bell, 
   LogOut,
   Heart,
   Camera,
@@ -80,9 +80,9 @@ export default function WeddingProfilePage() {
           </div>
           <button 
             className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
-            data-testid="button-settings"
+            data-testid="button-notifications"
           >
-            <Settings className="w-5 h-5 text-[#4E5968]" />
+            <Bell className="w-5 h-5 text-[#4E5968]" />
           </button>
         </div>
       </header>
