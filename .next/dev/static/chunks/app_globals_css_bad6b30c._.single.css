@@ -1253,6 +1253,10 @@
     right: calc(var(--spacing) * 1);
   }
 
+  .right-1\.5 {
+    right: calc(var(--spacing) * 1.5);
+  }
+
   .right-1\/4 {
     right: 25%;
   }

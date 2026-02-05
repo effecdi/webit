@@ -21,6 +21,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { ProfileSettingsSection } from "@/components/shared/profile-settings-section"
+import { NotificationModal, type Notification } from "@/components/shared/notification-modal"
 
 // Calculate D-Day
 const WEDDING_DATE = "2025-05-24"
@@ -39,6 +40,23 @@ export default function WeddingProfilePage() {
   const [showPhotoModal, setShowPhotoModal] = useState<"groom" | "bride" | null>(null)
   const [showPremiumModal, setShowPremiumModal] = useState(false)
   const [showPaymentModal, setShowPaymentModal] = useState(false)
+  const [showNotifications, setShowNotifications] = useState(false)
+  const [notifications, setNotifications] = useState<Notification[]>([
+    {
+      id: "1",
+      type: "schedule",
+      title: "체크리스트 알림",
+      message: "스드메 계약이 3일 남았어요",
+      time: "1시간 전",
+    },
+    {
+      id: "2", 
+      type: "general",
+      title: "예산 알림",
+      message: "이번 달 예산의 80%를 사용했어요",
+      time: "3시간 전",
+    },
+  ])
   
   const [groomProfile, setGroomProfile] = useState({
     name: "주호",
@@ -78,12 +96,25 @@ export default function WeddingProfilePage() {
             </Link>
             <h1 className="text-[17px] font-bold text-[#191F28]">프로필</h1>
           </div>
-          <button 
-            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
-            data-testid="button-notifications"
-          >
-            <Bell className="w-5 h-5 text-[#4E5968]" />
-          </button>
+          <div className="relative">
+            <button 
+              onClick={() => setShowNotifications(!showNotifications)}
+              className="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
+              data-testid="button-notifications"
+            >
+              <Bell className="w-5 h-5 text-[#4E5968]" />
+              {notifications.length > 0 && (
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#3182F6] rounded-full" />
+              )}
+            </button>
+            <NotificationModal
+              isOpen={showNotifications}
+              onClose={() => setShowNotifications(false)}
+              notifications={notifications}
+              onClearAll={() => setNotifications([])}
+              mode="wedding"
+            />
+          </div>
         </div>
       </header>
 
