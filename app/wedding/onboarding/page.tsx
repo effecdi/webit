@@ -55,6 +55,7 @@ export default function WeddingOnboardingPage() {
     localStorage.setItem("wedding_venue", data.venueName)
     localStorage.setItem("wedding_budget", data.budget)
     localStorage.setItem("wedding_onboarding_complete", "true")
+    localStorage.setItem("selected_mode", "wedding")
     
     setIsTransitioning(true)
     setTimeout(() => router.push("/wedding"), 400)

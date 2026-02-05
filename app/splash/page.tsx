@@ -11,7 +11,27 @@ export default function SplashPage() {
   useEffect(() => {
     const logoTimer = setTimeout(() => setShowLogo(true), 300)
     const fadeTimer = setTimeout(() => setFadeOut(true), 2000)
-    const navigateTimer = setTimeout(() => router.push("/login"), 2500)
+    
+    const navigateTimer = setTimeout(() => {
+      const hasCompleted = localStorage.getItem("survey_myName")
+      const selectedMode = localStorage.getItem("selected_mode")
+      
+      if (hasCompleted && selectedMode) {
+        if (selectedMode === "dating") {
+          router.push("/dating")
+        } else if (selectedMode === "wedding") {
+          router.push("/wedding")
+        } else if (selectedMode === "family") {
+          router.push("/family")
+        } else {
+          router.push("/onboarding")
+        }
+      } else if (hasCompleted) {
+        router.push("/onboarding")
+      } else {
+        router.push("/login")
+      }
+    }, 2500)
 
     return () => {
       clearTimeout(logoTimer)

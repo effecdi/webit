@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Heart, Gem, Home, ChevronRight } from "lucide-react"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 const statuses = [
   {
@@ -29,6 +29,7 @@ const statuses = [
 ]
 
 export default function OnboardingPage() {
+  const router = useRouter()
   const [mounted, setMounted] = useState(false)
   const [selectedStatus, setSelectedStatus] = useState<string | null>(null)
   const [myName, setMyName] = useState("")
@@ -42,6 +43,12 @@ export default function OnboardingPage() {
     const days = localStorage.getItem("survey_daysTogether")
     if (days) setDaysTogether(parseInt(days))
   }, [])
+
+  const handleStatusSelect = (status: typeof statuses[0]) => {
+    setSelectedStatus(status.id)
+    localStorage.setItem("selected_mode", status.id)
+    router.push(status.href)
+  }
 
   return (
     <main className="min-h-dvh bg-white flex flex-col">
@@ -107,12 +114,11 @@ export default function OnboardingPage() {
             const isSelected = selectedStatus === status.id
 
             return (
-              <Link
+              <button
                 key={status.id}
-                href={status.href}
-                onClick={() => setSelectedStatus(status.id)}
+                onClick={() => handleStatusSelect(status)}
                 data-testid={`card-status-${status.id}`}
-                className={`group relative bg-[#F3F5F7] rounded-[32px] p-6
+                className={`group relative bg-[#F3F5F7] rounded-[32px] p-6 text-left
                   transition-all duration-200 ease-out
                   hover:bg-[#EBEEF1] active:scale-[0.98]
                   ${isSelected ? "ring-2 ring-blue-500" : ""}
@@ -134,7 +140,7 @@ export default function OnboardingPage() {
 
                   <ChevronRight className="w-6 h-6 text-[#B0B8C1] group-hover:translate-x-1 transition-transform" />
                 </div>
-              </Link>
+              </button>
             )
           })}
         </div>

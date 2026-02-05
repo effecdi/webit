@@ -7,12 +7,7 @@ export default function RootPage() {
   const router = useRouter()
 
   useEffect(() => {
-    const hasCompleted = localStorage.getItem("survey_myName")
-    if (hasCompleted) {
-      router.push("/onboarding")
-    } else {
-      router.push("/splash")
-    }
+    router.push("/splash")
   }, [router])
 
   return (
