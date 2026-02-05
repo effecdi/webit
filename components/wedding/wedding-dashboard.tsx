@@ -223,10 +223,15 @@ export function WeddingDashboard() {
               <Heart className="w-7 h-7 text-pink-400" fill="#f9a8d4" />
             </div>
           </div>
-          <div className="flex items-center gap-2 text-[14px] text-[#4E5968] mb-4">
+          <div className="flex items-center gap-2 text-[14px] text-[#4E5968] mb-2">
             <MapPin className="w-4 h-4 text-[#8B95A1]" />
             <span>2025년 6월 15일 | 빌라 드 지디</span>
           </div>
+          {daysTogether > 0 && (
+            <p className="text-[13px] text-pink-500 mb-4">
+              💕 함께한 지 {daysTogether.toLocaleString()}일
+            </p>
+          )}
           {/* Progress Bar */}
           <div>
             <div className="flex justify-between items-center mb-2">
