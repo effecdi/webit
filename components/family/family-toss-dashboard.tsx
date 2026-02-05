@@ -17,7 +17,6 @@ import { TravelEntryCard } from "@/components/travel/travel-entry-card"
 
 const QUICK_ACTIONS = [
   { icon: Calendar, label: "일정 추가", color: "bg-green-50 text-green-600", href: "/family/calendar" },
-  { icon: ImageIcon, label: "사진 추가", color: "bg-blue-50 text-[#3182F6]", href: "/family/gallery" },
   { icon: Plane, label: "여행 계획", color: "bg-purple-50 text-purple-600", href: "/travel" },
   { icon: Book, label: "추억 보기", color: "bg-amber-50 text-amber-600", href: "/family/archive" },
 ]
