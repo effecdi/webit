@@ -31,7 +31,7 @@ const statuses = [
         label: "결혼 준비",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$gem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Gem$3e$__["Gem"],
         description: "특별한 날을 향해",
-        href: "/wedding"
+        href: "/wedding/onboarding"
     },
     {
         id: "family",

@@ -17,7 +17,7 @@ const statuses = [
     label: "결혼 준비",
     icon: Gem,
     description: "특별한 날을 향해",
-    href: "/wedding",
+    href: "/wedding/onboarding",
   },
   {
     id: "family",
