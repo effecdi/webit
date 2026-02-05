@@ -194,6 +194,7 @@ function SurveyStep1() {
                                                 type: "date",
                                                 value: birthday,
                                                 onChange: (e)=>setBirthday(e.target.value),
+                                                max: new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString().split("T")[0],
                                                 className: "w-full h-14 px-5 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] outline-none focus:ring-2 focus:ring-blue-500",
                                                 "data-testid": "input-my-birthday"
                                             }, void 0, false, {
@@ -205,7 +206,7 @@ function SurveyStep1() {
                                                 className: "absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B95A1] pointer-events-none"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/survey/step1/page.tsx",
-                                                lineNumber: 109,
+                                                lineNumber: 110,
                                                 columnNumber: 15
                                             }, this)
                                         ]
@@ -240,7 +241,7 @@ function SurveyStep1() {
                 children: "다음"
             }, void 0, false, {
                 fileName: "[project]/app/survey/step1/page.tsx",
-                lineNumber: 115,
+                lineNumber: 116,
                 columnNumber: 7
             }, this)
         ]

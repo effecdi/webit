@@ -78,6 +78,18 @@ Preferred communication style: Simple, everyday language.
   - Dating dashboard checks if today is someone's birthday
   - Shows celebration banner with gift shopping button
   - "선물하기" button opens Naver Shopping with "생일선물" search query
+- **Upcoming Birthday Reminder**:
+  - Shows reminder banner 7 days before birthday
+  - Displays "D-X" countdown badge
+  - Includes gift shopping button
+- **Milestone Anniversary Reminder**:
+  - Tracks relationship milestones: 100일, 200일, 300일, 365일, 400일, 500일, 600일, 700일, 730일, 800일, 900일, 1000일, 1095일, etc.
+  - Shows reminder banner 7 days before milestone
+  - Displays "D-X" countdown badge with gift shopping button
+- **Profile Birthday Display & Edit**:
+  - CoupleProfile component shows birthdays from localStorage
+  - Edit mode allows changing names, birthdays, and start date
+  - Cancel reverts all changes; Save persists to localStorage
 
 ### Component Organization
 - `/components/ui/` - Reusable shadcn/ui components

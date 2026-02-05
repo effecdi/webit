@@ -5,5 +5,7 @@
   "/api/travels/route": "app/api/travels/route.js",
   "/page": "app/page.js",
   "/splash/page": "app/splash/page.js",
+  "/survey/step1/page": "app/survey/step1/page.js",
+  "/survey/step2/page": "app/survey/step2/page.js",
   "/wedding/page": "app/wedding/page.js"
 }
