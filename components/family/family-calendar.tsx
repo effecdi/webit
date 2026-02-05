@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Plus, X, Check, Edit2, Trash2, Clock, MapPin } from "lucide-react"
 
 interface Event {
@@ -19,17 +19,31 @@ const CATEGORY_STYLES = {
   anniversary: { bg: "bg-amber-500", light: "bg-amber-50", text: "text-amber-500", label: "기념일" },
 }
 
-const SAMPLE_EVENTS: Event[] = [
-  { id: "1", date: "2026-02-14", title: "발렌타인데이", category: "anniversary" },
-  { id: "2", date: "2026-02-20", title: "결혼 2개월", category: "anniversary" },
-  { id: "3", date: "2026-02-10", title: "치과 예약", category: "me", time: "14:00", location: "강남역 치과" },
-  { id: "4", date: "2026-02-15", title: "부동산 상담", category: "together", time: "11:00", location: "부동산" },
-  { id: "5", date: "2026-02-08", title: "가족 저녁식사", category: "together", time: "18:30", location: "한정식집" },
-]
-
 export function FamilyCalendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
-  const [events, setEvents] = useState<Event[]>(SAMPLE_EVENTS)
+  const [events, setEvents] = useState<Event[]>([])
+
+  useEffect(() => {
+    fetchEvents()
+  }, [])
+
+  const fetchEvents = async () => {
+    try {
+      const res = await fetch('/api/events?userId=default&mode=family')
+      const data = await res.json()
+      const formatted = data.map((e: { id: number; date: string; title: string; category: string; time?: string; location?: string }) => ({
+        id: String(e.id),
+        date: new Date(e.date).toISOString().split('T')[0],
+        title: e.title,
+        category: e.category as "me" | "partner" | "together" | "anniversary",
+        time: e.time,
+        location: e.location,
+      }))
+      setEvents(formatted)
+    } catch (error) {
+      console.error('Failed to fetch events:', error)
+    }
+  }
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [showModal, setShowModal] = useState(false)
   const [editingEvent, setEditingEvent] = useState<Event | null>(null)

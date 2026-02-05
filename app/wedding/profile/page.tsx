@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
 import { 
   ArrowLeft, 
@@ -23,8 +23,6 @@ import Link from "next/link"
 import { ProfileSettingsSection } from "@/components/shared/profile-settings-section"
 import { NotificationModal, type Notification } from "@/components/shared/notification-modal"
 
-// Calculate D-Day
-const WEDDING_DATE = "2025-05-24"
 const calculateDday = (date: string) => {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
@@ -35,38 +33,70 @@ const calculateDday = (date: string) => {
 }
 
 export default function WeddingProfilePage() {
-  const dday = calculateDday(WEDDING_DATE)
+  const [weddingDate, setWeddingDate] = useState("")
+  const [dday, setDday] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
   const [showPhotoModal, setShowPhotoModal] = useState<"groom" | "bride" | null>(null)
   const [showPremiumModal, setShowPremiumModal] = useState(false)
   const [showPaymentModal, setShowPaymentModal] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
-  const [notifications, setNotifications] = useState<Notification[]>([
-    {
-      id: "1",
-      type: "schedule",
-      title: "체크리스트 알림",
-      message: "스드메 계약이 3일 남았어요",
-      time: "1시간 전",
-    },
-    {
-      id: "2", 
-      type: "general",
-      title: "예산 알림",
-      message: "이번 달 예산의 80%를 사용했어요",
-      time: "3시간 전",
-    },
-  ])
+  const [notifications, setNotifications] = useState<Notification[]>([])
   
   const [groomProfile, setGroomProfile] = useState({
-    name: "주호",
+    name: "",
     photo: "",
   })
   
   const [brideProfile, setBrideProfile] = useState({
-    name: "현정",
+    name: "",
     photo: "",
   })
+
+  useEffect(() => {
+    const savedWeddingDate = localStorage.getItem("wedding_date")
+    const myName = localStorage.getItem("survey_myName") || ""
+    const partnerName = localStorage.getItem("survey_partnerName") || ""
+    
+    if (savedWeddingDate) {
+      setWeddingDate(savedWeddingDate)
+      setDday(calculateDday(savedWeddingDate))
+    }
+    
+    setBrideProfile({ name: myName, photo: "" })
+    setGroomProfile({ name: partnerName, photo: "" })
+    
+    fetchNotifications()
+  }, [])
+
+  const fetchNotifications = async () => {
+    try {
+      const res = await fetch('/api/notifications?userId=default&mode=wedding')
+      const data = await res.json()
+      const formatted = data.map((n: { id: number; type: string; title: string; message: string; createdAt: string }) => ({
+        id: String(n.id),
+        type: n.type as "schedule" | "photo" | "travel" | "todo" | "general",
+        title: n.title,
+        message: n.message,
+        time: formatTimeAgo(n.createdAt),
+      }))
+      setNotifications(formatted)
+    } catch (error) {
+      console.error('Failed to fetch notifications:', error)
+    }
+  }
+
+  const formatTimeAgo = (dateStr: string) => {
+    const date = new Date(dateStr)
+    const now = new Date()
+    const diffMs = now.getTime() - date.getTime()
+    const diffMins = Math.floor(diffMs / 60000)
+    const diffHours = Math.floor(diffMs / 3600000)
+    const diffDays = Math.floor(diffMs / 86400000)
+    
+    if (diffMins < 60) return `${diffMins}분 전`
+    if (diffHours < 24) return `${diffHours}시간 전`
+    return `${diffDays}일 전`
+  }
 
   const handlePhotoUpload = (type: "groom" | "bride", e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]

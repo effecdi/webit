@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MessageCircle, Star, Heart, Sparkles } from "lucide-react";
 import { CommentModal } from "./comment-modal";
 
@@ -12,48 +12,6 @@ interface TodoItem {
   comments: { id: string; author: string; text: string; isMe: boolean }[];
   assignee: "me" | "you" | "we";
 }
-
-const INITIAL_TODOS: TodoItem[] = [
-  {
-    id: "1",
-    text: "저녁 메뉴 정하기",
-    completed: false,
-    icon: "heart",
-    assignee: "we",
-    comments: [
-      { id: "c1", author: "준호", text: "오늘 파스타 어때?", isMe: false },
-      { id: "c2", author: "민지", text: "좋아! 크림파스타 먹자", isMe: true },
-    ],
-  },
-  {
-    id: "2",
-    text: "기념일 선물 고르기",
-    completed: true,
-    icon: "star",
-    assignee: "me",
-    comments: [
-      { id: "c3", author: "민지", text: "힌트: 향수 아니야~", isMe: true },
-    ],
-  },
-  {
-    id: "3",
-    text: "영화 예매하기",
-    completed: false,
-    icon: "sparkle",
-    assignee: "you",
-    comments: [],
-  },
-  {
-    id: "4",
-    text: "데이트 장소 검색",
-    completed: false,
-    icon: "heart",
-    assignee: "we",
-    comments: [
-      { id: "c4", author: "준호", text: "성수동 카페 찾아봤어!", isMe: false },
-    ],
-  },
-];
 
 const ASSIGNEE_STYLES = {
   me: "bg-[#FFE4EC] text-[#FF6B9D]",
@@ -67,14 +25,51 @@ const ASSIGNEE_LABELS = {
   we: "우리",
 };
 
+const ICONS: ("heart" | "star" | "sparkle")[] = ["heart", "star", "sparkle"];
+
 export function TodayTodo() {
-  const [todos, setTodos] = useState(INITIAL_TODOS);
+  const [todos, setTodos] = useState<TodoItem[]>([]);
   const [selectedTodo, setSelectedTodo] = useState<TodoItem | null>(null);
 
-  const toggleTodo = (id: string) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  const fetchTodos = async () => {
+    try {
+      const res = await fetch('/api/todos?userId=default&mode=dating');
+      const data = await res.json();
+      const formatted = data.map((t: { id: number; text: string; completed: boolean; assignee: string }, index: number) => ({
+        id: String(t.id),
+        text: t.text,
+        completed: t.completed,
+        icon: ICONS[index % 3],
+        assignee: t.assignee === "me" ? "me" : t.assignee === "you" ? "you" : "we",
+        comments: [],
+      }));
+      setTodos(formatted);
+    } catch (error) {
+      console.error('Failed to fetch todos:', error);
+    }
+  };
+
+  const toggleTodo = async (id: string) => {
+    const todo = todos.find(t => t.id === id);
+    if (!todo) return;
+    
+    const newCompleted = !todo.completed;
+    setTodos(todos.map(t => t.id === id ? { ...t, completed: newCompleted } : t));
+    
+    try {
+      await fetch('/api/todos', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: Number(id), completed: newCompleted }),
+      });
+    } catch (error) {
+      console.error('Failed to update todo:', error);
+      setTodos(todos.map(t => t.id === id ? { ...t, completed: !newCompleted } : t));
+    }
   };
 
   const IconComponent = ({ type, filled }: { type: TodoItem["icon"]; filled: boolean }) => {
@@ -102,6 +97,11 @@ export function TodayTodo() {
         </div>
         
         <div className="space-y-3">
+          {todos.length === 0 ? (
+            <div className="text-center py-6 text-muted-foreground text-sm">
+              아직 할 일이 없어요
+            </div>
+          ) : null}
           {todos.map((todo) => (
             <div 
               key={todo.id}

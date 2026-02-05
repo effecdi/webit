@@ -1,25 +1,74 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Heart, Book, ChevronRight, ImageIcon, Plus, X, Camera } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
-const SAMPLE_PHOTOS = [
-  { id: 1, src: "/placeholder.svg?height=300&width=300", date: "2026.02.01", liked: true },
-  { id: 2, src: "/placeholder.svg?height=400&width=300", date: "2026.01.28", liked: false },
-  { id: 3, src: "/placeholder.svg?height=250&width=300", date: "2026.01.25", liked: true },
-  { id: 4, src: "/placeholder.svg?height=350&width=300", date: "2026.01.20", liked: false },
-  { id: 5, src: "/placeholder.svg?height=300&width=300", date: "2026.01.15", liked: false },
-  { id: 6, src: "/placeholder.svg?height=280&width=300", date: "2026.01.10", liked: true },
-]
+interface Photo {
+  id: number
+  src: string
+  date: string
+  liked: boolean
+}
 
 export function FamilyGallery() {
-  const [photos, setPhotos] = useState(SAMPLE_PHOTOS)
+  const [photos, setPhotos] = useState<Photo[]>([])
   const [showAddModal, setShowAddModal] = useState(false)
+  const [stats, setStats] = useState({ thisYear: 0, liked: 0, total: 0 })
 
-  const toggleLike = (id: number) => {
-    setPhotos(photos.map((p) => (p.id === id ? { ...p, liked: !p.liked } : p)))
+  useEffect(() => {
+    fetchPhotos()
+  }, [])
+
+  const fetchPhotos = async () => {
+    try {
+      const res = await fetch('/api/photos?userId=default&mode=family')
+      const data = await res.json()
+      const formatted = data.map((p: { id: number; url: string; createdAt: string; liked: boolean }) => ({
+        id: p.id,
+        src: p.url,
+        date: new Date(p.createdAt).toLocaleDateString("ko-KR", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\./g, "."),
+        liked: p.liked,
+      }))
+      setPhotos(formatted)
+      
+      const likedCount = formatted.filter((p: Photo) => p.liked).length
+      setStats({
+        thisYear: formatted.length,
+        liked: likedCount,
+        total: formatted.length,
+      })
+    } catch (error) {
+      console.error('Failed to fetch photos:', error)
+    }
+  }
+
+  const toggleLike = async (id: number) => {
+    const photo = photos.find(p => p.id === id)
+    if (!photo) return
+    
+    const newLiked = !photo.liked
+    setPhotos(photos.map((p) => (p.id === id ? { ...p, liked: newLiked } : p)))
+    setStats(prev => ({
+      ...prev,
+      liked: newLiked ? prev.liked + 1 : prev.liked - 1,
+    }))
+    
+    try {
+      await fetch('/api/photos', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, liked: newLiked }),
+      })
+    } catch (error) {
+      console.error('Failed to update photo:', error)
+      setPhotos(photos.map((p) => (p.id === id ? { ...p, liked: !newLiked } : p)))
+      setStats(prev => ({
+        ...prev,
+        liked: !newLiked ? prev.liked + 1 : prev.liked - 1,
+      }))
+    }
   }
 
   return (
@@ -40,7 +89,7 @@ export function FamilyGallery() {
             </div>
           </div>
           <div className="flex items-center gap-1">
-            <span className="text-[14px] font-bold text-amber-600">471장</span>
+            <span className="text-[14px] font-bold text-amber-600">{stats.total}장</span>
             <ChevronRight className="w-4 h-4 text-amber-500" />
           </div>
         </Link>
@@ -48,15 +97,15 @@ export function FamilyGallery() {
         {/* Stats Summary */}
         <div className="grid grid-cols-3 gap-3 mb-5">
           <div className="bg-white rounded-[16px] p-4 text-center shadow-sm">
-            <p className="text-[22px] font-bold text-green-500">156</p>
+            <p className="text-[22px] font-bold text-green-500">{stats.thisYear}</p>
             <p className="text-[12px] text-[#8B95A1]">올해 사진</p>
           </div>
           <div className="bg-white rounded-[16px] p-4 text-center shadow-sm">
-            <p className="text-[22px] font-bold text-pink-500">42</p>
+            <p className="text-[22px] font-bold text-pink-500">{stats.liked}</p>
             <p className="text-[12px] text-[#8B95A1]">좋아요</p>
           </div>
           <div className="bg-white rounded-[16px] p-4 text-center shadow-sm">
-            <p className="text-[22px] font-bold text-[#191F28]">627</p>
+            <p className="text-[22px] font-bold text-[#191F28]">{stats.total}</p>
             <p className="text-[12px] text-[#8B95A1]">전체</p>
           </div>
         </div>
@@ -74,6 +123,13 @@ export function FamilyGallery() {
         </div>
 
         {/* Photo Grid - 3 columns */}
+        {photos.length === 0 ? (
+          <div className="bg-white rounded-[16px] p-8 text-center">
+            <Camera className="w-12 h-12 mx-auto mb-3 text-[#B0B8C1]" />
+            <p className="text-[14px] text-[#8B95A1]">아직 사진이 없어요</p>
+            <p className="text-[12px] text-[#B0B8C1] mt-1">+ 버튼을 눌러 첫 사진을 추가해보세요</p>
+          </div>
+        ) : (
         <div className="grid grid-cols-3 gap-1 rounded-[16px] overflow-hidden">
           {photos.map((photo) => (
             <div key={photo.id} className="relative aspect-square group">
@@ -106,6 +162,7 @@ export function FamilyGallery() {
             </div>
           ))}
         </div>
+        )}
 
         {/* Load More */}
         <div className="mt-5 text-center">
