@@ -300,22 +300,23 @@ export default function BudgetPage() {
 
       <main className="px-5 py-5 max-w-md mx-auto space-y-5">
         {/* Total Summary Card or Empty State */}
-        {totalBudget === 0 && expenses.length === 0 ? (
-          <div className="bg-white rounded-[24px] p-8 shadow-toss text-center">
-            <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-pink-50 flex items-center justify-center">
-              <Banknote className="w-10 h-10 text-pink-400" />
+        {totalBudget === 0 ? (
+          <div className="bg-white rounded-[24px] p-6 shadow-toss">
+            <div className="flex items-center gap-1.5 mb-1">
+              <div className="w-5 h-5 rounded-full bg-[#3182F6] flex items-center justify-center">
+                <Banknote className="w-3 h-3 text-white" />
+              </div>
+              <span className="font-bold text-[15px] text-[#333D4B]">총 예산</span>
             </div>
-            <h3 className="text-[18px] font-bold text-[#191F28] mb-2">예산을 등록해주세요</h3>
-            <p className="text-[14px] text-[#8B95A1] mb-6 leading-relaxed">
-              결혼 준비 예산을 설정하고<br/>지출을 체계적으로 관리해보세요
-            </p>
-            <button
-              onClick={() => setShowBudgetModal(true)}
-              className="w-full py-4 bg-gradient-to-r from-pink-500 to-pink-400 text-white font-semibold rounded-[16px] text-[16px] shadow-lg hover:shadow-xl transition-shadow"
-              data-testid="button-register-budget"
-            >
-              예산 등록하기
-            </button>
+            <div className="mt-4">
+              <button 
+                onClick={() => setShowBudgetModal(true)}
+                className="text-[15px] text-[#3182F6] hover:text-[#1B64DA] font-medium underline underline-offset-2 transition-colors"
+                data-testid="button-set-budget"
+              >
+                예산비용이 정해졌나요?
+              </button>
+            </div>
           </div>
         ) : (
           <div className="bg-white rounded-[24px] p-6 shadow-toss">

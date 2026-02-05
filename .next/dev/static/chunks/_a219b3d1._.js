@@ -1591,28 +1591,18 @@ function WeddingDashboard() {
                                     }, this)
                                 ]
                             }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "mt-3",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-[14px] text-[#8B95A1] mb-4",
-                                        children: "예산을 설정하면 결혼 비용을 효과적으로 관리할 수 있어요"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 521,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>setShowBudgetSetupModal(true),
-                                        className: "w-full bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold py-3 rounded-[12px] text-[15px] transition-colors",
-                                        "data-testid": "button-set-budget",
-                                        children: "예산 설정하기"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 524,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
+                                className: "mt-4",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>setShowBudgetSetupModal(true),
+                                    className: "text-[15px] text-[#3182F6] hover:text-[#1B64DA] font-medium underline underline-offset-2 transition-colors",
+                                    "data-testid": "button-set-budget",
+                                    children: "예산비용이 정해졌나요?"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/wedding/wedding-dashboard.tsx",
+                                    lineNumber: 521,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
                                 lineNumber: 520,
                                 columnNumber: 13
@@ -1636,7 +1626,7 @@ function WeddingDashboard() {
                                                 children: "결혼 비용 리스트"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 539,
+                                                lineNumber: 536,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1644,13 +1634,13 @@ function WeddingDashboard() {
                                                 children: "카테고리별 예산 현황"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 540,
+                                                lineNumber: 537,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 538,
+                                        lineNumber: 535,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1660,20 +1650,20 @@ function WeddingDashboard() {
                                                 className: "w-3 h-3"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 543,
+                                                lineNumber: 540,
                                                 columnNumber: 15
                                             }, this),
                                             "예산 내"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 542,
+                                        lineNumber: 539,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 537,
+                                lineNumber: 534,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1694,7 +1684,7 @@ function WeddingDashboard() {
                                                                 children: item.category
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                                lineNumber: 556,
+                                                                lineNumber: 553,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1707,13 +1697,13 @@ function WeddingDashboard() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                                lineNumber: 557,
+                                                                lineNumber: 554,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                        lineNumber: 555,
+                                                        lineNumber: 552,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1725,18 +1715,18 @@ function WeddingDashboard() {
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                            lineNumber: 562,
+                                                            lineNumber: 559,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                        lineNumber: 561,
+                                                        lineNumber: 558,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 554,
+                                                lineNumber: 551,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1747,13 +1737,13 @@ function WeddingDashboard() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 570,
+                                                lineNumber: 567,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, item.id, true, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 553,
+                                        lineNumber: 550,
                                         columnNumber: 19
                                     }, this);
                                 }) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1761,12 +1751,12 @@ function WeddingDashboard() {
                                     children: "아직 등록된 지출이 없습니다"
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                    lineNumber: 579,
+                                    lineNumber: 576,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 548,
+                                lineNumber: 545,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1778,19 +1768,19 @@ function WeddingDashboard() {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 590,
+                                        lineNumber: 587,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 585,
+                                lineNumber: 582,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                        lineNumber: 536,
+                        lineNumber: 533,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1806,7 +1796,7 @@ function WeddingDashboard() {
                                                 children: "이번 달 지출"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 598,
+                                                lineNumber: 595,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1819,13 +1809,13 @@ function WeddingDashboard() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 599,
+                                                lineNumber: 596,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 597,
+                                        lineNumber: 594,
                                         columnNumber: 13
                                     }, this),
                                     thisMonthSpent > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1833,13 +1823,13 @@ function WeddingDashboard() {
                                         children: "실시간"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 604,
+                                        lineNumber: 601,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 596,
+                                lineNumber: 593,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1852,7 +1842,7 @@ function WeddingDashboard() {
                                                 children: thisMonthSpent.toLocaleString()
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 611,
+                                                lineNumber: 608,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1860,13 +1850,13 @@ function WeddingDashboard() {
                                                 children: "원"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 612,
+                                                lineNumber: 609,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 610,
+                                        lineNumber: 607,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1875,24 +1865,24 @@ function WeddingDashboard() {
                                             className: "w-5 h-5 text-[#8B95A1]"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 615,
+                                            lineNumber: 612,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 614,
+                                        lineNumber: 611,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 609,
+                                lineNumber: 606,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                        lineNumber: 595,
+                        lineNumber: 592,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1911,12 +1901,12 @@ function WeddingDashboard() {
                                             children: "AD"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 629,
+                                            lineNumber: 626,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 628,
+                                        lineNumber: 625,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1926,18 +1916,18 @@ function WeddingDashboard() {
                                             children: "Special Offer"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 632,
+                                            lineNumber: 629,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 631,
+                                        lineNumber: 628,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 622,
+                                lineNumber: 619,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1950,7 +1940,7 @@ function WeddingDashboard() {
                                                 children: "스튜디오 특가"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 637,
+                                                lineNumber: 634,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1958,32 +1948,32 @@ function WeddingDashboard() {
                                                 children: "커플 촬영 패키지 오픈"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 638,
+                                                lineNumber: 635,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 636,
+                                        lineNumber: 633,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                         className: "w-5 h-5 text-[#B0B8C1]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 640,
+                                        lineNumber: 637,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 635,
+                                lineNumber: 632,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                        lineNumber: 621,
+                        lineNumber: 618,
                         columnNumber: 9
                     }, this)
                 ]
@@ -2005,12 +1995,12 @@ function WeddingDashboard() {
                                 className: "w-10 h-1 bg-[#E5E8EB] rounded-full"
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 656,
+                                lineNumber: 653,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                            lineNumber: 655,
+                            lineNumber: 652,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2021,7 +2011,7 @@ function WeddingDashboard() {
                                     children: "지출 기록"
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                    lineNumber: 660,
+                                    lineNumber: 657,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2031,18 +2021,18 @@ function WeddingDashboard() {
                                         className: "w-5 h-5 text-[#8B95A1]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 665,
+                                        lineNumber: 662,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                    lineNumber: 661,
+                                    lineNumber: 658,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                            lineNumber: 659,
+                            lineNumber: 656,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2055,7 +2045,7 @@ function WeddingDashboard() {
                                             children: "내용"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 672,
+                                            lineNumber: 669,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2069,13 +2059,13 @@ function WeddingDashboard() {
                                             className: "w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 673,
+                                            lineNumber: 670,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                    lineNumber: 671,
+                                    lineNumber: 668,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2085,7 +2075,7 @@ function WeddingDashboard() {
                                             children: "금액"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 684,
+                                            lineNumber: 681,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2103,7 +2093,7 @@ function WeddingDashboard() {
                                                     className: "flex-1 px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[18px] font-bold text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] text-right"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                    lineNumber: 686,
+                                                    lineNumber: 683,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2111,19 +2101,19 @@ function WeddingDashboard() {
                                                     children: "원"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                    lineNumber: 694,
+                                                    lineNumber: 691,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 685,
+                                            lineNumber: 682,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                    lineNumber: 683,
+                                    lineNumber: 680,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2133,7 +2123,7 @@ function WeddingDashboard() {
                                             children: "카테고리"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 700,
+                                            lineNumber: 697,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2147,18 +2137,18 @@ function WeddingDashboard() {
                                                     children: cat
                                                 }, cat, false, {
                                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                    lineNumber: 703,
+                                                    lineNumber: 700,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 701,
+                                            lineNumber: 698,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                    lineNumber: 699,
+                                    lineNumber: 696,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2168,7 +2158,7 @@ function WeddingDashboard() {
                                             children: "결제자"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 720,
+                                            lineNumber: 717,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2199,18 +2189,18 @@ function WeddingDashboard() {
                                                     children: p.label
                                                 }, p.key, false, {
                                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                    lineNumber: 728,
+                                                    lineNumber: 725,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 721,
+                                            lineNumber: 718,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                    lineNumber: 719,
+                                    lineNumber: 716,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2220,7 +2210,7 @@ function WeddingDashboard() {
                                             children: "결제 수단"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 745,
+                                            lineNumber: 742,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2252,25 +2242,25 @@ function WeddingDashboard() {
                                                             className: "w-5 h-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                            lineNumber: 761,
+                                                            lineNumber: 758,
                                                             columnNumber: 23
                                                         }, this),
                                                         m.label
                                                     ]
                                                 }, m.key, true, {
                                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                    lineNumber: 752,
+                                                    lineNumber: 749,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 746,
+                                            lineNumber: 743,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                    lineNumber: 744,
+                                    lineNumber: 741,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2280,31 +2270,31 @@ function WeddingDashboard() {
                                     children: "저장하기"
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                    lineNumber: 769,
+                                    lineNumber: 766,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                            lineNumber: 669,
+                            lineNumber: 666,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "h-8"
                         }, void 0, false, {
                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                            lineNumber: 782,
+                            lineNumber: 779,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                    lineNumber: 651,
+                    lineNumber: 648,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                lineNumber: 647,
+                lineNumber: 644,
                 columnNumber: 9
             }, this),
             showBudgetSetupModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2315,7 +2305,7 @@ function WeddingDashboard() {
                         onClick: ()=>setShowBudgetSetupModal(false)
                     }, void 0, false, {
                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                        lineNumber: 790,
+                        lineNumber: 787,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2329,7 +2319,7 @@ function WeddingDashboard() {
                                         children: "예산 설정"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 796,
+                                        lineNumber: 793,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2340,18 +2330,18 @@ function WeddingDashboard() {
                                             className: "w-5 h-5 text-[#8B95A1]"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 802,
+                                            lineNumber: 799,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 797,
+                                        lineNumber: 794,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 795,
+                                lineNumber: 792,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2364,7 +2354,7 @@ function WeddingDashboard() {
                                                 children: "총 예산 (원)"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 808,
+                                                lineNumber: 805,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2374,7 +2364,7 @@ function WeddingDashboard() {
                                                         className: "absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B95A1]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                        lineNumber: 810,
+                                                        lineNumber: 807,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2389,7 +2379,7 @@ function WeddingDashboard() {
                                                         "data-testid": "input-total-budget"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                        lineNumber: 811,
+                                                        lineNumber: 808,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2397,19 +2387,19 @@ function WeddingDashboard() {
                                                         children: "원"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                        lineNumber: 822,
+                                                        lineNumber: 819,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 809,
+                                                lineNumber: 806,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 807,
+                                        lineNumber: 804,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2426,25 +2416,25 @@ function WeddingDashboard() {
                                         children: "설정 완료"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 826,
+                                        lineNumber: 823,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 806,
+                                lineNumber: 803,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                        lineNumber: 794,
+                        lineNumber: 791,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                lineNumber: 789,
+                lineNumber: 786,
                 columnNumber: 9
             }, this),
             showEditWeddingModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2455,7 +2445,7 @@ function WeddingDashboard() {
                         onClick: ()=>setShowEditWeddingModal(false)
                     }, void 0, false, {
                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                        lineNumber: 852,
+                        lineNumber: 849,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2469,7 +2459,7 @@ function WeddingDashboard() {
                                         children: "결혼 정보 수정"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 858,
+                                        lineNumber: 855,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2480,18 +2470,18 @@ function WeddingDashboard() {
                                             className: "w-5 h-5 text-[#8B95A1]"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                            lineNumber: 864,
+                                            lineNumber: 861,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 859,
+                                        lineNumber: 856,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 857,
+                                lineNumber: 854,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2504,7 +2494,7 @@ function WeddingDashboard() {
                                                 children: "결혼식 날짜"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 870,
+                                                lineNumber: 867,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2515,13 +2505,13 @@ function WeddingDashboard() {
                                                 "data-testid": "input-edit-wedding-date"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 871,
+                                                lineNumber: 868,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 869,
+                                        lineNumber: 866,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2531,7 +2521,7 @@ function WeddingDashboard() {
                                                 children: "예식장"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 881,
+                                                lineNumber: 878,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2541,7 +2531,7 @@ function WeddingDashboard() {
                                                         className: "absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B95A1]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                        lineNumber: 883,
+                                                        lineNumber: 880,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2553,19 +2543,19 @@ function WeddingDashboard() {
                                                         "data-testid": "input-edit-venue-name"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                        lineNumber: 884,
+                                                        lineNumber: 881,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                                lineNumber: 882,
+                                                lineNumber: 879,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 880,
+                                        lineNumber: 877,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2585,25 +2575,25 @@ function WeddingDashboard() {
                                         children: "저장하기"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                        lineNumber: 895,
+                                        lineNumber: 892,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                                lineNumber: 868,
+                                lineNumber: 865,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                        lineNumber: 856,
+                        lineNumber: 853,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/wedding/wedding-dashboard.tsx",
-                lineNumber: 851,
+                lineNumber: 848,
                 columnNumber: 9
             }, this)
         ]

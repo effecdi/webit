@@ -517,16 +517,13 @@ export function WeddingDashboard() {
               </div>
             </>
           ) : (
-            <div className="mt-3">
-              <p className="text-[14px] text-[#8B95A1] mb-4">
-                예산을 설정하면 결혼 비용을 효과적으로 관리할 수 있어요
-              </p>
+            <div className="mt-4">
               <button 
                 onClick={() => setShowBudgetSetupModal(true)}
-                className="w-full bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold py-3 rounded-[12px] text-[15px] transition-colors"
+                className="text-[15px] text-[#3182F6] hover:text-[#1B64DA] font-medium underline underline-offset-2 transition-colors"
                 data-testid="button-set-budget"
               >
-                예산 설정하기
+                예산비용이 정해졌나요?
               </button>
             </div>
           )}

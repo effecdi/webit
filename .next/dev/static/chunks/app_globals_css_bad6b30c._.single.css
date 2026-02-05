@@ -7552,6 +7552,10 @@
     text-decoration-thickness: from-font;
   }
 
+  .underline-offset-2 {
+    text-underline-offset: 2px;
+  }
+
   .underline-offset-4 {
     text-underline-offset: 4px;
   }
@@ -9638,6 +9642,12 @@
   }
 
   @media (hover: hover) {
+    .hover\:text-\[\#1B64DA\]:hover {
+      color: #1b64da;
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:text-\[\#3B82F6\]:hover {
       color: #3b82f6;
     }
@@ -9777,13 +9787,6 @@
   @media (hover: hover) {
     .hover\:shadow-none:hover {
       --tw-shadow: 0 0 #0000;
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:shadow-xl:hover {
-      --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, #0000001a), 0 8px 10px -6px var(--tw-shadow-color, #0000001a);
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
