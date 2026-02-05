@@ -18,6 +18,9 @@ import {
   MoreHorizontal,
   Pencil,
   Trash2,
+  Gift,
+  Cake,
+  ExternalLink,
 } from "lucide-react";
 import { ModeSwitch } from "@/components/mode-switch";
 import { TravelEntryCard } from "@/components/travel/travel-entry-card";
@@ -111,13 +114,35 @@ export function DatingDashboard() {
   const [myMood, setMyMood] = useState("👩");
   const [coupleNames, setCoupleNames] = useState({ my: "민지", partner: "준호" });
   const [diffDays, setDiffDays] = useState(0);
+  const [birthdayPerson, setBirthdayPerson] = useState<string | null>(null);
+
+  const checkBirthday = (birthdayStr: string | null): boolean => {
+    if (!birthdayStr) return false;
+    const today = new Date();
+    const birthday = new Date(birthdayStr);
+    return today.getMonth() === birthday.getMonth() && today.getDate() === birthday.getDate();
+  };
+
+  const openNaverShopping = () => {
+    const searchQuery = encodeURIComponent("생일선물");
+    const naverShoppingUrl = `https://msearch.shopping.naver.com/search/all?query=${searchQuery}`;
+    window.open(naverShoppingUrl, "_blank");
+  };
 
   useEffect(() => {
     const myName = localStorage.getItem("survey_myName") || "민지";
     const partnerName = localStorage.getItem("survey_partnerName") || "준호";
     const savedDate = localStorage.getItem("survey_firstMeetDate");
+    const myBirthday = localStorage.getItem("survey_myBirthday");
+    const partnerBirthday = localStorage.getItem("survey_partnerBirthday");
     
     setCoupleNames({ my: myName, partner: partnerName });
+    
+    if (checkBirthday(myBirthday)) {
+      setBirthdayPerson(myName);
+    } else if (checkBirthday(partnerBirthday)) {
+      setBirthdayPerson(partnerName);
+    }
     
     if (savedDate) {
       const start = new Date(savedDate);
@@ -365,6 +390,33 @@ export function DatingDashboard() {
             </button>
           </div>
         </div>
+
+        {birthdayPerson && (
+          <div className="bg-gradient-to-r from-pink-50 to-amber-50 rounded-[24px] p-5 shadow-toss border border-pink-100" data-testid="birthday-banner">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-amber-400 flex items-center justify-center flex-shrink-0">
+                <Cake className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <p className="text-[16px] font-bold text-[#191F28] mb-1">
+                  오늘은 {birthdayPerson}님의 생일이에요!
+                </p>
+                <p className="text-[14px] text-[#4E5968] mb-3">
+                  축하해요! {birthdayPerson}님에게 줄 선물을 골라볼까요?
+                </p>
+                <button
+                  onClick={openNaverShopping}
+                  className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-[12px] font-semibold text-[14px] hover:from-pink-600 hover:to-rose-600 transition-all shadow-sm"
+                  data-testid="button-gift-shopping"
+                >
+                  <Gift className="w-4 h-4" />
+                  선물하기
+                  <ExternalLink className="w-3.5 h-3.5 ml-1 opacity-70" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="bg-white rounded-[24px] p-5 shadow-toss">
           <div className="flex items-center gap-3 mb-4">

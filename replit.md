@@ -71,8 +71,13 @@ Preferred communication style: Simple, everyday language.
   - After completing wedding onboarding: Free switching between dating/wedding modes
 - **LocalStorage Keys**:
   - `survey_myName`, `survey_partnerName`, `survey_firstMeetDate`: Survey data (login indicator)
+  - `survey_myBirthday`, `survey_partnerBirthday`: Birthday data (YYYY-MM-DD format)
   - `selected_mode`: "dating" | "wedding" | "family"
   - `wedding_onboarding_complete`: "true" after wedding onboarding
+- **Birthday Celebration Feature**:
+  - Dating dashboard checks if today is someone's birthday
+  - Shows celebration banner with gift shopping button
+  - "선물하기" button opens Naver Shopping with "생일선물" search query
 
 ### Component Organization
 - `/components/ui/` - Reusable shadcn/ui components

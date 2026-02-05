@@ -2,11 +2,13 @@
 
 import { useState, useEffect, KeyboardEvent } from "react"
 import { useRouter } from "next/navigation"
+import { Calendar } from "lucide-react"
 
 export default function SurveyStep2() {
   const router = useRouter()
   const [name, setName] = useState("")
   const [gender, setGender] = useState<"male" | "female" | "">("")
+  const [birthday, setBirthday] = useState("")
   const [fadeIn, setFadeIn] = useState(false)
   const [fadeOut, setFadeOut] = useState(false)
   const [isComposing, setIsComposing] = useState(false)
@@ -15,12 +17,13 @@ export default function SurveyStep2() {
     setFadeIn(true)
   }, [])
 
-  const canProceed = name.trim() && gender
+  const canProceed = name.trim() && gender && birthday
 
   const handleNext = () => {
     if (!canProceed) return
     localStorage.setItem("survey_partnerName", name)
     localStorage.setItem("survey_partnerGender", gender)
+    localStorage.setItem("survey_partnerBirthday", birthday)
     setFadeOut(true)
     setTimeout(() => router.push("/survey/step3"), 400)
   }
@@ -90,6 +93,21 @@ export default function SurveyStep2() {
               >
                 남성
               </button>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-[15px] text-[#8B95A1] mb-3">생년월일</p>
+            <div className="relative">
+              <input
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+                max={new Date().toISOString().split("T")[0]}
+                className="w-full h-14 px-5 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] outline-none focus:ring-2 focus:ring-blue-500"
+                data-testid="input-partner-birthday"
+              />
+              <Calendar className="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B95A1] pointer-events-none" />
             </div>
           </div>
         </div>
