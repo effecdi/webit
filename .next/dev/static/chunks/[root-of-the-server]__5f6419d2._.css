@@ -1544,10 +1544,6 @@
     bottom: calc(var(--spacing) * 4);
   }
 
-  .bottom-5 {
-    bottom: calc(var(--spacing) * 5);
-  }
-
   .bottom-8 {
     bottom: calc(var(--spacing) * 8);
   }
@@ -2076,10 +2072,6 @@
 
   .-ml-4 {
     margin-left: calc(var(--spacing) * -4);
-  }
-
-  .ml-0\.5 {
-    margin-left: calc(var(--spacing) * .5);
   }
 
   .ml-1 {
@@ -7168,10 +7160,6 @@
   .\[color\:red\]\/50\! {
     color: #ff000080 !important;
     color: lab(54.2905% 80.8049 69.891 / .5) !important;
-  }
-
-  .text-\[\#0A84FF\] {
-    color: #0a84ff;
   }
 
   .text-\[\#2D8B57\] {

@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
-import { ChevronLeft, MoreHorizontal, X, Share2, Trash2, Check, Play, Menu, Search } from "lucide-react"
+import { ChevronLeft, MoreHorizontal, X, Share2, Trash2, Check } from "lucide-react"
 
 interface Photo {
   id: number
@@ -19,6 +19,7 @@ interface Album {
   title: string
   thumbnail: string | null
   createdAt: string
+  photoCount?: number
 }
 
 export default function AlbumDetailPage() {
@@ -33,11 +34,7 @@ export default function AlbumDetailPage() {
   const [selectedPhotos, setSelectedPhotos] = useState<Set<number>>(new Set())
   const [showMoreMenu, setShowMoreMenu] = useState(false)
 
-  useEffect(() => {
-    fetchAlbumAndPhotos()
-  }, [albumId])
-
-  async function fetchAlbumAndPhotos() {
+  const fetchAlbumAndPhotos = useCallback(async () => {
     try {
       const [albumRes, photosRes] = await Promise.all([
         fetch(`/api/albums?id=${albumId}`),
@@ -46,11 +43,7 @@ export default function AlbumDetailPage() {
       
       if (albumRes.ok) {
         const albumData = await albumRes.json()
-        if (Array.isArray(albumData) && albumData.length > 0) {
-          setAlbum(albumData[0])
-        } else if (!Array.isArray(albumData)) {
-          setAlbum(albumData)
-        }
+        setAlbum(albumData)
       }
       
       if (photosRes.ok) {
@@ -62,7 +55,11 @@ export default function AlbumDetailPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [albumId])
+
+  useEffect(() => {
+    fetchAlbumAndPhotos()
+  }, [fetchAlbumAndPhotos])
 
   function toggleSelectMode() {
     setIsSelectMode(!isSelectMode)
@@ -93,9 +90,12 @@ export default function AlbumDetailPage() {
     if (!confirm(`${selectedPhotos.size}장의 사진을 삭제하시겠습니까?`)) return
 
     try {
-      for (const photoId of selectedPhotos) {
-        await fetch(`/api/photos?id=${photoId}`, { method: 'DELETE' })
-      }
+      const photoIds = Array.from(selectedPhotos)
+      await Promise.all(
+        photoIds.map(photoId => 
+          fetch(`/api/photos?id=${photoId}`, { method: 'DELETE' })
+        )
+      )
       await fetchAlbumAndPhotos()
       setSelectedPhotos(new Set())
       setIsSelectMode(false)
@@ -110,13 +110,16 @@ export default function AlbumDetailPage() {
     if (!confirm(`${selectedPhotos.size}장의 사진을 앨범에서 제거하시겠습니까?`)) return
 
     try {
-      for (const photoId of selectedPhotos) {
-        await fetch('/api/photos', {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: photoId, albumId: null })
-        })
-      }
+      const photoIds = Array.from(selectedPhotos)
+      await Promise.all(
+        photoIds.map(photoId =>
+          fetch('/api/photos', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: photoId, albumId: null })
+          })
+        )
+      )
       await fetchAlbumAndPhotos()
       setSelectedPhotos(new Set())
       setIsSelectMode(false)
@@ -142,7 +145,7 @@ export default function AlbumDetailPage() {
     return (
       <div className="min-h-screen bg-black flex flex-col items-center justify-center text-white">
         <p className="text-lg mb-4">앨범을 찾을 수 없습니다</p>
-        <Link href="/dating/gallery" className="text-blue-400">갤러리로 돌아가기</Link>
+        <Link href="/dating/gallery" className="text-pink-400" data-testid="link-back-gallery">갤러리로 돌아가기</Link>
       </div>
     )
   }
@@ -178,7 +181,7 @@ export default function AlbumDetailPage() {
                   className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-[14px] font-medium"
                   data-testid="button-select-all"
                 >
-                  전체 선택
+                  {selectedPhotos.size === photos.length ? '선택 해제' : '전체 선택'}
                 </button>
                 <div className="flex items-center gap-2">
                   <button
@@ -191,7 +194,7 @@ export default function AlbumDetailPage() {
                   <button
                     onClick={toggleSelectMode}
                     className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center"
-                    data-testid="button-cancel-select"
+                    data-testid="button-close-select"
                   >
                     <X className="w-5 h-5 text-white" />
                   </button>
@@ -201,7 +204,7 @@ export default function AlbumDetailPage() {
               <>
                 <button
                   onClick={() => router.back()}
-                  className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center"
+                  className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center"
                   data-testid="button-back"
                 >
                   <ChevronLeft className="w-6 h-6 text-white" />
@@ -209,14 +212,14 @@ export default function AlbumDetailPage() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setShowMoreMenu(true)}
-                    className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center"
-                    data-testid="button-more-options"
+                    className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center"
+                    data-testid="button-album-options"
                   >
                     <MoreHorizontal className="w-5 h-5 text-white" />
                   </button>
                   <button
                     onClick={toggleSelectMode}
-                    className="px-5 py-2.5 bg-blue-500 rounded-full text-white text-[14px] font-medium"
+                    className="px-5 py-2.5 bg-pink-500 rounded-full text-white text-[14px] font-medium"
                     data-testid="button-select-mode"
                   >
                     선택
@@ -229,9 +232,9 @@ export default function AlbumDetailPage() {
 
         {/* Album Info */}
         <div className="absolute bottom-0 left-0 right-0 p-5">
-          <h1 className="text-[28px] font-bold text-white mb-2">{album.title}</h1>
+          <h1 className="text-[28px] font-bold text-white mb-2" data-testid="text-album-title">{album.title}</h1>
           <div className="flex items-center gap-2 text-white/80 text-[14px]">
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1" data-testid="text-album-date">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12,6 12,12 16,14" />
@@ -239,7 +242,7 @@ export default function AlbumDetailPage() {
               {formatDate(album.createdAt)}
             </span>
             <span>·</span>
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1" data-testid="text-photo-count">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
                 <rect x="3" y="3" width="18" height="18" rx="2" />
                 <circle cx="8.5" cy="8.5" r="1.5" />
@@ -249,20 +252,10 @@ export default function AlbumDetailPage() {
             </span>
           </div>
         </div>
-
-        {/* Play button */}
-        {photos.length > 1 && !isSelectMode && (
-          <button
-            className="absolute bottom-5 right-5 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center"
-            data-testid="button-slideshow"
-          >
-            <Play className="w-5 h-5 text-white ml-0.5" fill="white" />
-          </button>
-        )}
       </div>
 
       {/* Photo Grid */}
-      <div className="p-1">
+      <div className="p-1 pb-24">
         {photos.length === 0 ? (
           <div className="py-20 text-center">
             <p className="text-[#8B8B8D] text-[15px]">아직 사진이 없습니다</p>
@@ -274,7 +267,7 @@ export default function AlbumDetailPage() {
                 key={photo.id}
                 onClick={() => isSelectMode ? togglePhotoSelection(photo.id) : null}
                 className={`relative aspect-square ${index === 0 ? 'col-span-2 row-span-2' : ''}`}
-                data-testid={`photo-${photo.id}`}
+                data-testid={`photo-item-${photo.id}`}
               >
                 <img
                   src={photo.url}
@@ -285,7 +278,7 @@ export default function AlbumDetailPage() {
                   <div className={`absolute inset-0 ${selectedPhotos.has(photo.id) ? 'bg-black/30' : ''}`}>
                     <div className={`absolute bottom-2 right-2 w-6 h-6 rounded-full border-2 flex items-center justify-center
                       ${selectedPhotos.has(photo.id) 
-                        ? 'bg-blue-500 border-blue-500' 
+                        ? 'bg-pink-500 border-pink-500' 
                         : 'border-white/70 bg-black/30'}`}
                     >
                       {selectedPhotos.has(photo.id) && (
@@ -300,23 +293,9 @@ export default function AlbumDetailPage() {
         )}
       </div>
 
-      {/* Bottom Navigation */}
-      {!isSelectMode && (
-        <div className="fixed bottom-0 left-0 right-0 pb-safe">
-          <div className="flex justify-between items-center px-8 py-4">
-            <button className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center">
-              <Menu className="w-5 h-5 text-white" />
-            </button>
-            <button className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center">
-              <Search className="w-5 h-5 text-white" />
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* Selection Mode Bottom Bar */}
       {isSelectMode && selectedPhotos.size > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-[#1C1C1E] pb-safe">
+        <div className="fixed bottom-0 left-0 right-0 bg-[#1C1C1E] pb-safe z-40">
           <div className="flex justify-around items-center h-20 max-w-md mx-auto px-8">
             <button 
               onClick={() => alert('공유 기능은 준비 중입니다')}
@@ -326,7 +305,7 @@ export default function AlbumDetailPage() {
               <Share2 className="w-6 h-6" />
             </button>
             <div className="flex-1 text-center">
-              <span className="text-[14px] text-white">
+              <span className="text-[14px] text-white" data-testid="text-selected-count">
                 {selectedPhotos.size}장의 사진이 선택됨
               </span>
             </div>
@@ -375,7 +354,7 @@ export default function AlbumDetailPage() {
             </div>
             <button
               onClick={() => setShowMoreMenu(false)}
-              className="w-full py-4 text-[17px] text-[#0A84FF] border-t border-[#48484A]"
+              className="w-full py-4 text-[17px] text-pink-500 border-t border-[#48484A]"
               data-testid="button-close-menu"
             >
               취소
