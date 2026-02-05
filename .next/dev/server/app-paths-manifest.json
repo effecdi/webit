@@ -1,5 +1,3 @@
 {
-  "/family/page": "app/family/page.js",
-  "/onboarding/page": "app/onboarding/page.js",
   "/page": "app/page.js"
 }

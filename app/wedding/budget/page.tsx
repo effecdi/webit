@@ -86,7 +86,7 @@ export default function BudgetPage() {
     amount: "",
     category: "",
     date: new Date().toISOString().split("T")[0],
-    payer: "shared" as const,
+    payer: "shared" as "groom" | "bride" | "shared" | "parents",
     status: "paid" as "paid" | "scheduled",
     method: "card" as "cash" | "card" | "transfer",
     deposit: "",
@@ -111,7 +111,7 @@ export default function BudgetPage() {
     const amount = Number(newExpense.amount.replace(/,/g, ""))
     const deposit = newExpense.deposit ? Number(newExpense.deposit.replace(/,/g, "")) : 0
     
-    const expense: BudgetExpense = {
+    const expense: Expense = {
       id: Date.now().toString(),
       title: newExpense.title,
       amount: amount,
@@ -205,7 +205,7 @@ export default function BudgetPage() {
   }
 
   // Open detail modal
-  const openDetailModal = (expense: BudgetExpense) => {
+  const openDetailModal = (expense: Expense) => {
     setSelectedExpense(expense)
     setShowDetailModal(true)
     setPartialPayment("")
@@ -299,71 +299,90 @@ export default function BudgetPage() {
       </header>
 
       <main className="px-5 py-5 max-w-md mx-auto space-y-5">
-        {/* Total Summary Card */}
-        <div className="bg-white rounded-[24px] p-6 shadow-toss">
-          <div className="flex items-center justify-between mb-1">
-            <p className="text-[13px] text-[#8B95A1]">총 예산</p>
-            <button 
-              onClick={() => {
-                setBudgetInput(totalBudget.toLocaleString())
-                setShowBudgetModal(true)
-              }}
-              className="flex items-center gap-1 text-[12px] text-[#8B95A1] hover:text-[#4E5968] transition-colors"
+        {/* Total Summary Card or Empty State */}
+        {totalBudget === 0 && expenses.length === 0 ? (
+          <div className="bg-white rounded-[24px] p-8 shadow-toss text-center">
+            <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-pink-50 flex items-center justify-center">
+              <Banknote className="w-10 h-10 text-pink-400" />
+            </div>
+            <h3 className="text-[18px] font-bold text-[#191F28] mb-2">예산을 등록해주세요</h3>
+            <p className="text-[14px] text-[#8B95A1] mb-6 leading-relaxed">
+              결혼 준비 예산을 설정하고<br/>지출을 체계적으로 관리해보세요
+            </p>
+            <button
+              onClick={() => setShowBudgetModal(true)}
+              className="w-full py-4 bg-gradient-to-r from-pink-500 to-pink-400 text-white font-semibold rounded-[16px] text-[16px] shadow-lg hover:shadow-xl transition-shadow"
+              data-testid="button-register-budget"
             >
-              <Settings className="w-3.5 h-3.5" />
-              수정
+              예산 등록하기
             </button>
           </div>
-          <div className="mb-4">
-            <span className="text-[32px] font-bold text-[#191F28] tracking-tight">
-              {totalBudget.toLocaleString()}
-            </span>
-            <span className="text-[22px] font-bold text-[#191F28]">원</span>
-          </div>
+        ) : (
+          <div className="bg-white rounded-[24px] p-6 shadow-toss">
+            <div className="flex items-center justify-between mb-1">
+              <p className="text-[13px] text-[#8B95A1]">총 예산</p>
+              <button 
+                onClick={() => {
+                  setBudgetInput(totalBudget.toLocaleString())
+                  setShowBudgetModal(true)
+                }}
+                className="flex items-center gap-1 text-[12px] text-[#8B95A1] hover:text-[#4E5968] transition-colors"
+              >
+                <Settings className="w-3.5 h-3.5" />
+                수정
+              </button>
+            </div>
+            <div className="mb-4">
+              <span className="text-[32px] font-bold text-[#191F28] tracking-tight">
+                {totalBudget.toLocaleString()}
+              </span>
+              <span className="text-[22px] font-bold text-[#191F28]">원</span>
+            </div>
 
-          {/* Progress Bar - Stacked */}
-          <div className="h-3 bg-[#E5E8EB] rounded-full overflow-hidden mb-4 flex">
-            <div 
-              className="h-full bg-[#FF8A80] transition-all duration-500"
-              style={{ width: `${spentPercent}%` }}
-            />
-            <div 
-              className="h-full bg-[#FFD4A3] transition-all duration-500"
-              style={{ width: `${scheduledPercent}%` }}
-            />
-          </div>
+            {/* Progress Bar - Stacked */}
+            <div className="h-3 bg-[#E5E8EB] rounded-full overflow-hidden mb-4 flex">
+              <div 
+                className="h-full bg-[#FF8A80] transition-all duration-500"
+                style={{ width: `${spentPercent}%` }}
+              />
+              <div 
+                className="h-full bg-[#FFD4A3] transition-all duration-500"
+                style={{ width: `${scheduledPercent}%` }}
+              />
+            </div>
 
-          {/* Stats - 3 columns */}
-          <div className="flex justify-between">
-            <div>
-              <div className="flex items-center gap-1.5 mb-0.5">
-                <div className="w-2 h-2 rounded-full bg-[#FF8A80]" />
-                <p className="text-[12px] text-[#8B95A1]">사용</p>
+            {/* Stats - 3 columns */}
+            <div className="flex justify-between">
+              <div>
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <div className="w-2 h-2 rounded-full bg-[#FF8A80]" />
+                  <p className="text-[12px] text-[#8B95A1]">사용</p>
+                </div>
+                <p className="text-[16px] font-bold text-[#FF8A80]">
+                  {(totalSpent / 10000).toFixed(0)}만원
+                </p>
               </div>
-              <p className="text-[16px] font-bold text-[#FF8A80]">
-                {(totalSpent / 10000).toFixed(0)}만원
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center gap-1.5 mb-0.5 justify-center">
-                <div className="w-2 h-2 rounded-full bg-[#FFD4A3]" />
-                <p className="text-[12px] text-[#8B95A1]">예정</p>
+              <div className="text-center">
+                <div className="flex items-center gap-1.5 mb-0.5 justify-center">
+                  <div className="w-2 h-2 rounded-full bg-[#FFD4A3]" />
+                  <p className="text-[12px] text-[#8B95A1]">예정</p>
+                </div>
+                <p className="text-[16px] font-bold text-[#F5A623]">
+                  {(totalScheduled / 10000).toFixed(0)}만원
+                </p>
               </div>
-              <p className="text-[16px] font-bold text-[#F5A623]">
-                {(totalScheduled / 10000).toFixed(0)}만원
-              </p>
-            </div>
-            <div className="text-right">
-              <div className="flex items-center gap-1.5 mb-0.5 justify-end">
-                <div className="w-2 h-2 rounded-full bg-[#3182F6]" />
-                <p className="text-[12px] text-[#8B95A1]">남음</p>
+              <div className="text-right">
+                <div className="flex items-center gap-1.5 mb-0.5 justify-end">
+                  <div className="w-2 h-2 rounded-full bg-[#3182F6]" />
+                  <p className="text-[12px] text-[#8B95A1]">남음</p>
+                </div>
+                <p className="text-[16px] font-bold text-[#3182F6]">
+                  {(remaining / 10000).toFixed(0)}만원
+                </p>
               </div>
-              <p className="text-[16px] font-bold text-[#3182F6]">
-                {(remaining / 10000).toFixed(0)}만원
-              </p>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Category Filter */}
         <div className="flex gap-2 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide">
@@ -505,7 +524,11 @@ export default function BudgetPage() {
 
           {filteredExpenses.length === 0 && (
             <div className="py-12 text-center">
-              <p className="text-[14px] text-[#8B95A1]">지출 내역이 없습니다</p>
+              <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-[#F2F4F6] flex items-center justify-center">
+                <CreditCard className="w-6 h-6 text-[#B0B8C1]" />
+              </div>
+              <p className="text-[14px] text-[#8B95A1] mb-1">아직 지출 내역이 없어요</p>
+              <p className="text-[12px] text-[#B0B8C1]">+ 버튼을 눌러 지출을 등록해보세요</p>
             </div>
           )}
         </div>

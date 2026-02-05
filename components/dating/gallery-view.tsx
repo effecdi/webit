@@ -27,7 +27,12 @@ export function GalleryView() {
   const [isLoading, setIsLoading] = useState(true)
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null)
   const [showAddAlbumModal, setShowAddAlbumModal] = useState(false)
+  const [showAddPhotoModal, setShowAddPhotoModal] = useState(false)
   const [newAlbumTitle, setNewAlbumTitle] = useState("")
+  const [uploading, setUploading] = useState(false)
+  const [newPhotoCaption, setNewPhotoCaption] = useState("")
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null)
 
   useEffect(() => {
     fetchData()
@@ -101,6 +106,63 @@ export function GalleryView() {
     }
   }
 
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      setSelectedFile(file)
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setPreviewUrl(reader.result as string)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const uploadPhoto = async () => {
+    if (!selectedFile) return
+    
+    setUploading(true)
+    try {
+      const formData = new FormData()
+      formData.append('file', selectedFile)
+      
+      const uploadRes = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData
+      })
+      const { url } = await uploadRes.json()
+      
+      const photoRes = await fetch('/api/photos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: 'default',
+          url,
+          caption: newPhotoCaption || null,
+          mode: 'dating'
+        })
+      })
+      const newPhoto = await photoRes.json()
+      setPhotos([newPhoto, ...photos])
+      
+      setShowAddPhotoModal(false)
+      setSelectedFile(null)
+      setPreviewUrl(null)
+      setNewPhotoCaption("")
+    } catch (error) {
+      console.error('Error uploading photo:', error)
+    } finally {
+      setUploading(false)
+    }
+  }
+
+  const closePhotoModal = () => {
+    setShowAddPhotoModal(false)
+    setSelectedFile(null)
+    setPreviewUrl(null)
+    setNewPhotoCaption("")
+  }
+
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr)
     return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`
@@ -172,7 +234,16 @@ export function GalleryView() {
         <div>
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-[17px] font-bold text-[#191F28]">모든 사진</h3>
-            <span className="text-[13px] text-[#8B95A1]">{photos.length}장</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[13px] text-[#8B95A1]">{photos.length}장</span>
+              <button 
+                onClick={() => setShowAddPhotoModal(true)}
+                className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center hover:bg-pink-600 transition-colors"
+                data-testid="button-add-photo"
+              >
+                <Plus className="w-4 h-4 text-white" />
+              </button>
+            </div>
           </div>
           
           {isLoading ? (
@@ -188,7 +259,11 @@ export function GalleryView() {
               </div>
               <p className="text-[#8B95A1] text-[14px]">아직 사진이 없어요</p>
               <p className="text-[#B0B8C1] text-[12px] mt-1">사진을 추가해서 추억을 남겨보세요</p>
-              <button className="mt-4 px-6 py-3 bg-pink-500 text-white rounded-full text-[14px] font-medium flex items-center gap-2 mx-auto hover:bg-pink-600 transition-colors">
+              <button 
+                onClick={() => setShowAddPhotoModal(true)}
+                className="mt-4 px-6 py-3 bg-pink-500 text-white rounded-full text-[14px] font-medium flex items-center gap-2 mx-auto hover:bg-pink-600 transition-colors"
+                data-testid="button-add-photo-empty"
+              >
                 <Upload className="w-4 h-4" />
                 사진 추가하기
               </button>
@@ -296,6 +371,83 @@ export function GalleryView() {
                 data-testid="button-create-album"
               >
                 만들기
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showAddPhotoModal && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5" onClick={closePhotoModal}>
+          <div className="bg-white rounded-[24px] w-full max-w-sm p-5" onClick={e => e.stopPropagation()}>
+            <h3 className="text-[17px] font-bold text-[#191F28] mb-4">사진 추가하기</h3>
+            
+            {!previewUrl ? (
+              <label className="flex flex-col items-center justify-center w-full h-48 bg-[#F2F4F6] rounded-[16px] cursor-pointer hover:bg-[#E5E8EB] transition-colors mb-4">
+                <div className="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center mb-3">
+                  <Upload className="w-7 h-7 text-pink-500" />
+                </div>
+                <p className="text-[14px] text-[#4E5968] font-medium">사진 선택하기</p>
+                <p className="text-[12px] text-[#8B95A1] mt-1">탭하여 갤러리에서 선택</p>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleFileSelect}
+                  data-testid="input-photo-file"
+                />
+              </label>
+            ) : (
+              <div className="relative mb-4">
+                <img
+                  src={previewUrl}
+                  alt="Preview"
+                  className="w-full h-48 object-cover rounded-[16px]"
+                />
+                <button
+                  onClick={() => {
+                    setSelectedFile(null)
+                    setPreviewUrl(null)
+                  }}
+                  className="absolute top-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center"
+                  data-testid="button-remove-preview"
+                >
+                  <X className="w-4 h-4 text-white" />
+                </button>
+              </div>
+            )}
+            
+            <input
+              type="text"
+              value={newPhotoCaption}
+              onChange={e => setNewPhotoCaption(e.target.value)}
+              placeholder="사진 설명 (선택사항)"
+              className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] focus:outline-none focus:ring-2 focus:ring-pink-300 mb-4"
+              data-testid="input-photo-caption"
+            />
+            
+            <div className="flex gap-3">
+              <button
+                onClick={closePhotoModal}
+                className="flex-1 py-3 bg-[#F2F4F6] text-[#4E5968] font-medium rounded-[12px]"
+                data-testid="button-cancel-photo-upload"
+              >
+                취소
+              </button>
+              <button
+                onClick={uploadPhoto}
+                disabled={!selectedFile || uploading}
+                className="flex-1 py-3 bg-pink-500 disabled:bg-[#E5E8EB] text-white font-medium rounded-[12px] flex items-center justify-center gap-2"
+                data-testid="button-confirm-photo-upload"
+              >
+                {uploading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    업로드 중...
+                  </>
+                ) : (
+                  '업로드'
+                )}
               </button>
             </div>
           </div>
