@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Plus, X, ChevronLeft, ChevronRight, Heart, Upload } from "lucide-react"
+import { Plus, X, ChevronLeft, ChevronRight, Heart, Upload, Check, MoreHorizontal, Share2, Trash2, FolderPlus } from "lucide-react"
 import { ImageIcon } from "lucide-react"
 import Link from "next/link"
 
@@ -19,6 +19,7 @@ interface Photo {
   caption: string | null
   liked: boolean
   createdAt: string
+  albumId?: number | null
 }
 
 export function GalleryView() {
@@ -33,6 +34,12 @@ export function GalleryView() {
   const [newPhotoCaption, setNewPhotoCaption] = useState("")
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+  
+  // Multi-select mode
+  const [isSelectMode, setIsSelectMode] = useState(false)
+  const [selectedPhotos, setSelectedPhotos] = useState<Set<number>>(new Set())
+  const [showMoreMenu, setShowMoreMenu] = useState(false)
+  const [showAlbumSheet, setShowAlbumSheet] = useState(false)
 
   useEffect(() => {
     fetchData()
@@ -168,19 +175,128 @@ export function GalleryView() {
     return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`
   }
 
+  // Multi-select functions
+  const toggleSelectMode = () => {
+    setIsSelectMode(!isSelectMode)
+    setSelectedPhotos(new Set())
+    setShowMoreMenu(false)
+  }
+
+  const togglePhotoSelection = (photoId: number) => {
+    const newSelected = new Set(selectedPhotos)
+    if (newSelected.has(photoId)) {
+      newSelected.delete(photoId)
+    } else {
+      newSelected.add(photoId)
+    }
+    setSelectedPhotos(newSelected)
+  }
+
+  const handlePhotoClick = (photo: Photo, index: number) => {
+    if (isSelectMode) {
+      togglePhotoSelection(photo.id)
+    } else {
+      setSelectedPhotoIndex(index)
+    }
+  }
+
+  const movePhotosToAlbum = async (albumId: number) => {
+    if (selectedPhotos.size === 0) return
+    
+    try {
+      const promises = Array.from(selectedPhotos).map(photoId =>
+        fetch('/api/photos', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: photoId, albumId })
+        })
+      )
+      await Promise.all(promises)
+      
+      // Update local state
+      setPhotos(photos.map(p => 
+        selectedPhotos.has(p.id) ? { ...p, albumId } : p
+      ))
+      
+      // Update album photo counts
+      await fetchData()
+      
+      setShowAlbumSheet(false)
+      setShowMoreMenu(false)
+      setIsSelectMode(false)
+      setSelectedPhotos(new Set())
+    } catch (error) {
+      console.error('Error moving photos:', error)
+    }
+  }
+
+  const deleteSelectedPhotos = async () => {
+    if (selectedPhotos.size === 0) return
+    
+    if (!confirm(`${selectedPhotos.size}장의 사진을 삭제하시겠습니까?`)) return
+    
+    try {
+      const promises = Array.from(selectedPhotos).map(photoId =>
+        fetch('/api/photos', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: photoId })
+        })
+      )
+      await Promise.all(promises)
+      
+      setPhotos(photos.filter(p => !selectedPhotos.has(p.id)))
+      setIsSelectMode(false)
+      setSelectedPhotos(new Set())
+    } catch (error) {
+      console.error('Error deleting photos:', error)
+    }
+  }
+
   return (
     <>
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#E5E8EB]">
         <div className="flex items-center justify-between px-5 h-14 max-w-md mx-auto">
-          <Link href="/dating" className="p-2 -ml-2 rounded-full hover:bg-[#F2F4F6]">
-            <ChevronLeft className="w-6 h-6 text-[#191F28]" />
-          </Link>
-          <h1 className="text-[17px] font-bold text-[#191F28]">갤러리</h1>
-          <div className="w-10" />
+          {isSelectMode ? (
+            <>
+              <button 
+                onClick={toggleSelectMode}
+                className="text-[15px] text-[#8B95A1]"
+                data-testid="button-cancel-select"
+              >
+                취소
+              </button>
+              <h1 className="text-[17px] font-bold text-[#191F28]">
+                {selectedPhotos.size > 0 ? `${selectedPhotos.size}장 선택됨` : '항목 선택'}
+              </h1>
+              <button 
+                onClick={() => setShowMoreMenu(true)}
+                className="p-2 -mr-2 rounded-full hover:bg-[#F2F4F6]"
+                data-testid="button-more-menu"
+                disabled={selectedPhotos.size === 0}
+              >
+                <MoreHorizontal className={`w-6 h-6 ${selectedPhotos.size > 0 ? 'text-[#191F28]' : 'text-[#D1D6DB]'}`} />
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href="/dating" className="p-2 -ml-2 rounded-full hover:bg-[#F2F4F6]" data-testid="button-back">
+                <ChevronLeft className="w-6 h-6 text-[#191F28]" />
+              </Link>
+              <h1 className="text-[17px] font-bold text-[#191F28]">갤러리</h1>
+              <button 
+                onClick={toggleSelectMode}
+                className="text-[15px] text-pink-500 font-medium"
+                data-testid="button-select-mode"
+              >
+                선택
+              </button>
+            </>
+          )}
         </div>
       </header>
 
-      <div className="px-5 py-5 max-w-md mx-auto">
+      <div className="px-5 py-5 max-w-md mx-auto pb-36">
         <div className="mb-6">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-[17px] font-bold text-[#191F28]">앨범</h3>
@@ -189,6 +305,7 @@ export function GalleryView() {
             <button 
               onClick={() => setShowAddAlbumModal(true)}
               className="flex-shrink-0 w-28 h-36 bg-[#F2F4F6] rounded-[16px] flex flex-col items-center justify-center gap-2 hover:bg-[#E5E8EB] transition-colors"
+              data-testid="button-add-album"
             >
               <div className="w-10 h-10 rounded-full bg-[#D1D6DB] flex items-center justify-center">
                 <Plus className="w-5 h-5 text-white" />
@@ -207,6 +324,7 @@ export function GalleryView() {
                 <div
                   key={album.id}
                   className="flex-shrink-0 w-28 rounded-[16px] overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-shadow"
+                  data-testid={`album-card-${album.id}`}
                 >
                   <div className="relative h-24 bg-gradient-to-br from-pink-100 to-purple-100">
                     {album.thumbnail ? (
@@ -234,16 +352,7 @@ export function GalleryView() {
         <div>
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-[17px] font-bold text-[#191F28]">모든 사진</h3>
-            <div className="flex items-center gap-2">
-              <span className="text-[13px] text-[#8B95A1]">{photos.length}장</span>
-              <button 
-                onClick={() => setShowAddPhotoModal(true)}
-                className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center hover:bg-pink-600 transition-colors"
-                data-testid="button-add-photo"
-              >
-                <Plus className="w-4 h-4 text-white" />
-              </button>
-            </div>
+            <span className="text-[13px] text-[#8B95A1]">{photos.length}장</span>
           </div>
           
           {isLoading ? (
@@ -273,15 +382,29 @@ export function GalleryView() {
               {photos.map((photo, index) => (
                 <button
                   key={photo.id}
-                  onClick={() => setSelectedPhotoIndex(index)}
+                  onClick={() => handlePhotoClick(photo, index)}
                   className="relative aspect-square overflow-hidden rounded-[4px] group"
+                  data-testid={`photo-item-${photo.id}`}
                 >
                   <img
                     src={photo.url}
                     alt=""
                     className="w-full h-full object-cover transition-transform group-hover:scale-105"
                   />
-                  {photo.liked && (
+                  {isSelectMode && (
+                    <div className={`absolute inset-0 ${selectedPhotos.has(photo.id) ? 'bg-black/20' : ''}`}>
+                      <div className={`absolute bottom-2 right-2 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
+                        selectedPhotos.has(photo.id) 
+                          ? 'bg-pink-500 border-pink-500' 
+                          : 'bg-white/80 border-white'
+                      }`}>
+                        {selectedPhotos.has(photo.id) && (
+                          <Check className="w-4 h-4 text-white" />
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  {!isSelectMode && photo.liked && (
                     <div className="absolute top-1 right-1">
                       <Heart className="w-4 h-4 text-pink-500" fill="#ec4899" />
                     </div>
@@ -293,11 +416,53 @@ export function GalleryView() {
         </div>
       </div>
 
+      {/* Selection Mode Bottom Bar */}
+      {isSelectMode && selectedPhotos.size > 0 && (
+        <div className="fixed bottom-16 left-0 right-0 bg-white border-t border-[#E5E8EB] z-40">
+          <div className="flex justify-around items-center h-16 max-w-md mx-auto px-5">
+            <button 
+              onClick={() => alert('공유 기능은 준비 중입니다')}
+              className="flex flex-col items-center gap-1 text-[#B0B8C1]"
+              data-testid="button-share-photos"
+            >
+              <Share2 className="w-6 h-6" />
+              <span className="text-[10px]">공유</span>
+            </button>
+            <div className="flex-1 text-center">
+              <span className="text-[14px] font-medium text-[#191F28]">
+                {selectedPhotos.size}장의 사진이 선택됨
+              </span>
+            </div>
+            <button 
+              onClick={deleteSelectedPhotos}
+              className="flex flex-col items-center gap-1 text-red-500"
+              data-testid="button-delete-photos"
+            >
+              <Trash2 className="w-6 h-6" />
+              <span className="text-[10px]">삭제</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* FAB - Add Photo Button */}
+      {!isSelectMode && photos.length > 0 && (
+        <button
+          onClick={() => setShowAddPhotoModal(true)}
+          className="fixed bottom-24 right-5 w-14 h-14 bg-pink-500 hover:bg-pink-600 rounded-full shadow-lg flex items-center justify-center z-40 transition-colors"
+          data-testid="button-add-photo-fab"
+        >
+          <Plus className="w-7 h-7 text-white" />
+        </button>
+      )}
+
+      {/* Photo Viewer */}
       {selectedPhotoIndex !== null && photos[selectedPhotoIndex] && (
         <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
           <button
             onClick={() => setSelectedPhotoIndex(null)}
             className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20"
+            data-testid="button-close-viewer"
           >
             <X className="w-6 h-6 text-white" />
           </button>
@@ -306,6 +471,7 @@ export function GalleryView() {
             <button
               onClick={handlePrev}
               className="absolute left-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20"
+              data-testid="button-prev-photo"
             >
               <ChevronLeft className="w-6 h-6 text-white" />
             </button>
@@ -315,6 +481,7 @@ export function GalleryView() {
             <button
               onClick={handleNext}
               className="absolute right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20"
+              data-testid="button-next-photo"
             >
               <ChevronRight className="w-6 h-6 text-white" />
             </button>
@@ -334,6 +501,7 @@ export function GalleryView() {
               <button
                 onClick={() => toggleLike(photos[selectedPhotoIndex].id)}
                 className="p-2 rounded-full hover:bg-white/10"
+                data-testid="button-toggle-like"
               >
                 <Heart
                   className={`w-6 h-6 ${photos[selectedPhotoIndex].liked ? "text-pink-500" : "text-white"}`}
@@ -345,6 +513,145 @@ export function GalleryView() {
         </div>
       )}
 
+      {/* More Menu Modal */}
+      {showMoreMenu && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/50 flex items-end justify-center"
+          onClick={() => setShowMoreMenu(false)}
+        >
+          <div 
+            className="bg-white w-full max-w-md rounded-t-[24px] overflow-hidden"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="w-10 h-1 bg-[#D1D6DB] rounded-full mx-auto mt-3" />
+            <div className="py-4">
+              <button
+                onClick={() => {
+                  setShowMoreMenu(false)
+                  setShowAlbumSheet(true)
+                }}
+                className="w-full px-5 py-4 flex items-center gap-4 hover:bg-[#F2F4F6] transition-colors"
+                data-testid="button-add-to-album"
+              >
+                <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center">
+                  <FolderPlus className="w-5 h-5 text-pink-500" />
+                </div>
+                <span className="text-[15px] text-[#191F28]">앨범에 추가</span>
+              </button>
+              <button
+                onClick={() => alert('공유 기능은 준비 중입니다')}
+                className="w-full px-5 py-4 flex items-center gap-4 hover:bg-[#F2F4F6] transition-colors"
+                data-testid="button-share-menu"
+              >
+                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                  <Share2 className="w-5 h-5 text-[#B0B8C1]" />
+                </div>
+                <span className="text-[15px] text-[#B0B8C1]">공유하기 (준비중)</span>
+              </button>
+              <button
+                onClick={() => {
+                  setShowMoreMenu(false)
+                  deleteSelectedPhotos()
+                }}
+                className="w-full px-5 py-4 flex items-center gap-4 hover:bg-[#F2F4F6] transition-colors"
+                data-testid="button-delete-menu"
+              >
+                <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center">
+                  <Trash2 className="w-5 h-5 text-red-500" />
+                </div>
+                <span className="text-[15px] text-red-500">삭제하기</span>
+              </button>
+            </div>
+            <button
+              onClick={() => setShowMoreMenu(false)}
+              className="w-full py-4 text-[15px] text-[#8B95A1] border-t border-[#E5E8EB]"
+              data-testid="button-close-more-menu"
+            >
+              취소
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Album Selection Bottom Sheet */}
+      {showAlbumSheet && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/50 flex items-end justify-center"
+          onClick={() => setShowAlbumSheet(false)}
+        >
+          <div 
+            className="bg-[#1C1C1E] w-full max-w-md rounded-t-[24px] overflow-hidden"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#38383A]">
+              <button
+                onClick={() => setShowAlbumSheet(false)}
+                className="w-8 h-8 flex items-center justify-center"
+                data-testid="button-close-album-sheet"
+              >
+                <X className="w-5 h-5 text-white" />
+              </button>
+              <span className="text-[17px] font-bold text-white">앨범에 추가</span>
+              <button
+                onClick={() => {
+                  setShowAlbumSheet(false)
+                  setShowAddAlbumModal(true)
+                }}
+                className="w-8 h-8 flex items-center justify-center"
+                data-testid="button-create-album-sheet"
+              >
+                <Plus className="w-5 h-5 text-white" />
+              </button>
+            </div>
+            
+            <div className="p-4 max-h-[60vh] overflow-y-auto">
+              {albums.length === 0 ? (
+                <div className="py-8 text-center">
+                  <p className="text-[#8B8B8D] text-[14px]">앨범이 없습니다</p>
+                  <button
+                    onClick={() => {
+                      setShowAlbumSheet(false)
+                      setShowAddAlbumModal(true)
+                    }}
+                    className="mt-4 px-6 py-3 bg-pink-500 text-white rounded-full text-[14px] font-medium"
+                    data-testid="button-create-first-album"
+                  >
+                    첫 앨범 만들기
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-3 gap-3">
+                  {albums.map((album) => (
+                    <button
+                      key={album.id}
+                      onClick={() => movePhotosToAlbum(album.id)}
+                      className="flex flex-col items-start"
+                      data-testid={`album-select-${album.id}`}
+                    >
+                      <div className="w-full aspect-square rounded-[12px] bg-[#38383A] overflow-hidden mb-2">
+                        {album.thumbnail ? (
+                          <img
+                            src={album.thumbnail}
+                            alt={album.title}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <ImageIcon className="w-8 h-8 text-[#8B8B8D]" />
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-[13px] text-white truncate w-full">{album.title}</p>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add Album Modal */}
       {showAddAlbumModal && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5" onClick={() => setShowAddAlbumModal(false)}>
           <div className="bg-white rounded-[24px] w-full max-w-sm p-5" onClick={e => e.stopPropagation()}>
@@ -361,6 +668,7 @@ export function GalleryView() {
               <button
                 onClick={() => setShowAddAlbumModal(false)}
                 className="flex-1 py-3 bg-[#F2F4F6] text-[#4E5968] font-medium rounded-[12px]"
+                data-testid="button-cancel-album"
               >
                 취소
               </button>
@@ -377,6 +685,7 @@ export function GalleryView() {
         </div>
       )}
 
+      {/* Add Photo Modal */}
       {showAddPhotoModal && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5" onClick={closePhotoModal}>
           <div className="bg-white rounded-[24px] w-full max-w-sm p-5" onClick={e => e.stopPropagation()}>
@@ -456,9 +765,9 @@ export function GalleryView() {
 
       <div className="h-20" />
 
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E5E8EB] pb-safe">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E5E8EB] pb-safe z-30">
         <div className="flex justify-around items-center h-16 max-w-md mx-auto px-5">
-          <Link href="/dating" className="flex flex-col items-center gap-1 text-[#8B95A1]">
+          <Link href="/dating" className="flex flex-col items-center gap-1 text-[#8B95A1]" data-testid="nav-home">
             <div className="w-6 h-6 flex items-center justify-center">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
                 <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
@@ -466,7 +775,7 @@ export function GalleryView() {
             </div>
             <span className="text-[10px]">홈</span>
           </Link>
-          <Link href="/dating/calendar" className="flex flex-col items-center gap-1 text-[#8B95A1]">
+          <Link href="/dating/calendar" className="flex flex-col items-center gap-1 text-[#8B95A1]" data-testid="nav-calendar">
             <div className="w-6 h-6 flex items-center justify-center">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
                 <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -477,7 +786,7 @@ export function GalleryView() {
             </div>
             <span className="text-[10px]">캘린더</span>
           </Link>
-          <div className="flex flex-col items-center gap-1 text-pink-500">
+          <div className="flex flex-col items-center gap-1 text-pink-500" data-testid="nav-gallery-active">
             <div className="w-6 h-6 flex items-center justify-center">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
                 <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -487,7 +796,7 @@ export function GalleryView() {
             </div>
             <span className="text-[10px] font-medium">갤러리</span>
           </div>
-          <Link href="/dating/profile" className="flex flex-col items-center gap-1 text-[#8B95A1]">
+          <Link href="/dating/profile" className="flex flex-col items-center gap-1 text-[#8B95A1]" data-testid="nav-profile">
             <div className="w-6 h-6 flex items-center justify-center">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
                 <circle cx="12" cy="7" r="4" />

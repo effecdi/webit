@@ -54,11 +54,12 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
-    const { id, liked, caption } = body;
+    const { id, liked, caption, albumId } = body;
 
     const updates: Record<string, unknown> = {};
     if (liked !== undefined) updates.liked = liked;
     if (caption !== undefined) updates.caption = caption;
+    if (albumId !== undefined) updates.albumId = albumId;
 
     const [updated] = await db.update(photos)
       .set(updates)
@@ -73,14 +74,20 @@ export async function PATCH(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const id = searchParams.get('id');
-
-  if (!id) {
-    return NextResponse.json({ error: 'ID required' }, { status: 400 });
-  }
-
   try {
+    // Support both query param and body for backward compatibility
+    const searchParams = request.nextUrl.searchParams;
+    let id = searchParams.get('id');
+    
+    if (!id) {
+      const body = await request.json().catch(() => ({}));
+      id = body.id?.toString();
+    }
+
+    if (!id) {
+      return NextResponse.json({ error: 'ID required' }, { status: 400 });
+    }
+
     await db.delete(photos).where(eq(photos.id, parseInt(id)));
     return NextResponse.json({ success: true });
   } catch (error) {
