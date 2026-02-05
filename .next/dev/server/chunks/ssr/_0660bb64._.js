@@ -28,7 +28,19 @@ function BudgetProvider({ children }) {
             const stored = localStorage.getItem(STORAGE_KEY);
             if (stored) {
                 const data = JSON.parse(stored);
-                if (data.totalBudget) setTotalBudget(data.totalBudget);
+                if (data.totalBudget) {
+                    setTotalBudget(data.totalBudget);
+                    return;
+                }
+            }
+            // Also check for budget from wedding onboarding
+            const onboardingBudget = localStorage.getItem("wedding_budget");
+            if (onboardingBudget) {
+                const budget = Number(onboardingBudget);
+                if (budget > 0) {
+                    setTotalBudget(budget);
+                    saveBudget(budget); // Save to main storage key for future use
+                }
             }
         } catch (e) {
             console.error("Failed to load budget data:", e);
@@ -169,7 +181,7 @@ function BudgetProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/contexts/budget-context.tsx",
-        lineNumber: 173,
+        lineNumber: 186,
         columnNumber: 5
     }, this);
 }

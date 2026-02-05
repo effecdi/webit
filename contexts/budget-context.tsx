@@ -55,7 +55,20 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
       const stored = localStorage.getItem(STORAGE_KEY)
       if (stored) {
         const data = JSON.parse(stored)
-        if (data.totalBudget) setTotalBudget(data.totalBudget)
+        if (data.totalBudget) {
+          setTotalBudget(data.totalBudget)
+          return
+        }
+      }
+      
+      // Also check for budget from wedding onboarding
+      const onboardingBudget = localStorage.getItem("wedding_budget")
+      if (onboardingBudget) {
+        const budget = Number(onboardingBudget)
+        if (budget > 0) {
+          setTotalBudget(budget)
+          saveBudget(budget) // Save to main storage key for future use
+        }
       }
     } catch (e) {
       console.error("Failed to load budget data:", e)
