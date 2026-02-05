@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Link from "next/link"
 import { 
   Bell, 
@@ -70,6 +70,7 @@ export function DatingDashboard() {
   const [showCommentModal, setShowCommentModal] = useState(false)
   const [selectedTodo, setSelectedTodo] = useState<TodoItem | null>(null)
   const [newComment, setNewComment] = useState("")
+  const isComposing = useRef(false)
   
   // Calculate D-day
   const startDate = new Date("2023-03-15")
@@ -378,7 +379,7 @@ export function DatingDashboard() {
       {/* Comment Modal */}
       {showCommentModal && selectedTodo && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50"
+          className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-4"
           onClick={() => {
             setShowCommentModal(false)
             setSelectedTodo(null)
@@ -386,19 +387,15 @@ export function DatingDashboard() {
           }}
         >
           <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300 max-h-[70vh] flex flex-col"
+            className="relative w-full max-w-md bg-white rounded-[24px] animate-in zoom-in-95 duration-200 max-h-[70vh] flex flex-col shadow-xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Handle */}
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
             
             {/* Header */}
-            <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
-              <div>
+            <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-[#F2F4F6]">
+              <div className="flex-1 min-w-0 pr-3">
                 <h3 className="text-[17px] font-bold text-[#191F28]">댓글</h3>
-                <p className="text-[13px] text-[#8B95A1] mt-0.5">{selectedTodo.text}</p>
+                <p className="text-[13px] text-[#8B95A1] mt-0.5 truncate">{selectedTodo.text}</p>
               </div>
               <button 
                 onClick={() => {
@@ -406,7 +403,8 @@ export function DatingDashboard() {
                   setSelectedTodo(null)
                   setNewComment("")
                 }}
-                className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
+                className="flex-shrink-0 w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
+                data-testid="button-close-comment"
               >
                 <X className="w-5 h-5 text-[#8B95A1]" />
               </button>
@@ -440,14 +438,26 @@ export function DatingDashboard() {
             </div>
             
             {/* Input */}
-            <div className="px-5 py-4 border-t border-[#F2F4F6] flex gap-3">
+            <div className="px-5 py-4 border-t border-[#F2F4F6] flex gap-3 rounded-b-[24px]">
               <input
                 type="text"
                 value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
+                onChange={(e) => {
+                  if (!isComposing.current) {
+                    setNewComment(e.target.value)
+                  }
+                }}
+                onCompositionStart={() => {
+                  isComposing.current = true
+                }}
+                onCompositionEnd={(e) => {
+                  isComposing.current = false
+                  setNewComment(e.currentTarget.value)
+                }}
                 placeholder="댓글을 입력하세요"
                 className="flex-1 px-4 py-3 bg-[#F2F4F6] rounded-full text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-pink-300"
-                onKeyDown={(e) => e.key === "Enter" && addComment()}
+                onKeyDown={(e) => e.key === "Enter" && !isComposing.current && addComment()}
+                data-testid="input-comment"
               />
               <button 
                 onClick={addComment}
@@ -457,12 +467,11 @@ export function DatingDashboard() {
                     ? "bg-pink-500 text-white" 
                     : "bg-[#E5E8EB] text-[#B0B8C1]"
                 }`}
+                data-testid="button-send-comment"
               >
                 <Send className="w-5 h-5" />
               </button>
             </div>
-            
-            <div className="h-6" />
           </div>
         </div>
       )}

@@ -4236,9 +4236,19 @@
     border-bottom-left-radius: .25rem;
   }
 
+  .rounded-b-\[24px\] {
+    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+  }
+
   .rounded-b-\[32px\] {
     border-bottom-right-radius: 32px;
     border-bottom-left-radius: 32px;
+  }
+
+  .rounded-b-lg {
+    border-bottom-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
   }
 
   .rounded-br {
@@ -4295,11 +4305,6 @@
   .border-x {
     border-inline-style: var(--tw-border-style);
     border-inline-width: 1px;
-  }
-
-  .border-x-3 {
-    border-inline-style: var(--tw-border-style);
-    border-inline-width: 3px;
   }
 
   .border-y {

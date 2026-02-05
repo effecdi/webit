@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { X, Send } from "lucide-react";
 
 interface Comment {
@@ -25,23 +25,40 @@ interface CommentModalProps {
 
 export function CommentModal({ isOpen, onClose, todo }: CommentModalProps) {
   const [newComment, setNewComment] = useState("");
+  const isComposing = useRef(false);
 
   if (!isOpen || !todo) return null;
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isComposing.current) {
+      setNewComment(e.target.value);
+    }
+  };
+
+  const handleCompositionStart = () => {
+    isComposing.current = true;
+  };
+
+  const handleCompositionEnd = (e: React.CompositionEvent<HTMLInputElement>) => {
+    isComposing.current = false;
+    setNewComment(e.currentTarget.value);
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
       <div 
         className="absolute inset-0 bg-black/50"
         onClick={onClose}
       />
       
-      <div className="relative w-full max-w-md bg-card border-t-3 border-x-3 border-secondary animate-in slide-in-from-bottom duration-300">
+      <div className="relative w-full max-w-md bg-card border-3 border-secondary rounded-lg shadow-brutalist animate-in zoom-in-95 duration-200">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b-2 border-secondary">
-          <h3 className="font-serif text-lg font-bold">{todo.text}</h3>
+          <h3 className="font-serif text-lg font-bold truncate pr-2">{todo.text}</h3>
           <button 
             onClick={onClose}
-            className="w-8 h-8 border-2 border-secondary flex items-center justify-center hover:bg-muted transition-colors"
+            className="flex-shrink-0 w-8 h-8 border-2 border-secondary flex items-center justify-center hover:bg-muted transition-colors"
+            data-testid="button-close-comment"
           >
             <X className="w-4 h-4" />
           </button>
@@ -75,16 +92,22 @@ export function CommentModal({ isOpen, onClose, todo }: CommentModalProps) {
         </div>
 
         {/* Input */}
-        <div className="p-4 border-t-2 border-secondary bg-muted">
+        <div className="p-4 border-t-2 border-secondary bg-muted rounded-b-lg">
           <div className="flex gap-2">
             <input
               type="text"
               value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
+              onChange={handleInputChange}
+              onCompositionStart={handleCompositionStart}
+              onCompositionEnd={handleCompositionEnd}
               placeholder="댓글을 입력하세요..."
-              className="flex-1 px-4 py-2 border-2 border-secondary bg-card font-sans text-sm focus:outline-none focus:shadow-brutalist-sm transition-shadow"
+              className="flex-1 px-4 py-3 border-2 border-secondary bg-card font-sans text-sm focus:outline-none focus:shadow-brutalist-sm transition-shadow rounded"
+              data-testid="input-comment"
             />
-            <button className="px-4 py-2 bg-primary border-2 border-secondary shadow-brutalist-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+            <button 
+              className="px-4 py-3 bg-primary border-2 border-secondary shadow-brutalist-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all rounded"
+              data-testid="button-send-comment"
+            >
               <Send className="w-4 h-4 text-secondary" />
             </button>
           </div>
