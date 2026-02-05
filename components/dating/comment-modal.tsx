@@ -30,18 +30,15 @@ export function CommentModal({ isOpen, onClose, todo }: CommentModalProps) {
   if (!isOpen || !todo) return null;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isComposing.current) {
-      setNewComment(e.target.value);
-    }
+    setNewComment(e.target.value);
   };
 
   const handleCompositionStart = () => {
     isComposing.current = true;
   };
 
-  const handleCompositionEnd = (e: React.CompositionEvent<HTMLInputElement>) => {
+  const handleCompositionEnd = () => {
     isComposing.current = false;
-    setNewComment(e.currentTarget.value);
   };
 
   return (

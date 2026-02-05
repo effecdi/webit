@@ -442,21 +442,21 @@ export function DatingDashboard() {
               <input
                 type="text"
                 value={newComment}
-                onChange={(e) => {
-                  if (!isComposing.current) {
-                    setNewComment(e.target.value)
-                  }
-                }}
+                onChange={(e) => setNewComment(e.target.value)}
                 onCompositionStart={() => {
                   isComposing.current = true
                 }}
-                onCompositionEnd={(e) => {
+                onCompositionEnd={() => {
                   isComposing.current = false
-                  setNewComment(e.currentTarget.value)
                 }}
                 placeholder="댓글을 입력하세요"
                 className="flex-1 px-4 py-3 bg-[#F2F4F6] rounded-full text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-pink-300"
-                onKeyDown={(e) => e.key === "Enter" && !isComposing.current && addComment()}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !isComposing.current) {
+                    e.preventDefault()
+                    addComment()
+                  }
+                }}
                 data-testid="input-comment"
               />
               <button 

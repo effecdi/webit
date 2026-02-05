@@ -1229,21 +1229,21 @@ function DatingDashboard() {
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     type: "text",
                                     value: newComment,
-                                    onChange: (e)=>{
-                                        if (!isComposing.current) {
-                                            setNewComment(e.target.value);
-                                        }
-                                    },
+                                    onChange: (e)=>setNewComment(e.target.value),
                                     onCompositionStart: ()=>{
                                         isComposing.current = true;
                                     },
-                                    onCompositionEnd: (e)=>{
+                                    onCompositionEnd: ()=>{
                                         isComposing.current = false;
-                                        setNewComment(e.currentTarget.value);
                                     },
                                     placeholder: "댓글을 입력하세요",
                                     className: "flex-1 px-4 py-3 bg-[#F2F4F6] rounded-full text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-pink-300",
-                                    onKeyDown: (e)=>e.key === "Enter" && !isComposing.current && addComment(),
+                                    onKeyDown: (e)=>{
+                                        if (e.key === "Enter" && !isComposing.current) {
+                                            e.preventDefault();
+                                            addComment();
+                                        }
+                                    },
                                     "data-testid": "input-comment"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
