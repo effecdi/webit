@@ -823,7 +823,9 @@ function DatingDashboard() {
     const [showEditModal, setShowEditModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [editingTodo, setEditingTodo] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [editText, setEditText] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [editAssignee, setEditAssignee] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("we");
     const [showTodoMenu, setShowTodoMenu] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [newTodoAssignee, setNewTodoAssignee] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("we");
     const [myMood, setMyMood] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("👩");
     const [coupleNames, setCoupleNames] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
         my: "민지",
@@ -929,7 +931,7 @@ function DatingDashboard() {
                 body: JSON.stringify({
                     userId: 'default',
                     text: newTodoText,
-                    assignee: 'we',
+                    assignee: newTodoAssignee,
                     mode: 'dating'
                 })
             });
@@ -942,6 +944,7 @@ function DatingDashboard() {
                 ...todos
             ]);
             setNewTodoText("");
+            setNewTodoAssignee("we");
             setShowAddTodo(false);
         } catch (error) {
             console.error('Error adding todo:', error);
@@ -978,6 +981,7 @@ function DatingDashboard() {
     const openEditModal = (todo)=>{
         setEditingTodo(todo);
         setEditText(todo.text);
+        setEditAssignee(todo.assignee);
         setShowEditModal(true);
         setShowTodoMenu(null);
     };
@@ -991,16 +995,19 @@ function DatingDashboard() {
                 },
                 body: JSON.stringify({
                     id: editingTodo.id,
-                    text: editText.trim()
+                    text: editText.trim(),
+                    assignee: editAssignee
                 })
             });
             setTodos(todos.map((t)=>t.id === editingTodo.id ? {
                     ...t,
-                    text: editText.trim()
+                    text: editText.trim(),
+                    assignee: editAssignee
                 } : t));
             setShowEditModal(false);
             setEditingTodo(null);
             setEditText("");
+            setEditAssignee("we");
         } catch (error) {
             console.error('Error editing todo:', error);
         }
@@ -1034,7 +1041,7 @@ function DatingDashboard() {
                             currentMode: "dating"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 302,
+                            lineNumber: 307,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1050,20 +1057,20 @@ function DatingDashboard() {
                                             strokeWidth: 1.8
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 309,
+                                            lineNumber: 314,
                                             columnNumber: 15
                                         }, this),
                                         notifications.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             className: "absolute top-0 right-0 w-1.5 h-1.5 bg-pink-500 rounded-full"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 311,
+                                            lineNumber: 316,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 304,
+                                    lineNumber: 309,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$shared$2f$notification$2d$modal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NotificationModal"], {
@@ -1074,24 +1081,24 @@ function DatingDashboard() {
                                     mode: "dating"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 314,
+                                    lineNumber: 319,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 303,
+                            lineNumber: 308,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                    lineNumber: 301,
+                    lineNumber: 306,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                lineNumber: 300,
+                lineNumber: 305,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -1111,7 +1118,7 @@ function DatingDashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 328,
+                                        lineNumber: 333,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1121,7 +1128,7 @@ function DatingDashboard() {
                                                 "우리 사랑한 지",
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 333,
+                                                    lineNumber: 338,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1132,7 +1139,7 @@ function DatingDashboard() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 334,
+                                                    lineNumber: 339,
                                                     columnNumber: 19
                                                 }, this),
                                                 "일"
@@ -1142,7 +1149,7 @@ function DatingDashboard() {
                                                 "우리의 이야기",
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 339,
+                                                    lineNumber: 344,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1150,20 +1157,20 @@ function DatingDashboard() {
                                                     children: "시작해요"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 340,
+                                                    lineNumber: 345,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 329,
+                                        lineNumber: 334,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 327,
+                                lineNumber: 332,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1179,12 +1186,12 @@ function DatingDashboard() {
                                                     children: myMood
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 348,
+                                                    lineNumber: 353,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 347,
+                                                lineNumber: 352,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1194,18 +1201,18 @@ function DatingDashboard() {
                                                     children: "👨"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 351,
+                                                    lineNumber: 356,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 350,
+                                                lineNumber: 355,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 346,
+                                        lineNumber: 351,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1216,7 +1223,7 @@ function DatingDashboard() {
                                                 className: "w-3.5 h-3.5 text-white"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 358,
+                                                lineNumber: 363,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1224,25 +1231,25 @@ function DatingDashboard() {
                                                 children: "Premium"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 359,
+                                                lineNumber: 364,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 354,
+                                        lineNumber: 359,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 345,
+                                lineNumber: 350,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                        lineNumber: 326,
+                        lineNumber: 331,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1258,12 +1265,12 @@ function DatingDashboard() {
                                             fill: "#ec4899"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 367,
+                                            lineNumber: 372,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 366,
+                                        lineNumber: 371,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1273,7 +1280,7 @@ function DatingDashboard() {
                                                 children: "오늘의 기분"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 370,
+                                                lineNumber: 375,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1281,19 +1288,19 @@ function DatingDashboard() {
                                                 children: "서로의 감정을 공유해요"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 371,
+                                                lineNumber: 376,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 369,
+                                        lineNumber: 374,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 365,
+                                lineNumber: 370,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1310,18 +1317,18 @@ function DatingDashboard() {
                                         children: emoji
                                     }, idx, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 376,
+                                        lineNumber: 381,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 374,
+                                lineNumber: 379,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                        lineNumber: 364,
+                        lineNumber: 369,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1342,12 +1349,12 @@ function DatingDashboard() {
                                             className: "w-6 h-6"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 406,
+                                            lineNumber: 411,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 405,
+                                        lineNumber: 410,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1355,7 +1362,7 @@ function DatingDashboard() {
                                         children: shortcut.label
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 408,
+                                        lineNumber: 413,
                                         columnNumber: 17
                                     }, this),
                                     badge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1363,19 +1370,19 @@ function DatingDashboard() {
                                         children: badge
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 410,
+                                        lineNumber: 415,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, shortcut.id, true, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 400,
+                                lineNumber: 405,
                                 columnNumber: 15
                             }, this);
                         })
                     }, void 0, false, {
                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                        lineNumber: 391,
+                        lineNumber: 396,
                         columnNumber: 9
                     }, this),
                     upcomingTravel && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$travel$2f$travel$2d$entry$2d$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TravelEntryCard"], {
@@ -1388,7 +1395,7 @@ function DatingDashboard() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                        lineNumber: 420,
+                        lineNumber: 425,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1404,7 +1411,7 @@ function DatingDashboard() {
                                                 children: "오늘의 할 일"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 434,
+                                                lineNumber: 439,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1412,13 +1419,13 @@ function DatingDashboard() {
                                                 children: todos.length > 0 ? `${completedCount}/${todos.length} 완료` : "할 일을 추가해보세요"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 435,
+                                                lineNumber: 440,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 433,
+                                        lineNumber: 438,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1429,55 +1436,95 @@ function DatingDashboard() {
                                             className: "w-4 h-4 text-pink-500"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 444,
+                                            lineNumber: 449,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 439,
+                                        lineNumber: 444,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 432,
+                                lineNumber: 437,
                                 columnNumber: 11
                             }, this),
                             showAddTodo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex gap-2 mb-4",
+                                className: "mb-4 space-y-3",
                                 children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                        type: "text",
-                                        value: newTodoText,
-                                        onChange: (e)=>setNewTodoText(e.target.value),
-                                        placeholder: "새 할 일 입력",
-                                        className: "flex-1 px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[14px] focus:outline-none focus:ring-2 focus:ring-pink-300",
-                                        onKeyDown: (e)=>{
-                                            if (e.key === "Enter") {
-                                                e.preventDefault();
-                                                addTodo();
-                                            }
-                                        },
-                                        "data-testid": "input-new-todo"
-                                    }, void 0, false, {
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex gap-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                type: "text",
+                                                value: newTodoText,
+                                                onChange: (e)=>setNewTodoText(e.target.value),
+                                                placeholder: "새 할 일 입력",
+                                                className: "flex-1 px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[14px] focus:outline-none focus:ring-2 focus:ring-pink-300",
+                                                onKeyDown: (e)=>{
+                                                    if (e.key === "Enter") {
+                                                        e.preventDefault();
+                                                        addTodo();
+                                                    }
+                                                },
+                                                "data-testid": "input-new-todo"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                                lineNumber: 456,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                onClick: addTodo,
+                                                className: "px-4 py-2 bg-pink-500 text-white rounded-[12px] text-[14px] font-medium",
+                                                "data-testid": "button-submit-todo",
+                                                children: "추가"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                                lineNumber: 470,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 450,
+                                        lineNumber: 455,
                                         columnNumber: 15
                                     }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: addTodo,
-                                        className: "px-4 py-2 bg-pink-500 text-white rounded-[12px] text-[14px] font-medium",
-                                        "data-testid": "button-submit-todo",
-                                        children: "추가"
-                                    }, void 0, false, {
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex gap-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-[13px] text-[#8B95A1] py-1.5",
+                                                children: "담당:"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                                lineNumber: 479,
+                                                columnNumber: 17
+                                            }, this),
+                                            [
+                                                "me",
+                                                "you",
+                                                "we"
+                                            ].map((assignee)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: ()=>setNewTodoAssignee(assignee),
+                                                    className: `px-3 py-1.5 rounded-full text-[12px] font-bold transition-all ${newTodoAssignee === assignee ? ASSIGNEE_COLORS[assignee] : "bg-[#F2F4F6] text-[#8B95A1]"}`,
+                                                    "data-testid": `button-assignee-${assignee}`,
+                                                    children: ASSIGNEE_LABELS[assignee]
+                                                }, assignee, false, {
+                                                    fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                                    lineNumber: 481,
+                                                    columnNumber: 19
+                                                }, this))
+                                        ]
+                                    }, void 0, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 464,
+                                        lineNumber: 478,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 449,
+                                lineNumber: 454,
                                 columnNumber: 13
                             }, this),
                             isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1485,7 +1532,7 @@ function DatingDashboard() {
                                 children: "로딩 중..."
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 475,
+                                lineNumber: 499,
                                 columnNumber: 13
                             }, this) : todos.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "py-8 text-center",
@@ -1495,7 +1542,7 @@ function DatingDashboard() {
                                         children: "아직 할 일이 없어요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 478,
+                                        lineNumber: 502,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1503,13 +1550,13 @@ function DatingDashboard() {
                                         children: "위의 + 버튼을 눌러 추가해보세요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 479,
+                                        lineNumber: 503,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 477,
+                                lineNumber: 501,
                                 columnNumber: 13
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-1",
@@ -1525,12 +1572,12 @@ function DatingDashboard() {
                                                     strokeWidth: 3
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 492,
+                                                    lineNumber: 516,
                                                     columnNumber: 40
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 485,
+                                                lineNumber: 509,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1538,7 +1585,7 @@ function DatingDashboard() {
                                                 children: todo.text
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 494,
+                                                lineNumber: 518,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1546,7 +1593,7 @@ function DatingDashboard() {
                                                 children: ASSIGNEE_LABELS[todo.assignee]
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 501,
+                                                lineNumber: 525,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1557,7 +1604,7 @@ function DatingDashboard() {
                                                         className: "w-4 h-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                        lineNumber: 510,
+                                                        lineNumber: 534,
                                                         columnNumber: 21
                                                     }, this),
                                                     todo.comments.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1565,13 +1612,13 @@ function DatingDashboard() {
                                                         children: todo.comments.length
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                        lineNumber: 512,
+                                                        lineNumber: 536,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 504,
+                                                lineNumber: 528,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1585,12 +1632,12 @@ function DatingDashboard() {
                                                             className: "w-4 h-4 text-[#8B95A1]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                            lineNumber: 521,
+                                                            lineNumber: 545,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                        lineNumber: 516,
+                                                        lineNumber: 540,
                                                         columnNumber: 21
                                                     }, this),
                                                     showTodoMenu === todo.id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1605,14 +1652,14 @@ function DatingDashboard() {
                                                                         className: "w-4 h-4"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                                        lineNumber: 530,
+                                                                        lineNumber: 554,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     "수정"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                                lineNumber: 525,
+                                                                lineNumber: 549,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1624,43 +1671,43 @@ function DatingDashboard() {
                                                                         className: "w-4 h-4"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                                        lineNumber: 538,
+                                                                        lineNumber: 562,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     "삭제"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                                lineNumber: 533,
+                                                                lineNumber: 557,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                        lineNumber: 524,
+                                                        lineNumber: 548,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 515,
+                                                lineNumber: 539,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, todo.id, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 484,
+                                        lineNumber: 508,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 482,
+                                lineNumber: 506,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                        lineNumber: 431,
+                        lineNumber: 436,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1681,7 +1728,7 @@ function DatingDashboard() {
                                                 children: "우리의 추억"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 557,
+                                                lineNumber: 581,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1689,23 +1736,23 @@ function DatingDashboard() {
                                                 children: "사진을 추가해보세요"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 558,
+                                                lineNumber: 582,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 556,
+                                        lineNumber: 580,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 555,
+                                    lineNumber: 579,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 551,
+                                lineNumber: 575,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1719,7 +1766,7 @@ function DatingDashboard() {
                                                 children: "추억 앨범"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 564,
+                                                lineNumber: 588,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1727,38 +1774,38 @@ function DatingDashboard() {
                                                 children: photoCount > 0 ? `${photoCount}장의 사진` : "아직 사진이 없어요"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 565,
+                                                lineNumber: 589,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 563,
+                                        lineNumber: 587,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                         className: "w-5 h-5 text-[#B0B8C1]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 569,
+                                        lineNumber: 593,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 562,
+                                lineNumber: 586,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                        lineNumber: 550,
+                        lineNumber: 574,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                lineNumber: 325,
+                lineNumber: 330,
                 columnNumber: 7
             }, this),
             showPremiumModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1777,12 +1824,12 @@ function DatingDashboard() {
                                         className: "w-8 h-8 text-white"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 585,
+                                        lineNumber: 609,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 584,
+                                    lineNumber: 608,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1790,7 +1837,7 @@ function DatingDashboard() {
                                     children: "WE:VE Premium"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 587,
+                                    lineNumber: 611,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1798,13 +1845,13 @@ function DatingDashboard() {
                                     children: "더 특별한 우리의 이야기"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 588,
+                                    lineNumber: 612,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 583,
+                            lineNumber: 607,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1819,12 +1866,12 @@ function DatingDashboard() {
                                                 className: "w-5 h-5 text-amber-600"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 593,
+                                                lineNumber: 617,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 592,
+                                            lineNumber: 616,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1834,7 +1881,7 @@ function DatingDashboard() {
                                                     children: "무제한 사진 저장"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 596,
+                                                    lineNumber: 620,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1842,19 +1889,19 @@ function DatingDashboard() {
                                                     children: "용량 걱정 없이 추억을 저장하세요"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 597,
+                                                    lineNumber: 621,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 595,
+                                            lineNumber: 619,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 591,
+                                    lineNumber: 615,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1866,12 +1913,12 @@ function DatingDashboard() {
                                                 className: "w-5 h-5 text-pink-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 602,
+                                                lineNumber: 626,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 601,
+                                            lineNumber: 625,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1881,7 +1928,7 @@ function DatingDashboard() {
                                                     children: "광고 없는 환경"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 605,
+                                                    lineNumber: 629,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1889,19 +1936,19 @@ function DatingDashboard() {
                                                     children: "방해 없이 둘만의 공간을 즐기세요"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 606,
+                                                    lineNumber: 630,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 604,
+                                            lineNumber: 628,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 600,
+                                    lineNumber: 624,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1913,12 +1960,12 @@ function DatingDashboard() {
                                                 className: "w-5 h-5 text-purple-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 611,
+                                                lineNumber: 635,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 610,
+                                            lineNumber: 634,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1928,7 +1975,7 @@ function DatingDashboard() {
                                                     children: "고급 캘린더 기능"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 614,
+                                                    lineNumber: 638,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1936,25 +1983,25 @@ function DatingDashboard() {
                                                     children: "반복 일정, 알림 설정 등 추가 기능"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                    lineNumber: 615,
+                                                    lineNumber: 639,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 613,
+                                            lineNumber: 637,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 609,
+                                    lineNumber: 633,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 590,
+                            lineNumber: 614,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1968,7 +2015,7 @@ function DatingDashboard() {
                                             children: "₩4,900"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 621,
+                                            lineNumber: 645,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1976,13 +2023,13 @@ function DatingDashboard() {
                                             children: " / 월"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 622,
+                                            lineNumber: 646,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 620,
+                                    lineNumber: 644,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1994,7 +2041,7 @@ function DatingDashboard() {
                                     children: "프리미엄 구독하기"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 624,
+                                    lineNumber: 648,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2003,24 +2050,24 @@ function DatingDashboard() {
                                     children: "나중에 할게요"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 633,
+                                    lineNumber: 657,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 619,
+                            lineNumber: 643,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                    lineNumber: 579,
+                    lineNumber: 603,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                lineNumber: 575,
+                lineNumber: 599,
                 columnNumber: 9
             }, this),
             showCommentModal && selectedTodo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2045,7 +2092,7 @@ function DatingDashboard() {
                                             children: "댓글"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 656,
+                                            lineNumber: 680,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2053,13 +2100,13 @@ function DatingDashboard() {
                                             children: selectedTodo.text
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 657,
+                                            lineNumber: 681,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 655,
+                                    lineNumber: 679,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2074,18 +2121,18 @@ function DatingDashboard() {
                                         className: "w-5 h-5 text-[#8B95A1]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 668,
+                                        lineNumber: 692,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 659,
+                                    lineNumber: 683,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 654,
+                            lineNumber: 678,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2095,7 +2142,7 @@ function DatingDashboard() {
                                 children: "아직 댓글이 없어요"
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 673,
+                                lineNumber: 697,
                                 columnNumber: 17
                             }, this) : selectedTodo.comments.map((comment)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: `flex ${comment.author === "me" ? "justify-end" : "justify-start"}`,
@@ -2107,7 +2154,7 @@ function DatingDashboard() {
                                                 children: comment.text
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 684,
+                                                lineNumber: 708,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2115,23 +2162,23 @@ function DatingDashboard() {
                                                 children: formatTimeAgo(comment.createdAt)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                                lineNumber: 685,
+                                                lineNumber: 709,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 677,
+                                        lineNumber: 701,
                                         columnNumber: 21
                                     }, this)
                                 }, comment.id, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 676,
+                                    lineNumber: 700,
                                     columnNumber: 19
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 671,
+                            lineNumber: 695,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2158,7 +2205,7 @@ function DatingDashboard() {
                                     "data-testid": "input-comment"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 694,
+                                    lineNumber: 718,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2170,29 +2217,29 @@ function DatingDashboard() {
                                         className: "w-5 h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 718,
+                                        lineNumber: 742,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 710,
+                                    lineNumber: 734,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 693,
+                            lineNumber: 717,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                    lineNumber: 650,
+                    lineNumber: 674,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                lineNumber: 642,
+                lineNumber: 666,
                 columnNumber: 9
             }, this),
             showEditModal && editingTodo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2201,6 +2248,7 @@ function DatingDashboard() {
                     setShowEditModal(false);
                     setEditingTodo(null);
                     setEditText("");
+                    setEditAssignee("we");
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "bg-white rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200",
@@ -2216,7 +2264,7 @@ function DatingDashboard() {
                                         children: "할 일 수정"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 740,
+                                        lineNumber: 765,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2224,6 +2272,7 @@ function DatingDashboard() {
                                             setShowEditModal(false);
                                             setEditingTodo(null);
                                             setEditText("");
+                                            setEditAssignee("we");
                                         },
                                         className: "w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors",
                                         "data-testid": "button-close-edit-modal",
@@ -2231,49 +2280,104 @@ function DatingDashboard() {
                                             className: "w-5 h-5 text-[#8B95A1]"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                            lineNumber: 750,
+                                            lineNumber: 776,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                        lineNumber: 741,
+                                        lineNumber: 766,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 739,
+                                lineNumber: 764,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 738,
+                            lineNumber: 763,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "p-5",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "text",
-                                value: editText,
-                                onChange: (e)=>setEditText(e.target.value),
-                                placeholder: "할 일 입력",
-                                className: "w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-pink-300",
-                                onKeyDown: (e)=>{
-                                    if (e.key === "Enter") {
-                                        e.preventDefault();
-                                        handleEditTodo();
-                                    }
-                                },
-                                "data-testid": "input-edit-todo",
-                                autoFocus: true
-                            }, void 0, false, {
-                                fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                lineNumber: 755,
-                                columnNumber: 15
-                            }, this)
-                        }, void 0, false, {
+                            className: "p-5 space-y-4",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                            className: "text-[13px] text-[#8B95A1] mb-2 block",
+                                            children: "할 일"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                            lineNumber: 782,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                            type: "text",
+                                            value: editText,
+                                            onChange: (e)=>setEditText(e.target.value),
+                                            placeholder: "할 일 입력",
+                                            className: "w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-pink-300",
+                                            onKeyDown: (e)=>{
+                                                if (e.key === "Enter") {
+                                                    e.preventDefault();
+                                                    handleEditTodo();
+                                                }
+                                            },
+                                            "data-testid": "input-edit-todo",
+                                            autoFocus: true
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                            lineNumber: 783,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                    lineNumber: 781,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                            className: "text-[13px] text-[#8B95A1] mb-2 block",
+                                            children: "담당"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                            lineNumber: 800,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex gap-2",
+                                            children: [
+                                                "me",
+                                                "you",
+                                                "we"
+                                            ].map((assignee)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: ()=>setEditAssignee(assignee),
+                                                    className: `px-4 py-2 rounded-full text-[13px] font-bold transition-all ${editAssignee === assignee ? ASSIGNEE_COLORS[assignee] : "bg-[#F2F4F6] text-[#8B95A1]"}`,
+                                                    "data-testid": `button-edit-assignee-${assignee}`,
+                                                    children: ASSIGNEE_LABELS[assignee]
+                                                }, assignee, false, {
+                                                    fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                                    lineNumber: 803,
+                                                    columnNumber: 21
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                            lineNumber: 801,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/dating/dating-dashboard.tsx",
+                                    lineNumber: 799,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 754,
+                            lineNumber: 780,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2284,13 +2388,14 @@ function DatingDashboard() {
                                         setShowEditModal(false);
                                         setEditingTodo(null);
                                         setEditText("");
+                                        setEditAssignee("we");
                                     },
                                     className: "flex-1 py-3 bg-[#F2F4F6] text-[#4E5968] font-medium rounded-[12px] transition-colors hover:bg-[#E5E8EB]",
                                     "data-testid": "button-cancel-edit",
                                     children: "취소"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 772,
+                                    lineNumber: 820,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2301,30 +2406,30 @@ function DatingDashboard() {
                                     children: "저장"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                                    lineNumber: 783,
+                                    lineNumber: 832,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/dating-dashboard.tsx",
-                            lineNumber: 771,
+                            lineNumber: 819,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/dating-dashboard.tsx",
-                    lineNumber: 734,
+                    lineNumber: 759,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/dating-dashboard.tsx",
-                lineNumber: 726,
+                lineNumber: 750,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/dating/dating-dashboard.tsx",
-        lineNumber: 299,
+        lineNumber: 304,
         columnNumber: 5
     }, this);
 }

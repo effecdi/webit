@@ -52,11 +52,12 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
-    const { id, completed, text } = body;
+    const { id, completed, text, assignee } = body;
 
     const updates: Record<string, unknown> = {};
     if (completed !== undefined) updates.completed = completed;
     if (text !== undefined) updates.text = text;
+    if (assignee !== undefined) updates.assignee = assignee;
 
     const [updated] = await db.update(todos)
       .set(updates)

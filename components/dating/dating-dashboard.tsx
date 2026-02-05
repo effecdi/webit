@@ -104,7 +104,9 @@ export function DatingDashboard() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [editingTodo, setEditingTodo] = useState<TodoItem | null>(null);
   const [editText, setEditText] = useState("");
+  const [editAssignee, setEditAssignee] = useState<"me" | "you" | "we">("we");
   const [showTodoMenu, setShowTodoMenu] = useState<number | null>(null);
+  const [newTodoAssignee, setNewTodoAssignee] = useState<"me" | "you" | "we">("we");
 
   const [myMood, setMyMood] = useState("👩");
   const [coupleNames, setCoupleNames] = useState({ my: "민지", partner: "준호" });
@@ -210,13 +212,14 @@ export function DatingDashboard() {
         body: JSON.stringify({ 
           userId: 'default', 
           text: newTodoText, 
-          assignee: 'we', 
+          assignee: newTodoAssignee, 
           mode: 'dating' 
         })
       });
       const newTodo = await res.json();
       setTodos([{ ...newTodo, comments: [] }, ...todos]);
       setNewTodoText("");
+      setNewTodoAssignee("we");
       setShowAddTodo(false);
     } catch (error) {
       console.error('Error adding todo:', error);
@@ -253,6 +256,7 @@ export function DatingDashboard() {
   const openEditModal = (todo: TodoItem) => {
     setEditingTodo(todo);
     setEditText(todo.text);
+    setEditAssignee(todo.assignee);
     setShowEditModal(true);
     setShowTodoMenu(null);
   };
@@ -264,14 +268,15 @@ export function DatingDashboard() {
       await fetch('/api/todos', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: editingTodo.id, text: editText.trim() })
+        body: JSON.stringify({ id: editingTodo.id, text: editText.trim(), assignee: editAssignee })
       });
       setTodos(todos.map((t) =>
-        t.id === editingTodo.id ? { ...t, text: editText.trim() } : t
+        t.id === editingTodo.id ? { ...t, text: editText.trim(), assignee: editAssignee } : t
       ));
       setShowEditModal(false);
       setEditingTodo(null);
       setEditText("");
+      setEditAssignee("we");
     } catch (error) {
       console.error('Error editing todo:', error);
     }
@@ -446,28 +451,47 @@ export function DatingDashboard() {
           </div>
 
           {showAddTodo && (
-            <div className="flex gap-2 mb-4">
-              <input
-                type="text"
-                value={newTodoText}
-                onChange={(e) => setNewTodoText(e.target.value)}
-                placeholder="새 할 일 입력"
-                className="flex-1 px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[14px] focus:outline-none focus:ring-2 focus:ring-pink-300"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    addTodo();
-                  }
-                }}
-                data-testid="input-new-todo"
-              />
-              <button
-                onClick={addTodo}
-                className="px-4 py-2 bg-pink-500 text-white rounded-[12px] text-[14px] font-medium"
-                data-testid="button-submit-todo"
-              >
-                추가
-              </button>
+            <div className="mb-4 space-y-3">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={newTodoText}
+                  onChange={(e) => setNewTodoText(e.target.value)}
+                  placeholder="새 할 일 입력"
+                  className="flex-1 px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[14px] focus:outline-none focus:ring-2 focus:ring-pink-300"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      addTodo();
+                    }
+                  }}
+                  data-testid="input-new-todo"
+                />
+                <button
+                  onClick={addTodo}
+                  className="px-4 py-2 bg-pink-500 text-white rounded-[12px] text-[14px] font-medium"
+                  data-testid="button-submit-todo"
+                >
+                  추가
+                </button>
+              </div>
+              <div className="flex gap-2">
+                <span className="text-[13px] text-[#8B95A1] py-1.5">담당:</span>
+                {(["me", "you", "we"] as const).map((assignee) => (
+                  <button
+                    key={assignee}
+                    onClick={() => setNewTodoAssignee(assignee)}
+                    className={`px-3 py-1.5 rounded-full text-[12px] font-bold transition-all ${
+                      newTodoAssignee === assignee
+                        ? ASSIGNEE_COLORS[assignee]
+                        : "bg-[#F2F4F6] text-[#8B95A1]"
+                    }`}
+                    data-testid={`button-assignee-${assignee}`}
+                  >
+                    {ASSIGNEE_LABELS[assignee]}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
 
@@ -729,6 +753,7 @@ export function DatingDashboard() {
             setShowEditModal(false);
             setEditingTodo(null);
             setEditText("");
+            setEditAssignee("we");
           }}
         >
           <div
@@ -743,6 +768,7 @@ export function DatingDashboard() {
                     setShowEditModal(false);
                     setEditingTodo(null);
                     setEditText("");
+                    setEditAssignee("we");
                   }}
                   className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
                   data-testid="button-close-edit-modal"
@@ -751,22 +777,44 @@ export function DatingDashboard() {
                 </button>
               </div>
             </div>
-            <div className="p-5">
-              <input
-                type="text"
-                value={editText}
-                onChange={(e) => setEditText(e.target.value)}
-                placeholder="할 일 입력"
-                className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-pink-300"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    handleEditTodo();
-                  }
-                }}
-                data-testid="input-edit-todo"
-                autoFocus
-              />
+            <div className="p-5 space-y-4">
+              <div>
+                <label className="text-[13px] text-[#8B95A1] mb-2 block">할 일</label>
+                <input
+                  type="text"
+                  value={editText}
+                  onChange={(e) => setEditText(e.target.value)}
+                  placeholder="할 일 입력"
+                  className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-pink-300"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      handleEditTodo();
+                    }
+                  }}
+                  data-testid="input-edit-todo"
+                  autoFocus
+                />
+              </div>
+              <div>
+                <label className="text-[13px] text-[#8B95A1] mb-2 block">담당</label>
+                <div className="flex gap-2">
+                  {(["me", "you", "we"] as const).map((assignee) => (
+                    <button
+                      key={assignee}
+                      onClick={() => setEditAssignee(assignee)}
+                      className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${
+                        editAssignee === assignee
+                          ? ASSIGNEE_COLORS[assignee]
+                          : "bg-[#F2F4F6] text-[#8B95A1]"
+                      }`}
+                      data-testid={`button-edit-assignee-${assignee}`}
+                    >
+                      {ASSIGNEE_LABELS[assignee]}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
             <div className="px-5 pb-5 flex gap-3">
               <button
@@ -774,6 +822,7 @@ export function DatingDashboard() {
                   setShowEditModal(false);
                   setEditingTodo(null);
                   setEditText("");
+                  setEditAssignee("we");
                 }}
                 className="flex-1 py-3 bg-[#F2F4F6] text-[#4E5968] font-medium rounded-[12px] transition-colors hover:bg-[#E5E8EB]"
                 data-testid="button-cancel-edit"
