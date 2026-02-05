@@ -13,8 +13,6 @@ const statuses = [
     id: "dating",
     label: "연애 중",
     icon: Heart,
-    iconBg: "bg-pink-100",
-    iconColor: "text-pink-500",
     description: "설레는 우리의 시작",
     href: "/dating",
   },
@@ -22,17 +20,13 @@ const statuses = [
     id: "wedding",
     label: "결혼 준비",
     icon: Gem,
-    iconBg: "bg-blue-100",
-    iconColor: "text-[#3182F6]",
     description: "특별한 날을 향해",
     href: "/wedding",
   },
   {
     id: "family",
-    label: "가족",
+    label: "부부 · 가족",
     icon: Home,
-    iconBg: "bg-green-100",
-    iconColor: "text-green-600",
     description: "함께하는 일상",
     href: "/family",
   },
@@ -40,17 +34,7 @@ const statuses = [
 
 export function StatusCards({ selectedStatus, onSelect }: StatusCardsProps) {
   return (
-    <section className="flex-1 px-5 py-8 bg-[#F2F4F6]">
-      {/* Section Header */}
-      <div className="mb-6">
-        <h2 className="text-[22px] font-bold text-[#191F28]">
-          지금 어떤 순간인가요?
-        </h2>
-        <p className="text-[14px] text-[#8B95A1] mt-1">
-          상황에 맞는 기능을 제공해 드릴게요
-        </p>
-      </div>
-
+    <section className="flex-1 px-5 py-6 bg-white">
       {/* Cards */}
       <div className="flex flex-col gap-3">
         {statuses.map((status) => {
@@ -62,16 +46,17 @@ export function StatusCards({ selectedStatus, onSelect }: StatusCardsProps) {
               key={status.id}
               href={status.href}
               onClick={() => onSelect(status.id)}
-              className={`group relative overflow-hidden bg-white rounded-[20px] p-5 shadow-toss
+              data-testid={`card-status-${status.id}`}
+              className={`group relative bg-[#F3F5F7] rounded-[32px] p-6
                 transition-all duration-200 ease-out
-                hover:scale-[1.02] active:scale-[0.98]
-                ${isSelected ? "ring-2 ring-[#3182F6]" : ""}
+                hover:bg-[#EBEEF1] active:scale-[0.98]
+                ${isSelected ? "ring-2 ring-blue-500" : ""}
               `}
             >
               <div className="flex items-center gap-4">
-                {/* Icon Container */}
-                <div className={`w-14 h-14 rounded-full ${status.iconBg} flex items-center justify-center`}>
-                  <Icon className={`w-7 h-7 ${status.iconColor}`} />
+                {/* Icon Container - White circle with blue icon */}
+                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm">
+                  <Icon className="w-7 h-7 text-blue-500" />
                 </div>
 
                 {/* Text Content */}
@@ -91,11 +76,6 @@ export function StatusCards({ selectedStatus, onSelect }: StatusCardsProps) {
           )
         })}
       </div>
-
-      {/* Bottom Tagline */}
-      <p className="mt-8 text-center text-[13px] text-[#8B95A1]">
-        WE:VE와 함께하는 모든 순간
-      </p>
     </section>
   )
 }

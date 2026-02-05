@@ -8,7 +8,7 @@ export default function OnboardingPage() {
   const [selectedStatus, setSelectedStatus] = useState<string | null>(null)
 
   return (
-    <main className="min-h-dvh bg-background flex flex-col">
+    <main className="min-h-dvh bg-white flex flex-col">
       <OnboardingHero />
       <StatusCards 
         selectedStatus={selectedStatus} 

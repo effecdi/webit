@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { Heart } from "lucide-react"
 
 export function OnboardingHero() {
   const [mounted, setMounted] = useState(false)
@@ -10,34 +11,52 @@ export function OnboardingHero() {
   }, [])
 
   return (
-    <section className="relative h-[50dvh] overflow-hidden rounded-b-[32px]">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80"
-          alt="Couple holding hands"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
+    <section className="pt-6 pb-8 px-5 bg-white">
+      {/* Header Logo */}
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-blue-500 tracking-tight">
+          WE:VE
+        </h1>
       </div>
 
-      {/* Logo & Tagline */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
-        <div
-          className={`transition-all duration-1000 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          {/* Main Logo */}
-          <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight text-center">
-            WE<span className="text-[#3182F6]">:</span>VE
-          </h1>
-
-          {/* Tagline */}
-          <p className="mt-4 text-center text-white/80 text-[15px]">
-            Our Every Moment Together
-          </p>
+      {/* Profile Frame with Badges */}
+      <div 
+        className={`relative mx-auto w-48 h-48 transition-all duration-700 ${
+          mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
+        }`}
+      >
+        {/* Main Photo Frame */}
+        <div className="w-full h-full rounded-[32px] overflow-hidden bg-gradient-to-br from-blue-100 to-pink-100">
+          <img
+            src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&q=80"
+            alt="Couple"
+            className="w-full h-full object-cover"
+          />
         </div>
+
+        {/* Heart Badge - Top Right */}
+        <div className="absolute -top-2 -right-2 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
+          <Heart className="w-5 h-5 text-white fill-white" />
+        </div>
+
+        {/* Small Badge - Bottom Left */}
+        <div className="absolute -bottom-1 -left-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
+          <div className="w-3 h-3 bg-white rounded-full" />
+        </div>
+      </div>
+
+      {/* Text Content */}
+      <div 
+        className={`mt-8 text-center transition-all duration-700 delay-200 ${
+          mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
+      >
+        <h2 className="text-[28px] font-extrabold text-[#191F28] leading-tight whitespace-pre-line">
+          {"반가워요!\n어떤 단계인가요?"}
+        </h2>
+        <p className="mt-3 text-[15px] text-[#8B95A1] font-light">
+          우리 커플에게 딱 맞는 정보를 드릴게요
+        </p>
       </div>
     </section>
   )
