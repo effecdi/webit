@@ -44,6 +44,8 @@ Preferred communication style: Simple, everyday language.
 /dating/*            - Dating mode pages
 /wedding/*           - Wedding mode pages  
 /family/*            - Family mode pages
+/travel              - Shared travel list (all modes)
+/travel/[id]         - Travel detail with schedule, checklist, budget
 ```
 
 ### Component Organization
@@ -51,6 +53,7 @@ Preferred communication style: Simple, everyday language.
 - `/components/dating/` - Dating mode specific components
 - `/components/wedding/` - Wedding mode specific components
 - `/components/family/` - Family mode specific components
+- `/components/travel/` - Travel module components (TravelEntryCard)
 - `/components/shared/` - Cross-mode shared components
 - `/contexts/` - React Context providers
 - `/hooks/` - Custom React hooks
@@ -59,6 +62,7 @@ Preferred communication style: Simple, everyday language.
 - **Dating**: Couple calendar, photo gallery, todo lists with comments, D-day tracking
 - **Wedding**: Budget tracking, checklist management, digital invitation editor, vendor management
 - **Family**: Memory archive, history book, shared calendar, photo organization
+- **Travel** (Shared): Trip planning with schedule timeline, checklist, budget tracker; accessible from all modes via TravelEntryCard widget
 
 ## External Dependencies
 
