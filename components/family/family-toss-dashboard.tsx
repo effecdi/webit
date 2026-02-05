@@ -42,13 +42,28 @@ export function FamilyTossDashboard() {
   const [greeting, setGreeting] = useState("")
   const [showNotifications, setShowNotifications] = useState(false)
   const [notifications, setNotifications] = useState<Notification[]>(INITIAL_NOTIFICATIONS)
+  const [coupleNames, setCoupleNames] = useState({ my: "현정", partner: "주호" })
+  const [daysTogether, setDaysTogether] = useState(0)
 
   useEffect(() => {
-    const weddingDate = new Date("2025-12-20")
-    const today = new Date()
-    const diffTime = today.getTime() - weddingDate.getTime()
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
-    setDDay(diffDays > 0 ? diffDays : 0)
+    const myName = localStorage.getItem("survey_myName") || "현정"
+    const partnerName = localStorage.getItem("survey_partnerName") || "주호"
+    const savedDate = localStorage.getItem("survey_firstMeetDate")
+    
+    setCoupleNames({ my: myName, partner: partnerName })
+    
+    if (savedDate) {
+      const start = new Date(savedDate)
+      const today = new Date()
+      const diffTime = Math.abs(today.getTime() - start.getTime())
+      setDaysTogether(Math.ceil(diffTime / (1000 * 60 * 60 * 24)))
+    } else {
+      const weddingDate = new Date("2025-12-20")
+      const today = new Date()
+      const diffTime = today.getTime() - weddingDate.getTime()
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
+      setDDay(diffDays > 0 ? diffDays : 0)
+    }
 
     const hour = new Date().getHours()
     if (hour < 12) setGreeting("좋은 아침이에요")
@@ -91,11 +106,11 @@ export function FamilyTossDashboard() {
         {/* Hero Section */}
         <div className="mt-2 flex justify-between items-start">
           <div>
-            <p className="text-[13px] text-[#8B95A1] mb-1">{greeting}, 현정님</p>
+            <p className="text-[13px] text-[#8B95A1] mb-1">{greeting}, {coupleNames.my}님</p>
             <h1 className="text-[26px] leading-[1.35] font-bold text-[#191F28]">
-              결혼한 지
+              함께한 지
               <br />
-              <span className="text-green-600">D+{dDay}</span>일
+              <span className="text-green-600">D+{daysTogether > 0 ? daysTogether : dDay}</span>일
             </h1>
           </div>
           <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
@@ -115,8 +130,8 @@ export function FamilyTossDashboard() {
               </div>
             </div>
             <div className="flex-1">
-              <p className="text-[17px] font-bold text-[#191F28]">현정 & 주호</p>
-              <p className="text-[13px] text-[#8B95A1]">2025.12.20 결혼</p>
+              <p className="text-[17px] font-bold text-[#191F28]">{coupleNames.my} & {coupleNames.partner}</p>
+              <p className="text-[13px] text-[#8B95A1]">함께하는 일상</p>
             </div>
             <Heart className="w-6 h-6 text-green-500" fill="#22c55e" />
           </div>

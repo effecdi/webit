@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { 
   Bell, 
@@ -75,6 +75,8 @@ export function WeddingDashboard() {
   const [showExpenseModal, setShowExpenseModal] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
   const [notifications, setNotifications] = useState<Notification[]>(INITIAL_NOTIFICATIONS)
+  const [coupleNames, setCoupleNames] = useState({ my: "현정", partner: "주호" })
+  const [daysTogether, setDaysTogether] = useState(0)
   const [newExpense, setNewExpense] = useState({
     title: "",
     amount: "",
@@ -83,6 +85,21 @@ export function WeddingDashboard() {
     method: "card" as "cash" | "card" | "transfer",
   })
   
+  useEffect(() => {
+    const myName = localStorage.getItem("survey_myName") || "현정"
+    const partnerName = localStorage.getItem("survey_partnerName") || "주호"
+    const savedDate = localStorage.getItem("survey_firstMeetDate")
+    
+    setCoupleNames({ my: myName, partner: partnerName })
+    
+    if (savedDate) {
+      const start = new Date(savedDate)
+      const today = new Date()
+      const diffTime = Math.abs(today.getTime() - start.getTime())
+      setDaysTogether(Math.ceil(diffTime / (1000 * 60 * 60 * 24)))
+    }
+  }, [])
+
   // Budget from context
   const { totalBudget, totalSpent, remaining, spentPercent, expenses, addExpense } = useBudget()
   
@@ -197,7 +214,7 @@ export function WeddingDashboard() {
         <div className="bg-white rounded-[24px] p-6 shadow-toss">
           <div className="flex justify-between items-start mb-4">
             <div>
-              <p className="text-[13px] text-[#8B95A1] mb-1">현정 & 주호의 웨딩</p>
+              <p className="text-[13px] text-[#8B95A1] mb-1">{coupleNames.my} & {coupleNames.partner}의 웨딩</p>
               <h1 className="text-[32px] font-bold text-[#191F28] tracking-tight">
                 D-{dday}
               </h1>

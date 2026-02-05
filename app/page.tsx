@@ -1,19 +1,23 @@
 "use client"
 
-import { useState } from "react"
-import { OnboardingHero } from "@/components/onboarding-hero"
-import { StatusCards } from "@/components/status-cards"
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 
-export default function OnboardingPage() {
-  const [selectedStatus, setSelectedStatus] = useState<string | null>(null)
+export default function RootPage() {
+  const router = useRouter()
+
+  useEffect(() => {
+    const hasCompleted = localStorage.getItem("survey_myName")
+    if (hasCompleted) {
+      router.push("/onboarding")
+    } else {
+      router.push("/splash")
+    }
+  }, [router])
 
   return (
-    <main className="min-h-dvh bg-white flex flex-col">
-      <OnboardingHero />
-      <StatusCards 
-        selectedStatus={selectedStatus} 
-        onSelect={setSelectedStatus} 
-      />
+    <main className="min-h-dvh bg-white flex items-center justify-center">
+      <div className="w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin" />
     </main>
   )
 }
