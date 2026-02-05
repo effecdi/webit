@@ -17,6 +17,7 @@ import {
 } from "lucide-react"
 import { ModeSwitch } from "@/components/mode-switch"
 import { TravelEntryCard } from "@/components/travel/travel-entry-card"
+import { NotificationModal, type Notification } from "@/components/shared/notification-modal"
 
 interface TodoItem {
   id: string
@@ -65,6 +66,11 @@ const ASSIGNEE_LABELS = {
   we: "우리",
 }
 
+const INITIAL_NOTIFICATIONS: Notification[] = [
+  { id: "1", type: "schedule", title: "새 일정 등록", message: "2월 14일 발렌타인 데이트", time: "1시간 전" },
+  { id: "2", type: "travel", title: "여행 계획 추가", message: "제주도 여행이 등록되었어요", time: "어제" },
+]
+
 export function DatingDashboard() {
   const [todos, setTodos] = useState(INITIAL_TODOS)
   const [showPremiumModal, setShowPremiumModal] = useState(false)
@@ -72,6 +78,8 @@ export function DatingDashboard() {
   const [selectedTodo, setSelectedTodo] = useState<TodoItem | null>(null)
   const [newComment, setNewComment] = useState("")
   const isComposing = useRef(false)
+  const [showNotifications, setShowNotifications] = useState(false)
+  const [notifications, setNotifications] = useState<Notification[]>(INITIAL_NOTIFICATIONS)
   
   // Calculate D-day
   const startDate = new Date("2023-03-15")
@@ -115,10 +123,25 @@ export function DatingDashboard() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#F2F4F6]/90 backdrop-blur-md">
         <div className="flex items-center justify-between px-5 py-3 max-w-md mx-auto">
           <ModeSwitch currentMode="dating" />
-          <button className="relative">
-            <Bell className="w-6 h-6 text-[#4E5968]" strokeWidth={1.8} />
-            <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-pink-500 rounded-full" />
-          </button>
+          <div className="relative">
+            <button 
+              onClick={() => setShowNotifications(!showNotifications)}
+              className="relative"
+              data-testid="button-notifications"
+            >
+              <Bell className="w-6 h-6 text-[#4E5968]" strokeWidth={1.8} />
+              {notifications.length > 0 && (
+                <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-pink-500 rounded-full" />
+              )}
+            </button>
+            <NotificationModal
+              isOpen={showNotifications}
+              onClose={() => setShowNotifications(false)}
+              notifications={notifications}
+              onClearAll={() => setNotifications([])}
+              mode="dating"
+            />
+          </div>
         </div>
       </header>
 

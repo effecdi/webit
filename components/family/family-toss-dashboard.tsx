@@ -14,6 +14,7 @@ import {
   Plane
 } from "lucide-react"
 import { TravelEntryCard } from "@/components/travel/travel-entry-card"
+import { NotificationModal, type Notification } from "@/components/shared/notification-modal"
 
 const QUICK_ACTIONS = [
   { icon: Calendar, label: "일정 추가", color: "bg-green-50 text-green-600", href: "/family/calendar" },
@@ -31,9 +32,16 @@ const RECENT_MEMORIES = [
   { id: 2, title: "결혼식", date: "2025.12.20", count: 156 },
 ]
 
+const INITIAL_NOTIFICATIONS: Notification[] = [
+  { id: "1", type: "schedule", title: "새 일정 등록", message: "부동산 계약 상담이 등록되었어요", time: "3시간 전" },
+  { id: "2", type: "photo", title: "사진 추가됨", message: "신혼여행 사진 48장이 추가되었어요", time: "어제" },
+]
+
 export function FamilyTossDashboard() {
   const [dDay, setDDay] = useState(0)
   const [greeting, setGreeting] = useState("")
+  const [showNotifications, setShowNotifications] = useState(false)
+  const [notifications, setNotifications] = useState<Notification[]>(INITIAL_NOTIFICATIONS)
 
   useEffect(() => {
     const weddingDate = new Date("2025-12-20")
@@ -57,10 +65,25 @@ export function FamilyTossDashboard() {
             <Home className="w-4 h-4 text-green-600" />
             <span className="text-[13px] font-semibold text-green-600">가족</span>
           </div>
-          <button className="relative">
-            <Bell className="w-6 h-6 text-[#4E5968]" strokeWidth={1.8} />
-            <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-green-500 rounded-full" />
-          </button>
+          <div className="relative">
+            <button 
+              onClick={() => setShowNotifications(!showNotifications)}
+              className="relative"
+              data-testid="button-notifications"
+            >
+              <Bell className="w-6 h-6 text-[#4E5968]" strokeWidth={1.8} />
+              {notifications.length > 0 && (
+                <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-green-500 rounded-full" />
+              )}
+            </button>
+            <NotificationModal
+              isOpen={showNotifications}
+              onClose={() => setShowNotifications(false)}
+              notifications={notifications}
+              onClearAll={() => setNotifications([])}
+              mode="family"
+            />
+          </div>
         </div>
       </header>
 

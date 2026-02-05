@@ -25,6 +25,7 @@ import {
 } from "lucide-react"
 import { ModeSwitch } from "@/components/mode-switch"
 import { TravelEntryCard } from "@/components/travel/travel-entry-card"
+import { NotificationModal, type Notification } from "@/components/shared/notification-modal"
 import { useBudget, type Expense } from "@/contexts/budget-context"
 import { useChecklist } from "@/contexts/checklist-context"
 import { Circle, CheckCircle2 } from "lucide-react"
@@ -63,10 +64,17 @@ const quickActions = [
 
 const categories = ["예식장", "드레스", "스튜디오", "스냅", "청첩장", "허니문", "예물", "혼수", "기타"]
 
+const INITIAL_NOTIFICATIONS: Notification[] = [
+  { id: "1", type: "schedule", title: "체크리스트 완료", message: "예식장 계약이 완료되었어요", time: "2시간 전" },
+  { id: "2", type: "travel", title: "허니문 계획 추가", message: "제주도 허니문이 등록되었어요", time: "어제" },
+]
+
 export function WeddingDashboard() {
   const dday = calculateDday(WEDDING_DATE)
   const [activeTab, setActiveTab] = useState<"all" | "progress" | "done">("all")
   const [showExpenseModal, setShowExpenseModal] = useState(false)
+  const [showNotifications, setShowNotifications] = useState(false)
+  const [notifications, setNotifications] = useState<Notification[]>(INITIAL_NOTIFICATIONS)
   const [newExpense, setNewExpense] = useState({
     title: "",
     amount: "",
@@ -162,10 +170,25 @@ export function WeddingDashboard() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#F2F4F6]/90 backdrop-blur-md">
         <div className="flex items-center justify-between px-5 py-3 max-w-md mx-auto">
           <ModeSwitch currentMode="wedding" />
-          <button className="relative">
-            <Bell className="w-6 h-6 text-[#4E5968]" strokeWidth={1.8} />
-            <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-[#3182F6] rounded-full" />
-          </button>
+          <div className="relative">
+            <button 
+              onClick={() => setShowNotifications(!showNotifications)}
+              className="relative"
+              data-testid="button-notifications"
+            >
+              <Bell className="w-6 h-6 text-[#4E5968]" strokeWidth={1.8} />
+              {notifications.length > 0 && (
+                <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-[#3182F6] rounded-full" />
+              )}
+            </button>
+            <NotificationModal
+              isOpen={showNotifications}
+              onClose={() => setShowNotifications(false)}
+              notifications={notifications}
+              onClearAll={() => setNotifications([])}
+              mode="wedding"
+            />
+          </div>
         </div>
       </header>
 

@@ -2258,6 +2258,10 @@
     max-height: var(--radix-select-content-available-height);
   }
 
+  .max-h-80 {
+    max-height: calc(var(--spacing) * 80);
+  }
+
   .max-h-\[50vh\] {
     max-height: 50vh;
   }
@@ -2452,6 +2456,10 @@
 
   .w-72 {
     width: calc(var(--spacing) * 72);
+  }
+
+  .w-80 {
+    width: calc(var(--spacing) * 80);
   }
 
   .w-\[22px\] {
@@ -6887,6 +6895,10 @@
     color: #d0d0d0;
   }
 
+  .text-\[\#D1D5DB\] {
+    color: #d1d5db;
+  }
+
   .text-\[\#D1D6DB\] {
     color: #d1d6db;
   }
@@ -9124,6 +9136,12 @@
   @media (hover: hover) {
     .hover\:bg-\[\#F8F9FA\]:hover {
       background-color: #f8f9fa;
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-\[\#FAFBFC\]:hover {
+      background-color: #fafbfc;
     }
   }
 
