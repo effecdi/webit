@@ -20,7 +20,8 @@ import {
   X,
   CreditCard,
   Banknote,
-  ArrowRightLeft
+  ArrowRightLeft,
+  Plane
 } from "lucide-react"
 import { ModeSwitch } from "@/components/mode-switch"
 import { TravelEntryCard } from "@/components/travel/travel-entry-card"
@@ -56,7 +57,7 @@ const categoryIcons: Record<string, { icon: React.ReactNode; bg: string }> = {
 const quickActions = [
   { id: "1", icon: Mail, label: "모바일 청첩장", href: "/wedding/editor", color: "bg-pink-100 text-pink-500" },
   { id: "2", icon: Wallet, label: "예산 관리", href: "/wedding/budget", color: "bg-blue-100 text-[#3182F6]" },
-  { id: "3", icon: Shirt, label: "드레스 투어", href: "/wedding/dress", color: "bg-purple-100 text-purple-500" },
+  { id: "3", icon: Plane, label: "허니문 계획", href: "/travel", color: "bg-purple-100 text-purple-500" },
   { id: "4", icon: Sparkles, label: "웨딩 굿즈", href: "/wedding/goods", color: "bg-amber-100 text-amber-500" },
 ]
 
@@ -220,8 +221,16 @@ export function WeddingDashboard() {
           })}
         </div>
 
-        {/* Travel Entry Card */}
-        <TravelEntryCard mode="wedding" />
+        {/* Travel Entry Card - only shows when there's an upcoming trip */}
+        <TravelEntryCard 
+          mode="wedding" 
+          trip={{
+            id: "1",
+            destination: "제주도",
+            startDate: "2026-02-20",
+            endDate: "2026-02-23"
+          }}
+        />
 
         {/* Tab Navigation */}
         <div className="flex border-b border-[#E5E8EB] -mx-5 px-5 sticky top-[52px] bg-[#F2F4F6] z-40 pt-2">

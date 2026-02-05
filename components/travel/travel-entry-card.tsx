@@ -5,20 +5,12 @@ import { Plane, ChevronRight } from "lucide-react"
 
 interface TravelEntryCardProps {
   mode?: "dating" | "wedding" | "family"
-}
-
-interface Trip {
-  id: string
-  destination: string
-  startDate: string
-  endDate: string
-}
-
-const SAMPLE_TRIP: Trip = {
-  id: "1",
-  destination: "제주도",
-  startDate: "2026-02-20",
-  endDate: "2026-02-23"
+  trip?: {
+    id: string
+    destination: string
+    startDate: string
+    endDate: string
+  } | null
 }
 
 function calculateDday(targetDate: string) {
@@ -30,9 +22,12 @@ function calculateDday(targetDate: string) {
   return diff
 }
 
-export function TravelEntryCard({ mode = "dating" }: TravelEntryCardProps) {
-  const trip = SAMPLE_TRIP
+export function TravelEntryCard({ mode = "dating", trip }: TravelEntryCardProps) {
+  if (!trip) return null
+  
   const dday = calculateDday(trip.startDate)
+  
+  if (dday < 0) return null
   
   const modeColors = {
     dating: "from-pink-500 to-pink-400",
@@ -62,7 +57,7 @@ export function TravelEntryCard({ mode = "dating" }: TravelEntryCardProps) {
                   <span className="text-[19px] font-bold text-[#191F28]">{trip.destination}</span>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-[12px] font-bold text-[#3B82F6] bg-[#3B82F6]/10 px-2 py-0.5 rounded-full">
-                      D-{dday > 0 ? dday : 0}
+                      D-{dday}
                     </span>
                     <span className="text-[12px] text-[#8B95A1]">
                       {new Date(trip.startDate).toLocaleDateString("ko-KR", { month: "short", day: "numeric" })} - {new Date(trip.endDate).toLocaleDateString("ko-KR", { month: "short", day: "numeric" })}

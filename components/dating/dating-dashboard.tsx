@@ -50,7 +50,7 @@ const INITIAL_TODOS: TodoItem[] = [
 const SHORTCUTS = [
   { id: "calendar", label: "캘린더", icon: Calendar, href: "/dating/calendar", badge: "3", color: "bg-pink-50 text-pink-500" },
   { id: "album", label: "앨범", icon: ImageIcon, href: "/dating/gallery", badge: "128", color: "bg-blue-50 text-[#3182F6]" },
-  { id: "travel", label: "여행 계획", icon: Plane, href: "/dating/travel", badge: "D-12", color: "bg-purple-50 text-purple-500" },
+  { id: "travel", label: "여행 계획", icon: Plane, href: "/travel", badge: "D-15", color: "bg-purple-50 text-purple-500" },
 ]
 
 const ASSIGNEE_COLORS = {
@@ -198,8 +198,16 @@ export function DatingDashboard() {
           })}
         </div>
 
-        {/* Travel Entry Card */}
-        <TravelEntryCard mode="dating" />
+        {/* Travel Entry Card - only shows when there's an upcoming trip */}
+        <TravelEntryCard 
+          mode="dating" 
+          trip={{
+            id: "1",
+            destination: "제주도",
+            startDate: "2026-02-20",
+            endDate: "2026-02-23"
+          }}
+        />
 
         {/* Today's Todo Card */}
         <div className="bg-white rounded-[24px] p-5 shadow-toss">
