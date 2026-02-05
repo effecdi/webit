@@ -1,0 +1,101 @@
+# WE:VE - Couple Lifecycle Super App
+
+## Overview
+
+WE:VE is a Korean couple-focused super app that accompanies users through their entire relationship lifecycle - from dating, through wedding preparation, to family life. The application provides mode-specific features including calendars, photo galleries, budget tracking, checklists, and digital wedding invitations.
+
+The app is built as a mobile-first Next.js application with a Toss-inspired design system featuring clean typography, subtle shadows, and rounded cards. It supports three distinct modes: Dating (pink theme), Wedding (blue/gold theme), and Family (green theme).
+
+## User Preferences
+
+Preferred communication style: Simple, everyday language.
+
+## System Architecture
+
+### Frontend Framework
+- **Next.js 16** with App Router and React Server Components enabled
+- **TypeScript** for type safety throughout the codebase
+- Pages use `"use client"` directive for interactive components
+
+### UI Component System
+- **shadcn/ui** components with New York style variant
+- **Radix UI** primitives for accessible, unstyled components
+- **Tailwind CSS** with custom CSS variables for theming
+- **Lucide React** for consistent iconography
+- Custom brutalist-inspired shadow system (`shadow-brutalist`, `shadow-brutalist-sm`)
+
+### Styling Architecture
+- CSS variables defined in `app/globals.css` for theme colors
+- Toss-inspired design tokens (--toss-blue, --toss-bg, etc.)
+- Mode-specific color schemes:
+  - Dating: Pink accent (#FF6B9D, pink-500)
+  - Wedding: Blue/Gold accent (#3182F6, #D4AF37)
+  - Family: Green accent (#2D8B57, green-600)
+- Pretendard font loaded via CDN for Korean typography
+
+### State Management
+- React Context API for cross-component state (BudgetContext, ChecklistContext)
+- localStorage for client-side persistence of user preferences and data
+- useState/useEffect for component-level state
+
+### Routing Structure
+```
+/                    - Onboarding/status selection
+/dating/*            - Dating mode pages
+/wedding/*           - Wedding mode pages  
+/family/*            - Family mode pages
+```
+
+### Component Organization
+- `/components/ui/` - Reusable shadcn/ui components
+- `/components/dating/` - Dating mode specific components
+- `/components/wedding/` - Wedding mode specific components
+- `/components/family/` - Family mode specific components
+- `/components/shared/` - Cross-mode shared components
+- `/contexts/` - React Context providers
+- `/hooks/` - Custom React hooks
+
+### Key Features by Mode
+- **Dating**: Couple calendar, photo gallery, todo lists with comments, D-day tracking
+- **Wedding**: Budget tracking, checklist management, digital invitation editor, vendor management
+- **Family**: Memory archive, history book, shared calendar, photo organization
+
+## External Dependencies
+
+### Analytics & Monitoring
+- **Vercel Analytics** (@vercel/analytics) - Usage tracking and performance monitoring
+
+### UI Libraries
+- **Radix UI** - Full suite of accessible primitives (dialog, dropdown, tabs, etc.)
+- **Embla Carousel** - Touch-friendly carousel component
+- **cmdk** - Command palette interface
+- **react-day-picker** - Calendar date picking
+- **Vaul** - Drawer component
+
+### Form & Validation
+- **React Hook Form** with @hookform/resolvers
+- **Zod** - Schema validation (referenced in build script)
+
+### Utilities
+- **date-fns** - Date manipulation
+- **class-variance-authority** - Component variant management
+- **clsx/tailwind-merge** - Conditional class handling
+- **next-themes** - Theme switching support
+
+### Build Tools
+- **esbuild** - Server bundling (referenced in script/build.ts)
+- **Vite** - Client bundling
+
+### Fonts
+- **Pretendard** - Korean web font (loaded via CDN)
+- **Playfair Display** - Serif accent font (Google Fonts)
+
+### Planned/Referenced (in build script)
+- Drizzle ORM for database operations
+- PostgreSQL connectivity (pg)
+- Express.js server capabilities
+- Authentication (passport, passport-local)
+- File uploads (multer)
+- Email (nodemailer)
+- Payments (stripe)
+- AI integrations (openai, @google/generative-ai)

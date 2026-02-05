@@ -128,6 +128,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
           <button
             key={item.label}
             onClick={item.action}
+            data-testid={`button-settings-${item.label === "알림 설정" ? "notification" : item.label === "개인정보 보호" ? "privacy" : item.label === "고객센터" ? "support" : "widget"}`}
             className={`w-full flex items-center gap-4 px-5 py-4 hover:bg-[#F8F9FA] transition-colors ${
               idx !== settingsItems.length - 1 ? "border-b border-[#F2F4F6]" : ""
             }`}
@@ -184,13 +185,17 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     </div>
                   </div>
                   <button
+                    type="button"
+                    role="switch"
+                    aria-checked={notifications[item.key as keyof typeof notifications]}
                     onClick={() => setNotifications({...notifications, [item.key]: !notifications[item.key as keyof typeof notifications]})}
+                    data-testid={`switch-notification-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
                       notifications[item.key as keyof typeof notifications] ? "bg-[#3182F6]" : "bg-[#E5E8EB]"
                     }`}
                   >
                     <div 
-                      className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform ${
+                      className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${
                         notifications[item.key as keyof typeof notifications] ? "translate-x-7" : "translate-x-1"
                       }`}
                     />
@@ -244,13 +249,17 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     </div>
                   </div>
                   <button
+                    type="button"
+                    role="switch"
+                    aria-checked={privacy[item.key as keyof typeof privacy]}
                     onClick={() => setPrivacy({...privacy, [item.key]: !privacy[item.key as keyof typeof privacy]})}
+                    data-testid={`switch-privacy-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
                       privacy[item.key as keyof typeof privacy] ? "bg-[#3182F6]" : "bg-[#E5E8EB]"
                     }`}
                   >
                     <div 
-                      className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform ${
+                      className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${
                         privacy[item.key as keyof typeof privacy] ? "translate-x-7" : "translate-x-1"
                       }`}
                     />
@@ -303,13 +312,17 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     </div>
                   </div>
                   <button
+                    type="button"
+                    role="switch"
+                    aria-checked={support[item.key as keyof typeof support]}
                     onClick={() => setSupport({...support, [item.key]: !support[item.key as keyof typeof support]})}
+                    data-testid={`switch-support-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
                       support[item.key as keyof typeof support] ? "bg-[#3182F6]" : "bg-[#E5E8EB]"
                     }`}
                   >
                     <div 
-                      className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform ${
+                      className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${
                         support[item.key as keyof typeof support] ? "translate-x-7" : "translate-x-1"
                       }`}
                     />
@@ -319,19 +332,19 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
               
               {/* Quick Links */}
               <div className="pt-4 mt-4 border-t border-[#F2F4F6] space-y-2">
-                <button className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
+                <button data-testid="button-faq" className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
                   <span className="text-[14px] font-medium text-[#191F28]">자주 묻는 질문 (FAQ)</span>
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
-                <button className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
+                <button data-testid="button-contact" className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
                   <span className="text-[14px] font-medium text-[#191F28]">1:1 문의하기</span>
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
-                <button className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
+                <button data-testid="button-terms" className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
                   <span className="text-[14px] font-medium text-[#191F28]">이용약관</span>
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
-                <button className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
+                <button data-testid="button-privacy-policy" className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
                   <span className="text-[14px] font-medium text-[#191F28]">개인정보 처리방침</span>
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
@@ -361,6 +374,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                 </div>
                 <button 
                   onClick={() => setShowWidgetSettings(false)}
+                  data-testid="button-close-widget-modal"
                   className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
                 >
                   <X className="w-5 h-5 text-[#8B95A1]" />
@@ -379,6 +393,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     <button
                       key={widget.id}
                       onClick={() => !widget.isPremium && setSelectedWidget(widget.id)}
+                      data-testid={`button-widget-${widget.id}`}
                       className={`relative p-4 rounded-[16px] border-2 transition-all text-left ${
                         isSelected 
                           ? "border-[#3182F6] bg-blue-50" 
@@ -437,7 +452,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                 <p className="text-[13px] text-[#4E5968] mb-3">
                   포토 위젯, 카운트다운 위젯은 멤버십 구독 후 이용 가능합니다
                 </p>
-                <button className="w-full py-2.5 bg-gradient-to-r from-amber-400 to-amber-500 text-white font-semibold text-[14px] rounded-[10px]">
+                <button data-testid="button-widget-premium-subscribe" className="w-full py-2.5 bg-gradient-to-r from-amber-400 to-amber-500 text-white font-semibold text-[14px] rounded-[10px]">
                   프리미엄 구독하기
                 </button>
               </div>

@@ -72,12 +72,16 @@ export default function WeddingProfilePage() {
             <Link 
               href="/wedding" 
               className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
+              data-testid="link-back-wedding"
             >
               <ArrowLeft className="w-5 h-5 text-[#191F28]" />
             </Link>
             <h1 className="text-[17px] font-bold text-[#191F28]">프로필</h1>
           </div>
-          <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors">
+          <button 
+            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
+            data-testid="button-settings"
+          >
             <Settings className="w-5 h-5 text-[#4E5968]" />
           </button>
         </div>
@@ -208,9 +212,10 @@ export default function WeddingProfilePage() {
           <button 
             onClick={() => setShowPremiumModal(true)}
             className="w-full py-3 bg-white hover:bg-white/90 rounded-[12px] text-[14px] font-semibold text-[#191F28] transition-colors flex items-center justify-center gap-2"
+            data-testid="button-membership-subscribe"
           >
             <Star className="w-4 h-4 text-amber-500" />
-            멤버십 구독하기
+            멤버십 구독
           </button>
         </div>
 
@@ -243,7 +248,10 @@ export default function WeddingProfilePage() {
         <ProfileSettingsSection mode="wedding" />
 
         {/* Logout */}
-        <button className="w-full flex items-center justify-center gap-2 py-4 text-[#FF6B6B] text-[15px] font-medium hover:bg-white rounded-[16px] transition-colors">
+        <button 
+          className="w-full flex items-center justify-center gap-2 py-4 text-[#FF6B6B] text-[15px] font-medium hover:bg-white rounded-[16px] transition-colors"
+          data-testid="button-logout"
+        >
           <LogOut className="w-5 h-5" />
           로그아웃
         </button>
