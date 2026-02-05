@@ -46,13 +46,33 @@ Preferred communication style: Simple, everyday language.
 
 ### Routing Structure
 ```
-/                    - Onboarding/status selection
+/                    - Root page (redirects to splash)
+/splash              - Splash screen with auto-navigation
+/login               - Social login page
+/survey/step1-4      - Initial survey flow
+/onboarding          - Mode selection (dating/wedding/family)
 /dating/*            - Dating mode pages
 /wedding/*           - Wedding mode pages  
 /family/*            - Family mode pages
 /travel              - Shared travel list (all modes)
 /travel/[id]         - Travel detail with schedule, checklist, budget
 ```
+
+### App Lifecycle & Login Persistence
+- **Splash Screen Logic** (`/splash`):
+  - Checks `survey_myName` (login indicator) and `selected_mode`
+  - If logged in + has selected_mode → redirect to that mode
+  - If logged in + no mode → redirect to `/onboarding`
+  - If not logged in → redirect to `/login`
+- **Mode Selection Persistence**: `selected_mode` localStorage key stores user's last mode
+- **Wedding Mode Transition**:
+  - First time switching to wedding: Shows "결혼을 축하합니다!" congratulations modal
+  - `wedding_onboarding_complete` localStorage key tracks onboarding completion
+  - After completing wedding onboarding: Free switching between dating/wedding modes
+- **LocalStorage Keys**:
+  - `survey_myName`, `survey_partnerName`, `survey_firstMeetDate`: Survey data (login indicator)
+  - `selected_mode`: "dating" | "wedding" | "family"
+  - `wedding_onboarding_complete`: "true" after wedding onboarding
 
 ### Component Organization
 - `/components/ui/` - Reusable shadcn/ui components
