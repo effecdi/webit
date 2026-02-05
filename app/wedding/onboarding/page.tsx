@@ -152,7 +152,7 @@ export default function WeddingOnboardingPage() {
                   type="date"
                   value={data.weddingDate}
                   onChange={(e) => setData({ ...data, weddingDate: e.target.value })}
-                  className="w-full h-14 px-5 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] outline-none focus:ring-2 focus:ring-[#3182F6]"
+                  className="w-full h-14 px-5 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] outline-none focus:ring-2 focus:ring-[#3182F6] [&::-webkit-calendar-picker-indicator]:opacity-100"
                   data-testid="input-wedding-date"
                 />
               </div>
@@ -231,7 +231,7 @@ export default function WeddingOnboardingPage() {
                 ? "bg-[#3182F6] hover:bg-[#1B64DA] active:scale-[0.98]" 
                 : "bg-[#B0B8C1]"
             }`}
-            data-testid="button-next"
+            data-testid="button-next-step1"
           >
             다음
             <ChevronRight className="w-5 h-5" />
@@ -242,8 +242,8 @@ export default function WeddingOnboardingPage() {
           <div className="flex gap-3">
             <button
               onClick={handleNext}
-              className="flex-1 h-14 rounded-[16px] font-semibold text-[#4E5968] bg-[#F3F5F7] hover:bg-[#E5E8EB] transition-all"
-              data-testid="button-skip"
+              className="flex-1 h-14 rounded-[16px] font-semibold text-[#4E5968] bg-[#F3F5F7] active:bg-[#E5E8EB] transition-all"
+              data-testid="button-skip-venue"
             >
               건너뛰기
             </button>
@@ -255,7 +255,7 @@ export default function WeddingOnboardingPage() {
                   ? "bg-[#3182F6] hover:bg-[#1B64DA] active:scale-[0.98]" 
                   : "bg-[#B0B8C1]"
               }`}
-              data-testid="button-next"
+              data-testid="button-next-step2"
             >
               다음
               <ChevronRight className="w-5 h-5" />

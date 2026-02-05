@@ -10087,6 +10087,10 @@
     scale: .99;
   }
 
+  .active\:bg-\[\#E5E8EB\]:active {
+    background-color: #e5e8eb;
+  }
+
   .active\:bg-sidebar-accent:active {
     background-color: var(--sidebar-accent);
   }
@@ -11838,6 +11842,10 @@
 
   .\[\&\+\[data-slot\=item-content\]\]\:flex-none + [data-slot="item-content"] {
     flex: none;
+  }
+
+  .\[\&\:\:-webkit-calendar-picker-indicator\]\:opacity-100::-webkit-calendar-picker-indicator {
+    opacity: 1;
   }
 
   .\[\&\:first-child\[data-selected\=true\]_button\]\:rounded-l-md:first-child[data-selected="true"] button {
