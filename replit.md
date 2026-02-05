@@ -33,9 +33,15 @@ Preferred communication style: Simple, everyday language.
   - Family: Green accent (#2D8B57, green-600)
 - Pretendard font loaded via CDN for Korean typography
 
+### Database Architecture
+- **PostgreSQL** database with Drizzle ORM for type-safe database operations
+- **Tables**: todos, events, photos, albums, notifications, expenses, checklist_items, travels, travel_schedules, widgets, profiles
+- **API Routes**: `/app/api/{resource}/route.ts` with GET/POST/PATCH/DELETE methods
+- **User identification**: Currently uses `userId="default"` for demo mode
+
 ### State Management
 - React Context API for cross-component state (BudgetContext, ChecklistContext)
-- localStorage for client-side persistence of user preferences and data
+- All data fetched from PostgreSQL via API endpoints (no mock data)
 - useState/useEffect for component-level state
 
 ### Routing Structure
