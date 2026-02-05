@@ -64,17 +64,20 @@ const quickActions = [
 
 const categories = ["예식장", "드레스", "스튜디오", "스냅", "청첩장", "허니문", "예물", "혼수", "기타"]
 
-const INITIAL_NOTIFICATIONS: Notification[] = [
-  { id: "1", type: "schedule", title: "체크리스트 완료", message: "예식장 계약이 완료되었어요", time: "2시간 전" },
-  { id: "2", type: "travel", title: "허니문 계획 추가", message: "제주도 허니문이 등록되었어요", time: "어제" },
-]
+interface Travel {
+  id: number
+  destination: string
+  startDate: string
+  endDate: string
+}
 
 export function WeddingDashboard() {
   const dday = calculateDday(WEDDING_DATE)
   const [activeTab, setActiveTab] = useState<"all" | "progress" | "done">("all")
   const [showExpenseModal, setShowExpenseModal] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
-  const [notifications, setNotifications] = useState<Notification[]>(INITIAL_NOTIFICATIONS)
+  const [notifications, setNotifications] = useState<Notification[]>([])
+  const [travels, setTravels] = useState<Travel[]>([])
   const [coupleNames, setCoupleNames] = useState({ my: "현정", partner: "주호" })
   const [daysTogether, setDaysTogether] = useState(0)
   const [newExpense, setNewExpense] = useState({
@@ -98,7 +101,51 @@ export function WeddingDashboard() {
       const diffTime = Math.abs(today.getTime() - start.getTime())
       setDaysTogether(Math.ceil(diffTime / (1000 * 60 * 60 * 24)))
     }
+    
+    fetchData()
   }, [])
+
+  const fetchData = async () => {
+    try {
+      const [notificationsRes, travelsRes] = await Promise.all([
+        fetch('/api/notifications?userId=default&mode=wedding'),
+        fetch('/api/travels?userId=default')
+      ])
+      const notificationsData = await notificationsRes.json()
+      const travelsData = await travelsRes.json()
+      
+      setNotifications(notificationsData.map((n: { id: number; type: string; title: string; message: string; createdAt: string }) => ({
+        id: String(n.id),
+        type: n.type,
+        title: n.title,
+        message: n.message,
+        time: formatTimeAgo(n.createdAt)
+      })))
+      setTravels(travelsData)
+    } catch (error) {
+      console.error('Error fetching data:', error)
+    }
+  }
+
+  const formatTimeAgo = (dateStr: string) => {
+    const date = new Date(dateStr)
+    const now = new Date()
+    const diffMs = now.getTime() - date.getTime()
+    const diffMins = Math.floor(diffMs / 60000)
+    const diffHours = Math.floor(diffMs / 3600000)
+    const diffDays = Math.floor(diffMs / 86400000)
+    
+    if (diffMins < 1) return "방금"
+    if (diffMins < 60) return `${diffMins}분 전`
+    if (diffHours < 24) return `${diffHours}시간 전`
+    return `${diffDays}일 전`
+  }
+
+  const upcomingTravel = travels.find(t => {
+    const startDate = new Date(t.startDate)
+    const today = new Date()
+    return startDate >= today
+  })
 
   // Budget from context
   const { totalBudget, totalSpent, remaining, spentPercent, expenses, addExpense } = useBudget()
@@ -267,15 +314,17 @@ export function WeddingDashboard() {
         </div>
 
         {/* Travel Entry Card - only shows when there's an upcoming trip */}
-        <TravelEntryCard 
-          mode="wedding" 
-          trip={{
-            id: "1",
-            destination: "제주도",
-            startDate: "2026-02-20",
-            endDate: "2026-02-23"
-          }}
-        />
+        {upcomingTravel && (
+          <TravelEntryCard 
+            mode="wedding" 
+            trip={{
+              id: String(upcomingTravel.id),
+              destination: upcomingTravel.destination,
+              startDate: upcomingTravel.startDate,
+              endDate: upcomingTravel.endDate
+            }}
+          />
+        )}
 
         {/* Tab Navigation */}
         <div className="flex border-b border-[#E5E8EB] -mx-5 px-5 sticky top-[52px] bg-[#F2F4F6] z-40 pt-2">

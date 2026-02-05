@@ -19,72 +19,110 @@ interface ChecklistContextType {
   updateItem: (id: string, updates: Partial<ChecklistItem>) => void
   deleteItem: (id: string) => void
   toggleComplete: (id: string) => void
+  isLoading: boolean
   completedCount: number
   totalCount: number
   progressPercent: number
 }
 
-const defaultItems: ChecklistItem[] = [
-  { id: "1", title: "웨딩홀 투어 예약", category: "예식장", dueDate: "2025-02-15", completed: true, priority: "high" },
-  { id: "2", title: "웨딩홀 계약", category: "예식장", dueDate: "2025-02-28", completed: true, priority: "high" },
-  { id: "3", title: "드레스 가봉 1차", category: "드레스", dueDate: "2025-03-10", completed: true, priority: "medium" },
-  { id: "4", title: "스튜디오 촬영 예약", category: "스튜디오", dueDate: "2025-03-15", completed: false, priority: "high" },
-  { id: "5", title: "청첩장 문구 작성", category: "청첩장", dueDate: "2025-03-20", completed: false, priority: "medium" },
-  { id: "6", title: "허니문 항공권 예약", category: "허니문", dueDate: "2025-04-01", completed: false, priority: "medium" },
-  { id: "7", title: "예물 구매", category: "예물", dueDate: "2025-04-15", completed: false, priority: "low" },
-  { id: "8", title: "드레스 가봉 2차", category: "드레스", dueDate: "2025-05-01", completed: false, priority: "medium" },
-  { id: "9", title: "본식 스냅 작가 섭외", category: "스냅", dueDate: "2025-05-10", completed: false, priority: "high" },
-  { id: "10", title: "혼수 가전 구매", category: "혼수", dueDate: "2025-05-20", completed: false, priority: "low" },
-]
-
 const ChecklistContext = createContext<ChecklistContextType | undefined>(undefined)
 
 export function ChecklistProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<ChecklistItem[]>(defaultItems)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [items, setItems] = useState<ChecklistItem[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  // Load from localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem("wedding-checklist")
-    if (saved) {
-      try {
-        setItems(JSON.parse(saved))
-      } catch (e) {
-        console.error("Failed to parse checklist data", e)
-      }
-    }
-    setIsLoaded(true)
+    fetchChecklist()
   }, [])
 
-  // Save to localStorage on change
-  useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem("wedding-checklist", JSON.stringify(items))
+  const fetchChecklist = async () => {
+    setIsLoading(true)
+    try {
+      const res = await fetch('/api/checklist?userId=default&mode=wedding')
+      const data = await res.json()
+      setItems(data.map((item: { id: number; title: string; category: string; dueDate: string; completed: boolean; priority: string }) => ({
+        id: String(item.id),
+        title: item.title,
+        category: item.category,
+        dueDate: item.dueDate ? item.dueDate.split('T')[0] : new Date().toISOString().split('T')[0],
+        completed: item.completed,
+        priority: (item.priority || 'medium') as "high" | "medium" | "low"
+      })))
+    } catch (error) {
+      console.error('Error fetching checklist:', error)
+    } finally {
+      setIsLoading(false)
     }
-  }, [items, isLoaded])
+  }
 
-  const addItem = (item: Omit<ChecklistItem, "id">) => {
-    const newItem: ChecklistItem = {
-      ...item,
-      id: Date.now().toString(),
+  const addItem = async (item: Omit<ChecklistItem, "id">) => {
+    try {
+      const res = await fetch('/api/checklist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: 'default',
+          title: item.title,
+          category: item.category,
+          dueDate: item.dueDate,
+          priority: item.priority,
+          mode: 'wedding'
+        })
+      })
+      const newItem = await res.json()
+      setItems(prev => [...prev, {
+        id: String(newItem.id),
+        title: newItem.title,
+        category: newItem.category,
+        dueDate: newItem.dueDate ? newItem.dueDate.split('T')[0] : new Date().toISOString().split('T')[0],
+        completed: newItem.completed,
+        priority: newItem.priority || 'medium'
+      }])
+    } catch (error) {
+      console.error('Error adding checklist item:', error)
     }
-    setItems([...items, newItem])
   }
 
-  const updateItem = (id: string, updates: Partial<ChecklistItem>) => {
-    setItems(items.map(item => 
-      item.id === id ? { ...item, ...updates } : item
-    ))
+  const updateItem = async (id: string, updates: Partial<ChecklistItem>) => {
+    try {
+      await fetch('/api/checklist', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: parseInt(id), ...updates })
+      })
+      setItems(prev => prev.map(item => 
+        item.id === id ? { ...item, ...updates } : item
+      ))
+    } catch (error) {
+      console.error('Error updating checklist item:', error)
+    }
   }
 
-  const deleteItem = (id: string) => {
-    setItems(items.filter(item => item.id !== id))
+  const deleteItem = async (id: string) => {
+    try {
+      await fetch(`/api/checklist?id=${id}`, { method: 'DELETE' })
+      setItems(prev => prev.filter(item => item.id !== id))
+    } catch (error) {
+      console.error('Error deleting checklist item:', error)
+    }
   }
 
-  const toggleComplete = (id: string) => {
-    setItems(items.map(item =>
-      item.id === id ? { ...item, completed: !item.completed } : item
-    ))
+  const toggleComplete = async (id: string) => {
+    const item = items.find(i => i.id === id)
+    if (!item) return
+    
+    try {
+      await fetch('/api/checklist', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: parseInt(id), completed: !item.completed })
+      })
+      setItems(prev => prev.map(i =>
+        i.id === id ? { ...i, completed: !i.completed } : i
+      ))
+    } catch (error) {
+      console.error('Error toggling checklist item:', error)
+    }
   }
 
   const completedCount = items.filter(item => item.completed).length
@@ -99,6 +137,7 @@ export function ChecklistProvider({ children }: { children: ReactNode }) {
       updateItem,
       deleteItem,
       toggleComplete,
+      isLoading,
       completedCount,
       totalCount,
       progressPercent,

@@ -1,29 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Plus, X, MapPin, Clock, Edit2, Trash2 } from "lucide-react"
 import Link from "next/link"
 
 type ScheduleOwner = "me" | "you" | "we"
 
 interface Schedule {
-  id: string
+  id: number
   title: string
   date: string
   time?: string
   location?: string
-  owner: ScheduleOwner
+  category?: string
 }
-
-const DUMMY_SCHEDULES: Schedule[] = [
-  { id: "1", title: "네일샵 예약", date: "2026-02-08", time: "14:00", owner: "me" },
-  { id: "2", title: "회사 회식", date: "2026-02-12", time: "19:00", location: "강남역", owner: "you" },
-  { id: "3", title: "2주년 기념일", date: "2026-02-14", owner: "we" },
-  { id: "4", title: "영화 데이트", date: "2026-02-15", time: "17:00", location: "CGV 용산", owner: "we" },
-  { id: "5", title: "피부과", date: "2026-02-20", time: "11:00", owner: "me" },
-  { id: "6", title: "친구 생일파티", date: "2026-02-22", time: "18:00", owner: "you" },
-  { id: "7", title: "제주도 여행", date: "2026-02-28", owner: "we" },
-]
 
 const OWNER_COLORS: Record<ScheduleOwner, { bg: string; dot: string; light: string }> = {
   me: { bg: "bg-pink-500", dot: "bg-pink-400", light: "bg-pink-50" },
@@ -38,10 +28,11 @@ const OWNER_LABELS: Record<ScheduleOwner, string> = {
 }
 
 export function CoupleCalendar() {
-  const [currentDate, setCurrentDate] = useState(new Date(2026, 1, 1))
+  const [currentDate, setCurrentDate] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [showModal, setShowModal] = useState(false)
-  const [schedules, setSchedules] = useState<Schedule[]>(DUMMY_SCHEDULES)
+  const [schedules, setSchedules] = useState<Schedule[]>([])
+  const [isLoading, setIsLoading] = useState(true)
   const [editingSchedule, setEditingSchedule] = useState<Schedule | null>(null)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [scheduleToDelete, setScheduleToDelete] = useState<Schedule | null>(null)
@@ -51,6 +42,26 @@ export function CoupleCalendar() {
     location: "",
     owner: "we" as ScheduleOwner,
   })
+
+  useEffect(() => {
+    fetchSchedules()
+  }, [])
+
+  const fetchSchedules = async () => {
+    setIsLoading(true)
+    try {
+      const res = await fetch('/api/events?userId=default&mode=dating')
+      const data = await res.json()
+      setSchedules(data.map((e: { id: number; title: string; date: string; time?: string; location?: string; category?: string }) => ({
+        ...e,
+        date: e.date.split('T')[0]
+      })))
+    } catch (error) {
+      console.error('Error fetching schedules:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const year = currentDate.getFullYear()
   const month = currentDate.getMonth()
@@ -71,13 +82,19 @@ export function CoupleCalendar() {
     return schedules.filter(s => s.date === dateStr)
   }
 
+  const getCategoryColor = (category?: string): ScheduleOwner => {
+    if (category === 'me') return 'me'
+    if (category === 'you') return 'you'
+    return 'we'
+  }
+
   const handleEditSchedule = (schedule: Schedule) => {
     setEditingSchedule(schedule)
     setNewSchedule({
       title: schedule.title,
       time: schedule.time || "",
       location: schedule.location || "",
-      owner: schedule.owner,
+      owner: getCategoryColor(schedule.category),
     })
     setSelectedDate(schedule.date)
     setShowModal(true)
@@ -88,38 +105,64 @@ export function CoupleCalendar() {
     setShowDeleteModal(true)
   }
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (scheduleToDelete) {
-      setSchedules(schedules.filter(s => s.id !== scheduleToDelete.id))
+      try {
+        await fetch(`/api/events?id=${scheduleToDelete.id}`, { method: 'DELETE' })
+        setSchedules(schedules.filter(s => s.id !== scheduleToDelete.id))
+      } catch (error) {
+        console.error('Error deleting schedule:', error)
+      }
       setScheduleToDelete(null)
       setShowDeleteModal(false)
     }
   }
 
-  const handleSaveSchedule = () => {
+  const handleSaveSchedule = async () => {
     if (!newSchedule.title || !selectedDate) return
     
-    if (editingSchedule) {
-      // Update existing
-      setSchedules(schedules.map(s => 
-        s.id === editingSchedule.id 
-          ? { ...s, title: newSchedule.title, time: newSchedule.time, location: newSchedule.location, owner: newSchedule.owner, date: selectedDate }
-          : s
-      ))
-    } else {
-      // Add new
-      const newItem: Schedule = {
-        id: Date.now().toString(),
-        title: newSchedule.title,
-        date: selectedDate,
-        time: newSchedule.time || undefined,
-        location: newSchedule.location || undefined,
-        owner: newSchedule.owner,
+    try {
+      if (editingSchedule) {
+        // Update existing schedule
+        await fetch('/api/events', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: editingSchedule.id,
+            title: newSchedule.title,
+            date: selectedDate,
+            time: newSchedule.time || undefined,
+            location: newSchedule.location || undefined,
+            category: newSchedule.owner
+          })
+        })
+        setSchedules(schedules.map(s => 
+          s.id === editingSchedule.id 
+            ? { ...s, title: newSchedule.title, date: selectedDate, time: newSchedule.time || undefined, location: newSchedule.location || undefined, category: newSchedule.owner }
+            : s
+        ))
+      } else {
+        // Create new schedule
+        const res = await fetch('/api/events', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userId: 'default',
+            title: newSchedule.title,
+            date: selectedDate,
+            time: newSchedule.time || undefined,
+            location: newSchedule.location || undefined,
+            category: newSchedule.owner,
+            mode: 'dating'
+          })
+        })
+        const newItem = await res.json()
+        setSchedules([...schedules, { ...newItem, date: newItem.date.split('T')[0] }])
       }
-      setSchedules([...schedules, newItem])
+    } catch (error) {
+      console.error('Error saving schedule:', error)
     }
     
-    // Reset form
     setNewSchedule({ title: "", time: "", location: "", owner: "we" })
     setEditingSchedule(null)
     setShowModal(false)
@@ -146,93 +189,68 @@ export function CoupleCalendar() {
 
   return (
     <>
-  {/* Header */}
-  <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#E5E8EB]">
-  <div className="flex items-center justify-between px-5 h-14 max-w-md mx-auto">
-  <h1 className="text-[20px] font-bold text-[#191F28]">캘린더</h1>
-  <div className="w-10" />
-  </div>
-  </header>
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#E5E8EB]">
+        <div className="flex items-center justify-between px-5 h-14 max-w-md mx-auto">
+          <Link href="/dating" className="p-2 -ml-2 rounded-full hover:bg-[#F2F4F6]">
+            <ChevronLeft className="w-6 h-6 text-[#191F28]" />
+          </Link>
+          <h1 className="text-[17px] font-bold text-[#191F28]">캘린더</h1>
+          <button className="p-2 -mr-2 rounded-full hover:bg-[#F2F4F6]" onClick={() => { setSelectedDate(new Date().toISOString().split('T')[0]); setShowModal(true); }}>
+            <Plus className="w-6 h-6 text-[#191F28]" />
+          </button>
+        </div>
+      </header>
 
       <div className="px-5 py-5 max-w-md mx-auto">
-        {/* Month Navigation */}
-        <div className="flex items-center justify-between mb-5">
-          <button 
-            onClick={prevMonth}
-            className="w-10 h-10 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
-          >
-            <ChevronLeft className="w-5 h-5 text-[#4E5968]" />
-          </button>
-          <h2 className="text-[20px] font-bold text-[#191F28]">
-            {year}년 {month + 1}월
-          </h2>
-          <button 
-            onClick={nextMonth}
-            className="w-10 h-10 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
-          >
-            <ChevronRight className="w-5 h-5 text-[#4E5968]" />
-          </button>
-        </div>
+        <div className="bg-white rounded-[20px] shadow-toss overflow-hidden">
+          <div className="flex items-center justify-between p-4 border-b border-[#F2F4F6]">
+            <button onClick={prevMonth} className="p-2 rounded-full hover:bg-[#F2F4F6]">
+              <ChevronLeft className="w-5 h-5 text-[#4E5968]" />
+            </button>
+            <h2 className="text-[18px] font-bold text-[#191F28]">
+              {year}년 {month + 1}월
+            </h2>
+            <button onClick={nextMonth} className="p-2 rounded-full hover:bg-[#F2F4F6]">
+              <ChevronRight className="w-5 h-5 text-[#4E5968]" />
+            </button>
+          </div>
 
-        {/* Legend */}
-        <div className="flex justify-center gap-4 mb-4">
-          {(Object.entries(OWNER_LABELS) as [ScheduleOwner, string][]).map(([key, label]) => (
-            <div key={key} className="flex items-center gap-1.5">
-              <div className={`w-2.5 h-2.5 rounded-full ${OWNER_COLORS[key].dot}`} />
-              <span className="text-[12px] text-[#8B95A1]">{label}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Calendar Grid */}
-        <div className="bg-white rounded-[20px] shadow-sm overflow-hidden">
-          {/* Weekday Headers */}
-          <div className="grid grid-cols-7 border-b border-[#F2F4F6]">
-            {["일", "월", "화", "수", "목", "금", "토"].map((day, i) => (
-              <div 
-                key={day} 
-                className={`py-3 text-center text-[13px] font-medium ${
-                  i === 0 ? "text-red-400" : i === 6 ? "text-blue-400" : "text-[#8B95A1]"
-                }`}
-              >
+          <div className="grid grid-cols-7 text-center text-[13px] font-medium text-[#8B95A1] py-3 border-b border-[#F2F4F6]">
+            {["일", "월", "화", "수", "목", "금", "토"].map(day => (
+              <div key={day} className={day === "일" ? "text-[#FF6B6B]" : day === "토" ? "text-[#3182F6]" : ""}>
                 {day}
               </div>
             ))}
           </div>
-          
-          {/* Days Grid */}
-          <div className="grid grid-cols-7">
+
+          <div className="grid grid-cols-7 gap-1 p-3">
             {days.map((day, index) => {
-              const schedules = day ? getSchedulesForDate(day) : []
-              const isToday = day === 5 && month === 1 && year === 2026
-              const dayOfWeek = index % 7
+              const daySchedules = day ? getSchedulesForDate(day) : []
+              const isToday = day === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear()
               
               return (
                 <button
                   key={index}
                   onClick={() => day && handleDateClick(day)}
                   disabled={!day}
-                  className={`relative aspect-square p-1 flex flex-col items-center justify-start pt-2 transition-colors ${
-                    day ? "hover:bg-[#F8F9FA]" : ""
-                  } ${isToday ? "bg-[#FFF0EE]" : ""}`}
+                  className={`aspect-square p-1 rounded-[10px] flex flex-col items-center justify-start gap-0.5 transition-colors ${
+                    day ? "hover:bg-[#F2F4F6]" : ""
+                  } ${isToday ? "bg-pink-50" : ""}`}
                 >
                   {day && (
                     <>
                       <span className={`text-[14px] font-medium ${
-                        dayOfWeek === 0 ? "text-red-400" : dayOfWeek === 6 ? "text-blue-400" : "text-[#191F28]"
-                      } ${isToday ? "w-7 h-7 rounded-full bg-[#FF8A80] text-white flex items-center justify-center" : ""}`}>
+                        isToday ? "text-pink-500 font-bold" : 
+                        index % 7 === 0 ? "text-[#FF6B6B]" : 
+                        index % 7 === 6 ? "text-[#3182F6]" : "text-[#333D4B]"
+                      }`}>
                         {day}
                       </span>
-                      {schedules.length > 0 && (
-                        <div className="flex gap-0.5 mt-1">
-                          {schedules.slice(0, 3).map((schedule) => (
-                            <div 
-                              key={schedule.id}
-                              className={`w-1.5 h-1.5 rounded-full ${OWNER_COLORS[schedule.owner].dot}`}
-                            />
-                          ))}
-                        </div>
-                      )}
+                      <div className="flex gap-0.5 flex-wrap justify-center">
+                        {daySchedules.slice(0, 3).map((s) => (
+                          <div key={s.id} className={`w-1.5 h-1.5 rounded-full ${OWNER_COLORS[getCategoryColor(s.category)].dot}`} />
+                        ))}
+                      </div>
                     </>
                   )}
                 </button>
@@ -241,121 +259,95 @@ export function CoupleCalendar() {
           </div>
         </div>
 
-        {/* Upcoming Schedules */}
         <div className="mt-6">
-          <h3 className="text-[17px] font-bold text-[#191F28] mb-3">다가오는 일정</h3>
-          <div className="space-y-2">
-            {schedules.slice(0, 4).map((schedule) => (
-              <div 
-                key={schedule.id}
-                className="flex items-center gap-3 p-4 bg-white rounded-[16px] shadow-sm"
-              >
-                <div className={`w-1 h-10 rounded-full ${OWNER_COLORS[schedule.owner].bg}`} />
-                <div className="flex-1">
-                  <p className="text-[15px] font-medium text-[#191F28]">{schedule.title}</p>
-                  <div className="flex items-center gap-2 mt-0.5">
-                    <span className="text-[12px] text-[#8B95A1]">
-                      {new Date(schedule.date).toLocaleDateString("ko-KR", { month: "short", day: "numeric" })}
-                    </span>
-                    {schedule.time && (
-                      <span className="text-[12px] text-[#8B95A1] flex items-center gap-0.5">
-                        <Clock className="w-3 h-3" /> {schedule.time}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                {/* Edit/Delete Buttons */}
-                <div className="flex items-center gap-1">
-                  <button 
-                    onClick={() => handleEditSchedule(schedule)}
-                    className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
-                  >
-                    <Edit2 className="w-4 h-4 text-[#8B95A1]" />
-                  </button>
-                  <button 
-                    onClick={() => handleDeleteClick(schedule)}
-                    className="w-8 h-8 rounded-full hover:bg-red-50 flex items-center justify-center transition-colors"
-                  >
-                    <Trash2 className="w-4 h-4 text-[#FF6B6B]" />
-                  </button>
-                </div>
-                <span className={`text-[11px] font-medium px-2 py-1 rounded-full ${OWNER_COLORS[schedule.owner].light} ${
-                  schedule.owner === "me" ? "text-pink-600" : 
-                  schedule.owner === "you" ? "text-blue-600" : "text-purple-600"
-                }`}>
-                  {OWNER_LABELS[schedule.owner]}
-                </span>
+          <div className="flex items-center gap-4 mb-4">
+            {(["me", "you", "we"] as ScheduleOwner[]).map(owner => (
+              <div key={owner} className="flex items-center gap-2">
+                <div className={`w-3 h-3 rounded-full ${OWNER_COLORS[owner].dot}`} />
+                <span className="text-[13px] text-[#8B95A1]">{OWNER_LABELS[owner]}</span>
               </div>
             ))}
           </div>
+
+          <h3 className="text-[17px] font-bold text-[#191F28] mb-3">다가오는 일정</h3>
+          
+          {isLoading ? (
+            <div className="py-8 text-center text-[#8B95A1]">로딩 중...</div>
+          ) : schedules.length === 0 ? (
+            <div className="py-8 text-center">
+              <p className="text-[#8B95A1] text-[14px]">등록된 일정이 없어요</p>
+              <p className="text-[#B0B8C1] text-[12px] mt-1">날짜를 클릭해서 일정을 추가해보세요</p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {schedules
+                .filter(s => new Date(s.date) >= new Date(new Date().toISOString().split('T')[0]))
+                .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+                .slice(0, 5)
+                .map(schedule => (
+                  <div key={schedule.id} className={`p-4 rounded-[16px] ${OWNER_COLORS[getCategoryColor(schedule.category)].light}`}>
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="text-[15px] font-medium text-[#191F28]">{schedule.title}</p>
+                        <div className="flex items-center gap-2 mt-1 text-[13px] text-[#8B95A1]">
+                          <span>{schedule.date.replace(/-/g, '.')}</span>
+                          {schedule.time && (
+                            <>
+                              <Clock className="w-3 h-3" />
+                              <span>{schedule.time}</span>
+                            </>
+                          )}
+                        </div>
+                        {schedule.location && (
+                          <div className="flex items-center gap-1 mt-1 text-[12px] text-[#8B95A1]">
+                            <MapPin className="w-3 h-3" />
+                            <span>{schedule.location}</span>
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex gap-1">
+                        <button onClick={() => handleEditSchedule(schedule)} className="p-1.5 rounded-full hover:bg-white/50">
+                          <Edit2 className="w-4 h-4 text-[#8B95A1]" />
+                        </button>
+                        <button onClick={() => handleDeleteClick(schedule)} className="p-1.5 rounded-full hover:bg-white/50">
+                          <Trash2 className="w-4 h-4 text-[#8B95A1]" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Floating Action Button */}
-      <button
-        onClick={() => {
-          setSelectedDate(`${year}-${String(month + 1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`)
-          setShowModal(true)
-        }}
-        className="fixed bottom-24 right-5 w-14 h-14 bg-[#FF8A80] hover:bg-[#FF6B6B] text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-40"
-      >
-        <Plus className="w-6 h-6" />
-      </button>
-
-      {/* Schedule Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 bg-black/50">
-          <div 
-            className="absolute inset-0" 
-            onClick={resetAndCloseModal} 
-          />
-          
-          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300">
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-            
-            <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5" onClick={resetAndCloseModal}>
+          <div className="bg-white rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-[#F2F4F6]">
               <h3 className="text-[17px] font-bold text-[#191F28]">
-                {editingSchedule ? "일정 수정" : (selectedDate && new Date(selectedDate).toLocaleDateString("ko-KR", { month: "long", day: "numeric" }))}
+                {editingSchedule ? "일정 수정" : "새 일정"}
               </h3>
-              <button 
-                onClick={resetAndCloseModal}
-                className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
-              >
+              <button onClick={resetAndCloseModal} className="p-2 rounded-full hover:bg-[#F2F4F6]">
                 <X className="w-5 h-5 text-[#8B95A1]" />
               </button>
             </div>
 
-            {/* Existing Schedules */}
             {selectedSchedules.length > 0 && !editingSchedule && (
-              <div className="px-5 py-4 border-b border-[#F2F4F6] space-y-2">
-                {selectedSchedules.map((schedule) => (
-                  <div 
-                    key={schedule.id}
-                    className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]"
-                  >
-                    <div className={`w-1 h-8 rounded-full ${OWNER_COLORS[schedule.owner].bg}`} />
-                    <div className="flex-1">
-                      <p className="text-[14px] font-medium text-[#191F28]">{schedule.title}</p>
-                      {schedule.location && (
-                        <p className="text-[12px] text-[#8B95A1] flex items-center gap-1 mt-0.5">
-                          <MapPin className="w-3 h-3" /> {schedule.location}
-                        </p>
-                      )}
+              <div className="px-5 py-3 border-b border-[#F2F4F6]">
+                <p className="text-[13px] text-[#8B95A1] mb-2">이 날의 일정</p>
+                {selectedSchedules.map(s => (
+                  <div key={s.id} className="flex items-center justify-between py-2">
+                    <div className="flex items-center gap-2">
+                      <div className={`w-2 h-2 rounded-full ${OWNER_COLORS[getCategoryColor(s.category)].dot}`} />
+                      <span className="text-[14px] text-[#333D4B]">{s.title}</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <button 
-                        onClick={() => handleEditSchedule(schedule)}
-                        className="w-8 h-8 rounded-full hover:bg-white flex items-center justify-center transition-colors"
-                      >
+                    <div className="flex gap-1">
+                      <button onClick={() => handleEditSchedule(s)} className="p-1">
                         <Edit2 className="w-4 h-4 text-[#8B95A1]" />
                       </button>
-                      <button 
-                        onClick={() => handleDeleteClick(schedule)}
-                        className="w-8 h-8 rounded-full hover:bg-red-50 flex items-center justify-center transition-colors"
-                      >
-                        <Trash2 className="w-4 h-4 text-[#FF6B6B]" />
+                      <button onClick={() => handleDeleteClick(s)} className="p-1">
+                        <Trash2 className="w-4 h-4 text-[#8B95A1]" />
                       </button>
                     </div>
                   </div>
@@ -363,112 +355,90 @@ export function CoupleCalendar() {
               </div>
             )}
 
-            {/* New Schedule Form */}
-            <div className="px-5 py-5 space-y-4 max-h-[50vh] overflow-y-auto">
+            <div className="p-5 space-y-4">
               <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">일정 제목</label>
+                <label className="text-[13px] text-[#8B95A1] mb-1 block">일정 제목</label>
                 <input
                   type="text"
                   value={newSchedule.title}
-                  onChange={(e) => setNewSchedule({...newSchedule, title: e.target.value})}
+                  onChange={e => setNewSchedule({ ...newSchedule, title: e.target.value })}
                   placeholder="일정을 입력하세요"
-                  className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                  className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] focus:outline-none focus:ring-2 focus:ring-pink-300"
+                  data-testid="input-schedule-title"
                 />
               </div>
-              
+
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[13px] font-medium text-[#4E5968] mb-2">시간</label>
+                  <label className="text-[13px] text-[#8B95A1] mb-1 block">시간</label>
                   <input
                     type="time"
                     value={newSchedule.time}
-                    onChange={(e) => setNewSchedule({...newSchedule, time: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                    onChange={e => setNewSchedule({ ...newSchedule, time: e.target.value })}
+                    className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] focus:outline-none focus:ring-2 focus:ring-pink-300"
                   />
                 </div>
                 <div>
-                  <label className="block text-[13px] font-medium text-[#4E5968] mb-2">장소</label>
+                  <label className="text-[13px] text-[#8B95A1] mb-1 block">장소</label>
                   <input
                     type="text"
                     value={newSchedule.location}
-                    onChange={(e) => setNewSchedule({...newSchedule, location: e.target.value})}
-                    placeholder="장소 입력"
-                    className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                    onChange={e => setNewSchedule({ ...newSchedule, location: e.target.value })}
+                    placeholder="장소"
+                    className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] focus:outline-none focus:ring-2 focus:ring-pink-300"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">누구 일정인가요?</label>
+                <label className="text-[13px] text-[#8B95A1] mb-2 block">담당</label>
                 <div className="flex gap-2">
-                  {(Object.entries(OWNER_LABELS) as [ScheduleOwner, string][]).map(([key, label]) => (
+                  {(["me", "you", "we"] as ScheduleOwner[]).map(owner => (
                     <button
-                      key={key}
-                      onClick={() => setNewSchedule({...newSchedule, owner: key})}
-                      className={`flex-1 py-3 rounded-[12px] text-[14px] font-medium transition-all ${
-                        newSchedule.owner === key 
-                          ? `${OWNER_COLORS[key].bg} text-white` 
-                          : "bg-[#F2F4F6] text-[#4E5968]"
+                      key={owner}
+                      onClick={() => setNewSchedule({ ...newSchedule, owner })}
+                      className={`flex-1 py-2.5 rounded-[10px] text-[14px] font-medium transition-colors ${
+                        newSchedule.owner === owner
+                          ? `${OWNER_COLORS[owner].bg} text-white`
+                          : `${OWNER_COLORS[owner].light} text-[#4E5968]`
                       }`}
                     >
-                      {label}
+                      {OWNER_LABELS[owner]}
                     </button>
                   ))}
                 </div>
               </div>
+            </div>
 
-              <button 
+            <div className="px-5 pb-5">
+              <button
                 onClick={handleSaveSchedule}
                 disabled={!newSchedule.title}
-                className={`w-full py-4 font-semibold rounded-[14px] transition-colors ${
-                  newSchedule.title 
-                    ? "bg-[#FF8A80] hover:bg-[#FF6B6B] text-white" 
-                    : "bg-[#E5E8EB] text-[#B0B8C1] cursor-not-allowed"
-                }`}
+                className="w-full py-4 bg-pink-500 hover:bg-pink-600 disabled:bg-[#E5E8EB] disabled:cursor-not-allowed text-white font-bold rounded-[14px] transition-colors"
+                data-testid="button-save-schedule"
               >
                 {editingSchedule ? "수정하기" : "저장하기"}
               </button>
             </div>
-            
-            <div className="h-8" />
           </div>
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
-      {showDeleteModal && scheduleToDelete && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center px-5"
-          onClick={() => {
-            setShowDeleteModal(false)
-            setScheduleToDelete(null)
-          }}
-        >
-          <div 
-            className="bg-white rounded-[24px] w-full max-w-sm p-6 animate-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="text-center mb-6">
-              <div className="w-14 h-14 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trash2 className="w-7 h-7 text-[#FF6B6B]" />
-              </div>
-              <h3 className="text-[19px] font-bold text-[#191F28] mb-2">일정을 삭제할까요?</h3>
-              <p className="text-[14px] text-[#8B95A1]">{scheduleToDelete.title}</p>
-            </div>
-            
+      {showDeleteModal && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5">
+          <div className="bg-white rounded-[24px] w-full max-w-xs p-6 text-center">
+            <h3 className="text-[17px] font-bold text-[#191F28] mb-2">일정 삭제</h3>
+            <p className="text-[14px] text-[#8B95A1] mb-5">이 일정을 삭제할까요?</p>
             <div className="flex gap-3">
               <button
-                onClick={() => {
-                  setShowDeleteModal(false)
-                  setScheduleToDelete(null)
-                }}
-                className="flex-1 py-3.5 rounded-[14px] bg-[#F2F4F6] text-[#4E5968] font-semibold text-[15px] hover:bg-[#E5E8EB] transition-colors"
+                onClick={() => { setShowDeleteModal(false); setScheduleToDelete(null); }}
+                className="flex-1 py-3 bg-[#F2F4F6] text-[#4E5968] font-medium rounded-[12px]"
               >
                 취소
               </button>
               <button
                 onClick={confirmDelete}
-                className="flex-1 py-3.5 rounded-[14px] bg-[#FF6B6B] text-white font-semibold text-[15px] hover:bg-[#FF5252] transition-colors"
+                className="flex-1 py-3 bg-[#FF6B6B] text-white font-medium rounded-[12px]"
               >
                 삭제
               </button>
@@ -476,6 +446,51 @@ export function CoupleCalendar() {
           </div>
         </div>
       )}
+
+      <div className="h-20" />
+
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E5E8EB] pb-safe">
+        <div className="flex justify-around items-center h-16 max-w-md mx-auto px-5">
+          <Link href="/dating" className="flex flex-col items-center gap-1 text-[#8B95A1]">
+            <div className="w-6 h-6 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+              </svg>
+            </div>
+            <span className="text-[10px]">홈</span>
+          </Link>
+          <div className="flex flex-col items-center gap-1 text-pink-500">
+            <div className="w-6 h-6 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </div>
+            <span className="text-[10px] font-medium">캘린더</span>
+          </div>
+          <Link href="/dating/gallery" className="flex flex-col items-center gap-1 text-[#8B95A1]">
+            <div className="w-6 h-6 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+            </div>
+            <span className="text-[10px]">갤러리</span>
+          </Link>
+          <Link href="/dating/profile" className="flex flex-col items-center gap-1 text-[#8B95A1]">
+            <div className="w-6 h-6 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
+                <circle cx="12" cy="7" r="4" />
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+              </svg>
+            </div>
+            <span className="text-[10px]">프로필</span>
+          </Link>
+        </div>
+      </nav>
     </>
   )
 }

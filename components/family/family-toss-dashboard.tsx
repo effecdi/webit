@@ -22,26 +22,37 @@ const QUICK_ACTIONS = [
   { icon: Book, label: "추억 보기", color: "bg-amber-50 text-amber-600", href: "/family/archive" },
 ]
 
-const TODAY_EVENTS = [
-  { time: "09:00", title: "부동산 계약 상담", category: "함께", color: "bg-green-100 text-green-600" },
-  { time: "18:30", title: "저녁 외식 - 이탈리안", category: "데이트", color: "bg-pink-100 text-pink-600" },
-]
+interface TodayEvent {
+  id: number
+  time: string
+  title: string
+  category: string
+}
 
-const RECENT_MEMORIES = [
-  { id: 1, title: "신혼여행", date: "2025.12.25", count: 48 },
-  { id: 2, title: "결혼식", date: "2025.12.20", count: 156 },
-]
+interface Album {
+  id: number
+  title: string
+  photoCount: number
+  eventDate: string | null
+}
 
-const INITIAL_NOTIFICATIONS: Notification[] = [
-  { id: "1", type: "schedule", title: "새 일정 등록", message: "부동산 계약 상담이 등록되었어요", time: "3시간 전" },
-  { id: "2", type: "photo", title: "사진 추가됨", message: "신혼여행 사진 48장이 추가되었어요", time: "어제" },
-]
+interface Travel {
+  id: number
+  destination: string
+  startDate: string
+  endDate: string
+}
 
 export function FamilyTossDashboard() {
   const [dDay, setDDay] = useState(0)
   const [greeting, setGreeting] = useState("")
   const [showNotifications, setShowNotifications] = useState(false)
-  const [notifications, setNotifications] = useState<Notification[]>(INITIAL_NOTIFICATIONS)
+  const [notifications, setNotifications] = useState<Notification[]>([])
+  const [todayEvents, setTodayEvents] = useState<TodayEvent[]>([])
+  const [recentAlbums, setRecentAlbums] = useState<Album[]>([])
+  const [travels, setTravels] = useState<Travel[]>([])
+  const [photoCount, setPhotoCount] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
   const [coupleNames, setCoupleNames] = useState({ my: "현정", partner: "주호" })
   const [daysTogether, setDaysTogether] = useState(0)
 
@@ -69,11 +80,84 @@ export function FamilyTossDashboard() {
     if (hour < 12) setGreeting("좋은 아침이에요")
     else if (hour < 18) setGreeting("좋은 오후예요")
     else setGreeting("좋은 저녁이에요")
+    
+    fetchData()
   }, [])
+
+  const fetchData = async () => {
+    setIsLoading(true)
+    try {
+      const today = new Date().toISOString().split('T')[0]
+      
+      const [notificationsRes, eventsRes, albumsRes, travelsRes, photosRes] = await Promise.all([
+        fetch('/api/notifications?userId=default&mode=family'),
+        fetch(`/api/events?userId=default&mode=family&date=${today}`),
+        fetch('/api/albums?userId=default&mode=family'),
+        fetch('/api/travels?userId=default'),
+        fetch('/api/photos?userId=default&mode=family')
+      ])
+      
+      const notificationsData = await notificationsRes.json()
+      const eventsData = await eventsRes.json()
+      const albumsData = await albumsRes.json()
+      const travelsData = await travelsRes.json()
+      const photosData = await photosRes.json()
+      
+      setNotifications(notificationsData.map((n: { id: number; type: string; title: string; message: string; createdAt: string }) => ({
+        id: String(n.id),
+        type: n.type,
+        title: n.title,
+        message: n.message,
+        time: formatTimeAgo(n.createdAt)
+      })))
+      
+      setTodayEvents(eventsData.map((e: { id: number; time: string; title: string; category: string }) => ({
+        id: e.id,
+        time: e.time || "00:00",
+        title: e.title,
+        category: e.category || "일정"
+      })))
+      
+      setRecentAlbums(albumsData.slice(0, 3))
+      setTravels(travelsData)
+      setPhotoCount(photosData.length)
+    } catch (error) {
+      console.error('Error fetching data:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const formatTimeAgo = (dateStr: string) => {
+    const date = new Date(dateStr)
+    const now = new Date()
+    const diffMs = now.getTime() - date.getTime()
+    const diffMins = Math.floor(diffMs / 60000)
+    const diffHours = Math.floor(diffMs / 3600000)
+    const diffDays = Math.floor(diffMs / 86400000)
+    
+    if (diffMins < 1) return "방금"
+    if (diffMins < 60) return `${diffMins}분 전`
+    if (diffHours < 24) return `${diffHours}시간 전`
+    return `${diffDays}일 전`
+  }
+
+  const upcomingTravel = travels.find(t => {
+    const startDate = new Date(t.startDate)
+    const today = new Date()
+    return startDate >= today
+  })
+
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case "함께": return "bg-green-100 text-green-600"
+      case "데이트": return "bg-pink-100 text-pink-600"
+      default: return "bg-gray-100 text-gray-600"
+    }
+  }
 
   return (
     <div className="min-h-screen bg-[#F2F4F6] pb-24">
-      {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#F2F4F6]/90 backdrop-blur-md">
         <div className="flex items-center justify-between px-5 py-3 max-w-md mx-auto">
           <div className="flex items-center gap-2 bg-green-100 px-3 py-1.5 rounded-full">
@@ -103,14 +187,23 @@ export function FamilyTossDashboard() {
       </header>
 
       <main className="pt-16 px-5 space-y-4 max-w-md mx-auto">
-        {/* Hero Section */}
         <div className="mt-2 flex justify-between items-start">
           <div>
             <p className="text-[13px] text-[#8B95A1] mb-1">{greeting}, {coupleNames.my}님</p>
             <h1 className="text-[26px] leading-[1.35] font-bold text-[#191F28]">
-              함께한 지
-              <br />
-              <span className="text-green-600">D+{daysTogether > 0 ? daysTogether : dDay}</span>일
+              {daysTogether > 0 || dDay > 0 ? (
+                <>
+                  함께한 지
+                  <br />
+                  <span className="text-green-600">D+{daysTogether > 0 ? daysTogether : dDay}</span>일
+                </>
+              ) : (
+                <>
+                  우리 가족의
+                  <br />
+                  <span className="text-green-600">일상</span>
+                </>
+              )}
             </h1>
           </div>
           <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
@@ -118,7 +211,6 @@ export function FamilyTossDashboard() {
           </div>
         </div>
 
-        {/* Couple Card */}
         <div className="bg-white rounded-[24px] p-5 shadow-toss">
           <div className="flex items-center gap-4">
             <div className="flex -space-x-2">
@@ -137,7 +229,6 @@ export function FamilyTossDashboard() {
           </div>
         </div>
 
-        {/* Quick Actions */}
         <div className="grid grid-cols-3 gap-3">
           {QUICK_ACTIONS.map((action) => {
             const Icon = action.icon
@@ -156,7 +247,6 @@ export function FamilyTossDashboard() {
           })}
         </div>
 
-        {/* Today's Schedule Card */}
         <div className="bg-white rounded-[24px] p-5 shadow-toss">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-bold text-[19px] text-[#191F28]">오늘의 일정</h3>
@@ -165,16 +255,18 @@ export function FamilyTossDashboard() {
             </Link>
           </div>
 
-          {TODAY_EVENTS.length > 0 ? (
+          {isLoading ? (
+            <div className="py-8 text-center text-[#8B95A1]">로딩 중...</div>
+          ) : todayEvents.length > 0 ? (
             <div className="space-y-2">
-              {TODAY_EVENTS.map((event, idx) => (
-                <div key={idx} className="flex items-center gap-3 py-3">
+              {todayEvents.map((event) => (
+                <div key={event.id} className="flex items-center gap-3 py-3">
                   <div className="w-12 h-12 rounded-[14px] bg-[#F2F4F6] flex items-center justify-center flex-shrink-0">
                     <span className="text-[13px] font-bold text-[#4E5968]">{event.time}</span>
                   </div>
                   <div className="flex-1">
                     <p className="text-[15px] font-medium text-[#333D4B]">{event.title}</p>
-                    <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${event.color}`}>
+                    <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${getCategoryColor(event.category)}`}>
                       {event.category}
                     </span>
                   </div>
@@ -185,15 +277,17 @@ export function FamilyTossDashboard() {
           ) : (
             <div className="py-8 text-center">
               <p className="text-[#8B95A1] text-[15px] mb-3">오늘 일정이 없어요</p>
-              <button className="inline-flex items-center gap-2 px-4 py-2.5 bg-green-600 text-white text-[14px] font-bold rounded-[12px]">
+              <Link 
+                href="/family/calendar"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-green-600 text-white text-[14px] font-bold rounded-[12px]"
+              >
                 <Plus className="w-4 h-4" />
                 일정 추가하기
-              </button>
+              </Link>
             </div>
           )}
         </div>
 
-        {/* Memory Archive Card */}
         <div className="bg-white rounded-[24px] p-5 shadow-toss">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center gap-2">
@@ -205,63 +299,75 @@ export function FamilyTossDashboard() {
             </Link>
           </div>
 
-          <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
-            {RECENT_MEMORIES.map((memory) => (
+          {isLoading ? (
+            <div className="py-4 text-center text-[#8B95A1]">로딩 중...</div>
+          ) : recentAlbums.length > 0 ? (
+            <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
+              {recentAlbums.map((album) => (
+                <Link
+                  key={album.id}
+                  href={`/family/archive/${album.id}`}
+                  className="flex-shrink-0 w-36 bg-gradient-to-br from-amber-50 to-amber-100 rounded-[16px] p-3 hover:scale-[1.02] transition-transform"
+                >
+                  <div className="w-full aspect-square bg-amber-200/50 rounded-[12px] mb-2 flex items-center justify-center">
+                    <ImageIcon className="w-8 h-8 text-amber-400" />
+                  </div>
+                  <p className="font-bold text-[14px] text-[#333D4B] truncate">{album.title}</p>
+                  <p className="text-[12px] text-[#8B95A1]">{album.photoCount}장</p>
+                </Link>
+              ))}
+              
               <Link
-                key={memory.id}
-                href={`/family/archive/${memory.id}`}
-                className="flex-shrink-0 w-36 bg-gradient-to-br from-amber-50 to-amber-100 rounded-[16px] p-3 hover:scale-[1.02] transition-transform"
+                href="/family/archive"
+                className="flex-shrink-0 w-36 bg-[#F2F4F6] rounded-[16px] p-3 flex flex-col items-center justify-center gap-2"
               >
-                <div className="w-full aspect-square bg-amber-200/50 rounded-[12px] mb-2 flex items-center justify-center">
-                  <ImageIcon className="w-8 h-8 text-amber-400" />
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                  <ChevronRight className="w-5 h-5 text-[#8B95A1]" />
                 </div>
-                <p className="font-bold text-[14px] text-[#333D4B] truncate">{memory.title}</p>
-                <p className="text-[12px] text-[#8B95A1]">{memory.date} · {memory.count}장</p>
+                <p className="text-[13px] text-[#8B95A1] text-center">더 많은 추억</p>
               </Link>
-            ))}
-            
-            <Link
-              href="/family/archive"
-              className="flex-shrink-0 w-36 bg-[#F2F4F6] rounded-[16px] p-3 flex flex-col items-center justify-center gap-2"
-            >
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                <ChevronRight className="w-5 h-5 text-[#8B95A1]" />
-              </div>
-              <p className="text-[13px] text-[#8B95A1] text-center">더 많은 추억</p>
-            </Link>
-          </div>
+            </div>
+          ) : (
+            <div className="py-6 text-center">
+              <ImageIcon className="w-12 h-12 text-amber-200 mx-auto mb-2" />
+              <p className="text-[#8B95A1] text-[14px]">아직 추억이 없어요</p>
+              <p className="text-[#B0B8C1] text-[12px] mt-1">사진을 추가해서 추억을 남겨보세요</p>
+            </div>
+          )}
         </div>
 
-        {/* Travel Entry Card - only shows when there's an upcoming trip */}
-        <TravelEntryCard 
-          mode="family" 
-          trip={{
-            id: "1",
-            destination: "제주도",
-            startDate: "2026-02-20",
-            endDate: "2026-02-23"
-          }}
-        />
+        {upcomingTravel && (
+          <TravelEntryCard 
+            mode="family" 
+            trip={{
+              id: String(upcomingTravel.id),
+              destination: upcomingTravel.destination,
+              startDate: upcomingTravel.startDate,
+              endDate: upcomingTravel.endDate
+            }}
+          />
+        )}
 
-        {/* This Day Memory */}
         <div className="bg-white rounded-[24px] overflow-hidden shadow-toss">
           <div 
             className="w-full h-32 bg-cover bg-center relative"
-            style={{ 
-              backgroundImage: 'linear-gradient(135deg, #a8e6cf 0%, #88d8b0 100%)'
-            }}
+            style={{ backgroundImage: 'linear-gradient(135deg, #a8e6cf 0%, #88d8b0 100%)' }}
           >
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <p className="text-white/80 text-[13px] mb-1">1개월 전 오늘</p>
-                <p className="text-white text-lg font-bold">신혼여행을 다녀왔어요</p>
+                <p className="text-white/80 text-[13px] mb-1">우리의 추억</p>
+                <p className="text-white text-lg font-bold">
+                  {photoCount > 0 ? "사진을 확인해보세요" : "사진을 추가해보세요"}
+                </p>
               </div>
             </div>
           </div>
           <Link href="/family/archive" className="p-4 flex justify-between items-center">
             <div>
               <div className="text-[15px] font-bold text-[#333D4B]">추억 보기</div>
-              <div className="text-[12px] text-[#8B95A1] mt-0.5">48장의 사진</div>
+              <div className="text-[12px] text-[#8B95A1] mt-0.5">
+                {photoCount > 0 ? `${photoCount}장의 사진` : "아직 사진이 없어요"}
+              </div>
             </div>
             <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
           </Link>

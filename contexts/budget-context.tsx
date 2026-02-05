@@ -26,7 +26,7 @@ interface BudgetContextType {
   addExpense: (expense: Expense) => void
   updateExpense: (id: string, updates: Partial<Expense>) => void
   deleteExpense: (id: string) => void
-  // Calculated values
+  isLoading: boolean
   totalPaid: number
   totalDeposits: number
   totalSpent: number
@@ -40,65 +40,131 @@ const BudgetContext = createContext<BudgetContextType | undefined>(undefined)
 
 const STORAGE_KEY = "wedding_budget_data"
 
-const initialExpenses: Expense[] = [
-  { id: "1", title: "빌라 드 지디 계약금", amount: 3000000, category: "예식장", date: "2025-01-15", payer: "groom", status: "paid", method: "transfer" },
-  { id: "2", title: "드레스 가봉 비용", amount: 500000, category: "드레스", date: "2025-01-20", payer: "bride", status: "paid", method: "card" },
-  { id: "3", title: "스튜디오 촬영 예약금", amount: 800000, category: "스튜디오", date: "2025-01-25", payer: "shared", status: "paid", method: "transfer" },
-  { id: "4", title: "빌라 드 지디 잔금", amount: 5000000, category: "예식장", date: "2025-02-15", payer: "groom", status: "scheduled", deposit: 1000000, balance: 4000000, dueDate: "2025-05-01", reminder: true },
-  { id: "5", title: "헤어메이크업", amount: 300000, category: "드레스", date: "2025-01-28", payer: "bride", status: "paid", method: "card" },
-  { id: "6", title: "예물 반지", amount: 2500000, category: "예물", date: "2025-02-01", payer: "groom", status: "paid", method: "card" },
-  { id: "7", title: "허니문 항공권", amount: 1800000, category: "허니문", date: "2025-02-05", payer: "shared", status: "scheduled", deposit: 500000, balance: 1300000, dueDate: "2025-06-01", reminder: true },
-]
-
 export function BudgetProvider({ children }: { children: ReactNode }) {
-  const [totalBudget, setTotalBudget] = useState(28500000)
-  const [expenses, setExpenses] = useState<Expense[]>(initialExpenses)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [totalBudget, setTotalBudget] = useState(0)
+  const [expenses, setExpenses] = useState<Expense[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  // Load from localStorage on mount
   useEffect(() => {
+    fetchExpenses()
+    loadBudget()
+  }, [])
+
+  const loadBudget = () => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY)
       if (stored) {
         const data = JSON.parse(stored)
         if (data.totalBudget) setTotalBudget(data.totalBudget)
-        if (data.expenses) setExpenses(data.expenses)
       }
     } catch (e) {
       console.error("Failed to load budget data:", e)
     }
-    setIsLoaded(true)
-  }, [])
+  }
 
-  // Save to localStorage on changes
-  useEffect(() => {
-    if (isLoaded) {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ totalBudget, expenses }))
-      } catch (e) {
-        console.error("Failed to save budget data:", e)
-      }
+  const saveBudget = (budget: number) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ totalBudget: budget }))
+    } catch (e) {
+      console.error("Failed to save budget data:", e)
     }
-  }, [totalBudget, expenses, isLoaded])
-
-  // Helper functions
-  const addExpense = (expense: Expense) => {
-    setExpenses(prev => [expense, ...prev])
   }
 
-  const updateExpense = (id: string, updates: Partial<Expense>) => {
-    setExpenses(prev => prev.map(e => e.id === id ? { ...e, ...updates } : e))
+  const fetchExpenses = async () => {
+    setIsLoading(true)
+    try {
+      const res = await fetch('/api/expenses?userId=default&mode=wedding')
+      const data = await res.json()
+      setExpenses(data.map((e: { id: number; title: string; amount: string; category: string; date: string; isPaid: boolean; memo: string }) => ({
+        id: String(e.id),
+        title: e.title,
+        amount: Number(e.amount),
+        category: e.category,
+        date: e.date.split('T')[0],
+        payer: 'shared' as const,
+        status: e.isPaid ? 'paid' as const : 'scheduled' as const,
+        method: 'card' as const,
+        memo: e.memo
+      })))
+    } catch (error) {
+      console.error('Error fetching expenses:', error)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
-  const deleteExpense = (id: string) => {
-    setExpenses(prev => prev.filter(e => e.id !== id))
+  const handleSetTotalBudget = (budget: number) => {
+    setTotalBudget(budget)
+    saveBudget(budget)
   }
 
-  // Calculated values
+  const addExpense = async (expense: Expense) => {
+    try {
+      const res = await fetch('/api/expenses', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: 'default',
+          title: expense.title,
+          amount: expense.amount,
+          category: expense.category,
+          date: expense.date,
+          isPaid: expense.status === 'paid',
+          memo: expense.memo,
+          mode: 'wedding'
+        })
+      })
+      const newExpense = await res.json()
+      setExpenses(prev => [{
+        id: String(newExpense.id),
+        title: newExpense.title,
+        amount: Number(newExpense.amount),
+        category: newExpense.category,
+        date: newExpense.date.split('T')[0],
+        payer: expense.payer,
+        status: newExpense.isPaid ? 'paid' : 'scheduled',
+        method: expense.method,
+        memo: newExpense.memo
+      }, ...prev])
+    } catch (error) {
+      console.error('Error adding expense:', error)
+    }
+  }
+
+  const updateExpense = async (id: string, updates: Partial<Expense>) => {
+    try {
+      const patchBody: Record<string, unknown> = {
+        id: parseInt(id),
+        ...updates
+      }
+      // Only include isPaid if status is explicitly provided
+      if (updates.status !== undefined) {
+        patchBody.isPaid = updates.status === 'paid'
+      }
+      await fetch('/api/expenses', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(patchBody)
+      })
+      setExpenses(prev => prev.map(e => e.id === id ? { ...e, ...updates } : e))
+    } catch (error) {
+      console.error('Error updating expense:', error)
+    }
+  }
+
+  const deleteExpense = async (id: string) => {
+    try {
+      await fetch(`/api/expenses?id=${id}`, { method: 'DELETE' })
+      setExpenses(prev => prev.filter(e => e.id !== id))
+    } catch (error) {
+      console.error('Error deleting expense:', error)
+    }
+  }
+
   const totalPaid = expenses.filter(e => e.status === "paid").reduce((sum, e) => sum + e.amount, 0)
   const totalDeposits = expenses.filter(e => e.status === "scheduled").reduce((sum, e) => sum + (e.deposit || 0), 0)
   const totalSpent = totalPaid + totalDeposits
-  const totalScheduled = expenses.filter(e => e.status === "scheduled").reduce((sum, e) => sum + (e.balance || 0), 0)
+  const totalScheduled = expenses.filter(e => e.status === "scheduled").reduce((sum, e) => sum + (e.balance || e.amount), 0)
   const remaining = totalBudget - totalSpent - totalScheduled
   const spentPercent = totalBudget > 0 ? Math.round((totalSpent / totalBudget) * 100) : 0
   const scheduledPercent = totalBudget > 0 ? Math.round((totalScheduled / totalBudget) * 100) : 0
@@ -106,12 +172,13 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
   return (
     <BudgetContext.Provider value={{
       totalBudget,
-      setTotalBudget,
+      setTotalBudget: handleSetTotalBudget,
       expenses,
       setExpenses,
       addExpense,
       updateExpense,
       deleteExpense,
+      isLoading,
       totalPaid,
       totalDeposits,
       totalSpent,
