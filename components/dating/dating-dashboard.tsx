@@ -102,6 +102,7 @@ export function DatingDashboard() {
   const [newComment, setNewComment] = useState("");
   const [newTodoText, setNewTodoText] = useState("");
   const [showAddTodo, setShowAddTodo] = useState(false);
+  const [isAddingTodo, setIsAddingTodo] = useState(false);
   const isComposing = useRef(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -228,8 +229,9 @@ export function DatingDashboard() {
   };
 
   const addTodo = async () => {
-    if (!newTodoText.trim()) return;
+    if (!newTodoText.trim() || isAddingTodo) return;
     
+    setIsAddingTodo(true);
     try {
       const res = await fetch('/api/todos', {
         method: 'POST',
@@ -248,6 +250,8 @@ export function DatingDashboard() {
       setShowAddTodo(false);
     } catch (error) {
       console.error('Error adding todo:', error);
+    } finally {
+      setIsAddingTodo(false);
     }
   };
 
@@ -521,10 +525,15 @@ export function DatingDashboard() {
                 />
                 <button
                   onClick={addTodo}
-                  className="px-4 py-2 bg-pink-500 text-white rounded-[12px] text-[14px] font-medium"
+                  disabled={isAddingTodo || !newTodoText.trim()}
+                  className={`px-4 py-2 rounded-[12px] text-[14px] font-medium transition-colors ${
+                    isAddingTodo || !newTodoText.trim() 
+                      ? "bg-gray-300 text-gray-500 cursor-not-allowed" 
+                      : "bg-pink-500 text-white"
+                  }`}
                   data-testid="button-submit-todo"
                 >
-                  추가
+                  {isAddingTodo ? "추가 중..." : "추가"}
                 </button>
               </div>
               <div className="flex gap-2">
