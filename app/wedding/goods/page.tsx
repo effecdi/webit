@@ -304,7 +304,7 @@ export default function GoodsPage() {
 
       {/* Add Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-end">
+        <div className="fixed inset-0 z-[60] bg-black/50 flex items-end">
           <div className="w-full bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300">
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />

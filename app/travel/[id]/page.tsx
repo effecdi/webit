@@ -419,7 +419,7 @@ export default function TravelDetailPage() {
       </main>
 
       {showAddSchedule && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-5">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center px-5">
           <div className="absolute inset-0 bg-black/40" onClick={() => setShowAddSchedule(false)} />
           <div className="relative bg-white rounded-[24px] w-full max-w-sm p-6 shadow-xl">
             <div className="flex items-center justify-between mb-6">
@@ -485,7 +485,7 @@ export default function TravelDetailPage() {
       )}
 
       {showAddExpense && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-5">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center px-5">
           <div className="absolute inset-0 bg-black/40" onClick={() => setShowAddExpense(false)} />
           <div className="relative bg-white rounded-[24px] w-full max-w-sm p-6 shadow-xl">
             <div className="flex items-center justify-between mb-6">

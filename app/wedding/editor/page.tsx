@@ -869,7 +869,7 @@ case 4:
 
       {/* Preview Modal */}
       {showPreview && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="h-full flex flex-col">
             {/* Modal Header */}
             <div className="flex-shrink-0 flex items-center justify-between px-4 py-3 bg-white/95 backdrop-blur-md">

@@ -299,7 +299,7 @@ export default function ChecklistPage() {
 
       {/* Add Item Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 bg-white">
+        <div className="fixed inset-0 z-[60] bg-white">
           {/* Header */}
           <div className="flex items-center justify-between px-4 h-14 border-b border-[#E5E8EB]">
             <button onClick={() => setShowAddModal(false)}>

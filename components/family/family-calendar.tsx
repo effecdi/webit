@@ -364,7 +364,7 @@ export function FamilyCalendar() {
 
       {/* Add/Edit Event Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50">
+        <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/50">
           <div 
             className="absolute inset-0"
             onClick={resetAndCloseModal}

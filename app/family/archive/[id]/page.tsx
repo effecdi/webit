@@ -346,7 +346,7 @@ export default function ArchiveDetailPage({ params }: { params: Promise<{ id: st
 
       {/* Photo Viewer Modal */}
       {selectedMemory && (
-        <div className="fixed inset-0 z-50 bg-black">
+        <div className="fixed inset-0 z-[60] bg-black">
           {/* Header */}
           <div className="absolute top-0 left-0 right-0 z-10 p-4 bg-gradient-to-b from-black/80 to-transparent">
             <div className="flex items-center justify-between">
@@ -437,7 +437,7 @@ export default function ArchiveDetailPage({ params }: { params: Promise<{ id: st
       {/* Add Memory Modal */}
       {showAddModal && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50"
+          className="fixed inset-0 z-[60] bg-black/50"
           onClick={() => setShowAddModal(false)}
         >
           <div 

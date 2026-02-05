@@ -323,7 +323,7 @@ export default function AlbumDetailPage() {
       {/* More Menu Modal */}
       {showMoreMenu && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50 flex items-end justify-center"
+          className="fixed inset-0 z-[60] bg-black/50 flex items-end justify-center"
           onClick={() => setShowMoreMenu(false)}
         >
           <div 

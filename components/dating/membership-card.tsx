@@ -71,7 +71,7 @@ export function MembershipCard() {
 
       {/* Membership Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-secondary/50">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-secondary/50">
           <div className="w-full max-w-md bg-card border-3 border-secondary shadow-brutalist-lg max-h-[80vh] overflow-y-auto">
             {/* Modal Header */}
             <div className="sticky top-0 bg-card border-b-3 border-secondary p-4 flex items-center justify-between">

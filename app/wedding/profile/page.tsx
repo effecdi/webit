@@ -321,7 +321,7 @@ export default function WeddingProfilePage() {
       {/* Premium Subscription Modal */}
       {showPremiumModal && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5"
+          className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center px-5"
           onClick={() => setShowPremiumModal(false)}
         >
           <div 
@@ -407,7 +407,7 @@ export default function WeddingProfilePage() {
       {/* Payment Method Modal */}
       {showPaymentModal && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50"
+          className="fixed inset-0 z-[60] bg-black/50"
           onClick={() => setShowPaymentModal(false)}
         >
           <div 
@@ -492,7 +492,7 @@ export default function WeddingProfilePage() {
       {/* Photo Upload Modal */}
       {showPhotoModal && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50 flex items-end justify-center"
+          className="fixed inset-0 z-[60] bg-black/50 flex items-end justify-center"
           onClick={() => setShowPhotoModal(null)}
         >
           <div 

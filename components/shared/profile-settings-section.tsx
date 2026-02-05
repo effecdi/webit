@@ -148,7 +148,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
       {/* Notification Settings Modal */}
       {showNotificationSettings && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50"
+          className="fixed inset-0 z-[60] bg-black/50"
           onClick={() => setShowNotificationSettings(false)}
         >
           <div 
@@ -212,7 +212,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
       {/* Privacy Settings Modal */}
       {showPrivacySettings && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50"
+          className="fixed inset-0 z-[60] bg-black/50"
           onClick={() => setShowPrivacySettings(false)}
         >
           <div 
@@ -276,7 +276,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
       {/* Support/Customer Service Modal */}
       {showSupportSettings && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50"
+          className="fixed inset-0 z-[60] bg-black/50"
           onClick={() => setShowSupportSettings(false)}
         >
           <div 
@@ -359,7 +359,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
       {/* Widget Settings Modal */}
       {showWidgetSettings && (
         <div 
-          className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5"
+          className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center px-5"
           onClick={() => setShowWidgetSettings(false)}
         >
           <div 

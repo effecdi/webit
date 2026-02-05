@@ -74,7 +74,7 @@ export function NotificationModal({
   return (
     <div 
       ref={modalRef}
-      className="absolute top-full right-0 mt-2 w-80 bg-white rounded-[20px] shadow-xl z-50 overflow-hidden" 
+      className="absolute top-full right-0 mt-2 w-80 bg-white rounded-[20px] shadow-xl z-[60] overflow-hidden" 
       data-testid="notification-modal"
     >
       <div className="p-4 border-b border-[#F2F4F6]">

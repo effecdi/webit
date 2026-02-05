@@ -783,7 +783,7 @@ export function WeddingDashboard() {
 
       {/* Budget Setup Modal */}
       {showBudgetSetupModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-5">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center px-5">
           <div 
             className="absolute inset-0 bg-black/40" 
             onClick={() => setShowBudgetSetupModal(false)} 
