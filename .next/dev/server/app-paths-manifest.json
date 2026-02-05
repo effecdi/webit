@@ -5,6 +5,5 @@
   "/api/travels/route": "app/api/travels/route.js",
   "/onboarding/page": "app/onboarding/page.js",
   "/page": "app/page.js",
-  "/wedding/budget/page": "app/wedding/budget/page.js",
   "/wedding/page": "app/wedding/page.js"
 }

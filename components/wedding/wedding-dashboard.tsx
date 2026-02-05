@@ -148,7 +148,9 @@ export function WeddingDashboard() {
   })
 
   // Budget from context
-  const { totalBudget, totalSpent, remaining, spentPercent, expenses, addExpense } = useBudget()
+  const { totalBudget, setTotalBudget, totalSpent, remaining, spentPercent, expenses, addExpense } = useBudget()
+  const [showBudgetSetupModal, setShowBudgetSetupModal] = useState(false)
+  const [budgetInput, setBudgetInput] = useState("")
   
   // Checklist from context
   const { items: checklistItems, toggleComplete, progressPercent: checklistProgress } = useChecklist()
@@ -445,43 +447,60 @@ export function WeddingDashboard() {
               <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
             </Link>
           </div>
-          <div className="mt-3 mb-2">
-            <span className="text-[26px] font-bold text-[#191F28] tracking-tight">
-              {totalBudget.toLocaleString()}
-            </span>
-            <span className="text-[20px] font-bold text-[#191F28]">원</span>
-          </div>
-          
-          {/* Budget Progress Bar */}
-          <div className="mb-4">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-[13px] text-[#8B95A1]">사용 {spentPercent}%</span>
-              <span className="text-[13px] text-[#8B95A1]">
-                남은 금액 {remaining.toLocaleString()}원
-              </span>
-            </div>
-            <div className="h-2 bg-[#F2F4F6] rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-[#3182F6] rounded-full transition-all duration-500"
-                style={{ width: `${spentPercent}%` }}
-              />
-            </div>
-          </div>
+          {totalBudget > 0 ? (
+            <>
+              <div className="mt-3 mb-2">
+                <span className="text-[26px] font-bold text-[#191F28] tracking-tight">
+                  {totalBudget.toLocaleString()}
+                </span>
+                <span className="text-[20px] font-bold text-[#191F28]">원</span>
+              </div>
+              
+              {/* Budget Progress Bar */}
+              <div className="mb-4">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-[13px] text-[#8B95A1]">사용 {spentPercent}%</span>
+                  <span className="text-[13px] text-[#8B95A1]">
+                    남은 금액 {remaining.toLocaleString()}원
+                  </span>
+                </div>
+                <div className="h-2 bg-[#F2F4F6] rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-[#3182F6] rounded-full transition-all duration-500"
+                    style={{ width: `${spentPercent}%` }}
+                  />
+                </div>
+              </div>
 
-          <div className="flex gap-2.5">
-            <Link 
-              href="/wedding/budget"
-              className="flex-1 bg-[#F2F4F6] hover:bg-gray-200 text-[#4E5968] font-semibold py-3 rounded-[12px] text-[15px] transition-colors text-center"
-            >
-              예산 관리
-            </Link>
-            <button 
-              onClick={() => setShowExpenseModal(true)}
-              className="flex-1 bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold py-3 rounded-[12px] text-[15px] transition-colors text-center"
-            >
-              지출 기록
-            </button>
-          </div>
+              <div className="flex gap-2.5">
+                <Link 
+                  href="/wedding/budget"
+                  className="flex-1 bg-[#F2F4F6] hover:bg-gray-200 text-[#4E5968] font-semibold py-3 rounded-[12px] text-[15px] transition-colors text-center"
+                >
+                  예산 관리
+                </Link>
+                <button 
+                  onClick={() => setShowExpenseModal(true)}
+                  className="flex-1 bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold py-3 rounded-[12px] text-[15px] transition-colors text-center"
+                >
+                  지출 기록
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="mt-3">
+              <p className="text-[14px] text-[#8B95A1] mb-4">
+                예산을 설정하면 결혼 비용을 효과적으로 관리할 수 있어요
+              </p>
+              <button 
+                onClick={() => setShowBudgetSetupModal(true)}
+                className="w-full bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold py-3 rounded-[12px] text-[15px] transition-colors"
+                data-testid="button-set-budget"
+              >
+                예산 설정하기
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Budget List Card */}
@@ -732,6 +751,68 @@ export function WeddingDashboard() {
             </div>
             
             <div className="h-8" />
+          </div>
+        </div>
+      )}
+
+      {/* Budget Setup Modal */}
+      {showBudgetSetupModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-5">
+          <div 
+            className="absolute inset-0 bg-black/40" 
+            onClick={() => setShowBudgetSetupModal(false)} 
+          />
+          <div className="relative bg-white rounded-[24px] w-full max-w-sm p-6 shadow-xl">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-[19px] font-bold text-[#191F28]">예산 설정</h2>
+              <button 
+                onClick={() => setShowBudgetSetupModal(false)}
+                className="w-8 h-8 flex items-center justify-center"
+                data-testid="button-close-budget-modal"
+              >
+                <X className="w-5 h-5 text-[#8B95A1]" />
+              </button>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="text-[13px] font-medium text-[#4E5968] mb-1.5 block">총 예산 (원)</label>
+                <div className="relative">
+                  <Wallet className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B95A1]" />
+                  <input
+                    type="text"
+                    value={budgetInput ? Number(budgetInput).toLocaleString() : ""}
+                    onChange={(e) => {
+                      const num = e.target.value.replace(/[^\d]/g, "")
+                      setBudgetInput(num)
+                    }}
+                    placeholder="예: 50,000,000"
+                    className="w-full pl-12 pr-12 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
+                    data-testid="input-total-budget"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#8B95A1]">원</span>
+                </div>
+              </div>
+              
+              <button
+                onClick={() => {
+                  if (budgetInput) {
+                    setTotalBudget(Number(budgetInput))
+                    setShowBudgetSetupModal(false)
+                    setBudgetInput("")
+                  }
+                }}
+                disabled={!budgetInput}
+                className={`w-full py-4 font-bold rounded-[12px] transition-all ${
+                  budgetInput 
+                    ? "bg-[#3182F6] text-white hover:bg-[#1B64DA]" 
+                    : "bg-[#B0B8C1] text-white cursor-not-allowed"
+                }`}
+                data-testid="button-confirm-budget"
+              >
+                설정 완료
+              </button>
+            </div>
           </div>
         </div>
       )}

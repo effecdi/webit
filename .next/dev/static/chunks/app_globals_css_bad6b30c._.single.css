@@ -4372,6 +4372,10 @@
     border-color: var(--destructive);
   }
 
+  .border-gray-100 {
+    border-color: var(--color-gray-100);
+  }
+
   .border-gray-200 {
     border-color: var(--color-gray-200);
   }
@@ -4581,6 +4585,11 @@
 
   .bg-\[\#3182F6\] {
     background-color: #3182f6;
+  }
+
+  .bg-\[\#3182F6\]\/10 {
+    background-color: #3182f61a;
+    background-color: lab(54.3154% 7.54905 -66.2974 / .1);
   }
 
   .bg-\[\#38383A\] {
@@ -6406,6 +6415,10 @@
 
   .pr-10 {
     padding-right: calc(var(--spacing) * 10);
+  }
+
+  .pr-12 {
+    padding-right: calc(var(--spacing) * 12);
   }
 
   .pb-0\.5 {
