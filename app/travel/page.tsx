@@ -21,29 +21,6 @@ interface Trip {
   image?: string
 }
 
-const SAMPLE_TRIPS: Trip[] = [
-  {
-    id: "1",
-    destination: "제주도",
-    startDate: "2026-02-20",
-    endDate: "2026-02-23",
-    status: "upcoming"
-  },
-  {
-    id: "2",
-    destination: "오사카",
-    startDate: "2026-04-15",
-    endDate: "2026-04-19",
-    status: "upcoming"
-  },
-  {
-    id: "3",
-    destination: "부산",
-    startDate: "2025-12-01",
-    endDate: "2025-12-03",
-    status: "past"
-  }
-]
 
 function calculateDday(targetDate: string) {
   const target = new Date(targetDate)
@@ -71,7 +48,7 @@ function getDuration(start: string, end: string) {
 
 export default function TravelListPage() {
   const router = useRouter()
-  const [trips, setTrips] = useState<Trip[]>(SAMPLE_TRIPS)
+  const [trips, setTrips] = useState<Trip[]>([])
   const [showAddModal, setShowAddModal] = useState(false)
   const [newTrip, setNewTrip] = useState({
     destination: "",

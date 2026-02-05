@@ -1,7 +1,10 @@
 {
-  "/api/albums/route": "app/api/albums/route.js",
-  "/api/photos/route": "app/api/photos/route.js",
-  "/dating/gallery/page": "app/dating/gallery/page.js",
+  "/api/checklist/route": "app/api/checklist/route.js",
+  "/api/expenses/route": "app/api/expenses/route.js",
+  "/api/notifications/route": "app/api/notifications/route.js",
+  "/api/travels/route": "app/api/travels/route.js",
   "/onboarding/page": "app/onboarding/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/wedding/budget/page": "app/wedding/budget/page.js",
+  "/wedding/page": "app/wedding/page.js"
 }

@@ -36,7 +36,19 @@ export async function GET(request: NextRequest) {
         const [{ count: photoCount }] = await db.select({ count: count() })
           .from(photos)
           .where(eq(photos.albumId, album.id));
-        return { ...album, photoCount: Number(photoCount) };
+        
+        // Get most recent photo as thumbnail
+        const [latestPhoto] = await db.select({ url: photos.url })
+          .from(photos)
+          .where(eq(photos.albumId, album.id))
+          .orderBy(desc(photos.createdAt))
+          .limit(1);
+        
+        return { 
+          ...album, 
+          photoCount: Number(photoCount),
+          thumbnail: latestPhoto?.url || album.thumbnail
+        };
       })
     );
 

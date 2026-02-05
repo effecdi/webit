@@ -45,6 +45,19 @@ export function GalleryView() {
     fetchData()
   }, [])
 
+  // Prevent body scroll when any modal is open
+  useEffect(() => {
+    const isAnyModalOpen = showMoreMenu || showAlbumSheet || showAddAlbumModal || showAddPhotoModal || selectedPhotoIndex !== null
+    if (isAnyModalOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [showMoreMenu, showAlbumSheet, showAddAlbumModal, showAddPhotoModal, selectedPhotoIndex])
+
   const fetchData = async () => {
     setIsLoading(true)
     try {
