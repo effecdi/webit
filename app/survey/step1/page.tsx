@@ -103,7 +103,7 @@ export default function SurveyStep1() {
                 type="date"
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
-                max={new Date().toISOString().split("T")[0]}
+                max={new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString().split("T")[0]}
                 className="w-full h-14 px-5 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] outline-none focus:ring-2 focus:ring-blue-500"
                 data-testid="input-my-birthday"
               />

@@ -116,6 +116,10 @@ export function DatingDashboard() {
   const [coupleNames, setCoupleNames] = useState({ my: "민지", partner: "준호" });
   const [diffDays, setDiffDays] = useState(0);
   const [birthdayPerson, setBirthdayPerson] = useState<string | null>(null);
+  const [upcomingBirthday, setUpcomingBirthday] = useState<{ person: string; daysLeft: number } | null>(null);
+  const [upcomingMilestone, setUpcomingMilestone] = useState<{ days: number; daysLeft: number } | null>(null);
+
+  const MILESTONES = [100, 200, 300, 365, 400, 500, 600, 700, 730, 800, 900, 1000, 1095, 1100, 1200, 1300, 1400, 1460, 1500];
 
   const checkBirthday = (birthdayStr: string | null): boolean => {
     if (!birthdayStr) return false;
@@ -124,8 +128,37 @@ export function DatingDashboard() {
     return today.getMonth() === birthday.getMonth() && today.getDate() === birthday.getDate();
   };
 
-  const openNaverShopping = () => {
-    const searchQuery = encodeURIComponent("생일선물");
+  const getDaysUntilBirthday = (birthdayStr: string | null): number => {
+    if (!birthdayStr) return -1;
+    const today = new Date();
+    const birthday = new Date(birthdayStr);
+    const thisYearBirthday = new Date(today.getFullYear(), birthday.getMonth(), birthday.getDate());
+    
+    if (thisYearBirthday < today) {
+      thisYearBirthday.setFullYear(today.getFullYear() + 1);
+    }
+    
+    const diffTime = thisYearBirthday.getTime() - today.getTime();
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  };
+
+  const getUpcomingMilestone = (startDateStr: string | null): { days: number; daysLeft: number } | null => {
+    if (!startDateStr) return null;
+    const startDate = new Date(startDateStr);
+    const today = new Date();
+    const currentDays = Math.ceil((today.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+    
+    for (const milestone of MILESTONES) {
+      const daysLeft = milestone - currentDays;
+      if (daysLeft > 0 && daysLeft <= 7) {
+        return { days: milestone, daysLeft };
+      }
+    }
+    return null;
+  };
+
+  const openNaverShopping = (searchTerm: string = "생일선물") => {
+    const searchQuery = encodeURIComponent(searchTerm);
     const naverShoppingUrl = `https://msearch.shopping.naver.com/search/all?query=${searchQuery}`;
     window.open(naverShoppingUrl, "_blank");
   };
@@ -143,6 +176,20 @@ export function DatingDashboard() {
       setBirthdayPerson(myName);
     } else if (checkBirthday(partnerBirthday)) {
       setBirthdayPerson(partnerName);
+    }
+    
+    const myBirthdayDays = getDaysUntilBirthday(myBirthday);
+    const partnerBirthdayDays = getDaysUntilBirthday(partnerBirthday);
+    
+    if (myBirthdayDays > 0 && myBirthdayDays <= 7) {
+      setUpcomingBirthday({ person: myName, daysLeft: myBirthdayDays });
+    } else if (partnerBirthdayDays > 0 && partnerBirthdayDays <= 7) {
+      setUpcomingBirthday({ person: partnerName, daysLeft: partnerBirthdayDays });
+    }
+    
+    const milestone = getUpcomingMilestone(savedDate);
+    if (milestone) {
+      setUpcomingMilestone(milestone);
     }
     
     if (savedDate) {
@@ -409,9 +456,73 @@ export function DatingDashboard() {
                   축하해요! {birthdayPerson}님에게 줄 선물을 골라볼까요?
                 </p>
                 <button
-                  onClick={openNaverShopping}
+                  onClick={() => openNaverShopping("생일선물")}
                   className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-[12px] font-semibold text-[14px] hover:from-pink-600 hover:to-rose-600 transition-all shadow-sm"
                   data-testid="button-gift-shopping"
+                >
+                  <Gift className="w-4 h-4" />
+                  선물하기
+                  <ExternalLink className="w-3.5 h-3.5 ml-1 opacity-70" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {!birthdayPerson && upcomingBirthday && (
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-[24px] p-5 shadow-toss border border-amber-100" data-testid="upcoming-birthday-banner">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-400 flex items-center justify-center flex-shrink-0">
+                <Cake className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <p className="text-[16px] font-bold text-[#191F28]">
+                    {upcomingBirthday.person}님의 생일이 다가와요!
+                  </p>
+                  <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[12px] font-bold rounded-full">
+                    D-{upcomingBirthday.daysLeft}
+                  </span>
+                </div>
+                <p className="text-[14px] text-[#4E5968] mb-3">
+                  미리 선물을 준비해보세요!
+                </p>
+                <button
+                  onClick={() => openNaverShopping("생일선물")}
+                  className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-[12px] font-semibold text-[14px] hover:from-amber-600 hover:to-orange-600 transition-all shadow-sm"
+                  data-testid="button-upcoming-birthday-gift"
+                >
+                  <Gift className="w-4 h-4" />
+                  선물하기
+                  <ExternalLink className="w-3.5 h-3.5 ml-1 opacity-70" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {upcomingMilestone && (
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-[24px] p-5 shadow-toss border border-purple-100" data-testid="milestone-banner">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center flex-shrink-0">
+                <Heart className="w-6 h-6 text-white" fill="white" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <p className="text-[16px] font-bold text-[#191F28]">
+                    {upcomingMilestone.days}일 기념일이 다가와요!
+                  </p>
+                  <span className="px-2 py-0.5 bg-purple-100 text-purple-700 text-[12px] font-bold rounded-full">
+                    D-{upcomingMilestone.daysLeft}
+                  </span>
+                </div>
+                <p className="text-[14px] text-[#4E5968] mb-3">
+                  특별한 날을 위한 선물을 준비해보세요!
+                </p>
+                <button
+                  onClick={() => openNaverShopping("커플 기념일 선물")}
+                  className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-[12px] font-semibold text-[14px] hover:from-purple-600 hover:to-pink-600 transition-all shadow-sm"
+                  data-testid="button-milestone-gift"
                 >
                   <Gift className="w-4 h-4" />
                   선물하기
