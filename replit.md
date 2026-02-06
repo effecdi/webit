@@ -55,6 +55,8 @@ Preferred communication style: Simple, everyday language.
 /dating/*            - Dating mode pages
 /wedding/*           - Wedding mode pages
 /wedding/guests      - Guest Manager (하객매니저) page
+/wedding/editor      - Invitation editor (청첩장 에디터)
+/invitation/preview  - Public invitation preview + RSVP form
 /family/*            - Family mode pages
 /travel              - Shared travel list (all modes)
 /travel/[id]         - Travel detail with schedule, checklist, budget
@@ -108,7 +110,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Key Features by Mode
 - **Dating**: Couple calendar, photo gallery, todo lists with comments, D-day tracking
-- **Wedding**: Budget tracking, checklist management, digital invitation editor, vendor management, guest manager (하객매니저) with report/list tabs
+- **Wedding**: Budget tracking, checklist management, digital invitation editor with RSVP, vendor management, guest manager (하객매니저) with report/list tabs and batch operations (invitation management, attendance check)
 - **Family**: Memory archive, history book, shared calendar, photo organization
 - **Travel** (Shared): Trip planning with schedule timeline, checklist, budget tracker; accessible from all modes via TravelEntryCard widget
 
