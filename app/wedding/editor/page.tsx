@@ -254,15 +254,11 @@ const MUSIC_TRACKS = [
 
 const MAIN_TEMPLATES = [
   { id: "poster", label: "포스터" },
-  { id: "modern", label: "모던" },
   { id: "polaroid", label: "폴라로이드" },
+  { id: "magazine", label: "매거진" },
+  { id: "chat", label: "채팅" },
+  { id: "modern", label: "모던" },
   { id: "classic", label: "클래식" },
-  { id: "linedrawing", label: "라인드로잉" },
-  { id: "casual", label: "캐쥬얼" },
-  { id: "basic", label: "베이직" },
-  { id: "frame", label: "액자" },
-  { id: "waxseal", label: "왁스실링" },
-  { id: "cinema", label: "시네마" },
   { id: "none", label: "템플릿 없음" },
 ]
 
@@ -630,18 +626,22 @@ export default function InvitationEditorPage() {
                       타입 선택<span className="text-red-500">*</span>
                     </label>
                     <div className="flex gap-3">
-                      {["type1", "type2"].map((type) => (
+                      {[
+                        { id: "type1", label: "시네마틱 페이드" },
+                        { id: "type2", label: "타이포 슬라이드" },
+                        { id: "type3", label: "심플 카드" },
+                      ].map((type) => (
                         <button
-                          key={type}
-                          onClick={() => updateField("openingType", type)}
-                          className={`w-[120px] h-[160px] rounded-[12px] border-2 flex items-center justify-center ${
-                            data.openingType === type
+                          key={type.id}
+                          onClick={() => updateField("openingType", type.id)}
+                          className={`w-[100px] h-[140px] rounded-[12px] border-2 flex flex-col items-center justify-center gap-2 ${
+                            data.openingType === type.id
                               ? "border-[#FF8A80] bg-[#FFF0EF]"
                               : "border-[#E5E8EB] bg-[#F8F9FA]"
                           }`}
                         >
-                          <span className="text-[12px] text-[#8B95A1]">
-                            {type === "type1" ? "타입 1" : "타입 2"}
+                          <span className="text-[11px] text-[#8B95A1] text-center leading-tight px-1">
+                            {type.label}
                           </span>
                         </button>
                       ))}

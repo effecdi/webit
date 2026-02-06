@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import type { InvitationData } from "@/app/wedding/editor/page"
 import { Phone, Copy, ChevronLeft, ChevronRight, X } from "lucide-react"
 
@@ -35,7 +36,14 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
   const [copiedToast, setCopiedToast] = useState("")
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [expandedAccordion, setExpandedAccordion] = useState<string | null>(null)
+  const [openingDone, setOpeningDone] = useState(!data.showOpening)
   const slideInterval = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    if (!data.showOpening || openingDone) return
+    const autoAdvance = setTimeout(() => setOpeningDone(true), 6000)
+    return () => clearTimeout(autoAdvance)
+  }, [data.showOpening, openingDone])
 
   const coverStyle = data.coverDisplayStyle || "slide"
 
@@ -79,6 +87,17 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
     }
     loadGuestbook()
   }, [])
+
+  useEffect(() => {
+    if (data.mainTemplate === "polaroid") {
+      const link = document.createElement("link")
+      link.href = "https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap"
+      link.rel = "stylesheet"
+      if (!document.querySelector('link[href*="Caveat"]')) {
+        document.head.appendChild(link)
+      }
+    }
+  }, [data.mainTemplate])
 
   const copyToClipboard = useCallback((text: string, label: string) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -148,89 +167,439 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
     <div className="w-full h-full overflow-y-auto bg-[#F2F4F6]" data-testid="invitation-preview">
       <div className="max-w-[420px] mx-auto">
 
-        {/* ===== HERO / COVER SECTION ===== */}
-        <div className="relative w-full overflow-hidden" style={{ minHeight: "580px" }}>
-          {allPhotos.length > 0 ? (
-            <>
-              {coverStyle === "static" ? (
-                <div className="absolute inset-0">
-                  <img
-                    src={allPhotos[0]}
-                    alt="Cover"
-                    className="w-full h-full object-cover"
-                    style={{ minHeight: "580px" }}
-                  />
-                </div>
-              ) : coverStyle === "slide" ? (
-                <div
-                  className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
-                  {allPhotos.map((photo, i) => (
-                    <div key={i} className="w-full flex-shrink-0" style={{ minHeight: "580px" }}>
-                      <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" style={{ minHeight: "580px" }} />
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                allPhotos.map((photo, i) => (
-                  <div
-                    key={i}
-                    className="absolute inset-0 transition-opacity duration-1000"
-                    style={{ opacity: currentSlide === i ? 1 : 0 }}
-                  >
-                    <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" style={{ minHeight: "580px" }} />
-                  </div>
-                ))
-              )}
-              <div className="absolute inset-0 bg-black/20" />
-            </>
-          ) : (
-            <div
-              className="w-full flex items-center justify-center"
-              style={{
-                minHeight: "580px",
-                background: "linear-gradient(180deg, #7BA4C7 0%, #9BB8D3 50%, #C5D5E4 100%)",
-              }}
+        {/* ===== OPENING SECTION ===== */}
+        <AnimatePresence mode="wait">
+          {data.showOpening && !openingDone && (
+            <motion.div
+              key="opening"
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <p className="text-[14px] text-white/70">커버 사진을 추가해주세요</p>
-            </div>
-          )}
-
-          <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
-            <div className="text-center px-8">
-              <p
-                className="text-white text-[48px] leading-[1.15] font-bold"
-                style={{ textShadow: "0 2px 20px rgba(0,0,0,0.15)" }}
-              >
-                {data.title || "Our\nwedding\nday!"}
-              </p>
-            </div>
-          </div>
-
-          <div className="absolute bottom-6 left-0 right-0 text-center z-10">
-            <p className="text-white/90 text-[14px] tracking-wide" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.2)" }}>
-              {data.venue || ""}
-            </p>
-            <p className="text-white/80 text-[13px] mt-1 tracking-wide" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.2)" }}>
-              {formatWeddingDate()}{data.weddingDate ? "  |  " : ""}
-              {data.weddingDate ? getCalendarData()?.weddingDayName + "요일" : ""}
-              {data.time ? "  |  " + data.time : ""}
-            </p>
-          </div>
-
-          {allPhotos.length > 1 && (
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-              {allPhotos.map((_, i) => (
+              {/* Type 1 - Cinematic Fade */}
+              {(data.openingType === "type1" || (!data.openingType)) && (
                 <div
-                  key={i}
-                  className="w-1.5 h-1.5 rounded-full transition-all"
-                  style={{ backgroundColor: currentSlide === i ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.4)" }}
-                />
-              ))}
-            </div>
+                  className="relative w-full overflow-hidden bg-black"
+                  style={{ minHeight: "100dvh" }}
+                >
+                  {(data.openingScenes?.[0] || data.coverImage) && (
+                    <motion.img
+                      src={data.openingScenes?.[0] || data.coverImage}
+                      alt="Opening"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      initial={{ scale: 1 }}
+                      animate={{ scale: 1.15 }}
+                      transition={{ duration: 8, ease: "linear" }}
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-black/30" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+                    <motion.p
+                      className="text-white/90 text-[14px] tracking-[0.2em] uppercase"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5, duration: 1 }}
+                    >
+                      {data.openingTexts?.[0] || "We are getting married"}
+                    </motion.p>
+                    <motion.p
+                      className="text-white text-[40px] font-bold mt-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.5, duration: 1 }}
+                      style={{ textShadow: "0 2px 20px rgba(0,0,0,0.2)" }}
+                    >
+                      {data.openingTexts?.[1] || formatWeddingDate() || "2025.06.21"}
+                    </motion.p>
+                    <motion.p
+                      className="text-white/80 text-[18px] tracking-[0.1em] mt-3"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 2.5, duration: 1 }}
+                    >
+                      {data.openingTexts?.[2] || `${data.groomName || "신랑"} & ${data.brideName || "신부"}`}
+                    </motion.p>
+                  </div>
+                  <motion.button
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/60 text-[13px] tracking-wider border border-white/30 px-6 py-2 rounded-full"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 3.5 }}
+                    onClick={() => setOpeningDone(true)}
+                    data-testid="button-skip-opening"
+                  >
+                    초대장 보기
+                  </motion.button>
+                </div>
+              )}
+
+              {/* Type 2 - Typographic Slide */}
+              {data.openingType === "type2" && (
+                <div
+                  className="relative w-full overflow-hidden bg-white"
+                  style={{ minHeight: "100dvh" }}
+                >
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #FFF5F4 50%, #FFE8E5 100%)" }} />
+                  <div className="relative z-10 flex flex-col items-center justify-center px-8" style={{ minHeight: "100dvh" }}>
+                    <motion.h1
+                      className="text-[#191F28] text-[56px] font-bold leading-[1.1] text-center"
+                      initial={{ opacity: 0, y: 80 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+                    >
+                      {data.openingTexts?.[0] || "우리\n결혼합니다"}
+                    </motion.h1>
+                    <motion.p
+                      className="text-[#8B95A1] text-[15px] mt-6 tracking-wide"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1, duration: 0.6 }}
+                    >
+                      {data.openingTexts?.[1] || formatWeddingDate()}
+                    </motion.p>
+                    <motion.div
+                      className="grid grid-cols-2 gap-2 mt-8 w-full max-w-[280px]"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.6, duration: 0.8 }}
+                    >
+                      {[data.openingScenes?.[0] || data.coverImage, data.openingScenes?.[1], data.openingScenes?.[2]].filter(Boolean).slice(0, 4).map((img, i) => (
+                        <div key={i} className={`${i === 0 ? "col-span-2 aspect-[16/9]" : "aspect-square"} rounded-[12px] overflow-hidden`}>
+                          <img src={img!} alt="" className="w-full h-full object-cover" />
+                        </div>
+                      ))}
+                    </motion.div>
+                    <motion.p
+                      className="text-[#4E5968] text-[14px] mt-6"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 2.2, duration: 0.6 }}
+                    >
+                      {data.openingTexts?.[2] || `${data.groomName || "신랑"} & ${data.brideName || "신부"}`}
+                    </motion.p>
+                  </div>
+                  <motion.button
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-[#4E5968] text-[13px] tracking-wider border border-[#E5E8EB] px-6 py-2 rounded-full bg-white"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2.8 }}
+                    onClick={() => setOpeningDone(true)}
+                    data-testid="button-skip-opening"
+                  >
+                    초대장 보기
+                  </motion.button>
+                </div>
+              )}
+
+              {/* Type 3 - Simple Card */}
+              {data.openingType === "type3" && (
+                <div
+                  className="relative w-full overflow-hidden bg-[#F2F4F6]"
+                  style={{ minHeight: "100dvh" }}
+                >
+                  <div className="flex flex-col items-center justify-center px-8" style={{ minHeight: "100dvh" }}>
+                    <motion.div
+                      className="w-[260px] bg-white rounded-[20px] shadow-xl overflow-hidden"
+                      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+                    >
+                      <div className="aspect-[3/4] overflow-hidden">
+                        <img
+                          src={data.openingScenes?.[0] || data.coverImage || ""}
+                          alt="Opening"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-5 text-center">
+                        <p className="text-[#191F28] text-[18px] font-bold">
+                          {data.openingTexts?.[0] || `${data.groomName || "신랑"} & ${data.brideName || "신부"}`}
+                        </p>
+                        <p className="text-[#8B95A1] text-[13px] mt-2">
+                          {data.openingTexts?.[1] || formatWeddingDate()}
+                        </p>
+                      </div>
+                    </motion.div>
+                    <motion.p
+                      className="text-[#8B95A1] text-[13px] mt-6"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1 }}
+                    >
+                      {data.openingTexts?.[2] || data.venue || ""}
+                    </motion.p>
+                  </div>
+                  <motion.button
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-[#4E5968] text-[13px] tracking-wider border border-[#E5E8EB] px-6 py-2 rounded-full bg-white"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5 }}
+                    onClick={() => setOpeningDone(true)}
+                    data-testid="button-skip-opening"
+                  >
+                    초대장 보기
+                  </motion.button>
+                </div>
+              )}
+            </motion.div>
           )}
-        </div>
+        </AnimatePresence>
+
+        {/* ===== MAIN CONTENT (after opening) ===== */}
+        {(openingDone || !data.showOpening) && (
+          <>
+            {/* Poster Template */}
+            {data.mainTemplate === "poster" && (
+              <div className="relative w-full overflow-hidden" style={{ minHeight: "580px" }}>
+                {allPhotos.length > 0 ? (
+                  <>
+                    {coverStyle === "static" ? (
+                      <div className="absolute inset-0">
+                        <img src={allPhotos[0]} alt="Cover" className="w-full h-full object-cover" style={{ minHeight: "580px" }} />
+                      </div>
+                    ) : coverStyle === "slide" ? (
+                      <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                        {allPhotos.map((photo, i) => (
+                          <div key={i} className="w-full flex-shrink-0" style={{ minHeight: "580px" }}>
+                            <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" style={{ minHeight: "580px" }} />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      allPhotos.map((photo, i) => (
+                        <div key={i} className="absolute inset-0 transition-opacity duration-1000" style={{ opacity: currentSlide === i ? 1 : 0 }}>
+                          <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" style={{ minHeight: "580px" }} />
+                        </div>
+                      ))
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                  </>
+                ) : (
+                  <div className="w-full flex items-center justify-center" style={{ minHeight: "580px", background: "linear-gradient(180deg, #7BA4C7 0%, #9BB8D3 50%, #C5D5E4 100%)" }}>
+                    <p className="text-[14px] text-white/70">커버 사진을 추가해주세요</p>
+                  </div>
+                )}
+                <div className="absolute bottom-0 left-0 right-0 z-10 p-8 pb-10">
+                  <p className="text-white text-[40px] font-bold leading-[1.1]" style={{ textShadow: "0 2px 20px rgba(0,0,0,0.15)" }}>
+                    {data.title || "Our Wedding Day"}
+                  </p>
+                  <p className="text-white/80 text-[14px] mt-3 tracking-wide">
+                    {formatWeddingDate()}{data.weddingDate ? " | " : ""}{data.time || ""}{data.venue ? " | " + data.venue : ""}
+                  </p>
+                </div>
+                {allPhotos.length > 1 && (
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                    {allPhotos.map((_, i) => (
+                      <div key={i} className="w-1.5 h-1.5 rounded-full transition-all" style={{ backgroundColor: currentSlide === i ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.4)" }} />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Polaroid Template */}
+            {data.mainTemplate === "polaroid" && (
+              <div className="bg-[#F2F4F6] px-6 py-14">
+                <div className="max-w-[320px] mx-auto">
+                  <div className="bg-white p-3 pb-14 shadow-lg" style={{ transform: "rotate(-1.5deg)" }}>
+                    <div className="aspect-[4/5] overflow-hidden">
+                      <img src={allPhotos[0] || ""} alt="Polaroid" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="mt-4 text-center">
+                      <p className="text-[#4E5968] text-[20px]" style={{ fontFamily: "'Caveat', 'Nanum Pen Script', cursive" }}>
+                        {formatWeddingDate() || "Our Special Day"}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-center mt-8">
+                    <p className="text-[#191F28] text-[24px] font-bold">
+                      {data.groomName || "신랑"} & {data.brideName || "신부"}
+                    </p>
+                    <p className="text-[#8B95A1] text-[14px] mt-2">
+                      {data.title || "우리의 날"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Magazine Template */}
+            {data.mainTemplate === "magazine" && (
+              <div className="bg-white">
+                <div className="w-full aspect-[3/4] overflow-hidden">
+                  <img src={allPhotos[0] || ""} alt="Magazine" className="w-full h-full object-cover" />
+                </div>
+                <div className="px-8 py-10 text-center">
+                  <p className="text-[#191F28] text-[12px] tracking-[0.3em] uppercase mb-3 font-light">
+                    The Wedding of
+                  </p>
+                  <p className="text-[#191F28] text-[36px] font-extralight leading-[1.2] tracking-tight">
+                    {data.groomName || "신랑"} & {data.brideName || "신부"}
+                  </p>
+                  <div className="w-12 h-px bg-[#FF8A80] mx-auto my-5" />
+                  <p className="text-[#8B95A1] text-[14px] tracking-wide">
+                    {formatWeddingDate()}{data.time ? " | " + data.time : ""}
+                  </p>
+                  <p className="text-[#8B95A1] text-[13px] mt-1">
+                    {data.venue || ""}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Chat Template */}
+            {data.mainTemplate === "chat" && (
+              <div className="bg-[#B2C7D9] px-4 py-8" style={{ minHeight: "500px" }}>
+                <div className="flex items-center gap-3 mb-6 px-2">
+                  <div className="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center text-[14px] font-bold text-[#4E5968]">
+                    WE
+                  </div>
+                  <div>
+                    <p className="text-[15px] text-[#191F28] font-bold">Wedding Invitation</p>
+                    <p className="text-[12px] text-[#4E5968]">2 members</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex justify-center">
+                    <div className="bg-[#8B95A1]/30 px-4 py-1.5 rounded-full">
+                      <p className="text-[11px] text-white">{formatWeddingDate() || "2025.06.21"}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-end gap-2">
+                    <div className="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-[11px] font-bold text-[#4E5968] flex-shrink-0">
+                      {(data.groomName || "신랑").charAt(0)}
+                    </div>
+                    <div>
+                      <p className="text-[11px] text-[#4E5968] mb-1 ml-1">{data.groomName || "신랑"}</p>
+                      <div className="bg-white rounded-[16px] rounded-tl-[4px] p-4 max-w-[240px] shadow-sm">
+                        <p className="text-[14px] text-[#191F28] leading-[1.6]">{`저희 결혼합니다! 축하해주러 오실 거죠? \u{1F389}`}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-end gap-2">
+                    <div className="w-8 h-8 rounded-full bg-[#FF8A80]/30 flex items-center justify-center text-[11px] font-bold text-[#FF8A80] flex-shrink-0">
+                      {(data.brideName || "신부").charAt(0)}
+                    </div>
+                    <div>
+                      <p className="text-[11px] text-[#4E5968] mb-1 ml-1">{data.brideName || "신부"}</p>
+                      {allPhotos[0] ? (
+                        <div className="rounded-[16px] rounded-tl-[4px] overflow-hidden max-w-[200px] shadow-sm">
+                          <img src={allPhotos[0]} alt="Wedding" className="w-full aspect-[3/4] object-cover" />
+                        </div>
+                      ) : (
+                        <div className="bg-white rounded-[16px] rounded-tl-[4px] p-4 max-w-[200px] shadow-sm">
+                          <p className="text-[14px] text-[#8B95A1]">사진을 추가해주세요</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex justify-end">
+                    <div className="bg-[#FFE08C] rounded-[16px] rounded-tr-[4px] p-4 max-w-[240px] shadow-sm">
+                      <p className="text-[14px] text-[#191F28] leading-[1.6]">
+                        {data.venue || "예식장"}{"\n"}
+                        {formatWeddingDate()}{data.time ? " " + data.time : ""}{"\n"}
+                        꼭 와주세요!
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-end gap-2">
+                    <div className="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-[11px] font-bold text-[#4E5968] flex-shrink-0">
+                      WE
+                    </div>
+                    <div>
+                      <p className="text-[11px] text-[#4E5968] mb-1 ml-1">WE:VE</p>
+                      <div className="bg-white rounded-[16px] rounded-tl-[4px] p-4 max-w-[240px] shadow-sm">
+                        <p className="text-[14px] text-[#191F28] font-medium">{data.title || "우리의 날"}</p>
+                        <p className="text-[12px] text-[#8B95A1] mt-1">{data.groomName || "신랑"} & {data.brideName || "신부"}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Default/Fallback Template (modern, classic, none, etc.) */}
+            {data.mainTemplate !== "poster" && data.mainTemplate !== "polaroid" && data.mainTemplate !== "magazine" && data.mainTemplate !== "chat" && (
+              <div className="relative w-full overflow-hidden" style={{ minHeight: "580px" }}>
+                {allPhotos.length > 0 ? (
+                  <>
+                    {coverStyle === "static" ? (
+                      <div className="absolute inset-0">
+                        <img
+                          src={allPhotos[0]}
+                          alt="Cover"
+                          className="w-full h-full object-cover"
+                          style={{ minHeight: "580px" }}
+                        />
+                      </div>
+                    ) : coverStyle === "slide" ? (
+                      <div
+                        className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
+                        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                      >
+                        {allPhotos.map((photo, i) => (
+                          <div key={i} className="w-full flex-shrink-0" style={{ minHeight: "580px" }}>
+                            <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" style={{ minHeight: "580px" }} />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      allPhotos.map((photo, i) => (
+                        <div
+                          key={i}
+                          className="absolute inset-0 transition-opacity duration-1000"
+                          style={{ opacity: currentSlide === i ? 1 : 0 }}
+                        >
+                          <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" style={{ minHeight: "580px" }} />
+                        </div>
+                      ))
+                    )}
+                    <div className="absolute inset-0 bg-black/20" />
+                  </>
+                ) : (
+                  <div
+                    className="w-full flex items-center justify-center"
+                    style={{
+                      minHeight: "580px",
+                      background: "linear-gradient(180deg, #7BA4C7 0%, #9BB8D3 50%, #C5D5E4 100%)",
+                    }}
+                  >
+                    <p className="text-[14px] text-white/70">커버 사진을 추가해주세요</p>
+                  </div>
+                )}
+                <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
+                  <div className="text-center px-8">
+                    <p
+                      className="text-white text-[48px] leading-[1.15] font-bold"
+                      style={{ textShadow: "0 2px 20px rgba(0,0,0,0.15)" }}
+                    >
+                      {data.title || "Our\nwedding\nday!"}
+                    </p>
+                  </div>
+                </div>
+                <div className="absolute bottom-6 left-0 right-0 text-center z-10">
+                  <p className="text-white/90 text-[14px] tracking-wide" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.2)" }}>
+                    {data.venue || ""}
+                  </p>
+                  <p className="text-white/80 text-[13px] mt-1 tracking-wide" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.2)" }}>
+                    {formatWeddingDate()}{data.weddingDate ? "  |  " : ""}
+                    {data.weddingDate ? getCalendarData()?.weddingDayName + "요일" : ""}
+                    {data.time ? "  |  " + data.time : ""}
+                  </p>
+                </div>
+                {allPhotos.length > 1 && (
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                    {allPhotos.map((_, i) => (
+                      <div
+                        key={i}
+                        className="w-1.5 h-1.5 rounded-full transition-all"
+                        style={{ backgroundColor: currentSlide === i ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.4)" }}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
 
         {/* ===== INVITATION MESSAGE SECTION ===== */}
         <div className="bg-white px-8 py-14">
@@ -882,6 +1251,8 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
             MADE WITH WE:VE
           </p>
         </div>
+        </>
+      )}
       </div>
 
       {/* ===== CONTACT MODAL ===== */}

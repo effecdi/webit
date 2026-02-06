@@ -110,7 +110,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Key Features by Mode
 - **Dating**: Couple calendar, photo gallery, todo lists with comments, D-day tracking
-- **Wedding**: Budget tracking, checklist management, digital invitation editor with RSVP, vendor management, guest manager (하객매니저) with report/list tabs and batch operations (invitation management, attendance check)
+- **Wedding**: Budget tracking, checklist management, digital invitation editor with RSVP (opening concepts: Cinematic Fade/Typographic Slide/Simple Card; main templates: Poster/Polaroid/Magazine/Chat), vendor management, guest manager (하객매니저) with report/list tabs and batch operations (invitation management, attendance check)
 - **Family**: Memory archive, history book, shared calendar, photo organization
 - **Travel** (Shared): Trip planning with schedule timeline, checklist, budget tracker; accessible from all modes via TravelEntryCard widget
 
@@ -121,6 +121,7 @@ Preferred communication style: Simple, everyday language.
 
 ### UI Libraries
 - **Radix UI** - Full suite of accessible primitives (dialog, dropdown, tabs, etc.)
+- **Framer Motion** - Animation library for opening section transitions and entrance effects
 - **Embla Carousel** - Touch-friendly carousel component
 - **cmdk** - Command palette interface
 - **react-day-picker** - Calendar date picking
@@ -142,7 +143,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Fonts
 - **Pretendard** - Korean web font (loaded via CDN)
-- **Playfair Display** - Serif accent font (Google Fonts)
+- **Caveat** - Handwriting font (Google Fonts, loaded dynamically for Polaroid template)
 
 ### Planned/Referenced (in build script)
 - Drizzle ORM for database operations
