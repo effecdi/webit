@@ -2485,6 +2485,10 @@
     height: 2px;
   }
 
+  .h-\[3px\] {
+    height: 3px;
+  }
+
   .h-\[10px\] {
     height: 10px;
   }
@@ -2859,6 +2863,10 @@
 
   .w-\[220px\] {
     width: 220px;
+  }
+
+  .w-\[390px\] {
+    width: 390px;
   }
 
   .w-auto {
@@ -4677,12 +4685,12 @@
     border-color: #3b82f6;
   }
 
-  .border-\[\#4d4538\] {
-    border-color: #4d4538;
-  }
-
   .border-\[\#191F28\] {
     border-color: #191f28;
+  }
+
+  .border-\[\#333D4B\] {
+    border-color: #333d4b;
   }
 
   .border-\[\#3182F6\] {
@@ -4753,24 +4761,8 @@
     border-color: #c9a86c;
   }
 
-  .border-\[\#d5cec3\] {
-    border-color: #d5cec3;
-  }
-
-  .border-\[\#e0d5c7\] {
-    border-color: #e0d5c7;
-  }
-
-  .border-\[\#e8e2d8\] {
-    border-color: #e8e2d8;
-  }
-
   .border-\[\#f0ebe3\] {
     border-color: #f0ebe3;
-  }
-
-  .border-\[\#f0ebe4\] {
-    border-color: #f0ebe4;
   }
 
   .border-amber-100 {
@@ -5018,10 +5010,6 @@
     background-color: #3d3d3d;
   }
 
-  .bg-\[\#3d3628\] {
-    background-color: #3d3628;
-  }
-
   .bg-\[\#4E5968\] {
     background-color: #4e5968;
   }
@@ -5032,15 +5020,6 @@
 
   .bg-\[\#6B9DFF\] {
     background-color: #6b9dff;
-  }
-
-  .bg-\[\#6b5e4f\] {
-    background-color: #6b5e4f;
-  }
-
-  .bg-\[\#6b8db5\]\/25 {
-    background-color: #6b8db540;
-    background-color: lab(57.2378% -4.33925 -25.1202 / .25);
   }
 
   .bg-\[\#8B95A1\] {
@@ -5168,10 +5147,6 @@
     background-color: #f8f9fa;
   }
 
-  .bg-\[\#FAF9F7\] {
-    background-color: #faf9f7;
-  }
-
   .bg-\[\#FAFBFC\] {
     background-color: #fafbfc;
   }
@@ -5208,24 +5183,12 @@
     background-color: #fff0ee;
   }
 
+  .bg-\[\#FFF0EF\] {
+    background-color: #fff0ef;
+  }
+
   .bg-\[\#FFF5F5\] {
     background-color: #fff5f5;
-  }
-
-  .bg-\[\#a08b6a\] {
-    background-color: #a08b6a;
-  }
-
-  .bg-\[\#c9a86c\] {
-    background-color: #c9a86c;
-  }
-
-  .bg-\[\#e8e2d8\] {
-    background-color: #e8e2d8;
-  }
-
-  .bg-\[\#f4f1ec\] {
-    background-color: #f4f1ec;
   }
 
   .bg-\[\#faf5eb\] {
@@ -7232,10 +7195,6 @@
     font-size: 48px;
   }
 
-  .text-\[52px\] {
-    font-size: 52px;
-  }
-
   .text-\[80px\] {
     font-size: 80px;
   }
@@ -7523,16 +7482,8 @@
     color: #4e5968;
   }
 
-  .text-\[\#5a5a5a\] {
-    color: #5a5a5a;
-  }
-
   .text-\[\#6B9DFF\] {
     color: #6b9dff;
-  }
-
-  .text-\[\#6b8db5\] {
-    color: #6b8db5;
   }
 
   .text-\[\#8B8B8B\] {
@@ -7652,28 +7603,8 @@
     color: #ff8a80;
   }
 
-  .text-\[\#a09080\] {
-    color: #a09080;
-  }
-
-  .text-\[\#b0a090\] {
-    color: #b0a090;
-  }
-
-  .text-\[\#c9a86c\] {
-    color: #c9a86c;
-  }
-
-  .text-\[\#d5cec3\] {
-    color: #d5cec3;
-  }
-
   .text-\[\#e8e2d8\] {
     color: #e8e2d8;
-  }
-
-  .text-\[\#e07070\] {
-    color: #e07070;
   }
 
   .text-accent-foreground {
@@ -8148,8 +8079,8 @@
     -moz-osx-font-smoothing: auto;
   }
 
-  .accent-\[\#c9a86c\] {
-    accent-color: #c9a86c;
+  .accent-\[\#FF8A80\] {
+    accent-color: #ff8a80;
   }
 
   .accent-auto {
@@ -9844,8 +9775,8 @@
   }
 
   @media (hover: hover) {
-    .hover\:border-\[\#c9a86c\]:hover {
-      border-color: #c9a86c;
+    .hover\:border-\[\#FF8A80\]:hover {
+      border-color: #ff8a80;
     }
   }
 
@@ -9949,12 +9880,6 @@
   @media (hover: hover) {
     .hover\:bg-\[\#FFEB3B\]:hover {
       background-color: #ffeb3b;
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:bg-\[\#b89755\]:hover {
-      background-color: #b89755;
     }
   }
 
@@ -10509,8 +10434,8 @@
     border-color: #191f28;
   }
 
-  .focus\:border-\[\#c9a86c\]:focus {
-    border-color: #c9a86c;
+  .focus\:border-\[\#FF8A80\]:focus {
+    border-color: #ff8a80;
   }
 
   .focus\:border-blue-400:focus {
@@ -12089,6 +12014,30 @@
     .md\:after\:hidden:after {
       content: var(--tw-content);
       display: none;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .lg\:flex {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .lg\:hidden {
+      display: none;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .lg\:w-1\/2 {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .lg\:max-w-none {
+      max-width: none;
     }
   }
 

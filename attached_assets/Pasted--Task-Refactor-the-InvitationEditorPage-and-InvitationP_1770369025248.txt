@@ -1,0 +1,28 @@
+**Task:** Refactor the `InvitationEditorPage` and `InvitationPreview` components to match our "WE:VE" Design System strictly.
+
+**1. Design System (WE:VE Style)**
+* **Color Palette:**
+    * Primary: `#FF8A80` (Coral/Pink) - Use for active states, primary buttons, and highlights.
+    * Secondary: `#3182F6` (Blue) - Use for information or specific functional buttons.
+    * Text: `#191F28` (Dark Black) for headings, `#8B95A1` (Gray) for descriptions.
+    * Background: `#F2F4F6` (Light Gray) for the app background, `White` for cards.
+* **Typography:** Use a clean, modern **Sans-serif** font (like Pretendard or System font). **Remove all usage of Serif fonts** (e.g., 'Playfair Display', 'Times New Roman').
+* **UI Components:**
+    * **Cards:** `rounded-[24px]`, white background, subtle shadow (`shadow-sm` or `shadow-toss`).
+    * **Inputs:** `bg-[#F2F4F6]`, `rounded-[16px]`, no border by default, focus ring with `#FF8A80`.
+    * **Toggles/Switches:** Use `#FF8A80` for the active state (checked).
+
+**2. Real-time Preview Synchronization (Critical)**
+* Ensure that **EVERY** change in the `InvitationEditorPage` (inputs, toggles, image uploads) is **immediately reflected** in the `InvitationPreview`.
+* The Preview component must accept the `data` prop and re-render instantly when `data` changes in the parent.
+* **Split View Layout:**
+    * On Desktop: Left side (Editor 50%), Right side (Live Preview 50%).
+    * On Mobile: Editor takes full screen with a "Floating Preview Button" or a Bottom Sheet for preview.
+
+**3. Specific UI Corrections**
+* **Preview Component:** Remove the brownish/beige colors (`#8b7355`, `#a09080`). Replace them with our brand colors (`#FF8A80`, `#191F28`).
+* **Section Titles:** Instead of the old-fashioned "- - - Title - - -", use a modern, bold left-aligned title style inside the preview.
+
+**Action:**
+* Rewrite the styles in both files using `Tailwind CSS`.
+* Make sure the `InvitationPreview` looks like a modern mobile web page, not a traditional paper invitation.

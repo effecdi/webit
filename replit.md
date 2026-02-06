@@ -4,7 +4,7 @@
 
 WE:VE is a Korean couple-focused super app that accompanies users through their entire relationship lifecycle - from dating, through wedding preparation, to family life. The application provides mode-specific features including calendars, photo galleries, budget tracking, checklists, and digital wedding invitations.
 
-The app is built as a mobile-first Next.js application with a WE:VE-inspired design system featuring clean typography, subtle shadows, and rounded cards. It supports three distinct modes: Dating (pink theme), Wedding (blue/gold theme), and Family (green theme).
+The app is built as a mobile-first Next.js application with a WE:VE-inspired design system featuring clean typography, subtle shadows, and rounded cards. It supports three distinct modes: Dating (pink theme), Wedding (coral/blue theme), and Family (green theme).
 
 ## User Preferences
 
@@ -29,7 +29,7 @@ Preferred communication style: Simple, everyday language.
 - WE:VE-inspired design tokens (--weve-blue, --weve-bg, etc.)
 - Mode-specific color schemes:
   - Dating: Pink accent (#FF6B9D, pink-500)
-  - Wedding: Blue/Gold accent (#3182F6, #D4AF37)
+  - Wedding: Coral/Blue accent (#FF8A80, #3182F6)
   - Family: Green accent (#2D8B57, green-600)
 - Pretendard font loaded via CDN for Korean typography
 
