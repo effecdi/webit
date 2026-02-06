@@ -22,9 +22,15 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$MagazineLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/invitation-layouts/MagazineLayout.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$PolaroidLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/invitation-layouts/PolaroidLayout.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$ChatLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/invitation-layouts/ChatLayout.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$TraditionalLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/invitation-layouts/TraditionalLayout.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$GardenLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/invitation-layouts/GardenLayout.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$GalleryLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/invitation-layouts/GalleryLayout.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
+;
+;
 ;
 ;
 ;
@@ -47,6 +53,12 @@ function getLayoutPageBg(template) {
             return "#F0F0F0";
         case "chat":
             return "#FFF0F3";
+        case "traditional":
+            return "#1e2a3a";
+        case "garden":
+            return "#FFFFFF";
+        case "gallery":
+            return "#F5F5F5";
         case "modern":
         default:
             return "#FFFFFF";
@@ -83,7 +95,7 @@ function InvitationPreview({ data }) {
                     ...props
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-preview.tsx",
-                    lineNumber: 46,
+                    lineNumber: 52,
                     columnNumber: 32
                 }, this);
             case "classic":
@@ -91,7 +103,7 @@ function InvitationPreview({ data }) {
                     ...props
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-preview.tsx",
-                    lineNumber: 47,
+                    lineNumber: 53,
                     columnNumber: 30
                 }, this);
             case "magazine":
@@ -99,7 +111,7 @@ function InvitationPreview({ data }) {
                     ...props
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-preview.tsx",
-                    lineNumber: 48,
+                    lineNumber: 54,
                     columnNumber: 31
                 }, this);
             case "polaroid":
@@ -107,7 +119,7 @@ function InvitationPreview({ data }) {
                     ...props
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-preview.tsx",
-                    lineNumber: 49,
+                    lineNumber: 55,
                     columnNumber: 31
                 }, this);
             case "chat":
@@ -115,8 +127,32 @@ function InvitationPreview({ data }) {
                     ...props
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-preview.tsx",
-                    lineNumber: 50,
+                    lineNumber: 56,
                     columnNumber: 27
+                }, this);
+            case "traditional":
+                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$TraditionalLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TraditionalLayout"], {
+                    ...props
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-preview.tsx",
+                    lineNumber: 57,
+                    columnNumber: 34
+                }, this);
+            case "garden":
+                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$GardenLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GardenLayout"], {
+                    ...props
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-preview.tsx",
+                    lineNumber: 58,
+                    columnNumber: 29
+                }, this);
+            case "gallery":
+                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$GalleryLayout$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GalleryLayout"], {
+                    ...props
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-preview.tsx",
+                    lineNumber: 59,
+                    columnNumber: 30
                 }, this);
             case "modern":
             default:
@@ -124,7 +160,7 @@ function InvitationPreview({ data }) {
                     ...props
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-preview.tsx",
-                    lineNumber: 52,
+                    lineNumber: 61,
                     columnNumber: 23
                 }, this);
         }
@@ -174,14 +210,14 @@ function InvitationPreview({ data }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 74,
+                                            lineNumber: 83,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute inset-0 bg-black/30"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 83,
+                                            lineNumber: 92,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -204,7 +240,7 @@ function InvitationPreview({ data }) {
                                                     children: data.openingTexts?.[0] || "We are getting married"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                    lineNumber: 85,
+                                                    lineNumber: 94,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$33$2e$0_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
@@ -227,7 +263,7 @@ function InvitationPreview({ data }) {
                                                     children: data.openingTexts?.[1] || helpers.formatWeddingDate() || "2025.06.21"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                    lineNumber: 93,
+                                                    lineNumber: 102,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$33$2e$0_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
@@ -247,13 +283,13 @@ function InvitationPreview({ data }) {
                                                     children: data.openingTexts?.[2] || `${data.groomName || "신랑"} & ${data.brideName || "신부"}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                    lineNumber: 102,
+                                                    lineNumber: 111,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 93,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$33$2e$0_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -272,13 +308,13 @@ function InvitationPreview({ data }) {
                                             children: "초대장 보기"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 111,
+                                            lineNumber: 120,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-preview.tsx",
-                                    lineNumber: 69,
+                                    lineNumber: 78,
                                     columnNumber: 17
                                 }, this),
                                 data.openingType === "type2" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -294,7 +330,7 @@ function InvitationPreview({ data }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 129,
+                                            lineNumber: 138,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -321,7 +357,7 @@ function InvitationPreview({ data }) {
                                                     children: data.openingTexts?.[0] || "우리\n결혼합니다"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                    lineNumber: 131,
+                                                    lineNumber: 140,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$33$2e$0_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
@@ -341,7 +377,7 @@ function InvitationPreview({ data }) {
                                                     children: data.openingTexts?.[1] || helpers.formatWeddingDate()
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                    lineNumber: 139,
+                                                    lineNumber: 148,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$33$2e$0_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -370,17 +406,17 @@ function InvitationPreview({ data }) {
                                                                 className: "w-full h-full object-cover"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 155,
+                                                                lineNumber: 164,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, i, false, {
                                                             fileName: "[project]/components/invitation-preview.tsx",
-                                                            lineNumber: 154,
+                                                            lineNumber: 163,
                                                             columnNumber: 25
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                    lineNumber: 147,
+                                                    lineNumber: 156,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$33$2e$0_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
@@ -398,13 +434,13 @@ function InvitationPreview({ data }) {
                                                     children: data.openingTexts?.[2] || `${data.groomName || "신랑"} & ${data.brideName || "신부"}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                    lineNumber: 159,
+                                                    lineNumber: 168,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 130,
+                                            lineNumber: 139,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$33$2e$0_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -423,13 +459,13 @@ function InvitationPreview({ data }) {
                                             children: "초대장 보기"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 168,
+                                            lineNumber: 177,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-preview.tsx",
-                                    lineNumber: 125,
+                                    lineNumber: 134,
                                     columnNumber: 17
                                 }, this),
                                 data.openingType === "type3" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -470,12 +506,12 @@ function InvitationPreview({ data }) {
                                                                 className: "w-full h-full object-cover"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 194,
+                                                                lineNumber: 203,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-preview.tsx",
-                                                            lineNumber: 193,
+                                                            lineNumber: 202,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -486,7 +522,7 @@ function InvitationPreview({ data }) {
                                                                     children: data.openingTexts?.[0] || `${data.groomName || "신랑"} & ${data.brideName || "신부"}`
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 201,
+                                                                    lineNumber: 210,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -494,19 +530,19 @@ function InvitationPreview({ data }) {
                                                                     children: data.openingTexts?.[1] || helpers.formatWeddingDate()
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 204,
+                                                                    lineNumber: 213,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/invitation-preview.tsx",
-                                                            lineNumber: 200,
+                                                            lineNumber: 209,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                    lineNumber: 187,
+                                                    lineNumber: 196,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$33$2e$0_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
@@ -523,13 +559,13 @@ function InvitationPreview({ data }) {
                                                     children: data.openingTexts?.[2] || data.venue || ""
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                    lineNumber: 209,
+                                                    lineNumber: 218,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 186,
+                                            lineNumber: 195,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$33$2e$0_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -548,31 +584,31 @@ function InvitationPreview({ data }) {
                                             children: "초대장 보기"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 218,
+                                            lineNumber: 227,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-preview.tsx",
-                                    lineNumber: 182,
+                                    lineNumber: 191,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, "opening", true, {
                             fileName: "[project]/components/invitation-preview.tsx",
-                            lineNumber: 62,
+                            lineNumber: 71,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-preview.tsx",
-                        lineNumber: 60,
+                        lineNumber: 69,
                         columnNumber: 9
                     }, this),
                     (openingDone || !data.showOpening) && renderLayout()
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-preview.tsx",
-                lineNumber: 58,
+                lineNumber: 67,
                 columnNumber: 7
             }, this),
             state.showContact && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -583,7 +619,7 @@ function InvitationPreview({ data }) {
                         className: "absolute inset-0 bg-black/60"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-preview.tsx",
-                        lineNumber: 242,
+                        lineNumber: 251,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -603,17 +639,17 @@ function InvitationPreview({ data }) {
                                         className: "w-5 h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-preview.tsx",
-                                        lineNumber: 254,
+                                        lineNumber: 263,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-preview.tsx",
-                                    lineNumber: 249,
+                                    lineNumber: 258,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-preview.tsx",
-                                lineNumber: 248,
+                                lineNumber: 257,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -626,25 +662,25 @@ function InvitationPreview({ data }) {
                                             children: "Contact"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 260,
+                                            lineNumber: 269,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "w-8 h-[3px] rounded-full bg-[#FF8A80]"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-preview.tsx",
-                                            lineNumber: 261,
+                                            lineNumber: 270,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-preview.tsx",
-                                    lineNumber: 259,
+                                    lineNumber: 268,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-preview.tsx",
-                                lineNumber: 258,
+                                lineNumber: 267,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -655,7 +691,7 @@ function InvitationPreview({ data }) {
                                         children: "신랑측"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-preview.tsx",
-                                        lineNumber: 266,
+                                        lineNumber: 275,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -669,7 +705,7 @@ function InvitationPreview({ data }) {
                                                         children: "신랑"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 269,
+                                                        lineNumber: 278,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -677,7 +713,7 @@ function InvitationPreview({ data }) {
                                                         children: data.groomName || "신랑"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 270,
+                                                        lineNumber: 279,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -690,12 +726,12 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 273,
+                                                                    lineNumber: 282,
                                                                     columnNumber: 85
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 273,
+                                                                lineNumber: 282,
                                                                 columnNumber: 23
                                                             }, this),
                                                             data.groomPhone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -705,24 +741,24 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 276,
+                                                                    lineNumber: 285,
                                                                     columnNumber: 125
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 276,
+                                                                lineNumber: 285,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 271,
+                                                        lineNumber: 280,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                lineNumber: 268,
+                                                lineNumber: 277,
                                                 columnNumber: 17
                                             }, this),
                                             data.groomFather?.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -733,7 +769,7 @@ function InvitationPreview({ data }) {
                                                         children: "신랑 아버지"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 282,
+                                                        lineNumber: 291,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -741,7 +777,7 @@ function InvitationPreview({ data }) {
                                                         children: data.groomFather.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 283,
+                                                        lineNumber: 292,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -754,12 +790,12 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 285,
+                                                                    lineNumber: 294,
                                                                     columnNumber: 119
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 285,
+                                                                lineNumber: 294,
                                                                 columnNumber: 50
                                                             }, this),
                                                             data.groomFather.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -769,24 +805,24 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 286,
+                                                                    lineNumber: 295,
                                                                     columnNumber: 160
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 286,
+                                                                lineNumber: 295,
                                                                 columnNumber: 50
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 284,
+                                                        lineNumber: 293,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                lineNumber: 281,
+                                                lineNumber: 290,
                                                 columnNumber: 19
                                             }, this),
                                             data.groomMother?.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -797,7 +833,7 @@ function InvitationPreview({ data }) {
                                                         children: "신랑 어머니"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 292,
+                                                        lineNumber: 301,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -805,7 +841,7 @@ function InvitationPreview({ data }) {
                                                         children: data.groomMother.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 293,
+                                                        lineNumber: 302,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -818,12 +854,12 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 295,
+                                                                    lineNumber: 304,
                                                                     columnNumber: 119
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 295,
+                                                                lineNumber: 304,
                                                                 columnNumber: 50
                                                             }, this),
                                                             data.groomMother.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -833,30 +869,30 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 296,
+                                                                    lineNumber: 305,
                                                                     columnNumber: 160
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 296,
+                                                                lineNumber: 305,
                                                                 columnNumber: 50
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 294,
+                                                        lineNumber: 303,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                lineNumber: 291,
+                                                lineNumber: 300,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-preview.tsx",
-                                        lineNumber: 267,
+                                        lineNumber: 276,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -864,7 +900,7 @@ function InvitationPreview({ data }) {
                                         children: "신부측"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-preview.tsx",
-                                        lineNumber: 302,
+                                        lineNumber: 311,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -878,7 +914,7 @@ function InvitationPreview({ data }) {
                                                         children: "신부"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 305,
+                                                        lineNumber: 314,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -886,7 +922,7 @@ function InvitationPreview({ data }) {
                                                         children: data.brideName || "신부"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 306,
+                                                        lineNumber: 315,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -899,12 +935,12 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 308,
+                                                                    lineNumber: 317,
                                                                     columnNumber: 103
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 308,
+                                                                lineNumber: 317,
                                                                 columnNumber: 41
                                                             }, this),
                                                             data.bridePhone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -914,24 +950,24 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 309,
+                                                                    lineNumber: 318,
                                                                     columnNumber: 143
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 309,
+                                                                lineNumber: 318,
                                                                 columnNumber: 41
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 307,
+                                                        lineNumber: 316,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                lineNumber: 304,
+                                                lineNumber: 313,
                                                 columnNumber: 17
                                             }, this),
                                             data.brideFather?.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -942,7 +978,7 @@ function InvitationPreview({ data }) {
                                                         children: "신부 아버지"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 314,
+                                                        lineNumber: 323,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -950,7 +986,7 @@ function InvitationPreview({ data }) {
                                                         children: data.brideFather.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 315,
+                                                        lineNumber: 324,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -963,12 +999,12 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 317,
+                                                                    lineNumber: 326,
                                                                     columnNumber: 119
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 317,
+                                                                lineNumber: 326,
                                                                 columnNumber: 50
                                                             }, this),
                                                             data.brideFather.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -978,24 +1014,24 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 318,
+                                                                    lineNumber: 327,
                                                                     columnNumber: 160
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 318,
+                                                                lineNumber: 327,
                                                                 columnNumber: 50
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 316,
+                                                        lineNumber: 325,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                lineNumber: 313,
+                                                lineNumber: 322,
                                                 columnNumber: 19
                                             }, this),
                                             data.brideMother?.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1006,7 +1042,7 @@ function InvitationPreview({ data }) {
                                                         children: "신부 어머니"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 324,
+                                                        lineNumber: 333,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1014,7 +1050,7 @@ function InvitationPreview({ data }) {
                                                         children: data.brideMother.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 325,
+                                                        lineNumber: 334,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1027,12 +1063,12 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 327,
+                                                                    lineNumber: 336,
                                                                     columnNumber: 119
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 327,
+                                                                lineNumber: 336,
                                                                 columnNumber: 50
                                                             }, this),
                                                             data.brideMother.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1042,48 +1078,48 @@ function InvitationPreview({ data }) {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-preview.tsx",
-                                                                    lineNumber: 328,
+                                                                    lineNumber: 337,
                                                                     columnNumber: 160
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                                lineNumber: 328,
+                                                                lineNumber: 337,
                                                                 columnNumber: 50
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/invitation-preview.tsx",
-                                                        lineNumber: 326,
+                                                        lineNumber: 335,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-preview.tsx",
-                                                lineNumber: 323,
+                                                lineNumber: 332,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-preview.tsx",
-                                        lineNumber: 303,
+                                        lineNumber: 312,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-preview.tsx",
-                                lineNumber: 265,
+                                lineNumber: 274,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-preview.tsx",
-                        lineNumber: 243,
+                        lineNumber: 252,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-preview.tsx",
-                lineNumber: 238,
+                lineNumber: 247,
                 columnNumber: 9
             }, this),
             state.showPhotoViewer && state.galleryImages.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1094,7 +1130,7 @@ function InvitationPreview({ data }) {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {}, void 0, false, {
                                 fileName: "[project]/components/invitation-preview.tsx",
-                                lineNumber: 341,
+                                lineNumber: 350,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1106,7 +1142,7 @@ function InvitationPreview({ data }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-preview.tsx",
-                                lineNumber: 342,
+                                lineNumber: 351,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1117,18 +1153,18 @@ function InvitationPreview({ data }) {
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-preview.tsx",
-                                    lineNumber: 348,
+                                    lineNumber: 357,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-preview.tsx",
-                                lineNumber: 343,
+                                lineNumber: 352,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-preview.tsx",
-                        lineNumber: 340,
+                        lineNumber: 349,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1140,7 +1176,7 @@ function InvitationPreview({ data }) {
                                 className: "max-w-full max-h-full object-contain"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-preview.tsx",
-                                lineNumber: 353,
+                                lineNumber: 362,
                                 columnNumber: 13
                             }, this),
                             state.viewerIndex > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1150,12 +1186,12 @@ function InvitationPreview({ data }) {
                                     className: "w-8 h-8"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-preview.tsx",
-                                    lineNumber: 363,
+                                    lineNumber: 372,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-preview.tsx",
-                                lineNumber: 359,
+                                lineNumber: 368,
                                 columnNumber: 15
                             }, this),
                             state.viewerIndex < state.galleryImages.length - 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1165,24 +1201,24 @@ function InvitationPreview({ data }) {
                                     className: "w-8 h-8"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-preview.tsx",
-                                    lineNumber: 371,
+                                    lineNumber: 380,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-preview.tsx",
-                                lineNumber: 367,
+                                lineNumber: 376,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-preview.tsx",
-                        lineNumber: 352,
+                        lineNumber: 361,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-preview.tsx",
-                lineNumber: 339,
+                lineNumber: 348,
                 columnNumber: 9
             }, this),
             state.copiedToast && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1190,13 +1226,13 @@ function InvitationPreview({ data }) {
                 children: state.copiedToast
             }, void 0, false, {
                 fileName: "[project]/components/invitation-preview.tsx",
-                lineNumber: 379,
+                lineNumber: 388,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/invitation-preview.tsx",
-        lineNumber: 57,
+        lineNumber: 66,
         columnNumber: 5
     }, this);
 }

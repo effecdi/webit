@@ -280,6 +280,9 @@ const MAIN_TEMPLATES = [
   { id: "magazine", label: "매거진", premium: true },
   { id: "polaroid", label: "폴라로이드", premium: true },
   { id: "chat", label: "채팅", premium: true },
+  { id: "traditional", label: "전통", premium: true },
+  { id: "garden", label: "가든", premium: true },
+  { id: "gallery", label: "갤러리", premium: true },
 ];
 
 function TemplateThumbnail({ id }: { id: string }) {
@@ -356,6 +359,38 @@ function TemplateThumbnail({ id }: { id: string }) {
             <div className="w-[12px] h-[12px] rounded-full bg-[#D4C8B8]" />
           </div>
           <div className="w-[20px] h-[1.5px] bg-[#D4C8B8] rounded-full" />
+        </div>
+      );
+    case "traditional":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden relative" style={{ background: "#1e2a3a" }}>
+          <div className="absolute inset-[3px] border-double border-2 border-[#C5A572]/60" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
+            <div className="text-[9px] text-[#C5A572] font-bold" style={{ fontFamily: "Georgia, serif", writingMode: "vertical-rl" as any }}>결혼합니다</div>
+          </div>
+          <div className="absolute bottom-2 left-0 right-0 flex justify-center">
+            <div className="w-[20px] h-[1px] bg-[#C5A572]/40" />
+          </div>
+        </div>
+      );
+    case "garden":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-white relative flex flex-col items-center justify-center p-2">
+          <div className="absolute top-1 left-1 w-[12px] h-[12px] rounded-full" style={{ background: "radial-gradient(circle, #F5B7C5 0%, #E8A5B8 40%, transparent 70%)" }} />
+          <div className="absolute bottom-1 right-1 w-[12px] h-[12px] rounded-full" style={{ background: "radial-gradient(circle, #B8D4B8 0%, #8FBC8F 40%, transparent 70%)" }} />
+          <div className="w-[26px] h-[26px] rounded-full bg-[#F0F4F0] border border-[#D4DFD4] mb-1" />
+          <div className="text-[5px] text-[#5C7A5C]" style={{ fontFamily: "Georgia, serif" }}>Blooming</div>
+          <div className="text-[7px] text-[#8B6F6F] font-medium" style={{ fontFamily: "Georgia, serif" }}>Garden</div>
+        </div>
+      );
+    case "gallery":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#F5F5F5] p-1.5 flex gap-0.5">
+          <div className="flex-1 bg-[#E0E0E0]" />
+          <div className="w-[28%] flex flex-col gap-0.5">
+            <div className="flex-1 bg-[#E0E0E0]" />
+            <div className="flex-1 bg-[#E0E0E0]" />
+          </div>
         </div>
       );
     default:

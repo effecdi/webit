@@ -11,6 +11,9 @@ import { ClassicLayout } from "./invitation-layouts/ClassicLayout"
 import { MagazineLayout } from "./invitation-layouts/MagazineLayout"
 import { PolaroidLayout } from "./invitation-layouts/PolaroidLayout"
 import { ChatLayout } from "./invitation-layouts/ChatLayout"
+import { TraditionalLayout } from "./invitation-layouts/TraditionalLayout"
+import { GardenLayout } from "./invitation-layouts/GardenLayout"
+import { GalleryLayout } from "./invitation-layouts/GalleryLayout"
 
 interface InvitationPreviewProps {
   data: InvitationData & { date?: string; time?: string }
@@ -23,6 +26,9 @@ function getLayoutPageBg(template: string): string {
     case "magazine": return "#FFFFFF"
     case "polaroid": return "#F0F0F0"
     case "chat": return "#FFF0F3"
+    case "traditional": return "#1e2a3a"
+    case "garden": return "#FFFFFF"
+    case "gallery": return "#F5F5F5"
     case "modern":
     default: return "#FFFFFF"
   }
@@ -48,6 +54,9 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
       case "magazine": return <MagazineLayout {...props} />
       case "polaroid": return <PolaroidLayout {...props} />
       case "chat": return <ChatLayout {...props} />
+      case "traditional": return <TraditionalLayout {...props} />
+      case "garden": return <GardenLayout {...props} />
+      case "gallery": return <GalleryLayout {...props} />
       case "modern":
       default: return <ModernLayout {...props} />
     }
