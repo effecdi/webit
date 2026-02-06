@@ -21,19 +21,20 @@ import {
   Gift,
   Cake,
   ExternalLink,
-  Smile,
-  Laugh,
-  Sparkles,
-  Star,
-  type LucideIcon,
 } from "lucide-react";
+import Image from "next/image";
+import moodLove from "@/attached_assets/love_1770352834619.png";
+import moodHappy from "@/attached_assets/happy_1770352834618.png";
+import moodNormal from "@/attached_assets/nomal_1770352834619.png";
+import moodSad from "@/attached_assets/sad_1770352834620.png";
+import moodAngry from "@/attached_assets/angly_1770352834617.png";
 
-const MOOD_OPTIONS: { id: string; icon: LucideIcon; label: string; color: string; bgColor: string }[] = [
-  { id: "heart", icon: Heart, label: "사랑", color: "text-pink-500", bgColor: "bg-pink-100" },
-  { id: "happy", icon: Laugh, label: "행복", color: "text-amber-500", bgColor: "bg-amber-100" },
-  { id: "smile", icon: Smile, label: "좋아", color: "text-green-500", bgColor: "bg-green-100" },
-  { id: "sparkle", icon: Sparkles, label: "설렘", color: "text-purple-500", bgColor: "bg-purple-100" },
-  { id: "star", icon: Star, label: "최고", color: "text-blue-500", bgColor: "bg-blue-100" },
+const MOOD_OPTIONS: { id: string; image: typeof moodLove; label: string; color: string; bgColor: string }[] = [
+  { id: "love", image: moodLove, label: "사랑", color: "text-pink-500", bgColor: "bg-pink-100" },
+  { id: "happy", image: moodHappy, label: "행복", color: "text-amber-500", bgColor: "bg-amber-100" },
+  { id: "normal", image: moodNormal, label: "보통", color: "text-green-500", bgColor: "bg-green-100" },
+  { id: "sad", image: moodSad, label: "슬픔", color: "text-purple-500", bgColor: "bg-purple-100" },
+  { id: "angry", image: moodAngry, label: "화남", color: "text-red-500", bgColor: "bg-red-100" },
 ];
 import { ModeSwitch } from "@/components/mode-switch";
 import { TravelEntryCard } from "@/components/travel/travel-entry-card";
@@ -127,8 +128,8 @@ export function DatingDashboard() {
     "we",
   );
 
-  const [myMood, setMyMood] = useState("heart");
-  const [partnerMood, setPartnerMood] = useState("heart");
+  const [myMood, setMyMood] = useState("love");
+  const [partnerMood, setPartnerMood] = useState("love");
   const [coupleNames, setCoupleNames] = useState({
     my: "민지",
     partner: "준호",
@@ -533,19 +534,17 @@ export function DatingDashboard() {
             <div className="flex -space-x-2">
               {(() => {
                 const myMoodOption = MOOD_OPTIONS.find(m => m.id === myMood) || MOOD_OPTIONS[0];
-                const MyMoodIcon = myMoodOption.icon;
                 return (
                   <div className={`w-16 h-16 ${myMoodOption.bgColor} rounded-2xl flex items-center justify-center transition-all duration-300`}>
-                    <MyMoodIcon className={`w-7 h-7 ${myMoodOption.color}`} fill="currentColor" />
+                    <Image src={myMoodOption.image} alt={myMoodOption.label} width={36} height={36} />
                   </div>
                 );
               })()}
               {(() => {
                 const partnerMoodOption = MOOD_OPTIONS.find(m => m.id === partnerMood) || MOOD_OPTIONS[0];
-                const PartnerMoodIcon = partnerMoodOption.icon;
                 return (
                   <div className={`w-16 h-16 ${partnerMoodOption.bgColor} rounded-2xl flex items-center justify-center transition-all duration-300`}>
-                    <PartnerMoodIcon className={`w-7 h-7 ${partnerMoodOption.color}`} fill="currentColor" />
+                    <Image src={partnerMoodOption.image} alt={partnerMoodOption.label} width={36} height={36} />
                   </div>
                 );
               })()}
@@ -677,23 +676,20 @@ export function DatingDashboard() {
           <div className="mb-3">
             <p className="text-[12px] font-medium text-[#8B95A1] mb-1.5">{coupleNames.my}의 기분</p>
             <div className="flex gap-2">
-              {MOOD_OPTIONS.map((mood) => {
-                const MoodIcon = mood.icon;
-                return (
-                  <button
-                    key={mood.id}
-                    onClick={() => handleMoodChange("me", mood.id)}
-                    className={`flex-1 py-3 rounded-[12px] transition-all flex flex-col items-center gap-1 ${
-                      myMood === mood.id
-                        ? `${mood.bgColor} scale-105`
-                        : "bg-[#F2F4F6] hover:bg-pink-50"
-                    }`}
-                    data-testid={`button-my-mood-${mood.id}`}
-                  >
-                    <MoodIcon className={`w-5 h-5 ${myMood === mood.id ? mood.color : "text-[#8B95A1]"}`} fill={myMood === mood.id ? "currentColor" : "none"} />
-                  </button>
-                );
-              })}
+              {MOOD_OPTIONS.map((mood) => (
+                <button
+                  key={mood.id}
+                  onClick={() => handleMoodChange("me", mood.id)}
+                  className={`flex-1 py-2.5 rounded-[12px] transition-all flex flex-col items-center gap-1 ${
+                    myMood === mood.id
+                      ? `${mood.bgColor} scale-105 ring-2 ring-offset-1 ring-pink-300`
+                      : "bg-[#F2F4F6] hover:bg-pink-50"
+                  }`}
+                  data-testid={`button-my-mood-${mood.id}`}
+                >
+                  <Image src={mood.image} alt={mood.label} width={28} height={28} className={`${myMood === mood.id ? "" : "opacity-50 grayscale"} transition-all`} />
+                </button>
+              ))}
             </div>
           </div>
           <div>
@@ -701,10 +697,9 @@ export function DatingDashboard() {
             <div className="flex gap-2">
               {(() => {
                 const partnerMoodOption = MOOD_OPTIONS.find(m => m.id === partnerMood) || MOOD_OPTIONS[0];
-                const PartnerMoodIcon = partnerMoodOption.icon;
                 return (
-                  <div className={`flex-1 py-3 rounded-[12px] ${partnerMoodOption.bgColor} flex items-center justify-center gap-2`}>
-                    <PartnerMoodIcon className={`w-5 h-5 ${partnerMoodOption.color}`} fill="currentColor" />
+                  <div className={`flex-1 py-2.5 rounded-[12px] ${partnerMoodOption.bgColor} flex items-center justify-center gap-2`}>
+                    <Image src={partnerMoodOption.image} alt={partnerMoodOption.label} width={28} height={28} />
                     <span className={`text-[13px] font-medium ${partnerMoodOption.color}`}>{partnerMoodOption.label}</span>
                   </div>
                 );
