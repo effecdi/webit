@@ -66,7 +66,7 @@ export function ModeSwitch({ currentMode }: ModeSwitchProps) {
 
       {showCongratulations && (
         <div 
-          className="fixed inset-0 z-[70] bg-black/50 flex items-center justify-center px-5"
+          className="fixed inset-0 z-[70] bg-black/50 flex items-center justify-center p-5"
           onClick={() => setShowCongratulations(false)}
         >
           <div 
