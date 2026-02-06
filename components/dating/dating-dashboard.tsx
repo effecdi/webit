@@ -244,18 +244,48 @@ export function DatingDashboard() {
     }
 
     fetchData();
+
+    const handleFocus = () => {
+      fetch("/api/mood?userId=default")
+        .then(res => res.json())
+        .then(data => {
+          if (data.myMood) setMyMood(data.myMood);
+          if (data.partnerMood) setPartnerMood(data.partnerMood);
+        })
+        .catch(() => {});
+    };
+    window.addEventListener("focus", handleFocus);
+    return () => window.removeEventListener("focus", handleFocus);
   }, []);
+
+  const handleMoodChange = async (role: "me" | "partner", mood: string) => {
+    if (role === "me") {
+      setMyMood(mood);
+    } else {
+      setPartnerMood(mood);
+    }
+    try {
+      await fetch("/api/mood", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: "default", role, mood }),
+      });
+    } catch (error) {
+      console.error("Error saving mood:", error);
+    }
+  };
 
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const [todosRes, notificationsRes, travelsRes, photosRes, eventsRes] =
+      const [todosRes, notificationsRes, travelsRes, photosRes, eventsRes, moodRes] =
         await Promise.all([
           fetch("/api/todos?userId=default&mode=dating"),
           fetch("/api/notifications?userId=default&mode=dating"),
           fetch("/api/travels?userId=default"),
           fetch("/api/photos?userId=default&mode=dating"),
           fetch("/api/events?userId=default&mode=dating"),
+          fetch("/api/mood?userId=default"),
         ]);
 
       const todosData = await todosRes.json();
@@ -263,6 +293,9 @@ export function DatingDashboard() {
       const travelsData = await travelsRes.json();
       const photosData = await photosRes.json();
       const eventsData = await eventsRes.json();
+      const moodData = await moodRes.json();
+      if (moodData.myMood) setMyMood(moodData.myMood);
+      if (moodData.partnerMood) setPartnerMood(moodData.partnerMood);
 
       setTodos(
         todosData.map(
@@ -641,15 +674,15 @@ export function DatingDashboard() {
               </p>
             </div>
           </div>
-          <div className="mb-2">
-            <p className="text-[12px] text-[#8B95A1] mb-1.5">{coupleNames.my}</p>
+          <div className="mb-3">
+            <p className="text-[12px] font-medium text-[#8B95A1] mb-1.5">{coupleNames.my}의 기분</p>
             <div className="flex gap-2">
               {MOOD_OPTIONS.map((mood) => {
                 const MoodIcon = mood.icon;
                 return (
                   <button
                     key={mood.id}
-                    onClick={() => setMyMood(mood.id)}
+                    onClick={() => handleMoodChange("me", mood.id)}
                     className={`flex-1 py-3 rounded-[12px] transition-all flex flex-col items-center gap-1 ${
                       myMood === mood.id
                         ? `${mood.bgColor} scale-105`
@@ -664,25 +697,18 @@ export function DatingDashboard() {
             </div>
           </div>
           <div>
-            <p className="text-[12px] text-[#8B95A1] mb-1.5">{coupleNames.partner}</p>
+            <p className="text-[12px] font-medium text-[#8B95A1] mb-1.5">{coupleNames.partner}의 기분</p>
             <div className="flex gap-2">
-              {MOOD_OPTIONS.map((mood) => {
-                const MoodIcon = mood.icon;
+              {(() => {
+                const partnerMoodOption = MOOD_OPTIONS.find(m => m.id === partnerMood) || MOOD_OPTIONS[0];
+                const PartnerMoodIcon = partnerMoodOption.icon;
                 return (
-                  <button
-                    key={mood.id}
-                    onClick={() => setPartnerMood(mood.id)}
-                    className={`flex-1 py-3 rounded-[12px] transition-all flex flex-col items-center gap-1 ${
-                      partnerMood === mood.id
-                        ? `${mood.bgColor} scale-105`
-                        : "bg-[#F2F4F6] hover:bg-blue-50"
-                    }`}
-                    data-testid={`button-partner-mood-${mood.id}`}
-                  >
-                    <MoodIcon className={`w-5 h-5 ${partnerMood === mood.id ? mood.color : "text-[#8B95A1]"}`} fill={partnerMood === mood.id ? "currentColor" : "none"} />
-                  </button>
+                  <div className={`flex-1 py-3 rounded-[12px] ${partnerMoodOption.bgColor} flex items-center justify-center gap-2`}>
+                    <PartnerMoodIcon className={`w-5 h-5 ${partnerMoodOption.color}`} fill="currentColor" />
+                    <span className={`text-[13px] font-medium ${partnerMoodOption.color}`}>{partnerMoodOption.label}</span>
+                  </div>
                 );
-              })}
+              })()}
             </div>
           </div>
         </div>

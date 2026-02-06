@@ -9704,12 +9704,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:bg-blue-50:hover {
-      background-color: var(--color-blue-50);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:bg-blue-600:hover {
       background-color: var(--color-blue-600);
     }
