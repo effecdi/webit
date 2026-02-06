@@ -6335,6 +6335,10 @@
     padding: calc(var(--spacing) * 2);
   }
 
+  .p-2\.5 {
+    padding: calc(var(--spacing) * 2.5);
+  }
+
   .p-3 {
     padding: calc(var(--spacing) * 3);
   }
@@ -7072,6 +7076,10 @@
   .\[color\:red\]\/50\! {
     color: #ff000080 !important;
     color: lab(54.2905% 80.8049 69.891 / .5) !important;
+  }
+
+  .text-\[\#1B64DA\] {
+    color: #1b64da;
   }
 
   .text-\[\#2D8B57\] {

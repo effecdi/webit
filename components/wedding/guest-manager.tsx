@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { createPortal } from "react-dom"
 import {
   Users, Utensils, Mail, UserPlus, X, Search, Pencil, Trash2,
-  ChevronDown, Phone, Check, Filter
+  ChevronDown, Phone, Check, Filter, Settings, Contact, Upload
 } from "lucide-react"
 
 interface Guest {
@@ -50,6 +50,12 @@ export function GuestManager() {
   const [searchQuery, setSearchQuery] = useState("")
   const [filterSide, setFilterSide] = useState<"all" | "groom" | "bride">("all")
   const [mounted, setMounted] = useState(false)
+  const [showSettingsModal, setShowSettingsModal] = useState(false)
+  const [settingsForm, setSettingsForm] = useState({
+    groomGuests: 0,
+    brideGuests: 0,
+    mealCostAdult: 0,
+  })
 
   const [formData, setFormData] = useState({
     name: "",
@@ -174,6 +180,36 @@ export function GuestManager() {
     setShowDeleteModal(false)
   }
 
+  const openSettingsModal = () => {
+    setSettingsForm({
+      groomGuests: weddingInfo?.groomGuests || 0,
+      brideGuests: weddingInfo?.brideGuests || 0,
+      mealCostAdult: weddingInfo?.mealCostAdult || 0,
+    })
+    setShowSettingsModal(true)
+  }
+
+  const handleSaveWeddingInfo = async () => {
+    try {
+      const res = await fetch("/api/wedding-info", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: "default",
+          groomGuests: settingsForm.groomGuests,
+          brideGuests: settingsForm.brideGuests,
+          expectedGuests: settingsForm.groomGuests + settingsForm.brideGuests,
+          mealCostAdult: settingsForm.mealCostAdult,
+        }),
+      })
+      const updated = await res.json()
+      setWeddingInfo(prev => ({ ...prev, ...updated }))
+      setShowSettingsModal(false)
+    } catch (error) {
+      console.error("Failed to save wedding info", error)
+    }
+  }
+
   const formatMoney = (amount: number) => {
     if (amount >= 10000) {
       return `${Math.floor(amount / 10000)} 만원`
@@ -209,6 +245,13 @@ export function GuestManager() {
               명단
             </button>
           </div>
+          <button
+            onClick={openSettingsModal}
+            className="p-2.5 bg-[#F2F4F6] rounded-full transition-colors"
+            data-testid="button-settings"
+          >
+            <Settings className="w-5 h-5 text-[#4E5968]" />
+          </button>
         </div>
 
         {activeTab === "report" ? (
@@ -241,7 +284,17 @@ export function GuestManager() {
             {reportMode === "before" ? (
               <>
                 <div className="bg-white rounded-[20px] shadow-weve p-5">
-                  <h3 className="text-[15px] font-bold text-[#191F28] mb-4">하객 및 식대</h3>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-[15px] font-bold text-[#191F28]">하객 및 식대</h3>
+                    <button
+                      onClick={openSettingsModal}
+                      className="flex items-center gap-1 text-[12px] text-[#8B95A1]"
+                      data-testid="button-edit-wedding-info"
+                    >
+                      <Pencil className="w-3.5 h-3.5" />
+                      수정
+                    </button>
+                  </div>
 
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
@@ -431,6 +484,23 @@ export function GuestManager() {
                   </button>
                 ))}
               </div>
+            </div>
+
+            <div className="flex gap-2 overflow-x-auto pb-2 mb-3">
+              <button
+                className="flex items-center gap-1.5 px-3 py-2 bg-[#E8F3FF] text-[#1B64DA] rounded-[10px] text-[13px] font-medium whitespace-nowrap"
+                data-testid="button-import-contacts"
+              >
+                <Contact className="w-4 h-4" />
+                연락처 가져오기
+              </button>
+              <button
+                className="flex items-center gap-1.5 px-3 py-2 bg-[#F2F4F6] text-[#4E5968] rounded-[10px] text-[13px] font-medium whitespace-nowrap"
+                data-testid="button-upload-excel"
+              >
+                <Upload className="w-4 h-4" />
+                엑셀로 추가
+              </button>
             </div>
 
             <div className="flex items-center justify-between mb-3">
@@ -710,6 +780,94 @@ export function GuestManager() {
                 className="flex-1 py-3 bg-[#FF6B6B] text-white font-medium rounded-[12px]"
               >
                 삭제
+              </button>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {showSettingsModal && mounted && createPortal(
+        <div className="fixed inset-0 z-[100] bg-black/50 flex items-end justify-center" onClick={() => setShowSettingsModal(false)}>
+          <div
+            className="bg-white rounded-t-[24px] w-full max-w-md animate-in slide-in-from-bottom duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-[#F2F4F6]">
+              <h3 className="text-[17px] font-bold text-[#191F28]">예식 정보 설정</h3>
+              <button
+                onClick={() => setShowSettingsModal(false)}
+                className="p-2 rounded-full"
+                data-testid="button-close-settings"
+              >
+                <X className="w-5 h-5 text-[#8B95A1]" />
+              </button>
+            </div>
+            <div className="p-5 space-y-4">
+              <div>
+                <label className="text-[13px] text-[#8B95A1] mb-1.5 block">신랑측 예상 하객 수</label>
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  value={settingsForm.groomGuests || ""}
+                  onChange={(e) => setSettingsForm({ ...settingsForm, groomGuests: Number(e.target.value) || 0 })}
+                  placeholder="0"
+                  className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] outline-none focus:ring-2 focus:ring-blue-300"
+                  data-testid="input-settings-groom-guests"
+                />
+              </div>
+              <div>
+                <label className="text-[13px] text-[#8B95A1] mb-1.5 block">신부측 예상 하객 수</label>
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  value={settingsForm.brideGuests || ""}
+                  onChange={(e) => setSettingsForm({ ...settingsForm, brideGuests: Number(e.target.value) || 0 })}
+                  placeholder="0"
+                  className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] outline-none focus:ring-2 focus:ring-blue-300"
+                  data-testid="input-settings-bride-guests"
+                />
+              </div>
+              <div>
+                <label className="text-[13px] text-[#8B95A1] mb-1.5 block">대인 식대 (1인)</label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={settingsForm.mealCostAdult ? settingsForm.mealCostAdult.toLocaleString() : ""}
+                    onChange={(e) => {
+                      const num = e.target.value.replace(/[^0-9]/g, "")
+                      setSettingsForm({ ...settingsForm, mealCostAdult: parseInt(num) || 0 })
+                    }}
+                    placeholder="0"
+                    className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] outline-none focus:ring-2 focus:ring-blue-300 pr-10"
+                    data-testid="input-settings-meal-cost"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#8B95A1]">원</span>
+                </div>
+              </div>
+              <div className="pt-1 pb-2">
+                <div className="bg-[#F8F9FA] rounded-[12px] p-3">
+                  <div className="flex items-center justify-between text-[13px]">
+                    <span className="text-[#8B95A1]">예상 총 하객</span>
+                    <span className="font-medium text-[#191F28]">{settingsForm.groomGuests + settingsForm.brideGuests}명</span>
+                  </div>
+                  <div className="flex items-center justify-between text-[13px] mt-1.5">
+                    <span className="text-[#8B95A1]">예상 총 식대</span>
+                    <span className="font-medium text-[#191F28]">
+                      {formatMoney(settingsForm.mealCostAdult * (settingsForm.groomGuests + settingsForm.brideGuests))}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="px-5 pb-8 pt-2">
+              <button
+                onClick={handleSaveWeddingInfo}
+                className="w-full py-4 bg-[#3182F6] text-white font-bold rounded-[14px] transition-all"
+                data-testid="button-save-settings"
+              >
+                저장하기
               </button>
             </div>
           </div>

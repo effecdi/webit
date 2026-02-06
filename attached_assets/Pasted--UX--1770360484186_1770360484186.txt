@@ -1,0 +1,197 @@
+사용자 경험(UX) 관점에서 하객 관리의 편의성과 효율성을 높이는 방향으로 코드를 개선하는 제안을 드립니다. 수백 명의 하객 정보를 일일이 입력하는 부담을 줄이고, "하객 인원 설정"과 같은 핵심 정보 설정의 접근성을 높이는 것이 목표입니다.
+
+제안해주신 흐름과 기존 GuestManager 코드를 바탕으로 다음과 같이 UX를 개선할 수 있습니다.
+
+UX 개선 방향 및 주요 변경 사항
+"설정(Settings)" 버튼 도입 (하객 인원 및 식대 수정 접근성 향상)
+
+문제점: 현재 코드에서는 weddingInfo (예상 하객 수, 식대 등)를 수정하는 기능이 명시적으로 드러나지 않아 사용자가 어디서 수정해야 할지 혼란스러울 수 있습니다.
+
+해결책: 리포트 탭 상단이나 적절한 위치에 "설정" 아이콘(톱니바퀴 등) 또는 "정보 수정" 버튼을 배치하여, 결혼식 기본 정보(예상 하객 수, 식대 비용 등)를 손쉽게 수정할 수 있는 모달을 띄우도록 합니다. 이렇게 하면 별도의 화면 이동 없이도 중요한 예산 관련 설정을 변경할 수 있습니다.
+
+연락처 연동 및 대량 등록 (하객 입력 부담 완화)
+
+문제점: 수백 명의 하객을 일일이 수기로 입력(UserPlus 버튼 -> 모달 입력)하는 것은 사용자에게 큰 부담입니다.
+
+해결책:
+
+"연락처 가져오기" 기능: 모바일 환경이라면 기기의 연락처에 접근하여 여러 명을 선택, 한 번에 불러오는 기능을 제공합니다. (웹 환경에서는 엑셀 업로드 기능을 고려할 수 있습니다.)
+
+빠른 추가 모드: 이름만 빠르게 입력하고 엔터를 치면 바로 다음 입력으로 넘어가는 형태의 '빠른 입력' 인터페이스를 제공하여 초기 명단 작성 속도를 높입니다.
+
+그룹별 일괄 관리 (상태 변경 편의성)
+
+문제점: 여러 명의 하객이 참석 확정을 했을 때, 한 명씩 들어가서 상태를 변경하는 것은 번거롭습니다.
+
+해결책: 명단 리스트에서 여러 명을 체크박스로 선택한 후, "일괄 참석 처리", "일괄 식권 발급", "일괄 문자 발송" 등의 기능을 수행할 수 있는 액션 바를 제공합니다.
+
+청첩장 발송 연동 (자동화)
+
+문제점: 청첩장을 보냈는지 여부를 수동으로 체크해야 합니다.
+
+해결책: 앱 내에서 모바일 청첩장 공유 기능을 제공하고, 해당 기능을 통해 공유했을 경우 자동으로 "청첩장 발송됨" 상태로 변경되도록 연동합니다.
+
+수정된 코드 제안 (설정 모달 추가 및 UX 개선 반영)
+아래 코드는 기존 GuestManager에 **결혼식 정보 설정 모달(WeddingInfoModal)**을 추가하여 하객 수와 식대를 직관적으로 수정할 수 있게 하고, 하객 리스트 관리에 필요한 UI 요소를 보강한 버전입니다.
+
+TypeScript
+"use client"
+
+import { useState, useEffect } from "react"
+import { createPortal } from "react-dom"
+import {
+  Users, Utensils, Mail, UserPlus, X, Search, Pencil, Trash2,
+  Settings, Contact, CheckSquare, Upload // 추가된 아이콘
+} from "lucide-react"
+
+// ... (기존 인터페이스 정의 유지) ...
+
+// 결혼식 정보 설정 모달 컴포넌트 (신규 추가)
+function WeddingInfoModal({ 
+  info, 
+  onClose, 
+  onSave 
+}: { 
+  info: WeddingInfoData | null, 
+  onClose: () => void, 
+  onSave: (data: WeddingInfoData) => void 
+}) {
+  const [localInfo, setLocalInfo] = useState<WeddingInfoData>({
+    expectedGuests: 0,
+    groomGuests: 0,
+    brideGuests: 0,
+    mealCostAdult: 0,
+    mealCostChild: 0,
+    invitationCount: 0,
+    physicalInvitationCount: 0,
+    ...info // 기존 정보가 있다면 덮어씌움
+  })
+
+  return createPortal(
+    <div className="fixed inset-0 z-[100] bg-black/50 flex items-end justify-center" onClick={onClose}>
+      <div className="bg-white rounded-t-[24px] w-full max-w-md animate-in slide-in-from-bottom duration-300" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-[#F2F4F6]">
+          <h3 className="text-[17px] font-bold text-[#191F28]">예식 정보 설정</h3>
+          <button onClick={onClose}><X className="w-5 h-5 text-[#8B95A1]" /></button>
+        </div>
+        <div className="p-5 space-y-4">
+           {/* 신랑측 예상 하객 */}
+           <div>
+            <label className="text-[13px] text-[#8B95A1] mb-1 block">신랑측 예상 하객 수</label>
+            <input 
+              type="number" 
+              value={localInfo.groomGuests} 
+              onChange={e => setLocalInfo({...localInfo, groomGuests: Number(e.target.value)})}
+              className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px]" 
+            />
+          </div>
+          {/* 신부측 예상 하객 */}
+          <div>
+            <label className="text-[13px] text-[#8B95A1] mb-1 block">신부측 예상 하객 수</label>
+            <input 
+              type="number" 
+              value={localInfo.brideGuests} 
+              onChange={e => setLocalInfo({...localInfo, brideGuests: Number(e.target.value)})}
+              className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px]" 
+            />
+          </div>
+          {/* 식대 설정 */}
+          <div>
+            <label className="text-[13px] text-[#8B95A1] mb-1 block">대인 식대 (1인)</label>
+            <input 
+              type="number" 
+              value={localInfo.mealCostAdult} 
+              onChange={e => setLocalInfo({...localInfo, mealCostAdult: Number(e.target.value)})}
+              className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px]" 
+            />
+          </div>
+          <button 
+            onClick={() => onSave(localInfo)}
+            className="w-full py-4 bg-[#3182F6] text-white font-bold rounded-[14px] mt-2"
+          >
+            저장하기
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body
+  )
+}
+
+export function GuestManager() {
+  // ... (기존 상태 값 유지) ...
+  const [showSettingsModal, setShowSettingsModal] = useState(false) // 설정 모달 상태 추가
+
+  // ... (기존 useEffect 및 fetchData 유지) ...
+
+  // 결혼식 정보 저장 핸들러 (신규 추가)
+  const handleSaveWeddingInfo = async (newInfo: WeddingInfoData) => {
+    try {
+      // API 호출 로직 (예시)
+      // await fetch("/api/wedding-info", { method: "POST", body: JSON.stringify(newInfo) ... })
+      setWeddingInfo(newInfo)
+      setShowSettingsModal(false)
+    } catch (error) {
+      console.error("Failed to save wedding info", error)
+    }
+  }
+
+  return (
+    <>
+      <div className="px-5 pt-5 max-w-md mx-auto">
+        {/* 상단 헤더 영역 개선: 설정 버튼 추가 */}
+        <div className="flex items-center justify-between mb-5">
+           <div className="flex bg-[#F2F4F6] rounded-full p-1 flex-1 mr-3">
+             {/* ... (기존 탭 버튼 코드) ... */}
+           </div>
+           {/* 설정 버튼: 하객 수, 식대 등 기본 정보 수정 진입점 */}
+           <button 
+             onClick={() => setShowSettingsModal(true)}
+             className="p-2 bg-[#F2F4F6] rounded-full hover:bg-[#E5E8EB] transition-colors"
+           >
+             <Settings className="w-5 h-5 text-[#4E5968]" />
+           </button>
+        </div>
+
+        {activeTab === "list" && (
+           <div className="mb-4 flex gap-2 overflow-x-auto pb-2">
+             {/* 연락처 가져오기 버튼 (기능 예시) */}
+             <button className="flex items-center gap-1.5 px-3 py-2 bg-[#E8F3FF] text-[#1B64DA] rounded-[10px] text-[13px] font-medium whitespace-nowrap">
+               <Contact className="w-4 h-4" />
+               연락처 가져오기
+             </button>
+             {/* 엑셀 업로드 버튼 (기능 예시) */}
+             <button className="flex items-center gap-1.5 px-3 py-2 bg-[#F2F4F6] text-[#4E5968] rounded-[10px] text-[13px] font-medium whitespace-nowrap">
+               <Upload className="w-4 h-4" />
+               엑셀로 추가
+             </button>
+           </div>
+        )}
+
+        {/* ... (기존 리포트 및 리스트 렌더링 로직) ... */}
+
+        {/* 리포트 탭 내에서 "예상 하객 수" 카드 등에 수정 버튼(Pencil)을 작게 추가하여 
+            직관적으로 수정 가능함을 알릴 수도 있습니다. */}
+      </div>
+      
+      {/* ... (기존 FAB 및 하객 추가 모달) ... */}
+
+      {/* 결혼식 정보 설정 모달 렌더링 */}
+      {showSettingsModal && mounted && (
+        <WeddingInfoModal 
+          info={weddingInfo} 
+          onClose={() => setShowSettingsModal(false)} 
+          onSave={handleSaveWeddingInfo} 
+        />
+      )}
+    </>
+  )
+}
+UX 개선 포인트 요약
+설정 버튼(Settings) 추가: 상단에 설정 아이콘을 배치하여 사용자가 언제든 예상 하객 수나 식대 비용을 수정할 수 있도록 접근성을 높였습니다. 이는 "하객 인원 설정하는 부분을 어디에 넣어야 할지 모르겠다"는 문제에 대한 가장 직관적인 해결책입니다.
+
+연락처 연동/엑셀 업로드 버튼 노출: 리스트 탭 상단에 연락처 가져오기, 엑셀로 추가 버튼을 배치하여 (실제 구현은 API 연동이 필요하지만) 사용자에게 대량 등록 수단이 있음을 인지시켜 심리적 부담을 줄입니다.
+
+정보 수정 모달 분리: 하객 개별 추가 모달과 결혼식 전체 정보(식대, 총원) 수정 모달을 분리하여, 목적에 맞는 명확한 인터페이스를 제공합니다.
+
+이러한 구조는 사용자가 복잡한 입력 과정에 압도되지 않고, 필요한 순간에 필요한 정보만 입력하거나 수정할 수 있게 하여 전체적인 사용성을 크게 향상시킬 것입니다.

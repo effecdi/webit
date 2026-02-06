@@ -1,0 +1,152 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { createPortal } from "react-dom"
+import {
+  Users, Utensils, Mail, UserPlus, X, Search, Pencil, Trash2,
+  Settings, Contact, CheckSquare, Upload // 추가된 아이콘
+} from "lucide-react"
+
+// ... (기존 인터페이스 정의 유지) ...
+
+// 결혼식 정보 설정 모달 컴포넌트 (신규 추가)
+function WeddingInfoModal({ 
+  info, 
+  onClose, 
+  onSave 
+}: { 
+  info: WeddingInfoData | null, 
+  onClose: () => void, 
+  onSave: (data: WeddingInfoData) => void 
+}) {
+  const [localInfo, setLocalInfo] = useState<WeddingInfoData>({
+    expectedGuests: 0,
+    groomGuests: 0,
+    brideGuests: 0,
+    mealCostAdult: 0,
+    mealCostChild: 0,
+    invitationCount: 0,
+    physicalInvitationCount: 0,
+    ...info // 기존 정보가 있다면 덮어씌움
+  })
+
+  return createPortal(
+    <div className="fixed inset-0 z-[100] bg-black/50 flex items-end justify-center" onClick={onClose}>
+      <div className="bg-white rounded-t-[24px] w-full max-w-md animate-in slide-in-from-bottom duration-300" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-[#F2F4F6]">
+          <h3 className="text-[17px] font-bold text-[#191F28]">예식 정보 설정</h3>
+          <button onClick={onClose}><X className="w-5 h-5 text-[#8B95A1]" /></button>
+        </div>
+        <div className="p-5 space-y-4">
+           {/* 신랑측 예상 하객 */}
+           <div>
+            <label className="text-[13px] text-[#8B95A1] mb-1 block">신랑측 예상 하객 수</label>
+            <input 
+              type="number" 
+              value={localInfo.groomGuests} 
+              onChange={e => setLocalInfo({...localInfo, groomGuests: Number(e.target.value)})}
+              className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px]" 
+            />
+          </div>
+          {/* 신부측 예상 하객 */}
+          <div>
+            <label className="text-[13px] text-[#8B95A1] mb-1 block">신부측 예상 하객 수</label>
+            <input 
+              type="number" 
+              value={localInfo.brideGuests} 
+              onChange={e => setLocalInfo({...localInfo, brideGuests: Number(e.target.value)})}
+              className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px]" 
+            />
+          </div>
+          {/* 식대 설정 */}
+          <div>
+            <label className="text-[13px] text-[#8B95A1] mb-1 block">대인 식대 (1인)</label>
+            <input 
+              type="number" 
+              value={localInfo.mealCostAdult} 
+              onChange={e => setLocalInfo({...localInfo, mealCostAdult: Number(e.target.value)})}
+              className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px]" 
+            />
+          </div>
+          <button 
+            onClick={() => onSave(localInfo)}
+            className="w-full py-4 bg-[#3182F6] text-white font-bold rounded-[14px] mt-2"
+          >
+            저장하기
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body
+  )
+}
+
+export function GuestManager() {
+  // ... (기존 상태 값 유지) ...
+  const [showSettingsModal, setShowSettingsModal] = useState(false) // 설정 모달 상태 추가
+
+  // ... (기존 useEffect 및 fetchData 유지) ...
+
+  // 결혼식 정보 저장 핸들러 (신규 추가)
+  const handleSaveWeddingInfo = async (newInfo: WeddingInfoData) => {
+    try {
+      // API 호출 로직 (예시)
+      // await fetch("/api/wedding-info", { method: "POST", body: JSON.stringify(newInfo) ... })
+      setWeddingInfo(newInfo)
+      setShowSettingsModal(false)
+    } catch (error) {
+      console.error("Failed to save wedding info", error)
+    }
+  }
+
+  return (
+    <>
+      <div className="px-5 pt-5 max-w-md mx-auto">
+        {/* 상단 헤더 영역 개선: 설정 버튼 추가 */}
+        <div className="flex items-center justify-between mb-5">
+           <div className="flex bg-[#F2F4F6] rounded-full p-1 flex-1 mr-3">
+             {/* ... (기존 탭 버튼 코드) ... */}
+           </div>
+           {/* 설정 버튼: 하객 수, 식대 등 기본 정보 수정 진입점 */}
+           <button 
+             onClick={() => setShowSettingsModal(true)}
+             className="p-2 bg-[#F2F4F6] rounded-full hover:bg-[#E5E8EB] transition-colors"
+           >
+             <Settings className="w-5 h-5 text-[#4E5968]" />
+           </button>
+        </div>
+
+        {activeTab === "list" && (
+           <div className="mb-4 flex gap-2 overflow-x-auto pb-2">
+             {/* 연락처 가져오기 버튼 (기능 예시) */}
+             <button className="flex items-center gap-1.5 px-3 py-2 bg-[#E8F3FF] text-[#1B64DA] rounded-[10px] text-[13px] font-medium whitespace-nowrap">
+               <Contact className="w-4 h-4" />
+               연락처 가져오기
+             </button>
+             {/* 엑셀 업로드 버튼 (기능 예시) */}
+             <button className="flex items-center gap-1.5 px-3 py-2 bg-[#F2F4F6] text-[#4E5968] rounded-[10px] text-[13px] font-medium whitespace-nowrap">
+               <Upload className="w-4 h-4" />
+               엑셀로 추가
+             </button>
+           </div>
+        )}
+
+        {/* ... (기존 리포트 및 리스트 렌더링 로직) ... */}
+
+        {/* 리포트 탭 내에서 "예상 하객 수" 카드 등에 수정 버튼(Pencil)을 작게 추가하여 
+            직관적으로 수정 가능함을 알릴 수도 있습니다. */}
+      </div>
+      
+      {/* ... (기존 FAB 및 하객 추가 모달) ... */}
+
+      {/* 결혼식 정보 설정 모달 렌더링 */}
+      {showSettingsModal && mounted && (
+        <WeddingInfoModal 
+          info={weddingInfo} 
+          onClose={() => setShowSettingsModal(false)} 
+          onSave={handleSaveWeddingInfo} 
+        />
+      )}
+    </>
+  )
+}
