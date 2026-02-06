@@ -695,13 +695,21 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
           </p>
 
           {data.showNameAtBottom && (() => {
+            const useFlower = data.deceasedFlower === true
+            const DeceasedMark = ({ show }: { show: boolean }) => {
+              if (!show) return null
+              if (useFlower) {
+                return <span className="inline-block text-[#8B95A1] mr-0.5" style={{ fontSize: "12px" }}>*</span>
+              }
+              return <span className="text-[#8B95A1] mr-0.5">故</span>
+            }
             const groomBlock = (
               <p className="text-[15px] text-[#191F28] font-medium leading-relaxed">
                 {data.groomFather?.name && (
-                  <>{data.groomFather.deceased ? "故 " : ""}{data.groomFather.name}</>
+                  <><DeceasedMark show={data.groomFather.deceased} />{data.groomFather.name}</>
                 )}
                 {data.groomMother?.name && (
-                  <> · {data.groomMother.deceased ? "故 " : ""}{data.groomMother.name}</>
+                  <> · <DeceasedMark show={data.groomMother.deceased} />{data.groomMother.name}</>
                 )}
                 {(data.groomFather?.name || data.groomMother?.name) && (
                   <span className="text-[13px] text-[#8B95A1]"> {data.groomRelation || "아들"} </span>
@@ -712,10 +720,10 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
             const brideBlock = (
               <p className="text-[15px] text-[#191F28] font-medium leading-relaxed">
                 {data.brideFather?.name && (
-                  <>{data.brideFather.deceased ? "故 " : ""}{data.brideFather.name}</>
+                  <><DeceasedMark show={data.brideFather.deceased} />{data.brideFather.name}</>
                 )}
                 {data.brideMother?.name && (
-                  <> · {data.brideMother.deceased ? "故 " : ""}{data.brideMother.name}</>
+                  <> · <DeceasedMark show={data.brideMother.deceased} />{data.brideMother.name}</>
                 )}
                 {(data.brideFather?.name || data.brideMother?.name) && (
                   <span className="text-[13px] text-[#8B95A1]"> {data.brideRelation || "딸"} </span>
@@ -1272,7 +1280,7 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
         {/* ===== ENDING / THANK YOU SECTION ===== */}
         {data.showEndingMessage && (data.endingContent || data.endingPhoto) && (() => {
           const eStyle = data.endingStyle || "card"
-          const endTextColor = (data as any).endingTextColor || "#FFFFFF"
+          const endTextColor = data.endingTextColor || "#FFFFFF"
           return (
             <div className="bg-white px-8 py-14">
               <SectionTitle title="Thank you" />

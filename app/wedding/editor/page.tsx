@@ -1,9 +1,10 @@
 "use client"
 
 import React from "react"
+import ReactDOM from "react-dom"
 import { useState, useRef, useEffect } from "react"
 import { InvitationPreview } from "@/components/invitation-preview"
-import { X, Share2, Link2, Check, MessageCircle, Plus, Trash2, Sparkles, ChevronLeft, Info, Play, Pause, Eye, Lock } from "lucide-react"
+import { X, Share2, Link2, Check, MessageCircle, Plus, Trash2, Sparkles, ChevronLeft, ChevronRight, Info, Play, Pause, Eye, Lock, Calendar } from "lucide-react"
 import Link from "next/link"
 
 interface AccountInfo {
@@ -348,6 +349,155 @@ function SectionSwitch({ checked, onChange }: { checked: boolean; onChange: (v: 
   )
 }
 
+function WeddingDatePicker({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [showCal, setShowCal] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false)
+  const btnRef = React.useRef<HTMLDivElement>(null)
+  const calRef = React.useRef<HTMLDivElement>(null)
+  const [calPos, setCalPos] = React.useState<{ top: number; left: number }>({ top: 0, left: 0 })
+
+  const today = new Date()
+  const selectedDate = value ? new Date(value + "T00:00:00") : null
+  const [viewYear, setViewYear] = React.useState(selectedDate?.getFullYear() || today.getFullYear())
+  const [viewMonth, setViewMonth] = React.useState(selectedDate?.getMonth() || today.getMonth())
+
+  React.useEffect(() => { setMounted(true) }, [])
+
+  React.useEffect(() => {
+    if (value) {
+      const d = new Date(value + "T00:00:00")
+      if (!isNaN(d.getTime())) {
+        setViewYear(d.getFullYear())
+        setViewMonth(d.getMonth())
+      }
+    }
+  }, [value])
+
+  const dayNames = ["일", "월", "화", "수", "목", "금", "토"]
+
+  const getDaysInMonth = (y: number, m: number) => new Date(y, m + 1, 0).getDate()
+  const getFirstDayOfMonth = (y: number, m: number) => new Date(y, m, 1).getDay()
+
+  const days: (number | null)[] = []
+  const firstDay = getFirstDayOfMonth(viewYear, viewMonth)
+  const totalDays = getDaysInMonth(viewYear, viewMonth)
+  for (let i = 0; i < firstDay; i++) days.push(null)
+  for (let i = 1; i <= totalDays; i++) days.push(i)
+
+  const handleOpen = () => {
+    if (btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect()
+      const maxLeft = (typeof window !== "undefined" ? window.innerWidth : 400) - 310
+      setCalPos({ top: rect.bottom + 4, left: Math.min(Math.max(8, rect.left), maxLeft) })
+    }
+    setShowCal(true)
+  }
+
+  const handleSelect = (day: number) => {
+    const m = String(viewMonth + 1).padStart(2, "0")
+    const d = String(day).padStart(2, "0")
+    onChange(`${viewYear}-${m}-${d}`)
+    setShowCal(false)
+  }
+
+  const prevMonth = () => {
+    if (viewMonth === 0) { setViewMonth(11); setViewYear(viewYear - 1) }
+    else setViewMonth(viewMonth - 1)
+  }
+  const nextMonth = () => {
+    if (viewMonth === 11) { setViewMonth(0); setViewYear(viewYear + 1) }
+    else setViewMonth(viewMonth + 1)
+  }
+
+  React.useEffect(() => {
+    if (!showCal) return
+    const close = (e: MouseEvent) => {
+      const target = e.target as Node
+      if (btnRef.current?.contains(target)) return
+      if (calRef.current?.contains(target)) return
+      setShowCal(false)
+    }
+    document.addEventListener("mousedown", close)
+    return () => document.removeEventListener("mousedown", close)
+  }, [showCal])
+
+  const displayText = value
+    ? (() => {
+        const d = new Date(value + "T00:00:00")
+        return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`
+      })()
+    : "날짜를 선택해주세요"
+
+  return (
+    <>
+      <div className="flex items-center gap-2" ref={btnRef}>
+        <label className="text-[14px] text-[#4E5968] w-[70px]">예식일</label>
+        <button
+          type="button"
+          onClick={handleOpen}
+          data-testid="input-wedding-date"
+          className="flex-1 flex items-center gap-2 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-left focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+        >
+          <Calendar className="w-4 h-4 text-[#8B95A1]" />
+          <span className={value ? "text-[#191F28]" : "text-[#B0B8C1]"}>{displayText}</span>
+        </button>
+      </div>
+      {mounted && showCal && ReactDOM.createPortal(
+        <div
+          ref={calRef}
+          className="fixed z-[9999] bg-white rounded-[20px] shadow-xl border border-[#E5E8EB] p-4 w-[300px]"
+          style={{ top: calPos.top, left: calPos.left }}
+        >
+          <div className="flex items-center justify-between mb-4">
+            <button type="button" onClick={prevMonth} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#F2F4F6]">
+              <ChevronLeft className="w-4 h-4 text-[#4E5968]" />
+            </button>
+            <span className="text-[15px] font-bold text-[#191F28]">{viewYear}년 {viewMonth + 1}월</span>
+            <button type="button" onClick={nextMonth} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#F2F4F6]">
+              <ChevronRight className="w-4 h-4 text-[#4E5968]" />
+            </button>
+          </div>
+          <div className="grid grid-cols-7 gap-0 mb-1">
+            {dayNames.map((d) => (
+              <div key={d} className="text-[11px] text-[#8B95A1] text-center py-1.5">{d}</div>
+            ))}
+          </div>
+          <div className="grid grid-cols-7 gap-0">
+            {days.map((day, i) => {
+              const isSelected = day !== null && value === `${viewYear}-${String(viewMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
+              const isToday = day !== null && viewYear === today.getFullYear() && viewMonth === today.getMonth() && day === today.getDate()
+              return (
+                <div key={i} className="flex items-center justify-center py-1">
+                  {day !== null ? (
+                    <button
+                      type="button"
+                      onClick={() => handleSelect(day)}
+                      className={`w-9 h-9 rounded-full text-[13px] flex items-center justify-center transition-colors ${
+                        isSelected
+                          ? "bg-[#FF8A80] text-white font-bold"
+                          : isToday
+                            ? "border border-[#FF8A80] text-[#FF8A80]"
+                            : i % 7 === 0
+                              ? "text-[#FF6B6B] hover:bg-[#FFF0EF]"
+                              : i % 7 === 6
+                                ? "text-[#3182F6] hover:bg-[#EBF4FF]"
+                                : "text-[#4E5968] hover:bg-[#F2F4F6]"
+                      }`}
+                    >
+                      {day}
+                    </button>
+                  ) : null}
+                </div>
+              )
+            })}
+          </div>
+        </div>,
+        document.body
+      )}
+    </>
+  )
+}
+
 const SECTION_TOOLTIPS: Record<string, string> = {
   "오프닝": "초대장을 열었을 때 보여지는 인트로 화면입니다. 사진과 텍스트를 설정하세요.",
   "메인": "청첩장의 메인 화면 템플릿을 선택합니다. 사진과 커버 스타일을 설정하세요.",
@@ -386,25 +536,45 @@ function SectionHeader({
 }) {
   const [showTooltip, setShowTooltip] = React.useState(false)
   const tooltipText = SECTION_TOOLTIPS[title] || ""
+  const btnRef = React.useRef<HTMLButtonElement>(null)
+  const [tooltipPos, setTooltipPos] = React.useState<{ top: number; left: number } | null>(null)
+
+  const handleToggle = () => {
+    if (showTooltip) {
+      setShowTooltip(false)
+      return
+    }
+    if (btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect()
+      setTooltipPos({ top: rect.bottom + 6, left: Math.max(8, rect.left - 8) })
+    }
+    setShowTooltip(true)
+  }
+
+  React.useEffect(() => {
+    if (!showTooltip) return
+    const close = (e: MouseEvent) => {
+      if (btnRef.current && !btnRef.current.contains(e.target as Node)) {
+        setShowTooltip(false)
+      }
+    }
+    document.addEventListener("mousedown", close)
+    return () => document.removeEventListener("mousedown", close)
+  }, [showTooltip])
 
   return (
     <div className="flex items-center justify-between gap-2 mb-4">
-      <div className="flex items-center gap-2 relative">
+      <div className="flex items-center gap-2">
         <h3 className="text-[16px] font-bold text-[#191F28]">{title}</h3>
         {tooltipText && (
           <button
+            ref={btnRef}
             type="button"
-            onClick={() => setShowTooltip(!showTooltip)}
+            onClick={handleToggle}
             className="relative"
             data-testid={`info-${title}`}
           >
             <Info className="w-4 h-4 text-[#B0B8C1]" />
-            {showTooltip && (
-              <div className="absolute left-0 top-6 z-50 w-[220px] p-3 bg-[#191F28] text-white text-[12px] leading-[1.6] rounded-[12px] shadow-lg">
-                {tooltipText}
-                <div className="absolute -top-1.5 left-2 w-3 h-3 bg-[#191F28] rotate-45" />
-              </div>
-            )}
           </button>
         )}
         {!tooltipText && <Info className="w-4 h-4 text-[#B0B8C1]" />}
@@ -414,6 +584,16 @@ function SectionHeader({
       </div>
       {showSwitch && onChange && (
         <SectionSwitch checked={checked} onChange={onChange} />
+      )}
+      {showTooltip && tooltipText && tooltipPos && ReactDOM.createPortal(
+        <div
+          className="fixed z-[9999] w-[220px] p-3 bg-[#191F28] text-white text-[12px] leading-[1.6] rounded-[12px] shadow-lg"
+          style={{ top: tooltipPos.top, left: tooltipPos.left }}
+        >
+          {tooltipText}
+          <div className="absolute -top-1.5 left-3 w-3 h-3 bg-[#191F28] rotate-45" />
+        </div>,
+        document.body
       )}
     </div>
   )
@@ -1234,16 +1414,10 @@ export default function InvitationEditorPage() {
             <div className="bg-white mx-4 mt-3 rounded-[24px] shadow-sm p-5">
               <SectionHeader title="예식 정보" />
               <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <label className="text-[14px] text-[#4E5968] w-[70px]">예식일</label>
-                  <input
-                    type="date"
-                    value={data.weddingDate}
-                    onChange={(e) => updateField("weddingDate", e.target.value)}
-                    data-testid="input-wedding-date"
-                    className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
-                  />
-                </div>
+                <WeddingDatePicker
+                  value={data.weddingDate}
+                  onChange={(v) => updateField("weddingDate", v)}
+                />
                 <div className="flex items-center gap-2">
                   <label className="text-[14px] text-[#4E5968] w-[70px]">예식 시간</label>
                   <select
