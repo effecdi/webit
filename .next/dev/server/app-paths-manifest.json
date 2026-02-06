@@ -5,6 +5,7 @@
   "/api/notifications/route": "app/api/notifications/route.js",
   "/api/travels/route": "app/api/travels/route.js",
   "/api/wedding-info/route": "app/api/wedding-info/route.js",
+  "/invitation/preview/page": "app/invitation/preview/page.js",
   "/page": "app/page.js",
   "/splash/page": "app/splash/page.js",
   "/wedding/guests/page": "app/wedding/guests/page.js",

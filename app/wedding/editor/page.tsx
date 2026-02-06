@@ -122,8 +122,17 @@ export default function InvitationEditorPage() {
     }
   }
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     setShowPreview(true)
+    try {
+      await fetch("/api/invitation", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: "default", invitationData: data }),
+      })
+    } catch (error) {
+      console.error("Failed to save invitation:", error)
+    }
   }
 
   const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/invitation/preview` : ""

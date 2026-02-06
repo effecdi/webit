@@ -4628,6 +4628,14 @@
     border-color: #ff8a80;
   }
 
+  .border-\[\#c9a86c\] {
+    border-color: #c9a86c;
+  }
+
+  .border-\[\#f0ebe3\] {
+    border-color: #f0ebe3;
+  }
+
   .border-amber-100 {
     border-color: var(--color-amber-100);
   }
@@ -4869,6 +4877,10 @@
     background-color: #3c1e1e;
   }
 
+  .bg-\[\#3d3d3d\] {
+    background-color: #3d3d3d;
+  }
+
   .bg-\[\#4E5968\] {
     background-color: #4e5968;
   }
@@ -5064,6 +5076,10 @@
 
   .bg-\[\#f8f9fa\] {
     background-color: #f8f9fa;
+  }
+
+  .bg-\[\#faf5eb\] {
+    background-color: #faf5eb;
   }
 
   .bg-\[\#faf9f7\] {
@@ -9687,6 +9703,12 @@
   }
 
   @media (hover: hover) {
+    .hover\:bg-\[\#191F28\]:hover {
+      background-color: #191f28;
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:bg-\[\#C4735B\]:hover {
       background-color: #c4735b;
     }
@@ -10369,6 +10391,10 @@
 
   .focus\:ring-\[\#FF8A80\]:focus {
     --tw-ring-color: #ff8a80;
+  }
+
+  .focus\:ring-\[\#c9a86c\]:focus {
+    --tw-ring-color: #c9a86c;
   }
 
   .focus\:ring-blue-300:focus {
