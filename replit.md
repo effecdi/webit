@@ -110,7 +110,22 @@ Preferred communication style: Simple, everyday language.
 
 ### Key Features by Mode
 - **Dating**: Couple calendar, photo gallery, todo lists with comments, D-day tracking
-- **Wedding**: Budget tracking, checklist management, digital invitation editor with RSVP (opening concepts: Cinematic Fade/Typographic Slide/Simple Card; main templates: Poster/Polaroid/Magazine/Chat), vendor management, guest manager (하객매니저) with report/list tabs and batch operations (invitation management, attendance check)
+- **Wedding**: Budget tracking, checklist management, digital invitation editor with RSVP (opening concepts: Cinematic Fade/Typographic Slide/Simple Card; main templates: Poster/Polaroid/Magazine/Chat/Modern/Classic), vendor management, guest manager (하객매니저) with report/list tabs and batch operations (invitation management, attendance check)
+  - **Template Premium System**: Modern & Classic are free; Poster, Polaroid, Magazine, Chat require premium (shown with lock icon, premium banner in editor)
+  - **Template Thumbnails**: Visual CSS mini-thumbnails in template selector buttons
+  - **Modern Template**: Minimalist white design, rounded photo frame, thin coral divider, light typography
+  - **Classic Template**: Cream/ivory bg, decorative double border in gold (#C5A572), Georgia serif font, ornamental diamond divider
+  - **Chat Template**: Enhanced with status bar, dynamic message from user data, read indicators, card-style system message
+  - **Ending Styles**: Card (rounded photo + text below), Full (photo with dark overlay, text centered over), Simple (photo with gradient, text at bottom)
+  - **Ending Text Color**: Configurable (white/black/coral) for Full and Simple ending styles
+  - **AI Recommendations**: Template-based random generation for title, message, funding guidance/thanks, notice title, ending content (no API calls)
+  - **Info Tooltips**: Interactive info icons on section headers with contextual guidance text
+  - **Editor UX**: Transport item delete, share image auto-fill from invitation data, deceased checkboxes with flower option
+- **Membership** (Dating/Family only): Two-tier subscription system
+  - 고급 (Advanced): 1,900원/월 (first-time discount from 3,000원), includes ad-free, unlimited storage, priority support
+  - 프리미엄 (Premium): 4,900원/월 (Dating) or 6,900원/월 (Family), includes all Advanced features plus AI recommendations, premium themes, data analytics
+  - Annual plans show 20% discount
+  - Wedding mode has NO membership features
 - **Family**: Memory archive, history book, shared calendar, photo organization
 - **Travel** (Shared): Trip planning with schedule timeline, checklist, budget tracker; accessible from all modes via TravelEntryCard widget
 

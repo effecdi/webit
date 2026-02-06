@@ -449,68 +449,85 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
 
             {/* Chat Template */}
             {data.mainTemplate === "chat" && (
-              <div className="bg-[#B2C7D9] px-4 py-8" style={{ minHeight: "500px" }}>
-                <div className="flex items-center gap-3 mb-6 px-2">
-                  <div className="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center text-[14px] font-bold text-[#4E5968]">
-                    WE
-                  </div>
-                  <div>
-                    <p className="text-[15px] text-[#191F28] font-bold">Wedding Invitation</p>
-                    <p className="text-[12px] text-[#4E5968]">2 members</p>
+              <div className="bg-[#B2C7D9]" style={{ minHeight: "500px" }}>
+                <div className="bg-[#93B5CF] text-white flex items-center justify-between px-4 py-2">
+                  <span className="text-[12px] font-medium">12:00</span>
+                  <div className="flex items-center gap-1 text-[11px]">
+                    <span>&#9679;&#9679;&#9679;</span>
+                    <span>&#9608;</span>
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <div className="flex justify-center">
-                    <div className="bg-[#8B95A1]/30 px-4 py-1.5 rounded-full">
-                      <p className="text-[11px] text-white">{formatWeddingDate() || "2025.06.21"}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-end gap-2">
-                    <div className="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-[11px] font-bold text-[#4E5968] flex-shrink-0">
-                      {(data.groomName || "신랑").charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-[11px] text-[#4E5968] mb-1 ml-1">{data.groomName || "신랑"}</p>
-                      <div className="bg-white rounded-[16px] rounded-tl-[4px] p-4 max-w-[240px] shadow-sm">
-                        <p className="text-[14px] text-[#191F28] leading-[1.6]">{`저희 결혼합니다! 축하해주러 오실 거죠? \u{1F389}`}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-end gap-2">
-                    <div className="w-8 h-8 rounded-full bg-[#FF8A80]/30 flex items-center justify-center text-[11px] font-bold text-[#FF8A80] flex-shrink-0">
-                      {(data.brideName || "신부").charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-[11px] text-[#4E5968] mb-1 ml-1">{data.brideName || "신부"}</p>
-                      {allPhotos[0] ? (
-                        <div className="rounded-[16px] rounded-tl-[4px] overflow-hidden max-w-[200px] shadow-sm">
-                          <img src={allPhotos[0]} alt="Wedding" className="w-full aspect-[3/4] object-cover" />
-                        </div>
-                      ) : (
-                        <div className="bg-white rounded-[16px] rounded-tl-[4px] p-4 max-w-[200px] shadow-sm">
-                          <p className="text-[14px] text-[#8B95A1]">사진을 추가해주세요</p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <div className="bg-[#FFE08C] rounded-[16px] rounded-tr-[4px] p-4 max-w-[240px] shadow-sm">
-                      <p className="text-[14px] text-[#191F28] leading-[1.6]">
-                        {data.venue || "예식장"}{"\n"}
-                        {formatWeddingDate()}{data.time ? " " + data.time : ""}{"\n"}
-                        꼭 와주세요!
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-end gap-2">
-                    <div className="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-[11px] font-bold text-[#4E5968] flex-shrink-0">
+                <div className="px-4 py-4">
+                  <div className="flex items-center gap-3 mb-6 px-2">
+                    <div className="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center text-[14px] font-bold text-[#4E5968]">
                       WE
                     </div>
                     <div>
-                      <p className="text-[11px] text-[#4E5968] mb-1 ml-1">WE:VE</p>
-                      <div className="bg-white rounded-[16px] rounded-tl-[4px] p-4 max-w-[240px] shadow-sm">
-                        <p className="text-[14px] text-[#191F28] font-medium">{data.title || "우리의 날"}</p>
-                        <p className="text-[12px] text-[#8B95A1] mt-1">{data.groomName || "신랑"} & {data.brideName || "신부"}</p>
+                      <p className="text-[15px] text-[#191F28] font-bold">Wedding Invitation</p>
+                      <p className="text-[12px] text-[#4E5968]">2 members</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-center">
+                      <div className="bg-[#8B95A1]/30 px-4 py-1.5 rounded-full">
+                        <p className="text-[11px] text-white">{formatWeddingDate() || "2025.06.21"}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-2">
+                      <div className="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-[11px] font-bold text-[#4E5968] flex-shrink-0">
+                        {(data.groomName || "신랑").charAt(0)}
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-[#4E5968] mb-1 ml-1">{data.groomName || "신랑"}</p>
+                        <div className="bg-white rounded-[16px] rounded-tl-[4px] p-4 max-w-[240px] shadow-sm">
+                          <p className="text-[14px] text-[#191F28] leading-[1.6]">{data.message || "저희 결혼합니다! 축하해주러 오실 거죠?"}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-2">
+                      <div className="w-8 h-8 rounded-full bg-[#FF8A80]/30 flex items-center justify-center text-[11px] font-bold text-[#FF8A80] flex-shrink-0">
+                        {(data.brideName || "신부").charAt(0)}
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-[#4E5968] mb-1 ml-1">{data.brideName || "신부"}</p>
+                        {allPhotos[0] ? (
+                          <div className="rounded-[16px] rounded-tl-[4px] overflow-hidden max-w-[200px] shadow-sm">
+                            <img src={allPhotos[0]} alt="Wedding" className="w-full aspect-[3/4] object-cover" />
+                          </div>
+                        ) : (
+                          <div className="bg-white rounded-[16px] rounded-tl-[4px] p-4 max-w-[200px] shadow-sm">
+                            <p className="text-[14px] text-[#8B95A1]">사진을 추가해주세요</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex items-end justify-end gap-1">
+                      <span className="text-[10px] text-[#8B95A1] self-end mb-1">읽음 1</span>
+                      <div className="bg-[#FFE08C] rounded-[16px] rounded-tr-[4px] p-4 max-w-[240px] shadow-sm">
+                        <p className="text-[14px] text-[#191F28] leading-[1.6]">
+                          {data.venue || "예식장"}{"\n"}
+                          {formatWeddingDate()}{data.time ? " " + data.time : ""}{"\n"}
+                          꼭 와주세요!
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-end gap-2">
+                      <div className="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center text-[11px] font-bold text-[#4E5968] flex-shrink-0">
+                        WE
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-[#4E5968] mb-1 ml-1">WE:VE</p>
+                        <div className="bg-white rounded-[16px] rounded-tl-[4px] overflow-hidden max-w-[240px] shadow-sm">
+                          {allPhotos[0] && (
+                            <div className="w-full h-[100px] overflow-hidden">
+                              <img src={allPhotos[0]} alt="Preview" className="w-full h-full object-cover" />
+                            </div>
+                          )}
+                          <div className="p-4">
+                            <p className="text-[14px] text-[#191F28] font-medium">{data.title || "우리의 날"}</p>
+                            <p className="text-[12px] text-[#8B95A1] mt-1">{data.groomName || "신랑"} & {data.brideName || "신부"}</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -518,8 +535,70 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
               </div>
             )}
 
-            {/* Default/Fallback Template (modern, classic, none, etc.) */}
-            {data.mainTemplate !== "poster" && data.mainTemplate !== "polaroid" && data.mainTemplate !== "magazine" && data.mainTemplate !== "chat" && (
+            {/* Modern Template */}
+            {data.mainTemplate === "modern" && (
+              <div className="bg-white py-16 px-8">
+                <div className="flex flex-col items-center">
+                  {allPhotos[0] ? (
+                    <div className="max-w-[300px] w-full rounded-[24px] overflow-hidden aspect-[3/4]">
+                      <img src={allPhotos[0]} alt="Cover" className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div className="max-w-[300px] w-full rounded-[24px] aspect-[3/4] bg-[#F2F4F6] flex items-center justify-center">
+                      <p className="text-[14px] text-[#B0B8C1]">사진을 추가해주세요</p>
+                    </div>
+                  )}
+                  <div className="w-12 h-[1px] bg-[#FF8A80] mt-8 mb-8" />
+                  <p className="text-[28px] font-light tracking-[0.1em] text-[#191F28] text-center">
+                    {data.title || "Our Wedding"}
+                  </p>
+                  <p className="text-[20px] font-medium text-[#191F28] mt-4 text-center">
+                    {data.groomName || "신랑"} <span className="font-light text-[16px] text-[#8B95A1] mx-2">and</span> {data.brideName || "신부"}
+                  </p>
+                  <p className="text-[13px] text-[#8B95A1] mt-4 text-center">
+                    {formatWeddingDate()}{data.time ? " | " + data.time : ""}
+                  </p>
+                  <p className="text-[13px] text-[#8B95A1] mt-1 text-center">
+                    {data.venue || ""}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Classic Template */}
+            {data.mainTemplate === "classic" && (
+              <div className="bg-[#FBF8F1] py-12 px-6">
+                <div className="border-double border-[#C5A572] border-[3px] p-8">
+                  <div className="flex flex-col items-center">
+                    <p className="text-[11px] tracking-[0.4em] text-[#C5A572] font-light uppercase">
+                      Wedding Invitation
+                    </p>
+                    <div className="flex items-center gap-2 my-4">
+                      <div className="w-8 h-[1px] bg-[#C5A572]/40" />
+                      <div className="w-2 h-2 rotate-45 border border-[#C5A572]/60" />
+                      <div className="w-8 h-[1px] bg-[#C5A572]/40" />
+                    </div>
+                    <p className="text-[30px] font-light text-[#3D3226] text-center" style={{ fontFamily: "Georgia, serif" }}>
+                      {data.groomName || "신랑"} & {data.brideName || "신부"}
+                    </p>
+                    <p className="text-[13px] text-[#8B7B6B] mt-4 text-center">
+                      {formatWeddingDate()}{data.time ? " | " + data.time : ""}
+                    </p>
+                    <p className="text-[13px] text-[#8B7B6B] mt-1 text-center">
+                      {data.venue || ""}
+                    </p>
+                    {allPhotos[0] && (
+                      <div className="mt-8 border-4 border-[#E8DFD0]">
+                        <img src={allPhotos[0]} alt="Cover" className="w-full aspect-[3/4] object-cover max-w-[260px]" />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Default/Fallback Template (none, etc.) */}
+            {data.mainTemplate !== "poster" && data.mainTemplate !== "polaroid" && data.mainTemplate !== "magazine" && data.mainTemplate !== "chat" && data.mainTemplate !== "modern" && data.mainTemplate !== "classic" && (
               <div className="relative w-full overflow-hidden" style={{ minHeight: "580px" }}>
                 {allPhotos.length > 0 ? (
                   <>
@@ -1193,6 +1272,7 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
         {/* ===== ENDING / THANK YOU SECTION ===== */}
         {data.showEndingMessage && (data.endingContent || data.endingPhoto) && (() => {
           const eStyle = data.endingStyle || "card"
+          const endTextColor = (data as any).endingTextColor || "#FFFFFF"
           return (
             <div className="bg-white px-8 py-14">
               <SectionTitle title="Thank you" />
@@ -1207,27 +1287,67 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
                 </div>
               )}
 
+              {eStyle === "card" && data.endingContent && (
+                <p className="text-[14px] text-[#4E5968] leading-[2] text-center whitespace-pre-line">
+                  {data.endingContent}
+                </p>
+              )}
+
               {eStyle === "full" && data.endingPhoto && (
-                <div className="-mx-8 mb-6">
+                <div className="-mx-8 mb-6 relative">
                   <img
                     src={data.endingPhoto}
                     alt="Thank you"
                     className="w-full object-cover"
                     style={{ maxHeight: "400px" }}
                   />
+                  <div className="absolute inset-0 bg-black/30" />
+                  {data.endingContent && (
+                    <div className="absolute inset-0 flex items-center justify-center px-8">
+                      <p className="text-[14px] leading-[2] text-center whitespace-pre-line" style={{ color: endTextColor }}>
+                        {data.endingContent}
+                      </p>
+                    </div>
+                  )}
                 </div>
               )}
 
-              {data.endingContent && (
+              {eStyle === "full" && !data.endingPhoto && data.endingContent && (
                 <p className="text-[14px] text-[#4E5968] leading-[2] text-center whitespace-pre-line">
                   {data.endingContent}
                 </p>
               )}
 
               {eStyle === "simple" && (
-                <div className="mt-4 text-center">
-                  <div className="w-8 h-px bg-[#FF8A80] mx-auto" />
-                </div>
+                <>
+                  {data.endingPhoto && (
+                    <div className="-mx-8 mb-0 relative">
+                      <img
+                        src={data.endingPhoto}
+                        alt="Thank you"
+                        className="w-full object-cover"
+                        style={{ maxHeight: "360px" }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      {data.endingContent && (
+                        <div className="absolute bottom-0 left-0 right-0 px-8 pb-10">
+                          <div className="w-8 h-px mx-auto mb-4" style={{ backgroundColor: endTextColor }} />
+                          <p className="text-[14px] leading-[2] text-center whitespace-pre-line" style={{ color: endTextColor }}>
+                            {data.endingContent}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  {!data.endingPhoto && data.endingContent && (
+                    <div className="text-center">
+                      <div className="w-8 h-px bg-[#FF8A80] mx-auto mb-4" />
+                      <p className="text-[14px] text-[#4E5968] leading-[2] text-center whitespace-pre-line">
+                        {data.endingContent}
+                      </p>
+                    </div>
+                  )}
+                </>
               )}
             </div>
           )

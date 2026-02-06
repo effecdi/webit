@@ -9,6 +9,7 @@ import { Bell, LogOut, Crown, Star, X, Heart, ImageIcon, Calendar, Check } from 
 export default function ProfilePage() {
   const [showPremiumModal, setShowPremiumModal] = useState(false)
   const [showPaymentModal, setShowPaymentModal] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState<"advanced" | "premium">("advanced")
 
   return (
     <main className="min-h-dvh bg-[#F7F8FA] pb-20">
@@ -80,7 +81,7 @@ export default function ProfilePage() {
           onClick={() => setShowPremiumModal(false)}
         >
           <div 
-            className="bg-white rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200"
+            className="bg-white rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200 max-h-[85vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header with gradient */}
@@ -97,45 +98,153 @@ export default function ProfilePage() {
               <h3 className="text-[24px] font-bold text-white">WE:VE Premium</h3>
               <p className="text-white/80 text-[14px] mt-1">더 특별한 우리의 이야기</p>
             </div>
-            
-            {/* Price */}
-            <div className="py-6 text-center border-b border-[#F2F4F6]">
-              <span className="text-[36px] font-bold text-[#191F28]">4,900</span>
-              <span className="text-[18px] text-[#8B95A1]">원/월</span>
+
+            {/* Plan Tabs */}
+            <div className="flex border-b border-[#F2F4F6]">
+              <button 
+                onClick={() => setSelectedPlan("advanced")}
+                className={`flex-1 py-3 text-[14px] font-semibold transition-colors ${selectedPlan === "advanced" ? "text-amber-500 border-b-2 border-amber-500" : "text-[#8B95A1]"}`}
+                data-testid="tab-advanced"
+              >
+                고급
+              </button>
+              <button 
+                onClick={() => setSelectedPlan("premium")}
+                className={`flex-1 py-3 text-[14px] font-semibold transition-colors ${selectedPlan === "premium" ? "text-amber-500 border-b-2 border-amber-500" : "text-[#8B95A1]"}`}
+                data-testid="tab-premium"
+              >
+                프리미엄
+              </button>
             </div>
-            
-            {/* Benefits */}
-            <div className="p-5 space-y-3">
-              <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <ImageIcon className="w-5 h-5 text-amber-600" />
+
+            {/* Advanced Plan */}
+            {selectedPlan === "advanced" && (
+              <>
+                <div className="py-5 text-center border-b border-[#F2F4F6]">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <span className="text-[14px] text-[#8B95A1] line-through">3,000원/월</span>
+                    <span className="px-2 py-0.5 bg-red-50 text-red-500 text-[11px] font-bold rounded-full">첫 달 할인</span>
+                  </div>
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="text-[36px] font-bold text-[#191F28]">1,900</span>
+                    <span className="text-[18px] text-[#8B95A1]">원/월</span>
+                  </div>
+                  <p className="text-[12px] text-amber-500 mt-1">연간 결제 시 20% 할인 (월 1,520원)</p>
                 </div>
-                <div>
-                  <p className="text-[14px] font-semibold text-[#191F28]">무제한 사진 저장</p>
-                  <p className="text-[12px] text-[#8B95A1]">용량 걱정 없이 추억을 저장하세요</p>
+                
+                <div className="p-5 space-y-3">
+                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                    <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <ImageIcon className="w-5 h-5 text-amber-600" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-[#191F28]">사진 500장 저장</p>
+                      <p className="text-[12px] text-[#8B95A1]">고화질 원본 사진 저장</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                    <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Heart className="w-5 h-5 text-pink-500" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-[#191F28]">광고 제거</p>
+                      <p className="text-[12px] text-[#8B95A1]">방해 없이 둘만의 공간을 즐기세요</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Calendar className="w-5 h-5 text-purple-500" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-[#191F28]">고급 캘린더</p>
+                      <p className="text-[12px] text-[#8B95A1]">반복 일정, 알림 설정, D-day 위젯</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Star className="w-5 h-5 text-blue-500" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-[#191F28]">프리미엄 위젯</p>
+                      <p className="text-[12px] text-[#8B95A1]">커스텀 위젯 디자인 5종</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Heart className="w-5 h-5 text-pink-500" />
+              </>
+            )}
+
+            {/* Premium Plan */}
+            {selectedPlan === "premium" && (
+              <>
+                <div className="py-5 text-center border-b border-[#F2F4F6]">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <span className="px-2 py-0.5 bg-amber-50 text-amber-600 text-[11px] font-bold rounded-full">BEST</span>
+                  </div>
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="text-[36px] font-bold text-[#191F28]">4,900</span>
+                    <span className="text-[18px] text-[#8B95A1]">원/월</span>
+                  </div>
+                  <p className="text-[12px] text-amber-500 mt-1">연간 결제 시 20% 할인 (월 3,920원)</p>
                 </div>
-                <div>
-                  <p className="text-[14px] font-semibold text-[#191F28]">광고 없는 환경</p>
-                  <p className="text-[12px] text-[#8B95A1]">방해 없이 둘만의 공간을 즐기세요</p>
+                
+                <div className="p-5 space-y-3">
+                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                    <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <ImageIcon className="w-5 h-5 text-amber-600" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-[#191F28]">무제한 사진 저장</p>
+                      <p className="text-[12px] text-[#8B95A1]">용량 걱정 없이 추억을 저장하세요</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                    <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Heart className="w-5 h-5 text-pink-500" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-[#191F28]">광고 제거</p>
+                      <p className="text-[12px] text-[#8B95A1]">방해 없이 둘만의 공간을 즐기세요</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Calendar className="w-5 h-5 text-purple-500" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-[#191F28]">고급 캘린더 + 공유</p>
+                      <p className="text-[12px] text-[#8B95A1]">커플 캘린더 실시간 공유 및 동기화</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Star className="w-5 h-5 text-blue-500" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-[#191F28]">프리미엄 위젯 전체</p>
+                      <p className="text-[12px] text-[#8B95A1]">모든 위젯 디자인 + 커스터마이징</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-5 h-5 text-green-500" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-[#191F28]">고화질 원본 평생 보관</p>
+                      <p className="text-[12px] text-[#8B95A1]">추억을 영원히 간직하세요</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                    <div className="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Crown className="w-5 h-5 text-rose-500" />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-[#191F28]">히스토리 북 무제한</p>
+                      <p className="text-[12px] text-[#8B95A1]">커플 히스토리 북 무제한 생성</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-5 h-5 text-purple-500" />
-                </div>
-                <div>
-                  <p className="text-[14px] font-semibold text-[#191F28]">고급 캘린더 기능</p>
-                  <p className="text-[12px] text-[#8B95A1]">반복 일정, 알림 설정 등 추가 기능</p>
-                </div>
-              </div>
-            </div>
+              </>
+            )}
             
             {/* CTA */}
             <div className="px-5 pb-6">
@@ -145,8 +254,9 @@ export default function ProfilePage() {
                   setShowPaymentModal(true)
                 }}
                 className="w-full py-4 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold rounded-[14px] transition-all"
+                data-testid="button-subscribe-now"
               >
-                구독하기
+                {selectedPlan === "advanced" ? "고급 플랜 구독하기" : "프리미엄 플랜 구독하기"}
               </button>
               <button 
                 onClick={() => setShowPremiumModal(false)}
@@ -175,7 +285,7 @@ export default function ProfilePage() {
             
             <div className="px-5 pb-8">
               <h3 className="text-[19px] font-bold text-[#191F28] mb-2">결제 수단 선택</h3>
-              <p className="text-[14px] text-[#8B95A1] mb-5">WE:VE Premium 월 4,900원</p>
+              <p className="text-[14px] text-[#8B95A1] mb-5">WE:VE {selectedPlan === "advanced" ? "고급" : "프리미엄"} 월 {selectedPlan === "advanced" ? "1,900" : "4,900"}원</p>
               
               <div className="space-y-3">
                 <button 

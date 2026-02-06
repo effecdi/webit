@@ -10,14 +10,11 @@ import {
   LogOut,
   Heart,
   Camera,
-  Crown,
   Gift,
   Calendar,
   X,
   Check,
-  Star,
-  ImageIcon,
-  Sparkles
+  ImageIcon
 } from "lucide-react"
 import Link from "next/link"
 import { ProfileSettingsSection } from "@/components/shared/profile-settings-section"
@@ -37,8 +34,6 @@ export default function WeddingProfilePage() {
   const [dday, setDday] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
   const [showPhotoModal, setShowPhotoModal] = useState<"groom" | "bride" | null>(null)
-  const [showPremiumModal, setShowPremiumModal] = useState(false)
-  const [showPaymentModal, setShowPaymentModal] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
   const [notifications, setNotifications] = useState<Notification[]>([])
   
@@ -259,27 +254,6 @@ export default function WeddingProfilePage() {
           </div>
         </div>
 
-        {/* Membership Card */}
-        <div className="bg-gradient-to-br from-[#FFE4EC] to-[#E4F0FF] rounded-[20px] p-5">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center">
-              <Crown className="w-4 h-4 text-amber-500" />
-            </div>
-            <span className="text-[15px] font-bold text-[#191F28]">프리미엄 멤버십</span>
-          </div>
-          <p className="text-[13px] text-[#4E5968] mb-4">
-            무제한 청첩장 제작, 고급 템플릿, 광고 제거 등 다양한 혜택을 누려보세요
-          </p>
-          <button 
-            onClick={() => setShowPremiumModal(true)}
-            className="w-full py-3 bg-white hover:bg-white/90 rounded-[12px] text-[14px] font-semibold text-[#191F28] transition-colors flex items-center justify-center gap-2"
-            data-testid="button-membership-subscribe"
-          >
-            <Star className="w-4 h-4 text-amber-500" />
-            멤버십 구독
-          </button>
-        </div>
-
         {/* Quick Stats */}
         <div className="grid grid-cols-3 gap-3">
           <div className="bg-white rounded-[16px] p-4 text-center shadow-sm">
@@ -317,177 +291,6 @@ export default function WeddingProfilePage() {
           로그아웃
         </button>
       </div>
-
-      {/* Premium Subscription Modal */}
-      {showPremiumModal && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center px-5"
-          onClick={() => setShowPremiumModal(false)}
-        >
-          <div 
-            className="bg-white rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header with gradient */}
-            <div className="bg-gradient-to-br from-[#FF8A80] to-[#FF6B6B] p-6 text-center relative">
-              <button 
-                onClick={() => setShowPremiumModal(false)}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
-              >
-                <X className="w-4 h-4 text-white" />
-              </button>
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Crown className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-[24px] font-bold text-white">Wedding Premium</h3>
-              <p className="text-white/80 text-[14px] mt-1">완벽한 결혼 준비를 위한 프리미엄</p>
-            </div>
-            
-            {/* Price */}
-            <div className="py-6 text-center border-b border-[#F2F4F6]">
-              <span className="text-[36px] font-bold text-[#191F28]">9,900</span>
-              <span className="text-[18px] text-[#8B95A1]">원/월</span>
-            </div>
-            
-            {/* Benefits */}
-            <div className="p-5 space-y-3">
-              <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Gift className="w-5 h-5 text-pink-500" />
-                </div>
-                <div>
-                  <p className="text-[14px] font-semibold text-[#191F28]">무제한 청첩장 제작</p>
-                  <p className="text-[12px] text-[#8B95A1]">프리미엄 템플릿 무제한 이용</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <ImageIcon className="w-5 h-5 text-blue-500" />
-                </div>
-                <div>
-                  <p className="text-[14px] font-semibold text-[#191F28]">무제한 사진 저장</p>
-                  <p className="text-[12px] text-[#8B95A1]">고화질 사진 무제한 업로드</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Sparkles className="w-5 h-5 text-purple-500" />
-                </div>
-                <div>
-                  <p className="text-[14px] font-semibold text-[#191F28]">광고 제거</p>
-                  <p className="text-[12px] text-[#8B95A1]">광고 없는 깔끔한 환경</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* CTA */}
-            <div className="px-5 pb-6">
-              <button 
-                onClick={() => {
-                  setShowPremiumModal(false)
-                  setShowPaymentModal(true)
-                }}
-                className="w-full py-4 bg-gradient-to-r from-[#FF8A80] to-[#FF6B6B] hover:from-[#FF6B6B] hover:to-[#FF5252] text-white font-bold rounded-[14px] transition-all"
-              >
-                구독하기
-              </button>
-              <button 
-                onClick={() => setShowPremiumModal(false)}
-                className="w-full py-3 text-[#8B95A1] text-[14px] mt-2"
-              >
-                나중에 할게요
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Payment Method Modal */}
-      {showPaymentModal && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowPaymentModal(false)}
-        >
-          <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-            
-            <div className="px-5 pb-8">
-              <h3 className="text-[19px] font-bold text-[#191F28] mb-2">결제 수단 선택</h3>
-              <p className="text-[14px] text-[#8B95A1] mb-5">Wedding Premium 월 9,900원</p>
-              
-              <div className="space-y-3">
-                <button 
-                  onClick={() => {
-                    alert("카카오페이로 결제를 진행합니다")
-                    setShowPaymentModal(false)
-                  }}
-                  className="w-full flex items-center gap-4 p-4 bg-[#FEE500] rounded-[14px] hover:bg-[#FFEB3B] transition-colors"
-                >
-                  <div className="w-10 h-10 bg-[#3C1E1E] rounded-[10px] flex items-center justify-center">
-                    <span className="text-[#FEE500] font-bold text-[14px]">K</span>
-                  </div>
-                  <span className="text-[16px] font-semibold text-[#3C1E1E]">카카오페이로 결제</span>
-                </button>
-
-                <button 
-                  onClick={() => {
-                    alert("토스로 결제를 진행합니다")
-                    setShowPaymentModal(false)
-                  }}
-                  className="w-full flex items-center gap-4 p-4 bg-[#0064FF] rounded-[14px] hover:bg-[#0052CC] transition-colors"
-                >
-                  <div className="w-10 h-10 bg-white rounded-[10px] flex items-center justify-center">
-                    <span className="text-[#0064FF] font-bold text-[14px]">T</span>
-                  </div>
-                  <span className="text-[16px] font-semibold text-white">토스로 결제</span>
-                </button>
-
-                <button 
-                  onClick={() => {
-                    alert("신용카드로 결제를 진행합니다")
-                    setShowPaymentModal(false)
-                  }}
-                  className="w-full flex items-center gap-4 p-4 bg-[#F2F4F6] rounded-[14px] hover:bg-[#E5E8EB] transition-colors"
-                >
-                  <div className="w-10 h-10 bg-[#4E5968] rounded-[10px] flex items-center justify-center">
-                    <span className="text-white font-bold text-[12px]">CARD</span>
-                  </div>
-                  <span className="text-[16px] font-semibold text-[#191F28]">신용/체크카드로 결제</span>
-                </button>
-
-                <button 
-                  onClick={() => {
-                    alert("네이버페이로 결제를 진행합니다")
-                    setShowPaymentModal(false)
-                  }}
-                  className="w-full flex items-center gap-4 p-4 bg-[#03C75A] rounded-[14px] hover:bg-[#02B350] transition-colors"
-                >
-                  <div className="w-10 h-10 bg-white rounded-[10px] flex items-center justify-center">
-                    <span className="text-[#03C75A] font-bold text-[14px]">N</span>
-                  </div>
-                  <span className="text-[16px] font-semibold text-white">네이버페이로 결제</span>
-                </button>
-              </div>
-              
-              <button 
-                onClick={() => setShowPaymentModal(false)}
-                className="w-full py-3 text-[#8B95A1] text-[14px] mt-4"
-              >
-                취소
-              </button>
-            </div>
-            
-            <div className="h-6" />
-          </div>
-        </div>
-      )}
 
       {/* Photo Upload Modal */}
       {showPhotoModal && (

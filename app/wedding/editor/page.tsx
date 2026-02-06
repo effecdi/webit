@@ -3,7 +3,7 @@
 import React from "react"
 import { useState, useRef, useEffect } from "react"
 import { InvitationPreview } from "@/components/invitation-preview"
-import { X, Share2, Link2, Check, MessageCircle, Plus, Trash2, Sparkles, ChevronLeft, Info, Play, Pause, Eye } from "lucide-react"
+import { X, Share2, Link2, Check, MessageCircle, Plus, Trash2, Sparkles, ChevronLeft, Info, Play, Pause, Eye, Lock } from "lucide-react"
 import Link from "next/link"
 
 interface AccountInfo {
@@ -130,6 +130,7 @@ export interface InvitationData {
   calendarStyle: "full" | "simple"
   accountDisplayStyle: "expand" | "accordion"
   endingStyle: "card" | "full" | "simple"
+  endingTextColor: string
   nameDisplayStyle: "horizontal" | "vertical"
 }
 
@@ -233,6 +234,7 @@ const initialData: InvitationData = {
   calendarStyle: "full",
   accountDisplayStyle: "expand",
   endingStyle: "card",
+  endingTextColor: "#FFFFFF",
   nameDisplayStyle: "horizontal",
 }
 
@@ -253,14 +255,80 @@ const MUSIC_TRACKS = [
 ]
 
 const MAIN_TEMPLATES = [
-  { id: "poster", label: "포스터" },
-  { id: "polaroid", label: "폴라로이드" },
-  { id: "magazine", label: "매거진" },
-  { id: "chat", label: "채팅" },
-  { id: "modern", label: "모던" },
-  { id: "classic", label: "클래식" },
-  { id: "none", label: "템플릿 없음" },
+  { id: "poster", label: "포스터", premium: true },
+  { id: "polaroid", label: "폴라로이드", premium: true },
+  { id: "magazine", label: "매거진", premium: true },
+  { id: "chat", label: "채팅", premium: true },
+  { id: "modern", label: "모던", premium: false },
+  { id: "classic", label: "클래식", premium: false },
+  { id: "none", label: "템플릿 없음", premium: false },
 ]
+
+function TemplateThumbnail({ id }: { id: string }) {
+  switch (id) {
+    case "poster":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden" style={{ background: "linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 100%)" }}>
+          <div className="w-full h-full relative">
+            <div className="absolute bottom-2 left-2 w-[30px] h-[3px] bg-white/80 rounded-full" />
+            <div className="absolute bottom-[14px] left-2 w-[20px] h-[2px] bg-white/50 rounded-full" />
+          </div>
+        </div>
+      )
+    case "polaroid":
+      return (
+        <div className="w-full h-full flex items-center justify-center bg-[#F8F9FA] rounded-[6px]">
+          <div className="bg-white shadow-sm p-1.5 pb-3" style={{ width: "42px" }}>
+            <div className="w-full aspect-square bg-[#D1D6DB] rounded-[2px]" />
+            <div className="w-[20px] h-[2px] bg-[#D1D6DB] mx-auto mt-1.5 rounded-full" />
+          </div>
+        </div>
+      )
+    case "magazine":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-white flex flex-col">
+          <div className="w-full h-[50%] bg-[#D1D6DB]" />
+          <div className="flex-1 flex flex-col items-center justify-center gap-1 p-2">
+            <div className="w-[28px] h-[2px] bg-[#B0B8C1] rounded-full" />
+            <div className="w-[20px] h-[2px] bg-[#D1D6DB] rounded-full" />
+          </div>
+        </div>
+      )
+    case "chat":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#B2C7D9] p-2 flex flex-col gap-1.5">
+          <div className="w-[28px] h-[8px] bg-white rounded-[4px] rounded-tl-[1px] self-start" />
+          <div className="w-[24px] h-[8px] bg-[#FFE08C] rounded-[4px] rounded-tr-[1px] self-end" />
+          <div className="w-[28px] h-[8px] bg-white rounded-[4px] rounded-tl-[1px] self-start" />
+        </div>
+      )
+    case "modern":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-white flex flex-col items-center justify-center gap-1.5 p-2">
+          <div className="w-[28px] h-[32px] bg-[#E5E8EB] rounded-[4px]" />
+          <div className="w-[16px] h-[1px] bg-[#FF8A80]" />
+          <div className="w-[22px] h-[2px] bg-[#D1D6DB] rounded-full" />
+        </div>
+      )
+    case "classic":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#FBF8F1] flex items-center justify-center p-2">
+          <div className="w-full h-full border-double border-[#C5A572] border-[2px] flex flex-col items-center justify-center gap-1">
+            <div className="w-[20px] h-[2px] bg-[#C5A572]/50 rounded-full" />
+            <div className="text-[6px] text-[#C5A572]/70" style={{ fontFamily: "Georgia, serif" }}>A & B</div>
+          </div>
+        </div>
+      )
+    case "none":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#F2F4F6] flex items-center justify-center">
+          <X className="w-5 h-5 text-[#B0B8C1]" />
+        </div>
+      )
+    default:
+      return null
+  }
+}
 
 function SectionSwitch({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
   return (
@@ -280,6 +348,29 @@ function SectionSwitch({ checked, onChange }: { checked: boolean; onChange: (v: 
   )
 }
 
+const SECTION_TOOLTIPS: Record<string, string> = {
+  "오프닝": "초대장을 열었을 때 보여지는 인트로 화면입니다. 사진과 텍스트를 설정하세요.",
+  "메인": "청첩장의 메인 화면 템플릿을 선택합니다. 사진과 커버 스타일을 설정하세요.",
+  "기본 정보": "신랑, 신부의 이름과 가족 정보를 입력합니다.",
+  "초대 인사말": "하객들에게 전하는 인사말을 작성합니다. AI 추천을 활용해보세요.",
+  "예식 정보": "예식 날짜, 시간, 장소 등 예식 관련 정보를 입력합니다.",
+  "교통 수단": "예식장까지의 교통편 정보를 안내합니다.",
+  "펀딩": "하객들이 축의금을 보낼 수 있는 펀딩 기능입니다.",
+  "선물 펀딩": "하객들이 원하는 선물을 펀딩할 수 있는 기능입니다.",
+  "혼주 계좌번호": "축의금을 보낼 수 있도록 계좌번호를 등록합니다.",
+  "갤러리": "청첩장에 표시할 사진 갤러리를 설정합니다.",
+  "중간사진": "섹션 사이에 표시되는 사진을 설정합니다.",
+  "배경음악": "청첩장 배경에 재생되는 음악을 설정합니다.",
+  "세례명": "가톨릭 예식의 경우 세례명을 입력합니다.",
+  "참석여부 RSVP": "하객들의 참석 여부를 받을 수 있는 RSVP 기능입니다.",
+  "방명록": "하객들이 축하 메시지를 남길 수 있는 방명록입니다.",
+  "하객스냅": "하객들이 사진을 공유할 수 있는 기능입니다.",
+  "공지사항": "하객들에게 전달할 공지사항을 작성합니다.",
+  "엔딩 메시지": "청첩장 마지막에 표시되는 감사 메시지입니다.",
+  "공유 이미지": "카카오톡 등으로 공유할 때 표시되는 미리보기 이미지입니다.",
+  "청첩장 링크": "청첩장 링크를 복사하여 공유할 수 있습니다.",
+}
+
 function SectionHeader({
   title,
   showSwitch = false,
@@ -293,11 +384,30 @@ function SectionHeader({
   onChange?: (v: boolean) => void
   badge?: string
 }) {
+  const [showTooltip, setShowTooltip] = React.useState(false)
+  const tooltipText = SECTION_TOOLTIPS[title] || ""
+
   return (
     <div className="flex items-center justify-between gap-2 mb-4">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 relative">
         <h3 className="text-[16px] font-bold text-[#191F28]">{title}</h3>
-        <Info className="w-4 h-4 text-[#B0B8C1]" />
+        {tooltipText && (
+          <button
+            type="button"
+            onClick={() => setShowTooltip(!showTooltip)}
+            className="relative"
+            data-testid={`info-${title}`}
+          >
+            <Info className="w-4 h-4 text-[#B0B8C1]" />
+            {showTooltip && (
+              <div className="absolute left-0 top-6 z-50 w-[220px] p-3 bg-[#191F28] text-white text-[12px] leading-[1.6] rounded-[12px] shadow-lg">
+                {tooltipText}
+                <div className="absolute -top-1.5 left-2 w-3 h-3 bg-[#191F28] rotate-45" />
+              </div>
+            )}
+          </button>
+        )}
+        {!tooltipText && <Info className="w-4 h-4 text-[#B0B8C1]" />}
         {badge && (
           <span className="text-[12px] font-bold text-red-500">{badge}</span>
         )}
@@ -526,6 +636,56 @@ export default function InvitationEditorPage() {
     updateField("message", templates[Math.floor(Math.random() * templates.length)])
   }
 
+  const generateAITitle = () => {
+    const templates = [
+      "소중한 날에 초대합니다",
+      "함께 해주세요",
+      "사랑으로 하나 되는 날",
+      "우리의 특별한 시작",
+      "두 사람의 약속",
+      "영원을 약속하는 날",
+    ]
+    updateField("invitationTitle", templates[Math.floor(Math.random() * templates.length)])
+  }
+
+  const generateFundingMessage = () => {
+    const templates = [
+      "평범한 축의금 대신\n의미 있는 선물 한 조각이 모여\n두 사람의 특별한 순간을 만들어 주세요.",
+      "저희의 새 출발을 위해\n따뜻한 마음을 모아주시면\n소중히 간직하겠습니다.",
+      "축하의 마음을 담아\n저희의 신혼 생활에\n작은 보탬이 되어주세요.",
+    ]
+    updateField("fundingMessage", templates[Math.floor(Math.random() * templates.length)])
+  }
+
+  const generateFundingThanks = () => {
+    const templates = [
+      "정성껏 전해주신 마음,\n오래 기억할게요.\n감사합니다.",
+      "따뜻한 축하에 진심으로 감사드립니다.\n행복하게 잘 살겠습니다.",
+      "소중한 마음 감사합니다.\n보내주신 사랑 잊지 않겠습니다.",
+    ]
+    updateField("fundingThanks", templates[Math.floor(Math.random() * templates.length)])
+  }
+
+  const generateNoticeTitle = () => {
+    const templates = [
+      "안내사항",
+      "하객 여러분께 안내드립니다",
+      "참석 안내",
+      "알려드립니다",
+      "식장 안내",
+    ]
+    updateField("noticeTitle", templates[Math.floor(Math.random() * templates.length)])
+  }
+
+  const generateEndingContent = () => {
+    const templates = [
+      "소중한 분들의 축복 속에서\n두 사람이 하나 되어\n새로운 출발을 합니다.\n따뜻한 마음으로 지켜봐 주세요.",
+      "함께해 주셔서 감사합니다.\n여러분의 축복을 가슴 깊이 새기며\n행복하게 살겠습니다.",
+      "오늘 이 자리에 함께해 주신\n모든 분들께 감사드립니다.\n늘 행복한 가정을 이루겠습니다.",
+    ]
+    updateField("endingContent", templates[Math.floor(Math.random() * templates.length)])
+  }
+
   const handleGalleryUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
     if (files) {
@@ -700,21 +860,41 @@ export default function InvitationEditorPage() {
                 <div className="overflow-x-auto -mx-1">
                   <div className="flex gap-2 px-1" style={{ minWidth: "max-content" }}>
                     {MAIN_TEMPLATES.map((t) => (
-                      <button
-                        key={t.id}
-                        data-testid={`template-${t.id}`}
-                        onClick={() => updateField("mainTemplate", t.id)}
-                        className={`w-[80px] h-[110px] rounded-[10px] border-2 flex items-center justify-center flex-shrink-0 ${
-                          data.mainTemplate === t.id
-                            ? "border-[#FF8A80] bg-[#FFF0EF]"
-                            : "border-[#E5E8EB] bg-[#F8F9FA]"
-                        }`}
-                      >
-                        <span className="text-[11px] text-[#8B95A1]">{t.label}</span>
-                      </button>
+                      <div key={t.id} className="flex flex-col items-center gap-1 flex-shrink-0">
+                        <button
+                          data-testid={`template-${t.id}`}
+                          onClick={() => updateField("mainTemplate", t.id)}
+                          className={`w-[80px] h-[110px] rounded-[10px] border-2 relative flex-shrink-0 ${
+                            data.mainTemplate === t.id
+                              ? "border-[#FF8A80] bg-[#FFF0EF]"
+                              : "border-[#E5E8EB] bg-[#F8F9FA]"
+                          }`}
+                        >
+                          <div className="w-full h-full p-1.5">
+                            <TemplateThumbnail id={t.id} />
+                          </div>
+                          {t.premium && (
+                            <div className="absolute top-1 right-1 w-5 h-5 bg-black/40 rounded-full flex items-center justify-center">
+                              <Lock className="w-2.5 h-2.5 text-white" />
+                            </div>
+                          )}
+                        </button>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[10px] text-[#8B95A1]">{t.label}</span>
+                          {t.premium && data.mainTemplate === t.id && (
+                            <span className="text-[9px] text-[#FF8A80] font-medium">프리미엄</span>
+                          )}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
+                {MAIN_TEMPLATES.find((t) => t.id === data.mainTemplate)?.premium && (
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#FFF0EE] rounded-[12px] text-[12px] text-[#FF8A80]">
+                    <Lock className="w-3.5 h-3.5" />
+                    <span>이 템플릿은 프리미엄 템플릿입니다. 청첩장 발행 시 구매가 필요합니다.</span>
+                  </div>
+                )}
 
                 <div>
                   <label className="text-[14px] text-[#4E5968] mb-2 block">사진</label>
@@ -1004,12 +1184,24 @@ export default function InvitationEditorPage() {
                       rows={5}
                       className="w-full px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none leading-relaxed"
                     />
-                    <button
-                      onClick={generateAIMessage}
-                      className="mt-2 text-[13px] text-[#FF8A80] font-medium underline"
-                    >
-                      인사말 샘플
-                    </button>
+                    <div className="flex gap-2 mt-2">
+                      <button
+                        onClick={generateAITitle}
+                        className="flex items-center gap-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                        data-testid="button-ai-title"
+                      >
+                        <Sparkles className="w-3 h-3" />
+                        제목 AI 추천
+                      </button>
+                      <button
+                        onClick={generateAIMessage}
+                        className="flex items-center gap-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                        data-testid="button-ai-message"
+                      >
+                        <Sparkles className="w-3 h-3" />
+                        인사말 AI 추천
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <CheckboxField
@@ -1155,6 +1347,18 @@ export default function InvitationEditorPage() {
                         placeholder="교통수단(지하철,자가용,버스 등)"
                         className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                       />
+                      {data.transportItems.length > 1 && (
+                        <button
+                          onClick={() => {
+                            const newItems = data.transportItems.filter((_, i) => i !== index)
+                            updateField("transportItems", newItems)
+                          }}
+                          className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors flex-shrink-0"
+                          data-testid={`button-delete-transport-${index}`}
+                        >
+                          <Trash2 className="w-4 h-4 text-[#8B95A1]" />
+                        </button>
+                      )}
                     </div>
                     <div className="ml-[92px]">
                       <textarea
@@ -1219,10 +1423,20 @@ export default function InvitationEditorPage() {
                       className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
                     />
                   </div>
-                  <p className="text-[12px] text-[#8B95A1] ml-[82px]">
-                    펀딩 영역 상단에 표시되는 안내 문구예요. 하객에게 목적이나 분위기를 간단히
-                    알려주세요.
-                  </p>
+                  <div className="ml-[82px]">
+                    <p className="text-[12px] text-[#8B95A1]">
+                      펀딩 영역 상단에 표시되는 안내 문구예요. 하객에게 목적이나 분위기를 간단히
+                      알려주세요.
+                    </p>
+                    <button
+                      onClick={generateFundingMessage}
+                      className="flex items-center gap-1 mt-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                      data-testid="button-ai-funding"
+                    >
+                      <Sparkles className="w-3 h-3" />
+                      AI 추천
+                    </button>
+                  </div>
                   <div className="flex items-center gap-3">
                     <label className="text-[14px] text-[#4E5968] w-[70px]">
                       이미지<span className="text-red-500">*</span>
@@ -1259,13 +1473,23 @@ export default function InvitationEditorPage() {
                     <label className="text-[14px] text-[#4E5968] w-[70px] flex-shrink-0 pt-3">
                       감사인사<span className="text-red-500">*</span>
                     </label>
-                    <textarea
-                      value={data.fundingThanks}
-                      onChange={(e) => updateField("fundingThanks", e.target.value)}
-                      placeholder="정성껏 전해주신 마음, 오래 기억할게요.&#10;감사합니다."
-                      rows={3}
-                      className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
-                    />
+                    <div className="flex-1">
+                      <textarea
+                        value={data.fundingThanks}
+                        onChange={(e) => updateField("fundingThanks", e.target.value)}
+                        placeholder="정성껏 전해주신 마음, 오래 기억할게요.&#10;감사합니다."
+                        rows={3}
+                        className="w-full px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
+                      />
+                      <button
+                        onClick={generateFundingThanks}
+                        className="flex items-center gap-1 mt-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                        data-testid="button-ai-funding-thanks"
+                      >
+                        <Sparkles className="w-3 h-3" />
+                        AI 추천
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -1803,6 +2027,14 @@ export default function InvitationEditorPage() {
                     required
                   />
                   <button
+                    onClick={generateNoticeTitle}
+                    className="flex items-center gap-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                    data-testid="button-ai-notice"
+                  >
+                    <Sparkles className="w-3 h-3" />
+                    제목 AI 추천
+                  </button>
+                  <button
                     onClick={() =>
                       updateField("noticeItems", [...data.noticeItems, ""])
                     }
@@ -1883,11 +2115,41 @@ export default function InvitationEditorPage() {
                         rows={4}
                         className="w-full px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
                       />
-                      <button className="mt-2 text-[13px] text-[#FF8A80] font-medium underline">
-                        엔딩 메시지 샘플
+                      <button
+                        onClick={generateEndingContent}
+                        className="flex items-center gap-1 mt-2 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                        data-testid="button-ai-ending"
+                      >
+                        <Sparkles className="w-3 h-3" />
+                        AI 추천
                       </button>
                     </div>
                   </div>
+                  {(data.endingStyle === "full" || data.endingStyle === "simple") && data.endingPhoto && (
+                    <div className="flex items-center gap-3">
+                      <label className="text-[14px] text-[#4E5968] w-[70px] flex-shrink-0">글자색</label>
+                      <div className="flex gap-2">
+                        {[
+                          { value: "#FFFFFF", label: "흰색", bg: "bg-white border border-gray-300" },
+                          { value: "#191F28", label: "검정", bg: "bg-[#191F28]" },
+                          { value: "#FF8A80", label: "코랄", bg: "bg-[#FF8A80]" },
+                        ].map((c) => (
+                          <button
+                            key={c.value}
+                            onClick={() => updateField("endingTextColor", c.value)}
+                            className={`w-8 h-8 rounded-full ${c.bg} flex items-center justify-center ${
+                              data.endingTextColor === c.value ? "ring-2 ring-[#FF8A80] ring-offset-2" : ""
+                            }`}
+                            data-testid={`button-ending-color-${c.label}`}
+                          >
+                            {data.endingTextColor === c.value && (
+                              <Check className={`w-4 h-4 ${c.value === "#FFFFFF" ? "text-gray-600" : "text-white"}`} />
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -1902,6 +2164,18 @@ export default function InvitationEditorPage() {
               />
               {data.showShareImage && (
                 <div className="space-y-4">
+                  <button
+                    onClick={() => {
+                      if (data.invitationTitle) updateField("shareTitle", data.invitationTitle)
+                      if (data.message) updateField("shareContent", data.message.split("\n").slice(0, 2).join("\n"))
+                      if (data.mainPhotos[0]) updateField("sharePhoto", data.mainPhotos[0])
+                    }}
+                    className="flex items-center gap-1 mb-3 px-3 py-1.5 bg-[#EEF4FF] rounded-full text-[12px] text-[#3182F6] font-medium"
+                    data-testid="button-share-autofill"
+                  >
+                    <Sparkles className="w-3 h-3" />
+                    청첩장 정보에서 자동 채우기
+                  </button>
                   <InputField
                     label="제목"
                     value={data.shareTitle}
