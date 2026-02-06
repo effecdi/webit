@@ -14,7 +14,7 @@ const progressData = {
   ],
 }
 
-export function TossProgressSection() {
+export function WeveProgressSection() {
   return (
     <section className="bg-white mt-2">
       {/* Header */}
@@ -26,7 +26,7 @@ export function TossProgressSection() {
         </Link>
       </div>
 
-      {/* Category List - Toss transaction style */}
+      {/* Category List - WE:VE transaction style */}
       <div className="px-5 pb-4">
         {progressData.categories.map((category, index) => (
           <Link 

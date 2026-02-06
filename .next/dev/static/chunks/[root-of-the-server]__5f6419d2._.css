@@ -12747,12 +12747,12 @@
   --sidebar-accent-foreground: #3182f6;
   --sidebar-border: #e5e8eb;
   --sidebar-ring: #3182f6;
-  --toss-blue: #3182f6;
-  --toss-blue-dark: #1b64da;
-  --toss-bg: #f2f4f6;
-  --toss-text: #191f28;
-  --toss-text-sub: #8b95a1;
-  --toss-gray: #b0b8c1;
+  --weve-blue: #3182f6;
+  --weve-blue-dark: #1b64da;
+  --weve-bg: #f2f4f6;
+  --weve-text: #191f28;
+  --weve-text-sub: #8b95a1;
+  --weve-gray: #b0b8c1;
   --sage: #5f7161;
   --sage-light: #e8efec;
   --coral: #d4836b;
@@ -12808,15 +12808,15 @@
   animation: 20s linear infinite marquee;
 }
 
-.shadow-toss {
+.shadow-weve {
   box-shadow: 0 2px 8px #0000000a, 0 1px 2px #0000000f;
 }
 
-.shadow-toss-md {
+.shadow-weve-md {
   box-shadow: 0 4px 12px #0000000d, 0 2px 4px #0000000a;
 }
 
-.shadow-toss-lg {
+.shadow-weve-lg {
   box-shadow: 0 8px 24px #00000014, 0 4px 8px #0000000a;
 }
 

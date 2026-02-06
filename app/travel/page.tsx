@@ -126,7 +126,7 @@ export default function TravelListPage() {
                         className="block"
                         data-testid={`card-trip-${trip.id}`}
                       >
-                        <div className="bg-white rounded-[20px] p-5 shadow-toss hover:scale-[1.01] active:scale-[0.99] transition-transform">
+                        <div className="bg-white rounded-[20px] p-5 shadow-weve hover:scale-[1.01] active:scale-[0.99] transition-transform">
                           <div className="flex items-start gap-4">
                             <div className="w-16 h-16 rounded-[16px] bg-gradient-to-br from-[#3B82F6] to-[#60A5FA] flex items-center justify-center flex-shrink-0">
                               <Plane className="w-8 h-8 text-white" />
@@ -166,7 +166,7 @@ export default function TravelListPage() {
                       className="block"
                       data-testid={`card-trip-${trip.id}`}
                     >
-                      <div className="bg-white rounded-[20px] p-5 shadow-toss opacity-60 grayscale hover:opacity-80 transition-opacity">
+                      <div className="bg-white rounded-[20px] p-5 shadow-weve opacity-60 grayscale hover:opacity-80 transition-opacity">
                         <div className="flex items-start gap-4">
                           <div className="w-16 h-16 rounded-[16px] bg-[#8B95A1] flex items-center justify-center flex-shrink-0">
                             <Plane className="w-8 h-8 text-white" />

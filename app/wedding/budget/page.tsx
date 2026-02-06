@@ -301,7 +301,7 @@ export default function BudgetPage() {
       <main className="px-5 py-5 max-w-md mx-auto space-y-5">
         {/* Total Summary Card or Empty State */}
         {totalBudget === 0 ? (
-          <div className="bg-white rounded-[24px] p-6 shadow-toss">
+          <div className="bg-white rounded-[24px] p-6 shadow-weve">
             <div className="flex items-center gap-1.5 mb-1">
               <div className="w-5 h-5 rounded-full bg-[#3182F6] flex items-center justify-center">
                 <Banknote className="w-3 h-3 text-white" />
@@ -319,7 +319,7 @@ export default function BudgetPage() {
             </div>
           </div>
         ) : (
-          <div className="bg-white rounded-[24px] p-6 shadow-toss">
+          <div className="bg-white rounded-[24px] p-6 shadow-weve">
             <div className="flex items-center justify-between mb-1">
               <p className="text-[13px] text-[#8B95A1]">총 예산</p>
               <button 
@@ -403,7 +403,7 @@ export default function BudgetPage() {
         </div>
 
         {/* Expense List */}
-        <div className="bg-white rounded-[24px] shadow-toss overflow-hidden">
+        <div className="bg-white rounded-[24px] shadow-weve overflow-hidden">
           <div className="flex items-center justify-between px-5 py-4 border-b border-[#F2F4F6]">
             <h3 className="text-[17px] font-bold text-[#191F28]">지출 내역</h3>
             <button 

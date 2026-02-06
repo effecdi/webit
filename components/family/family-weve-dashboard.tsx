@@ -43,7 +43,7 @@ interface Travel {
   endDate: string
 }
 
-export function FamilyTossDashboard() {
+export function FamilyWeveDashboard() {
   const [dDay, setDDay] = useState(0)
   const [greeting, setGreeting] = useState("")
   const [showNotifications, setShowNotifications] = useState(false)
@@ -211,7 +211,7 @@ export function FamilyTossDashboard() {
           </div>
         </div>
 
-        <div className="bg-white rounded-[24px] p-5 shadow-toss">
+        <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex items-center gap-4">
             <div className="flex -space-x-2">
               <div className="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center border-2 border-white">
@@ -236,7 +236,7 @@ export function FamilyTossDashboard() {
               <Link
                 key={action.label}
                 href={action.href}
-                className="bg-white rounded-[20px] p-4 shadow-toss flex flex-col items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-transform"
+                className="bg-white rounded-[20px] p-4 shadow-weve flex flex-col items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-transform"
               >
                 <div className={`w-12 h-12 rounded-full ${action.color} flex items-center justify-center`}>
                   <Icon className="w-6 h-6" />
@@ -247,7 +247,7 @@ export function FamilyTossDashboard() {
           })}
         </div>
 
-        <div className="bg-white rounded-[24px] p-5 shadow-toss">
+        <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-bold text-[19px] text-[#191F28]">오늘의 일정</h3>
             <Link href="/family/calendar" className="text-[13px] font-medium text-[#8B95A1] flex items-center gap-0.5">
@@ -288,7 +288,7 @@ export function FamilyTossDashboard() {
           )}
         </div>
 
-        <div className="bg-white rounded-[24px] p-5 shadow-toss">
+        <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center gap-2">
               <Book className="w-5 h-5 text-amber-500" />
@@ -348,7 +348,7 @@ export function FamilyTossDashboard() {
           />
         )}
 
-        <div className="bg-white rounded-[24px] overflow-hidden shadow-toss">
+        <div className="bg-white rounded-[24px] overflow-hidden shadow-weve">
           <div 
             className="w-full h-32 bg-cover bg-center relative"
             style={{ backgroundImage: 'linear-gradient(135deg, #a8e6cf 0%, #88d8b0 100%)' }}

@@ -443,7 +443,7 @@ export function DatingDashboard() {
         </div>
 
         {birthdayPerson && (
-          <div className="bg-gradient-to-r from-pink-50 to-amber-50 rounded-[24px] p-5 shadow-toss border border-pink-100" data-testid="birthday-banner">
+          <div className="bg-gradient-to-r from-pink-50 to-amber-50 rounded-[24px] p-5 shadow-weve border border-pink-100" data-testid="birthday-banner">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-amber-400 flex items-center justify-center flex-shrink-0">
                 <Cake className="w-6 h-6 text-white" />
@@ -470,7 +470,7 @@ export function DatingDashboard() {
         )}
 
         {!birthdayPerson && upcomingBirthday && (
-          <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-[24px] p-5 shadow-toss border border-amber-100" data-testid="upcoming-birthday-banner">
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-[24px] p-5 shadow-weve border border-amber-100" data-testid="upcoming-birthday-banner">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-400 flex items-center justify-center flex-shrink-0">
                 <Cake className="w-6 h-6 text-white" />
@@ -502,7 +502,7 @@ export function DatingDashboard() {
         )}
 
         {upcomingMilestone && (
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-[24px] p-5 shadow-toss border border-purple-100" data-testid="milestone-banner">
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-[24px] p-5 shadow-weve border border-purple-100" data-testid="milestone-banner">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center flex-shrink-0">
                 <Heart className="w-6 h-6 text-white" fill="white" />
@@ -533,7 +533,7 @@ export function DatingDashboard() {
           </div>
         )}
 
-        <div className="bg-white rounded-[24px] p-5 shadow-toss">
+        <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center">
               <Heart className="w-5 h-5 text-pink-500" fill="#ec4899" />
@@ -572,7 +572,7 @@ export function DatingDashboard() {
               <Link
                 key={shortcut.id}
                 href={shortcut.href}
-                className="bg-white rounded-[20px] p-4 shadow-toss flex flex-col items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-transform"
+                className="bg-white rounded-[20px] p-4 shadow-weve flex flex-col items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-transform"
               >
                 <div className={`w-12 h-12 rounded-full ${shortcut.color} flex items-center justify-center`}>
                   <Icon className="w-6 h-6" />
@@ -600,7 +600,7 @@ export function DatingDashboard() {
           />
         )}
 
-        <div className="bg-white rounded-[24px] p-5 shadow-toss">
+        <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex justify-between items-center mb-4">
             <div>
               <h3 className="font-bold text-[19px] text-[#191F28]">오늘의 할 일</h3>
@@ -743,7 +743,7 @@ export function DatingDashboard() {
           )}
         </div>
 
-        <div className="bg-white rounded-[24px] overflow-hidden shadow-toss">
+        <div className="bg-white rounded-[24px] overflow-hidden shadow-weve">
           <div
             className="w-full h-32 bg-cover bg-center relative"
             style={{ backgroundImage: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)" }}

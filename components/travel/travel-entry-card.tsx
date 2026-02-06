@@ -41,7 +41,7 @@ export function TravelEntryCard({ mode = "dating", trip }: TravelEntryCardProps)
       className="block"
       data-testid="card-travel-entry"
     >
-      <div className="bg-white rounded-[20px] shadow-toss overflow-hidden hover:scale-[1.01] active:scale-[0.99] transition-transform">
+      <div className="bg-white rounded-[20px] shadow-weve overflow-hidden hover:scale-[1.01] active:scale-[0.99] transition-transform">
         <div className="relative">
           <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${modeColors[mode]}`} />
           

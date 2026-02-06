@@ -53,7 +53,14 @@ function WelcomePage() {
         step
     ]);
     const handleStart = ()=>{
-        router.push("/onboarding");
+        const selectedMode = localStorage.getItem("selected_mode");
+        if (selectedMode === "wedding") {
+            router.push("/wedding");
+        } else if (selectedMode === "family") {
+            router.push("/family");
+        } else {
+            router.push("/dating");
+        }
     };
     const formatNumber = (num)=>{
         return num.toLocaleString();
@@ -69,7 +76,7 @@ function WelcomePage() {
                             children: "반가워요."
                         }, void 0, false, {
                             fileName: "[project]/app/welcome/page.tsx",
-                            lineNumber: 61,
+                            lineNumber: 68,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -80,14 +87,14 @@ function WelcomePage() {
                                     children: myName
                                 }, void 0, false, {
                                     fileName: "[project]/app/welcome/page.tsx",
-                                    lineNumber: 65,
+                                    lineNumber: 72,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__["Heart"], {
                                     className: "w-8 h-8 text-pink-500 fill-pink-500 animate-pulse"
                                 }, void 0, false, {
                                     fileName: "[project]/app/welcome/page.tsx",
-                                    lineNumber: 66,
+                                    lineNumber: 73,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -95,7 +102,7 @@ function WelcomePage() {
                                     children: partnerName
                                 }, void 0, false, {
                                     fileName: "[project]/app/welcome/page.tsx",
-                                    lineNumber: 67,
+                                    lineNumber: 74,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -103,19 +110,19 @@ function WelcomePage() {
                                     children: "님 :)"
                                 }, void 0, false, {
                                     fileName: "[project]/app/welcome/page.tsx",
-                                    lineNumber: 68,
+                                    lineNumber: 75,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/welcome/page.tsx",
-                            lineNumber: 64,
+                            lineNumber: 71,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/welcome/page.tsx",
-                    lineNumber: 60,
+                    lineNumber: 67,
                     columnNumber: 11
                 }, this);
             case 1:
@@ -127,7 +134,7 @@ function WelcomePage() {
                             children: "우리의 시간이 벌써"
                         }, void 0, false, {
                             fileName: "[project]/app/welcome/page.tsx",
-                            lineNumber: 75,
+                            lineNumber: 82,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -138,7 +145,7 @@ function WelcomePage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/welcome/page.tsx",
-                            lineNumber: 78,
+                            lineNumber: 85,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -146,13 +153,13 @@ function WelcomePage() {
                             children: "이 되었네요!"
                         }, void 0, false, {
                             fileName: "[project]/app/welcome/page.tsx",
-                            lineNumber: 81,
+                            lineNumber: 88,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/welcome/page.tsx",
-                    lineNumber: 74,
+                    lineNumber: 81,
                     columnNumber: 11
                 }, this);
             case 2:
@@ -164,31 +171,31 @@ function WelcomePage() {
                             "이제 우리의 시간을",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                 fileName: "[project]/app/welcome/page.tsx",
-                                lineNumber: 90,
+                                lineNumber: 97,
                                 columnNumber: 25
                             }, this),
                             "아름답게",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                 fileName: "[project]/app/welcome/page.tsx",
-                                lineNumber: 91,
+                                lineNumber: 98,
                                 columnNumber: 19
                             }, this),
                             "행복한 날로",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                 fileName: "[project]/app/welcome/page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 99,
                                 columnNumber: 21
                             }, this),
                             "만들어갈까요?"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/welcome/page.tsx",
-                        lineNumber: 89,
+                        lineNumber: 96,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/welcome/page.tsx",
-                    lineNumber: 88,
+                    lineNumber: 95,
                     columnNumber: 11
                 }, this);
             case 3:
@@ -200,7 +207,7 @@ function WelcomePage() {
                             children: "시작할게요 :)"
                         }, void 0, false, {
                             fileName: "[project]/app/welcome/page.tsx",
-                            lineNumber: 100,
+                            lineNumber: 107,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -211,23 +218,23 @@ function WelcomePage() {
                                     className: "w-8 h-8 text-blue-500 fill-blue-500"
                                 }, void 0, false, {
                                     fileName: "[project]/app/welcome/page.tsx",
-                                    lineNumber: 105,
+                                    lineNumber: 112,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/welcome/page.tsx",
-                                lineNumber: 104,
+                                lineNumber: 111,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/welcome/page.tsx",
-                            lineNumber: 103,
+                            lineNumber: 110,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/welcome/page.tsx",
-                    lineNumber: 99,
+                    lineNumber: 106,
                     columnNumber: 11
                 }, this);
             default:
@@ -239,7 +246,7 @@ function WelcomePage() {
                             children: "WE:VE"
                         }, void 0, false, {
                             fileName: "[project]/app/welcome/page.tsx",
-                            lineNumber: 113,
+                            lineNumber: 120,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -247,7 +254,7 @@ function WelcomePage() {
                             children: "함께하는 모든 순간"
                         }, void 0, false, {
                             fileName: "[project]/app/welcome/page.tsx",
-                            lineNumber: 114,
+                            lineNumber: 121,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -257,13 +264,13 @@ function WelcomePage() {
                             children: "시작하기"
                         }, void 0, false, {
                             fileName: "[project]/app/welcome/page.tsx",
-                            lineNumber: 117,
+                            lineNumber: 124,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/welcome/page.tsx",
-                    lineNumber: 112,
+                    lineNumber: 119,
                     columnNumber: 11
                 }, this);
         }
@@ -275,12 +282,12 @@ function WelcomePage() {
             children: renderContent()
         }, void 0, false, {
             fileName: "[project]/app/welcome/page.tsx",
-            lineNumber: 131,
+            lineNumber: 138,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/welcome/page.tsx",
-        lineNumber: 130,
+        lineNumber: 137,
         columnNumber: 5
     }, this);
 }

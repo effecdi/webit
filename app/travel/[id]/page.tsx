@@ -231,7 +231,7 @@ export default function TravelDetailPage() {
               })}
             </div>
 
-            <div className="bg-white rounded-[20px] p-5 shadow-toss">
+            <div className="bg-white rounded-[20px] p-5 shadow-weve">
               {(schedule[selectedDay] || []).length === 0 ? (
                 <div className="py-8 text-center">
                   <p className="text-[#8B95A1] text-[14px]">아직 일정이 없어요</p>
@@ -294,7 +294,7 @@ export default function TravelDetailPage() {
               ))}
             </div>
 
-            <div className="bg-white rounded-[20px] p-5 shadow-toss">
+            <div className="bg-white rounded-[20px] p-5 shadow-weve">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-[15px] font-bold text-[#191F28]">준비물</h3>
                 <span className="text-[13px] text-[#8B95A1]">
@@ -338,7 +338,7 @@ export default function TravelDetailPage() {
 
         {activeTab === "budget" && (
           <div className="space-y-4">
-            <div className="bg-white rounded-[20px] p-5 shadow-toss">
+            <div className="bg-white rounded-[20px] p-5 shadow-weve">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-[15px] font-bold text-[#191F28]">예산 현황</h3>
                 <span className="text-[13px] font-medium text-[#3B82F6]">
@@ -371,7 +371,7 @@ export default function TravelDetailPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-[20px] p-5 shadow-toss">
+            <div className="bg-white rounded-[20px] p-5 shadow-weve">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-[15px] font-bold text-[#191F28]">지출 내역</h3>
                 <span className="text-[13px] text-[#8B95A1]">

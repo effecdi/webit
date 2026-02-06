@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 import { Bell, Settings, Heart, ChevronRight } from "lucide-react"
 import Link from "next/link"
 
-// Dummy Data
 const coupleData = {
   userName: "현정",
   partnerName: "민준",
@@ -20,7 +19,7 @@ function calculateDday(targetDate: string) {
   return diff
 }
 
-export function TossWeddingHeader() {
+export function WeveWeddingHeader() {
   const [mounted, setMounted] = useState(false)
   const dday = calculateDday(coupleData.weddingDate)
 
@@ -45,7 +44,7 @@ export function TossWeddingHeader() {
         </div>
       </div>
 
-      {/* Promo Banner - Toss style */}
+      {/* Promo Banner - WE:VE style */}
       <div className="px-5 pb-4">
         <Link 
           href="/wedding/tips"
@@ -66,7 +65,7 @@ export function TossWeddingHeader() {
         </Link>
       </div>
 
-      {/* D-day Card - Main emphasis like Toss balance */}
+      {/* D-day Card - Main emphasis like WE:VE balance */}
       <div 
         className={`px-5 pb-6 transition-all duration-500 ${
           mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"

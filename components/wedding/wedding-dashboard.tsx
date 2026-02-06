@@ -276,7 +276,7 @@ export function WeddingDashboard() {
 
       <main className="pt-16 px-5 space-y-5 max-w-md mx-auto">
         {/* Hero Section - D-Day Card */}
-        <div className="bg-white rounded-[24px] p-6 shadow-toss">
+        <div className="bg-white rounded-[24px] p-6 shadow-weve">
           <div className="flex justify-between items-start mb-4">
             <div>
               <p className="text-[13px] text-[#8B95A1] mb-1">{coupleNames.my} & {coupleNames.partner}의 웨딩</p>
@@ -392,7 +392,7 @@ export function WeddingDashboard() {
         </div>
 
         {/* Checklist Card */}
-        <div className="bg-white rounded-[24px] p-5 shadow-toss">
+        <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex justify-between items-center mb-4">
             <div>
               <h3 className="font-bold text-[19px] text-[#191F28]">웨딩 체크리스트</h3>
@@ -464,7 +464,7 @@ export function WeddingDashboard() {
         </div>
 
         {/* Budget Card - Main */}
-        <div className="bg-white rounded-[24px] p-5 shadow-toss">
+        <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex justify-between items-center mb-1">
             <div className="flex items-center gap-1.5">
               <div className="w-5 h-5 rounded-full bg-[#3182F6] flex items-center justify-center">
@@ -530,7 +530,7 @@ export function WeddingDashboard() {
         </div>
 
         {/* Budget List Card */}
-        <div className="bg-white rounded-[24px] p-5 shadow-toss">
+        <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex justify-between items-start mb-4">
             <div>
               <h3 className="font-bold text-[19px] text-[#191F28] mb-1">결혼 비용 리스트</h3>
@@ -589,7 +589,7 @@ export function WeddingDashboard() {
         </div>
 
         {/* Monthly Spending Card */}
-        <div className="bg-white rounded-[24px] p-5 shadow-toss">
+        <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex justify-between items-start">
             <div>
               <h3 className="font-bold text-[19px] text-[#191F28] mb-1">이번 달 지출</h3>
@@ -615,7 +615,7 @@ export function WeddingDashboard() {
         </div>
 
         {/* Ad Banner */}
-        <div className="bg-white rounded-[24px] overflow-hidden shadow-toss">
+        <div className="bg-white rounded-[24px] overflow-hidden shadow-weve">
           <div 
             className="w-full h-32 bg-gray-100 bg-cover bg-center relative"
             style={{ 

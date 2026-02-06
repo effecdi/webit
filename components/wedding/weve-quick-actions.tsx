@@ -31,7 +31,7 @@ const menuItems = [
   { label: "소비·수입 내역을 바로 볼 수 있어요", href: "/wedding/budget" },
 ]
 
-export function TossQuickActions() {
+export function WeveQuickActions() {
   return (
     <section className="bg-white border-t border-[#F5F5F5]">
       {/* Section Title */}
@@ -40,7 +40,7 @@ export function TossQuickActions() {
         <ChevronRight className="w-5 h-5 text-[#B0B0B0]" />
       </div>
 
-      {/* Account List - Toss style */}
+      {/* Account List - WE:VE style */}
       <div className="px-5">
         {accountItems.map((item) => (
           <Link

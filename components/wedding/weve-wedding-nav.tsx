@@ -12,7 +12,7 @@ const navItems = [
   { icon: MoreHorizontal, label: "전체", href: "/wedding/profile" },
 ]
 
-export function TossWeddingNav() {
+export function WeveWeddingNav() {
   const pathname = usePathname()
 
   return (

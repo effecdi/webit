@@ -202,7 +202,7 @@ export function CoupleCalendar() {
       </header>
 
       <div className="px-5 py-5 max-w-md mx-auto">
-        <div className="bg-white rounded-[20px] shadow-toss overflow-hidden">
+        <div className="bg-white rounded-[20px] shadow-weve overflow-hidden">
           <div className="flex items-center justify-between p-4 border-b border-[#F2F4F6]">
             <button onClick={prevMonth} className="p-2 rounded-full hover:bg-[#F2F4F6]">
               <ChevronLeft className="w-5 h-5 text-[#4E5968]" />

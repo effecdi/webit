@@ -38,13 +38,13 @@
   --sidebar-border: #E5E8EB;
   --sidebar-ring: #3182F6;
   
-  /* Toss specific colors */
-  --toss-blue: #3182F6;
-  --toss-blue-dark: #1B64DA;
-  --toss-bg: #F2F4F6;
-  --toss-text: #191F28;
-  --toss-text-sub: #8B95A1;
-  --toss-gray: #B0B8C1;
+  /* WE:VE specific colors */
+  --weve-blue: #3182F6;
+  --weve-blue-dark: #1B64DA;
+  --weve-bg: #F2F4F6;
+  --weve-text: #191F28;
+  --weve-text-sub: #8B95A1;
+  --weve-gray: #B0B8C1;
   --sage: #5F7161;
   --sage-light: #E8EFEC;
   --coral: #D4836B;
@@ -151,16 +151,16 @@
   animation: marquee 20s linear infinite;
 }
 
-/* Toss-style soft shadow */
-.shadow-toss {
+/* WE:VE-style soft shadow */
+.shadow-weve {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
-.shadow-toss-md {
+.shadow-weve-md {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.shadow-toss-lg {
+.shadow-weve-lg {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
 }
 

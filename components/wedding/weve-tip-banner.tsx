@@ -25,7 +25,7 @@ const recommendItems = [
   },
 ]
 
-export function TossTipBanner() {
+export function WeveTipBanner() {
   return (
     <section className="bg-white mt-2 pb-2">
       {/* Header */}
@@ -33,7 +33,7 @@ export function TossTipBanner() {
         <h2 className="text-[17px] font-bold text-[#202020]">추천</h2>
       </div>
 
-      {/* Recommend Items - Toss style */}
+      {/* Recommend Items - WE:VE style */}
       <div className="px-5">
         {recommendItems.map((item) => {
           const Icon = item.icon

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { FamilyTossDashboard } from "@/components/family/family-toss-dashboard"
+import { FamilyWeveDashboard } from "@/components/family/family-weve-dashboard"
 import { FamilyBottomNav } from "@/components/family/family-bottom-nav"
 import { HistoryBookIntro } from "@/components/family/history-book-intro"
 
@@ -26,7 +26,7 @@ export default function FamilyHomePage() {
 
   return (
     <>
-      <FamilyTossDashboard />
+      <FamilyWeveDashboard />
       <FamilyBottomNav />
     </>
   )
