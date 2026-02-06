@@ -1,0 +1,188 @@
+{/* 기본 정보 */}
+            <div className="bg-white mx-4 mt-3 rounded-[24px] shadow-sm p-5">
+              <SectionHeader title="기본 정보" />
+              <div className="space-y-4">
+                {/* 신랑 */}
+                <div className="flex items-center gap-2">
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">
+                    신랑<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={data.groomName}
+                    onChange={(e) => updateField("groomName", e.target.value)}
+                    placeholder="이름"
+                    data-testid="input-groom-name"
+                    className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                  />
+                  <input
+                    type="text"
+                    value={data.groomRelation}
+                    onChange={(e) => updateField("groomRelation", e.target.value)}
+                    placeholder="아들"
+                    className="w-[80px] px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                  />
+                </div>
+                <InputField
+                  label="전화번호"
+                  value={data.groomPhone}
+                  onChange={(v) => updateField("groomPhone", v)}
+                  placeholder="전화번호"
+                />
+                {/* 신랑 아버지 */}
+                <div className="flex items-center gap-2">
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">아버지</label>
+                  <input
+                    type="text"
+                    value={data.groomFather.name}
+                    onChange={(e) =>
+                      updateField("groomFather", { ...data.groomFather, name: e.target.value })
+                    }
+                    placeholder="성함"
+                    className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                  />
+                  <CheckboxField
+                    label="故"
+                    checked={data.groomFather.deceased}
+                    onChange={(v) =>
+                      updateField("groomFather", { ...data.groomFather, deceased: v })
+                    }
+                  />
+                </div>
+                <InputField
+                  label="전화번호"
+                  value={data.groomFather.phone}
+                  onChange={(v) =>
+                    updateField("groomFather", { ...data.groomFather, phone: v })
+                  }
+                  placeholder="전화번호"
+                />
+                {/* 신랑 어머니 */}
+                <div className="flex items-center gap-2">
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">어머니</label>
+                  <input
+                    type="text"
+                    value={data.groomMother.name}
+                    onChange={(e) =>
+                      updateField("groomMother", { ...data.groomMother, name: e.target.value })
+                    }
+                    placeholder="성함"
+                    className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                  />
+                  <CheckboxField
+                    label="故"
+                    checked={data.groomMother.deceased}
+                    onChange={(v) =>
+                      updateField("groomMother", { ...data.groomMother, deceased: v })
+                    }
+                  />
+                </div>
+                <InputField
+                  label="전화번호"
+                  value={data.groomMother.phone}
+                  onChange={(v) =>
+                    updateField("groomMother", { ...data.groomMother, phone: v })
+                  }
+                  placeholder="전화번호"
+                />
+
+                <div className="h-px bg-[#E5E8EB]" />
+
+                {/* 신부 */}
+                <div className="flex items-center gap-2">
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">
+                    신부<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={data.brideName}
+                    onChange={(e) => updateField("brideName", e.target.value)}
+                    placeholder="이름"
+                    data-testid="input-bride-name"
+                    className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                  />
+                  <input
+                    type="text"
+                    value={data.brideRelation}
+                    onChange={(e) => updateField("brideRelation", e.target.value)}
+                    placeholder="딸"
+                    className="w-[80px] px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                  />
+                </div>
+                <InputField
+                  label="전화번호"
+                  value={data.bridePhone}
+                  onChange={(v) => updateField("bridePhone", v)}
+                  placeholder="전화번호"
+                />
+                {/* 신부 아버지 */}
+                <div className="flex items-center gap-2">
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">아버지</label>
+                  <input
+                    type="text"
+                    value={data.brideFather.name}
+                    onChange={(e) =>
+                      updateField("brideFather", { ...data.brideFather, name: e.target.value })
+                    }
+                    placeholder="성함"
+                    className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                  />
+                  <CheckboxField
+                    label="故"
+                    checked={data.brideFather.deceased}
+                    onChange={(v) =>
+                      updateField("brideFather", { ...data.brideFather, deceased: v })
+                    }
+                  />
+                </div>
+                <InputField
+                  label="전화번호"
+                  value={data.brideFather.phone}
+                  onChange={(v) =>
+                    updateField("brideFather", { ...data.brideFather, phone: v })
+                  }
+                  placeholder="전화번호"
+                />
+                {/* 신부 어머니 */}
+                <div className="flex items-center gap-2">
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">어머니</label>
+                  <input
+                    type="text"
+                    value={data.brideMother.name}
+                    onChange={(e) =>
+                      updateField("brideMother", { ...data.brideMother, name: e.target.value })
+                    }
+                    placeholder="성함"
+                    className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                  />
+                  <CheckboxField
+                    label="故"
+                    checked={data.brideMother.deceased}
+                    onChange={(v) =>
+                      updateField("brideMother", { ...data.brideMother, deceased: v })
+                    }
+                  />
+                </div>
+                <InputField
+                  label="전화번호"
+                  value={data.brideMother.phone}
+                  onChange={(v) =>
+                    updateField("brideMother", { ...data.brideMother, phone: v })
+                  }
+                  placeholder="전화번호"
+                />
+
+                <div className="h-px bg-[#E5E8EB]" />
+
+                <CheckboxField
+                  label="신부측 먼저 표시"
+                  checked={data.brideFirst}
+                  onChange={(v) => updateField("brideFirst", v)}
+                />
+                <CheckboxField
+                  label="국화 꽃으로 표기"
+                  checked={data.deceasedFlower}
+                  onChange={(v) => updateField("deceasedFlower", v)}
+                />
+              </div>
+            </div>

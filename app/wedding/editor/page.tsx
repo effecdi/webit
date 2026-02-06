@@ -643,13 +643,14 @@ function CheckboxField({
   onChange: (v: boolean) => void
 }) {
   return (
-    <label className="flex items-center gap-2 cursor-pointer">
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={(e) => onChange(e.target.checked)}
-        className="sr-only"
-      />
+    <div
+      role="checkbox"
+      aria-checked={checked}
+      tabIndex={0}
+      className="flex items-center gap-2 cursor-pointer select-none"
+      onClick={() => onChange(!checked)}
+      onKeyDown={(e) => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); onChange(!checked) } }}
+    >
       <div
         className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
           checked ? "bg-[#FF8A80] border-[#FF8A80]" : "border-[#D1D6DB]"
@@ -658,7 +659,7 @@ function CheckboxField({
         {checked && <Check className="w-3 h-3 text-white" />}
       </div>
       <span className="text-[14px] text-[#4E5968]">{label}</span>
-    </label>
+    </div>
   )
 }
 
