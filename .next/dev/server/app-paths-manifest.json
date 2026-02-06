@@ -1,3 +1,10 @@
 {
-  "/page": "app/page.js"
+  "/api/checklist/route": "app/api/checklist/route.js",
+  "/api/expenses/route": "app/api/expenses/route.js",
+  "/api/invitation/guestbook/route": "app/api/invitation/guestbook/route.js",
+  "/api/invitation/route": "app/api/invitation/route.js",
+  "/page": "app/page.js",
+  "/splash/page": "app/splash/page.js",
+  "/wedding/editor/page": "app/wedding/editor/page.js",
+  "/wedding/page": "app/wedding/page.js"
 }
