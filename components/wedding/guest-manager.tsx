@@ -56,6 +56,8 @@ export function GuestManager() {
     brideGuests: 0,
     mealCostAdult: 0,
   })
+  const [subView, setSubView] = useState<"none" | "invitation" | "attendance">("none")
+  const [subViewFilter, setSubViewFilter] = useState<"all" | "groom" | "bride">("all")
 
   const [formData, setFormData] = useState({
     name: "",
@@ -180,6 +182,38 @@ export function GuestManager() {
     setShowDeleteModal(false)
   }
 
+  const toggleInvitation = async (guest: Guest) => {
+    try {
+      const res = await fetch("/api/guests", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: guest.id, invitationSent: !guest.invitationSent }),
+      })
+      const updated = await res.json()
+      setGuests(guests.map(g => (g.id === guest.id ? updated : g)))
+    } catch (error) {
+      console.error("Error toggling invitation:", error)
+    }
+  }
+
+  const toggleAttendance = async (guest: Guest, status: string) => {
+    const newStatus = guest.attendance === status ? "pending" : status
+    try {
+      const res = await fetch("/api/guests", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: guest.id, attendance: newStatus }),
+      })
+      const updated = await res.json()
+      setGuests(guests.map(g => (g.id === guest.id ? updated : g)))
+    } catch (error) {
+      console.error("Error toggling attendance:", error)
+    }
+  }
+
+  const subViewGuests = guests
+    .filter(g => subViewFilter === "all" || g.side === subViewFilter)
+
   const openSettingsModal = () => {
     setSettingsForm({
       groomGuests: weddingInfo?.groomGuests || 0,
@@ -215,6 +249,138 @@ export function GuestManager() {
       return `${Math.floor(amount / 10000)} 만원`
     }
     return `${amount.toLocaleString()} 원`
+  }
+
+  if (subView !== "none") {
+    const isInvitation = subView === "invitation"
+    const title = isInvitation ? "청첩장 발송 관리" : "참석 체크"
+    const subFilteredGuests = subViewGuests
+
+    return (
+      <div className="px-5 pt-5 max-w-md mx-auto pb-24">
+        <div className="flex items-center gap-3 mb-5">
+          <button
+            onClick={() => { setSubView("none"); setSubViewFilter("all") }}
+            className="p-2 rounded-full bg-[#F2F4F6]"
+            data-testid="button-back-from-subview"
+          >
+            <X className="w-5 h-5 text-[#4E5968]" />
+          </button>
+          <h2 className="text-[17px] font-bold text-[#191F28] flex-1">{title}</h2>
+        </div>
+
+        <div className="flex bg-[#F2F4F6] rounded-[10px] p-0.5 mb-4">
+          {(["all", "groom", "bride"] as const).map(s => (
+            <button
+              key={s}
+              onClick={() => setSubViewFilter(s)}
+              className={`flex-1 py-2 text-[13px] font-medium rounded-[8px] transition-all ${
+                subViewFilter === s ? "bg-white text-[#191F28] shadow-sm" : "text-[#8B95A1]"
+              }`}
+              data-testid={`subview-filter-${s}`}
+            >
+              {s === "all" ? "전체" : s === "groom" ? "신랑측" : "신부측"}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-[13px] text-[#8B95A1]">
+            총 {subFilteredGuests.length}명
+          </p>
+          {isInvitation && (
+            <p className="text-[13px] text-[#3182F6] font-medium">
+              발송 {subFilteredGuests.filter(g => g.invitationSent).length}명
+            </p>
+          )}
+          {!isInvitation && (
+            <p className="text-[13px] text-green-600 font-medium">
+              참석 {subFilteredGuests.filter(g => g.attendance === "confirmed").length}명
+            </p>
+          )}
+        </div>
+
+        {subFilteredGuests.length === 0 ? (
+          <div className="py-12 text-center">
+            <Users className="w-10 h-10 text-[#D1D6DB] mx-auto mb-3" />
+            <p className="text-[#8B95A1] text-[14px]">등록된 하객이 없어요</p>
+            <p className="text-[#B0B8C1] text-[12px] mt-1">명단 탭에서 하객을 추가해주세요</p>
+          </div>
+        ) : (
+          <div className="space-y-2">
+            {subFilteredGuests.map(guest => (
+              <div
+                key={guest.id}
+                className="bg-white rounded-[16px] shadow-weve p-4"
+                data-testid={`subview-guest-${guest.id}`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-bold text-white ${
+                      guest.side === "groom" ? "bg-blue-400" : "bg-pink-400"
+                    }`}>
+                      {guest.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <p className="text-[15px] font-medium text-[#191F28]">{guest.name}</p>
+                        <span className={`text-[11px] px-1.5 py-0.5 rounded-full ${
+                          guest.side === "groom" ? "bg-blue-100 text-blue-600" : "bg-pink-100 text-pink-600"
+                        }`}>
+                          {guest.side === "groom" ? "신랑" : "신부"}
+                        </span>
+                      </div>
+                      {guest.relationship && (
+                        <p className="text-[12px] text-[#8B95A1] mt-0.5">{guest.relationship}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  {isInvitation ? (
+                    <button
+                      onClick={() => toggleInvitation(guest)}
+                      className={`w-11 h-11 rounded-[12px] flex items-center justify-center transition-all ${
+                        guest.invitationSent
+                          ? "bg-[#3182F6] text-white"
+                          : "bg-[#F2F4F6] text-[#B0B8C1]"
+                      }`}
+                      data-testid={`toggle-invitation-${guest.id}`}
+                    >
+                      <Mail className="w-5 h-5" />
+                    </button>
+                  ) : (
+                    <div className="flex gap-1.5">
+                      <button
+                        onClick={() => toggleAttendance(guest, "confirmed")}
+                        className={`px-3 py-2 rounded-[10px] text-[12px] font-medium transition-all ${
+                          guest.attendance === "confirmed"
+                            ? "bg-green-500 text-white"
+                            : "bg-[#F2F4F6] text-[#8B95A1]"
+                        }`}
+                        data-testid={`toggle-attend-${guest.id}`}
+                      >
+                        참석
+                      </button>
+                      <button
+                        onClick={() => toggleAttendance(guest, "declined")}
+                        className={`px-3 py-2 rounded-[10px] text-[12px] font-medium transition-all ${
+                          guest.attendance === "declined"
+                            ? "bg-red-400 text-white"
+                            : "bg-[#F2F4F6] text-[#8B95A1]"
+                        }`}
+                        data-testid={`toggle-decline-${guest.id}`}
+                      >
+                        불참
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    )
   }
 
   return (
@@ -344,51 +510,69 @@ export function GuestManager() {
                   <h3 className="text-[15px] font-bold text-[#191F28] mb-4">청첩장</h3>
 
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-purple-50 rounded-[12px] flex items-center justify-center">
-                          <Mail className="w-5 h-5 text-purple-500" />
-                        </div>
-                        <div>
-                          <p className="text-[14px] font-medium text-[#191F28]">청첩장 모임 인원</p>
-                          <div className="flex gap-2 mt-0.5">
-                            <span className="text-[11px] px-1.5 py-0.5 bg-blue-100 text-blue-600 rounded-full">
-                              신랑 {groomGuestsList.filter(g => g.invitationSent).length}명
-                            </span>
-                            <span className="text-[11px] px-1.5 py-0.5 bg-pink-100 text-pink-600 rounded-full">
-                              신부 {brideGuestsList.filter(g => g.invitationSent).length}명
-                            </span>
+                    <button
+                      onClick={() => setSubView("invitation")}
+                      className="w-full text-left"
+                      data-testid="button-open-invitation"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-purple-50 rounded-[12px] flex items-center justify-center">
+                            <Mail className="w-5 h-5 text-purple-500" />
+                          </div>
+                          <div>
+                            <p className="text-[14px] font-medium text-[#191F28]">청첩장 발송 관리</p>
+                            <div className="flex gap-2 mt-0.5">
+                              <span className="text-[11px] px-1.5 py-0.5 bg-blue-100 text-blue-600 rounded-full">
+                                신랑 {groomGuestsList.filter(g => g.invitationSent).length}명
+                              </span>
+                              <span className="text-[11px] px-1.5 py-0.5 bg-pink-100 text-pink-600 rounded-full">
+                                신부 {brideGuestsList.filter(g => g.invitationSent).length}명
+                              </span>
+                            </div>
                           </div>
                         </div>
+                        <div className="flex items-center gap-2">
+                          <p className="text-[20px] font-bold text-[#191F28]">
+                            {invitedGuests.length} <span className="text-[14px] font-normal text-[#8B95A1]">명</span>
+                          </p>
+                          <ChevronDown className="w-4 h-4 text-[#B0B8C1] -rotate-90" />
+                        </div>
                       </div>
-                      <p className="text-[20px] font-bold text-[#191F28]">
-                        {invitedGuests.length} <span className="text-[14px] font-normal text-[#8B95A1]">명</span>
-                      </p>
-                    </div>
+                    </button>
 
                     <div className="border-t border-[#F2F4F6]" />
 
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-green-50 rounded-[12px] flex items-center justify-center">
-                          <Check className="w-5 h-5 text-green-500" />
-                        </div>
-                        <div>
-                          <p className="text-[14px] font-medium text-[#191F28]">참석 확인</p>
-                          <div className="flex gap-2 mt-0.5">
-                            <span className="text-[11px] px-1.5 py-0.5 bg-blue-100 text-blue-600 rounded-full">
-                              신랑 {groomGuestsList.filter(g => g.attendance === "confirmed").length}명
-                            </span>
-                            <span className="text-[11px] px-1.5 py-0.5 bg-pink-100 text-pink-600 rounded-full">
-                              신부 {brideGuestsList.filter(g => g.attendance === "confirmed").length}명
-                            </span>
+                    <button
+                      onClick={() => setSubView("attendance")}
+                      className="w-full text-left"
+                      data-testid="button-open-attendance"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-green-50 rounded-[12px] flex items-center justify-center">
+                            <Check className="w-5 h-5 text-green-500" />
+                          </div>
+                          <div>
+                            <p className="text-[14px] font-medium text-[#191F28]">참석 체크</p>
+                            <div className="flex gap-2 mt-0.5">
+                              <span className="text-[11px] px-1.5 py-0.5 bg-blue-100 text-blue-600 rounded-full">
+                                신랑 {groomGuestsList.filter(g => g.attendance === "confirmed").length}명
+                              </span>
+                              <span className="text-[11px] px-1.5 py-0.5 bg-pink-100 text-pink-600 rounded-full">
+                                신부 {brideGuestsList.filter(g => g.attendance === "confirmed").length}명
+                              </span>
+                            </div>
                           </div>
                         </div>
+                        <div className="flex items-center gap-2">
+                          <p className="text-[20px] font-bold text-[#191F28]">
+                            {confirmedGuests.length} <span className="text-[14px] font-normal text-[#8B95A1]">명</span>
+                          </p>
+                          <ChevronDown className="w-4 h-4 text-[#B0B8C1] -rotate-90" />
+                        </div>
                       </div>
-                      <p className="text-[20px] font-bold text-[#191F28]">
-                        {confirmedGuests.length} <span className="text-[14px] font-normal text-[#8B95A1]">명</span>
-                      </p>
-                    </div>
+                    </button>
                   </div>
                 </div>
               </>

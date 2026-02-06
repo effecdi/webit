@@ -2956,6 +2956,10 @@
     rotate: -45deg;
   }
 
+  .-rotate-90 {
+    rotate: -90deg;
+  }
+
   .rotate-0 {
     rotate: none;
   }
