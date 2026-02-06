@@ -1,1 +1,13 @@
-{}
+{
+  "/api/checklist/route": "app/api/checklist/route.js",
+  "/api/expenses/route": "app/api/expenses/route.js",
+  "/api/invitation/guestbook/route": "app/api/invitation/guestbook/route.js",
+  "/api/invitation/route": "app/api/invitation/route.js",
+  "/api/notifications/route": "app/api/notifications/route.js",
+  "/api/travels/route": "app/api/travels/route.js",
+  "/api/wedding-info/route": "app/api/wedding-info/route.js",
+  "/page": "app/page.js",
+  "/splash/page": "app/splash/page.js",
+  "/wedding/editor/page": "app/wedding/editor/page.js",
+  "/wedding/page": "app/wedding/page.js"
+}
