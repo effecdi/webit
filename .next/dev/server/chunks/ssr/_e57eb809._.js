@@ -51,7 +51,7 @@ function WeddingOnboardingPage() {
                 setIsTransitioning(false);
             }, 300);
         } else {
-            router.push("/onboarding");
+            router.push("/dating");
         }
     };
     const handleComplete = ()=>{
