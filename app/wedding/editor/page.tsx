@@ -125,6 +125,12 @@ export interface InvitationData {
   transportInfo: string
   groomAccounts: AccountInfo[]
   brideAccounts: AccountInfo[]
+  coverDisplayStyle: "slide" | "fade" | "static"
+  messageAlign: "center" | "left"
+  calendarStyle: "full" | "simple"
+  accountDisplayStyle: "expand" | "accordion"
+  endingStyle: "card" | "full" | "simple"
+  nameDisplayStyle: "horizontal" | "vertical"
 }
 
 const initialData: InvitationData = {
@@ -222,6 +228,12 @@ const initialData: InvitationData = {
   transportInfo: "",
   groomAccounts: [{ bank: "", account: "", holder: "" }],
   brideAccounts: [{ bank: "", account: "", holder: "" }],
+  coverDisplayStyle: "slide",
+  messageAlign: "center",
+  calendarStyle: "full",
+  accountDisplayStyle: "expand",
+  endingStyle: "card",
+  nameDisplayStyle: "horizontal",
 }
 
 const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString())
@@ -355,6 +367,48 @@ function CheckboxField({
       </div>
       <span className="text-[14px] text-[#4E5968]">{label}</span>
     </label>
+  )
+}
+
+function RadioField({
+  options,
+  value,
+  onChange,
+  label,
+}: {
+  options: { value: string; label: string }[]
+  value: string
+  onChange: (v: string) => void
+  label?: string
+}) {
+  return (
+    <div className="space-y-2">
+      {label && <label className="text-[14px] text-[#4E5968] block">{label}</label>}
+      <div className="flex gap-3 flex-wrap">
+        {options.map((opt) => (
+          <button
+            type="button"
+            key={opt.value}
+            className="flex items-center gap-2 cursor-pointer"
+            data-testid={`radio-${opt.value}`}
+            onClick={() => onChange(opt.value)}
+          >
+            <div
+              className={`w-[18px] h-[18px] rounded-full border-2 flex items-center justify-center transition-colors ${
+                value === opt.value ? "border-[#c9a86c]" : "border-[#D1D6DB]"
+              }`}
+            >
+              {value === opt.value && (
+                <div className="w-[10px] h-[10px] rounded-full bg-[#c9a86c]" />
+              )}
+            </div>
+            <span className={`text-[14px] ${value === opt.value ? "text-[#191F28] font-medium" : "text-[#8B95A1]"}`}>
+              {opt.label}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -723,6 +777,17 @@ export default function InvitationEditorPage() {
                   />
                 </div>
               </div>
+
+              <RadioField
+                label="커버 표시 방식"
+                options={[
+                  { value: "slide", label: "슬라이드" },
+                  { value: "fade", label: "페이드" },
+                  { value: "static", label: "고정" },
+                ]}
+                value={data.coverDisplayStyle}
+                onChange={(v) => updateField("coverDisplayStyle", v as any)}
+              />
             </div>
           </div>
 
@@ -950,6 +1015,24 @@ export default function InvitationEditorPage() {
                 checked={data.showNameAtBottom}
                 onChange={(v) => updateField("showNameAtBottom", v)}
               />
+              <RadioField
+                label="인사말 정렬"
+                options={[
+                  { value: "center", label: "가운데 정렬" },
+                  { value: "left", label: "왼쪽 정렬" },
+                ]}
+                value={data.messageAlign}
+                onChange={(v) => updateField("messageAlign", v as any)}
+              />
+              <RadioField
+                label="이름 표시 방식"
+                options={[
+                  { value: "horizontal", label: "가로 배열" },
+                  { value: "vertical", label: "세로 배열" },
+                ]}
+                value={data.nameDisplayStyle}
+                onChange={(v) => updateField("nameDisplayStyle", v as any)}
+              />
             </div>
           </div>
 
@@ -1037,6 +1120,15 @@ export default function InvitationEditorPage() {
                   onChange={(v) => updateField("showCountdown", v)}
                 />
               </div>
+              <RadioField
+                label="캘린더 스타일"
+                options={[
+                  { value: "full", label: "전체 달력" },
+                  { value: "simple", label: "심플 텍스트" },
+                ]}
+                value={data.calendarStyle}
+                onChange={(v) => updateField("calendarStyle", v as any)}
+              />
             </div>
           </div>
 
@@ -1226,6 +1318,15 @@ export default function InvitationEditorPage() {
             />
             {data.showAccount && (
               <div className="space-y-4">
+                <RadioField
+                  label="표시 방식"
+                  options={[
+                    { value: "expand", label: "펼침" },
+                    { value: "accordion", label: "접기(아코디언)" },
+                  ]}
+                  value={data.accountDisplayStyle}
+                  onChange={(v) => updateField("accountDisplayStyle", v as any)}
+                />
                 {/* 신랑 아버지 */}
                 <InputField
                   label="신랑 아버지"
@@ -1444,31 +1545,15 @@ export default function InvitationEditorPage() {
                     -최대 20장까지 등록할 수 있습니다.
                   </p>
                 </div>
-                <div>
-                  <label className="text-[14px] text-[#4E5968] mb-2 block">방식</label>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => updateField("galleryStyle", "swipe")}
-                      className={`px-4 py-2 rounded-full text-[13px] border ${
-                        data.galleryStyle === "swipe"
-                          ? "border-[#c9a86c] text-[#c9a86c] bg-[#FAF9F7]"
-                          : "border-[#E5E8EB] text-[#8B95A1]"
-                      }`}
-                    >
-                      스와이프
-                    </button>
-                    <button
-                      onClick={() => updateField("galleryStyle", "grid")}
-                      className={`px-4 py-2 rounded-full text-[13px] border ${
-                        data.galleryStyle === "grid"
-                          ? "border-[#c9a86c] text-[#c9a86c] bg-[#FAF9F7]"
-                          : "border-[#E5E8EB] text-[#8B95A1]"
-                      }`}
-                    >
-                      그리드
-                    </button>
-                  </div>
-                </div>
+                <RadioField
+                  label="방식"
+                  options={[
+                    { value: "swipe", label: "스와이프" },
+                    { value: "grid", label: "그리드" },
+                  ]}
+                  value={data.galleryStyle}
+                  onChange={(v) => updateField("galleryStyle", v as any)}
+                />
               </div>
             )}
           </div>
@@ -1763,6 +1848,16 @@ export default function InvitationEditorPage() {
             />
             {data.showEndingMessage && (
               <div className="space-y-4">
+                <RadioField
+                  label="엔딩 스타일"
+                  options={[
+                    { value: "card", label: "카드" },
+                    { value: "full", label: "전체" },
+                    { value: "simple", label: "심플" },
+                  ]}
+                  value={data.endingStyle}
+                  onChange={(v) => updateField("endingStyle", v as any)}
+                />
                 <div className="flex items-center gap-3">
                   <label className="text-[14px] text-[#4E5968]">사진</label>
                   <ImageUploadBox

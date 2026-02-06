@@ -38,17 +38,20 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
   const [guestbookEntries, setGuestbookEntries] = useState<Array<{ name: string; message: string; date: string }>>([])
   const [copiedToast, setCopiedToast] = useState("")
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+  const [expandedAccordion, setExpandedAccordion] = useState<string | null>(null)
   const slideInterval = useRef<NodeJS.Timeout | null>(null)
 
+  const coverStyle = data.coverDisplayStyle || "slide"
+
   useEffect(() => {
-    if (allPhotos.length <= 1) return
+    if (allPhotos.length <= 1 || coverStyle === "static") return
     slideInterval.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % allPhotos.length)
     }, 3000)
     return () => {
       if (slideInterval.current) clearInterval(slideInterval.current)
     }
-  }, [allPhotos.length])
+  }, [allPhotos.length, coverStyle])
 
   useEffect(() => {
     if (!data.weddingDate) return
@@ -150,23 +153,40 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
       <div className="max-w-[420px] mx-auto">
 
         {/* ===== HERO / COVER SECTION ===== */}
-        <div className="relative w-full" style={{ minHeight: "580px" }}>
+        <div className="relative w-full overflow-hidden" style={{ minHeight: "580px" }}>
           {allPhotos.length > 0 ? (
             <>
-              {allPhotos.map((photo, i) => (
-                <div
-                  key={i}
-                  className="absolute inset-0 transition-opacity duration-1000"
-                  style={{ opacity: currentSlide === i ? 1 : 0 }}
-                >
+              {coverStyle === "static" ? (
+                <div className="absolute inset-0">
                   <img
-                    src={photo}
-                    alt={`Cover ${i + 1}`}
+                    src={allPhotos[0]}
+                    alt="Cover"
                     className="w-full h-full object-cover"
                     style={{ minHeight: "580px" }}
                   />
                 </div>
-              ))}
+              ) : coverStyle === "slide" ? (
+                <div
+                  className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {allPhotos.map((photo, i) => (
+                    <div key={i} className="w-full flex-shrink-0" style={{ minHeight: "580px" }}>
+                      <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" style={{ minHeight: "580px" }} />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                allPhotos.map((photo, i) => (
+                  <div
+                    key={i}
+                    className="absolute inset-0 transition-opacity duration-1000"
+                    style={{ opacity: currentSlide === i ? 1 : 0 }}
+                  >
+                    <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" style={{ minHeight: "580px" }} />
+                  </div>
+                ))
+              )}
               <div className="absolute inset-0 bg-[#6b8db5]/25" />
             </>
           ) : (
@@ -226,12 +246,12 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
             </p>
           )}
 
-          <p className="text-[14px] text-[#5a5a5a] leading-[2.2] text-center whitespace-pre-line mb-10">
+          <p className={`text-[14px] text-[#5a5a5a] leading-[2.2] whitespace-pre-line mb-10 ${(data.messageAlign || "center") === "center" ? "text-center" : "text-left"}`}>
             {data.message || "소중한 분들을 모시고\n새로운 출발을 함께하고자 합니다.\n저희 두 사람의 약속이\n사랑으로 더욱 빛날 수 있도록 오셔서\n따뜻한 격려와 축복을 부탁드립니다."}
           </p>
 
-          {data.showNameAtBottom && (
-            <div className="text-center space-y-3 mb-8">
+          {data.showNameAtBottom && (() => {
+            const groomBlock = (
               <p className="text-[15px] text-[#3d3d3d] font-medium leading-relaxed">
                 {data.groomFather?.name && (
                   <>{data.groomFather.deceased ? "故 " : ""}{data.groomFather.name}</>
@@ -244,6 +264,8 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
                 )}
                 <span className="font-bold">{data.groomName || "신랑"}</span>
               </p>
+            )
+            const brideBlock = (
               <p className="text-[15px] text-[#3d3d3d] font-medium leading-relaxed">
                 {data.brideFather?.name && (
                   <>{data.brideFather.deceased ? "故 " : ""}{data.brideFather.name}</>
@@ -256,8 +278,25 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
                 )}
                 <span className="font-bold">{data.brideName || "신부"}</span>
               </p>
-            </div>
-          )}
+            )
+            const nameStyle = data.nameDisplayStyle || "horizontal"
+            const first = data.brideFirst ? brideBlock : groomBlock
+            const second = data.brideFirst ? groomBlock : brideBlock
+
+            return nameStyle === "vertical" ? (
+              <div className="text-center mb-8">
+                <div className="flex justify-center gap-12">
+                  <div className="space-y-1">{first}</div>
+                  <div className="space-y-1">{second}</div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center space-y-3 mb-8">
+                {first}
+                {second}
+              </div>
+            )
+          })()}
 
           <button
             data-testid="button-contact"
@@ -321,6 +360,7 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
         {(data.showCalendar || data.showCountdown) && data.weddingDate && (() => {
           const cal = getCalendarData()
           if (!cal) return null
+          const calStyle = data.calendarStyle || "full"
           return (
             <div className="bg-[#faf9f7] px-8 py-14 text-center">
               <p className="text-[24px] text-[#3d3d3d] font-light mb-2">{formatWeddingDate()}</p>
@@ -328,7 +368,7 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
                 {cal.weddingDayName}요일 {formatWeddingTime()}
               </p>
 
-              {data.showCalendar && (
+              {data.showCalendar && calStyle === "full" && (
                 <div className="mb-8">
                   <div className="grid grid-cols-7 gap-0 mb-2">
                     {cal.dayNames.map((d) => (
@@ -355,6 +395,15 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
                       </div>
                     ))}
                   </div>
+                </div>
+              )}
+
+              {data.showCalendar && calStyle === "simple" && (
+                <div className="mb-8 py-4 border-t border-b border-[#e8e2d8]">
+                  <p className="text-[18px] text-[#3d3d3d] font-medium">
+                    {cal.year}년 {cal.month}월 {cal.weddingDay}일 {cal.weddingDayName}요일
+                  </p>
+                  <p className="text-[14px] text-[#8b7355] mt-1">{formatWeddingTime()}</p>
                 </div>
               )}
 
@@ -636,105 +685,103 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
         )}
 
         {/* ===== ACCOUNT SECTION ===== */}
-        {data.showAccount && (
-          <div className="bg-[#faf9f7] px-8 py-14">
-            <SectionTitle title="Account" />
-            <p className="text-[13px] text-[#8b7355] text-center mb-6">축하의 마음을 전해주세요</p>
+        {data.showAccount && (() => {
+          const accStyle = data.accountDisplayStyle || "expand"
+          const groomAccList = (data.groomFatherAccount?.account || data.groomMotherAccount?.account)
+            ? [data.groomFatherAccount, data.groomMotherAccount].filter(a => a?.account)
+            : data.groomAccounts?.filter(a => a?.account) || []
+          const brideAccList = (data.brideFatherAccount?.account || data.brideMotherAccount?.account)
+            ? [data.brideFatherAccount, data.brideMotherAccount].filter(a => a?.account)
+            : data.brideAccounts?.filter(a => a?.account) || []
 
-            <div className="space-y-4">
-              {(data.groomFatherAccount?.account || data.groomMotherAccount?.account) && (
-                <div className="bg-white rounded-lg p-5">
-                  <p className="text-[12px] text-[#3182F6] font-medium mb-4">신랑측</p>
-                  <div className="space-y-3">
-                    {[data.groomFatherAccount, data.groomMotherAccount]
-                      .filter(a => a?.account)
-                      .map((acc, i) => (
-                        <div key={i} className="flex justify-between items-center py-1">
-                          <div>
-                            <p className="text-[14px] text-[#3d3d3d]">{acc!.bank} {acc!.account}</p>
-                            <p className="text-[12px] text-[#8b7355] mt-0.5">{acc!.holder}</p>
-                          </div>
-                          <button
-                            onClick={() => copyToClipboard(`${acc!.bank} ${acc!.account}`, "계좌번호가")}
-                            className="px-3 py-1.5 bg-[#f4f1ec] rounded-md text-[11px] text-[#8b7355] font-medium"
-                          >
-                            복사
-                          </button>
-                        </div>
-                      ))}
+          const renderAccList = (list: typeof groomAccList) => (
+            <div className="space-y-3">
+              {list.map((acc, i) => (
+                <div key={i} className="flex justify-between items-center py-1">
+                  <div>
+                    <p className="text-[14px] text-[#3d3d3d]">{acc!.bank} {acc!.account}</p>
+                    <p className="text-[12px] text-[#8b7355] mt-0.5">{acc!.holder}</p>
                   </div>
+                  <button
+                    onClick={() => copyToClipboard(`${acc!.bank} ${acc!.account}`, "계좌번호가")}
+                    className="px-3 py-1.5 bg-[#f4f1ec] rounded-md text-[11px] text-[#8b7355] font-medium"
+                  >
+                    복사
+                  </button>
                 </div>
-              )}
-
-              {(data.brideFatherAccount?.account || data.brideMotherAccount?.account) && (
-                <div className="bg-white rounded-lg p-5">
-                  <p className="text-[12px] text-pink-500 font-medium mb-4">신부측</p>
-                  <div className="space-y-3">
-                    {[data.brideFatherAccount, data.brideMotherAccount]
-                      .filter(a => a?.account)
-                      .map((acc, i) => (
-                        <div key={i} className="flex justify-between items-center py-1">
-                          <div>
-                            <p className="text-[14px] text-[#3d3d3d]">{acc!.bank} {acc!.account}</p>
-                            <p className="text-[12px] text-[#8b7355] mt-0.5">{acc!.holder}</p>
-                          </div>
-                          <button
-                            onClick={() => copyToClipboard(`${acc!.bank} ${acc!.account}`, "계좌번호가")}
-                            className="px-3 py-1.5 bg-[#f4f1ec] rounded-md text-[11px] text-[#8b7355] font-medium"
-                          >
-                            복사
-                          </button>
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              )}
-
-              {data.groomAccounts?.some(a => a.account) && !data.groomFatherAccount?.account && (
-                <div className="bg-white rounded-lg p-5">
-                  <p className="text-[12px] text-[#3182F6] font-medium mb-4">신랑측</p>
-                  <div className="space-y-3">
-                    {data.groomAccounts.filter(a => a.account).map((acc, i) => (
-                      <div key={i} className="flex justify-between items-center py-1">
-                        <div>
-                          <p className="text-[14px] text-[#3d3d3d]">{acc.bank} {acc.account}</p>
-                          <p className="text-[12px] text-[#8b7355] mt-0.5">{acc.holder}</p>
-                        </div>
-                        <button
-                          onClick={() => copyToClipboard(`${acc.bank} ${acc.account}`, "계좌번호가")}
-                          className="px-3 py-1.5 bg-[#f4f1ec] rounded-md text-[11px] text-[#8b7355] font-medium"
-                        >
-                          복사
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {data.brideAccounts?.some(a => a.account) && !data.brideFatherAccount?.account && (
-                <div className="bg-white rounded-lg p-5">
-                  <p className="text-[12px] text-pink-500 font-medium mb-4">신부측</p>
-                  <div className="space-y-3">
-                    {data.brideAccounts.filter(a => a.account).map((acc, i) => (
-                      <div key={i} className="flex justify-between items-center py-1">
-                        <div>
-                          <p className="text-[14px] text-[#3d3d3d]">{acc.bank} {acc.account}</p>
-                          <p className="text-[12px] text-[#8b7355] mt-0.5">{acc.holder}</p>
-                        </div>
-                        <button
-                          onClick={() => copyToClipboard(`${acc.bank} ${acc.account}`, "계좌번호가")}
-                          className="px-3 py-1.5 bg-[#f4f1ec] rounded-md text-[11px] text-[#8b7355] font-medium"
-                        >
-                          복사
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              ))}
             </div>
-          </div>
-        )}
+          )
+
+          return (
+            <div className="bg-[#faf9f7] px-8 py-14">
+              <SectionTitle title="Account" />
+              <p className="text-[13px] text-[#8b7355] text-center mb-6">축하의 마음을 전해주세요</p>
+
+              <div className="space-y-4">
+                {groomAccList.length > 0 && (
+                  accStyle === "accordion" ? (
+                    <div className="bg-white rounded-lg overflow-hidden">
+                      <button
+                        onClick={() => setExpandedAccordion(expandedAccordion === "groom" ? null : "groom")}
+                        className="w-full flex items-center justify-between p-5"
+                        data-testid="accordion-groom"
+                      >
+                        <p className="text-[14px] text-[#3d3d3d] font-medium">신랑측 계좌번호</p>
+                        <svg
+                          className={`w-4 h-4 text-[#8b7355] transition-transform ${expandedAccordion === "groom" ? "rotate-180" : ""}`}
+                          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {expandedAccordion === "groom" && (
+                        <div className="px-5 pb-5 border-t border-[#f0ebe4]">
+                          {renderAccList(groomAccList)}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="bg-white rounded-lg p-5">
+                      <p className="text-[12px] text-[#3182F6] font-medium mb-4">신랑측</p>
+                      {renderAccList(groomAccList)}
+                    </div>
+                  )
+                )}
+
+                {brideAccList.length > 0 && (
+                  accStyle === "accordion" ? (
+                    <div className="bg-white rounded-lg overflow-hidden">
+                      <button
+                        onClick={() => setExpandedAccordion(expandedAccordion === "bride" ? null : "bride")}
+                        className="w-full flex items-center justify-between p-5"
+                        data-testid="accordion-bride"
+                      >
+                        <p className="text-[14px] text-[#3d3d3d] font-medium">신부측 계좌번호</p>
+                        <svg
+                          className={`w-4 h-4 text-[#8b7355] transition-transform ${expandedAccordion === "bride" ? "rotate-180" : ""}`}
+                          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {expandedAccordion === "bride" && (
+                        <div className="px-5 pb-5 border-t border-[#f0ebe4]">
+                          {renderAccList(brideAccList)}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="bg-white rounded-lg p-5">
+                      <p className="text-[12px] text-pink-500 font-medium mb-4">신부측</p>
+                      {renderAccList(brideAccList)}
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+          )
+        })()}
 
         {/* ===== BAPTISMAL NAMES ===== */}
         {data.showBaptismalName && (
@@ -785,27 +832,47 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
         )}
 
         {/* ===== ENDING / THANK YOU SECTION ===== */}
-        {data.showEndingMessage && (data.endingContent || data.endingPhoto) && (
-          <div className="bg-[#faf9f7] px-8 py-14">
-            <SectionTitle title="Thank you" />
+        {data.showEndingMessage && (data.endingContent || data.endingPhoto) && (() => {
+          const eStyle = data.endingStyle || "card"
+          return (
+            <div className="bg-[#faf9f7] px-8 py-14">
+              <SectionTitle title="Thank you" />
 
-            {data.endingPhoto && (
-              <div className="mx-auto max-w-[280px] mb-6">
-                <img
-                  src={data.endingPhoto}
-                  alt="Thank you"
-                  className="w-full aspect-[4/5] object-cover rounded-sm"
-                />
-              </div>
-            )}
+              {eStyle === "card" && data.endingPhoto && (
+                <div className="mx-auto max-w-[280px] mb-6">
+                  <img
+                    src={data.endingPhoto}
+                    alt="Thank you"
+                    className="w-full aspect-[4/5] object-cover rounded-sm"
+                  />
+                </div>
+              )}
 
-            {data.endingContent && (
-              <p className="text-[14px] text-[#5a5a5a] leading-[2] text-center whitespace-pre-line">
-                {data.endingContent}
-              </p>
-            )}
-          </div>
-        )}
+              {eStyle === "full" && data.endingPhoto && (
+                <div className="-mx-8 mb-6">
+                  <img
+                    src={data.endingPhoto}
+                    alt="Thank you"
+                    className="w-full object-cover"
+                    style={{ maxHeight: "400px" }}
+                  />
+                </div>
+              )}
+
+              {data.endingContent && (
+                <p className="text-[14px] text-[#5a5a5a] leading-[2] text-center whitespace-pre-line">
+                  {data.endingContent}
+                </p>
+              )}
+
+              {eStyle === "simple" && (
+                <div className="mt-4 text-center">
+                  <div className="w-8 h-px bg-[#c9a86c] mx-auto" />
+                </div>
+              )}
+            </div>
+          )
+        })()}
 
         {/* ===== LINK COPY BUTTON ===== */}
         <div className="bg-[#faf9f7] px-6 pb-10 pt-4">
