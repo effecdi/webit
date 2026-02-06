@@ -52,7 +52,11 @@ export default function SurveyStep4() {
     if (!selectedMode) return
     localStorage.setItem("selected_mode", selectedMode)
     setFadeOut(true)
-    setTimeout(() => router.push("/survey/step5"), 400)
+    if (selectedMode === "wedding") {
+      setTimeout(() => router.push("/survey/wedding-step1"), 400)
+    } else {
+      setTimeout(() => router.push("/survey/step5"), 400)
+    }
   }
 
   return (

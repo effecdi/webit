@@ -1,9 +1,9 @@
 {
   "app": {
-    "[project]/app/dating/calendar/page": [
+    "[project]/app/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
-    "[project]/app/page": [
+    "[project]/app/wedding/guests/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ]
   },

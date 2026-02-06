@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
-import { Heart, Gem, PartyPopper, X } from "lucide-react";
+import { Heart, Gem, Home, PartyPopper, X } from "lucide-react";
 
 interface ModeSwitchProps {
-  currentMode: "dating" | "wedding";
+  currentMode: "dating" | "wedding" | "family";
 }
 
 export function ModeSwitch({ currentMode }: ModeSwitchProps) {
@@ -37,27 +37,37 @@ export function ModeSwitch({ currentMode }: ModeSwitchProps) {
     router.push("/dating");
   };
 
+  const handleFamilyClick = () => {
+    localStorage.setItem("selected_mode", "family");
+    router.push("/family");
+  };
+
   const handleContinueToOnboarding = () => {
     setShowCongratulations(false);
     localStorage.setItem("selected_mode", "wedding");
-    router.push("/wedding/onboarding");
+    router.push("/survey/wedding-step1");
   };
+
+  const showDating = currentMode === "dating" || currentMode === "wedding";
+  const showFamily = currentMode === "family" || currentMode === "wedding";
 
   return (
     <>
       <div className="flex items-center bg-[#F2F4F6] rounded-full p-1">
-        <button
-          onClick={handleDatingClick}
-          className={`flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all ${
-            currentMode === "dating"
-              ? "bg-white text-pink-500 shadow-sm"
-              : "text-[#8B95A1] hover:text-[#4E5968]"
-          }`}
-          data-testid="button-mode-dating"
-        >
-          <Heart className="w-4 h-4" />
-          <span>연애</span>
-        </button>
+        {showDating && (
+          <button
+            onClick={handleDatingClick}
+            className={`flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all ${
+              currentMode === "dating"
+                ? "bg-white text-pink-500 shadow-sm"
+                : "text-[#8B95A1] hover:text-[#4E5968]"
+            }`}
+            data-testid="button-mode-dating"
+          >
+            <Heart className="w-4 h-4" />
+            <span>연애</span>
+          </button>
+        )}
         <button
           onClick={handleWeddingClick}
           className={`flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all ${
@@ -70,6 +80,20 @@ export function ModeSwitch({ currentMode }: ModeSwitchProps) {
           <Gem className="w-4 h-4" />
           <span>결혼</span>
         </button>
+        {showFamily && (
+          <button
+            onClick={handleFamilyClick}
+            className={`flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all ${
+              currentMode === "family"
+                ? "bg-white text-green-600 shadow-sm"
+                : "text-[#8B95A1] hover:text-[#4E5968]"
+            }`}
+            data-testid="button-mode-family"
+          >
+            <Home className="w-4 h-4" />
+            <span>가족</span>
+          </button>
+        )}
       </div>
 
       {showCongratulations && mounted && createPortal(

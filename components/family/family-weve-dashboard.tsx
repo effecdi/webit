@@ -15,6 +15,7 @@ import {
 } from "lucide-react"
 import { TravelEntryCard } from "@/components/travel/travel-entry-card"
 import { NotificationModal, type Notification } from "@/components/shared/notification-modal"
+import { ModeSwitch } from "@/components/mode-switch"
 
 const QUICK_ACTIONS = [
   { icon: Calendar, label: "일정 추가", color: "bg-green-50 text-green-600", href: "/family/calendar" },
@@ -160,10 +161,7 @@ export function FamilyWeveDashboard() {
     <div className="min-h-screen bg-[#F2F4F6] pb-24">
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#F2F4F6]/90 backdrop-blur-md">
         <div className="flex items-center justify-between px-5 py-3 max-w-md mx-auto">
-          <div className="flex items-center gap-2 bg-green-100 px-3 py-1.5 rounded-full">
-            <Home className="w-4 h-4 text-green-600" />
-            <span className="text-[13px] font-semibold text-green-600">가족</span>
-          </div>
+          <ModeSwitch currentMode="family" />
           <div className="relative">
             <button 
               onClick={() => setShowNotifications(!showNotifications)}

@@ -144,6 +144,37 @@ export const widgets = pgTable('widgets', {
   settings: text('settings'),
 });
 
+export const weddingInfo = pgTable('wedding_info', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  weddingDate: text('wedding_date'),
+  weddingTime: text('wedding_time'),
+  venue: text('venue'),
+  expectedGuests: integer('expected_guests'),
+  groomGuests: integer('groom_guests').default(0),
+  brideGuests: integer('bride_guests').default(0),
+  mealCostAdult: integer('meal_cost_adult').default(0),
+  mealCostChild: integer('meal_cost_child').default(0),
+  invitationCount: integer('invitation_count').default(0),
+  physicalInvitationCount: integer('physical_invitation_count').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const guests = pgTable('guests', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  name: text('name').notNull(),
+  side: text('side').notNull(),
+  relationship: text('relationship'),
+  attendance: text('attendance').default('pending'),
+  invitationSent: boolean('invitation_sent').default(false),
+  mealType: text('meal_type').default('adult'),
+  giftAmount: integer('gift_amount').default(0),
+  memo: text('memo'),
+  phone: text('phone'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
 export const sessions = pgTable('sessions', {
   sid: varchar('sid').primaryKey(),
   sess: jsonb('sess').notNull(),
@@ -163,3 +194,5 @@ export type ChecklistItem = typeof checklistItems.$inferSelect;
 export type Travel = typeof travels.$inferSelect;
 export type TravelSchedule = typeof travelSchedules.$inferSelect;
 export type Widget = typeof widgets.$inferSelect;
+export type WeddingInfo = typeof weddingInfo.$inferSelect;
+export type Guest = typeof guests.$inferSelect;

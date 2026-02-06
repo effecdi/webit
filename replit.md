@@ -35,7 +35,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Database Architecture
 - **PostgreSQL** database with Drizzle ORM for type-safe database operations
-- **Tables**: todos, events, photos, albums, notifications, expenses, checklist_items, travels, travel_schedules, widgets, profiles
+- **Tables**: todos, events, photos, albums, notifications, expenses, checklist_items, travels, travel_schedules, widgets, profiles, wedding_info, guests
 - **API Routes**: `/app/api/{resource}/route.ts` with GET/POST/PATCH/DELETE methods
 - **User identification**: Currently uses `userId="default"` for demo mode
 
@@ -50,8 +50,11 @@ Preferred communication style: Simple, everyday language.
 /splash              - Splash screen with auto-navigation
 /login               - Social login page
 /survey/step1-5      - Initial survey flow (step4 = mode selection)
+/survey/wedding-step1-3 - Wedding-specific survey (date/venue/guests/meal)
+/survey/wedding-complete - Wedding congratulations screen
 /dating/*            - Dating mode pages
-/wedding/*           - Wedding mode pages  
+/wedding/*           - Wedding mode pages
+/wedding/guests      - Guest Manager (하객매니저) page
 /family/*            - Family mode pages
 /travel              - Shared travel list (all modes)
 /travel/[id]         - Travel detail with schedule, checklist, budget
@@ -105,7 +108,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Key Features by Mode
 - **Dating**: Couple calendar, photo gallery, todo lists with comments, D-day tracking
-- **Wedding**: Budget tracking, checklist management, digital invitation editor, vendor management
+- **Wedding**: Budget tracking, checklist management, digital invitation editor, vendor management, guest manager (하객매니저) with report/list tabs
 - **Family**: Memory archive, history book, shared calendar, photo organization
 - **Travel** (Shared): Trip planning with schedule timeline, checklist, budget tracker; accessible from all modes via TravelEntryCard widget
 

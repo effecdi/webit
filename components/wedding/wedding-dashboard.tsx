@@ -123,12 +123,19 @@ export function WeddingDashboard() {
 
   const fetchData = async () => {
     try {
-      const [notificationsRes, travelsRes] = await Promise.all([
+      const [notificationsRes, travelsRes, weddingInfoRes] = await Promise.all([
         fetch('/api/notifications?userId=default&mode=wedding'),
-        fetch('/api/travels?userId=default')
+        fetch('/api/travels?userId=default'),
+        fetch('/api/wedding-info?userId=default')
       ])
       const notificationsData = await notificationsRes.json()
       const travelsData = await travelsRes.json()
+      const weddingInfoData = await weddingInfoRes.json()
+      
+      if (weddingInfoData) {
+        if (weddingInfoData.weddingDate) setWeddingDate(weddingInfoData.weddingDate)
+        if (weddingInfoData.venue) setVenueName(weddingInfoData.venue)
+      }
       
       setNotifications(notificationsData.map((n: { id: number; type: string; title: string; message: string; createdAt: string }) => ({
         id: String(n.id),
