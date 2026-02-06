@@ -43,6 +43,7 @@ export default function SurveyStep3() {
             <div className="w-8 h-1.5 bg-blue-500 rounded-full" />
             <div className="w-8 h-1.5 bg-blue-500 rounded-full" />
             <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
+            <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
           </div>
           <h1 className="text-[28px] font-bold text-[#191F28] leading-tight">
             두 분이 처음<br/>만난 날은 언제인가요?

@@ -24,10 +24,10 @@ export default function SplashPage() {
         } else if (selectedMode === "family") {
           router.push("/family")
         } else {
-          router.push("/onboarding")
+          router.push("/dating")
         }
       } else if (hasCompleted) {
-        router.push("/onboarding")
+        router.push("/dating")
       } else {
         router.push("/login")
       }

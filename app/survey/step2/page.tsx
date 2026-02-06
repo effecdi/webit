@@ -47,6 +47,7 @@ export default function SurveyStep2() {
             <div className="w-8 h-1.5 bg-blue-500 rounded-full" />
             <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
             <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
+            <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
           </div>
           <h1 className="text-[28px] font-bold text-[#191F28] leading-tight">
             사랑하는 분의<br/>이름이 어떻게 되세요?

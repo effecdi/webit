@@ -47,6 +47,7 @@ export default function SurveyStep1() {
             <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
             <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
             <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
+            <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
           </div>
           <h1 className="text-[28px] font-bold text-[#191F28] leading-tight">
             만나서 반가워요!<br/>이름이 어떻게 되세요?

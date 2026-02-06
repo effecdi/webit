@@ -49,8 +49,7 @@ Preferred communication style: Simple, everyday language.
 /                    - Root page (redirects to splash)
 /splash              - Splash screen with auto-navigation
 /login               - Social login page
-/survey/step1-4      - Initial survey flow
-/onboarding          - Mode selection (dating/wedding/family)
+/survey/step1-5      - Initial survey flow (step4 = mode selection)
 /dating/*            - Dating mode pages
 /wedding/*           - Wedding mode pages  
 /family/*            - Family mode pages
@@ -62,8 +61,11 @@ Preferred communication style: Simple, everyday language.
 - **Splash Screen Logic** (`/splash`):
   - Checks `survey_myName` (login indicator) and `selected_mode`
   - If logged in + has selected_mode → redirect to that mode
-  - If logged in + no mode → redirect to `/onboarding`
+  - If logged in + no mode → redirect to `/dating` (default)
   - If not logged in → redirect to `/login`
+- **Mode Selection**: Integrated into survey step4 (no separate onboarding screen)
+  - Three badge buttons: 연애중이에요 (dating), 결혼준비중이에요 (wedding), 결혼했어요 (family)
+  - Selection saved to `selected_mode` localStorage key
 - **Mode Selection Persistence**: `selected_mode` localStorage key stores user's last mode
 - **Wedding Mode Transition**:
   - First time switching to wedding: Shows "결혼을 축하합니다!" congratulations modal

@@ -46,7 +46,14 @@ export default function WelcomePage() {
   }, [step])
 
   const handleStart = () => {
-    router.push("/onboarding")
+    const selectedMode = localStorage.getItem("selected_mode")
+    if (selectedMode === "wedding") {
+      router.push("/wedding")
+    } else if (selectedMode === "family") {
+      router.push("/family")
+    } else {
+      router.push("/dating")
+    }
   }
 
   const formatNumber = (num: number) => {
