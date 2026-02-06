@@ -23,7 +23,7 @@ const accountItems: AccountItem[] = [
     icon: "coral",
     label: "청첩장",
     sublabel: "모바일 청첩장 만들기",
-    href: "/wedding/editor",
+    href: "/wedding/invitation",
   },
 ]
 

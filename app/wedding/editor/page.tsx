@@ -1,138 +1,155 @@
-"use client"
+"use client";
 
-import React from "react"
-import ReactDOM from "react-dom"
-import { useState, useRef, useEffect } from "react"
-import { InvitationPreview } from "@/components/invitation-preview"
-import { X, Share2, Link2, Check, MessageCircle, Plus, Trash2, Sparkles, ChevronLeft, ChevronRight, Info, Play, Pause, Eye, Lock, Calendar } from "lucide-react"
-import Link from "next/link"
+import React from "react";
+import ReactDOM from "react-dom";
+import { useState, useRef, useEffect } from "react";
+import { InvitationPreview } from "@/components/invitation-preview";
+import {
+  X,
+  Share2,
+  Link2,
+  Check,
+  MessageCircle,
+  Plus,
+  Trash2,
+  Sparkles,
+  ChevronLeft,
+  ChevronRight,
+  Info,
+  Play,
+  Pause,
+  Eye,
+  Lock,
+  Calendar,
+} from "lucide-react";
+import Link from "next/link";
 
 interface AccountInfo {
-  bank: string
-  account: string
-  holder: string
+  bank: string;
+  account: string;
+  holder: string;
 }
 
 interface TimelineItem {
-  date: string
-  title: string
-  description: string
-  image: string
+  date: string;
+  title: string;
+  description: string;
+  image: string;
 }
 
 interface TransportItem {
-  type: string
-  detail: string
+  type: string;
+  detail: string;
 }
 
 interface ParentInfo {
-  name: string
-  phone: string
-  deceased: boolean
+  name: string;
+  phone: string;
+  deceased: boolean;
 }
 
 export interface InvitationData {
-  title: string
-  showOpening: boolean
-  openingType: string
-  openingScenes: string[]
-  openingTexts: string[]
-  mainTemplate: string
-  mainPhotos: string[]
-  textColor: "dark" | "light"
-  groomName: string
-  groomRelation: string
-  groomPhone: string
-  groomFather: ParentInfo
-  groomMother: ParentInfo
-  brideName: string
-  brideRelation: string
-  bridePhone: string
-  brideFather: ParentInfo
-  brideMother: ParentInfo
-  brideFirst: boolean
-  deceasedFlower: boolean
-  invitationTitle: string
-  message: string
-  showNameAtBottom: boolean
-  weddingDate: string
-  weddingMonth: string
-  weddingDay: string
-  ampm: "오전" | "오후"
-  hour: string
-  minute: string
-  venue: string
-  venueHall: string
-  address: string
-  venuePhone: string
-  showCalendar: boolean
-  showCountdown: boolean
-  showTransport: boolean
-  transportItems: TransportItem[]
-  showTransportNotice: boolean
-  showFunding: boolean
-  fundingMessage: string
-  fundingImageType: "default" | "custom"
-  fundingImage: string
-  fundingButtonName: string
-  fundingThanks: string
-  showGiftFunding: boolean
-  giftFundingMessage: string
-  giftFundingButtonName: string
-  showAccount: boolean
-  groomFatherAccount: AccountInfo
-  groomMotherAccount: AccountInfo
-  brideFatherAccount: AccountInfo
-  brideMotherAccount: AccountInfo
-  showGallery: boolean
-  galleryImages: string[]
-  galleryStyle: "swipe" | "grid"
-  showMidPhoto: boolean
-  midPhoto: string
-  showMusic: boolean
-  musicTrack: string
-  showBaptismalName: boolean
-  baptismalGroom: string
-  baptismalGroomFather: string
-  baptismalGroomMother: string
-  baptismalBride: string
-  baptismalBrideFather: string
-  baptismalBrideMother: string
-  showRsvp: boolean
-  rsvpTitle: string
-  rsvpContent: string
-  rsvpButtonName: string
-  rsvpMeal: boolean
-  rsvpBus: boolean
-  rsvpGift: boolean
-  rsvpPopup: boolean
-  showGuestbook: boolean
-  showGuestSnap: boolean
-  guestSnapContent: string
-  guestSnapPhotos: string[]
-  showNotice: boolean
-  noticeTitle: string
-  noticeItems: string[]
-  showEndingMessage: boolean
-  endingPhoto: string
-  endingContent: string
-  showShareImage: boolean
-  shareTitle: string
-  shareContent: string
-  sharePhoto: string
-  invitationSlug: string
-  coverImage: string
-  timeline: TimelineItem[]
-  transportInfo: string
-  groomAccounts: AccountInfo[]
-  brideAccounts: AccountInfo[]
-  coverDisplayStyle: "slide" | "fade" | "static"
-  messageAlign: "center" | "left"
-  calendarStyle: "full" | "simple"
-  accountDisplayStyle: "expand" | "accordion"
-  endingStyle: "card" | "full" | "simple"
-  endingTextColor: string
-  nameDisplayStyle: "horizontal" | "vertical"
+  title: string;
+  showOpening: boolean;
+  openingType: string;
+  openingScenes: string[];
+  openingTexts: string[];
+  mainTemplate: string;
+  mainPhotos: string[];
+  textColor: "dark" | "light";
+  groomName: string;
+  groomRelation: string;
+  groomPhone: string;
+  groomFather: ParentInfo;
+  groomMother: ParentInfo;
+  brideName: string;
+  brideRelation: string;
+  bridePhone: string;
+  brideFather: ParentInfo;
+  brideMother: ParentInfo;
+  brideFirst: boolean;
+  deceasedFlower: boolean;
+  invitationTitle: string;
+  message: string;
+  showNameAtBottom: boolean;
+  weddingDate: string;
+  weddingMonth: string;
+  weddingDay: string;
+  ampm: "오전" | "오후";
+  hour: string;
+  minute: string;
+  venue: string;
+  venueHall: string;
+  address: string;
+  venuePhone: string;
+  showCalendar: boolean;
+  showCountdown: boolean;
+  showTransport: boolean;
+  transportItems: TransportItem[];
+  showTransportNotice: boolean;
+  showFunding: boolean;
+  fundingMessage: string;
+  fundingImageType: "default" | "custom";
+  fundingImage: string;
+  fundingButtonName: string;
+  fundingThanks: string;
+  showGiftFunding: boolean;
+  giftFundingMessage: string;
+  giftFundingButtonName: string;
+  showAccount: boolean;
+  groomFatherAccount: AccountInfo;
+  groomMotherAccount: AccountInfo;
+  brideFatherAccount: AccountInfo;
+  brideMotherAccount: AccountInfo;
+  showGallery: boolean;
+  galleryImages: string[];
+  galleryStyle: "swipe" | "grid";
+  showMidPhoto: boolean;
+  midPhoto: string;
+  showMusic: boolean;
+  musicTrack: string;
+  showBaptismalName: boolean;
+  baptismalGroom: string;
+  baptismalGroomFather: string;
+  baptismalGroomMother: string;
+  baptismalBride: string;
+  baptismalBrideFather: string;
+  baptismalBrideMother: string;
+  showRsvp: boolean;
+  rsvpTitle: string;
+  rsvpContent: string;
+  rsvpButtonName: string;
+  rsvpMeal: boolean;
+  rsvpBus: boolean;
+  rsvpGift: boolean;
+  rsvpPopup: boolean;
+  showGuestbook: boolean;
+  showGuestSnap: boolean;
+  guestSnapContent: string;
+  guestSnapPhotos: string[];
+  showNotice: boolean;
+  noticeTitle: string;
+  noticeItems: string[];
+  showEndingMessage: boolean;
+  endingPhoto: string;
+  endingContent: string;
+  showShareImage: boolean;
+  shareTitle: string;
+  shareContent: string;
+  sharePhoto: string;
+  invitationSlug: string;
+  coverImage: string;
+  timeline: TimelineItem[];
+  transportInfo: string;
+  groomAccounts: AccountInfo[];
+  brideAccounts: AccountInfo[];
+  coverDisplayStyle: "slide" | "fade" | "static";
+  messageAlign: "center" | "left";
+  calendarStyle: "full" | "simple";
+  accountDisplayStyle: "expand" | "accordion";
+  endingStyle: "card" | "full" | "simple";
+  endingTextColor: string;
+  nameDisplayStyle: "horizontal" | "vertical";
 }
 
 const initialData: InvitationData = {
@@ -237,10 +254,10 @@ const initialData: InvitationData = {
   endingStyle: "card",
   endingTextColor: "#FFFFFF",
   nameDisplayStyle: "horizontal",
-}
+};
 
-const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString())
-const minutes = ["00", "10", "20", "30", "40", "50"]
+const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
+const minutes = ["00", "10", "20", "30", "40", "50"];
 
 const MUSIC_TRACKS = [
   "Pure Morning Light",
@@ -253,7 +270,7 @@ const MUSIC_TRACKS = [
   "Forever Whisper",
   "Eternal Bloom",
   "Dear My Love",
-]
+];
 
 const MAIN_TEMPLATES = [
   { id: "poster", label: "포스터", premium: true },
@@ -263,28 +280,36 @@ const MAIN_TEMPLATES = [
   { id: "modern", label: "모던", premium: false },
   { id: "classic", label: "클래식", premium: false },
   { id: "none", label: "템플릿 없음", premium: false },
-]
+];
 
 function TemplateThumbnail({ id }: { id: string }) {
   switch (id) {
     case "poster":
       return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden" style={{ background: "linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 100%)" }}>
+        <div
+          className="w-full h-full rounded-[6px] overflow-hidden"
+          style={{
+            background: "linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 100%)",
+          }}
+        >
           <div className="w-full h-full relative">
             <div className="absolute bottom-2 left-2 w-[30px] h-[3px] bg-white/80 rounded-full" />
             <div className="absolute bottom-[14px] left-2 w-[20px] h-[2px] bg-white/50 rounded-full" />
           </div>
         </div>
-      )
+      );
     case "polaroid":
       return (
         <div className="w-full h-full flex items-center justify-center bg-[#F8F9FA] rounded-[6px]">
-          <div className="bg-white shadow-sm p-1.5 pb-3" style={{ width: "42px" }}>
+          <div
+            className="bg-white shadow-sm p-1.5 pb-3"
+            style={{ width: "42px" }}
+          >
             <div className="w-full aspect-square bg-[#D1D6DB] rounded-[2px]" />
             <div className="w-[20px] h-[2px] bg-[#D1D6DB] mx-auto mt-1.5 rounded-full" />
           </div>
         </div>
-      )
+      );
     case "magazine":
       return (
         <div className="w-full h-full rounded-[6px] overflow-hidden bg-white flex flex-col">
@@ -294,7 +319,7 @@ function TemplateThumbnail({ id }: { id: string }) {
             <div className="w-[20px] h-[2px] bg-[#D1D6DB] rounded-full" />
           </div>
         </div>
-      )
+      );
     case "chat":
       return (
         <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#B2C7D9] p-2 flex flex-col gap-1.5">
@@ -302,7 +327,7 @@ function TemplateThumbnail({ id }: { id: string }) {
           <div className="w-[24px] h-[8px] bg-[#FFE08C] rounded-[4px] rounded-tr-[1px] self-end" />
           <div className="w-[28px] h-[8px] bg-white rounded-[4px] rounded-tl-[1px] self-start" />
         </div>
-      )
+      );
     case "modern":
       return (
         <div className="w-full h-full rounded-[6px] overflow-hidden bg-white flex flex-col items-center justify-center gap-1.5 p-2">
@@ -310,28 +335,39 @@ function TemplateThumbnail({ id }: { id: string }) {
           <div className="w-[16px] h-[1px] bg-[#FF8A80]" />
           <div className="w-[22px] h-[2px] bg-[#D1D6DB] rounded-full" />
         </div>
-      )
+      );
     case "classic":
       return (
         <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#FBF8F1] flex items-center justify-center p-2">
           <div className="w-full h-full border-double border-[#C5A572] border-[2px] flex flex-col items-center justify-center gap-1">
             <div className="w-[20px] h-[2px] bg-[#C5A572]/50 rounded-full" />
-            <div className="text-[6px] text-[#C5A572]/70" style={{ fontFamily: "Georgia, serif" }}>A & B</div>
+            <div
+              className="text-[6px] text-[#C5A572]/70"
+              style={{ fontFamily: "Georgia, serif" }}
+            >
+              A & B
+            </div>
           </div>
         </div>
-      )
+      );
     case "none":
       return (
         <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#F2F4F6] flex items-center justify-center">
           <X className="w-5 h-5 text-[#B0B8C1]" />
         </div>
-      )
+      );
     default:
-      return null
+      return null;
   }
 }
 
-function SectionSwitch({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
+function SectionSwitch({
+  checked,
+  onChange,
+}: {
+  checked: boolean;
+  onChange: (v: boolean) => void;
+}) {
   return (
     <button
       data-testid="switch-toggle"
@@ -346,87 +382,112 @@ function SectionSwitch({ checked, onChange }: { checked: boolean; onChange: (v: 
         }`}
       />
     </button>
-  )
+  );
 }
 
-function WeddingDatePicker({ value, onChange }: { value: string; onChange: (v: string) => void }) {
-  const [showCal, setShowCal] = React.useState(false)
-  const [mounted, setMounted] = React.useState(false)
-  const btnRef = React.useRef<HTMLDivElement>(null)
-  const calRef = React.useRef<HTMLDivElement>(null)
-  const [calPos, setCalPos] = React.useState<{ top: number; left: number }>({ top: 0, left: 0 })
+function WeddingDatePicker({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  const [showCal, setShowCal] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+  const btnRef = React.useRef<HTMLDivElement>(null);
+  const calRef = React.useRef<HTMLDivElement>(null);
+  const [calPos, setCalPos] = React.useState<{ top: number; left: number }>({
+    top: 0,
+    left: 0,
+  });
 
-  const today = new Date()
-  const selectedDate = value ? new Date(value + "T00:00:00") : null
-  const [viewYear, setViewYear] = React.useState(selectedDate?.getFullYear() || today.getFullYear())
-  const [viewMonth, setViewMonth] = React.useState(selectedDate?.getMonth() || today.getMonth())
+  const today = new Date();
+  const selectedDate = value ? new Date(value + "T00:00:00") : null;
+  const [viewYear, setViewYear] = React.useState(
+    selectedDate?.getFullYear() || today.getFullYear(),
+  );
+  const [viewMonth, setViewMonth] = React.useState(
+    selectedDate?.getMonth() || today.getMonth(),
+  );
 
-  React.useEffect(() => { setMounted(true) }, [])
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   React.useEffect(() => {
     if (value) {
-      const d = new Date(value + "T00:00:00")
+      const d = new Date(value + "T00:00:00");
       if (!isNaN(d.getTime())) {
-        setViewYear(d.getFullYear())
-        setViewMonth(d.getMonth())
+        setViewYear(d.getFullYear());
+        setViewMonth(d.getMonth());
       }
     }
-  }, [value])
+  }, [value]);
 
-  const dayNames = ["일", "월", "화", "수", "목", "금", "토"]
+  const dayNames = ["일", "월", "화", "수", "목", "금", "토"];
 
-  const getDaysInMonth = (y: number, m: number) => new Date(y, m + 1, 0).getDate()
-  const getFirstDayOfMonth = (y: number, m: number) => new Date(y, m, 1).getDay()
+  const getDaysInMonth = (y: number, m: number) =>
+    new Date(y, m + 1, 0).getDate();
+  const getFirstDayOfMonth = (y: number, m: number) =>
+    new Date(y, m, 1).getDay();
 
-  const days: (number | null)[] = []
-  const firstDay = getFirstDayOfMonth(viewYear, viewMonth)
-  const totalDays = getDaysInMonth(viewYear, viewMonth)
-  for (let i = 0; i < firstDay; i++) days.push(null)
-  for (let i = 1; i <= totalDays; i++) days.push(i)
+  const days: (number | null)[] = [];
+  const firstDay = getFirstDayOfMonth(viewYear, viewMonth);
+  const totalDays = getDaysInMonth(viewYear, viewMonth);
+  for (let i = 0; i < firstDay; i++) days.push(null);
+  for (let i = 1; i <= totalDays; i++) days.push(i);
 
   const handleOpen = () => {
     if (btnRef.current) {
-      const rect = btnRef.current.getBoundingClientRect()
-      const maxLeft = (typeof window !== "undefined" ? window.innerWidth : 400) - 310
-      setCalPos({ top: rect.bottom + 4, left: Math.min(Math.max(8, rect.left), maxLeft) })
+      const rect = btnRef.current.getBoundingClientRect();
+      const maxLeft =
+        (typeof window !== "undefined" ? window.innerWidth : 400) - 310;
+      setCalPos({
+        top: rect.bottom + 4,
+        left: Math.min(Math.max(8, rect.left), maxLeft),
+      });
     }
-    setShowCal(true)
-  }
+    setShowCal(true);
+  };
 
   const handleSelect = (day: number) => {
-    const m = String(viewMonth + 1).padStart(2, "0")
-    const d = String(day).padStart(2, "0")
-    onChange(`${viewYear}-${m}-${d}`)
-    setShowCal(false)
-  }
+    const m = String(viewMonth + 1).padStart(2, "0");
+    const d = String(day).padStart(2, "0");
+    onChange(`${viewYear}-${m}-${d}`);
+    setShowCal(false);
+  };
 
   const prevMonth = () => {
-    if (viewMonth === 0) { setViewMonth(11); setViewYear(viewYear - 1) }
-    else setViewMonth(viewMonth - 1)
-  }
+    if (viewMonth === 0) {
+      setViewMonth(11);
+      setViewYear(viewYear - 1);
+    } else setViewMonth(viewMonth - 1);
+  };
   const nextMonth = () => {
-    if (viewMonth === 11) { setViewMonth(0); setViewYear(viewYear + 1) }
-    else setViewMonth(viewMonth + 1)
-  }
+    if (viewMonth === 11) {
+      setViewMonth(0);
+      setViewYear(viewYear + 1);
+    } else setViewMonth(viewMonth + 1);
+  };
 
   React.useEffect(() => {
-    if (!showCal) return
+    if (!showCal) return;
     const close = (e: MouseEvent) => {
-      const target = e.target as Node
-      if (btnRef.current?.contains(target)) return
-      if (calRef.current?.contains(target)) return
-      setShowCal(false)
-    }
-    document.addEventListener("mousedown", close)
-    return () => document.removeEventListener("mousedown", close)
-  }, [showCal])
+      const target = e.target as Node;
+      if (btnRef.current?.contains(target)) return;
+      if (calRef.current?.contains(target)) return;
+      setShowCal(false);
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, [showCal]);
 
   const displayText = value
     ? (() => {
-        const d = new Date(value + "T00:00:00")
-        return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`
+        const d = new Date(value + "T00:00:00");
+        return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
       })()
-    : "날짜를 선택해주세요"
+    : "날짜를 선택해주세요";
 
   return (
     <>
@@ -439,87 +500,118 @@ function WeddingDatePicker({ value, onChange }: { value: string; onChange: (v: s
           className="flex-1 flex items-center gap-2 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-left focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
         >
           <Calendar className="w-4 h-4 text-[#8B95A1]" />
-          <span className={value ? "text-[#191F28]" : "text-[#B0B8C1]"}>{displayText}</span>
+          <span className={value ? "text-[#191F28]" : "text-[#B0B8C1]"}>
+            {displayText}
+          </span>
         </button>
       </div>
-      {mounted && showCal && ReactDOM.createPortal(
-        <div
-          ref={calRef}
-          className="fixed z-[9999] bg-white rounded-[20px] shadow-xl border border-[#E5E8EB] p-4 w-[300px]"
-          style={{ top: calPos.top, left: calPos.left }}
-        >
-          <div className="flex items-center justify-between mb-4">
-            <button type="button" onClick={prevMonth} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#F2F4F6]">
-              <ChevronLeft className="w-4 h-4 text-[#4E5968]" />
-            </button>
-            <span className="text-[15px] font-bold text-[#191F28]">{viewYear}년 {viewMonth + 1}월</span>
-            <button type="button" onClick={nextMonth} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#F2F4F6]">
-              <ChevronRight className="w-4 h-4 text-[#4E5968]" />
-            </button>
-          </div>
-          <div className="grid grid-cols-7 gap-0 mb-1">
-            {dayNames.map((d) => (
-              <div key={d} className="text-[11px] text-[#8B95A1] text-center py-1.5">{d}</div>
-            ))}
-          </div>
-          <div className="grid grid-cols-7 gap-0">
-            {days.map((day, i) => {
-              const isSelected = day !== null && value === `${viewYear}-${String(viewMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
-              const isToday = day !== null && viewYear === today.getFullYear() && viewMonth === today.getMonth() && day === today.getDate()
-              return (
-                <div key={i} className="flex items-center justify-center py-1">
-                  {day !== null ? (
-                    <button
-                      type="button"
-                      onClick={() => handleSelect(day)}
-                      className={`w-9 h-9 rounded-full text-[13px] flex items-center justify-center transition-colors ${
-                        isSelected
-                          ? "bg-[#FF8A80] text-white font-bold"
-                          : isToday
-                            ? "border border-[#FF8A80] text-[#FF8A80]"
-                            : i % 7 === 0
-                              ? "text-[#FF6B6B] hover:bg-[#FFF0EF]"
-                              : i % 7 === 6
-                                ? "text-[#3182F6] hover:bg-[#EBF4FF]"
-                                : "text-[#4E5968] hover:bg-[#F2F4F6]"
-                      }`}
-                    >
-                      {day}
-                    </button>
-                  ) : null}
+      {mounted &&
+        showCal &&
+        ReactDOM.createPortal(
+          <div
+            ref={calRef}
+            className="fixed z-[9999] bg-white rounded-[20px] shadow-xl border border-[#E5E8EB] p-4 w-[300px]"
+            style={{ top: calPos.top, left: calPos.left }}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <button
+                type="button"
+                onClick={prevMonth}
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#F2F4F6]"
+              >
+                <ChevronLeft className="w-4 h-4 text-[#4E5968]" />
+              </button>
+              <span className="text-[15px] font-bold text-[#191F28]">
+                {viewYear}년 {viewMonth + 1}월
+              </span>
+              <button
+                type="button"
+                onClick={nextMonth}
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#F2F4F6]"
+              >
+                <ChevronRight className="w-4 h-4 text-[#4E5968]" />
+              </button>
+            </div>
+            <div className="grid grid-cols-7 gap-0 mb-1">
+              {dayNames.map((d) => (
+                <div
+                  key={d}
+                  className="text-[11px] text-[#8B95A1] text-center py-1.5"
+                >
+                  {d}
                 </div>
-              )
-            })}
-          </div>
-        </div>,
-        document.body
-      )}
+              ))}
+            </div>
+            <div className="grid grid-cols-7 gap-0">
+              {days.map((day, i) => {
+                const isSelected =
+                  day !== null &&
+                  value ===
+                    `${viewYear}-${String(viewMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+                const isToday =
+                  day !== null &&
+                  viewYear === today.getFullYear() &&
+                  viewMonth === today.getMonth() &&
+                  day === today.getDate();
+                return (
+                  <div
+                    key={i}
+                    className="flex items-center justify-center py-1"
+                  >
+                    {day !== null ? (
+                      <button
+                        type="button"
+                        onClick={() => handleSelect(day)}
+                        className={`w-9 h-9 rounded-full text-[13px] flex items-center justify-center transition-colors ${
+                          isSelected
+                            ? "bg-[#FF8A80] text-white font-bold"
+                            : isToday
+                              ? "border border-[#FF8A80] text-[#FF8A80]"
+                              : i % 7 === 0
+                                ? "text-[#FF6B6B] hover:bg-[#FFF0EF]"
+                                : i % 7 === 6
+                                  ? "text-[#3182F6] hover:bg-[#EBF4FF]"
+                                  : "text-[#4E5968] hover:bg-[#F2F4F6]"
+                        }`}
+                      >
+                        {day}
+                      </button>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
-  )
+  );
 }
 
 const SECTION_TOOLTIPS: Record<string, string> = {
-  "오프닝": "초대장을 열었을 때 보여지는 인트로 화면입니다. 사진과 텍스트를 설정하세요.",
-  "메인": "청첩장의 메인 화면 템플릿을 선택합니다. 사진과 커버 스타일을 설정하세요.",
+  오프닝:
+    "초대장을 열었을 때 보여지는 인트로 화면입니다. 사진과 텍스트를 설정하세요.",
+  메인: "청첩장의 메인 화면 템플릿을 선택합니다. 사진과 커버 스타일을 설정하세요.",
   "기본 정보": "신랑, 신부의 이름과 가족 정보를 입력합니다.",
-  "초대 인사말": "하객들에게 전하는 인사말을 작성합니다. AI 추천을 활용해보세요.",
+  "초대 인사말":
+    "하객들에게 전하는 인사말을 작성합니다. AI 추천을 활용해보세요.",
   "예식 정보": "예식 날짜, 시간, 장소 등 예식 관련 정보를 입력합니다.",
   "교통 수단": "예식장까지의 교통편 정보를 안내합니다.",
-  "펀딩": "하객들이 축의금을 보낼 수 있는 펀딩 기능입니다.",
+  펀딩: "하객들이 축의금을 보낼 수 있는 펀딩 기능입니다.",
   "선물 펀딩": "하객들이 원하는 선물을 펀딩할 수 있는 기능입니다.",
   "혼주 계좌번호": "축의금을 보낼 수 있도록 계좌번호를 등록합니다.",
-  "갤러리": "청첩장에 표시할 사진 갤러리를 설정합니다.",
-  "중간사진": "섹션 사이에 표시되는 사진을 설정합니다.",
-  "배경음악": "청첩장 배경에 재생되는 음악을 설정합니다.",
-  "세례명": "가톨릭 예식의 경우 세례명을 입력합니다.",
+  갤러리: "청첩장에 표시할 사진 갤러리를 설정합니다.",
+  중간사진: "섹션 사이에 표시되는 사진을 설정합니다.",
+  배경음악: "청첩장 배경에 재생되는 음악을 설정합니다.",
+  세례명: "가톨릭 예식의 경우 세례명을 입력합니다.",
   "참석여부 RSVP": "하객들의 참석 여부를 받을 수 있는 RSVP 기능입니다.",
-  "방명록": "하객들이 축하 메시지를 남길 수 있는 방명록입니다.",
-  "하객스냅": "하객들이 사진을 공유할 수 있는 기능입니다.",
-  "공지사항": "하객들에게 전달할 공지사항을 작성합니다.",
+  방명록: "하객들이 축하 메시지를 남길 수 있는 방명록입니다.",
+  하객스냅: "하객들이 사진을 공유할 수 있는 기능입니다.",
+  공지사항: "하객들에게 전달할 공지사항을 작성합니다.",
   "엔딩 메시지": "청첩장 마지막에 표시되는 감사 메시지입니다.",
   "공유 이미지": "카카오톡 등으로 공유할 때 표시되는 미리보기 이미지입니다.",
   "청첩장 링크": "청첩장 링크를 복사하여 공유할 수 있습니다.",
-}
+};
 
 function SectionHeader({
   title,
@@ -528,39 +620,42 @@ function SectionHeader({
   onChange,
   badge,
 }: {
-  title: string
-  showSwitch?: boolean
-  checked?: boolean
-  onChange?: (v: boolean) => void
-  badge?: string
+  title: string;
+  showSwitch?: boolean;
+  checked?: boolean;
+  onChange?: (v: boolean) => void;
+  badge?: string;
 }) {
-  const [showTooltip, setShowTooltip] = React.useState(false)
-  const tooltipText = SECTION_TOOLTIPS[title] || ""
-  const btnRef = React.useRef<HTMLButtonElement>(null)
-  const [tooltipPos, setTooltipPos] = React.useState<{ top: number; left: number } | null>(null)
+  const [showTooltip, setShowTooltip] = React.useState(false);
+  const tooltipText = SECTION_TOOLTIPS[title] || "";
+  const btnRef = React.useRef<HTMLButtonElement>(null);
+  const [tooltipPos, setTooltipPos] = React.useState<{
+    top: number;
+    left: number;
+  } | null>(null);
 
   const handleToggle = () => {
     if (showTooltip) {
-      setShowTooltip(false)
-      return
+      setShowTooltip(false);
+      return;
     }
     if (btnRef.current) {
-      const rect = btnRef.current.getBoundingClientRect()
-      setTooltipPos({ top: rect.bottom + 6, left: Math.max(8, rect.left - 8) })
+      const rect = btnRef.current.getBoundingClientRect();
+      setTooltipPos({ top: rect.bottom + 6, left: Math.max(8, rect.left - 8) });
     }
-    setShowTooltip(true)
-  }
+    setShowTooltip(true);
+  };
 
   React.useEffect(() => {
-    if (!showTooltip) return
+    if (!showTooltip) return;
     const close = (e: MouseEvent) => {
       if (btnRef.current && !btnRef.current.contains(e.target as Node)) {
-        setShowTooltip(false)
+        setShowTooltip(false);
       }
-    }
-    document.addEventListener("mousedown", close)
-    return () => document.removeEventListener("mousedown", close)
-  }, [showTooltip])
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, [showTooltip]);
 
   return (
     <div className="flex items-center justify-between gap-2 mb-4">
@@ -585,18 +680,21 @@ function SectionHeader({
       {showSwitch && onChange && (
         <SectionSwitch checked={checked} onChange={onChange} />
       )}
-      {showTooltip && tooltipText && tooltipPos && ReactDOM.createPortal(
-        <div
-          className="fixed z-[9999] w-[220px] p-3 bg-[#191F28] text-white text-[12px] leading-[1.6] rounded-[12px] shadow-lg"
-          style={{ top: tooltipPos.top, left: tooltipPos.left }}
-        >
-          {tooltipText}
-          <div className="absolute -top-1.5 left-3 w-3 h-3 bg-[#191F28] rotate-45" />
-        </div>,
-        document.body
-      )}
+      {showTooltip &&
+        tooltipText &&
+        tooltipPos &&
+        ReactDOM.createPortal(
+          <div
+            className="fixed z-[9999] w-[220px] p-3 bg-[#191F28] text-white text-[12px] leading-[1.6] rounded-[12px] shadow-lg"
+            style={{ top: tooltipPos.top, left: tooltipPos.left }}
+          >
+            {tooltipText}
+            <div className="absolute -top-1.5 left-3 w-3 h-3 bg-[#191F28] rotate-45" />
+          </div>,
+          document.body,
+        )}
     </div>
-  )
+  );
 }
 
 function InputField({
@@ -607,12 +705,12 @@ function InputField({
   required = false,
   className = "",
 }: {
-  label?: string
-  value: string
-  onChange: (v: string) => void
-  placeholder?: string
-  required?: boolean
-  className?: string
+  label?: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  required?: boolean;
+  className?: string;
 }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
@@ -630,7 +728,7 @@ function InputField({
         className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] transition-colors"
       />
     </div>
-  )
+  );
 }
 
 function CheckboxField({
@@ -638,9 +736,9 @@ function CheckboxField({
   checked,
   onChange,
 }: {
-  label: string
-  checked: boolean
-  onChange: (v: boolean) => void
+  label: string;
+  checked: boolean;
+  onChange: (v: boolean) => void;
 }) {
   return (
     <div
@@ -649,7 +747,12 @@ function CheckboxField({
       tabIndex={0}
       className="flex items-center gap-2 cursor-pointer select-none"
       onClick={() => onChange(!checked)}
-      onKeyDown={(e) => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); onChange(!checked) } }}
+      onKeyDown={(e) => {
+        if (e.key === " " || e.key === "Enter") {
+          e.preventDefault();
+          onChange(!checked);
+        }
+      }}
     >
       <div
         className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
@@ -660,7 +763,7 @@ function CheckboxField({
       </div>
       <span className="text-[14px] text-[#4E5968]">{label}</span>
     </div>
-  )
+  );
 }
 
 function RadioField({
@@ -669,14 +772,16 @@ function RadioField({
   onChange,
   label,
 }: {
-  options: { value: string; label: string }[]
-  value: string
-  onChange: (v: string) => void
-  label?: string
+  options: { value: string; label: string }[];
+  value: string;
+  onChange: (v: string) => void;
+  label?: string;
 }) {
   return (
     <div className="space-y-2">
-      {label && <label className="text-[14px] text-[#4E5968] block">{label}</label>}
+      {label && (
+        <label className="text-[14px] text-[#4E5968] block">{label}</label>
+      )}
       <div className="flex gap-3 flex-wrap">
         {options.map((opt) => (
           <button
@@ -695,14 +800,16 @@ function RadioField({
                 <div className="w-[10px] h-[10px] rounded-full bg-[#FF8A80]" />
               )}
             </div>
-            <span className={`text-[14px] ${value === opt.value ? "text-[#191F28] font-medium" : "text-[#8B95A1]"}`}>
+            <span
+              className={`text-[14px] ${value === opt.value ? "text-[#191F28] font-medium" : "text-[#8B95A1]"}`}
+            >
               {opt.label}
             </span>
           </button>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function ImageUploadBox({
@@ -712,19 +819,29 @@ function ImageUploadBox({
   maxCount = 1,
   currentCount = 0,
 }: {
-  value?: string
-  onUpload: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onRemove?: () => void
-  maxCount?: number
-  currentCount?: number
+  value?: string;
+  onUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onRemove?: () => void;
+  maxCount?: number;
+  currentCount?: number;
 }) {
-  const ref = useRef<HTMLInputElement>(null)
+  const ref = useRef<HTMLInputElement>(null);
   return (
     <>
-      <input ref={ref} type="file" accept="image/*" onChange={onUpload} className="hidden" />
+      <input
+        ref={ref}
+        type="file"
+        accept="image/*"
+        onChange={onUpload}
+        className="hidden"
+      />
       {value ? (
         <div className="relative w-[100px] h-[100px]">
-          <img src={value} alt="" className="w-full h-full object-cover rounded-[10px]" />
+          <img
+            src={value}
+            alt=""
+            className="w-full h-full object-cover rounded-[10px]"
+          />
           {onRemove && (
             <button
               onClick={onRemove}
@@ -746,82 +863,94 @@ function ImageUploadBox({
         </button>
       )}
     </>
-  )
+  );
 }
 
 export default function InvitationEditorPage() {
-  const [data, setData] = useState<InvitationData>(initialData)
-  const [showPreview, setShowPreview] = useState(false)
-  const [showShareOptions, setShowShareOptions] = useState(false)
-  const [isSaving, setIsSaving] = useState(false)
-  const [copied, setCopied] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  const galleryInputRef = useRef<HTMLInputElement>(null)
-  const mainPhotoRef = useRef<HTMLInputElement>(null)
+  const [data, setData] = useState<InvitationData>(initialData);
+  const [showPreview, setShowPreview] = useState(false);
+  const [showShareOptions, setShowShareOptions] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const galleryInputRef = useRef<HTMLInputElement>(null);
+  const mainPhotoRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const loadInvitation = async () => {
       try {
-        const res = await fetch("/api/invitation?userId=default")
+        const res = await fetch("/api/invitation?userId=default");
         if (res.ok) {
-          const result = await res.json()
+          const result = await res.json();
           if (result && typeof result === "object") {
             if (result.invitationData) {
-              setData((prev) => ({ ...prev, ...result.invitationData }))
-            } else if (result.groomName !== undefined || result.brideName !== undefined || result.title !== undefined) {
-              setData((prev) => ({ ...prev, ...result }))
+              setData((prev) => ({ ...prev, ...result.invitationData }));
+            } else if (
+              result.groomName !== undefined ||
+              result.brideName !== undefined ||
+              result.title !== undefined
+            ) {
+              setData((prev) => ({ ...prev, ...result }));
             }
           }
         }
       } catch (err) {
-        console.error("Failed to load invitation:", err)
+        console.error("Failed to load invitation:", err);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
-    loadInvitation()
-  }, [])
+    };
+    loadInvitation();
+  }, []);
 
-  const updateField = <K extends keyof InvitationData>(field: K, value: InvitationData[K]) => {
-    setData((prev) => ({ ...prev, [field]: value }))
-  }
+  const updateField = <K extends keyof InvitationData>(
+    field: K,
+    value: InvitationData[K],
+  ) => {
+    setData((prev) => ({ ...prev, [field]: value }));
+  };
 
   const handleSave = async () => {
-    setIsSaving(true)
+    setIsSaving(true);
     try {
       await fetch("/api/invitation", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: "default", invitationData: data }),
-      })
+      });
     } catch (error) {
-      console.error("Failed to save invitation:", error)
+      console.error("Failed to save invitation:", error);
     } finally {
-      setIsSaving(false)
+      setIsSaving(false);
     }
-  }
+  };
 
   const shareUrl =
-    typeof window !== "undefined" ? `${window.location.origin}/invitation/preview` : ""
+    typeof window !== "undefined"
+      ? `${window.location.origin}/invitation/preview`
+      : "";
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(shareUrl)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      await navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy:", err)
+      console.error("Failed to copy:", err);
     }
-  }
+  };
 
   const generateAIMessage = () => {
     const templates = [
       "서로가 마주보며 다져온 사랑을\n이제 함께 한 곳을 바라보며\n걸어가고자 합니다.\n\n저희 두 사람이 사랑의 이름으로\n지금부터 함께 하고자 합니다.\n\n오셔서 축복해 주시면\n더없는 기쁨으로 간직하겠습니다.",
       "평생을 함께하고 싶은 사람을 만났습니다.\n\n함께 걸어온 날보다\n함께 걸어갈 날이 더 많기에\n설레는 마음으로 첫 발을 내딛습니다.\n\n저희의 새 출발을 축복해 주세요.",
       "소중한 분들을 모시고 저희 두 사람이 새로운 출발을 하려 합니다.\n오셔서 따뜻한 축복으로 함께해 주시면 감사하겠습니다.",
-    ]
-    updateField("message", templates[Math.floor(Math.random() * templates.length)])
-  }
+    ];
+    updateField(
+      "message",
+      templates[Math.floor(Math.random() * templates.length)],
+    );
+  };
 
   const generateAITitle = () => {
     const templates = [
@@ -831,27 +960,36 @@ export default function InvitationEditorPage() {
       "우리의 특별한 시작",
       "두 사람의 약속",
       "영원을 약속하는 날",
-    ]
-    updateField("invitationTitle", templates[Math.floor(Math.random() * templates.length)])
-  }
+    ];
+    updateField(
+      "invitationTitle",
+      templates[Math.floor(Math.random() * templates.length)],
+    );
+  };
 
   const generateFundingMessage = () => {
     const templates = [
       "평범한 축의금 대신\n의미 있는 선물 한 조각이 모여\n두 사람의 특별한 순간을 만들어 주세요.",
       "저희의 새 출발을 위해\n따뜻한 마음을 모아주시면\n소중히 간직하겠습니다.",
       "축하의 마음을 담아\n저희의 신혼 생활에\n작은 보탬이 되어주세요.",
-    ]
-    updateField("fundingMessage", templates[Math.floor(Math.random() * templates.length)])
-  }
+    ];
+    updateField(
+      "fundingMessage",
+      templates[Math.floor(Math.random() * templates.length)],
+    );
+  };
 
   const generateFundingThanks = () => {
     const templates = [
       "정성껏 전해주신 마음,\n오래 기억할게요.\n감사합니다.",
       "따뜻한 축하에 진심으로 감사드립니다.\n행복하게 잘 살겠습니다.",
       "소중한 마음 감사합니다.\n보내주신 사랑 잊지 않겠습니다.",
-    ]
-    updateField("fundingThanks", templates[Math.floor(Math.random() * templates.length)])
-  }
+    ];
+    updateField(
+      "fundingThanks",
+      templates[Math.floor(Math.random() * templates.length)],
+    );
+  };
 
   const generateNoticeTitle = () => {
     const templates = [
@@ -860,52 +998,62 @@ export default function InvitationEditorPage() {
       "참석 안내",
       "알려드립니다",
       "식장 안내",
-    ]
-    updateField("noticeTitle", templates[Math.floor(Math.random() * templates.length)])
-  }
+    ];
+    updateField(
+      "noticeTitle",
+      templates[Math.floor(Math.random() * templates.length)],
+    );
+  };
 
   const generateEndingContent = () => {
     const templates = [
       "소중한 분들의 축복 속에서\n두 사람이 하나 되어\n새로운 출발을 합니다.\n따뜻한 마음으로 지켜봐 주세요.",
       "함께해 주셔서 감사합니다.\n여러분의 축복을 가슴 깊이 새기며\n행복하게 살겠습니다.",
       "오늘 이 자리에 함께해 주신\n모든 분들께 감사드립니다.\n늘 행복한 가정을 이루겠습니다.",
-    ]
-    updateField("endingContent", templates[Math.floor(Math.random() * templates.length)])
-  }
+    ];
+    updateField(
+      "endingContent",
+      templates[Math.floor(Math.random() * templates.length)],
+    );
+  };
 
   const handleGalleryUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
+    const files = e.target.files;
     if (files) {
-      const newImages = Array.from(files).map((file) => URL.createObjectURL(file))
-      const totalImages = [...data.galleryImages, ...newImages].slice(0, 20)
-      updateField("galleryImages", totalImages)
+      const newImages = Array.from(files).map((file) =>
+        URL.createObjectURL(file),
+      );
+      const totalImages = [...data.galleryImages, ...newImages].slice(0, 20);
+      updateField("galleryImages", totalImages);
     }
-  }
+  };
 
   const handleMainPhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
+    const files = e.target.files;
     if (files) {
-      const newImages = Array.from(files).map((file) => URL.createObjectURL(file))
-      const totalImages = [...data.mainPhotos, ...newImages].slice(0, 5)
-      updateField("mainPhotos", totalImages)
+      const newImages = Array.from(files).map((file) =>
+        URL.createObjectURL(file),
+      );
+      const totalImages = [...data.mainPhotos, ...newImages].slice(0, 5);
+      updateField("mainPhotos", totalImages);
     }
-  }
+  };
 
   const getFormattedTime = () => {
-    return `${data.ampm} ${data.hour}시 ${data.minute !== "00" ? data.minute + "분" : ""}`
-  }
+    return `${data.ampm} ${data.hour}시 ${data.minute !== "00" ? data.minute + "분" : ""}`;
+  };
 
   const getFormattedDate = () => {
-    if (!data.weddingDate) return ""
-    const date = new Date(data.weddingDate)
-    return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`
-  }
+    if (!data.weddingDate) return "";
+    const date = new Date(data.weddingDate);
+    return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
+  };
 
   const previewData = {
     ...data,
     date: getFormattedDate(),
     time: getFormattedTime(),
-  }
+  };
 
   if (isLoading) {
     return (
@@ -915,7 +1063,7 @@ export default function InvitationEditorPage() {
           <p className="text-[14px] text-[#8B95A1]">청첩장을 불러오는 중...</p>
         </div>
       </main>
-    )
+    );
   }
 
   return (
@@ -932,10 +1080,22 @@ export default function InvitationEditorPage() {
           </Link>
           <h1 className="text-[17px] font-bold text-[#191F28]">청첩장</h1>
           <div className="flex items-center gap-1 px-3 py-1.5 bg-[#F2F4F6] rounded-full">
-            <svg className="w-3.5 h-3.5 text-[#8B95A1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            <svg
+              className="w-3.5 h-3.5 text-[#8B95A1]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
             </svg>
-            <span className="text-[12px] text-[#8B95A1] font-medium">비공개</span>
+            <span className="text-[12px] text-[#8B95A1] font-medium">
+              비공개
+            </span>
           </div>
         </div>
       </header>
@@ -998,23 +1158,24 @@ export default function InvitationEditorPage() {
                     <div key={num} className="space-y-2">
                       <div className="flex items-center gap-3">
                         <label className="text-[14px] text-[#4E5968] w-[70px]">
-                          장면 {num}<span className="text-red-500">*</span>
+                          장면 {num}
+                          <span className="text-red-500">*</span>
                         </label>
                         <ImageUploadBox
                           value={data.openingScenes[num - 1]}
                           onUpload={(e) => {
-                            const file = e.target.files?.[0]
+                            const file = e.target.files?.[0];
                             if (file) {
-                              const url = URL.createObjectURL(file)
-                              const newScenes = [...data.openingScenes]
-                              newScenes[num - 1] = url
-                              updateField("openingScenes", newScenes)
+                              const url = URL.createObjectURL(file);
+                              const newScenes = [...data.openingScenes];
+                              newScenes[num - 1] = url;
+                              updateField("openingScenes", newScenes);
                             }
                           }}
                           onRemove={() => {
-                            const newScenes = [...data.openingScenes]
-                            newScenes[num - 1] = ""
-                            updateField("openingScenes", newScenes)
+                            const newScenes = [...data.openingScenes];
+                            newScenes[num - 1] = "";
+                            updateField("openingScenes", newScenes);
                           }}
                         />
                       </div>
@@ -1022,9 +1183,9 @@ export default function InvitationEditorPage() {
                         label={`문구 ${num}`}
                         value={data.openingTexts[num - 1] || ""}
                         onChange={(v) => {
-                          const newTexts = [...data.openingTexts]
-                          newTexts[num - 1] = v
-                          updateField("openingTexts", newTexts)
+                          const newTexts = [...data.openingTexts];
+                          newTexts[num - 1] = v;
+                          updateField("openingTexts", newTexts);
                         }}
                         placeholder={
                           num === 1
@@ -1045,9 +1206,15 @@ export default function InvitationEditorPage() {
               <SectionHeader title="메인" />
               <div className="space-y-4">
                 <div className="overflow-x-auto -mx-1">
-                  <div className="flex gap-2 px-1" style={{ minWidth: "max-content" }}>
+                  <div
+                    className="flex gap-2 px-1"
+                    style={{ minWidth: "max-content" }}
+                  >
                     {MAIN_TEMPLATES.map((t) => (
-                      <div key={t.id} className="flex flex-col items-center gap-1 flex-shrink-0">
+                      <div
+                        key={t.id}
+                        className="flex flex-col items-center gap-1 flex-shrink-0"
+                      >
                         <button
                           data-testid={`template-${t.id}`}
                           onClick={() => updateField("mainTemplate", t.id)}
@@ -1067,24 +1234,34 @@ export default function InvitationEditorPage() {
                           )}
                         </button>
                         <div className="flex items-center gap-1">
-                          <span className="text-[10px] text-[#8B95A1]">{t.label}</span>
+                          <span className="text-[10px] text-[#8B95A1]">
+                            {t.label}
+                          </span>
                           {t.premium && data.mainTemplate === t.id && (
-                            <span className="text-[9px] text-[#FF8A80] font-medium">프리미엄</span>
+                            <span className="text-[9px] text-[#FF8A80] font-medium">
+                              프리미엄
+                            </span>
                           )}
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
-                {MAIN_TEMPLATES.find((t) => t.id === data.mainTemplate)?.premium && (
+                {MAIN_TEMPLATES.find((t) => t.id === data.mainTemplate)
+                  ?.premium && (
                   <div className="flex items-center gap-2 px-3 py-2 bg-[#FFF0EE] rounded-[12px] text-[12px] text-[#FF8A80]">
                     <Lock className="w-3.5 h-3.5" />
-                    <span>이 템플릿은 프리미엄 템플릿입니다. 청첩장 발행 시 구매가 필요합니다.</span>
+                    <span>
+                      이 템플릿은 프리미엄 템플릿입니다. 청첩장 발행 시 구매가
+                      필요합니다.
+                    </span>
                   </div>
                 )}
 
                 <div>
-                  <label className="text-[14px] text-[#4E5968] mb-2 block">사진</label>
+                  <label className="text-[14px] text-[#4E5968] mb-2 block">
+                    사진
+                  </label>
                   <input
                     ref={mainPhotoRef}
                     type="file"
@@ -1096,12 +1273,16 @@ export default function InvitationEditorPage() {
                   <div className="flex gap-2 flex-wrap">
                     {data.mainPhotos.map((img, i) => (
                       <div key={i} className="relative w-[80px] h-[80px]">
-                        <img src={img} alt="" className="w-full h-full object-cover rounded-[8px]" />
+                        <img
+                          src={img}
+                          alt=""
+                          className="w-full h-full object-cover rounded-[8px]"
+                        />
                         <button
                           onClick={() =>
                             updateField(
                               "mainPhotos",
-                              data.mainPhotos.filter((_, idx) => idx !== i)
+                              data.mainPhotos.filter((_, idx) => idx !== i),
                             )
                           }
                           className="absolute -top-1 -right-1 w-5 h-5 bg-black/60 rounded-full flex items-center justify-center"
@@ -1123,24 +1304,31 @@ export default function InvitationEditorPage() {
                     )}
                   </div>
                   <p className="text-[12px] text-[#8B95A1] mt-2">
-                    사진은 원본 비율 그대로 보여지지만, 화면에 맞춰 일부가 가려질 수 있어요.
-                    얼굴이나 중요한 요소는 여백이 있는 세로 사진을 추천해요.
+                    사진은 원본 비율 그대로 보여지지만, 화면에 맞춰 일부가
+                    가려질 수 있어요. 얼굴이나 중요한 요소는 여백이 있는 세로
+                    사진을 추천해요.
                   </p>
                 </div>
 
                 <div>
-                  <label className="text-[14px] text-[#4E5968] mb-2 block">텍스트 컬러</label>
+                  <label className="text-[14px] text-[#4E5968] mb-2 block">
+                    텍스트 컬러
+                  </label>
                   <div className="flex gap-3">
                     <button
                       onClick={() => updateField("textColor", "dark")}
                       className={`w-10 h-10 rounded-full border-2 bg-[#191F28] ${
-                        data.textColor === "dark" ? "border-[#FF8A80]" : "border-transparent"
+                        data.textColor === "dark"
+                          ? "border-[#FF8A80]"
+                          : "border-transparent"
                       }`}
                     />
                     <button
                       onClick={() => updateField("textColor", "light")}
                       className={`w-10 h-10 rounded-full border-2 bg-white ${
-                        data.textColor === "light" ? "border-[#FF8A80]" : "border-[#E5E8EB]"
+                        data.textColor === "light"
+                          ? "border-[#FF8A80]"
+                          : "border-[#E5E8EB]"
                       }`}
                     />
                   </div>
@@ -1179,7 +1367,9 @@ export default function InvitationEditorPage() {
                   <input
                     type="text"
                     value={data.groomRelation}
-                    onChange={(e) => updateField("groomRelation", e.target.value)}
+                    onChange={(e) =>
+                      updateField("groomRelation", e.target.value)
+                    }
                     placeholder="아들"
                     className="w-[80px] px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                   />
@@ -1192,12 +1382,17 @@ export default function InvitationEditorPage() {
                 />
                 {/* 신랑 아버지 */}
                 <div className="flex items-center gap-2">
-                  <label className="text-[14px] text-[#4E5968] w-[70px]">아버지</label>
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">
+                    아버지
+                  </label>
                   <input
                     type="text"
                     value={data.groomFather.name}
                     onChange={(e) =>
-                      updateField("groomFather", { ...data.groomFather, name: e.target.value })
+                      updateField("groomFather", {
+                        ...data.groomFather,
+                        name: e.target.value,
+                      })
                     }
                     placeholder="성함"
                     className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
@@ -1206,26 +1401,26 @@ export default function InvitationEditorPage() {
                     label="故"
                     checked={data.groomFather.deceased}
                     onChange={(v) =>
-                      updateField("groomFather", { ...data.groomFather, deceased: v })
+                      updateField("groomFather", {
+                        ...data.groomFather,
+                        deceased: v,
+                      })
                     }
                   />
                 </div>
-                <InputField
-                  label="전화번호"
-                  value={data.groomFather.phone}
-                  onChange={(v) =>
-                    updateField("groomFather", { ...data.groomFather, phone: v })
-                  }
-                  placeholder="전화번호"
-                />
                 {/* 신랑 어머니 */}
                 <div className="flex items-center gap-2">
-                  <label className="text-[14px] text-[#4E5968] w-[70px]">어머니</label>
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">
+                    어머니
+                  </label>
                   <input
                     type="text"
                     value={data.groomMother.name}
                     onChange={(e) =>
-                      updateField("groomMother", { ...data.groomMother, name: e.target.value })
+                      updateField("groomMother", {
+                        ...data.groomMother,
+                        name: e.target.value,
+                      })
                     }
                     placeholder="성함"
                     className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
@@ -1234,18 +1429,13 @@ export default function InvitationEditorPage() {
                     label="故"
                     checked={data.groomMother.deceased}
                     onChange={(v) =>
-                      updateField("groomMother", { ...data.groomMother, deceased: v })
+                      updateField("groomMother", {
+                        ...data.groomMother,
+                        deceased: v,
+                      })
                     }
                   />
                 </div>
-                <InputField
-                  label="전화번호"
-                  value={data.groomMother.phone}
-                  onChange={(v) =>
-                    updateField("groomMother", { ...data.groomMother, phone: v })
-                  }
-                  placeholder="전화번호"
-                />
 
                 <div className="h-px bg-[#E5E8EB]" />
 
@@ -1265,7 +1455,9 @@ export default function InvitationEditorPage() {
                   <input
                     type="text"
                     value={data.brideRelation}
-                    onChange={(e) => updateField("brideRelation", e.target.value)}
+                    onChange={(e) =>
+                      updateField("brideRelation", e.target.value)
+                    }
                     placeholder="딸"
                     className="w-[80px] px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                   />
@@ -1278,12 +1470,17 @@ export default function InvitationEditorPage() {
                 />
                 {/* 신부 아버지 */}
                 <div className="flex items-center gap-2">
-                  <label className="text-[14px] text-[#4E5968] w-[70px]">아버지</label>
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">
+                    아버지
+                  </label>
                   <input
                     type="text"
                     value={data.brideFather.name}
                     onChange={(e) =>
-                      updateField("brideFather", { ...data.brideFather, name: e.target.value })
+                      updateField("brideFather", {
+                        ...data.brideFather,
+                        name: e.target.value,
+                      })
                     }
                     placeholder="성함"
                     className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
@@ -1292,26 +1489,26 @@ export default function InvitationEditorPage() {
                     label="故"
                     checked={data.brideFather.deceased}
                     onChange={(v) =>
-                      updateField("brideFather", { ...data.brideFather, deceased: v })
+                      updateField("brideFather", {
+                        ...data.brideFather,
+                        deceased: v,
+                      })
                     }
                   />
                 </div>
-                <InputField
-                  label="전화번호"
-                  value={data.brideFather.phone}
-                  onChange={(v) =>
-                    updateField("brideFather", { ...data.brideFather, phone: v })
-                  }
-                  placeholder="전화번호"
-                />
                 {/* 신부 어머니 */}
                 <div className="flex items-center gap-2">
-                  <label className="text-[14px] text-[#4E5968] w-[70px]">어머니</label>
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">
+                    어머니
+                  </label>
                   <input
                     type="text"
                     value={data.brideMother.name}
                     onChange={(e) =>
-                      updateField("brideMother", { ...data.brideMother, name: e.target.value })
+                      updateField("brideMother", {
+                        ...data.brideMother,
+                        name: e.target.value,
+                      })
                     }
                     placeholder="성함"
                     className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
@@ -1320,30 +1517,19 @@ export default function InvitationEditorPage() {
                     label="故"
                     checked={data.brideMother.deceased}
                     onChange={(v) =>
-                      updateField("brideMother", { ...data.brideMother, deceased: v })
+                      updateField("brideMother", {
+                        ...data.brideMother,
+                        deceased: v,
+                      })
                     }
                   />
                 </div>
-                <InputField
-                  label="전화번호"
-                  value={data.brideMother.phone}
-                  onChange={(v) =>
-                    updateField("brideMother", { ...data.brideMother, phone: v })
-                  }
-                  placeholder="전화번호"
-                />
-
                 <div className="h-px bg-[#E5E8EB]" />
 
                 <CheckboxField
                   label="신부측 먼저 표시"
                   checked={data.brideFirst}
                   onChange={(v) => updateField("brideFirst", v)}
-                />
-                <CheckboxField
-                  label="국화 꽃으로 표기"
-                  checked={data.deceasedFlower}
-                  onChange={(v) => updateField("deceasedFlower", v)}
                 />
               </div>
             </div>
@@ -1426,10 +1612,14 @@ export default function InvitationEditorPage() {
                   onChange={(v) => updateField("weddingDate", v)}
                 />
                 <div className="flex items-center gap-2">
-                  <label className="text-[14px] text-[#4E5968] w-[70px]">예식 시간</label>
+                  <label className="text-[14px] text-[#4E5968] w-[70px]">
+                    예식 시간
+                  </label>
                   <select
                     value={data.ampm}
-                    onChange={(e) => updateField("ampm", e.target.value as "오전" | "오후")}
+                    onChange={(e) =>
+                      updateField("ampm", e.target.value as "오전" | "오후")
+                    }
                     className="px-3 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                   >
                     <option value="오전">오전</option>
@@ -1528,9 +1718,12 @@ export default function InvitationEditorPage() {
                         type="text"
                         value={item.type}
                         onChange={(e) => {
-                          const newItems = [...data.transportItems]
-                          newItems[index] = { ...newItems[index], type: e.target.value }
-                          updateField("transportItems", newItems)
+                          const newItems = [...data.transportItems];
+                          newItems[index] = {
+                            ...newItems[index],
+                            type: e.target.value,
+                          };
+                          updateField("transportItems", newItems);
                         }}
                         placeholder="교통수단(지하철,자가용,버스 등)"
                         className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
@@ -1538,8 +1731,10 @@ export default function InvitationEditorPage() {
                       {data.transportItems.length > 1 && (
                         <button
                           onClick={() => {
-                            const newItems = data.transportItems.filter((_, i) => i !== index)
-                            updateField("transportItems", newItems)
+                            const newItems = data.transportItems.filter(
+                              (_, i) => i !== index,
+                            );
+                            updateField("transportItems", newItems);
                           }}
                           className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors flex-shrink-0"
                           data-testid={`button-delete-transport-${index}`}
@@ -1552,9 +1747,12 @@ export default function InvitationEditorPage() {
                       <textarea
                         value={item.detail}
                         onChange={(e) => {
-                          const newItems = [...data.transportItems]
-                          newItems[index] = { ...newItems[index], detail: e.target.value }
-                          updateField("transportItems", newItems)
+                          const newItems = [...data.transportItems];
+                          newItems[index] = {
+                            ...newItems[index],
+                            detail: e.target.value,
+                          };
+                          updateField("transportItems", newItems);
                         }}
                         placeholder="오시는 길 내용을 입력해주세요."
                         rows={2}
@@ -1594,9 +1792,10 @@ export default function InvitationEditorPage() {
                 <div className="space-y-4">
                   <div className="bg-[#EEF4FF] rounded-[10px] p-4">
                     <p className="text-[13px] text-[#3182F6] leading-relaxed">
-                      모바일 청첩장을 받은 지인은 평범한 축의금 대신 의미있는 펀딩으로 마음을
-                      전할 수 있어요. 펀딩은 카드 결제로 간편하게 참여할 수 있으며, 모인 금액은
-                      수수료 없이 언제든 출금 가능합니다.
+                      모바일 청첩장을 받은 지인은 평범한 축의금 대신 의미있는
+                      펀딩으로 마음을 전할 수 있어요. 펀딩은 카드 결제로
+                      간편하게 참여할 수 있으며, 모인 금액은 수수료 없이 언제든
+                      출금 가능합니다.
                     </p>
                   </div>
                   <div className="flex gap-3">
@@ -1605,7 +1804,9 @@ export default function InvitationEditorPage() {
                     </label>
                     <textarea
                       value={data.fundingMessage}
-                      onChange={(e) => updateField("fundingMessage", e.target.value)}
+                      onChange={(e) =>
+                        updateField("fundingMessage", e.target.value)
+                      }
                       placeholder="평범한 축의금은 잊으세요.&#10;내가 고른 의미 있는 선물 한 조각이 모여&#10;두 사람의 특별한 순간을 만들어 주세요."
                       rows={4}
                       className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
@@ -1613,8 +1814,8 @@ export default function InvitationEditorPage() {
                   </div>
                   <div className="ml-[82px]">
                     <p className="text-[12px] text-[#8B95A1]">
-                      펀딩 영역 상단에 표시되는 안내 문구예요. 하객에게 목적이나 분위기를 간단히
-                      알려주세요.
+                      펀딩 영역 상단에 표시되는 안내 문구예요. 하객에게 목적이나
+                      분위기를 간단히 알려주세요.
                     </p>
                     <button
                       onClick={generateFundingMessage}
@@ -1634,19 +1835,27 @@ export default function InvitationEditorPage() {
                         <input
                           type="radio"
                           checked={data.fundingImageType === "default"}
-                          onChange={() => updateField("fundingImageType", "default")}
+                          onChange={() =>
+                            updateField("fundingImageType", "default")
+                          }
                           className="accent-[#FF8A80]"
                         />
-                        <span className="text-[14px] text-[#4E5968]">기본 이미지</span>
+                        <span className="text-[14px] text-[#4E5968]">
+                          기본 이미지
+                        </span>
                       </label>
                       <label className="flex items-center gap-1.5 cursor-pointer">
                         <input
                           type="radio"
                           checked={data.fundingImageType === "custom"}
-                          onChange={() => updateField("fundingImageType", "custom")}
+                          onChange={() =>
+                            updateField("fundingImageType", "custom")
+                          }
                           className="accent-[#FF8A80]"
                         />
-                        <span className="text-[14px] text-[#4E5968]">내 이미지 추가</span>
+                        <span className="text-[14px] text-[#4E5968]">
+                          내 이미지 추가
+                        </span>
                       </label>
                     </div>
                   </div>
@@ -1664,7 +1873,9 @@ export default function InvitationEditorPage() {
                     <div className="flex-1">
                       <textarea
                         value={data.fundingThanks}
-                        onChange={(e) => updateField("fundingThanks", e.target.value)}
+                        onChange={(e) =>
+                          updateField("fundingThanks", e.target.value)
+                        }
                         placeholder="정성껏 전해주신 마음, 오래 기억할게요.&#10;감사합니다."
                         rows={3}
                         className="w-full px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
@@ -1695,8 +1906,8 @@ export default function InvitationEditorPage() {
                 <div className="space-y-4">
                   <div className="bg-[#EEF4FF] rounded-[10px] p-4">
                     <p className="text-[13px] text-[#3182F6] leading-relaxed">
-                      하객은 위시리스트에서 선물을 선택해 직접 선물하거나, 필요한 경우 금액을
-                      보태 함께 선물할 수 있어요.
+                      하객은 위시리스트에서 선물을 선택해 직접 선물하거나,
+                      필요한 경우 금액을 보태 함께 선물할 수 있어요.
                     </p>
                   </div>
                   <div className="flex gap-3">
@@ -1705,7 +1916,9 @@ export default function InvitationEditorPage() {
                     </label>
                     <textarea
                       value={data.giftFundingMessage}
-                      onChange={(e) => updateField("giftFundingMessage", e.target.value)}
+                      onChange={(e) =>
+                        updateField("giftFundingMessage", e.target.value)
+                      }
                       placeholder="저희의 작은 취향들을 담은 선물 목록이에요.&#10;축하의 마음을 전하실 때 참고하실 수 있어요."
                       rows={3}
                       className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
@@ -1739,7 +1952,9 @@ export default function InvitationEditorPage() {
                       { value: "accordion", label: "접기(아코디언)" },
                     ]}
                     value={data.accountDisplayStyle}
-                    onChange={(v) => updateField("accountDisplayStyle", v as any)}
+                    onChange={(v) =>
+                      updateField("accountDisplayStyle", v as any)
+                    }
                   />
                   {/* 신랑 아버지 */}
                   <InputField
@@ -1911,7 +2126,9 @@ export default function InvitationEditorPage() {
               {data.showGallery && (
                 <div className="space-y-4">
                   <div>
-                    <label className="text-[14px] text-[#4E5968] mb-2 block">사진</label>
+                    <label className="text-[14px] text-[#4E5968] mb-2 block">
+                      사진
+                    </label>
                     <input
                       ref={galleryInputRef}
                       type="file"
@@ -1932,7 +2149,9 @@ export default function InvitationEditorPage() {
                             onClick={() =>
                               updateField(
                                 "galleryImages",
-                                data.galleryImages.filter((_, idx) => idx !== i)
+                                data.galleryImages.filter(
+                                  (_, idx) => idx !== i,
+                                ),
                               )
                             }
                             className="absolute -top-1 -right-1 w-4 h-4 bg-black/60 rounded-full flex items-center justify-center"
@@ -1987,14 +2206,16 @@ export default function InvitationEditorPage() {
                     <ImageUploadBox
                       value={data.midPhoto}
                       onUpload={(e) => {
-                        const file = e.target.files?.[0]
-                        if (file) updateField("midPhoto", URL.createObjectURL(file))
+                        const file = e.target.files?.[0];
+                        if (file)
+                          updateField("midPhoto", URL.createObjectURL(file));
                       }}
                       onRemove={() => updateField("midPhoto", "")}
                     />
                   </div>
                   <p className="text-[12px] text-[#8B95A1]">
-                    사진은 원본 비율 그대로 보여지지만, 화면에 맞춰 일부가 가려질 수 있어요.
+                    사진은 원본 비율 그대로 보여지지만, 화면에 맞춰 일부가
+                    가려질 수 있어요.
                   </p>
                 </div>
               )}
@@ -2031,7 +2252,9 @@ export default function InvitationEditorPage() {
                       <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
                         <Play className="w-4 h-4 text-[#191F28] ml-0.5" />
                       </button>
-                      <span className="text-[13px] text-[#4E5968]">0:00 / 1:31</span>
+                      <span className="text-[13px] text-[#4E5968]">
+                        0:00 / 1:31
+                      </span>
                       <div className="flex-1 h-1 bg-[#E5E8EB] rounded-full">
                         <div className="w-0 h-full bg-[#FF8A80] rounded-full" />
                       </div>
@@ -2124,7 +2347,9 @@ export default function InvitationEditorPage() {
                     required
                   />
                   <div className="space-y-3">
-                    <label className="text-[14px] text-[#4E5968]">항목 선택</label>
+                    <label className="text-[14px] text-[#4E5968]">
+                      항목 선택
+                    </label>
                     <RadioField
                       label="식사 여부"
                       options={[
@@ -2192,9 +2417,10 @@ export default function InvitationEditorPage() {
                 <div className="space-y-4">
                   <div className="bg-[#EEF4FF] rounded-[10px] p-4">
                     <p className="text-[13px] text-[#3182F6] leading-relaxed">
-                      신랑, 신부가 하객 스냅 기능을 ON 하면, 하객이 예식 후 청첩장에서 직접
-                      사진을 업로드할 수 있어요. 올라온 사진은 하객 전용 웨딩북 폴더에
-                      저장되며, 언제든 다운로드할 수 있습니다.
+                      신랑, 신부가 하객 스냅 기능을 ON 하면, 하객이 예식 후
+                      청첩장에서 직접 사진을 업로드할 수 있어요. 올라온 사진은
+                      하객 전용 웨딩북 폴더에 저장되며, 언제든 다운로드할 수
+                      있습니다.
                     </p>
                   </div>
                   <div className="flex gap-3">
@@ -2203,7 +2429,9 @@ export default function InvitationEditorPage() {
                     </label>
                     <textarea
                       value={data.guestSnapContent}
-                      onChange={(e) => updateField("guestSnapContent", e.target.value)}
+                      onChange={(e) =>
+                        updateField("guestSnapContent", e.target.value)
+                      }
                       placeholder="신랑, 신부의 행복한 순간을 담아주세요. 예식 당일, 아래 버튼을 눌러 사진을 올려주세요. 많은 참여 부탁드려요!"
                       rows={4}
                       className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
@@ -2252,9 +2480,9 @@ export default function InvitationEditorPage() {
                         type="text"
                         value={item}
                         onChange={(e) => {
-                          const newItems = [...data.noticeItems]
-                          newItems[i] = e.target.value
-                          updateField("noticeItems", newItems)
+                          const newItems = [...data.noticeItems];
+                          newItems[i] = e.target.value;
+                          updateField("noticeItems", newItems);
                         }}
                         placeholder={`공지사항 ${i + 1}`}
                         className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
@@ -2263,7 +2491,7 @@ export default function InvitationEditorPage() {
                         onClick={() =>
                           updateField(
                             "noticeItems",
-                            data.noticeItems.filter((_, idx) => idx !== i)
+                            data.noticeItems.filter((_, idx) => idx !== i),
                           )
                         }
                         className="text-[#B0B8C1] hover:text-red-400"
@@ -2301,8 +2529,9 @@ export default function InvitationEditorPage() {
                     <ImageUploadBox
                       value={data.endingPhoto}
                       onUpload={(e) => {
-                        const file = e.target.files?.[0]
-                        if (file) updateField("endingPhoto", URL.createObjectURL(file))
+                        const file = e.target.files?.[0];
+                        if (file)
+                          updateField("endingPhoto", URL.createObjectURL(file));
                       }}
                       onRemove={() => updateField("endingPhoto", "")}
                     />
@@ -2314,7 +2543,9 @@ export default function InvitationEditorPage() {
                     <div className="flex-1">
                       <textarea
                         value={data.endingContent}
-                        onChange={(e) => updateField("endingContent", e.target.value)}
+                        onChange={(e) =>
+                          updateField("endingContent", e.target.value)
+                        }
                         placeholder="소중한 분들의 축복 속에서 두 사람이 하나 되어&#10;새로운 출발을 합니다.&#10;따뜻한 마음으로 지켜봐 주세요."
                         rows={4}
                         className="w-full px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
@@ -2329,31 +2560,53 @@ export default function InvitationEditorPage() {
                       </button>
                     </div>
                   </div>
-                  {(data.endingStyle === "full" || data.endingStyle === "simple") && data.endingPhoto && (
-                    <div className="flex items-center gap-3">
-                      <label className="text-[14px] text-[#4E5968] w-[70px] flex-shrink-0">글자색</label>
-                      <div className="flex gap-2">
-                        {[
-                          { value: "#FFFFFF", label: "흰색", bg: "bg-white border border-gray-300" },
-                          { value: "#191F28", label: "검정", bg: "bg-[#191F28]" },
-                          { value: "#FF8A80", label: "코랄", bg: "bg-[#FF8A80]" },
-                        ].map((c) => (
-                          <button
-                            key={c.value}
-                            onClick={() => updateField("endingTextColor", c.value)}
-                            className={`w-8 h-8 rounded-full ${c.bg} flex items-center justify-center ${
-                              data.endingTextColor === c.value ? "ring-2 ring-[#FF8A80] ring-offset-2" : ""
-                            }`}
-                            data-testid={`button-ending-color-${c.label}`}
-                          >
-                            {data.endingTextColor === c.value && (
-                              <Check className={`w-4 h-4 ${c.value === "#FFFFFF" ? "text-gray-600" : "text-white"}`} />
-                            )}
-                          </button>
-                        ))}
+                  {(data.endingStyle === "full" ||
+                    data.endingStyle === "simple") &&
+                    data.endingPhoto && (
+                      <div className="flex items-center gap-3">
+                        <label className="text-[14px] text-[#4E5968] w-[70px] flex-shrink-0">
+                          글자색
+                        </label>
+                        <div className="flex gap-2">
+                          {[
+                            {
+                              value: "#FFFFFF",
+                              label: "흰색",
+                              bg: "bg-white border border-gray-300",
+                            },
+                            {
+                              value: "#191F28",
+                              label: "검정",
+                              bg: "bg-[#191F28]",
+                            },
+                            {
+                              value: "#FF8A80",
+                              label: "코랄",
+                              bg: "bg-[#FF8A80]",
+                            },
+                          ].map((c) => (
+                            <button
+                              key={c.value}
+                              onClick={() =>
+                                updateField("endingTextColor", c.value)
+                              }
+                              className={`w-8 h-8 rounded-full ${c.bg} flex items-center justify-center ${
+                                data.endingTextColor === c.value
+                                  ? "ring-2 ring-[#FF8A80] ring-offset-2"
+                                  : ""
+                              }`}
+                              data-testid={`button-ending-color-${c.label}`}
+                            >
+                              {data.endingTextColor === c.value && (
+                                <Check
+                                  className={`w-4 h-4 ${c.value === "#FFFFFF" ? "text-gray-600" : "text-white"}`}
+                                />
+                              )}
+                            </button>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
                 </div>
               )}
             </div>
@@ -2370,9 +2623,15 @@ export default function InvitationEditorPage() {
                 <div className="space-y-4">
                   <button
                     onClick={() => {
-                      if (data.invitationTitle) updateField("shareTitle", data.invitationTitle)
-                      if (data.message) updateField("shareContent", data.message.split("\n").slice(0, 2).join("\n"))
-                      if (data.mainPhotos[0]) updateField("sharePhoto", data.mainPhotos[0])
+                      if (data.invitationTitle)
+                        updateField("shareTitle", data.invitationTitle);
+                      if (data.message)
+                        updateField(
+                          "shareContent",
+                          data.message.split("\n").slice(0, 2).join("\n"),
+                        );
+                      if (data.mainPhotos[0])
+                        updateField("sharePhoto", data.mainPhotos[0]);
                     }}
                     className="flex items-center gap-1 mb-3 px-3 py-1.5 bg-[#EEF4FF] rounded-full text-[12px] text-[#3182F6] font-medium"
                     data-testid="button-share-autofill"
@@ -2397,15 +2656,17 @@ export default function InvitationEditorPage() {
                     <ImageUploadBox
                       value={data.sharePhoto}
                       onUpload={(e) => {
-                        const file = e.target.files?.[0]
-                        if (file) updateField("sharePhoto", URL.createObjectURL(file))
+                        const file = e.target.files?.[0];
+                        if (file)
+                          updateField("sharePhoto", URL.createObjectURL(file));
                       }}
                       onRemove={() => updateField("sharePhoto", "")}
                     />
                   </div>
                   <p className="text-[12px] text-[#8B95A1]">
-                    예식 분위기에 맞는 사진과 문구를 입력하면, 링크 미리보기가 더 예쁘게
-                    보여요. 별도로 설정하지 않으시면 대표이미지와 동일하게 노출됩니다.
+                    예식 분위기에 맞는 사진과 문구를 입력하면, 링크 미리보기가
+                    더 예쁘게 보여요. 별도로 설정하지 않으시면 대표이미지와
+                    동일하게 노출됩니다.
                   </p>
                 </div>
               )}
@@ -2416,11 +2677,15 @@ export default function InvitationEditorPage() {
               <SectionHeader title="청첩장 링크" />
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <label className="text-[14px] text-[#4E5968] w-[80px]">청첩장 주소</label>
+                  <label className="text-[14px] text-[#4E5968] w-[80px]">
+                    청첩장 주소
+                  </label>
                   <input
                     type="text"
                     value={data.invitationSlug}
-                    onChange={(e) => updateField("invitationSlug", e.target.value)}
+                    onChange={(e) =>
+                      updateField("invitationSlug", e.target.value)
+                    }
                     placeholder="예)yssn122, 20251121ys"
                     className="flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                   />
@@ -2430,8 +2695,8 @@ export default function InvitationEditorPage() {
                 </div>
                 <ul className="text-[12px] text-[#8B95A1] space-y-1 ml-[92px]">
                   <li>
-                    주소 뒤에 들어갈 문자만 입력해주세요. 영문 소문자, 숫자만 사용 가능하며,
-                    3~20자까지 설정할 수 있어요.
+                    주소 뒤에 들어갈 문자만 입력해주세요. 영문 소문자, 숫자만
+                    사용 가능하며, 3~20자까지 설정할 수 있어요.
                   </li>
                 </ul>
               </div>
@@ -2477,15 +2742,17 @@ export default function InvitationEditorPage() {
             <div className="flex-shrink-0 flex items-center justify-between px-4 py-3 bg-white/95 backdrop-blur-md">
               <button
                 onClick={() => {
-                  setShowPreview(false)
-                  setShowShareOptions(false)
+                  setShowPreview(false);
+                  setShowShareOptions(false);
                 }}
                 data-testid="button-close-preview"
                 className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
               >
                 <X className="w-5 h-5 text-[#191F28]" />
               </button>
-              <h2 className="text-[17px] font-bold text-[#191F28]">청첩장 미리보기</h2>
+              <h2 className="text-[17px] font-bold text-[#191F28]">
+                청첩장 미리보기
+              </h2>
               <button
                 onClick={() => setShowShareOptions(true)}
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF8A80] hover:bg-[#FF6B6B] transition-colors"
@@ -2561,5 +2828,5 @@ export default function InvitationEditorPage() {
         </div>
       )}
     </main>
-  )
+  );
 }

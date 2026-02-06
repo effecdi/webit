@@ -1,0 +1,48 @@
+**Task:** Create a high-fidelity "Invitation Template Gallery" screen (`app/wedding/invitation/index.tsx`) that serves as the entry point for the Wedding Invitation feature.
+
+**[1. Design Concept & UI]**
+* **Reference Style:** Modern, clean, "Toss-style" UI (White background, Rounded corners, Soft shadows).
+* **Layout:**
+    * **Header:** "모바일 청첩장" (Bold, Large) with a subtitle "전문 디자이너가 만든 고퀄리티 템플릿".
+    * **Main Content (Carousel):** A horizontal swipeable list of templates.
+        * The center card should be larger (focused).
+        * Each card shows a high-quality preview image of the invitation.
+        * **Badges:** Add visual badges on the card corners:
+            * "PREMIUM" (Gold gradient background)
+            * "FREE" (Gray background)
+            * "NEW" (Blue background)
+    * **Action Buttons (Below Card):**
+        * "미리보기" (Secondary button, outlines) -> Opens a preview modal.
+        * "청첩장 만들기" (Primary button, Coral color `#FF8A80`) -> Triggers creation logic.
+
+**[2. Data Structure (Templates)]**
+Create a mock data array `TEMPLATES` with at least 6 items:
+* Mix of `type: 'basic'` and `type: 'premium'`.
+* Premium templates must have distinct, high-end visuals.
+
+**[3. Interaction Logic (The Core Requirement)]**
+* **State Management:**
+    * `isPremiumUser` (boolean, default `false`).
+    * `showPaymentModal` (boolean).
+* **"Create" Button Logic:**
+    * **If Basic Template:** Navigate directly to `/wedding/editor` (Editor Page).
+    * **If Premium Template:**
+        * Check `isPremiumUser`.
+        * If `true`: Navigate to `/wedding/editor`.
+        * If `false`: **Open the Payment Bottom Sheet.**
+
+**[4. Payment Bottom Sheet (Mock)]**
+* **Design:** A slide-up bottom sheet with a clean layout.
+* **Content:**
+    * Title: "프리미엄 템플릿 잠금 해제"
+    * Description: "7,900원에 평생 소장하세요.\n모든 프리미엄 템플릿을 자유롭게 사용할 수 있습니다."
+    * Price: "₩7,900" (Bold, Large).
+* **Payment Methods:**
+    * Button 1: "Kakao Pay" (Yellow background, Black text).
+    * Button 2: "Toss Pay" (Blue background, White text).
+* **Action:** Clicking either button simulates a loading process (2 seconds), then sets `isPremiumUser = true`, shows a success toast ("결제가 완료되었습니다!"), and auto-redirects to the Editor.
+
+**[5. Tech Stack]**
+* Use `framer-motion` (if web) or `react-native-reanimated` (if mobile) for smooth carousel transitions.
+* Use `lucide-react` for icons.
+* Ensure the carousel snaps to the center item.

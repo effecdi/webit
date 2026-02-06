@@ -71,7 +71,7 @@ export function WeddingWelcomeBanner() {
           </p>
 
           <Link
-            href="/wedding/editor"
+            href="/wedding/invitation"
             onClick={handleDismiss}
             className="block w-full bg-[#3182F6] rounded-[16px] py-4 px-6 text-[17px] font-semibold text-white hover:bg-[#1B64DA] active:scale-[0.98] transition-all"
           >
