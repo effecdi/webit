@@ -21,6 +21,8 @@ export const profiles = pgTable('profiles', {
   isMembershipActive: boolean('is_membership_active').default(false),
   membershipTier: text('membership_tier').default('free'),
   currentMode: text('current_mode').default('love'),
+  myMood: text('my_mood').default('heart'),
+  partnerMood: text('partner_mood').default('heart'),
   createdAt: timestamp('created_at').defaultNow(),
 });
 
