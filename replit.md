@@ -105,17 +105,36 @@ Preferred communication style: Simple, everyday language.
 - `/components/family/` - Family mode specific components
 - `/components/travel/` - Travel module components (TravelEntryCard)
 - `/components/shared/` - Cross-mode shared components
+- `/components/invitation-layouts/` - 6 unique invitation layout sub-components (LayoutRenderer architecture)
+  - `types.ts` - Shared LayoutProps, PreviewState, PreviewHelpers interfaces
+  - `use-preview-state.ts` - Custom hook extracting shared state/logic (countdown, guestbook, clipboard, calendar, formatters)
+  - `CinematicLayout.tsx` - Dark movie poster style (gold serif, gradient overlays, dark body)
+  - `ModernLayout.tsx` - Classic White style (framed photo, white bg, thin borders, elegant script)
+  - `ClassicLayout.tsx` - Beige Mood style (soft beige, arch photo, Caveat handwriting font, warm tones)
+  - `MagazineLayout.tsx` - Magazine Cover style (giant overlapping text, sharp black dividers, editorial)
+  - `PolaroidLayout.tsx` - Full Immersion style (full-bleed photo, frosted glass cards, translucent sections)
+  - `ChatLayout.tsx` - Illustration/Lovely style (pastel pink gradient, circle photo, heart icons, cute fonts)
 - `/contexts/` - React Context providers
 - `/hooks/` - Custom React hooks
 
+### Invitation Layout Architecture
+- **LayoutRenderer pattern**: `InvitationPreview` (controller) delegates to 6 unique layout sub-components via switch-case
+- Each layout has its own **complete JSX structure** for ALL sections (hero, invitation, gallery, calendar, location, RSVP, guestbook, funding, account, notice, ending, footer)
+- Shared state/logic extracted into `usePreviewState` hook, passed as props (LayoutProps = data + state + helpers)
+- Opening animations and modals (contact, photo viewer, toast) remain in parent controller
+- Template IDs: cinematic, modern, classic, magazine, polaroid, chat (backward compatible)
+
 ### Key Features by Mode
 - **Dating**: Couple calendar, photo gallery, todo lists with comments, D-day tracking
-- **Wedding**: Budget tracking, checklist management, digital invitation editor with RSVP (opening concepts: Cinematic Fade/Typographic Slide/Simple Card; main templates: Poster/Polaroid/Magazine/Chat/Modern/Classic), vendor management, guest manager (하객매니저) with report/list tabs and batch operations (invitation management, attendance check)
-  - **Template Premium System**: Modern & Classic are free; Poster, Polaroid, Magazine, Chat require premium (shown with lock icon, premium banner in editor)
+- **Wedding**: Budget tracking, checklist management, digital invitation editor with RSVP (opening concepts: Cinematic Fade/Typographic Slide/Simple Card; main templates: Cinematic/Modern/Classic/Magazine/Polaroid/Chat), vendor management, guest manager (하객매니저) with report/list tabs and batch operations (invitation management, attendance check)
+  - **Template Premium System**: Modern & Classic are free; Cinematic, Polaroid, Magazine, Chat require premium (shown with lock icon, premium banner in editor)
   - **Template Thumbnails**: Visual CSS mini-thumbnails in template selector buttons
-  - **Modern Template**: Minimalist white design, rounded photo frame, thin coral divider, light typography
-  - **Classic Template**: Cream/ivory bg, decorative double border in gold (#C5A572), Georgia serif font, ornamental diamond divider
-  - **Chat Template**: Enhanced with status bar, dynamic message from user data, read indicators, card-style system message
+  - **Cinematic Template**: Dark movie poster style - dark bg (#1E1B16), gold (#C5A572) serif typography, "Save the Date" hero, gradient overlays
+  - **Modern Template**: Classic White style - pure white bg, framed photo, "Wedding Invitation" italic script, thin borders, coral accents
+  - **Classic Template**: Beige Mood style - soft beige (#F5F5F0) bg, arch-shaped photo, Caveat handwriting font, warm gold accents
+  - **Magazine Template**: Editorial style - giant overlapping text on photo, sharp black dividers, "WEVE WEDDING" header, rounded-none corners
+  - **Polaroid Template**: Full Immersion style - full-bleed photo (100dvh), frosted glass cards (backdrop-blur), semi-transparent sections
+  - **Chat Template**: Illustration/Lovely style - pastel pink gradient (#FFF0F3), circle photo mask, heart icons, rounded-[20px] cards, cute fonts
   - **Ending Styles**: Card (rounded photo + text below), Full (photo with dark overlay, text centered over), Simple (photo with gradient, text at bottom)
   - **Ending Text Color**: Configurable (white/black/coral) for Full and Simple ending styles
   - **AI Recommendations**: Template-based random generation for title, message, funding guidance/thanks, notice title, ending content (no API calls)

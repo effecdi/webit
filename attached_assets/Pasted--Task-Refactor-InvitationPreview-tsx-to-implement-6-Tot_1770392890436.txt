@@ -1,0 +1,54 @@
+**Task:** Refactor `InvitationPreview.tsx` to implement **6 Totally Unique Layout Architectures**.
+**CRITICAL REQUIREMENT:** Do NOT just change CSS variables. You must swap the entire **JSX Structure** based on `data.mainTemplate`.
+
+**[1. Structural Strategy: The `LayoutRenderer`]**
+Create a main wrapper component that selects a specific layout sub-component.
+* If `template === 'cinematic'`, render `<CinematicLayout data={data} />`
+* If `template === 'magazine'`, render `<MagazineLayout data={data} />`
+* ...and so on.
+
+**[2. The 6 Layouts (Based on User's Reference Images)]**
+
+**A. Template 1: "Cinematic Dark" (The Movie Poster)**
+* **Structure:** Full-screen background image (`h-screen`, `object-cover`).
+* **Overlay:** A dark gradient overlay (`bg-gradient-to-t from-black via-transparent`).
+* **Typography:** Gold (`#C5A572`) Serif fonts.
+* **Position:** "Save the Date" at the TOP, Names at the BOTTOM.
+* **Content Body:** Dark background (`#1a1510`) for all following sections (Gallery, Map, etc.).
+
+**B. Template 2: "Classic White" (Traditional & Clean)**
+* **Structure:** A framed photo container with wide white padding.
+* **Typography:** Elegant English script ("The Wedding") *centered above* the photo.
+* **Background:** Pure White (`#FFFFFF`) globally.
+* **Details:** Thin borders around the map and gallery images.
+
+**C. Template 3: "Beige Mood" (Emotional & Soft)**
+* **Reference:** *Like the 'Save the Date' beige image provided.*
+* **Structure:** Soft Beige background (`#F5F5F0`).
+* **Hero:** Photo has rounded corners (`rounded-t-[100px]` arch shape).
+* **Typography:** Handwriting font for the title.
+* **Content Body:** All cards (RSVP, Map) have a soft paper texture or warm white bg.
+
+**D. Template 4: "Magazine Cover" (Bold & Modern)**
+* **Structure:** Image takes up 85% of the screen height.
+* **Typography:** Giant, bold Sans-serif text ("WE ARE GETTING MARRIED") overlapping the *center* of the photo (like Vogue).
+* **Date:** Displayed like a barcode or issue number at the bottom right.
+* **Background:** White content area with sharp black dividers.
+
+**E. Template 5: "Full Immersion" (Photo Focused)**
+* **Structure:** The main photo extends *behind* the status bar and fades into the content.
+* **Text Box:** A "Frosted Glass" (blur) card floating at the bottom of the screen containing the Names and Date.
+* **Content Body:** Minimalist, transparent backgrounds.
+
+**F. Template 6: "Illustration/Lovely" (Cute)**
+* **Structure:** Pastel Pink gradient background.
+* **Hero:** Image in a circle or heart shape mask.
+* **Typography:** Cute, rounded fonts.
+* **Icons:** Use playful icons (hearts, flowers) instead of standard ones.
+
+**[3. Implementation Rules]**
+1.  **Complete Transformation:** When I switch templates, the *entire* scrollable area must change style (not just the top).
+2.  **Data Binding:** All layouts must correctly display `data.groomName`, `data.weddingDate`, etc.
+3.  **Real-time:** Changes in the editor must reflect instantly in these new layouts.
+
+**Action:** Rewrite `InvitationPreview` to use this switch-case architecture with 6 distinct sub-components.
