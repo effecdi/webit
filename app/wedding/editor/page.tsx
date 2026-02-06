@@ -644,6 +644,12 @@ function CheckboxField({
 }) {
   return (
     <label className="flex items-center gap-2 cursor-pointer">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        className="sr-only"
+      />
       <div
         className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
           checked ? "bg-[#FF8A80] border-[#FF8A80]" : "border-[#D1D6DB]"
