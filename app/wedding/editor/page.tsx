@@ -156,7 +156,7 @@ const initialData: InvitationData = {
   brideMother: { name: "", phone: "", deceased: false },
   brideFirst: false,
   deceasedFlower: false,
-  invitationTitle: "새로운 시작에 함께해주세요",
+  invitationTitle: "",
   message: "",
   showNameAtBottom: true,
   weddingDate: "",
@@ -1475,27 +1475,34 @@ export default function InvitationEditorPage() {
                   onChange={(v) => updateField("venuePhone", v)}
                   placeholder="웨딩홀 연락처(02-1234-1234)"
                 />
-                <div className="space-y-2">
-                  <label className="text-[14px] text-[#4E5968]">표시</label>
-                  <CheckboxField
-                    label="캘린더"
-                    checked={data.showCalendar}
-                    onChange={(v) => updateField("showCalendar", v)}
-                  />
-                  <CheckboxField
-                    label="카운트다운"
-                    checked={data.showCountdown}
-                    onChange={(v) => updateField("showCountdown", v)}
-                  />
-                </div>
                 <RadioField
-                  label="캘린더 스타일"
+                  label="캘린더 노출"
                   options={[
-                    { value: "full", label: "전체 달력" },
-                    { value: "simple", label: "심플 텍스트" },
+                    { value: "show", label: "표시" },
+                    { value: "hide", label: "숨기기" },
                   ]}
-                  value={data.calendarStyle}
-                  onChange={(v) => updateField("calendarStyle", v as any)}
+                  value={data.showCalendar ? "show" : "hide"}
+                  onChange={(v) => updateField("showCalendar", v === "show")}
+                />
+                {data.showCalendar && (
+                  <RadioField
+                    label="캘린더 스타일"
+                    options={[
+                      { value: "full", label: "전체 달력" },
+                      { value: "simple", label: "심플 텍스트" },
+                    ]}
+                    value={data.calendarStyle}
+                    onChange={(v) => updateField("calendarStyle", v as any)}
+                  />
+                )}
+                <RadioField
+                  label="카운트다운 노출"
+                  options={[
+                    { value: "show", label: "표시" },
+                    { value: "hide", label: "숨기기" },
+                  ]}
+                  value={data.showCountdown ? "show" : "hide"}
+                  onChange={(v) => updateField("showCountdown", v === "show")}
                 />
               </div>
             </div>
@@ -2109,28 +2116,44 @@ export default function InvitationEditorPage() {
                     placeholder="참석 의사 전달하기"
                     required
                   />
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <label className="text-[14px] text-[#4E5968]">항목 선택</label>
-                    <CheckboxField
+                    <RadioField
                       label="식사 여부"
-                      checked={data.rsvpMeal}
-                      onChange={(v) => updateField("rsvpMeal", v)}
+                      options={[
+                        { value: "on", label: "표시" },
+                        { value: "off", label: "숨기기" },
+                      ]}
+                      value={data.rsvpMeal ? "on" : "off"}
+                      onChange={(v) => updateField("rsvpMeal", v === "on")}
                     />
-                    <CheckboxField
+                    <RadioField
                       label="버스 탑승 여부"
-                      checked={data.rsvpBus}
-                      onChange={(v) => updateField("rsvpBus", v)}
+                      options={[
+                        { value: "on", label: "표시" },
+                        { value: "off", label: "숨기기" },
+                      ]}
+                      value={data.rsvpBus ? "on" : "off"}
+                      onChange={(v) => updateField("rsvpBus", v === "on")}
                     />
-                    <CheckboxField
+                    <RadioField
                       label="답례품 수령 여부"
-                      checked={data.rsvpGift}
-                      onChange={(v) => updateField("rsvpGift", v)}
+                      options={[
+                        { value: "on", label: "표시" },
+                        { value: "off", label: "숨기기" },
+                      ]}
+                      value={data.rsvpGift ? "on" : "off"}
+                      onChange={(v) => updateField("rsvpGift", v === "on")}
                     />
                   </div>
-                  <CheckboxField
-                    label="청첩장 진입 시 팝업 노출 여부 설정"
-                    checked={data.rsvpPopup}
-                    onChange={(v) => updateField("rsvpPopup", v)}
+                  <RadioField
+                    label="청첩장 진입 시 팝업 노출"
+                    options={[
+                      { value: "on", label: "표시" },
+                      { value: "off", label: "숨기기" },
+                    ]}
+                    value={data.rsvpPopup ? "on" : "off"}
+                    onChange={(v) => updateField("rsvpPopup", v === "on")}
                   />
                   <p className="text-[12px] text-[#8B95A1]">
                     ※ RSVP 응답 내역은 청첩장 관리 메뉴에서 확인할 수 있습니다.

@@ -932,6 +932,13 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
               <p className="text-[14px] text-[#4E5968] whitespace-pre-line leading-[1.8]">{data.transportInfo}</p>
             </div>
           )}
+          {data.showTransportNotice && (
+            <div className="mt-6 p-4 bg-white rounded-[16px]">
+              <p className="text-[13px] text-[#8B95A1] leading-[1.8]">
+                주차 공간이 협소하오니 대중교통을 이용해주시면 감사하겠습니다.
+              </p>
+            </div>
+          )}
         </div>
 
         {/* ===== MID PHOTO ===== */}
@@ -945,7 +952,7 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
         {data.showRsvp && (
           <div className="bg-white px-8 py-14">
             <SectionTitle title="RSVP" />
-            <p className="text-[20px] text-[#191F28] text-center font-medium mb-6">참석 의사</p>
+            <p className="text-[20px] text-[#191F28] text-center font-medium mb-6">{data.rsvpTitle || "참석 의사"}</p>
 
             <div className="flex justify-center mb-4">
               <div className="relative w-[220px] h-[150px]">
@@ -977,14 +984,14 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
             </div>
 
             <p className="text-[13px] text-[#8B95A1] text-center mb-6">
-              신랑신부에게 참석 여부를 미리 알려주세요
+              {data.rsvpContent || "신랑신부에게 참석 여부를 미리 알려주세요"}
             </p>
 
             <button
               className="w-full py-3.5 bg-[#FF8A80] rounded-[16px] text-[14px] text-white border-0"
               data-testid="button-rsvp"
             >
-              참석 의사 전달하기
+              {data.rsvpButtonName || "참석 의사 전달하기"}
             </button>
           </div>
         )}
