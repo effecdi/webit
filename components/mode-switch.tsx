@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { Heart, Gem, PartyPopper, X } from "lucide-react";
 
@@ -11,6 +12,11 @@ interface ModeSwitchProps {
 export function ModeSwitch({ currentMode }: ModeSwitchProps) {
   const router = useRouter();
   const [showCongratulations, setShowCongratulations] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleWeddingClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -66,7 +72,7 @@ export function ModeSwitch({ currentMode }: ModeSwitchProps) {
         </button>
       </div>
 
-      {showCongratulations && (
+      {showCongratulations && mounted && createPortal(
         <div
           className="fixed inset-0 z-[100] bg-black/50 min-h-screen flex items-center justify-center p-5"
           onClick={() => setShowCongratulations(false)}
@@ -135,7 +141,8 @@ export function ModeSwitch({ currentMode }: ModeSwitchProps) {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
