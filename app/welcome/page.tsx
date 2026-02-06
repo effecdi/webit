@@ -33,7 +33,7 @@ export default function WelcomePage() {
   }, [])
 
   useEffect(() => {
-    if (step < 4) {
+    if (step < 3) {
       const timer = setTimeout(() => {
         setFadeIn(false)
         setTimeout(() => {
@@ -42,19 +42,23 @@ export default function WelcomePage() {
         }, 500)
       }, 5000)
       return () => clearTimeout(timer)
+    } else if (step === 3) {
+      const timer = setTimeout(() => {
+        setFadeIn(false)
+        setTimeout(() => {
+          const selectedMode = localStorage.getItem("selected_mode")
+          if (selectedMode === "wedding") {
+            router.push("/wedding")
+          } else if (selectedMode === "family") {
+            router.push("/family")
+          } else {
+            router.push("/dating")
+          }
+        }, 500)
+      }, 3000)
+      return () => clearTimeout(timer)
     }
-  }, [step])
-
-  const handleStart = () => {
-    const selectedMode = localStorage.getItem("selected_mode")
-    if (selectedMode === "wedding") {
-      router.push("/wedding")
-    } else if (selectedMode === "family") {
-      router.push("/family")
-    } else {
-      router.push("/dating")
-    }
-  }
+  }, [step, router])
 
   const formatNumber = (num: number) => {
     return num.toLocaleString()
@@ -101,7 +105,7 @@ export default function WelcomePage() {
             </p>
           </div>
         )
-      case 3:
+      default:
         return (
           <div className="text-center">
             <p className="text-[32px] font-bold text-[#191F28]">
@@ -112,22 +116,6 @@ export default function WelcomePage() {
                 <Heart className="w-8 h-8 text-blue-500 fill-blue-500" />
               </div>
             </div>
-          </div>
-        )
-      default:
-        return (
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-blue-500 mb-4">WE:VE</h1>
-            <p className="text-[17px] text-[#8B95A1] mb-12">
-              함께하는 모든 순간
-            </p>
-            <button
-              onClick={handleStart}
-              className="px-12 py-4 bg-blue-500 text-white rounded-[16px] font-semibold text-[17px] hover:bg-blue-600 active:scale-[0.98] transition-all"
-              data-testid="button-start"
-            >
-              시작하기
-            </button>
           </div>
         )
     }
