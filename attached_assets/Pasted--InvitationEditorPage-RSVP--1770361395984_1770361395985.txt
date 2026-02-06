@@ -1,0 +1,194 @@
+현정 님, 지금 보여주신 InvitationEditorPage 코드는 '청첩장을 꾸미고 만드는 에디터' 기능만 있고, **'하객 정보를 수집하는 기능(RSVP)'**은 아직 없습니다.
+
+따라서 지금 상태로는 일괄 등록이 불가능합니다.
+
+하지만, **"하객이 청첩장을 받고 -> 참석 의사를 입력하면 -> 하객 명단에 자동으로 등록"**되게 만드는 것은 아주 좋은 생각입니다! 이게 되면 수기 입력의 고통에서 해방될 수 있죠.
+
+이 기능을 구현하려면 **청첩장을 보는 화면(하객용 화면)**에 [참석 의사 전달하기] 버튼과 입력 폼을 추가해야 합니다.
+
+다음과 같이 구조를 잡으면 '일괄 등록(자동 등록)' 시스템을 완성할 수 있습니다.
+
+🚀 구현 로직 (청첩장 X 하객매니저 연동)
+청첩장 화면 (InvitationView): 하객이 보는 페이지 하단에 [참석 의사 전달하기] 버튼 추가.
+
+입력 폼 (Modal): 버튼 누르면 이름, 참석 여부, 식사 여부, 동행 인원을 입력받음.
+
+데이터 전송 (API): 입력된 정보를 POST /api/guests로 전송 (아까 만든 GuestManager가 쓰는 그 API).
+
+자동 등록: GuestManager에 해당 하객이 자동으로 추가됨.
+
+💻 추가해야 할 코드 (하객용 청첩장 화면)
+하객들이 보게 될 청첩장 뷰어 페이지(app/invitation/[id]/page.tsx 등)에 아래 RSVP 폼 컴포넌트를 추가해 주세요.
+
+TypeScript
+"use client"
+
+import { useState } from "react"
+import { Check, X } from "lucide-react"
+
+// 하객이 입력할 정보
+interface RsvpData {
+  name: string
+  attendance: "confirmed" | "declined" | "pending"
+  mealType: "adult" | "child" | "none" // 식사 여부
+  side: "groom" | "bride" // 신랑측/신부측
+  phone: string
+  memo: string
+}
+
+export function RsvpFormSection() {
+  const [formData, setFormData] = useState<RsvpData>({
+    name: "",
+    attendance: "confirmed",
+    mealType: "adult",
+    side: "groom",
+    phone: "",
+    memo: ""
+  })
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleSubmit = async () => {
+    if (!formData.name) return alert("성함을 입력해주세요.")
+
+    try {
+      // 1. 하객 매니저 API로 데이터 전송 (자동 등록의 핵심!)
+      const res = await fetch("/api/guests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: "default", // 실제로는 해당 청첩장 주인의 ID
+          ...formData,
+          relationship: "기타", // 기본값 설정
+          giftAmount: 0,
+          invitationSent: true // 청첩장을 보고 들어왔으므로 true
+        }),
+      })
+
+      if (res.ok) {
+        setIsSubmitted(true)
+      }
+    } catch (error) {
+      console.error("RSVP 전송 실패", error)
+      alert("오류가 발생했습니다. 다시 시도해주세요.")
+    }
+  }
+
+  if (isSubmitted) {
+    return (
+      <div className="bg-[#F2F4F6] rounded-[20px] p-8 text-center my-10">
+        <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Check className="w-6 h-6 text-white" />
+        </div>
+        <h3 className="text-[18px] font-bold text-[#191F28] mb-2">참석 의사가 전달되었어요!</h3>
+        <p className="text-[14px] text-[#8B95A1]">
+          소중한 시간 내어주셔서 감사합니다.<br/>예식일에 뵙겠습니다.
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="bg-white rounded-[24px] shadow-sm border border-[#F2F4F6] p-6 my-10 mx-4">
+      <h3 className="text-[20px] font-bold text-[#191F28] text-center mb-2">
+        참석 의사 전달하기
+      </h3>
+      <p className="text-[13px] text-[#8B95A1] text-center mb-6">
+        축하하는 마음을 미리 전해주세요.<br/>원활한 예식 진행에 큰 도움이 됩니다.
+      </p>
+
+      <div className="space-y-4">
+        {/* 구분 (신랑측/신부측) */}
+        <div className="flex bg-[#F2F4F6] rounded-[12px] p-1">
+          <button
+            onClick={() => setFormData({...formData, side: "groom"})}
+            className={`flex-1 py-3 rounded-[10px] text-[14px] font-medium transition-all ${
+              formData.side === "groom" ? "bg-white text-blue-500 shadow-sm" : "text-[#8B95A1]"
+            }`}
+          >
+            신랑측 손님
+          </button>
+          <button
+            onClick={() => setFormData({...formData, side: "bride"})}
+            className={`flex-1 py-3 rounded-[10px] text-[14px] font-medium transition-all ${
+              formData.side === "bride" ? "bg-white text-pink-500 shadow-sm" : "text-[#8B95A1]"
+            }`}
+          >
+            신부측 손님
+          </button>
+        </div>
+
+        {/* 참석 여부 */}
+        <div className="flex gap-2">
+          <button
+            onClick={() => setFormData({...formData, attendance: "confirmed"})}
+            className={`flex-1 py-3.5 rounded-[12px] border transition-all font-medium ${
+              formData.attendance === "confirmed" 
+                ? "border-blue-500 bg-blue-50 text-blue-600" 
+                : "border-[#E5E8EB] bg-white text-[#4E5968]"
+            }`}
+          >
+            참석할게요 🙆🏻‍♂️
+          </button>
+          <button
+            onClick={() => setFormData({...formData, attendance: "declined"})}
+            className={`flex-1 py-3.5 rounded-[12px] border transition-all font-medium ${
+              formData.attendance === "declined" 
+                ? "border-[#FF6B6B] bg-red-50 text-[#FF6B6B]" 
+                : "border-[#E5E8EB] bg-white text-[#4E5968]"
+            }`}
+          >
+            마음만 보낼게요 🙏🏻
+          </button>
+        </div>
+
+        {/* 이름 입력 */}
+        <div>
+          <label className="text-[13px] text-[#8B95A1] mb-1.5 block ml-1">성함</label>
+          <input 
+            type="text" 
+            placeholder="성함을 입력해주세요"
+            value={formData.name}
+            onChange={(e) => setFormData({...formData, name: e.target.value})}
+            className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[14px] text-[15px] outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* 연락처 (선택) */}
+        <div>
+          <label className="text-[13px] text-[#8B95A1] mb-1.5 block ml-1">연락처 (선택)</label>
+          <input 
+            type="tel" 
+            placeholder="010-0000-0000"
+            value={formData.phone}
+            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+            className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[14px] text-[15px] outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* 메시지 */}
+        <textarea 
+          placeholder="신랑신부에게 전할 축하 메시지를 남겨주세요"
+          rows={3}
+          value={formData.memo}
+          onChange={(e) => setFormData({...formData, memo: e.target.value})}
+          className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[14px] text-[15px] outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+        />
+
+        <button 
+          onClick={handleSubmit}
+          className="w-full py-4 bg-[#191F28] text-white font-bold rounded-[14px] text-[16px] mt-2 hover:bg-black transition-colors"
+        >
+          참석 의사 전달하기
+        </button>
+      </div>
+    </div>
+  )
+}
+✨ 이렇게 하면 어떻게 되나요?
+현정 님이 청첩장을 만들어 카톡으로 공유합니다.
+
+친구들이 청첩장을 열어보고 맨 밑에 있는 [참석할게요] 버튼을 누르고 이름을 씁니다.
+
+그 즉시 하객 매니저 앱을 켜보면, 친구 이름이 '참석(Confirmed)' 상태로 리스트에 뿅! 하고 나타납니다.
+
+현정 님은 들어온 명단을 보고 "어? 철수도 오네?" 하고 확인만 하면 됩니다. (일일이 입력할 필요 X)

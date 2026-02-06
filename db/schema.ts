@@ -157,6 +157,7 @@ export const weddingInfo = pgTable('wedding_info', {
   mealCostChild: integer('meal_cost_child').default(0),
   invitationCount: integer('invitation_count').default(0),
   physicalInvitationCount: integer('physical_invitation_count').default(0),
+  invitationData: jsonb('invitation_data'),
   createdAt: timestamp('created_at').defaultNow(),
 });
 
