@@ -23,6 +23,7 @@ import {
   Calendar,
 } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 interface AccountInfo {
   bank: string;
@@ -158,7 +159,7 @@ const initialData: InvitationData = {
   openingType: "type1",
   openingScenes: [],
   openingTexts: ["", "", ""],
-  mainTemplate: "poster",
+  mainTemplate: "cinematic",
   mainPhotos: [],
   textColor: "dark",
   groomName: "",
@@ -273,87 +274,88 @@ const MUSIC_TRACKS = [
 ];
 
 const MAIN_TEMPLATES = [
-  { id: "poster", label: "포스터", premium: true },
-  { id: "polaroid", label: "폴라로이드", premium: true },
-  { id: "magazine", label: "매거진", premium: true },
-  { id: "chat", label: "채팅", premium: true },
+  { id: "cinematic", label: "시네마틱", premium: true },
   { id: "modern", label: "모던", premium: false },
   { id: "classic", label: "클래식", premium: false },
-  { id: "none", label: "템플릿 없음", premium: false },
+  { id: "magazine", label: "매거진", premium: true },
+  { id: "polaroid", label: "폴라로이드", premium: true },
+  { id: "chat", label: "채팅", premium: true },
 ];
 
 function TemplateThumbnail({ id }: { id: string }) {
   switch (id) {
-    case "poster":
+    case "cinematic":
       return (
         <div
-          className="w-full h-full rounded-[6px] overflow-hidden"
+          className="w-full h-full rounded-[6px] overflow-hidden relative"
           style={{
-            background: "linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 100%)",
+            background: "linear-gradient(180deg, #2a2520 0%, #1a1510 100%)",
           }}
         >
-          <div className="w-full h-full relative">
-            <div className="absolute bottom-2 left-2 w-[30px] h-[3px] bg-white/80 rounded-full" />
-            <div className="absolute bottom-[14px] left-2 w-[20px] h-[2px] bg-white/50 rounded-full" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <div className="text-[7px] text-[#C5A572]/80 italic" style={{ fontFamily: "Georgia, serif" }}>Save</div>
+            <div className="text-[9px] text-[#C5A572] italic font-bold" style={{ fontFamily: "Georgia, serif" }}>the Date</div>
           </div>
-        </div>
-      );
-    case "polaroid":
-      return (
-        <div className="w-full h-full flex items-center justify-center bg-[#F8F9FA] rounded-[6px]">
-          <div
-            className="bg-white shadow-sm p-1.5 pb-3"
-            style={{ width: "42px" }}
-          >
-            <div className="w-full aspect-square bg-[#D1D6DB] rounded-[2px]" />
-            <div className="w-[20px] h-[2px] bg-[#D1D6DB] mx-auto mt-1.5 rounded-full" />
+          <div className="absolute bottom-2 left-0 right-0 flex flex-col items-center">
+            <div className="w-[30px] h-[2px] bg-[#C5A572]/40 rounded-full mb-1" />
+            <div className="w-[20px] h-[1.5px] bg-white/30 rounded-full" />
           </div>
-        </div>
-      );
-    case "magazine":
-      return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden bg-white flex flex-col">
-          <div className="w-full h-[50%] bg-[#D1D6DB]" />
-          <div className="flex-1 flex flex-col items-center justify-center gap-1 p-2">
-            <div className="w-[28px] h-[2px] bg-[#B0B8C1] rounded-full" />
-            <div className="w-[20px] h-[2px] bg-[#D1D6DB] rounded-full" />
-          </div>
-        </div>
-      );
-    case "chat":
-      return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#B2C7D9] p-2 flex flex-col gap-1.5">
-          <div className="w-[28px] h-[8px] bg-white rounded-[4px] rounded-tl-[1px] self-start" />
-          <div className="w-[24px] h-[8px] bg-[#FFE08C] rounded-[4px] rounded-tr-[1px] self-end" />
-          <div className="w-[28px] h-[8px] bg-white rounded-[4px] rounded-tl-[1px] self-start" />
         </div>
       );
     case "modern":
       return (
         <div className="w-full h-full rounded-[6px] overflow-hidden bg-white flex flex-col items-center justify-center gap-1.5 p-2">
+          <div className="text-[6px] text-[#8B95A1] italic" style={{ fontFamily: "Georgia, serif" }}>Wedding</div>
           <div className="w-[28px] h-[32px] bg-[#E5E8EB] rounded-[4px]" />
-          <div className="w-[16px] h-[1px] bg-[#FF8A80]" />
-          <div className="w-[22px] h-[2px] bg-[#D1D6DB] rounded-full" />
+          <div className="text-[5px] text-[#B0B8C1]">Our New Beginning</div>
+          <div className="w-[22px] h-[1.5px] bg-[#D1D6DB] rounded-full" />
         </div>
       );
     case "classic":
       return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#FBF8F1] flex items-center justify-center p-2">
-          <div className="w-full h-full border-double border-[#C5A572] border-[2px] flex flex-col items-center justify-center gap-1">
-            <div className="w-[20px] h-[2px] bg-[#C5A572]/50 rounded-full" />
-            <div
-              className="text-[6px] text-[#C5A572]/70"
-              style={{ fontFamily: "Georgia, serif" }}
-            >
-              A & B
-            </div>
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-white flex flex-col items-center justify-center p-2">
+          <div className="w-[24px] h-[1px] bg-[#D1D6DB] mb-1" />
+          <div className="text-[10px] text-[#191F28] font-bold leading-none">DEC</div>
+          <div className="text-[16px] text-[#191F28] font-bold leading-none">14</div>
+          <div className="w-[24px] h-[1px] bg-[#D1D6DB] mt-1 mb-1" />
+          <div className="w-[28px] h-[24px] bg-[#E5E8EB] rounded-[2px] mt-1" />
+        </div>
+      );
+    case "magazine":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#1a1a1a] relative">
+          <div className="absolute top-2 left-0 right-0 text-center">
+            <div className="text-[6px] text-white font-black tracking-wider leading-none">WEVE</div>
+            <div className="text-[5px] text-white font-bold tracking-wider leading-none">WEDDING</div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-[#333D4B]" />
+          <div className="absolute bottom-2 left-2">
+            <div className="w-[20px] h-[1.5px] bg-white/50 rounded-full mb-1" />
+            <div className="w-[14px] h-[1px] bg-white/30 rounded-full" />
           </div>
         </div>
       );
-    case "none":
+    case "polaroid":
       return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#F2F4F6] flex items-center justify-center">
-          <X className="w-5 h-5 text-[#B0B8C1]" />
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#FAF6F0] flex flex-col items-center justify-center p-2 relative">
+          <div className="text-[7px] text-[#8B7B4B] font-bold italic mb-1" style={{ fontFamily: "Georgia, serif" }}>결혼합니다</div>
+          <div className="w-[32px] h-[36px] bg-[#E8DFD0] rounded-[3px]" />
+          <div className="absolute top-1 right-1 w-[8px] h-[10px]">
+            <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #7BA45C 0%, #9BB878 100%)", clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }} />
+          </div>
+          <div className="absolute bottom-1 left-1 w-[8px] h-[10px]">
+            <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #7BA45C 0%, #9BB878 100%)", clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }} />
+          </div>
+        </div>
+      );
+    case "chat":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#F5F0E8] p-2 flex flex-col items-center justify-center gap-1">
+          <div className="text-[5px] text-[#8B7B6B] text-center leading-tight">우리의 결혼식에<br/>초대합니다</div>
+          <div className="w-[24px] h-[24px] rounded-full bg-[#E8DFD0] flex items-center justify-center">
+            <div className="w-[12px] h-[12px] rounded-full bg-[#D4C8B8]" />
+          </div>
+          <div className="w-[20px] h-[1.5px] bg-[#D4C8B8] rounded-full" />
         </div>
       );
     default:
@@ -867,7 +869,13 @@ function ImageUploadBox({
 }
 
 export default function InvitationEditorPage() {
-  const [data, setData] = useState<InvitationData>(initialData);
+  const searchParams = useSearchParams();
+  const templateParam = searchParams.get("template");
+  const [data, setData] = useState<InvitationData>(() => {
+    const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat"];
+    const template = templateParam && validTemplates.includes(templateParam) ? templateParam : initialData.mainTemplate;
+    return { ...initialData, mainTemplate: template };
+  });
   const [showPreview, setShowPreview] = useState(false);
   const [showShareOptions, setShowShareOptions] = useState(false);
   const [isSaving, setIsSaving] = useState(false);

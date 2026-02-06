@@ -124,7 +124,7 @@ export default function InvitationGalleryPage() {
 
   const handleCreate = () => {
     if (currentTemplate.type === "basic" || isPremiumUser) {
-      router.push("/wedding/editor")
+      router.push(`/wedding/editor?template=${currentTemplate.id}`)
     } else {
       setShowPaymentModal(true)
     }
@@ -141,7 +141,7 @@ export default function InvitationGalleryPage() {
         setShowPaymentModal(false)
         setPaymentSuccess(false)
         showToastMessage("결제가 완료되었습니다!")
-        setTimeout(() => router.push("/wedding/editor"), 1200)
+        setTimeout(() => router.push(`/wedding/editor?template=${currentTemplate.id}`), 1200)
       }, 1000)
     }, 2000)
   }
