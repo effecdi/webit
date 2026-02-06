@@ -189,19 +189,7 @@ export function CoupleCalendar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#E5E8EB]">
-        <div className="flex items-center justify-between px-5 h-14 max-w-md mx-auto">
-          <Link href="/dating" className="p-2 -ml-2 rounded-full hover:bg-[#F2F4F6]">
-            <ChevronLeft className="w-6 h-6 text-[#191F28]" />
-          </Link>
-          <h1 className="text-[17px] font-bold text-[#191F28]">캘린더</h1>
-          <button className="p-2 -mr-2 rounded-full hover:bg-[#F2F4F6]" onClick={() => { setSelectedDate(new Date().toISOString().split('T')[0]); setShowModal(true); }}>
-            <Plus className="w-6 h-6 text-[#191F28]" />
-          </button>
-        </div>
-      </header>
-
-      <div className="px-5 py-5 max-w-md mx-auto">
+      <div className="px-5 pt-5 pb-5 max-w-md mx-auto">
         <div className="bg-white rounded-[20px] shadow-weve overflow-hidden">
           <div className="flex items-center justify-between p-4 border-b border-[#F2F4F6]">
             <button onClick={prevMonth} className="p-2 rounded-full hover:bg-[#F2F4F6]">
@@ -446,6 +434,14 @@ export function CoupleCalendar() {
           </div>
         </div>
       )}
+
+      <button
+        onClick={() => { setSelectedDate(new Date().toISOString().split('T')[0]); setShowModal(true); }}
+        className="fixed bottom-24 right-5 z-40 w-14 h-14 bg-pink-500 hover:bg-pink-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all active:scale-95"
+        data-testid="button-add-schedule-fab"
+      >
+        <Plus className="w-6 h-6" />
+      </button>
 
       <div className="h-20" />
 

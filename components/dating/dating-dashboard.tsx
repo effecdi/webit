@@ -29,12 +29,48 @@ import moodNormal from "@/attached_assets/nomal_1770352834619.png";
 import moodSad from "@/attached_assets/sad_1770352834620.png";
 import moodAngry from "@/attached_assets/angly_1770352834617.png";
 
-const MOOD_OPTIONS: { id: string; image: typeof moodLove; label: string; color: string; bgColor: string }[] = [
-  { id: "love", image: moodLove, label: "사랑", color: "text-pink-500", bgColor: "bg-pink-100" },
-  { id: "happy", image: moodHappy, label: "행복", color: "text-amber-500", bgColor: "bg-amber-100" },
-  { id: "normal", image: moodNormal, label: "보통", color: "text-green-500", bgColor: "bg-green-100" },
-  { id: "sad", image: moodSad, label: "슬픔", color: "text-purple-500", bgColor: "bg-purple-100" },
-  { id: "angry", image: moodAngry, label: "화남", color: "text-red-500", bgColor: "bg-red-100" },
+const MOOD_OPTIONS: {
+  id: string;
+  image: typeof moodLove;
+  label: string;
+  color: string;
+  bgColor: string;
+}[] = [
+  {
+    id: "love",
+    image: moodLove,
+    label: "사랑",
+    color: "text-pink-500",
+    bgColor: "bg-pink-100",
+  },
+  {
+    id: "happy",
+    image: moodHappy,
+    label: "행복",
+    color: "text-amber-500",
+    bgColor: "bg-amber-100",
+  },
+  {
+    id: "normal",
+    image: moodNormal,
+    label: "보통",
+    color: "text-green-500",
+    bgColor: "bg-green-100",
+  },
+  {
+    id: "sad",
+    image: moodSad,
+    label: "슬픔",
+    color: "text-purple-500",
+    bgColor: "bg-purple-100",
+  },
+  {
+    id: "angry",
+    image: moodAngry,
+    label: "화남",
+    color: "text-red-500",
+    bgColor: "bg-red-100",
+  },
 ];
 import { ModeSwitch } from "@/components/mode-switch";
 import { TravelEntryCard } from "@/components/travel/travel-entry-card";
@@ -248,8 +284,8 @@ export function DatingDashboard() {
 
     const handleFocus = () => {
       fetch("/api/mood?userId=default")
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           if (data.myMood) setMyMood(data.myMood);
           if (data.partnerMood) setPartnerMood(data.partnerMood);
         })
@@ -279,15 +315,21 @@ export function DatingDashboard() {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const [todosRes, notificationsRes, travelsRes, photosRes, eventsRes, moodRes] =
-        await Promise.all([
-          fetch("/api/todos?userId=default&mode=dating"),
-          fetch("/api/notifications?userId=default&mode=dating"),
-          fetch("/api/travels?userId=default"),
-          fetch("/api/photos?userId=default&mode=dating"),
-          fetch("/api/events?userId=default&mode=dating"),
-          fetch("/api/mood?userId=default"),
-        ]);
+      const [
+        todosRes,
+        notificationsRes,
+        travelsRes,
+        photosRes,
+        eventsRes,
+        moodRes,
+      ] = await Promise.all([
+        fetch("/api/todos?userId=default&mode=dating"),
+        fetch("/api/notifications?userId=default&mode=dating"),
+        fetch("/api/travels?userId=default"),
+        fetch("/api/photos?userId=default&mode=dating"),
+        fetch("/api/events?userId=default&mode=dating"),
+        fetch("/api/mood?userId=default"),
+      ]);
 
       const todosData = await todosRes.json();
       const notificationsData = await notificationsRes.json();
@@ -533,18 +575,35 @@ export function DatingDashboard() {
           <div className="flex flex-col items-end gap-2">
             <div className="flex -space-x-2">
               {(() => {
-                const myMoodOption = MOOD_OPTIONS.find(m => m.id === myMood) || MOOD_OPTIONS[0];
+                const myMoodOption =
+                  MOOD_OPTIONS.find((m) => m.id === myMood) || MOOD_OPTIONS[0];
                 return (
-                  <div className={`w-16 h-16 ${myMoodOption.bgColor} rounded-2xl flex items-center justify-center transition-all duration-300`}>
-                    <Image src={myMoodOption.image} alt={myMoodOption.label} width={36} height={36} />
+                  <div
+                    className={`w-16 h-16 ${myMoodOption.bgColor} rounded-2xl flex items-center justify-center transition-all duration-300`}
+                  >
+                    <Image
+                      src={myMoodOption.image}
+                      alt={myMoodOption.label}
+                      width={36}
+                      height={36}
+                    />
                   </div>
                 );
               })()}
               {(() => {
-                const partnerMoodOption = MOOD_OPTIONS.find(m => m.id === partnerMood) || MOOD_OPTIONS[0];
+                const partnerMoodOption =
+                  MOOD_OPTIONS.find((m) => m.id === partnerMood) ||
+                  MOOD_OPTIONS[0];
                 return (
-                  <div className={`w-16 h-16 ${partnerMoodOption.bgColor} rounded-2xl flex items-center justify-center transition-all duration-300`}>
-                    <Image src={partnerMoodOption.image} alt={partnerMoodOption.label} width={36} height={36} />
+                  <div
+                    className={`w-16 h-16 ${partnerMoodOption.bgColor} rounded-2xl flex items-center justify-center transition-all duration-300`}
+                  >
+                    <Image
+                      src={partnerMoodOption.image}
+                      alt={partnerMoodOption.label}
+                      width={36}
+                      height={36}
+                    />
                   </div>
                 );
               })()}
@@ -674,7 +733,6 @@ export function DatingDashboard() {
             </div>
           </div>
           <div className="mb-3">
-            <p className="text-[12px] font-medium text-[#8B95A1] mb-1.5">{coupleNames.my}의 기분</p>
             <div className="flex gap-2">
               {MOOD_OPTIONS.map((mood) => (
                 <button
@@ -682,28 +740,20 @@ export function DatingDashboard() {
                   onClick={() => handleMoodChange("me", mood.id)}
                   className={`flex-1 py-2.5 rounded-[12px] transition-all flex flex-col items-center gap-1 ${
                     myMood === mood.id
-                      ? `${mood.bgColor} scale-105 ring-2 ring-offset-1 ring-pink-300`
+                      ? `${mood.bgColor} scale-105`
                       : "bg-[#F2F4F6] hover:bg-pink-50"
                   }`}
                   data-testid={`button-my-mood-${mood.id}`}
                 >
-                  <Image src={mood.image} alt={mood.label} width={28} height={28} className={`${myMood === mood.id ? "" : "opacity-50 grayscale"} transition-all`} />
+                  <Image
+                    src={mood.image}
+                    alt={mood.label}
+                    width={28}
+                    height={28}
+                    className={`${myMood === mood.id ? "" : "opacity-50 grayscale"} transition-all`}
+                  />
                 </button>
               ))}
-            </div>
-          </div>
-          <div>
-            <p className="text-[12px] font-medium text-[#8B95A1] mb-1.5">{coupleNames.partner}의 기분</p>
-            <div className="flex gap-2">
-              {(() => {
-                const partnerMoodOption = MOOD_OPTIONS.find(m => m.id === partnerMood) || MOOD_OPTIONS[0];
-                return (
-                  <div className={`flex-1 py-2.5 rounded-[12px] ${partnerMoodOption.bgColor} flex items-center justify-center gap-2`}>
-                    <Image src={partnerMoodOption.image} alt={partnerMoodOption.label} width={28} height={28} />
-                    <span className={`text-[13px] font-medium ${partnerMoodOption.color}`}>{partnerMoodOption.label}</span>
-                  </div>
-                );
-              })()}
             </div>
           </div>
         </div>
