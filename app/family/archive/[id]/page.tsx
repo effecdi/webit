@@ -10,6 +10,8 @@ import {
   Pause,
   Volume2,
   VolumeX,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react"
 import { FamilyBottomNav } from "@/components/family/family-bottom-nav"
 
@@ -371,9 +373,108 @@ function SlideshowPlayer({
   )
 }
 
+function PhotoViewer({
+  photos,
+  initialIndex,
+  onClose,
+}: {
+  photos: string[]
+  initialIndex: number
+  onClose: () => void
+}) {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchDelta, setTouchDelta] = useState(0)
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose()
+      if (e.key === "ArrowLeft") setCurrentIndex((p) => Math.max(0, p - 1))
+      if (e.key === "ArrowRight") setCurrentIndex((p) => Math.min(photos.length - 1, p + 1))
+    }
+    window.addEventListener("keydown", handleKey)
+    return () => window.removeEventListener("keydown", handleKey)
+  }, [photos.length, onClose])
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX)
+    setTouchDelta(0)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStart === null) return
+    setTouchDelta(e.touches[0].clientX - touchStart)
+  }
+
+  const handleTouchEnd = () => {
+    if (Math.abs(touchDelta) > 60) {
+      if (touchDelta < 0 && currentIndex < photos.length - 1) {
+        setCurrentIndex(currentIndex + 1)
+      } else if (touchDelta > 0 && currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1)
+      }
+    }
+    setTouchStart(null)
+    setTouchDelta(0)
+  }
+
+  return (
+    <div className="fixed inset-0 z-[90] bg-black" data-testid="photo-viewer">
+      <div
+        className="w-full h-full flex items-center justify-center"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <img
+          src={photos[currentIndex]}
+          alt=""
+          className="max-w-full max-h-full object-contain transition-transform duration-200"
+          style={{ transform: touchStart !== null ? `translateX(${touchDelta}px)` : undefined }}
+          data-testid="img-viewer-photo"
+        />
+      </div>
+
+      <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 pt-14">
+        <button
+          onClick={onClose}
+          className="w-9 h-9 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-sm"
+          data-testid="button-close-viewer"
+        >
+          <X className="w-5 h-5 text-white" />
+        </button>
+        <span className="text-[14px] text-white/70 font-medium" data-testid="text-photo-counter">
+          {currentIndex + 1} / {photos.length}
+        </span>
+      </div>
+
+      {currentIndex > 0 && (
+        <button
+          onClick={() => setCurrentIndex(currentIndex - 1)}
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center"
+          data-testid="button-photo-prev"
+        >
+          <ChevronLeft className="w-5 h-5 text-white" />
+        </button>
+      )}
+
+      {currentIndex < photos.length - 1 && (
+        <button
+          onClick={() => setCurrentIndex(currentIndex + 1)}
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center"
+          data-testid="button-photo-next"
+        >
+          <ChevronRight className="w-5 h-5 text-white" />
+        </button>
+      )}
+    </div>
+  )
+}
+
 export default function ArchiveDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
   const [showSlideshow, setShowSlideshow] = useState(false)
+  const [viewerIndex, setViewerIndex] = useState<number | null>(null)
 
   const archive = ARCHIVE_DATA[id]
 
@@ -396,14 +497,18 @@ export default function ArchiveDetailPage({ params }: { params: Promise<{ id: st
   return (
     <div className="min-h-screen bg-black pb-24">
       <div className="relative">
-        <div className="relative" style={{ aspectRatio: "3/4" }}>
+        <div
+          className="relative cursor-pointer"
+          style={{ aspectRatio: "3/4" }}
+          onClick={() => setViewerIndex(0)}
+        >
           <img
             src={heroPhoto}
             alt={archive.title}
             className="w-full h-full object-cover"
             data-testid="img-hero-photo"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none" />
         </div>
 
         <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 pt-14">
@@ -467,31 +572,43 @@ export default function ArchiveDetailPage({ params }: { params: Promise<{ id: st
               key={rowIdx}
               className="flex gap-0.5 mb-0.5"
             >
-              {row.map((photo, colIdx) => (
-                <div
-                  key={colIdx}
-                  className="relative overflow-hidden"
-                  style={{
-                    flex: row.length === 3
-                      ? "1 1 33.333%"
-                      : row.length === 2
-                        ? colIdx === 0 ? "1 1 60%" : "1 1 40%"
-                        : "1 1 100%",
-                    aspectRatio: row.length === 3 ? "1/1" : row.length === 2 ? (colIdx === 0 ? "4/5" : "3/5") : "16/9",
-                  }}
-                  data-testid={`img-grid-photo-${rowIdx}-${colIdx}`}
-                >
-                  <img
-                    src={photo}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
+              {row.map((photo, colIdx) => {
+                const photoIndex = allPhotos.indexOf(photo)
+                return (
+                  <div
+                    key={colIdx}
+                    className="relative overflow-hidden cursor-pointer"
+                    style={{
+                      flex: row.length === 3
+                        ? "1 1 33.333%"
+                        : row.length === 2
+                          ? colIdx === 0 ? "1 1 60%" : "1 1 40%"
+                          : "1 1 100%",
+                      aspectRatio: row.length === 3 ? "1/1" : row.length === 2 ? (colIdx === 0 ? "4/5" : "3/5") : "16/9",
+                    }}
+                    onClick={() => setViewerIndex(photoIndex)}
+                    data-testid={`img-grid-photo-${rowIdx}-${colIdx}`}
+                  >
+                    <img
+                      src={photo}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )
+              })}
             </div>
           ))
         })()}
       </div>
+
+      {viewerIndex !== null && (
+        <PhotoViewer
+          photos={allPhotos}
+          initialIndex={viewerIndex}
+          onClose={() => setViewerIndex(null)}
+        />
+      )}
 
       {showSlideshow && (
         <SlideshowPlayer
