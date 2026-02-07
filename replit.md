@@ -143,7 +143,7 @@ Preferred communication style: Simple, everyday language.
   - **Gallery Template**: Art Gallery Minimalist - matte off-white (#F5F5F5) bg, masonry 3-photo collage hero, sharp corners, tracking-widest sans-serif, no shadows
   - **Ending Styles**: Card (rounded photo + text below), Full (photo with dark overlay, text centered over), Simple (photo with gradient, text at bottom)
   - **Ending Text Color**: Configurable (white/black/coral) for Full and Simple ending styles
-  - **AI Recommendations**: Template-based random generation for title, message, funding guidance/thanks, notice title, ending content (no API calls)
+  - **AI Recommendations**: OpenAI API (gpt-4o-mini via Replit AI Integrations) generates title, message, funding guidance/thanks, notice title, ending content with couple context (names, date, venue). API route: `/api/ai/invitation-text`
   - **Info Tooltips**: Interactive info icons on section headers with contextual guidance text
   - **Editor UX**: Transport item delete, share image auto-fill from invitation data, deceased checkboxes with flower option
 - **Membership** (Dating/Family only): Two-tier subscription system

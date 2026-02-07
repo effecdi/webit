@@ -13,6 +13,7 @@ import {
   Plus,
   Trash2,
   Sparkles,
+  Loader2,
   ChevronLeft,
   ChevronRight,
   Info,
@@ -907,13 +908,14 @@ export default function InvitationEditorPage() {
   const searchParams = useSearchParams();
   const templateParam = searchParams.get("template");
   const [data, setData] = useState<InvitationData>(() => {
-    const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat"];
+    const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "gallery"];
     const template = templateParam && validTemplates.includes(templateParam) ? templateParam : initialData.mainTemplate;
     return { ...initialData, mainTemplate: template };
   });
   const [showPreview, setShowPreview] = useState(false);
   const [showShareOptions, setShowShareOptions] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [aiLoading, setAiLoading] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const galleryInputRef = useRef<HTMLInputElement>(null);
@@ -983,82 +985,38 @@ export default function InvitationEditorPage() {
     }
   };
 
-  const generateAIMessage = () => {
-    const templates = [
-      "서로가 마주보며 다져온 사랑을\n이제 함께 한 곳을 바라보며\n걸어가고자 합니다.\n\n저희 두 사람이 사랑의 이름으로\n지금부터 함께 하고자 합니다.\n\n오셔서 축복해 주시면\n더없는 기쁨으로 간직하겠습니다.",
-      "평생을 함께하고 싶은 사람을 만났습니다.\n\n함께 걸어온 날보다\n함께 걸어갈 날이 더 많기에\n설레는 마음으로 첫 발을 내딛습니다.\n\n저희의 새 출발을 축복해 주세요.",
-      "소중한 분들을 모시고 저희 두 사람이 새로운 출발을 하려 합니다.\n오셔서 따뜻한 축복으로 함께해 주시면 감사하겠습니다.",
-    ];
-    updateField(
-      "message",
-      templates[Math.floor(Math.random() * templates.length)],
-    );
+  const generateAIText = async (type: string, field: keyof InvitationData) => {
+    if (aiLoading) return;
+    setAiLoading(type);
+    try {
+      const context: Record<string, string> = {};
+      if (data.groomName) context.groomName = data.groomName;
+      if (data.brideName) context.brideName = data.brideName;
+      if (data.weddingDate) context.date = data.weddingDate;
+      if (data.venue) context.venue = data.venue;
+
+      const res = await fetch("/api/ai/invitation-text", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type, context }),
+      });
+      const result = await res.json();
+      if (res.ok && result.text) {
+        updateField(field, result.text);
+      }
+    } catch (err) {
+      console.error("AI generation failed:", err);
+    } finally {
+      setAiLoading(null);
+    }
   };
 
-  const generateAITitle = () => {
-    const templates = [
-      "소중한 날에 초대합니다",
-      "함께 해주세요",
-      "사랑으로 하나 되는 날",
-      "우리의 특별한 시작",
-      "두 사람의 약속",
-      "영원을 약속하는 날",
-    ];
-    updateField(
-      "invitationTitle",
-      templates[Math.floor(Math.random() * templates.length)],
-    );
-  };
-
-  const generateFundingMessage = () => {
-    const templates = [
-      "평범한 축의금 대신\n의미 있는 선물 한 조각이 모여\n두 사람의 특별한 순간을 만들어 주세요.",
-      "저희의 새 출발을 위해\n따뜻한 마음을 모아주시면\n소중히 간직하겠습니다.",
-      "축하의 마음을 담아\n저희의 신혼 생활에\n작은 보탬이 되어주세요.",
-    ];
-    updateField(
-      "fundingMessage",
-      templates[Math.floor(Math.random() * templates.length)],
-    );
-  };
-
-  const generateFundingThanks = () => {
-    const templates = [
-      "정성껏 전해주신 마음,\n오래 기억할게요.\n감사합니다.",
-      "따뜻한 축하에 진심으로 감사드립니다.\n행복하게 잘 살겠습니다.",
-      "소중한 마음 감사합니다.\n보내주신 사랑 잊지 않겠습니다.",
-    ];
-    updateField(
-      "fundingThanks",
-      templates[Math.floor(Math.random() * templates.length)],
-    );
-  };
-
-  const generateNoticeTitle = () => {
-    const templates = [
-      "안내사항",
-      "하객 여러분께 안내드립니다",
-      "참석 안내",
-      "알려드립니다",
-      "식장 안내",
-    ];
-    updateField(
-      "noticeTitle",
-      templates[Math.floor(Math.random() * templates.length)],
-    );
-  };
-
-  const generateEndingContent = () => {
-    const templates = [
-      "소중한 분들의 축복 속에서\n두 사람이 하나 되어\n새로운 출발을 합니다.\n따뜻한 마음으로 지켜봐 주세요.",
-      "함께해 주셔서 감사합니다.\n여러분의 축복을 가슴 깊이 새기며\n행복하게 살겠습니다.",
-      "오늘 이 자리에 함께해 주신\n모든 분들께 감사드립니다.\n늘 행복한 가정을 이루겠습니다.",
-    ];
-    updateField(
-      "endingContent",
-      templates[Math.floor(Math.random() * templates.length)],
-    );
-  };
+  const generateAIMessage = () => generateAIText("message", "message");
+  const generateAITitle = () => generateAIText("title", "invitationTitle");
+  const generateFundingMessage = () => generateAIText("fundingMessage", "fundingMessage");
+  const generateFundingThanks = () => generateAIText("fundingThanks", "fundingThanks");
+  const generateNoticeTitle = () => generateAIText("noticeTitle", "noticeTitle");
+  const generateEndingContent = () => generateAIText("endingContent", "endingContent");
 
   const handleGalleryUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -1603,18 +1561,20 @@ export default function InvitationEditorPage() {
                     <div className="flex gap-2 mt-2">
                       <button
                         onClick={generateAITitle}
-                        className="flex items-center gap-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                        disabled={!!aiLoading}
+                        className="flex items-center gap-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium disabled:opacity-50"
                         data-testid="button-ai-title"
                       >
-                        <Sparkles className="w-3 h-3" />
+                        {aiLoading === "title" ? <Loader2 className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
                         제목 AI 추천
                       </button>
                       <button
                         onClick={generateAIMessage}
-                        className="flex items-center gap-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                        disabled={!!aiLoading}
+                        className="flex items-center gap-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium disabled:opacity-50"
                         data-testid="button-ai-message"
                       >
-                        <Sparkles className="w-3 h-3" />
+                        {aiLoading === "message" ? <Loader2 className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
                         인사말 AI 추천
                       </button>
                     </div>
@@ -1862,10 +1822,11 @@ export default function InvitationEditorPage() {
                     </p>
                     <button
                       onClick={generateFundingMessage}
-                      className="flex items-center gap-1 mt-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                      disabled={!!aiLoading}
+                      className="flex items-center gap-1 mt-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium disabled:opacity-50"
                       data-testid="button-ai-funding"
                     >
-                      <Sparkles className="w-3 h-3" />
+                      {aiLoading === "fundingMessage" ? <Loader2 className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
                       AI 추천
                     </button>
                   </div>
@@ -1925,10 +1886,11 @@ export default function InvitationEditorPage() {
                       />
                       <button
                         onClick={generateFundingThanks}
-                        className="flex items-center gap-1 mt-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                        disabled={!!aiLoading}
+                        className="flex items-center gap-1 mt-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium disabled:opacity-50"
                         data-testid="button-ai-funding-thanks"
                       >
-                        <Sparkles className="w-3 h-3" />
+                        {aiLoading === "fundingThanks" ? <Loader2 className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
                         AI 추천
                       </button>
                     </div>
@@ -2503,10 +2465,11 @@ export default function InvitationEditorPage() {
                   />
                   <button
                     onClick={generateNoticeTitle}
-                    className="flex items-center gap-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                    disabled={!!aiLoading}
+                    className="flex items-center gap-1 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium disabled:opacity-50"
                     data-testid="button-ai-notice"
                   >
-                    <Sparkles className="w-3 h-3" />
+                    {aiLoading === "noticeTitle" ? <Loader2 className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
                     제목 AI 추천
                   </button>
                   <button
@@ -2595,10 +2558,11 @@ export default function InvitationEditorPage() {
                       />
                       <button
                         onClick={generateEndingContent}
-                        className="flex items-center gap-1 mt-2 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium"
+                        disabled={!!aiLoading}
+                        className="flex items-center gap-1 mt-2 px-3 py-1.5 bg-[#FFF0EE] rounded-full text-[12px] text-[#FF8A80] font-medium disabled:opacity-50"
                         data-testid="button-ai-ending"
                       >
-                        <Sparkles className="w-3 h-3" />
+                        {aiLoading === "endingContent" ? <Loader2 className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
                         AI 추천
                       </button>
                     </div>
