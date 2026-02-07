@@ -36,13 +36,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <head>
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-        />
-      </head>
       <body className="font-sans antialiased bg-[#F2F4F6] text-[#191F28]" suppressHydrationWarning>
         {children}
         <Analytics />
