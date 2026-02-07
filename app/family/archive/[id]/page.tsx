@@ -192,70 +192,219 @@ const ARCHIVE_DATA: Record<string, {
   }
 }
 
-const SCALES = {
-  peaceful: [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25],
-  dreamy: [261.63, 311.13, 349.23, 392.00, 466.16, 523.25, 622.25, 698.46],
-  warm: [293.66, 329.63, 369.99, 440.00, 493.88, 587.33, 659.25, 739.99],
+type MusicTheme = "dating" | "wedding" | "family"
+
+const MELODIES: Record<MusicTheme, { bpm: number; melody: number[][]; chords: number[][]; }> = {
+  dating: {
+    bpm: 72,
+    melody: [
+      [392.00, 0.5], [440.00, 0.5], [493.88, 1.0], [440.00, 0.5], [392.00, 0.5],
+      [329.63, 1.5], [349.23, 0.5],
+      [392.00, 0.5], [440.00, 0.5], [523.25, 1.0], [493.88, 0.5], [440.00, 0.5],
+      [392.00, 2.0],
+      [329.63, 0.5], [349.23, 0.5], [392.00, 1.0], [349.23, 0.5], [329.63, 0.5],
+      [293.66, 1.5], [329.63, 0.5],
+      [349.23, 0.5], [392.00, 0.5], [440.00, 1.0], [392.00, 0.5], [349.23, 0.5],
+      [329.63, 2.0],
+      [440.00, 0.5], [493.88, 0.5], [523.25, 1.0], [493.88, 0.5], [440.00, 0.5],
+      [392.00, 1.0], [440.00, 0.5], [493.88, 0.5],
+      [523.25, 1.0], [493.88, 0.5], [440.00, 0.5], [392.00, 1.0], [349.23, 0.5], [329.63, 0.5],
+      [293.66, 1.0], [329.63, 1.0], [261.63, 2.0],
+    ],
+    chords: [
+      [261.63, 329.63, 392.00],
+      [349.23, 440.00, 523.25],
+      [392.00, 493.88, 587.33],
+      [261.63, 329.63, 392.00],
+      [220.00, 261.63, 329.63],
+      [246.94, 311.13, 392.00],
+      [261.63, 329.63, 392.00],
+      [196.00, 246.94, 293.66],
+      [349.23, 440.00, 523.25],
+      [261.63, 329.63, 392.00],
+      [220.00, 261.63, 329.63],
+      [261.63, 329.63, 392.00],
+    ],
+  },
+  wedding: {
+    bpm: 66,
+    melody: [
+      [523.25, 1.5], [493.88, 0.5], [523.25, 1.0], [587.33, 1.0],
+      [659.25, 1.5], [587.33, 0.5], [523.25, 2.0],
+      [440.00, 0.5], [493.88, 0.5], [523.25, 1.0], [587.33, 0.5], [523.25, 0.5],
+      [493.88, 2.0],
+      [392.00, 0.5], [440.00, 0.5], [493.88, 1.5], [440.00, 0.5],
+      [523.25, 1.0], [587.33, 0.5], [523.25, 0.5], [493.88, 1.0],
+      [440.00, 0.5], [493.88, 0.5], [523.25, 1.0], [587.33, 1.0],
+      [659.25, 2.0],
+      [659.25, 0.5], [587.33, 0.5], [523.25, 1.0], [493.88, 0.5], [440.00, 0.5],
+      [392.00, 1.0], [440.00, 0.5], [493.88, 0.5],
+      [523.25, 1.5], [493.88, 0.5], [440.00, 1.0], [392.00, 1.0],
+      [349.23, 1.0], [392.00, 1.0], [523.25, 2.0],
+    ],
+    chords: [
+      [261.63, 329.63, 392.00],
+      [329.63, 392.00, 493.88],
+      [349.23, 440.00, 523.25],
+      [329.63, 392.00, 493.88],
+      [261.63, 329.63, 392.00],
+      [293.66, 349.23, 440.00],
+      [349.23, 440.00, 523.25],
+      [329.63, 392.00, 493.88],
+      [220.00, 261.63, 329.63],
+      [196.00, 246.94, 293.66],
+      [349.23, 440.00, 523.25],
+      [261.63, 329.63, 392.00],
+    ],
+  },
+  family: {
+    bpm: 60,
+    melody: [
+      [329.63, 1.0], [392.00, 0.5], [440.00, 0.5], [392.00, 1.0], [329.63, 1.0],
+      [293.66, 1.5], [261.63, 0.5],
+      [293.66, 0.5], [329.63, 0.5], [392.00, 1.5], [349.23, 0.5],
+      [329.63, 2.0],
+      [261.63, 0.5], [293.66, 0.5], [329.63, 1.0], [293.66, 0.5], [261.63, 0.5],
+      [220.00, 1.5], [261.63, 0.5],
+      [293.66, 1.0], [329.63, 0.5], [293.66, 0.5], [261.63, 1.0], [220.00, 0.5], [246.94, 0.5],
+      [261.63, 2.0],
+      [329.63, 0.5], [349.23, 0.5], [392.00, 1.0], [349.23, 0.5], [329.63, 0.5],
+      [293.66, 1.0], [329.63, 1.0],
+      [261.63, 1.0], [293.66, 0.5], [329.63, 0.5], [293.66, 1.0], [261.63, 0.5], [220.00, 0.5],
+      [196.00, 1.0], [220.00, 1.0], [261.63, 2.0],
+    ],
+    chords: [
+      [196.00, 246.94, 293.66],
+      [220.00, 261.63, 329.63],
+      [261.63, 329.63, 392.00],
+      [196.00, 246.94, 293.66],
+      [174.61, 220.00, 261.63],
+      [164.81, 196.00, 246.94],
+      [174.61, 220.00, 261.63],
+      [196.00, 246.94, 293.66],
+      [220.00, 261.63, 329.63],
+      [174.61, 220.00, 261.63],
+      [164.81, 196.00, 246.94],
+      [196.00, 246.94, 293.66],
+    ],
+  },
 }
 
-function createAmbientMusic(audioCtx: AudioContext): { gainNode: GainNode; stop: () => void } {
+function createMelodyMusic(audioCtx: AudioContext, theme: MusicTheme): { gainNode: GainNode; stop: () => void } {
   let stopped = false
   const pendingTimeouts: ReturnType<typeof setTimeout>[] = []
+  const activeNodes: { stop: () => void }[] = []
   const masterGain = audioCtx.createGain()
   masterGain.gain.value = 0.15
   masterGain.connect(audioCtx.destination)
 
-  const scaleKeys = Object.keys(SCALES) as (keyof typeof SCALES)[]
-  const scale = SCALES[scaleKeys[Math.floor(Math.random() * scaleKeys.length)]]
+  const reverb = audioCtx.createConvolver()
+  const reverbLength = 2.5
+  const sampleRate = audioCtx.sampleRate
+  const reverbBuffer = audioCtx.createBuffer(2, sampleRate * reverbLength, sampleRate)
+  for (let ch = 0; ch < 2; ch++) {
+    const data = reverbBuffer.getChannelData(ch)
+    for (let i = 0; i < data.length; i++) {
+      data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 2.5)
+    }
+  }
+  reverb.buffer = reverbBuffer
+  const reverbGain = audioCtx.createGain()
+  reverbGain.gain.value = 0.3
+  reverb.connect(reverbGain)
+  reverbGain.connect(masterGain)
 
-  const oscillators: OscillatorNode[] = []
+  const dryGain = audioCtx.createGain()
+  dryGain.gain.value = 0.7
+  dryGain.connect(masterGain)
 
-  function playNote() {
+  const { bpm, melody, chords } = MELODIES[theme]
+  const beatDur = 60 / bpm
+
+  function playPianoNote(freq: number, startTime: number, duration: number, vol: number) {
     if (stopped || audioCtx.state === "closed") return
-
-    const freq = scale[Math.floor(Math.random() * scale.length)]
-    const osc = audioCtx.createOscillator()
+    const osc1 = audioCtx.createOscillator()
+    const osc2 = audioCtx.createOscillator()
     const gain = audioCtx.createGain()
 
-    osc.type = Math.random() > 0.5 ? "sine" : "triangle"
-    osc.frequency.value = freq * (Math.random() > 0.3 ? 1 : 0.5)
+    osc1.type = "triangle"
+    osc1.frequency.value = freq
+    osc2.type = "sine"
+    osc2.frequency.value = freq * 2
+    const osc2gain = audioCtx.createGain()
+    osc2gain.gain.value = 0.15
 
-    const now = audioCtx.currentTime
-    const duration = 2 + Math.random() * 3
+    osc1.connect(gain)
+    osc2.connect(osc2gain)
+    osc2gain.connect(gain)
+    gain.connect(dryGain)
+    gain.connect(reverb)
 
-    gain.gain.setValueAtTime(0, now)
-    gain.gain.linearRampToValueAtTime(0.3 + Math.random() * 0.2, now + 0.8)
-    gain.gain.linearRampToValueAtTime(0, now + duration)
+    const attack = 0.02
+    const decay = Math.min(0.3, duration * 0.3)
+    const sustain = vol * 0.6
+    gain.gain.setValueAtTime(0, startTime)
+    gain.gain.linearRampToValueAtTime(vol, startTime + attack)
+    gain.gain.linearRampToValueAtTime(sustain, startTime + attack + decay)
+    gain.gain.linearRampToValueAtTime(0, startTime + duration)
 
-    osc.connect(gain)
-    gain.connect(masterGain)
-    osc.start(now)
-    osc.stop(now + duration)
+    osc1.start(startTime)
+    osc1.stop(startTime + duration + 0.1)
+    osc2.start(startTime)
+    osc2.stop(startTime + duration + 0.1)
 
-    oscillators.push(osc)
+    activeNodes.push({ stop: () => { try { osc1.stop() } catch {} try { osc2.stop() } catch {} } })
+  }
 
-    osc.onended = () => {
-      const oi = oscillators.indexOf(osc)
-      if (oi > -1) oscillators.splice(oi, 1)
-    }
+  function playChordPad(freqs: number[], startTime: number, duration: number) {
+    if (stopped || audioCtx.state === "closed") return
+    freqs.forEach((freq) => {
+      const osc = audioCtx.createOscillator()
+      const gain = audioCtx.createGain()
+      osc.type = "sine"
+      osc.frequency.value = freq * 0.5
+      osc.connect(gain)
+      gain.connect(dryGain)
+      gain.connect(reverb)
 
-    const tid = setTimeout(playNote, (800 + Math.random() * 1500))
+      gain.gain.setValueAtTime(0, startTime)
+      gain.gain.linearRampToValueAtTime(0.06, startTime + 0.5)
+      gain.gain.setValueAtTime(0.06, startTime + duration - 0.5)
+      gain.gain.linearRampToValueAtTime(0, startTime + duration)
+
+      osc.start(startTime)
+      osc.stop(startTime + duration + 0.1)
+      activeNodes.push({ stop: () => { try { osc.stop() } catch {} } })
+    })
+  }
+
+  function scheduleLoop() {
+    if (stopped || audioCtx.state === "closed") return
+
+    const startTime = audioCtx.currentTime + 0.1
+    let melodyTime = startTime
+
+    melody.forEach(([freq, beats]) => {
+      const dur = beats * beatDur
+      playPianoNote(freq, melodyTime, dur * 0.9, 0.25)
+      melodyTime += dur
+    })
+
+    const totalMelodyBeats = melody.reduce((sum, [, b]) => sum + b, 0)
+    const chordBeatsEach = totalMelodyBeats / chords.length
+    let chordTime = startTime
+    chords.forEach((chord) => {
+      const dur = chordBeatsEach * beatDur
+      playChordPad(chord, chordTime, dur)
+      chordTime += dur
+    })
+
+    const loopDuration = totalMelodyBeats * beatDur
+    const tid = setTimeout(scheduleLoop, (loopDuration - 1) * 1000)
     pendingTimeouts.push(tid)
   }
 
-  const padOsc = audioCtx.createOscillator()
-  const padGain = audioCtx.createGain()
-  padOsc.type = "sine"
-  padOsc.frequency.value = scale[0] * 0.5
-  padGain.gain.value = 0.08
-  padOsc.connect(padGain)
-  padGain.connect(masterGain)
-  padOsc.start()
-
-  playNote()
-  const t1 = setTimeout(playNote, 600)
-  const t2 = setTimeout(playNote, 1200)
-  pendingTimeouts.push(t1, t2)
+  scheduleLoop()
 
   return {
     gainNode: masterGain,
@@ -263,8 +412,8 @@ function createAmbientMusic(audioCtx: AudioContext): { gainNode: GainNode; stop:
       stopped = true
       pendingTimeouts.forEach(clearTimeout)
       pendingTimeouts.length = 0
-      try { padOsc.stop() } catch {}
-      oscillators.forEach((o) => { try { o.stop() } catch {} })
+      activeNodes.forEach((n) => n.stop())
+      activeNodes.length = 0
       masterGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5)
     },
   }
@@ -274,11 +423,13 @@ function SlideshowPlayer({
   photos,
   title,
   date,
+  musicTheme,
   onClose,
 }: {
   photos: string[]
   title: string
   date: string
+  musicTheme: MusicTheme
   onClose: () => void
 }) {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -298,7 +449,7 @@ function SlideshowPlayer({
     if (ctx.state === "suspended") {
       ctx.resume().catch(() => {})
     }
-    const music = createAmbientMusic(ctx)
+    const music = createMelodyMusic(ctx, musicTheme)
     musicRef.current = music
 
     return () => {
@@ -569,6 +720,7 @@ export default function ArchiveDetailPage({ params }: { params: Promise<{ id: st
           photos={allPhotos}
           title={archive.title}
           date={archive.date}
+          musicTheme={id.includes("dating") ? "dating" : id.includes("wedding") ? "wedding" : "family"}
           onClose={() => setShowSlideshow(false)}
         />
       )}

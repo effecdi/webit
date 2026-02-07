@@ -352,15 +352,16 @@ const SCALES = {
     ]
 };
 function createAmbientMusic(audioCtx) {
+    let stopped = false;
+    const pendingTimeouts = [];
     const masterGain = audioCtx.createGain();
     masterGain.gain.value = 0.15;
     masterGain.connect(audioCtx.destination);
     const scaleKeys = Object.keys(SCALES);
     const scale = SCALES[scaleKeys[Math.floor(Math.random() * scaleKeys.length)]];
     const oscillators = [];
-    const gains = [];
     function playNote() {
-        if (audioCtx.state === "closed") return;
+        if (stopped || audioCtx.state === "closed") return;
         const freq = scale[Math.floor(Math.random() * scale.length)];
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
@@ -376,14 +377,12 @@ function createAmbientMusic(audioCtx) {
         osc.start(now);
         osc.stop(now + duration);
         oscillators.push(osc);
-        gains.push(gain);
         osc.onended = ()=>{
             const oi = oscillators.indexOf(osc);
             if (oi > -1) oscillators.splice(oi, 1);
-            const gi = gains.indexOf(gain);
-            if (gi > -1) gains.splice(gi, 1);
         };
-        setTimeout(playNote, 800 + Math.random() * 1500);
+        const tid = setTimeout(playNote, 800 + Math.random() * 1500);
+        pendingTimeouts.push(tid);
     }
     const padOsc = audioCtx.createOscillator();
     const padGain = audioCtx.createGain();
@@ -394,12 +393,18 @@ function createAmbientMusic(audioCtx) {
     padGain.connect(masterGain);
     padOsc.start();
     playNote();
-    setTimeout(playNote, 600);
-    setTimeout(playNote, 1200);
+    const t1 = setTimeout(playNote, 600);
+    const t2 = setTimeout(playNote, 1200);
+    pendingTimeouts.push(t1, t2);
     return {
         gainNode: masterGain,
         stop: ()=>{
-            padOsc.stop();
+            stopped = true;
+            pendingTimeouts.forEach(clearTimeout);
+            pendingTimeouts.length = 0;
+            try {
+                padOsc.stop();
+            } catch  {}
             oscillators.forEach((o)=>{
                 try {
                     o.stop();
@@ -424,6 +429,11 @@ function SlideshowPlayer({ photos, title, date, onClose }) {
         "SlideshowPlayer.useEffect": ()=>{
             const ctx = new AudioContext();
             audioCtxRef.current = ctx;
+            if (ctx.state === "suspended") {
+                ctx.resume().catch({
+                    "SlideshowPlayer.useEffect": ()=>{}
+                }["SlideshowPlayer.useEffect"]);
+            }
             const music = createAmbientMusic(ctx);
             musicRef.current = music;
             return ({
@@ -516,19 +526,19 @@ function SlideshowPlayer({ photos, title, date, onClose }) {
                         className: "jsx-a67df0fc18755797" + " " + "w-full h-full object-cover"
                     }, void 0, false, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 360,
+                        lineNumber: 366,
                         columnNumber: 11
                     }, this)
                 }, idx, false, {
                     fileName: "[project]/app/family/archive/[id]/page.tsx",
-                    lineNumber: 352,
+                    lineNumber: 358,
                     columnNumber: 9
                 }, this)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "jsx-a67df0fc18755797" + " " + "absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40 z-[2]"
             }, void 0, false, {
                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                lineNumber: 371,
+                lineNumber: 377,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -546,17 +556,17 @@ function SlideshowPlayer({ photos, title, date, onClose }) {
                                     className: "jsx-a67df0fc18755797" + " " + "h-full bg-white rounded-full transition-all"
                                 }, void 0, false, {
                                     fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                    lineNumber: 377,
+                                    lineNumber: 383,
                                     columnNumber: 15
                                 }, this)
                             }, idx, false, {
                                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                lineNumber: 376,
+                                lineNumber: 382,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 374,
+                        lineNumber: 380,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -570,12 +580,12 @@ function SlideshowPlayer({ photos, title, date, onClose }) {
                                     className: "w-5 h-5 text-white"
                                 }, void 0, false, {
                                     fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                    lineNumber: 394,
+                                    lineNumber: 400,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                lineNumber: 389,
+                                lineNumber: 395,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -588,35 +598,35 @@ function SlideshowPlayer({ photos, title, date, onClose }) {
                                         className: "w-4 h-4 text-white"
                                     }, void 0, false, {
                                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                        lineNumber: 403,
+                                        lineNumber: 409,
                                         columnNumber: 17
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$volume$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Volume2$3e$__["Volume2"], {
                                         className: "w-4 h-4 text-white"
                                     }, void 0, false, {
                                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                        lineNumber: 405,
+                                        lineNumber: 411,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                    lineNumber: 397,
+                                    lineNumber: 403,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                lineNumber: 396,
+                                lineNumber: 402,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 388,
+                        lineNumber: 394,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                lineNumber: 373,
+                lineNumber: 379,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -628,7 +638,7 @@ function SlideshowPlayer({ photos, title, date, onClose }) {
                         children: title
                     }, void 0, false, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 413,
+                        lineNumber: 419,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -636,13 +646,13 @@ function SlideshowPlayer({ photos, title, date, onClose }) {
                         children: date
                     }, void 0, false, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 414,
+                        lineNumber: 420,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                lineNumber: 412,
+                lineNumber: 418,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -653,18 +663,18 @@ function SlideshowPlayer({ photos, title, date, onClose }) {
                     className: "w-5 h-5 text-white fill-white"
                 }, void 0, false, {
                     fileName: "[project]/app/family/archive/[id]/page.tsx",
-                    lineNumber: 423,
+                    lineNumber: 429,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$play$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Play$3e$__["Play"], {
                     className: "w-5 h-5 text-white fill-white ml-0.5"
                 }, void 0, false, {
                     fileName: "[project]/app/family/archive/[id]/page.tsx",
-                    lineNumber: 425,
+                    lineNumber: 431,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                lineNumber: 417,
+                lineNumber: 423,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$styled$2d$jsx$40$5$2e$1$2e$6_react$40$19$2e$2$2e$0$2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -674,7 +684,7 @@ function SlideshowPlayer({ photos, title, date, onClose }) {
         ]
     }, void 0, true, {
         fileName: "[project]/app/family/archive/[id]/page.tsx",
-        lineNumber: 350,
+        lineNumber: 356,
         columnNumber: 5
     }, this);
 }
@@ -696,7 +706,7 @@ function ArchiveDetailPage({ params }) {
                         children: "존재하지 않는 페이지입니다"
                     }, void 0, false, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 449,
+                        lineNumber: 455,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -705,18 +715,18 @@ function ArchiveDetailPage({ params }) {
                         children: "돌아가기"
                     }, void 0, false, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 450,
+                        lineNumber: 456,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                lineNumber: 448,
+                lineNumber: 454,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/family/archive/[id]/page.tsx",
-            lineNumber: 447,
+            lineNumber: 453,
             columnNumber: 7
         }, this);
     }
@@ -743,20 +753,20 @@ function ArchiveDetailPage({ params }) {
                                 "data-testid": "img-hero-photo"
                             }, void 0, false, {
                                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                lineNumber: 465,
+                                lineNumber: 471,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"
                             }, void 0, false, {
                                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                lineNumber: 471,
+                                lineNumber: 477,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 464,
+                        lineNumber: 470,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -770,12 +780,12 @@ function ArchiveDetailPage({ params }) {
                                     className: "w-5 h-5 text-white"
                                 }, void 0, false, {
                                     fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                    lineNumber: 480,
+                                    lineNumber: 486,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                lineNumber: 475,
+                                lineNumber: 481,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -787,12 +797,12 @@ function ArchiveDetailPage({ params }) {
                                             className: "w-5 h-5 text-white"
                                         }, void 0, false, {
                                             fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                            lineNumber: 484,
+                                            lineNumber: 490,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                        lineNumber: 483,
+                                        lineNumber: 489,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -800,19 +810,19 @@ function ArchiveDetailPage({ params }) {
                                         children: "선택"
                                     }, void 0, false, {
                                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                        lineNumber: 486,
+                                        lineNumber: 492,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                lineNumber: 482,
+                                lineNumber: 488,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 474,
+                        lineNumber: 480,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -824,7 +834,7 @@ function ArchiveDetailPage({ params }) {
                                 children: archive.title
                             }, void 0, false, {
                                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                lineNumber: 493,
+                                lineNumber: 499,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -835,14 +845,14 @@ function ArchiveDetailPage({ params }) {
                                         children: archive.date
                                     }, void 0, false, {
                                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                        lineNumber: 497,
+                                        lineNumber: 503,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "·"
                                     }, void 0, false, {
                                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                        lineNumber: 498,
+                                        lineNumber: 504,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -853,19 +863,19 @@ function ArchiveDetailPage({ params }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                        lineNumber: 499,
+                                        lineNumber: 505,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                lineNumber: 496,
+                                lineNumber: 502,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 492,
+                        lineNumber: 498,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -876,18 +886,18 @@ function ArchiveDetailPage({ params }) {
                             className: "w-5 h-5 text-white fill-white ml-0.5"
                         }, void 0, false, {
                             fileName: "[project]/app/family/archive/[id]/page.tsx",
-                            lineNumber: 508,
+                            lineNumber: 514,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                        lineNumber: 503,
+                        lineNumber: 509,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                lineNumber: 463,
+                lineNumber: 469,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -923,23 +933,23 @@ function ArchiveDetailPage({ params }) {
                                         className: "w-full h-full object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                        lineNumber: 549,
+                                        lineNumber: 555,
                                         columnNumber: 19
                                     }, this)
                                 }, colIdx, false, {
                                     fileName: "[project]/app/family/archive/[id]/page.tsx",
-                                    lineNumber: 536,
+                                    lineNumber: 542,
                                     columnNumber: 17
                                 }, this))
                         }, rowIdx, false, {
                             fileName: "[project]/app/family/archive/[id]/page.tsx",
-                            lineNumber: 531,
+                            lineNumber: 537,
                             columnNumber: 13
                         }, this));
                 })()
             }, void 0, false, {
                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                lineNumber: 512,
+                lineNumber: 518,
                 columnNumber: 7
             }, this),
             showSlideshow && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SlideshowPlayer, {
@@ -949,18 +959,18 @@ function ArchiveDetailPage({ params }) {
                 onClose: ()=>setShowSlideshow(false)
             }, void 0, false, {
                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                lineNumber: 562,
+                lineNumber: 568,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$family$2f$family$2d$bottom$2d$nav$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FamilyBottomNav"], {}, void 0, false, {
                 fileName: "[project]/app/family/archive/[id]/page.tsx",
-                lineNumber: 570,
+                lineNumber: 576,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/family/archive/[id]/page.tsx",
-        lineNumber: 462,
+        lineNumber: 468,
         columnNumber: 5
     }, this);
 }
