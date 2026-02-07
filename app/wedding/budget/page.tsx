@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { Suspense } from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
@@ -49,6 +49,14 @@ const payerLabels: Record<string, string> = {
 }
 
 export default function BudgetPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#F2F4F6]" />}>
+      <BudgetPageContent />
+    </Suspense>
+  )
+}
+
+function BudgetPageContent() {
   const { 
     totalBudget, 
     setTotalBudget,

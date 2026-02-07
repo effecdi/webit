@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { useState, useRef, useEffect } from "react";
 import { InvitationPreview } from "@/components/invitation-preview";
@@ -905,6 +905,14 @@ function ImageUploadBox({
 }
 
 export default function InvitationEditorPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#F2F4F6]" />}>
+      <InvitationEditorContent />
+    </Suspense>
+  );
+}
+
+function InvitationEditorContent() {
   const searchParams = useSearchParams();
   const templateParam = searchParams.get("template");
   const [data, setData] = useState<InvitationData>(() => {
