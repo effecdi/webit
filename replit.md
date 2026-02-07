@@ -151,7 +151,7 @@ Preferred communication style: Simple, everyday language.
   - 프리미엄 (Premium): 4,900원/월 (Dating) or 6,900원/월 (Family), includes all Advanced features plus AI recommendations, premium themes, data analytics
   - Annual plans show 20% discount
   - Wedding mode has NO membership features
-- **Family**: Memory archive, history book, shared calendar, photo organization
+- **Family**: Memory archive (iOS Photos Memories style with dark theme, Ken Burns animated cards, photo grid detail, fullscreen slideshow with Web Audio API ambient music), history book, shared calendar, photo organization
 - **Travel** (Shared): Trip planning with schedule timeline, checklist, budget tracker; accessible from all modes via TravelEntryCard widget
 
 ## External Dependencies

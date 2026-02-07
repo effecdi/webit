@@ -1,149 +1,156 @@
 "use client"
 
-import { useState } from "react"
-import { Heart, Gem, Home, ImageIcon, ChevronRight, Lock, Crown } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+import { Play } from "lucide-react"
 import Link from "next/link"
 
-const ARCHIVE_CHAPTERS = [
+const MEMORY_CARDS = [
   {
     id: "dating-2024",
-    year: "2024",
     title: "연애 시절",
     subtitle: "우리의 시작",
-    icon: Heart,
-    gradient: "from-pink-500 to-rose-500",
-    lightBg: "bg-pink-50",
-    photoCount: 234,
-    period: "2024.03 - 2024.12",
-    highlights: ["첫 만남", "100일", "첫 여행"],
-    isPremium: false,
+    date: "2024년 3월",
+    photos: [
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80",
+      "https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=80",
+      "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80",
+      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800&q=80",
+      "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=800&q=80",
+    ],
   },
   {
     id: "wedding-prep-2025",
-    year: "2025",
     title: "결혼 준비",
     subtitle: "함께 준비한 날들",
-    icon: Gem,
-    gradient: "from-amber-500 to-orange-500",
-    lightBg: "bg-amber-50",
-    photoCount: 189,
-    period: "2025.01 - 2025.12",
-    highlights: ["프로포즈", "스드메", "결혼식"],
-    isPremium: false,
+    date: "2025년 1월",
+    photos: [
+      "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80",
+      "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80",
+      "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=80",
+      "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80",
+    ],
   },
   {
     id: "honeymoon-2025",
-    year: "2025",
-    title: "신혼",
-    subtitle: "새로운 시작",
-    icon: Home,
-    gradient: "from-green-500 to-emerald-500",
-    lightBg: "bg-green-50",
-    photoCount: 48,
-    period: "2025.12 - 현재",
-    highlights: ["신혼여행", "새 집"],
-    isPremium: true,
+    title: "신혼여행",
+    subtitle: "몰디브에서",
+    date: "2025년 12월 10일",
+    photos: [
+      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
+      "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80",
+      "https://images.unsplash.com/photo-1540202404-a2f29016b523?w=800&q=80",
+      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
+    ],
   },
 ]
 
-export function MemoryArchive() {
-  const [isPremiumUser] = useState(true)
+function MemoryCard({ card }: { card: typeof MEMORY_CARDS[0] }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const cardRef = useRef<HTMLAnchorElement>(null)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    const el = cardRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isVisible || card.photos.length <= 1) return
+
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % card.photos.length)
+    }, 4000)
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
+  }, [isVisible, card.photos.length])
 
   return (
-    <div className="px-5 py-5 max-w-md mx-auto space-y-5">
-      {/* Info Banner */}
-      <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-[16px] p-4">
-        <p className="text-[14px] text-green-700 leading-relaxed">
-          <strong>추억 보관함</strong>에는 연애, 결혼 준비 기간의 모든 기록이 연도별로 정리되어 있어요.
+    <Link
+      ref={cardRef}
+      href={`/family/archive/${card.id}`}
+      className="block relative rounded-[20px] overflow-hidden"
+      style={{ aspectRatio: "4/5" }}
+      data-testid={`card-memory-${card.id}`}
+    >
+      {card.photos.map((photo, idx) => (
+        <div
+          key={idx}
+          className="absolute inset-0 transition-opacity duration-1000"
+          style={{
+            opacity: idx === currentIndex ? 1 : 0,
+            zIndex: idx === currentIndex ? 1 : 0,
+          }}
+        >
+          <img
+            src={photo}
+            alt=""
+            className="w-full h-full object-cover"
+            style={{
+              animation: idx === currentIndex && isVisible ? "kenBurns 8s ease-in-out infinite alternate" : "none",
+            }}
+          />
+        </div>
+      ))}
+
+      <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+
+      <div className="absolute bottom-0 left-0 right-0 z-[3] p-5">
+        <h2 className="text-[22px] font-bold text-white leading-tight" data-testid={`text-memory-title-${card.id}`}>
+          {card.title}
+        </h2>
+        <p className="text-[14px] text-white/80 mt-1" data-testid={`text-memory-date-${card.id}`}>
+          {card.date}
         </p>
       </div>
 
-      {/* Archive Chapters */}
-      <section className="space-y-4">
-        {ARCHIVE_CHAPTERS.map((chapter) => {
-          const Icon = chapter.icon
-          const isLocked = chapter.isPremium && !isPremiumUser
+      <button
+        className="absolute bottom-4 right-4 z-[3] w-11 h-11 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center"
+        data-testid={`button-play-${card.id}`}
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+        }}
+      >
+        <Play className="w-5 h-5 text-white fill-white ml-0.5" />
+      </button>
+    </Link>
+  )
+}
 
-          return (
-            <Link
-              key={chapter.id}
-              href={isLocked ? "#" : `/family/archive/${chapter.id}`}
-              className={`block relative overflow-hidden bg-white rounded-[20px] shadow-sm transition-all ${
-                isLocked ? "opacity-60" : "hover:shadow-md"
-              }`}
-            >
-              {/* Gradient Header */}
-              <div className={`h-3 bg-gradient-to-r ${chapter.gradient}`} />
-              
-              {isLocked && (
-                <div className="absolute top-5 right-4 flex items-center gap-1 px-2.5 py-1 bg-[#191F28] text-white text-[11px] font-medium rounded-full">
-                  <Lock className="w-3 h-3" />
-                  Premium
-                </div>
-              )}
+export function MemoryArchive() {
+  return (
+    <div className="px-4 py-4 max-w-md mx-auto space-y-4">
+      {MEMORY_CARDS.map((card) => (
+        <MemoryCard key={card.id} card={card} />
+      ))}
 
-              <div className="p-5">
-                <div className="flex gap-4">
-                  {/* Icon */}
-                  <div className={`w-14 h-14 rounded-[14px] ${chapter.lightBg} flex items-center justify-center flex-shrink-0`}>
-                    <Icon className={`w-7 h-7 bg-gradient-to-r ${chapter.gradient} bg-clip-text`} style={{ color: chapter.gradient.includes('pink') ? '#ec4899' : chapter.gradient.includes('amber') ? '#f59e0b' : '#22c55e' }} />
-                  </div>
+      <div className="pt-2 pb-4">
+        <p className="text-center text-[13px] text-white/30">
+          최근 하이라이트
+        </p>
+      </div>
 
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-[11px] font-semibold px-2 py-0.5 bg-[#F2F4F6] text-[#4E5968] rounded-full">
-                        {chapter.year}
-                      </span>
-                    </div>
-                    <h3 className="text-[17px] font-bold text-[#191F28] mb-0.5">{chapter.title}</h3>
-                    <p className="text-[13px] text-[#8B95A1] mb-3">{chapter.period}</p>
-                    
-                    {/* Highlights */}
-                    <div className="flex flex-wrap gap-1.5 mb-3">
-                      {chapter.highlights.map((highlight) => (
-                        <span
-                          key={highlight}
-                          className={`text-[11px] px-2.5 py-1 rounded-full ${chapter.lightBg}`}
-                          style={{ color: chapter.gradient.includes('pink') ? '#ec4899' : chapter.gradient.includes('amber') ? '#f59e0b' : '#22c55e' }}
-                        >
-                          {highlight}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Photo Count */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-[13px] text-[#8B95A1]">
-                        <ImageIcon className="w-4 h-4" />
-                        <span>{chapter.photoCount}장의 사진</span>
-                      </div>
-                      <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          )
-        })}
-      </section>
-
-      {/* Premium Upsell */}
-      {!isPremiumUser && (
-        <section className="bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 rounded-[20px] p-5 border border-amber-200">
-          <div className="flex items-center gap-2 mb-3">
-            <Crown className="w-5 h-5 text-amber-500" />
-            <h3 className="text-[16px] font-bold text-[#191F28]">고화질 원본으로 평생 소장하세요</h3>
-          </div>
-          <p className="text-[13px] text-[#4E5968] mb-4 leading-relaxed">
-            무료 플랜은 1년이 지난 사진이 저화질로 보관됩니다.
-            Premium 멤버십으로 업그레이드하면 모든 추억을 원본 그대로 영구 보관할 수 있어요.
-          </p>
-          <button className="w-full py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-[14px] text-[15px] hover:opacity-90 transition-opacity">
-            Premium 멤버십 시작하기 - 월 1,900원
-          </button>
-        </section>
-      )}
+      <style jsx>{`
+        @keyframes kenBurns {
+          0% {
+            transform: scale(1) translate(0, 0);
+          }
+          100% {
+            transform: scale(1.15) translate(-2%, -2%);
+          }
+        }
+      `}</style>
     </div>
   )
 }
