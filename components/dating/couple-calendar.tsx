@@ -50,7 +50,7 @@ export function CoupleCalendar() {
   const fetchSchedules = async () => {
     setIsLoading(true)
     try {
-      const res = await fetch('/api/events?userId=default&mode=dating')
+      const res = await fetch('/api/events?mode=dating')
       const data = await res.json()
       setSchedules(data.map((e: { id: number; title: string; date: string; time?: string; location?: string; category?: string }) => ({
         ...e,
@@ -147,7 +147,6 @@ export function CoupleCalendar() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            userId: 'default',
             title: newSchedule.title,
             date: selectedDate,
             time: newSchedule.time || undefined,

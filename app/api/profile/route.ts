@@ -2,10 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { profiles } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const userId = searchParams.get('userId') || 'default';
+export async function GET() {
+  const auth = await requireAuth();
+  if (isUnauthorized(auth)) return auth;
+  const userId = auth.userId;
 
   try {
     const [profile] = await db.select().from(profiles)
@@ -34,7 +36,10 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { userId = 'default', username, partnerName, firstMeetDate, coupleIntro, currentMode } = body;
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+    const { username, partnerName, firstMeetDate, coupleIntro, currentMode } = body;
 
     const existing = await db.select().from(profiles)
       .where(eq(profiles.userId, userId));
@@ -72,7 +77,10 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
-    const { userId = 'default', ...updates } = body;
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+    const { userId: _uid, ...updates } = body;
 
     if (updates.firstMeetDate) {
       updates.firstMeetDate = new Date(updates.firstMeetDate);

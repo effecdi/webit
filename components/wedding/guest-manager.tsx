@@ -80,8 +80,8 @@ export function GuestManager() {
     setIsLoading(true)
     try {
       const [guestsRes, infoRes] = await Promise.all([
-        fetch("/api/guests?userId=default"),
-        fetch("/api/wedding-info?userId=default"),
+        fetch("/api/guests"),
+        fetch("/api/wedding-info"),
       ])
       const guestsData = await guestsRes.json()
       const infoData = await infoRes.json()
@@ -159,7 +159,7 @@ export function GuestManager() {
         const res = await fetch("/api/guests", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userId: "default", ...formData }),
+          body: JSON.stringify({ ...formData }),
         })
         const newGuest = await res.json()
         setGuests([newGuest, ...guests])
@@ -229,7 +229,6 @@ export function GuestManager() {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userId: "default",
           groomGuests: settingsForm.groomGuests,
           brideGuests: settingsForm.brideGuests,
           expectedGuests: settingsForm.groomGuests + settingsForm.brideGuests,

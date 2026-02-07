@@ -2,10 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { todos, todoComments } from '@/db/schema';
 import { eq, and, desc } from 'drizzle-orm';
+import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
 export async function GET(request: NextRequest) {
+  const auth = await requireAuth();
+  if (isUnauthorized(auth)) return auth;
+  const userId = auth.userId;
   const searchParams = request.nextUrl.searchParams;
-  const userId = searchParams.get('userId') || 'default';
   const mode = searchParams.get('mode') || 'dating';
 
   try {
@@ -32,7 +35,10 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { userId = 'default', text, assignee = 'we', mode = 'dating' } = body;
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+    const { text, assignee = 'we', mode = 'dating' } = body;
 
     const [newTodo] = await db.insert(todos).values({
       userId,

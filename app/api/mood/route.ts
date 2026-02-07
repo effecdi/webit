@@ -2,10 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { profiles } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const userId = searchParams.get('userId') || 'default';
+export async function GET() {
+  const auth = await requireAuth();
+  if (isUnauthorized(auth)) return auth;
+  const userId = auth.userId;
 
   try {
     const [profile] = await db.select({
@@ -30,7 +32,10 @@ export async function GET(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
-    const { userId = 'default', role, mood } = body;
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+    const { role, mood } = body;
 
     if (!role || !mood) {
       return NextResponse.json({ error: 'role and mood are required' }, { status: 400 });

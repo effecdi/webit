@@ -80,7 +80,7 @@ export default function WeddingProfilePage() {
 
   const fetchNotifications = async () => {
     try {
-      const res = await fetch('/api/notifications?userId=default&mode=wedding')
+      const res = await fetch('/api/notifications?mode=wedding')
       const data = await res.json()
       const formatted = data.map((n: { id: number; type: string; title: string; message: string; createdAt: string }) => ({
         id: String(n.id),

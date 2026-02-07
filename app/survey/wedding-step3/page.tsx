@@ -29,7 +29,6 @@ export default function WeddingSurveyStep3() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userId: "default",
           weddingDate,
           weddingTime,
           venue,

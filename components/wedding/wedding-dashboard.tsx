@@ -124,9 +124,9 @@ export function WeddingDashboard() {
   const fetchData = async () => {
     try {
       const [notificationsRes, travelsRes, weddingInfoRes] = await Promise.all([
-        fetch('/api/notifications?userId=default&mode=wedding'),
-        fetch('/api/travels?userId=default'),
-        fetch('/api/wedding-info?userId=default')
+        fetch('/api/notifications?mode=wedding'),
+        fetch('/api/travels'),
+        fetch('/api/wedding-info')
       ])
       const notificationsData = await notificationsRes.json()
       const travelsData = await travelsRes.json()

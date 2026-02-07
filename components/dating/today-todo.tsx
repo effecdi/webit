@@ -37,7 +37,7 @@ export function TodayTodo() {
 
   const fetchTodos = async () => {
     try {
-      const res = await fetch('/api/todos?userId=default&mode=dating');
+      const res = await fetch('/api/todos?mode=dating');
       const data = await res.json();
       const formatted = data.map((t: { id: number; text: string; completed: boolean; assignee: string }, index: number) => ({
         id: String(t.id),

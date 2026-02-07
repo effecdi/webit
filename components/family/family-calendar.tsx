@@ -29,7 +29,7 @@ export function FamilyCalendar() {
 
   const fetchEvents = async () => {
     try {
-      const res = await fetch('/api/events?userId=default&mode=family')
+      const res = await fetch('/api/events?mode=family')
       const data = await res.json()
       const formatted = data.map((e: { id: number; date: string; title: string; category: string; time?: string; location?: string }) => ({
         id: String(e.id),

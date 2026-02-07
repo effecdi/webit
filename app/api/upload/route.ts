@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
+import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
 const MAX_SIZE = 10 * 1024 * 1024; // 10MB
 
 export async function POST(request: NextRequest) {
+  const auth = await requireAuth();
+  if (isUnauthorized(auth)) return auth;
+
   try {
     const formData = await request.formData();
     const file = formData.get('file') as File;

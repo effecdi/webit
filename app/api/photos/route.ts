@@ -2,10 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { photos } from '@/db/schema';
 import { eq, and, desc } from 'drizzle-orm';
+import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
 export async function GET(request: NextRequest) {
+  const auth = await requireAuth();
+  if (isUnauthorized(auth)) return auth;
+  const userId = auth.userId;
   const searchParams = request.nextUrl.searchParams;
-  const userId = searchParams.get('userId') || 'default';
   const mode = searchParams.get('mode') || 'dating';
   const albumId = searchParams.get('albumId');
 
@@ -33,7 +36,10 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { userId = 'default', url, caption, albumId, mode = 'dating' } = body;
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+    const { url, caption, albumId, mode = 'dating' } = body;
 
     const [newPhoto] = await db.insert(photos).values({
       userId,

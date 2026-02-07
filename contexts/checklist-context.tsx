@@ -38,7 +38,7 @@ export function ChecklistProvider({ children }: { children: ReactNode }) {
   const fetchChecklist = async () => {
     setIsLoading(true)
     try {
-      const res = await fetch('/api/checklist?userId=default&mode=wedding')
+      const res = await fetch('/api/checklist?mode=wedding')
       const data = await res.json()
       setItems(data.map((item: { id: number; title: string; category: string; dueDate: string; completed: boolean; priority: string }) => ({
         id: String(item.id),
@@ -61,7 +61,6 @@ export function ChecklistProvider({ children }: { children: ReactNode }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: 'default',
           title: item.title,
           category: item.category,
           dueDate: item.dueDate,

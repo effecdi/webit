@@ -23,7 +23,7 @@ export function FamilyGallery() {
 
   const fetchPhotos = async () => {
     try {
-      const res = await fetch('/api/photos?userId=default&mode=family')
+      const res = await fetch('/api/photos?mode=family')
       const data = await res.json()
       const formatted = data.map((p: { id: number; url: string; createdAt: string; liked: boolean }) => ({
         id: p.id,

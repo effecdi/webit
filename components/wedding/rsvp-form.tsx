@@ -36,7 +36,6 @@ export function RsvpFormSection() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userId: "default",
           name: formData.name.trim(),
           side: formData.side,
           attendance: formData.attendance,

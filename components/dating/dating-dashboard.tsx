@@ -283,7 +283,7 @@ export function DatingDashboard() {
     fetchData();
 
     const handleFocus = () => {
-      fetch("/api/mood?userId=default")
+      fetch("/api/mood")
         .then((res) => res.json())
         .then((data) => {
           if (data.myMood) setMyMood(data.myMood);
@@ -305,7 +305,7 @@ export function DatingDashboard() {
       await fetch("/api/mood", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: "default", role, mood }),
+        body: JSON.stringify({ role, mood }),
       });
     } catch (error) {
       console.error("Error saving mood:", error);
@@ -323,12 +323,12 @@ export function DatingDashboard() {
         eventsRes,
         moodRes,
       ] = await Promise.all([
-        fetch("/api/todos?userId=default&mode=dating"),
-        fetch("/api/notifications?userId=default&mode=dating"),
-        fetch("/api/travels?userId=default"),
-        fetch("/api/photos?userId=default&mode=dating"),
-        fetch("/api/events?userId=default&mode=dating"),
-        fetch("/api/mood?userId=default"),
+        fetch("/api/todos?mode=dating"),
+        fetch("/api/notifications?mode=dating"),
+        fetch("/api/travels"),
+        fetch("/api/photos?mode=dating"),
+        fetch("/api/events?mode=dating"),
+        fetch("/api/mood"),
       ]);
 
       const todosData = await todosRes.json();
@@ -423,7 +423,6 @@ export function DatingDashboard() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userId: "default",
           text: newTodoText,
           assignee: newTodoAssignee,
           mode: "dating",

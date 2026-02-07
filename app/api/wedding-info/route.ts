@@ -2,10 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { weddingInfo } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const userId = searchParams.get('userId') || 'default';
+export async function GET() {
+  const auth = await requireAuth();
+  if (isUnauthorized(auth)) return auth;
+  const userId = auth.userId;
 
   try {
     const result = await db.select().from(weddingInfo).where(eq(weddingInfo.userId, userId));
@@ -22,7 +24,10 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { userId = 'default', weddingDate, weddingTime, venue, expectedGuests, groomGuests, brideGuests, mealCostAdult, mealCostChild } = body;
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+    const { weddingDate, weddingTime, venue, expectedGuests, groomGuests, brideGuests, mealCostAdult, mealCostChild } = body;
 
     const existing = await db.select().from(weddingInfo).where(eq(weddingInfo.userId, userId));
     
@@ -48,7 +53,10 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
-    const { userId = 'default', ...updates } = body;
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+    const { userId: _uid, ...updates } = body;
 
     const existing = await db.select().from(weddingInfo).where(eq(weddingInfo.userId, userId));
 

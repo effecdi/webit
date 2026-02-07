@@ -2,10 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { checklistItems } from '@/db/schema';
 import { eq, and, desc } from 'drizzle-orm';
+import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
 export async function GET(request: NextRequest) {
+  const auth = await requireAuth();
+  if (isUnauthorized(auth)) return auth;
+  const userId = auth.userId;
   const searchParams = request.nextUrl.searchParams;
-  const userId = searchParams.get('userId') || 'default';
   const mode = searchParams.get('mode') || 'wedding';
 
   try {
@@ -23,7 +26,10 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { userId = 'default', category, title, dueDate, priority = 'medium', mode = 'wedding' } = body;
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+    const { category, title, dueDate, priority = 'medium', mode = 'wedding' } = body;
 
     const [newItem] = await db.insert(checklistItems).values({
       userId,

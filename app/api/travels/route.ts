@@ -2,10 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { travels, travelSchedules } from '@/db/schema';
 import { eq, desc } from 'drizzle-orm';
+import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const userId = searchParams.get('userId') || 'default';
+export async function GET() {
+  const auth = await requireAuth();
+  if (isUnauthorized(auth)) return auth;
+  const userId = auth.userId;
 
   try {
     const result = await db.select().from(travels)
@@ -31,7 +33,10 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { userId = 'default', title, destination, startDate, endDate, thumbnail } = body;
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+    const { title, destination, startDate, endDate, thumbnail } = body;
 
     const [newTravel] = await db.insert(travels).values({
       userId,

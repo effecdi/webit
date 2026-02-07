@@ -62,8 +62,8 @@ export function GalleryView() {
     setIsLoading(true)
     try {
       const [albumsRes, photosRes] = await Promise.all([
-        fetch('/api/albums?userId=default&mode=dating'),
-        fetch('/api/photos?userId=default&mode=dating')
+        fetch('/api/albums?mode=dating'),
+        fetch('/api/photos?mode=dating')
       ])
       const albumsData = await albumsRes.json()
       const photosData = await photosRes.json()
@@ -112,7 +112,6 @@ export function GalleryView() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: 'default',
           title: newAlbumTitle,
           mode: 'dating'
         })
@@ -156,7 +155,6 @@ export function GalleryView() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: 'default',
           url,
           caption: newPhotoCaption || null,
           mode: 'dating'

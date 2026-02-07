@@ -91,11 +91,11 @@ export function FamilyWeveDashboard() {
       const today = new Date().toISOString().split('T')[0]
       
       const [notificationsRes, eventsRes, albumsRes, travelsRes, photosRes] = await Promise.all([
-        fetch('/api/notifications?userId=default&mode=family'),
-        fetch(`/api/events?userId=default&mode=family&date=${today}`),
-        fetch('/api/albums?userId=default&mode=family'),
-        fetch('/api/travels?userId=default'),
-        fetch('/api/photos?userId=default&mode=family')
+        fetch('/api/notifications?mode=family'),
+        fetch(`/api/events?mode=family&date=${today}`),
+        fetch('/api/albums?mode=family'),
+        fetch('/api/travels'),
+        fetch('/api/photos?mode=family')
       ])
       
       const notificationsData = await notificationsRes.json()

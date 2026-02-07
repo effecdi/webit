@@ -932,7 +932,7 @@ function InvitationEditorContent() {
   useEffect(() => {
     const loadInvitation = async () => {
       try {
-        const res = await fetch("/api/invitation?userId=default");
+        const res = await fetch("/api/invitation");
         if (res.ok) {
           const result = await res.json();
           if (result && typeof result === "object") {
@@ -969,7 +969,7 @@ function InvitationEditorContent() {
       await fetch("/api/invitation", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: "default", invitationData: data }),
+        body: JSON.stringify({ invitationData: data }),
       });
     } catch (error) {
       console.error("Failed to save invitation:", error);

@@ -77,8 +77,8 @@ function GalleryView() {
         setIsLoading(true);
         try {
             const [albumsRes, photosRes] = await Promise.all([
-                fetch('/api/albums?userId=default&mode=dating'),
-                fetch('/api/photos?userId=default&mode=dating')
+                fetch('/api/albums?mode=dating'),
+                fetch('/api/photos?mode=dating')
             ]);
             const albumsData = await albumsRes.json();
             const photosData = await photosRes.json();
@@ -131,7 +131,6 @@ function GalleryView() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    userId: 'default',
                     title: newAlbumTitle,
                     mode: 'dating'
                 })
@@ -175,7 +174,6 @@ function GalleryView() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    userId: 'default',
                     url,
                     caption: newPhotoCaption || null,
                     mode: 'dating'
@@ -293,7 +291,7 @@ function GalleryView() {
                                 children: "취소"
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 275,
+                                lineNumber: 273,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -301,7 +299,7 @@ function GalleryView() {
                                 children: selectedPhotos.size > 0 ? `${selectedPhotos.size}장 선택됨` : '항목 선택'
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 282,
+                                lineNumber: 280,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -313,12 +311,12 @@ function GalleryView() {
                                     className: `w-6 h-6 ${selectedPhotos.size > 0 ? 'text-[#191F28]' : 'text-[#D1D6DB]'}`
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 291,
+                                    lineNumber: 289,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 285,
+                                lineNumber: 283,
                                 columnNumber: 15
                             }, this)
                         ]
@@ -332,12 +330,12 @@ function GalleryView() {
                                     className: "w-6 h-6 text-[#191F28]"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 297,
+                                    lineNumber: 295,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 296,
+                                lineNumber: 294,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -345,7 +343,7 @@ function GalleryView() {
                                 children: "갤러리"
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 299,
+                                lineNumber: 297,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -355,19 +353,19 @@ function GalleryView() {
                                 children: "선택"
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 300,
+                                lineNumber: 298,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true)
                 }, void 0, false, {
                     fileName: "[project]/components/dating/gallery-view.tsx",
-                    lineNumber: 272,
+                    lineNumber: 270,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 271,
+                lineNumber: 269,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -383,12 +381,12 @@ function GalleryView() {
                                     children: "앨범"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 315,
+                                    lineNumber: 313,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 314,
+                                lineNumber: 312,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -405,12 +403,12 @@ function GalleryView() {
                                                     className: "w-5 h-5 text-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                                    lineNumber: 324,
+                                                    lineNumber: 322,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 323,
+                                                lineNumber: 321,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -418,27 +416,27 @@ function GalleryView() {
                                                 children: "앨범 추가"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 326,
+                                                lineNumber: 324,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 318,
+                                        lineNumber: 316,
                                         columnNumber: 13
                                     }, this),
                                     isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex-shrink-0 w-28 h-36 bg-[#F2F4F6] rounded-[16px] animate-pulse"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 330,
+                                        lineNumber: 328,
                                         columnNumber: 15
                                     }, this) : albums.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex-shrink-0 w-full py-4 text-center text-[#8B95A1] text-[13px]",
                                         children: "앨범을 추가해보세요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 332,
+                                        lineNumber: 330,
                                         columnNumber: 15
                                     }, this) : albums.map((album)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                             href: `/dating/gallery/album/${album.id}`,
@@ -453,7 +451,7 @@ function GalleryView() {
                                                         className: "w-full h-full object-cover"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                                        lineNumber: 345,
+                                                        lineNumber: 343,
                                                         columnNumber: 23
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "w-full h-full flex items-center justify-center",
@@ -461,17 +459,17 @@ function GalleryView() {
                                                             className: "w-8 h-8 text-pink-300"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                                            lineNumber: 352,
+                                                            lineNumber: 350,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                                        lineNumber: 351,
+                                                        lineNumber: 349,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                                    lineNumber: 343,
+                                                    lineNumber: 341,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -482,7 +480,7 @@ function GalleryView() {
                                                             children: album.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                                            lineNumber: 357,
+                                                            lineNumber: 355,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -493,31 +491,31 @@ function GalleryView() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                                            lineNumber: 358,
+                                                            lineNumber: 356,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                                    lineNumber: 356,
+                                                    lineNumber: 354,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, album.id, true, {
                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                            lineNumber: 337,
+                                            lineNumber: 335,
                                             columnNumber: 17
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 317,
+                                lineNumber: 315,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dating/gallery-view.tsx",
-                        lineNumber: 313,
+                        lineNumber: 311,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -530,7 +528,7 @@ function GalleryView() {
                                         children: "모든 사진"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 368,
+                                        lineNumber: 366,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -541,13 +539,13 @@ function GalleryView() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 369,
+                                        lineNumber: 367,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 367,
+                                lineNumber: 365,
                                 columnNumber: 11
                             }, this),
                             isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -563,12 +561,12 @@ function GalleryView() {
                                         className: "aspect-square bg-[#F2F4F6] rounded-[4px] animate-pulse"
                                     }, i, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 375,
+                                        lineNumber: 373,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 373,
+                                lineNumber: 371,
                                 columnNumber: 13
                             }, this) : photos.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "py-12 text-center",
@@ -579,12 +577,12 @@ function GalleryView() {
                                             className: "w-8 h-8 text-pink-300"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                            lineNumber: 381,
+                                            lineNumber: 379,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 380,
+                                        lineNumber: 378,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -592,7 +590,7 @@ function GalleryView() {
                                         children: "아직 사진이 없어요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 383,
+                                        lineNumber: 381,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -600,7 +598,7 @@ function GalleryView() {
                                         children: "사진을 추가해서 추억을 남겨보세요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 384,
+                                        lineNumber: 382,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -612,20 +610,20 @@ function GalleryView() {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 390,
+                                                lineNumber: 388,
                                                 columnNumber: 17
                                             }, this),
                                             "사진 추가하기"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 385,
+                                        lineNumber: 383,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 379,
+                                lineNumber: 377,
                                 columnNumber: 13
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "grid grid-cols-3 gap-1",
@@ -640,7 +638,7 @@ function GalleryView() {
                                                 className: "w-full h-full object-cover transition-transform group-hover:scale-105"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 403,
+                                                lineNumber: 401,
                                                 columnNumber: 19
                                             }, this),
                                             isSelectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -651,17 +649,17 @@ function GalleryView() {
                                                         className: "w-4 h-4 text-white"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                                        lineNumber: 416,
+                                                        lineNumber: 414,
                                                         columnNumber: 27
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                                    lineNumber: 410,
+                                                    lineNumber: 408,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 409,
+                                                lineNumber: 407,
                                                 columnNumber: 21
                                             }, this),
                                             !isSelectMode && photo.liked && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -671,35 +669,35 @@ function GalleryView() {
                                                     fill: "#ec4899"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                                    lineNumber: 423,
+                                                    lineNumber: 421,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 422,
+                                                lineNumber: 420,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, photo.id, true, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 397,
+                                        lineNumber: 395,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 395,
+                                lineNumber: 393,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dating/gallery-view.tsx",
-                        lineNumber: 366,
+                        lineNumber: 364,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 312,
+                lineNumber: 310,
                 columnNumber: 7
             }, this),
             isSelectMode && selectedPhotos.size > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -716,7 +714,7 @@ function GalleryView() {
                                     className: "w-6 h-6"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 442,
+                                    lineNumber: 440,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -724,13 +722,13 @@ function GalleryView() {
                                     children: "공유"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 443,
+                                    lineNumber: 441,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 437,
+                            lineNumber: 435,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -743,12 +741,12 @@ function GalleryView() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 446,
+                                lineNumber: 444,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 445,
+                            lineNumber: 443,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -760,7 +758,7 @@ function GalleryView() {
                                     className: "w-6 h-6"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 455,
+                                    lineNumber: 453,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -768,24 +766,24 @@ function GalleryView() {
                                     children: "삭제"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 456,
+                                    lineNumber: 454,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 450,
+                            lineNumber: 448,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/gallery-view.tsx",
-                    lineNumber: 436,
+                    lineNumber: 434,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 435,
+                lineNumber: 433,
                 columnNumber: 9
             }, this),
             !isSelectMode && photos.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -796,12 +794,12 @@ function GalleryView() {
                     className: "w-7 h-7 text-white"
                 }, void 0, false, {
                     fileName: "[project]/components/dating/gallery-view.tsx",
-                    lineNumber: 469,
+                    lineNumber: 467,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 464,
+                lineNumber: 462,
                 columnNumber: 9
             }, this),
             selectedPhotoIndex !== null && photos[selectedPhotoIndex] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -815,12 +813,12 @@ function GalleryView() {
                             className: "w-6 h-6 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 481,
+                            lineNumber: 479,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/dating/gallery-view.tsx",
-                        lineNumber: 476,
+                        lineNumber: 474,
                         columnNumber: 11
                     }, this),
                     selectedPhotoIndex > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -831,12 +829,12 @@ function GalleryView() {
                             className: "w-6 h-6 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 490,
+                            lineNumber: 488,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/dating/gallery-view.tsx",
-                        lineNumber: 485,
+                        lineNumber: 483,
                         columnNumber: 13
                     }, this),
                     selectedPhotoIndex < photos.length - 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -847,12 +845,12 @@ function GalleryView() {
                             className: "w-6 h-6 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 500,
+                            lineNumber: 498,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/dating/gallery-view.tsx",
-                        lineNumber: 495,
+                        lineNumber: 493,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -861,7 +859,7 @@ function GalleryView() {
                         className: "max-w-full max-h-full object-contain"
                     }, void 0, false, {
                         fileName: "[project]/components/dating/gallery-view.tsx",
-                        lineNumber: 504,
+                        lineNumber: 502,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -874,7 +872,7 @@ function GalleryView() {
                                     children: formatDate(photos[selectedPhotoIndex].createdAt)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 512,
+                                    lineNumber: 510,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -886,29 +884,29 @@ function GalleryView() {
                                         fill: photos[selectedPhotoIndex].liked ? "#ec4899" : "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 520,
+                                        lineNumber: 518,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 515,
+                                    lineNumber: 513,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 511,
+                            lineNumber: 509,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/dating/gallery-view.tsx",
-                        lineNumber: 510,
+                        lineNumber: 508,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 475,
+                lineNumber: 473,
                 columnNumber: 9
             }, this),
             showMoreMenu && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -922,7 +920,7 @@ function GalleryView() {
                             className: "w-10 h-1 bg-[#D1D6DB] rounded-full mx-auto mt-3"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 540,
+                            lineNumber: 538,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -942,12 +940,12 @@ function GalleryView() {
                                                 className: "w-5 h-5 text-pink-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 551,
+                                                lineNumber: 549,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                            lineNumber: 550,
+                                            lineNumber: 548,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -955,13 +953,13 @@ function GalleryView() {
                                             children: "앨범에 추가"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                            lineNumber: 553,
+                                            lineNumber: 551,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 542,
+                                    lineNumber: 540,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -975,12 +973,12 @@ function GalleryView() {
                                                 className: "w-5 h-5 text-[#B0B8C1]"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 561,
+                                                lineNumber: 559,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                            lineNumber: 560,
+                                            lineNumber: 558,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -988,13 +986,13 @@ function GalleryView() {
                                             children: "공유하기 (준비중)"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                            lineNumber: 563,
+                                            lineNumber: 561,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 555,
+                                    lineNumber: 553,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1011,12 +1009,12 @@ function GalleryView() {
                                                 className: "w-5 h-5 text-red-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 574,
+                                                lineNumber: 572,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                            lineNumber: 573,
+                                            lineNumber: 571,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1024,19 +1022,19 @@ function GalleryView() {
                                             children: "삭제하기"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                            lineNumber: 576,
+                                            lineNumber: 574,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 565,
+                                    lineNumber: 563,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 541,
+                            lineNumber: 539,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1046,18 +1044,18 @@ function GalleryView() {
                             children: "취소"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 579,
+                            lineNumber: 577,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/gallery-view.tsx",
-                    lineNumber: 536,
+                    lineNumber: 534,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 532,
+                lineNumber: 530,
                 columnNumber: 9
             }, this),
             showAlbumSheet && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1078,12 +1076,12 @@ function GalleryView() {
                                         className: "w-5 h-5 text-white"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 606,
+                                        lineNumber: 604,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 601,
+                                    lineNumber: 599,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1091,7 +1089,7 @@ function GalleryView() {
                                     children: "앨범에 추가"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 608,
+                                    lineNumber: 606,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1105,18 +1103,18 @@ function GalleryView() {
                                         className: "w-5 h-5 text-white"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 617,
+                                        lineNumber: 615,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 609,
+                                    lineNumber: 607,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 600,
+                            lineNumber: 598,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1129,7 +1127,7 @@ function GalleryView() {
                                         children: "앨범이 없습니다"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 624,
+                                        lineNumber: 622,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1142,13 +1140,13 @@ function GalleryView() {
                                         children: "첫 앨범 만들기"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 625,
+                                        lineNumber: 623,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 623,
+                                lineNumber: 621,
                                 columnNumber: 17
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "grid grid-cols-3 gap-3",
@@ -1165,7 +1163,7 @@ function GalleryView() {
                                                     className: "w-full h-full object-cover"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                                    lineNumber: 647,
+                                                    lineNumber: 645,
                                                     columnNumber: 27
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "w-full h-full flex items-center justify-center",
@@ -1173,17 +1171,17 @@ function GalleryView() {
                                                         className: "w-8 h-8 text-[#8B8B8D]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                                        lineNumber: 654,
+                                                        lineNumber: 652,
                                                         columnNumber: 29
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                                    lineNumber: 653,
+                                                    lineNumber: 651,
                                                     columnNumber: 27
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 645,
+                                                lineNumber: 643,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1191,34 +1189,34 @@ function GalleryView() {
                                                 children: album.title
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 658,
+                                                lineNumber: 656,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, album.id, true, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 639,
+                                        lineNumber: 637,
                                         columnNumber: 21
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                lineNumber: 637,
+                                lineNumber: 635,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 621,
+                            lineNumber: 619,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/gallery-view.tsx",
-                    lineNumber: 596,
+                    lineNumber: 594,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 592,
+                lineNumber: 590,
                 columnNumber: 9
             }, this),
             showAddAlbumModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1233,7 +1231,7 @@ function GalleryView() {
                             children: "새 앨범 만들기"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 672,
+                            lineNumber: 670,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1245,7 +1243,7 @@ function GalleryView() {
                             "data-testid": "input-album-title"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 673,
+                            lineNumber: 671,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1258,7 +1256,7 @@ function GalleryView() {
                                     children: "취소"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 682,
+                                    lineNumber: 680,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1269,24 +1267,24 @@ function GalleryView() {
                                     children: "만들기"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 689,
+                                    lineNumber: 687,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 681,
+                            lineNumber: 679,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/gallery-view.tsx",
-                    lineNumber: 671,
+                    lineNumber: 669,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 670,
+                lineNumber: 668,
                 columnNumber: 9
             }, this),
             showAddPhotoModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1301,7 +1299,7 @@ function GalleryView() {
                             children: "사진 추가하기"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 706,
+                            lineNumber: 704,
                             columnNumber: 13
                         }, this),
                         !previewUrl ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1313,12 +1311,12 @@ function GalleryView() {
                                         className: "w-7 h-7 text-pink-500"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 711,
+                                        lineNumber: 709,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 710,
+                                    lineNumber: 708,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1326,7 +1324,7 @@ function GalleryView() {
                                     children: "사진 선택하기"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 713,
+                                    lineNumber: 711,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1334,7 +1332,7 @@ function GalleryView() {
                                     children: "탭하여 갤러리에서 선택"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 714,
+                                    lineNumber: 712,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1345,13 +1343,13 @@ function GalleryView() {
                                     "data-testid": "input-photo-file"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 715,
+                                    lineNumber: 713,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 709,
+                            lineNumber: 707,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "relative mb-4",
@@ -1362,7 +1360,7 @@ function GalleryView() {
                                     className: "w-full h-48 object-cover rounded-[16px]"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 725,
+                                    lineNumber: 723,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1376,18 +1374,18 @@ function GalleryView() {
                                         className: "w-4 h-4 text-white"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 738,
+                                        lineNumber: 736,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 730,
+                                    lineNumber: 728,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 724,
+                            lineNumber: 722,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1399,7 +1397,7 @@ function GalleryView() {
                             "data-testid": "input-photo-caption"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 743,
+                            lineNumber: 741,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1412,7 +1410,7 @@ function GalleryView() {
                                     children: "취소"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 753,
+                                    lineNumber: 751,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1426,7 +1424,7 @@ function GalleryView() {
                                                 className: "w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 768,
+                                                lineNumber: 766,
                                                 columnNumber: 21
                                             }, this),
                                             "업로드 중..."
@@ -1434,31 +1432,31 @@ function GalleryView() {
                                     }, void 0, true) : '업로드'
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 760,
+                                    lineNumber: 758,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 752,
+                            lineNumber: 750,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/gallery-view.tsx",
-                    lineNumber: 705,
+                    lineNumber: 703,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 704,
+                lineNumber: 702,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "h-20"
             }, void 0, false, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 780,
+                lineNumber: 778,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -1483,17 +1481,17 @@ function GalleryView() {
                                             d: "M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/gallery-view.tsx",
-                                            lineNumber: 787,
+                                            lineNumber: 785,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 786,
+                                        lineNumber: 784,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 785,
+                                    lineNumber: 783,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1501,13 +1499,13 @@ function GalleryView() {
                                     children: "홈"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 790,
+                                    lineNumber: 788,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 784,
+                            lineNumber: 782,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1532,7 +1530,7 @@ function GalleryView() {
                                                 rx: "2"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 795,
+                                                lineNumber: 793,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -1542,7 +1540,7 @@ function GalleryView() {
                                                 y2: "6"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 796,
+                                                lineNumber: 794,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -1552,7 +1550,7 @@ function GalleryView() {
                                                 y2: "6"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 797,
+                                                lineNumber: 795,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
@@ -1562,18 +1560,18 @@ function GalleryView() {
                                                 y2: "10"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 798,
+                                                lineNumber: 796,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 794,
+                                        lineNumber: 792,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 793,
+                                    lineNumber: 791,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1581,13 +1579,13 @@ function GalleryView() {
                                     children: "캘린더"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 801,
+                                    lineNumber: 799,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 792,
+                            lineNumber: 790,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1611,7 +1609,7 @@ function GalleryView() {
                                                 rx: "2"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 806,
+                                                lineNumber: 804,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -1620,25 +1618,25 @@ function GalleryView() {
                                                 r: "1.5"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 807,
+                                                lineNumber: 805,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                                 d: "M21 15l-5-5L5 21"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 808,
+                                                lineNumber: 806,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 805,
+                                        lineNumber: 803,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 804,
+                                    lineNumber: 802,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1646,13 +1644,13 @@ function GalleryView() {
                                     children: "갤러리"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 811,
+                                    lineNumber: 809,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 803,
+                            lineNumber: 801,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1675,25 +1673,25 @@ function GalleryView() {
                                                 r: "4"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 816,
+                                                lineNumber: 814,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                                 d: "M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/gallery-view.tsx",
-                                                lineNumber: 817,
+                                                lineNumber: 815,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/gallery-view.tsx",
-                                        lineNumber: 815,
+                                        lineNumber: 813,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 814,
+                                    lineNumber: 812,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1701,24 +1699,24 @@ function GalleryView() {
                                     children: "프로필"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/gallery-view.tsx",
-                                    lineNumber: 820,
+                                    lineNumber: 818,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/gallery-view.tsx",
-                            lineNumber: 813,
+                            lineNumber: 811,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/gallery-view.tsx",
-                    lineNumber: 783,
+                    lineNumber: 781,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/gallery-view.tsx",
-                lineNumber: 782,
+                lineNumber: 780,
                 columnNumber: 7
             }, this)
         ]

@@ -86,7 +86,7 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
   const fetchExpenses = async () => {
     setIsLoading(true)
     try {
-      const res = await fetch('/api/expenses?userId=default&mode=wedding')
+      const res = await fetch('/api/expenses?mode=wedding')
       const data = await res.json()
       setExpenses(data.map((e: { id: number; title: string; amount: string; category: string; date: string; isPaid: boolean; memo: string }) => ({
         id: String(e.id),
@@ -117,7 +117,6 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: 'default',
           title: expense.title,
           amount: expense.amount,
           category: expense.category,

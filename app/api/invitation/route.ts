@@ -2,10 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { weddingInfo } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const userId = searchParams.get('userId') || 'default';
+export async function GET() {
+  const auth = await requireAuth();
+  if (isUnauthorized(auth)) return auth;
+  const userId = auth.userId;
 
   try {
     const result = await db.select().from(weddingInfo)
@@ -26,7 +28,10 @@ export async function GET(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
-    const { userId = 'default', invitationData } = body;
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+    const { invitationData } = body;
 
     const existing = await db.select().from(weddingInfo)
       .where(eq(weddingInfo.userId, userId))
