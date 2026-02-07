@@ -19,6 +19,7 @@ import {
 import Link from "next/link"
 import { ProfileSettingsSection } from "@/components/shared/profile-settings-section"
 import { NotificationModal, type Notification } from "@/components/shared/notification-modal"
+import { useAuth } from "@/hooks/use-auth"
 
 const calculateDday = (date: string) => {
   const today = new Date()
@@ -30,12 +31,26 @@ const calculateDday = (date: string) => {
 }
 
 export default function WeddingProfilePage() {
+  const { user } = useAuth()
   const [weddingDate, setWeddingDate] = useState("")
   const [dday, setDday] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
   const [showPhotoModal, setShowPhotoModal] = useState<"groom" | "bride" | null>(null)
   const [showNotifications, setShowNotifications] = useState(false)
   const [notifications, setNotifications] = useState<Notification[]>([])
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
+
+  const handleLogout = () => {
+    setIsLoggingOut(true)
+    localStorage.removeItem("survey_myName")
+    localStorage.removeItem("survey_partnerName")
+    localStorage.removeItem("survey_firstMeetDate")
+    localStorage.removeItem("survey_myBirthday")
+    localStorage.removeItem("survey_partnerBirthday")
+    localStorage.removeItem("selected_mode")
+    localStorage.removeItem("wedding_onboarding_complete")
+    window.location.href = "/api/logout"
+  }
   
   const [groomProfile, setGroomProfile] = useState({
     name: "",
@@ -284,11 +299,13 @@ export default function WeddingProfilePage() {
 
         {/* Logout */}
         <button 
-          className="w-full flex items-center justify-center gap-2 py-4 text-[#FF6B6B] text-[15px] font-medium hover:bg-white rounded-[16px] transition-colors"
+          onClick={handleLogout}
+          disabled={isLoggingOut}
+          className="w-full flex items-center justify-center gap-2 py-4 text-[#FF6B6B] text-[15px] font-medium hover:bg-white rounded-[16px] transition-colors disabled:opacity-50"
           data-testid="button-logout"
         >
           <LogOut className="w-5 h-5" />
-          로그아웃
+          {isLoggingOut ? "로그아웃 중..." : "로그아웃"}
         </button>
       </div>
 

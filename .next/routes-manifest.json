@@ -1,0 +1,417 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/dating/gallery/album/[id]",
+      "regex": "^/dating/gallery/album/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/dating/gallery/album/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/family/archive/[id]",
+      "regex": "^/family/archive/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/family/archive/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/travel/[id]",
+      "regex": "^/travel/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/travel/(?<nxtPid>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/api/ai/invitation-text",
+      "regex": "^/api/ai/invitation\\-text(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/ai/invitation\\-text(?:/)?$"
+    },
+    {
+      "page": "/api/albums",
+      "regex": "^/api/albums(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/albums(?:/)?$"
+    },
+    {
+      "page": "/api/auth/callback",
+      "regex": "^/api/auth/callback(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/callback(?:/)?$"
+    },
+    {
+      "page": "/api/auth/user",
+      "regex": "^/api/auth/user(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/user(?:/)?$"
+    },
+    {
+      "page": "/api/checklist",
+      "regex": "^/api/checklist(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/checklist(?:/)?$"
+    },
+    {
+      "page": "/api/events",
+      "regex": "^/api/events(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/events(?:/)?$"
+    },
+    {
+      "page": "/api/expenses",
+      "regex": "^/api/expenses(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/expenses(?:/)?$"
+    },
+    {
+      "page": "/api/guests",
+      "regex": "^/api/guests(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/guests(?:/)?$"
+    },
+    {
+      "page": "/api/invitation",
+      "regex": "^/api/invitation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/invitation(?:/)?$"
+    },
+    {
+      "page": "/api/invitation/guestbook",
+      "regex": "^/api/invitation/guestbook(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/invitation/guestbook(?:/)?$"
+    },
+    {
+      "page": "/api/login",
+      "regex": "^/api/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/login(?:/)?$"
+    },
+    {
+      "page": "/api/logout",
+      "regex": "^/api/logout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/logout(?:/)?$"
+    },
+    {
+      "page": "/api/mood",
+      "regex": "^/api/mood(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/mood(?:/)?$"
+    },
+    {
+      "page": "/api/notifications",
+      "regex": "^/api/notifications(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/notifications(?:/)?$"
+    },
+    {
+      "page": "/api/photos",
+      "regex": "^/api/photos(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/photos(?:/)?$"
+    },
+    {
+      "page": "/api/profile",
+      "regex": "^/api/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/profile(?:/)?$"
+    },
+    {
+      "page": "/api/todos",
+      "regex": "^/api/todos(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/todos(?:/)?$"
+    },
+    {
+      "page": "/api/travels",
+      "regex": "^/api/travels(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/travels(?:/)?$"
+    },
+    {
+      "page": "/api/upload",
+      "regex": "^/api/upload(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/upload(?:/)?$"
+    },
+    {
+      "page": "/api/wedding-info",
+      "regex": "^/api/wedding\\-info(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/wedding\\-info(?:/)?$"
+    },
+    {
+      "page": "/dating",
+      "regex": "^/dating(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dating(?:/)?$"
+    },
+    {
+      "page": "/dating/calendar",
+      "regex": "^/dating/calendar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dating/calendar(?:/)?$"
+    },
+    {
+      "page": "/dating/gallery",
+      "regex": "^/dating/gallery(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dating/gallery(?:/)?$"
+    },
+    {
+      "page": "/dating/profile",
+      "regex": "^/dating/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dating/profile(?:/)?$"
+    },
+    {
+      "page": "/family",
+      "regex": "^/family(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/family(?:/)?$"
+    },
+    {
+      "page": "/family/archive",
+      "regex": "^/family/archive(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/family/archive(?:/)?$"
+    },
+    {
+      "page": "/family/calendar",
+      "regex": "^/family/calendar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/family/calendar(?:/)?$"
+    },
+    {
+      "page": "/family/gallery",
+      "regex": "^/family/gallery(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/family/gallery(?:/)?$"
+    },
+    {
+      "page": "/family/profile",
+      "regex": "^/family/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/family/profile(?:/)?$"
+    },
+    {
+      "page": "/invitation/preview",
+      "regex": "^/invitation/preview(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/invitation/preview(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/splash",
+      "regex": "^/splash(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/splash(?:/)?$"
+    },
+    {
+      "page": "/survey/step1",
+      "regex": "^/survey/step1(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/survey/step1(?:/)?$"
+    },
+    {
+      "page": "/survey/step2",
+      "regex": "^/survey/step2(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/survey/step2(?:/)?$"
+    },
+    {
+      "page": "/survey/step3",
+      "regex": "^/survey/step3(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/survey/step3(?:/)?$"
+    },
+    {
+      "page": "/survey/step4",
+      "regex": "^/survey/step4(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/survey/step4(?:/)?$"
+    },
+    {
+      "page": "/survey/step5",
+      "regex": "^/survey/step5(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/survey/step5(?:/)?$"
+    },
+    {
+      "page": "/survey/wedding-complete",
+      "regex": "^/survey/wedding\\-complete(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/survey/wedding\\-complete(?:/)?$"
+    },
+    {
+      "page": "/survey/wedding-step1",
+      "regex": "^/survey/wedding\\-step1(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/survey/wedding\\-step1(?:/)?$"
+    },
+    {
+      "page": "/survey/wedding-step2",
+      "regex": "^/survey/wedding\\-step2(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/survey/wedding\\-step2(?:/)?$"
+    },
+    {
+      "page": "/survey/wedding-step3",
+      "regex": "^/survey/wedding\\-step3(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/survey/wedding\\-step3(?:/)?$"
+    },
+    {
+      "page": "/travel",
+      "regex": "^/travel(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/travel(?:/)?$"
+    },
+    {
+      "page": "/wedding",
+      "regex": "^/wedding(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding(?:/)?$"
+    },
+    {
+      "page": "/wedding/budget",
+      "regex": "^/wedding/budget(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/budget(?:/)?$"
+    },
+    {
+      "page": "/wedding/calendar",
+      "regex": "^/wedding/calendar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/calendar(?:/)?$"
+    },
+    {
+      "page": "/wedding/checklist",
+      "regex": "^/wedding/checklist(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/checklist(?:/)?$"
+    },
+    {
+      "page": "/wedding/dress",
+      "regex": "^/wedding/dress(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/dress(?:/)?$"
+    },
+    {
+      "page": "/wedding/editor",
+      "regex": "^/wedding/editor(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/editor(?:/)?$"
+    },
+    {
+      "page": "/wedding/gallery",
+      "regex": "^/wedding/gallery(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/gallery(?:/)?$"
+    },
+    {
+      "page": "/wedding/goods",
+      "regex": "^/wedding/goods(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/goods(?:/)?$"
+    },
+    {
+      "page": "/wedding/guests",
+      "regex": "^/wedding/guests(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/guests(?:/)?$"
+    },
+    {
+      "page": "/wedding/invitation",
+      "regex": "^/wedding/invitation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/invitation(?:/)?$"
+    },
+    {
+      "page": "/wedding/onboarding",
+      "regex": "^/wedding/onboarding(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/onboarding(?:/)?$"
+    },
+    {
+      "page": "/wedding/profile",
+      "regex": "^/wedding/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/wedding/profile(?:/)?$"
+    },
+    {
+      "page": "/welcome",
+      "regex": "^/welcome(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/welcome(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

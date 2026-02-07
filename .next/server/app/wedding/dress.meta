@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/wedding/layout,_N_T_/wedding/dress/layout,_N_T_/wedding/dress/page,_N_T_/wedding/dress"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/wedding/dress/__PAGE__",
+    "/wedding/dress",
+    "/wedding",
+    "/_index",
+    "/_head"
+  ]
+}

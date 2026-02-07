@@ -1,0 +1,3 @@
+module.exports=[60350,a=>{"use strict";var b=a.i(64781),c=a.i(89982),d=a.i(8490);function e(){let a=(0,d.useRouter)();return(0,c.useEffect)(()=>{a.push("/splash")},[a]),(0,b.jsx)("main",{className:"min-h-dvh bg-white flex items-center justify-center",children:(0,b.jsx)("div",{className:"w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin"})})}a.s(["default",()=>e])}];
+
+//# sourceMappingURL=app_page_tsx_55b2e5ee._.js.map

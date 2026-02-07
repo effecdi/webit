@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/survey/layout,_N_T_/survey/step4/layout,_N_T_/survey/step4/page,_N_T_/survey/step4"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/survey/step4/__PAGE__",
+    "/survey/step4",
+    "/survey",
+    "/_index",
+    "/_head"
+  ]
+}

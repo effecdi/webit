@@ -1,0 +1,8 @@
+1:"$Sreact.fragment"
+2:I[89836,["/_next/static/chunks/9e6500c1eedb58be.js","/_next/static/chunks/796e7f5bb07ad38d.js"],"ViewportBoundary"]
+4:I[89836,["/_next/static/chunks/9e6500c1eedb58be.js","/_next/static/chunks/796e7f5bb07ad38d.js"],"MetadataBoundary"]
+5:"$Sreact.suspense"
+7:I[76629,["/_next/static/chunks/9e6500c1eedb58be.js","/_next/static/chunks/796e7f5bb07ad38d.js"],"IconMark"]
+0:{"buildId":"KfbdnsCevAxnZuVSAf1fw","rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
+3:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:[["$","title","0",{"children":"WE:VE - 우리의 모든 순간"}],["$","meta","1",{"name":"description","content":"커플의 생애주기를 함께하는 슈퍼앱"}],["$","meta","2",{"name":"generator","content":"v0.app"}],["$","link","3",{"rel":"icon","href":"/icon-light-32x32.png","media":"(prefers-color-scheme: light)"}],["$","link","4",{"rel":"icon","href":"/icon-dark-32x32.png","media":"(prefers-color-scheme: dark)"}],["$","link","5",{"rel":"icon","href":"/icon.svg","type":"image/svg+xml"}],["$","link","6",{"rel":"apple-touch-icon","href":"/apple-icon.png"}],["$","$L7","7",{}]]

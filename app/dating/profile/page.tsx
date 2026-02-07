@@ -1,15 +1,32 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { DatingBottomNav } from "@/components/dating/dating-bottom-nav"
 import { CoupleProfile } from "@/components/dating/couple-profile"
 import { ProfileSettingsSection } from "@/components/shared/profile-settings-section"
 import { Bell, LogOut, Crown, Star, X, Heart, ImageIcon, Calendar, Check } from "lucide-react"
+import { useAuth } from "@/hooks/use-auth"
 
 export default function ProfilePage() {
+  const router = useRouter()
+  const { user } = useAuth()
   const [showPremiumModal, setShowPremiumModal] = useState(false)
   const [showPaymentModal, setShowPaymentModal] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<"advanced" | "premium">("advanced")
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
+
+  const handleLogout = () => {
+    setIsLoggingOut(true)
+    localStorage.removeItem("survey_myName")
+    localStorage.removeItem("survey_partnerName")
+    localStorage.removeItem("survey_firstMeetDate")
+    localStorage.removeItem("survey_myBirthday")
+    localStorage.removeItem("survey_partnerBirthday")
+    localStorage.removeItem("selected_mode")
+    localStorage.removeItem("wedding_onboarding_complete")
+    window.location.href = "/api/logout"
+  }
 
   return (
     <main className="min-h-dvh bg-[#F7F8FA] pb-20">
@@ -66,11 +83,13 @@ export default function ProfilePage() {
 
         {/* Logout Button */}
         <button 
-          className="w-full py-4 bg-white hover:bg-[#F8F9FA] rounded-[16px] shadow-sm text-[15px] font-medium text-red-500 flex items-center justify-center gap-2 transition-colors"
+          onClick={handleLogout}
+          disabled={isLoggingOut}
+          className="w-full py-4 bg-white hover:bg-[#F8F9FA] rounded-[16px] shadow-sm text-[15px] font-medium text-red-500 flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
           data-testid="button-logout"
         >
           <LogOut className="w-5 h-5" />
-          로그아웃
+          {isLoggingOut ? "로그아웃 중..." : "로그아웃"}
         </button>
       </div>
 

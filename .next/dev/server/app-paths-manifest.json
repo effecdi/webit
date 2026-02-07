@@ -1,1 +1,9 @@
-{}
+{
+  "/api/albums/route": "app/api/albums/route.js",
+  "/api/auth/user/route": "app/api/auth/user/route.js",
+  "/api/photos/route": "app/api/photos/route.js",
+  "/dating/gallery/page": "app/dating/gallery/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/splash/page": "app/splash/page.js"
+}

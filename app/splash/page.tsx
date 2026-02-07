@@ -2,21 +2,38 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
+import { useAuth } from "@/hooks/use-auth"
 
 export default function SplashPage() {
   const router = useRouter()
+  const { isAuthenticated, isLoading, user } = useAuth()
   const [showLogo, setShowLogo] = useState(false)
   const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
     const logoTimer = setTimeout(() => setShowLogo(true), 300)
-    const fadeTimer = setTimeout(() => setFadeOut(true), 2000)
+    return () => clearTimeout(logoTimer)
+  }, [])
+
+  useEffect(() => {
+    if (isLoading) return
+
+    const fadeTimer = setTimeout(() => setFadeOut(true), 1500)
     
     const navigateTimer = setTimeout(() => {
-      const hasCompleted = localStorage.getItem("survey_myName")
+      if (!isAuthenticated) {
+        router.push("/login")
+        return
+      }
+
+      const hasCompletedSurvey = localStorage.getItem("survey_myName")
       const selectedMode = localStorage.getItem("selected_mode")
-      
-      if (hasCompleted && selectedMode) {
+
+      if (user?.firstName && !hasCompletedSurvey) {
+        localStorage.setItem("survey_myName", user.firstName)
+      }
+
+      if (hasCompletedSurvey && selectedMode) {
         if (selectedMode === "dating") {
           router.push("/dating")
         } else if (selectedMode === "wedding") {
@@ -26,19 +43,18 @@ export default function SplashPage() {
         } else {
           router.push("/dating")
         }
-      } else if (hasCompleted) {
+      } else if (hasCompletedSurvey) {
         router.push("/dating")
       } else {
-        router.push("/login")
+        router.push("/survey/step1")
       }
-    }, 2500)
+    }, 2000)
 
     return () => {
-      clearTimeout(logoTimer)
       clearTimeout(fadeTimer)
       clearTimeout(navigateTimer)
     }
-  }, [router])
+  }, [isLoading, isAuthenticated, user, router])
 
   return (
     <main 
