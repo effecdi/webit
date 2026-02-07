@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { AuthProvider } from '@/components/auth-provider'
 import './globals.css'
 
 const _playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] });
@@ -37,7 +38,9 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body className="font-sans antialiased bg-[#F2F4F6] text-[#191F28]" suppressHydrationWarning>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
         <Analytics />
       </body>
     </html>

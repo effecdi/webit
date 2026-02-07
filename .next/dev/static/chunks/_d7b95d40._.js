@@ -151,6 +151,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 const categoryIcons = {
     "예식장": {
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$building$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Building2$3e$__["Building2"], {
@@ -250,6 +251,27 @@ const payerLabels = {
     parents: "양가 부모님"
 };
 function BudgetPage() {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
+        fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "min-h-screen bg-[#F2F4F6]"
+        }, void 0, false, {
+            fileName: "[project]/app/wedding/budget/page.tsx",
+            lineNumber: 53,
+            columnNumber: 25
+        }, void 0),
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(BudgetPageContent, {}, void 0, false, {
+            fileName: "[project]/app/wedding/budget/page.tsx",
+            lineNumber: 54,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/app/wedding/budget/page.tsx",
+        lineNumber: 53,
+        columnNumber: 5
+    }, this);
+}
+_c = BudgetPage;
+function BudgetPageContent() {
     _s();
     const { totalBudget, setTotalBudget, expenses, setExpenses, addExpense, deleteExpense, totalSpent, totalScheduled, remaining, spentPercent, scheduledPercent } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$contexts$2f$budget$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useBudget"])();
     const [activeCategory, setActiveCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("전체");
@@ -263,12 +285,12 @@ function BudgetPage() {
     const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"])();
     // Auto-open add modal if ?add=true
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "BudgetPage.useEffect": ()=>{
+        "BudgetPageContent.useEffect": ()=>{
             if (searchParams.get("add") === "true") {
                 setShowAddModal(true);
             }
         }
-    }["BudgetPage.useEffect"], [
+    }["BudgetPageContent.useEffect"], [
         searchParams
     ]);
     const [newExpense, setNewExpense] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
@@ -496,12 +518,12 @@ function BudgetPage() {
                                 className: "w-5 h-5 text-[#191F28]"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 289,
+                                lineNumber: 297,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/budget/page.tsx",
-                            lineNumber: 285,
+                            lineNumber: 293,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -509,7 +531,7 @@ function BudgetPage() {
                             children: "예산 관리"
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/budget/page.tsx",
-                            lineNumber: 291,
+                            lineNumber: 299,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -519,23 +541,23 @@ function BudgetPage() {
                                 className: "w-5 h-5 text-[#4E5968]"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 296,
+                                lineNumber: 304,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/budget/page.tsx",
-                            lineNumber: 292,
+                            lineNumber: 300,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/wedding/budget/page.tsx",
-                    lineNumber: 284,
+                    lineNumber: 292,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wedding/budget/page.tsx",
-                lineNumber: 283,
+                lineNumber: 291,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -553,12 +575,12 @@ function BudgetPage() {
                                             className: "w-3 h-3 text-white"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 307,
+                                            lineNumber: 315,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 306,
+                                        lineNumber: 314,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -566,13 +588,13 @@ function BudgetPage() {
                                         children: "총 예산"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 309,
+                                        lineNumber: 317,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 305,
+                                lineNumber: 313,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -584,18 +606,18 @@ function BudgetPage() {
                                     children: "예산비용이 정해졌나요?"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 312,
+                                    lineNumber: 320,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 311,
+                                lineNumber: 319,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/budget/page.tsx",
-                        lineNumber: 304,
+                        lineNumber: 312,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "bg-white rounded-[24px] p-6 shadow-weve",
@@ -608,7 +630,7 @@ function BudgetPage() {
                                         children: "총 예산"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 324,
+                                        lineNumber: 332,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -622,20 +644,20 @@ function BudgetPage() {
                                                 className: "w-3.5 h-3.5"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 332,
+                                                lineNumber: 340,
                                                 columnNumber: 17
                                             }, this),
                                             "수정"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 325,
+                                        lineNumber: 333,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 323,
+                                lineNumber: 331,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -646,7 +668,7 @@ function BudgetPage() {
                                         children: totalBudget.toLocaleString()
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 337,
+                                        lineNumber: 345,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -654,13 +676,13 @@ function BudgetPage() {
                                         children: "원"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 340,
+                                        lineNumber: 348,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 336,
+                                lineNumber: 344,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -673,7 +695,7 @@ function BudgetPage() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 345,
+                                        lineNumber: 353,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -683,13 +705,13 @@ function BudgetPage() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 349,
+                                        lineNumber: 357,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 344,
+                                lineNumber: 352,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -704,7 +726,7 @@ function BudgetPage() {
                                                         className: "w-2 h-2 rounded-full bg-[#FF8A80]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 359,
+                                                        lineNumber: 367,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -712,13 +734,13 @@ function BudgetPage() {
                                                         children: "사용"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 360,
+                                                        lineNumber: 368,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 358,
+                                                lineNumber: 366,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -729,13 +751,13 @@ function BudgetPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 362,
+                                                lineNumber: 370,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 357,
+                                        lineNumber: 365,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -748,7 +770,7 @@ function BudgetPage() {
                                                         className: "w-2 h-2 rounded-full bg-[#FFD4A3]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 368,
+                                                        lineNumber: 376,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -756,13 +778,13 @@ function BudgetPage() {
                                                         children: "예정"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 369,
+                                                        lineNumber: 377,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 367,
+                                                lineNumber: 375,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -773,13 +795,13 @@ function BudgetPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 371,
+                                                lineNumber: 379,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 366,
+                                        lineNumber: 374,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -792,7 +814,7 @@ function BudgetPage() {
                                                         className: "w-2 h-2 rounded-full bg-[#3182F6]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 377,
+                                                        lineNumber: 385,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -800,13 +822,13 @@ function BudgetPage() {
                                                         children: "남음"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 378,
+                                                        lineNumber: 386,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 376,
+                                                lineNumber: 384,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -817,25 +839,25 @@ function BudgetPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 380,
+                                                lineNumber: 388,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 375,
+                                        lineNumber: 383,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 356,
+                                lineNumber: 364,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/budget/page.tsx",
-                        lineNumber: 322,
+                        lineNumber: 330,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -846,12 +868,12 @@ function BudgetPage() {
                                 children: cat
                             }, cat, false, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 391,
+                                lineNumber: 399,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/wedding/budget/page.tsx",
-                        lineNumber: 389,
+                        lineNumber: 397,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -865,7 +887,7 @@ function BudgetPage() {
                                         children: "지출 내역"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 408,
+                                        lineNumber: 416,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -876,20 +898,20 @@ function BudgetPage() {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 413,
+                                                lineNumber: 421,
                                                 columnNumber: 15
                                             }, this),
                                             "엑셀 저장"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 409,
+                                        lineNumber: 417,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 407,
+                                lineNumber: 415,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -911,7 +933,7 @@ function BudgetPage() {
                                                                 className: "w-5 h-5 mb-1"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                lineNumber: 432,
+                                                                lineNumber: 440,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -919,13 +941,13 @@ function BudgetPage() {
                                                                 children: "결제"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                lineNumber: 433,
+                                                                lineNumber: 441,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 428,
+                                                        lineNumber: 436,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -936,7 +958,7 @@ function BudgetPage() {
                                                                 className: "w-5 h-5 mb-1"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                lineNumber: 440,
+                                                                lineNumber: 448,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -944,19 +966,19 @@ function BudgetPage() {
                                                                 children: "삭제"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                lineNumber: 441,
+                                                                lineNumber: 449,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 436,
+                                                        lineNumber: 444,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 426,
+                                                lineNumber: 434,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -993,7 +1015,7 @@ function BudgetPage() {
                                                         children: catInfo.icon
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 478,
+                                                        lineNumber: 486,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1004,7 +1026,7 @@ function BudgetPage() {
                                                                 children: expense.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                lineNumber: 484,
+                                                                lineNumber: 492,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1016,13 +1038,13 @@ function BudgetPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                lineNumber: 485,
+                                                                lineNumber: 493,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 483,
+                                                        lineNumber: 491,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1037,7 +1059,7 @@ function BudgetPage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                    lineNumber: 494,
+                                                                    lineNumber: 502,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1045,7 +1067,7 @@ function BudgetPage() {
                                                                     children: "결제완료"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                    lineNumber: 497,
+                                                                    lineNumber: 505,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
@@ -1056,7 +1078,7 @@ function BudgetPage() {
                                                                     children: expense.amount.toLocaleString()
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                    lineNumber: 503,
+                                                                    lineNumber: 511,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1067,7 +1089,7 @@ function BudgetPage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                    lineNumber: 506,
+                                                                    lineNumber: 514,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1081,39 +1103,39 @@ function BudgetPage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                    lineNumber: 509,
+                                                                    lineNumber: 517,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 491,
+                                                        lineNumber: 499,
                                                         columnNumber: 21
                                                     }, this),
                                                     expense.status === "scheduled" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                                         className: "w-5 h-5 text-[#B0B8C1] ml-1 flex-shrink-0"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 518,
+                                                        lineNumber: 526,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 446,
+                                                lineNumber: 454,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, expense.id, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 424,
+                                        lineNumber: 432,
                                         columnNumber: 17
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 418,
+                                lineNumber: 426,
                                 columnNumber: 11
                             }, this),
                             filteredExpenses.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1125,12 +1147,12 @@ function BudgetPage() {
                                             className: "w-6 h-6 text-[#B0B8C1]"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 529,
+                                            lineNumber: 537,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 528,
+                                        lineNumber: 536,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1138,7 +1160,7 @@ function BudgetPage() {
                                         children: "아직 지출 내역이 없어요"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 531,
+                                        lineNumber: 539,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1146,25 +1168,25 @@ function BudgetPage() {
                                         children: "+ 버튼을 눌러 지출을 등록해보세요"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 532,
+                                        lineNumber: 540,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 527,
+                                lineNumber: 535,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/budget/page.tsx",
-                        lineNumber: 406,
+                        lineNumber: 414,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/wedding/budget/page.tsx",
-                lineNumber: 301,
+                lineNumber: 309,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1174,12 +1196,12 @@ function BudgetPage() {
                     className: "w-7 h-7 text-white"
                 }, void 0, false, {
                     fileName: "[project]/app/wedding/budget/page.tsx",
-                    lineNumber: 543,
+                    lineNumber: 551,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wedding/budget/page.tsx",
-                lineNumber: 539,
+                lineNumber: 547,
                 columnNumber: 7
             }, this),
             showAddModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1194,12 +1216,12 @@ function BudgetPage() {
                                     className: "w-6 h-6 text-[#8B95A1]"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 552,
+                                    lineNumber: 560,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 551,
+                                lineNumber: 559,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1207,7 +1229,7 @@ function BudgetPage() {
                                 children: "지출 등록"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 554,
+                                lineNumber: 562,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1217,13 +1239,13 @@ function BudgetPage() {
                                 children: "저장"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 555,
+                                lineNumber: 563,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/budget/page.tsx",
-                        lineNumber: 550,
+                        lineNumber: 558,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1236,7 +1258,7 @@ function BudgetPage() {
                                         children: "어떤 카테고리인가요?"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 571,
+                                        lineNumber: 579,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1256,7 +1278,7 @@ function BudgetPage() {
                                                         children: catInfo.icon
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 586,
+                                                        lineNumber: 594,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1264,25 +1286,25 @@ function BudgetPage() {
                                                         children: cat
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 589,
+                                                        lineNumber: 597,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, cat, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 577,
+                                                lineNumber: 585,
                                                 columnNumber: 21
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 572,
+                                        lineNumber: 580,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 570,
+                                lineNumber: 578,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1292,7 +1314,7 @@ function BudgetPage() {
                                         children: "항목명"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 600,
+                                        lineNumber: 608,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1306,13 +1328,13 @@ function BudgetPage() {
                                         className: "w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#191F28]"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 601,
+                                        lineNumber: 609,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 599,
+                                lineNumber: 607,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1322,7 +1344,7 @@ function BudgetPage() {
                                         children: "총 금액"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 612,
+                                        lineNumber: 620,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1340,7 +1362,7 @@ function BudgetPage() {
                                                 className: "flex-1 text-[32px] font-bold text-[#191F28] placeholder:text-[#E5E8EB] focus:outline-none border-b-2 border-[#E5E8EB] focus:border-[#191F28] pb-1 transition-colors text-right"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 614,
+                                                lineNumber: 622,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1348,19 +1370,19 @@ function BudgetPage() {
                                                 children: "원"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 622,
+                                                lineNumber: 630,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 613,
+                                        lineNumber: 621,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 611,
+                                lineNumber: 619,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1370,7 +1392,7 @@ function BudgetPage() {
                                         children: "결제 상태"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 628,
+                                        lineNumber: 636,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1385,7 +1407,7 @@ function BudgetPage() {
                                                 children: "결제 완료"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 630,
+                                                lineNumber: 638,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1397,19 +1419,19 @@ function BudgetPage() {
                                                 children: "예정/잔금"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 640,
+                                                lineNumber: 648,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 629,
+                                        lineNumber: 637,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 627,
+                                lineNumber: 635,
                                 columnNumber: 13
                             }, this),
                             newExpense.status === "paid" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1421,7 +1443,7 @@ function BudgetPage() {
                                                 children: "결제일"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 657,
+                                                lineNumber: 665,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1434,13 +1456,13 @@ function BudgetPage() {
                                                 className: "w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#191F28]"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 658,
+                                                lineNumber: 666,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 656,
+                                        lineNumber: 664,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1450,7 +1472,7 @@ function BudgetPage() {
                                                 children: "결제 수단"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 667,
+                                                lineNumber: 675,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1463,7 +1485,7 @@ function BudgetPage() {
                                                             className: "w-4 h-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                                            lineNumber: 670,
+                                                            lineNumber: 678,
                                                             columnNumber: 57
                                                         }, this)
                                                     },
@@ -1474,7 +1496,7 @@ function BudgetPage() {
                                                             className: "w-4 h-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                                            lineNumber: 671,
+                                                            lineNumber: 679,
                                                             columnNumber: 61
                                                         }, this)
                                                     },
@@ -1485,7 +1507,7 @@ function BudgetPage() {
                                                             className: "w-4 h-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                                            lineNumber: 672,
+                                                            lineNumber: 680,
                                                             columnNumber: 57
                                                         }, this)
                                                     }
@@ -1501,18 +1523,18 @@ function BudgetPage() {
                                                         ]
                                                     }, method.key, true, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 674,
+                                                        lineNumber: 682,
                                                         columnNumber: 23
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 668,
+                                                lineNumber: 676,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 666,
+                                        lineNumber: 674,
                                         columnNumber: 17
                                     }, this)
                                 ]
@@ -1527,7 +1549,7 @@ function BudgetPage() {
                                                 children: "계약금/잔금 상세"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 697,
+                                                lineNumber: 705,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1537,7 +1559,7 @@ function BudgetPage() {
                                                         children: "지금까지 낸 금액 (계약금)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 700,
+                                                        lineNumber: 708,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1555,7 +1577,7 @@ function BudgetPage() {
                                                                 className: "flex-1 px-3 py-2.5 bg-white rounded-[10px] text-[15px] font-medium text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] text-right"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                lineNumber: 702,
+                                                                lineNumber: 710,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1563,19 +1585,19 @@ function BudgetPage() {
                                                                 children: "원"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                lineNumber: 710,
+                                                                lineNumber: 718,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 701,
+                                                        lineNumber: 709,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 699,
+                                                lineNumber: 707,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1585,7 +1607,7 @@ function BudgetPage() {
                                                         children: "남은 잔금 (자동 계산)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 715,
+                                                        lineNumber: 723,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1600,7 +1622,7 @@ function BudgetPage() {
                                                                 })()
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                lineNumber: 717,
+                                                                lineNumber: 725,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1608,25 +1630,25 @@ function BudgetPage() {
                                                                 children: "원"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                                lineNumber: 724,
+                                                                lineNumber: 732,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 716,
+                                                        lineNumber: 724,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 714,
+                                                lineNumber: 722,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 696,
+                                        lineNumber: 704,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1636,7 +1658,7 @@ function BudgetPage() {
                                                 children: "잔금 결제 예정일"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 731,
+                                                lineNumber: 739,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1649,13 +1671,13 @@ function BudgetPage() {
                                                 className: "w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#191F28]"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 732,
+                                                lineNumber: 740,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 730,
+                                        lineNumber: 738,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1668,7 +1690,7 @@ function BudgetPage() {
                                                         className: "w-5 h-5 text-[#FF8A80]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 743,
+                                                        lineNumber: 751,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1676,13 +1698,13 @@ function BudgetPage() {
                                                         children: "3일 전 알림 받기"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 744,
+                                                        lineNumber: 752,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 742,
+                                                lineNumber: 750,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1695,18 +1717,18 @@ function BudgetPage() {
                                                     className: `w-5 h-5 bg-white rounded-full shadow-sm transition-transform ${newExpense.reminder ? "translate-x-6" : "translate-x-1"}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                    lineNumber: 752,
+                                                    lineNumber: 760,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 746,
+                                                lineNumber: 754,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 741,
+                                        lineNumber: 749,
                                         columnNumber: 17
                                     }, this)
                                 ]
@@ -1718,7 +1740,7 @@ function BudgetPage() {
                                         children: "결제자"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 762,
+                                        lineNumber: 770,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1739,25 +1761,25 @@ function BudgetPage() {
                                                         className: "w-4 h-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                                        lineNumber: 774,
+                                                        lineNumber: 782,
                                                         columnNumber: 52
                                                     }, this),
                                                     payerLabels[payer]
                                                 ]
                                             }, payer, true, {
                                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                                lineNumber: 765,
+                                                lineNumber: 773,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 763,
+                                        lineNumber: 771,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 761,
+                                lineNumber: 769,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1767,7 +1789,7 @@ function BudgetPage() {
                                         children: "메모 (선택)"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 783,
+                                        lineNumber: 791,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1781,25 +1803,25 @@ function BudgetPage() {
                                         className: "w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#191F28] resize-none"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/budget/page.tsx",
-                                        lineNumber: 784,
+                                        lineNumber: 792,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 782,
+                                lineNumber: 790,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/budget/page.tsx",
-                        lineNumber: 567,
+                        lineNumber: 575,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/wedding/budget/page.tsx",
-                lineNumber: 548,
+                lineNumber: 556,
                 columnNumber: 9
             }, this),
             showDetailModal && selectedExpense && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1819,12 +1841,12 @@ function BudgetPage() {
                                 className: "w-10 h-1 bg-[#E5E8EB] rounded-full"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/budget/page.tsx",
-                                lineNumber: 812,
+                                lineNumber: 820,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/budget/page.tsx",
-                            lineNumber: 811,
+                            lineNumber: 819,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1835,7 +1857,7 @@ function BudgetPage() {
                                     children: selectedExpense.title
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 817,
+                                    lineNumber: 825,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1847,13 +1869,13 @@ function BudgetPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 818,
+                                    lineNumber: 826,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wedding/budget/page.tsx",
-                            lineNumber: 816,
+                            lineNumber: 824,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1870,7 +1892,7 @@ function BudgetPage() {
                                                     children: "총 금액"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                    lineNumber: 826,
+                                                    lineNumber: 834,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1881,13 +1903,13 @@ function BudgetPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                    lineNumber: 827,
+                                                    lineNumber: 835,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 825,
+                                            lineNumber: 833,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1898,7 +1920,7 @@ function BudgetPage() {
                                                     children: "납부 완료"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                    lineNumber: 830,
+                                                    lineNumber: 838,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1909,20 +1931,20 @@ function BudgetPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                    lineNumber: 831,
+                                                    lineNumber: 839,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 829,
+                                            lineNumber: 837,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "h-px bg-[#E5E8EB]"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 833,
+                                            lineNumber: 841,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1933,7 +1955,7 @@ function BudgetPage() {
                                                     children: "남은 잔금"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                    lineNumber: 835,
+                                                    lineNumber: 843,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1944,13 +1966,13 @@ function BudgetPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                    lineNumber: 836,
+                                                    lineNumber: 844,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 834,
+                                            lineNumber: 842,
                                             columnNumber: 17
                                         }, this),
                                         selectedExpense.dueDate && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1965,13 +1987,13 @@ function BudgetPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 839,
+                                            lineNumber: 847,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 824,
+                                    lineNumber: 832,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1981,7 +2003,7 @@ function BudgetPage() {
                                             children: "중간 결제 금액"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 847,
+                                            lineNumber: 855,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1996,7 +2018,7 @@ function BudgetPage() {
                                                     className: "flex-1 px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[18px] font-bold text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] text-right"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                    lineNumber: 849,
+                                                    lineNumber: 857,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2004,19 +2026,19 @@ function BudgetPage() {
                                                     children: "원"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                                    lineNumber: 857,
+                                                    lineNumber: 865,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 848,
+                                            lineNumber: 856,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 846,
+                                    lineNumber: 854,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2029,7 +2051,7 @@ function BudgetPage() {
                                             children: "중간 결제 완료"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 863,
+                                            lineNumber: 871,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2038,7 +2060,7 @@ function BudgetPage() {
                                             children: "전체 잔금 결제 완료"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 875,
+                                            lineNumber: 883,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2051,37 +2073,37 @@ function BudgetPage() {
                                             children: "취소"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 882,
+                                            lineNumber: 890,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 862,
+                                    lineNumber: 870,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wedding/budget/page.tsx",
-                            lineNumber: 822,
+                            lineNumber: 830,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "h-8"
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/budget/page.tsx",
-                            lineNumber: 896,
+                            lineNumber: 904,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/wedding/budget/page.tsx",
-                    lineNumber: 806,
+                    lineNumber: 814,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wedding/budget/page.tsx",
-                lineNumber: 798,
+                lineNumber: 806,
                 columnNumber: 9
             }, this),
             showBudgetModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2096,7 +2118,7 @@ function BudgetPage() {
                             children: "총 예산 수정"
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/budget/page.tsx",
-                            lineNumber: 911,
+                            lineNumber: 919,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2107,7 +2129,7 @@ function BudgetPage() {
                                     children: "예산 금액"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 914,
+                                    lineNumber: 922,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2122,7 +2144,7 @@ function BudgetPage() {
                                             className: "flex-1 px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[20px] font-bold text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] text-right"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 916,
+                                            lineNumber: 924,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2130,19 +2152,19 @@ function BudgetPage() {
                                             children: "원"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
-                                            lineNumber: 924,
+                                            lineNumber: 932,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 915,
+                                    lineNumber: 923,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wedding/budget/page.tsx",
-                            lineNumber: 913,
+                            lineNumber: 921,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2154,7 +2176,7 @@ function BudgetPage() {
                                     children: "취소"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 929,
+                                    lineNumber: 937,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2169,47 +2191,48 @@ function BudgetPage() {
                                     children: "저장"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/budget/page.tsx",
-                                    lineNumber: 935,
+                                    lineNumber: 943,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wedding/budget/page.tsx",
-                            lineNumber: 928,
+                            lineNumber: 936,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/wedding/budget/page.tsx",
-                    lineNumber: 907,
+                    lineNumber: 915,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wedding/budget/page.tsx",
-                lineNumber: 903,
+                lineNumber: 911,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$wedding$2f$wedding$2d$bottom$2d$nav$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WeddingBottomNav"], {}, void 0, false, {
                 fileName: "[project]/app/wedding/budget/page.tsx",
-                lineNumber: 952,
+                lineNumber: 960,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/wedding/budget/page.tsx",
-        lineNumber: 281,
+        lineNumber: 289,
         columnNumber: 5
     }, this);
 }
-_s(BudgetPage, "QqngM2xum8fgJY1q+mHCsXioV7c=", false, function() {
+_s(BudgetPageContent, "QqngM2xum8fgJY1q+mHCsXioV7c=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$contexts$2f$budget$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useBudget"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"]
     ];
 });
-_c = BudgetPage;
-var _c;
+_c1 = BudgetPageContent;
+var _c, _c1;
 __turbopack_context__.k.register(_c, "BudgetPage");
+__turbopack_context__.k.register(_c1, "BudgetPageContent");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

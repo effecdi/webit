@@ -23,6 +23,10 @@ export const profiles = pgTable('profiles', {
   currentMode: text('current_mode').default('love'),
   myMood: text('my_mood').default('heart'),
   partnerMood: text('partner_mood').default('heart'),
+  stripeCustomerId: varchar('stripe_customer_id'),
+  stripeSubscriptionId: varchar('stripe_subscription_id'),
+  subscriptionPlan: varchar('subscription_plan').default('free'),
+  subscriptionStatus: varchar('subscription_status').default('inactive'),
   createdAt: timestamp('created_at').defaultNow(),
 });
 
