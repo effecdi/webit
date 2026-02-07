@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/wedding/layout,_N_T_/wedding/onboarding/layout,_N_T_/wedding/onboarding/page,_N_T_/wedding/onboarding"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/wedding/onboarding/__PAGE__",
+    "/wedding/onboarding",
+    "/wedding",
+    "/_index",
+    "/_head"
+  ]
+}

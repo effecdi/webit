@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/survey/layout,_N_T_/survey/wedding-step1/layout,_N_T_/survey/wedding-step1/page,_N_T_/survey/wedding-step1"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/survey/wedding-step1/__PAGE__",
+    "/survey/wedding-step1",
+    "/survey",
+    "/_index",
+    "/_head"
+  ]
+}

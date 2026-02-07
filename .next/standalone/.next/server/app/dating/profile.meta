@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/dating/layout,_N_T_/dating/profile/layout,_N_T_/dating/profile/page,_N_T_/dating/profile"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/dating/profile/__PAGE__",
+    "/dating/profile",
+    "/dating",
+    "/_index",
+    "/_head"
+  ]
+}

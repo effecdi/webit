@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/wedding/layout,_N_T_/wedding/invitation/layout,_N_T_/wedding/invitation/page,_N_T_/wedding/invitation"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/wedding/invitation/__PAGE__",
+    "/wedding/invitation",
+    "/wedding",
+    "/_index",
+    "/_head"
+  ]
+}

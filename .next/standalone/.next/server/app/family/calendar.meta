@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/family/layout,_N_T_/family/calendar/layout,_N_T_/family/calendar/page,_N_T_/family/calendar"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/family/calendar/__PAGE__",
+    "/family/calendar",
+    "/family",
+    "/_index",
+    "/_head"
+  ]
+}

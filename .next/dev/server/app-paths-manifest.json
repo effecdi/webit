@@ -1,9 +1,6 @@
 {
-  "/api/albums/route": "app/api/albums/route.js",
   "/api/auth/user/route": "app/api/auth/user/route.js",
-  "/api/photos/route": "app/api/photos/route.js",
-  "/dating/gallery/page": "app/dating/gallery/page.js",
-  "/login/page": "app/login/page.js",
-  "/page": "app/page.js",
-  "/splash/page": "app/splash/page.js"
+  "/api/stripe/products/route": "app/api/stripe/products/route.js",
+  "/api/stripe/subscription/route": "app/api/stripe/subscription/route.js",
+  "/page": "app/page.js"
 }

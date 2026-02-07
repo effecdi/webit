@@ -15,6 +15,62 @@ export default function ProfilePage() {
   const [showPaymentModal, setShowPaymentModal] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<"advanced" | "premium">("advanced")
   const [isLoggingOut, setIsLoggingOut] = useState(false)
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false)
+
+  const handleStripeCheckout = async (planType: "monthly" | "yearly") => {
+    setIsProcessingPayment(true)
+    try {
+      const productsRes = await fetch("/api/stripe/products")
+      const { products } = await productsRes.json()
+
+      const targetTier = selectedPlan
+      const targetProduct = products.find((p: any) => 
+        p.metadata?.tier === targetTier
+      )
+
+      if (!targetProduct || !targetProduct.prices?.length) {
+        alert("구독 상품을 찾을 수 없습니다. 잠시 후 다시 시도해주세요.")
+        setIsProcessingPayment(false)
+        return
+      }
+
+      const targetPrice = targetProduct.prices.find((p: any) => {
+        const meta = p.metadata || {}
+        if (planType === "monthly" && p.recurring?.interval === "month") {
+          return !meta.mode || meta.mode === "dating"
+        }
+        if (planType === "yearly" && p.recurring?.interval === "year") {
+          return !meta.mode || meta.mode === "dating"
+        }
+        return false
+      })
+
+      if (!targetPrice) {
+        alert("가격 정보를 찾을 수 없습니다.")
+        setIsProcessingPayment(false)
+        return
+      }
+
+      const checkoutRes = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ priceId: targetPrice.id, mode: "dating" }),
+      })
+
+      const { url, error } = await checkoutRes.json()
+      if (error) {
+        alert(error)
+        setIsProcessingPayment(false)
+        return
+      }
+
+      window.location.href = url
+    } catch (err) {
+      console.error("Checkout error:", err)
+      alert("결제 처리 중 오류가 발생했습니다.")
+      setIsProcessingPayment(false)
+    }
+  }
 
   const handleLogout = () => {
     setIsLoggingOut(true)
@@ -268,14 +324,20 @@ export default function ProfilePage() {
             {/* CTA */}
             <div className="px-5 pb-6">
               <button 
-                onClick={() => {
-                  setShowPremiumModal(false)
-                  setShowPaymentModal(true)
-                }}
-                className="w-full py-4 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold rounded-[14px] transition-all"
-                data-testid="button-subscribe-now"
+                onClick={() => handleStripeCheckout("monthly")}
+                disabled={isProcessingPayment}
+                className="w-full py-4 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold rounded-[14px] transition-all disabled:opacity-50"
+                data-testid="button-subscribe-monthly"
               >
-                {selectedPlan === "advanced" ? "고급 플랜 구독하기" : "프리미엄 플랜 구독하기"}
+                {isProcessingPayment ? "처리 중..." : `${selectedPlan === "advanced" ? "고급" : "프리미엄"} 월간 구독하기`}
+              </button>
+              <button 
+                onClick={() => handleStripeCheckout("yearly")}
+                disabled={isProcessingPayment}
+                className="w-full py-3 mt-2 border-2 border-amber-400 text-amber-600 font-semibold rounded-[14px] hover:bg-amber-50 transition-all disabled:opacity-50"
+                data-testid="button-subscribe-yearly"
+              >
+                {isProcessingPayment ? "처리 중..." : "연간 구독하기 (20% 할인)"}
               </button>
               <button 
                 onClick={() => setShowPremiumModal(false)}
@@ -288,90 +350,7 @@ export default function ProfilePage() {
         </div>
       )}
 
-      {/* Payment Method Modal */}
-      {showPaymentModal && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowPaymentModal(false)}
-        >
-          <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-            
-            <div className="px-5 pb-8">
-              <h3 className="text-[19px] font-bold text-[#191F28] mb-2">결제 수단 선택</h3>
-              <p className="text-[14px] text-[#8B95A1] mb-5">WE:VE {selectedPlan === "advanced" ? "고급" : "프리미엄"} 월 {selectedPlan === "advanced" ? "1,900" : "4,900"}원</p>
-              
-              <div className="space-y-3">
-                <button 
-                  onClick={() => {
-                    alert("카카오페이로 결제를 진행합니다")
-                    setShowPaymentModal(false)
-                  }}
-                  className="w-full flex items-center gap-4 p-4 bg-[#FEE500] rounded-[14px] hover:bg-[#FFEB3B] transition-colors"
-                >
-                  <div className="w-10 h-10 bg-[#3C1E1E] rounded-[10px] flex items-center justify-center">
-                    <span className="text-[#FEE500] font-bold text-[14px]">K</span>
-                  </div>
-                  <span className="text-[16px] font-semibold text-[#3C1E1E]">카카오페이로 결제</span>
-                </button>
-
-                <button 
-                  onClick={() => {
-                    alert("토스로 결제를 진행합니다")
-                    setShowPaymentModal(false)
-                  }}
-                  className="w-full flex items-center gap-4 p-4 bg-[#0064FF] rounded-[14px] hover:bg-[#0052CC] transition-colors"
-                >
-                  <div className="w-10 h-10 bg-white rounded-[10px] flex items-center justify-center">
-                    <span className="text-[#0064FF] font-bold text-[14px]">T</span>
-                  </div>
-                  <span className="text-[16px] font-semibold text-white">토스로 결제</span>
-                </button>
-
-                <button 
-                  onClick={() => {
-                    alert("신용카드로 결제를 진행합니다")
-                    setShowPaymentModal(false)
-                  }}
-                  className="w-full flex items-center gap-4 p-4 bg-[#F2F4F6] rounded-[14px] hover:bg-[#E5E8EB] transition-colors"
-                >
-                  <div className="w-10 h-10 bg-[#4E5968] rounded-[10px] flex items-center justify-center">
-                    <span className="text-white font-bold text-[12px]">CARD</span>
-                  </div>
-                  <span className="text-[16px] font-semibold text-[#191F28]">신용/체크카드로 결제</span>
-                </button>
-
-                <button 
-                  onClick={() => {
-                    alert("네이버페이로 결제를 진행합니다")
-                    setShowPaymentModal(false)
-                  }}
-                  className="w-full flex items-center gap-4 p-4 bg-[#03C75A] rounded-[14px] hover:bg-[#02B350] transition-colors"
-                >
-                  <div className="w-10 h-10 bg-white rounded-[10px] flex items-center justify-center">
-                    <span className="text-[#03C75A] font-bold text-[14px]">N</span>
-                  </div>
-                  <span className="text-[16px] font-semibold text-white">네이버페이로 결제</span>
-                </button>
-              </div>
-              
-              <button 
-                onClick={() => setShowPaymentModal(false)}
-                className="w-full py-3 text-[#8B95A1] text-[14px] mt-4"
-              >
-                취소
-              </button>
-            </div>
-            
-            <div className="h-6" />
-          </div>
-        </div>
-      )}
+      {/* Payment processing is now handled via Stripe Checkout redirect */}
 
       <DatingBottomNav />
     </main>
