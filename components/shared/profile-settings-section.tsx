@@ -14,8 +14,15 @@ import {
   Crown,
   Lock,
   ChevronRight,
+  ChevronLeft,
   X
 } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 interface ProfileSettingsSectionProps {
   mode: "dating" | "wedding" | "family"
@@ -57,11 +64,55 @@ const WIDGETS = [
   },
 ]
 
+const FAQ_ITEMS = [
+  {
+    q: "WE:VE는 어떤 앱인가요?",
+    a: "WE:VE는 커플의 연애부터 결혼, 가족까지 모든 라이프사이클을 함께하는 슈퍼앱입니다. 연애모드, 결혼모드, 가족모드를 전환하며 각 단계에 맞는 다양한 기능을 이용할 수 있습니다.",
+  },
+  {
+    q: "모드 전환은 어떻게 하나요?",
+    a: "앱 하단 네비게이션의 모드 아이콘을 탭하거나, 마이페이지에서 모드 전환 버튼을 눌러 연애/결혼/가족 모드를 자유롭게 전환할 수 있습니다. 각 모드의 데이터는 독립적으로 관리됩니다.",
+  },
+  {
+    q: "커플 연결은 어떻게 하나요?",
+    a: "마이페이지에서 '커플 연결' 메뉴를 통해 초대 코드를 생성하고, 상대방에게 카카오톡이나 링크로 공유하면 됩니다. 상대방이 코드를 입력하면 자동으로 커플로 연결됩니다.",
+  },
+  {
+    q: "디지털 청첩장은 무료인가요?",
+    a: "기본 템플릿 2종은 무료로 이용 가능하며, 최대 2개의 청첩장을 무료로 만들 수 있습니다. 프리미엄 템플릿과 추가 기능(AI 문구 생성, 고급 디자인 등)은 멤버십 구독 후 이용 가능합니다.",
+  },
+  {
+    q: "청첩장을 카카오톡으로 공유할 수 있나요?",
+    a: "네, 청첩장 편집기에서 '공유하기' 버튼을 누르면 카카오톡 채팅방으로 직접 공유할 수 있습니다. 링크 복사, URL 공유 등 다양한 공유 방법도 지원합니다.",
+  },
+  {
+    q: "멤버십 구독 요금은 얼마인가요?",
+    a: "WE:VE 멤버십은 Advanced(월 4,900원)와 Premium(월 9,900원) 두 가지 플랜을 제공합니다. Advanced는 광고 제거와 추가 저장 공간을, Premium은 AI 추천, 무제한 저장 공간, 프리미엄 템플릿 등 모든 기능을 이용할 수 있습니다.",
+  },
+  {
+    q: "사진과 데이터는 안전하게 보관되나요?",
+    a: "네, 모든 데이터는 암호화되어 안전하게 보관됩니다. 사진, 일정, 메모 등 개인 정보는 철저히 보호되며, 커플 연결이 해제되더라도 본인의 데이터는 유지됩니다.",
+  },
+  {
+    q: "가족모드의 추억 아카이브는 무엇인가요?",
+    a: "가족모드의 추억 아카이브는 가족의 소중한 순간들을 날짜별로 기록하고, 사진과 함께 아름다운 타임라인으로 감상할 수 있는 기능입니다. 기념일이나 특별한 순간을 영구적으로 보관할 수 있습니다.",
+  },
+  {
+    q: "여행 플래너 기능은 어떻게 사용하나요?",
+    a: "모든 모드에서 사용 가능한 여행 플래너는 여행 일정, 체크리스트, 예산 관리를 한 곳에서 할 수 있습니다. 새 여행을 추가하고 날짜별 일정을 등록하면 커플이 함께 확인하고 준비할 수 있습니다.",
+  },
+  {
+    q: "앱을 탈퇴하면 데이터는 어떻게 되나요?",
+    a: "탈퇴 시 모든 개인 데이터는 30일간 보관 후 영구 삭제됩니다. 탈퇴 전에 사진과 데이터를 백업하시기 바랍니다. 30일 이내에 재가입하면 기존 데이터를 복구할 수 있습니다.",
+  },
+]
+
 export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
   const [showNotificationSettings, setShowNotificationSettings] = useState(false)
   const [showPrivacySettings, setShowPrivacySettings] = useState(false)
   const [showSupportSettings, setShowSupportSettings] = useState(false)
   const [showWidgetSettings, setShowWidgetSettings] = useState(false)
+  const [showFaq, setShowFaq] = useState(false)
   const [selectedWidget, setSelectedWidget] = useState("dday")
   
   // Notification states
@@ -332,7 +383,11 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
               
               {/* Quick Links */}
               <div className="pt-4 mt-4 border-t border-[#F2F4F6] space-y-2">
-                <button data-testid="button-faq" className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
+                <button 
+                  data-testid="button-faq" 
+                  onClick={() => { setShowSupportSettings(false); setShowFaq(true); }}
+                  className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors"
+                >
                   <span className="text-[14px] font-medium text-[#191F28]">자주 묻는 질문 (FAQ)</span>
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
@@ -349,6 +404,63 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
               </div>
+            </div>
+            
+            <div className="h-8" />
+          </div>
+        </div>
+      )}
+
+      {/* FAQ Modal */}
+      {showFaq && (
+        <div 
+          className="fixed inset-0 z-[60] bg-black/50"
+          onClick={() => setShowFaq(false)}
+        >
+          <div 
+            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300 max-h-[90vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 bg-white z-10 rounded-t-[24px]">
+              <div className="flex justify-center pt-3 pb-2">
+                <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
+              </div>
+              
+              <div className="flex items-center gap-3 px-5 pb-4 border-b border-[#F2F4F6]">
+                <button
+                  onClick={() => { setShowFaq(false); setShowSupportSettings(true); }}
+                  data-testid="button-faq-back"
+                  className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
+                >
+                  <ChevronLeft className="w-5 h-5 text-[#4E5968]" />
+                </button>
+                <HelpCircle className="w-6 h-6 text-[#191F28]" />
+                <h3 className="text-[19px] font-bold text-[#191F28]">자주 묻는 질문</h3>
+              </div>
+            </div>
+            
+            <div className="overflow-y-auto flex-1 px-5 py-4">
+              <Accordion type="single" collapsible className="w-full">
+                {FAQ_ITEMS.map((item, idx) => (
+                  <AccordionItem key={idx} value={`faq-${idx}`} className="border-b border-[#F2F4F6]">
+                    <AccordionTrigger 
+                      className="text-[15px] font-semibold text-[#191F28] hover:no-underline py-4"
+                      data-testid={`faq-question-${idx}`}
+                    >
+                      <span className="flex items-start gap-2 text-left">
+                        <span className="text-[#3182F6] font-bold shrink-0">Q.</span>
+                        {item.q}
+                      </span>
+                    </AccordionTrigger>
+                    <AccordionContent 
+                      className="text-[14px] text-[#4E5968] leading-relaxed pl-6"
+                      data-testid={`faq-answer-${idx}`}
+                    >
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
             
             <div className="h-8" />
