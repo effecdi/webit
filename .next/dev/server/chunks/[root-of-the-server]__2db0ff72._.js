@@ -414,7 +414,7 @@ async function startKakaoLogin() {
         redirect_uri: config.redirectUri,
         response_type: "code",
         state,
-        scope: "profile_nickname profile_image account_email"
+        scope: "profile_nickname profile_image"
     });
     return `${config.authUrl}?${params.toString()}`;
 }
