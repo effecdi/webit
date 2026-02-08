@@ -2,19 +2,89 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { Heart } from "lucide-react"
+import { Heart, Check, ChevronRight, ChevronDown } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
+
+const CONSENT_ITEMS = [
+  {
+    id: "terms",
+    label: "서비스 이용약관 동의",
+    required: true,
+    content: "WE:VE 서비스 이용약관에 동의합니다. 본 약관은 WE:VE 서비스의 이용 조건 및 절차, 회사와 회원 간의 권리, 의무 및 책임 사항 등을 규정합니다. 서비스 이용 중 발생하는 모든 사항은 본 약관에 따릅니다.",
+  },
+  {
+    id: "privacy",
+    label: "개인정보 수집 및 이용 동의",
+    required: true,
+    content: "WE:VE는 서비스 제공을 위해 다음 개인정보를 수집합니다: 이름, 이메일, 프로필 사진, 소셜 로그인 정보. 수집된 개인정보는 서비스 운영, 본인 확인, 고객 상담 등에 활용되며, 회원 탈퇴 시 즉시 파기됩니다.",
+  },
+  {
+    id: "age",
+    label: "만 14세 이상 확인",
+    required: true,
+    content: "본 서비스는 만 14세 이상의 사용자만 이용할 수 있습니다. 만 14세 미만의 아동은 법정 대리인의 동의 없이 서비스를 이용할 수 없습니다.",
+  },
+  {
+    id: "marketing",
+    label: "마케팅 정보 수신 동의",
+    required: false,
+    content: "WE:VE의 신규 기능, 이벤트, 프로모션 등의 마케팅 정보를 이메일, 푸시 알림 등으로 수신합니다. 수신 동의는 언제든지 설정에서 변경할 수 있습니다.",
+  },
+]
 
 export default function LoginPage() {
   const router = useRouter()
   const { isAuthenticated, isLoading } = useAuth()
   const [loadingProvider, setLoadingProvider] = useState<string | null>(null)
+  const [showConsent, setShowConsent] = useState(false)
+  const [pendingProvider, setPendingProvider] = useState<string | null>(null)
+  const [consents, setConsents] = useState<Record<string, boolean>>({
+    terms: false,
+    privacy: false,
+    age: false,
+    marketing: false,
+  })
+  const [expandedItem, setExpandedItem] = useState<string | null>(null)
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
       router.push("/splash")
     }
   }, [isLoading, isAuthenticated, router])
+
+  const allRequiredChecked = CONSENT_ITEMS
+    .filter((item) => item.required)
+    .every((item) => consents[item.id])
+
+  const allChecked = CONSENT_ITEMS.every((item) => consents[item.id])
+
+  const handleToggleAll = () => {
+    const newValue = !allChecked
+    const newConsents: Record<string, boolean> = {}
+    CONSENT_ITEMS.forEach((item) => {
+      newConsents[item.id] = newValue
+    })
+    setConsents(newConsents)
+  }
+
+  const handleToggle = (id: string) => {
+    setConsents((prev) => ({ ...prev, [id]: !prev[id] }))
+  }
+
+  const handleLoginClick = (provider: string) => {
+    setPendingProvider(provider)
+    setShowConsent(true)
+  }
+
+  const handleConsentConfirm = () => {
+    if (!allRequiredChecked || !pendingProvider) return
+    setShowConsent(false)
+    if (pendingProvider === "dev") {
+      handleDevLogin()
+    } else {
+      handleSocialLogin(pendingProvider)
+    }
+  }
 
   const handleSocialLogin = (provider: string) => {
     setLoadingProvider(provider)
@@ -50,7 +120,7 @@ export default function LoginPage() {
 
         <div className="w-full max-w-sm space-y-3">
           <button
-            onClick={handleDevLogin}
+            onClick={() => handleLoginClick("dev")}
             disabled={loadingProvider !== null}
             className="w-full h-14 bg-blue-500 rounded-[16px] flex items-center justify-center gap-3 font-semibold text-white transition-all hover:bg-blue-600 active:scale-[0.98] disabled:opacity-70"
             data-testid="button-login-dev"
@@ -72,7 +142,7 @@ export default function LoginPage() {
           </div>
 
           <button
-            onClick={() => handleSocialLogin("kakao")}
+            onClick={() => handleLoginClick("kakao")}
             disabled={loadingProvider !== null}
             className="w-full h-14 bg-[#FEE500] rounded-[16px] flex items-center justify-center gap-3 font-semibold text-[#191919] transition-all hover:bg-[#F5DC00] active:scale-[0.98] disabled:opacity-70"
             data-testid="button-login-kakao"
@@ -90,7 +160,7 @@ export default function LoginPage() {
           </button>
 
           <button
-            onClick={() => handleSocialLogin("google")}
+            onClick={() => handleLoginClick("google")}
             disabled={loadingProvider !== null}
             className="w-full h-14 bg-white border-2 border-[#E5E8EB] rounded-[16px] flex items-center justify-center gap-3 font-semibold text-[#191919] transition-all hover:bg-[#F9FAFB] active:scale-[0.98] disabled:opacity-70"
             data-testid="button-login-google"
@@ -111,7 +181,7 @@ export default function LoginPage() {
           </button>
 
           <button
-            onClick={() => handleSocialLogin("apple")}
+            onClick={() => handleLoginClick("apple")}
             disabled={loadingProvider !== null}
             className="w-full h-14 bg-black rounded-[16px] flex items-center justify-center gap-3 font-semibold text-white transition-all hover:bg-[#1a1a1a] active:scale-[0.98] disabled:opacity-70"
             data-testid="button-login-apple"
@@ -133,6 +203,121 @@ export default function LoginPage() {
       <p className="text-center text-[12px] text-[#B0B8C1] mt-8">
         시작하면 서비스 이용약관 및 개인정보처리방침에 동의하게 됩니다
       </p>
+
+      {showConsent && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/50"
+          onClick={() => { setShowConsent(false); setPendingProvider(null) }}
+        >
+          <div
+            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-center pt-3 pb-2">
+              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
+            </div>
+
+            <div className="px-6 pb-2">
+              <h3 className="text-[20px] font-bold text-[#191F28] mb-1">
+                서비스 이용 동의
+              </h3>
+              <p className="text-[14px] text-[#8B95A1]">
+                WE:VE 서비스 이용을 위해 약관에 동의해주세요
+              </p>
+            </div>
+
+            <div className="px-6 py-3">
+              <button
+                onClick={handleToggleAll}
+                data-testid="button-consent-all"
+                className="w-full flex items-center gap-3 py-4 px-4 bg-[#F8F9FA] rounded-[16px] mb-4"
+              >
+                <div
+                  className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                    allChecked
+                      ? "bg-blue-500"
+                      : "bg-white border-2 border-[#D1D6DB]"
+                  }`}
+                >
+                  {allChecked && <Check className="w-4 h-4 text-white" />}
+                </div>
+                <span className="text-[16px] font-bold text-[#191F28]">
+                  전체 동의하기
+                </span>
+              </button>
+
+              <div className="space-y-1">
+                {CONSENT_ITEMS.map((item) => (
+                  <div key={item.id}>
+                    <div className="flex items-center gap-3 py-3">
+                      <button
+                        onClick={() => handleToggle(item.id)}
+                        data-testid={`button-consent-${item.id}`}
+                        className="flex items-center gap-3 flex-1 min-w-0"
+                      >
+                        <div
+                          className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                            consents[item.id]
+                              ? "bg-blue-500"
+                              : "bg-white border-2 border-[#D1D6DB]"
+                          }`}
+                        >
+                          {consents[item.id] && (
+                            <Check className="w-3 h-3 text-white" />
+                          )}
+                        </div>
+                        <span className="text-[14px] text-[#191F28] text-left">
+                          <span className={`${item.required ? "text-blue-500" : "text-[#8B95A1]"} text-[13px] mr-1`}>
+                            {item.required ? "[필수]" : "[선택]"}
+                          </span>
+                          {item.label}
+                        </span>
+                      </button>
+                      <button
+                        onClick={() =>
+                          setExpandedItem(
+                            expandedItem === item.id ? null : item.id
+                          )
+                        }
+                        data-testid={`button-consent-detail-${item.id}`}
+                        className="shrink-0 p-1"
+                      >
+                        <ChevronDown
+                          className={`w-4 h-4 text-[#B0B8C1] transition-transform ${
+                            expandedItem === item.id ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    </div>
+                    {expandedItem === item.id && (
+                      <div className="ml-8 mr-2 mb-3 p-3 bg-[#F8F9FA] rounded-[12px]">
+                        <p className="text-[13px] text-[#4E5968] leading-relaxed">
+                          {item.content}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="px-6 pb-8 pt-2">
+              <button
+                onClick={handleConsentConfirm}
+                disabled={!allRequiredChecked}
+                data-testid="button-consent-confirm"
+                className={`w-full h-14 rounded-[16px] flex items-center justify-center font-semibold text-[16px] transition-all active:scale-[0.98] ${
+                  allRequiredChecked
+                    ? "bg-blue-500 text-white"
+                    : "bg-[#E5E8EB] text-[#B0B8C1] cursor-not-allowed"
+                }`}
+              >
+                동의하고 계속하기
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }
