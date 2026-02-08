@@ -926,6 +926,9 @@ function InvitationEditorContent() {
   const [aiLoading, setAiLoading] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [viewMode, setViewMode] = useState(false);
+  const [showShareCountInput, setShowShareCountInput] = useState(false);
+  const [shareCount, setShareCount] = useState("");
   const galleryInputRef = useRef<HTMLInputElement>(null);
   const mainPhotoRef = useRef<HTMLInputElement>(null);
 
@@ -971,11 +974,40 @@ function InvitationEditorContent() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ invitationData: data }),
       });
+      setViewMode(true);
     } catch (error) {
       console.error("Failed to save invitation:", error);
     } finally {
       setIsSaving(false);
     }
+  };
+
+  const handleKakaoShare = () => {
+    const kakaoUrl = `https://sharer.kakao.com/talk/friends/picker/link?url=${encodeURIComponent(shareUrl)}`
+    window.open(kakaoUrl, "_blank", "width=480,height=640")
+    setTimeout(() => {
+      setShowShareOptions(false)
+      setShowShareCountInput(true)
+    }, 1000)
+  }
+
+  const handleShareCountSubmit = async () => {
+    const count = parseInt(shareCount)
+    if (!count || count <= 0) {
+      setShowShareCountInput(false)
+      return
+    }
+    try {
+      await fetch("/api/wedding-info", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ incrementInvitationCount: count }),
+      })
+    } catch (error) {
+      console.error("Failed to update invitation count:", error)
+    }
+    setShareCount("")
+    setShowShareCountInput(false)
   };
 
   const shareUrl =
@@ -1079,6 +1111,158 @@ function InvitationEditorContent() {
           <div className="w-8 h-8 border-2 border-[#FF8A80] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
           <p className="text-[14px] text-[#8B95A1]">청첩장을 불러오는 중...</p>
         </div>
+      </main>
+    );
+  }
+
+  if (viewMode) {
+    return (
+      <main className="h-dvh flex flex-col bg-[#F2F4F6] overflow-hidden">
+        <header className="flex-shrink-0 px-4 py-3 bg-white border-b border-[#E5E8EB]">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => setViewMode(false)}
+              data-testid="button-back-to-edit"
+              className="flex items-center gap-1.5 text-[14px] font-medium text-[#4E5968]"
+            >
+              <ChevronLeft className="w-5 h-5" />
+              편집하기
+            </button>
+            <h1 className="text-[17px] font-bold text-[#191F28]">청첩장</h1>
+            <button
+              onClick={() => setShowShareOptions(true)}
+              data-testid="button-share-view"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FF8A80] text-white rounded-full text-[13px] font-medium"
+            >
+              <Share2 className="w-4 h-4" />
+              공유하기
+            </button>
+          </div>
+        </header>
+
+        <div className="flex-1 overflow-y-auto">
+          <InvitationPreview data={previewData as any} />
+        </div>
+
+        {showShareOptions && (
+          <div
+            className="fixed inset-0 z-[65] flex items-end justify-center"
+            onClick={() => setShowShareOptions(false)}
+          >
+            <div
+              className="w-full max-w-md bg-white rounded-t-[24px] p-6 pb-10 animate-in slide-in-from-bottom duration-300"
+              onClick={(e) => e.stopPropagation()}
+              data-testid="modal-share"
+            >
+              <div className="w-12 h-1 bg-[#E5E8EB] rounded-full mx-auto mb-6" />
+              <h3 className="text-[18px] font-bold text-[#191F28] text-center mb-6">
+                청첩장 공유하기
+              </h3>
+              <div className="space-y-3">
+                <button
+                  onClick={handleKakaoShare}
+                  className="w-full flex items-center gap-4 px-4 py-4 bg-[#FEE500] rounded-[16px] hover:bg-[#F5DC00] transition-colors"
+                  data-testid="button-share-kakao"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#3C1E1E] flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-[#FEE500]" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[15px] font-semibold text-[#3C1E1E]">
+                      카카오톡으로 공유
+                    </p>
+                    <p className="text-[13px] text-[#3C1E1E]/70">
+                      친구에게 청첩장을 보내세요
+                    </p>
+                  </div>
+                </button>
+
+                <button
+                  onClick={() => {
+                    copyToClipboard();
+                    setShowShareOptions(false);
+                  }}
+                  className="w-full flex items-center gap-4 px-4 py-4 bg-[#F2F4F6] rounded-[16px] hover:bg-[#E5E8EB] transition-colors"
+                  data-testid="button-share-url"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#3182F6] flex items-center justify-center">
+                    {copied ? (
+                      <Check className="w-6 h-6 text-white" />
+                    ) : (
+                      <Link2 className="w-6 h-6 text-white" />
+                    )}
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[15px] font-semibold text-[#191F28]">
+                      {copied ? "복사 완료!" : "URL 복사하기"}
+                    </p>
+                    <p className="text-[13px] text-[#8B95A1] truncate max-w-[220px]">
+                      {shareUrl}
+                    </p>
+                  </div>
+                </button>
+              </div>
+
+              <button
+                onClick={() => setShowShareOptions(false)}
+                className="w-full mt-4 py-3.5 rounded-[14px] bg-[#F2F4F6] text-[#4E5968] font-semibold text-[15px] hover:bg-[#E5E8EB] transition-colors"
+              >
+                닫기
+              </button>
+            </div>
+          </div>
+        )}
+
+        {showShareCountInput && (
+          <div
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+            onClick={() => setShowShareCountInput(false)}
+          >
+            <div
+              className="w-[85%] max-w-[340px] bg-white rounded-[24px] p-6 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+              data-testid="modal-share-count"
+            >
+              <h3 className="text-[17px] font-bold text-[#191F28] text-center mb-2">
+                공유 인원 입력
+              </h3>
+              <p className="text-[13px] text-[#8B95A1] text-center mb-5">
+                카카오톡으로 몇 명에게 공유했나요?
+              </p>
+              <input
+                type="number"
+                placeholder="공유 인원수"
+                value={shareCount}
+                onChange={(e) => setShareCount(e.target.value)}
+                className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[14px] text-[16px] text-center text-[#191F28] placeholder:text-[#B0B8C1] outline-none focus:ring-2 focus:ring-[#FF8A80] mb-4"
+                data-testid="input-share-count"
+                autoFocus
+              />
+              <div className="flex gap-2">
+                <button
+                  onClick={() => { setShowShareCountInput(false); setShareCount(""); }}
+                  className="flex-1 py-3 rounded-[12px] bg-[#F2F4F6] text-[#4E5968] font-medium text-[14px]"
+                  data-testid="button-share-count-cancel"
+                >
+                  건너뛰기
+                </button>
+                <button
+                  onClick={handleShareCountSubmit}
+                  className="flex-1 py-3 rounded-[12px] bg-[#191F28] text-white font-medium text-[14px]"
+                  data-testid="button-share-count-submit"
+                >
+                  확인
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {copied && (
+          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] bg-[#191F28] text-white px-6 py-3 rounded-lg text-[14px] shadow-lg">
+            URL이 복사되었습니다
+          </div>
+        )}
       </main>
     );
   }

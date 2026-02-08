@@ -89,8 +89,8 @@ function GuestManager() {
         setIsLoading(true);
         try {
             const [guestsRes, infoRes] = await Promise.all([
-                fetch("/api/guests?userId=default"),
-                fetch("/api/wedding-info?userId=default")
+                fetch("/api/guests"),
+                fetch("/api/wedding-info")
             ]);
             const guestsData = await guestsRes.json();
             const infoData = await infoRes.json();
@@ -163,7 +163,6 @@ function GuestManager() {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        userId: "default",
                         ...formData
                     })
                 });
@@ -245,7 +244,6 @@ function GuestManager() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    userId: "default",
                     groomGuests: settingsForm.groomGuests,
                     brideGuests: settingsForm.brideGuests,
                     expectedGuests: settingsForm.groomGuests + settingsForm.brideGuests,
@@ -289,12 +287,12 @@ function GuestManager() {
                                 className: "w-5 h-5 text-[#4E5968]"
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 267,
+                                lineNumber: 266,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 262,
+                            lineNumber: 261,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -302,13 +300,13 @@ function GuestManager() {
                             children: title
                         }, void 0, false, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 269,
+                            lineNumber: 268,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                    lineNumber: 261,
+                    lineNumber: 260,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -324,12 +322,12 @@ function GuestManager() {
                             children: s === "all" ? "전체" : s === "groom" ? "신랑측" : "신부측"
                         }, s, false, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 274,
+                            lineNumber: 273,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                    lineNumber: 272,
+                    lineNumber: 271,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -344,7 +342,7 @@ function GuestManager() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 288,
+                            lineNumber: 287,
                             columnNumber: 11
                         }, this),
                         isInvitation && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -356,7 +354,7 @@ function GuestManager() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 292,
+                            lineNumber: 291,
                             columnNumber: 13
                         }, this),
                         !isInvitation && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -368,13 +366,13 @@ function GuestManager() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 297,
+                            lineNumber: 296,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                    lineNumber: 287,
+                    lineNumber: 286,
                     columnNumber: 9
                 }, this),
                 subFilteredGuests.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -384,7 +382,7 @@ function GuestManager() {
                             className: "w-10 h-10 text-[#D1D6DB] mx-auto mb-3"
                         }, void 0, false, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 305,
+                            lineNumber: 304,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -392,7 +390,7 @@ function GuestManager() {
                             children: "등록된 하객이 없어요"
                         }, void 0, false, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 306,
+                            lineNumber: 305,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -400,13 +398,13 @@ function GuestManager() {
                             children: "명단 탭에서 하객을 추가해주세요"
                         }, void 0, false, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 307,
+                            lineNumber: 306,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                    lineNumber: 304,
+                    lineNumber: 303,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "space-y-2",
@@ -424,7 +422,7 @@ function GuestManager() {
                                                 children: guest.name.charAt(0)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 319,
+                                                lineNumber: 318,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -437,7 +435,7 @@ function GuestManager() {
                                                                 children: guest.name
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                lineNumber: 326,
+                                                                lineNumber: 325,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -445,13 +443,13 @@ function GuestManager() {
                                                                 children: guest.side === "groom" ? "신랑" : "신부"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                lineNumber: 327,
+                                                                lineNumber: 326,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 325,
+                                                        lineNumber: 324,
                                                         columnNumber: 23
                                                     }, this),
                                                     guest.relationship && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -459,19 +457,19 @@ function GuestManager() {
                                                         children: guest.relationship
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 334,
+                                                        lineNumber: 333,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 324,
+                                                lineNumber: 323,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 318,
+                                        lineNumber: 317,
                                         columnNumber: 19
                                     }, this),
                                     isInvitation ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -482,12 +480,12 @@ function GuestManager() {
                                             className: "w-5 h-5"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 349,
+                                            lineNumber: 348,
                                             columnNumber: 23
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 340,
+                                        lineNumber: 339,
                                         columnNumber: 21
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex gap-1.5",
@@ -499,7 +497,7 @@ function GuestManager() {
                                                 children: "참석"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 353,
+                                                lineNumber: 352,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -509,35 +507,35 @@ function GuestManager() {
                                                 children: "불참"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 364,
+                                                lineNumber: 363,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 352,
+                                        lineNumber: 351,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 317,
+                                lineNumber: 316,
                                 columnNumber: 17
                             }, this)
                         }, guest.id, false, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 312,
+                            lineNumber: 311,
                             columnNumber: 15
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                    lineNumber: 310,
+                    lineNumber: 309,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/wedding/guest-manager.tsx",
-            lineNumber: 260,
+            lineNumber: 259,
             columnNumber: 7
         }, this);
     }
@@ -559,7 +557,7 @@ function GuestManager() {
                                         children: "리포트"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 391,
+                                        lineNumber: 390,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -569,13 +567,13 @@ function GuestManager() {
                                         children: "명단"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 402,
+                                        lineNumber: 401,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 390,
+                                lineNumber: 389,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -586,18 +584,18 @@ function GuestManager() {
                                     className: "w-5 h-5 text-[#4E5968]"
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 419,
+                                    lineNumber: 418,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 414,
+                                lineNumber: 413,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                        lineNumber: 389,
+                        lineNumber: 388,
                         columnNumber: 9
                     }, this),
                     activeTab === "report" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -613,7 +611,7 @@ function GuestManager() {
                                         children: "예식 전"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 426,
+                                        lineNumber: 425,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -623,13 +621,13 @@ function GuestManager() {
                                         children: "예식 후"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 437,
+                                        lineNumber: 436,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 425,
+                                lineNumber: 424,
                                 columnNumber: 13
                             }, this),
                             reportMode === "before" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -645,7 +643,7 @@ function GuestManager() {
                                                         children: "하객 및 식대"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 454,
+                                                        lineNumber: 453,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -657,20 +655,20 @@ function GuestManager() {
                                                                 className: "w-3.5 h-3.5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                lineNumber: 460,
+                                                                lineNumber: 459,
                                                                 columnNumber: 23
                                                             }, this),
                                                             "수정"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 455,
+                                                        lineNumber: 454,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 453,
+                                                lineNumber: 452,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -688,12 +686,12 @@ function GuestManager() {
                                                                             className: "w-5 h-5 text-blue-500"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 469,
+                                                                            lineNumber: 468,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                        lineNumber: 468,
+                                                                        lineNumber: 467,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -703,7 +701,7 @@ function GuestManager() {
                                                                                 children: "예상 하객 수"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                lineNumber: 472,
+                                                                                lineNumber: 471,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -718,7 +716,7 @@ function GuestManager() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                        lineNumber: 474,
+                                                                                        lineNumber: 473,
                                                                                         columnNumber: 29
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -730,25 +728,25 @@ function GuestManager() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                        lineNumber: 477,
+                                                                                        lineNumber: 476,
                                                                                         columnNumber: 29
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                lineNumber: 473,
+                                                                                lineNumber: 472,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                        lineNumber: 471,
+                                                                        lineNumber: 470,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                lineNumber: 467,
+                                                                lineNumber: 466,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -761,26 +759,26 @@ function GuestManager() {
                                                                         children: "명"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                        lineNumber: 484,
+                                                                        lineNumber: 483,
                                                                         columnNumber: 58
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                lineNumber: 483,
+                                                                lineNumber: 482,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 466,
+                                                        lineNumber: 465,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "border-t border-[#F2F4F6]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 488,
+                                                        lineNumber: 487,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -795,12 +793,12 @@ function GuestManager() {
                                                                             className: "w-5 h-5 text-amber-500"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 493,
+                                                                            lineNumber: 492,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                        lineNumber: 492,
+                                                                        lineNumber: 491,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -810,7 +808,7 @@ function GuestManager() {
                                                                                 children: "예상 식대"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                lineNumber: 496,
+                                                                                lineNumber: 495,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -822,19 +820,19 @@ function GuestManager() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                lineNumber: 497,
+                                                                                lineNumber: 496,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                        lineNumber: 495,
+                                                                        lineNumber: 494,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                lineNumber: 491,
+                                                                lineNumber: 490,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -842,25 +840,25 @@ function GuestManager() {
                                                                 children: formatMoney(estimatedMealCost)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                lineNumber: 502,
+                                                                lineNumber: 501,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 490,
+                                                        lineNumber: 489,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 465,
+                                                lineNumber: 464,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 452,
+                                        lineNumber: 451,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -871,7 +869,7 @@ function GuestManager() {
                                                 children: "청첩장"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 510,
+                                                lineNumber: 509,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -893,12 +891,12 @@ function GuestManager() {
                                                                                 className: "w-5 h-5 text-purple-500"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                lineNumber: 521,
+                                                                                lineNumber: 520,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 520,
+                                                                            lineNumber: 519,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -908,7 +906,7 @@ function GuestManager() {
                                                                                     children: "청첩장 발송 관리"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                    lineNumber: 524,
+                                                                                    lineNumber: 523,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -923,7 +921,7 @@ function GuestManager() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                            lineNumber: 526,
+                                                                                            lineNumber: 525,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -935,25 +933,25 @@ function GuestManager() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                            lineNumber: 529,
+                                                                                            lineNumber: 528,
                                                                                             columnNumber: 31
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                    lineNumber: 525,
+                                                                                    lineNumber: 524,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 523,
+                                                                            lineNumber: 522,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 519,
+                                                                    lineNumber: 518,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -969,44 +967,44 @@ function GuestManager() {
                                                                                     children: "명"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                    lineNumber: 537,
+                                                                                    lineNumber: 536,
                                                                                     columnNumber: 52
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 536,
+                                                                            lineNumber: 535,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
                                                                             className: "w-4 h-4 text-[#B0B8C1] -rotate-90"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 539,
+                                                                            lineNumber: 538,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 535,
+                                                                    lineNumber: 534,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 518,
+                                                            lineNumber: 517,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 513,
+                                                        lineNumber: 512,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "border-t border-[#F2F4F6]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 544,
+                                                        lineNumber: 543,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1025,12 +1023,12 @@ function GuestManager() {
                                                                                 className: "w-5 h-5 text-green-500"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                lineNumber: 554,
+                                                                                lineNumber: 553,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 553,
+                                                                            lineNumber: 552,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1040,7 +1038,7 @@ function GuestManager() {
                                                                                     children: "참석 체크"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                    lineNumber: 557,
+                                                                                    lineNumber: 556,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1055,7 +1053,7 @@ function GuestManager() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                            lineNumber: 559,
+                                                                                            lineNumber: 558,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1067,25 +1065,25 @@ function GuestManager() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                            lineNumber: 562,
+                                                                                            lineNumber: 561,
                                                                                             columnNumber: 31
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                    lineNumber: 558,
+                                                                                    lineNumber: 557,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 556,
+                                                                            lineNumber: 555,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 552,
+                                                                    lineNumber: 551,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1101,49 +1099,49 @@ function GuestManager() {
                                                                                     children: "명"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                                    lineNumber: 570,
+                                                                                    lineNumber: 569,
                                                                                     columnNumber: 54
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 569,
+                                                                            lineNumber: 568,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
                                                                             className: "w-4 h-4 text-[#B0B8C1] -rotate-90"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 572,
+                                                                            lineNumber: 571,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 568,
+                                                                    lineNumber: 567,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 551,
+                                                            lineNumber: 550,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 546,
+                                                        lineNumber: 545,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 512,
+                                                lineNumber: 511,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 509,
+                                        lineNumber: 508,
                                         columnNumber: 17
                                     }, this)
                                 ]
@@ -1156,7 +1154,7 @@ function GuestManager() {
                                             children: "축의금 현황"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 582,
+                                            lineNumber: 581,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1174,12 +1172,12 @@ function GuestManager() {
                                                                         className: "w-5 h-5 text-amber-500"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                        lineNumber: 588,
+                                                                        lineNumber: 587,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 587,
+                                                                    lineNumber: 586,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1187,13 +1185,13 @@ function GuestManager() {
                                                                     children: "총 축의금"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 590,
+                                                                    lineNumber: 589,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 586,
+                                                            lineNumber: 585,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1201,20 +1199,20 @@ function GuestManager() {
                                                             children: formatMoney(totalGiftAmount)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 592,
+                                                            lineNumber: 591,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 585,
+                                                    lineNumber: 584,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "border-t border-[#F2F4F6]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 597,
+                                                    lineNumber: 596,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1229,12 +1227,12 @@ function GuestManager() {
                                                                         className: "w-5 h-5 text-blue-500"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                        lineNumber: 602,
+                                                                        lineNumber: 601,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 601,
+                                                                    lineNumber: 600,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1242,13 +1240,13 @@ function GuestManager() {
                                                                     children: "실제 참석 인원"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 604,
+                                                                    lineNumber: 603,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 600,
+                                                            lineNumber: 599,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1261,26 +1259,26 @@ function GuestManager() {
                                                                     children: "명"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 607,
+                                                                    lineNumber: 606,
                                                                     columnNumber: 50
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 606,
+                                                            lineNumber: 605,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 599,
+                                                    lineNumber: 598,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "border-t border-[#F2F4F6]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 611,
+                                                    lineNumber: 610,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1295,12 +1293,12 @@ function GuestManager() {
                                                                         className: "w-5 h-5 text-red-500"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                        lineNumber: 616,
+                                                                        lineNumber: 615,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 615,
+                                                                    lineNumber: 614,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1308,13 +1306,13 @@ function GuestManager() {
                                                                     children: "실제 식대"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 618,
+                                                                    lineNumber: 617,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 614,
+                                                            lineNumber: 613,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1322,20 +1320,20 @@ function GuestManager() {
                                                             children: formatMoney((weddingInfo?.mealCostAdult || 0) * confirmedGuests.length)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 620,
+                                                            lineNumber: 619,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 613,
+                                                    lineNumber: 612,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "border-t border-[#F2F4F6]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 625,
+                                                    lineNumber: 624,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1350,12 +1348,12 @@ function GuestManager() {
                                                                         className: "w-5 h-5 text-green-500"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                        lineNumber: 630,
+                                                                        lineNumber: 629,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 629,
+                                                                    lineNumber: 628,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1363,13 +1361,13 @@ function GuestManager() {
                                                                     children: "수지 (축의금 - 식대)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 632,
+                                                                    lineNumber: 631,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 628,
+                                                            lineNumber: 627,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1377,32 +1375,32 @@ function GuestManager() {
                                                             children: formatMoney(totalGiftAmount - (weddingInfo?.mealCostAdult || 0) * confirmedGuests.length)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 634,
+                                                            lineNumber: 633,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 627,
+                                                    lineNumber: 626,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 584,
+                                            lineNumber: 583,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 581,
+                                    lineNumber: 580,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                        lineNumber: 424,
+                        lineNumber: 423,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         children: [
@@ -1416,7 +1414,7 @@ function GuestManager() {
                                                 className: "absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8B95A1]"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 647,
+                                                lineNumber: 646,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1428,13 +1426,13 @@ function GuestManager() {
                                                 "data-testid": "input-search-guest"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 648,
+                                                lineNumber: 647,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 646,
+                                        lineNumber: 645,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1450,18 +1448,18 @@ function GuestManager() {
                                                 children: s === "all" ? "전체" : s === "groom" ? "신랑" : "신부"
                                             }, s, false, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 659,
+                                                lineNumber: 658,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 657,
+                                        lineNumber: 656,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 645,
+                                lineNumber: 644,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1475,14 +1473,14 @@ function GuestManager() {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 678,
+                                                lineNumber: 677,
                                                 columnNumber: 17
                                             }, this),
                                             "연락처 가져오기"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 674,
+                                        lineNumber: 673,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1493,20 +1491,20 @@ function GuestManager() {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 685,
+                                                lineNumber: 684,
                                                 columnNumber: 17
                                             }, this),
                                             "엑셀로 추가"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 681,
+                                        lineNumber: 680,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 673,
+                                lineNumber: 672,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1520,12 +1518,12 @@ function GuestManager() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 691,
+                                    lineNumber: 690,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 690,
+                                lineNumber: 689,
                                 columnNumber: 13
                             }, this),
                             isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1533,7 +1531,7 @@ function GuestManager() {
                                 children: "로딩 중..."
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 697,
+                                lineNumber: 696,
                                 columnNumber: 15
                             }, this) : filteredGuests.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "py-12 text-center",
@@ -1542,7 +1540,7 @@ function GuestManager() {
                                         className: "w-10 h-10 text-[#D1D6DB] mx-auto mb-3"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 700,
+                                        lineNumber: 699,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1550,7 +1548,7 @@ function GuestManager() {
                                         children: "등록된 하객이 없어요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 701,
+                                        lineNumber: 700,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1558,13 +1556,13 @@ function GuestManager() {
                                         children: "하객을 추가해보세요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 702,
+                                        lineNumber: 701,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 699,
+                                lineNumber: 698,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-2",
@@ -1582,7 +1580,7 @@ function GuestManager() {
                                                             children: guest.name.charAt(0)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 714,
+                                                            lineNumber: 713,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1595,7 +1593,7 @@ function GuestManager() {
                                                                             children: guest.name
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 721,
+                                                                            lineNumber: 720,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1603,7 +1601,7 @@ function GuestManager() {
                                                                             children: guest.side === "groom" ? "신랑" : "신부"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 722,
+                                                                            lineNumber: 721,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1611,13 +1609,13 @@ function GuestManager() {
                                                                             children: guest.attendance === "confirmed" ? "참석" : guest.attendance === "declined" ? "불참" : "미정"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 727,
+                                                                            lineNumber: 726,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 720,
+                                                                    lineNumber: 719,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1627,7 +1625,7 @@ function GuestManager() {
                                                                             children: guest.relationship
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 738,
+                                                                            lineNumber: 737,
                                                                             columnNumber: 52
                                                                         }, this),
                                                                         guest.giftAmount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1638,25 +1636,25 @@ function GuestManager() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                            lineNumber: 740,
+                                                                            lineNumber: 739,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                    lineNumber: 737,
+                                                                    lineNumber: 736,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 719,
+                                                            lineNumber: 718,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 713,
+                                                    lineNumber: 712,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1670,12 +1668,12 @@ function GuestManager() {
                                                                 className: "w-4 h-4 text-[#8B95A1]"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                lineNumber: 751,
+                                                                lineNumber: 750,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 746,
+                                                            lineNumber: 745,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1689,46 +1687,46 @@ function GuestManager() {
                                                                 className: "w-4 h-4 text-[#8B95A1]"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                                lineNumber: 761,
+                                                                lineNumber: 760,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                            lineNumber: 753,
+                                                            lineNumber: 752,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 745,
+                                                    lineNumber: 744,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 712,
+                                            lineNumber: 711,
                                             columnNumber: 21
                                         }, this)
                                     }, guest.id, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 707,
+                                        lineNumber: 706,
                                         columnNumber: 19
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 705,
+                                lineNumber: 704,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                        lineNumber: 644,
+                        lineNumber: 643,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                lineNumber: 388,
+                lineNumber: 387,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1739,12 +1737,12 @@ function GuestManager() {
                     className: "w-6 h-6"
                 }, void 0, false, {
                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                    lineNumber: 778,
+                    lineNumber: 777,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                lineNumber: 773,
+                lineNumber: 772,
                 columnNumber: 7
             }, this),
             showAddModal && mounted && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$dom$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createPortal"])(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1762,7 +1760,7 @@ function GuestManager() {
                                     children: editingGuest ? "하객 수정" : "하객 추가"
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 788,
+                                    lineNumber: 787,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1772,18 +1770,18 @@ function GuestManager() {
                                         className: "w-5 h-5 text-[#8B95A1]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 792,
+                                        lineNumber: 791,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 791,
+                                    lineNumber: 790,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 787,
+                            lineNumber: 786,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1796,7 +1794,7 @@ function GuestManager() {
                                             children: "이름"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 798,
+                                            lineNumber: 797,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1811,13 +1809,13 @@ function GuestManager() {
                                             "data-testid": "input-guest-name"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 799,
+                                            lineNumber: 798,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 797,
+                                    lineNumber: 796,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1827,7 +1825,7 @@ function GuestManager() {
                                             children: "소속"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 810,
+                                            lineNumber: 809,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1843,7 +1841,7 @@ function GuestManager() {
                                                     children: "신랑측"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 812,
+                                                    lineNumber: 811,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1856,19 +1854,19 @@ function GuestManager() {
                                                     children: "신부측"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 821,
+                                                    lineNumber: 820,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 811,
+                                            lineNumber: 810,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 809,
+                                    lineNumber: 808,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1878,7 +1876,7 @@ function GuestManager() {
                                             children: "관계"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 834,
+                                            lineNumber: 833,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1892,18 +1890,18 @@ function GuestManager() {
                                                     children: r
                                                 }, r, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 837,
+                                                    lineNumber: 836,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 835,
+                                            lineNumber: 834,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 833,
+                                    lineNumber: 832,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1913,7 +1911,7 @@ function GuestManager() {
                                             children: "참석 여부"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 853,
+                                            lineNumber: 852,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1927,18 +1925,18 @@ function GuestManager() {
                                                     children: a.label
                                                 }, a.id, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 856,
+                                                    lineNumber: 855,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 854,
+                                            lineNumber: 853,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 852,
+                                    lineNumber: 851,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1949,7 +1947,7 @@ function GuestManager() {
                                             children: "청첩장 발송 여부"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 876,
+                                            lineNumber: 875,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1963,18 +1961,18 @@ function GuestManager() {
                                                 className: `w-5 h-5 bg-white rounded-full absolute top-1 transition-all shadow-sm ${formData.invitationSent ? "right-1" : "left-1"}`
                                             }, void 0, false, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 884,
+                                                lineNumber: 883,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 877,
+                                            lineNumber: 876,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 875,
+                                    lineNumber: 874,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1984,7 +1982,7 @@ function GuestManager() {
                                             children: "연락처"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 891,
+                                            lineNumber: 890,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1999,13 +1997,13 @@ function GuestManager() {
                                             "data-testid": "input-guest-phone"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 892,
+                                            lineNumber: 891,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 890,
+                                    lineNumber: 889,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2015,7 +2013,7 @@ function GuestManager() {
                                             children: "축의금"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 903,
+                                            lineNumber: 902,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2037,7 +2035,7 @@ function GuestManager() {
                                                     "data-testid": "input-gift-amount"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 905,
+                                                    lineNumber: 904,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2045,19 +2043,19 @@ function GuestManager() {
                                                     children: "원"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 917,
+                                                    lineNumber: 916,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 904,
+                                            lineNumber: 903,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 902,
+                                    lineNumber: 901,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2067,7 +2065,7 @@ function GuestManager() {
                                             children: "메모"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 922,
+                                            lineNumber: 921,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2081,19 +2079,19 @@ function GuestManager() {
                                             className: "w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] outline-none focus:ring-2 focus:ring-blue-300"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 923,
+                                            lineNumber: 922,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 921,
+                                    lineNumber: 920,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 796,
+                            lineNumber: 795,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2106,23 +2104,23 @@ function GuestManager() {
                                 children: editingGuest ? "수정하기" : "추가하기"
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 934,
+                                lineNumber: 933,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 933,
+                            lineNumber: 932,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                    lineNumber: 783,
+                    lineNumber: 782,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                lineNumber: 782,
+                lineNumber: 781,
                 columnNumber: 9
             }, this), document.body),
             showDeleteModal && mounted && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$dom$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createPortal"])(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2135,7 +2133,7 @@ function GuestManager() {
                             children: "하객 삭제"
                         }, void 0, false, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 951,
+                            lineNumber: 950,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2146,7 +2144,7 @@ function GuestManager() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 952,
+                            lineNumber: 951,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2161,7 +2159,7 @@ function GuestManager() {
                                     children: "취소"
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 956,
+                                    lineNumber: 955,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2170,24 +2168,24 @@ function GuestManager() {
                                     children: "삭제"
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 962,
+                                    lineNumber: 961,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 955,
+                            lineNumber: 954,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                    lineNumber: 950,
+                    lineNumber: 949,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                lineNumber: 949,
+                lineNumber: 948,
                 columnNumber: 9
             }, this), document.body),
             showSettingsModal && mounted && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$dom$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createPortal"])(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2205,7 +2203,7 @@ function GuestManager() {
                                     children: "예식 정보 설정"
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 981,
+                                    lineNumber: 980,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2216,18 +2214,18 @@ function GuestManager() {
                                         className: "w-5 h-5 text-[#8B95A1]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 987,
+                                        lineNumber: 986,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 982,
+                                    lineNumber: 981,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 980,
+                            lineNumber: 979,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2240,7 +2238,7 @@ function GuestManager() {
                                             children: "신랑측 예상 하객 수"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 992,
+                                            lineNumber: 991,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2256,13 +2254,13 @@ function GuestManager() {
                                             "data-testid": "input-settings-groom-guests"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 993,
+                                            lineNumber: 992,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 991,
+                                    lineNumber: 990,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2272,7 +2270,7 @@ function GuestManager() {
                                             children: "신부측 예상 하객 수"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 1004,
+                                            lineNumber: 1003,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2288,13 +2286,13 @@ function GuestManager() {
                                             "data-testid": "input-settings-bride-guests"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 1005,
+                                            lineNumber: 1004,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 1003,
+                                    lineNumber: 1002,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2304,7 +2302,7 @@ function GuestManager() {
                                             children: "대인 식대 (1인)"
                                         }, void 0, false, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 1016,
+                                            lineNumber: 1015,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2326,7 +2324,7 @@ function GuestManager() {
                                                     "data-testid": "input-settings-meal-cost"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 1018,
+                                                    lineNumber: 1017,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2334,19 +2332,19 @@ function GuestManager() {
                                                     children: "원"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                    lineNumber: 1030,
+                                                    lineNumber: 1029,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                                            lineNumber: 1017,
+                                            lineNumber: 1016,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 1015,
+                                    lineNumber: 1014,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2362,7 +2360,7 @@ function GuestManager() {
                                                         children: "예상 총 하객"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 1036,
+                                                        lineNumber: 1035,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2373,13 +2371,13 @@ function GuestManager() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 1037,
+                                                        lineNumber: 1036,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 1035,
+                                                lineNumber: 1034,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2390,7 +2388,7 @@ function GuestManager() {
                                                         children: "예상 총 식대"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 1040,
+                                                        lineNumber: 1039,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2398,30 +2396,30 @@ function GuestManager() {
                                                         children: formatMoney(settingsForm.mealCostAdult * (settingsForm.groomGuests + settingsForm.brideGuests))
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                        lineNumber: 1041,
+                                                        lineNumber: 1040,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                                lineNumber: 1039,
+                                                lineNumber: 1038,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/wedding/guest-manager.tsx",
-                                        lineNumber: 1034,
+                                        lineNumber: 1033,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                                    lineNumber: 1033,
+                                    lineNumber: 1032,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 990,
+                            lineNumber: 989,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2433,23 +2431,23 @@ function GuestManager() {
                                 children: "저장하기"
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                                lineNumber: 1049,
+                                lineNumber: 1048,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/wedding/guest-manager.tsx",
-                            lineNumber: 1048,
+                            lineNumber: 1047,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/wedding/guest-manager.tsx",
-                    lineNumber: 976,
+                    lineNumber: 975,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/wedding/guest-manager.tsx",
-                lineNumber: 975,
+                lineNumber: 974,
                 columnNumber: 9
             }, this), document.body)
         ]

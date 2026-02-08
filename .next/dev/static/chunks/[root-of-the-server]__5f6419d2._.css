@@ -3114,6 +3114,14 @@
     width: 80px;
   }
 
+  .w-\[85\%\] {
+    width: 85%;
+  }
+
+  .w-\[90\%\] {
+    width: 90%;
+  }
+
   .w-\[100px\] {
     width: 100px;
   }
@@ -3228,6 +3236,10 @@
 
   .max-w-\[360px\] {
     max-width: 360px;
+  }
+
+  .max-w-\[380px\] {
+    max-width: 380px;
   }
 
   .max-w-\[400px\] {

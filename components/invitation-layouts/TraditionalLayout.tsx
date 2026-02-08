@@ -4,7 +4,7 @@ import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 
-export function TraditionalLayout({ data, state, helpers }: LayoutProps) {
+export function TraditionalLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const sectionBg1 = "#1e2a3a"
   const sectionBg2 = "#162335"
   const textPrimary = "#E8DED0"
@@ -410,6 +410,7 @@ export function TraditionalLayout({ data, state, helpers }: LayoutProps) {
             className="w-full py-3.5 text-[14px]"
             style={{ border: `1px solid ${borderColor}`, color: accent, backgroundColor: buttonBg }}
             data-testid="button-rsvp"
+            onClick={() => onRsvpClick?.()}
           >
             {data.rsvpButtonName || "참석 의사 전달하기"}
           </button>

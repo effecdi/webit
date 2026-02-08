@@ -60,4 +60,5 @@ export interface LayoutProps {
   data: InvitationData & { date?: string; time?: string }
   state: PreviewState
   helpers: PreviewHelpers
+  onRsvpClick?: () => void
 }

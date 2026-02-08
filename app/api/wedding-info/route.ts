@@ -56,13 +56,22 @@ export async function PATCH(request: NextRequest) {
     const auth = await requireAuth();
     if (isUnauthorized(auth)) return auth;
     const userId = auth.userId;
-    const { userId: _uid, ...updates } = body;
+    const { userId: _uid, incrementInvitationCount, ...updates } = body;
 
     const existing = await db.select().from(weddingInfo).where(eq(weddingInfo.userId, userId));
 
     if (existing.length === 0) {
-      const [created] = await db.insert(weddingInfo).values({ userId, ...updates }).returning();
+      const initialValues: any = { userId, ...updates };
+      if (incrementInvitationCount) {
+        initialValues.invitationCount = incrementInvitationCount;
+      }
+      const [created] = await db.insert(weddingInfo).values(initialValues).returning();
       return NextResponse.json(created);
+    }
+
+    if (incrementInvitationCount) {
+      const currentCount = existing[0].invitationCount || 0;
+      updates.invitationCount = currentCount + incrementInvitationCount;
     }
 
     const [updated] = await db.update(weddingInfo)

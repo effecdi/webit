@@ -4,7 +4,7 @@ import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 
-export function GardenLayout({ data, state, helpers }: LayoutProps) {
+export function GardenLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const sectionBg1 = "#FFFFFF"
   const sectionBg2 = "#F9FAF7"
   const textPrimary = "#5C7A5C"
@@ -449,6 +449,7 @@ export function GardenLayout({ data, state, helpers }: LayoutProps) {
               className="w-full py-3.5 rounded-full text-[14px] border-0"
               style={{ backgroundColor: buttonBg, color: buttonText }}
               data-testid="button-rsvp"
+              onClick={() => onRsvpClick?.()}
             >
               {data.rsvpButtonName || "참석 의사 전달하기"}
             </button>

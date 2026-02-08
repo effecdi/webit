@@ -4,7 +4,7 @@ import { Phone, Copy, X, ChevronLeft, ChevronRight, Heart } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 
-export function ChatLayout({ data, state, helpers }: LayoutProps) {
+export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const pageBg1 = "#FFF5F7"
   const pageBg2 = "#FFFFFF"
   const textPrimary = "#4A3040"
@@ -393,6 +393,7 @@ export function ChatLayout({ data, state, helpers }: LayoutProps) {
               className="w-full py-3.5 rounded-full text-[14px] font-medium"
               style={{ backgroundColor: buttonBg, color: buttonText }}
               data-testid="button-rsvp"
+              onClick={() => onRsvpClick?.()}
             >
               {data.rsvpButtonName || "참석 의사 전달하기"}
             </button>

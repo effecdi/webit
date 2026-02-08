@@ -4,7 +4,7 @@ import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 
-export function GalleryLayout({ data, state, helpers }: LayoutProps) {
+export function GalleryLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const pageBg = "#F5F5F5"
   const sectionBg1 = "#F5F5F5"
   const sectionBg2 = "#FFFFFF"
@@ -477,6 +477,7 @@ export function GalleryLayout({ data, state, helpers }: LayoutProps) {
               fontFamily: sansFont,
             }}
             data-testid="button-rsvp"
+            onClick={() => onRsvpClick?.()}
           >
             {data.rsvpButtonName || "참석 의사 전달하기"}
           </button>
