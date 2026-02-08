@@ -1,3 +1,16 @@
 {
-  "/api/auth/kakao/route": "app/api/auth/kakao/route.js"
+  "/api/albums/route": "app/api/albums/route.js",
+  "/api/auth/kakao/route": "app/api/auth/kakao/route.js",
+  "/api/auth/user/route": "app/api/auth/user/route.js",
+  "/api/events/route": "app/api/events/route.js",
+  "/api/mood/route": "app/api/mood/route.js",
+  "/api/notifications/route": "app/api/notifications/route.js",
+  "/api/photos/route": "app/api/photos/route.js",
+  "/api/todos/route": "app/api/todos/route.js",
+  "/api/travels/route": "app/api/travels/route.js",
+  "/dating/page": "app/dating/page.js",
+  "/family/page": "app/family/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/splash/page": "app/splash/page.js"
 }
