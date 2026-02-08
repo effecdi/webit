@@ -1016,19 +1016,54 @@ function InvitationEditorContent() {
   };
 
   const handleKakaoShare = () => {
-    const text = `청첩장이 도착했어요 💌\n${shareUrl}`;
-    const kakaoUrl = `https://story.kakao.com/share?url=${encodeURIComponent(shareUrl)}`;
-    const mobileKakaoUrl = `kakaotalk://msg/text/send?text=${encodeURIComponent(text)}`;
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile) {
-      window.location.href = mobileKakaoUrl;
-    } else {
-      window.open(kakaoUrl, "_blank", "width=480,height=640");
+    const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
+    if (!kakaoKey) {
+      alert("카카오 JavaScript 키가 설정되지 않았습니다.");
+      return;
     }
+
+    const w = window as any;
+    if (!w.Kakao) {
+      alert("카카오 SDK를 로딩 중입니다. 잠시 후 다시 시도해주세요.");
+      return;
+    }
+
+    if (!w.Kakao.isInitialized()) {
+      w.Kakao.init(kakaoKey);
+    }
+
+    const groomName = data.groomName || "신랑";
+    const brideName = data.brideName || "신부";
+    const weddingDate = data.weddingDate || "";
+
+    w.Kakao.Share.sendDefault({
+      objectType: "feed",
+      content: {
+        title: `${groomName} ♥ ${brideName} 결혼합니다`,
+        description: weddingDate
+          ? `${weddingDate}에 열리는 저희 결혼식에 초대합니다.`
+          : "저희 결혼식에 초대합니다.",
+        imageUrl: data.sharePhoto || data.mainPhotos?.[0] || `${window.location.origin}/invitation-og.png`,
+        link: {
+          mobileWebUrl: shareUrl,
+          webUrl: shareUrl,
+        },
+      },
+      buttons: [
+        {
+          title: "청첩장 보기",
+          link: {
+            mobileWebUrl: shareUrl,
+            webUrl: shareUrl,
+          },
+        },
+      ],
+    });
+
     setTimeout(() => {
-      setShowShareOptions(false)
-      setShowShareCountInput(true)
-    }, 1500)
+      setShowShareOptions(false);
+      setShowShareCountInput(true);
+    }, 1500);
   }
 
   const handleShareCountSubmit = async () => {
@@ -3071,7 +3106,10 @@ function InvitationEditorContent() {
                   청첩장 공유하기
                 </h3>
                 <div className="space-y-3">
-                  <button className="w-full flex items-center gap-4 px-4 py-4 bg-[#FEE500] rounded-[16px] hover:bg-[#F5DC00] transition-colors">
+                  <button
+                    onClick={handleKakaoShare}
+                    className="w-full flex items-center gap-4 px-4 py-4 bg-[#FEE500] rounded-[16px] hover:bg-[#F5DC00] transition-colors"
+                  >
                     <div className="w-12 h-12 rounded-full bg-[#3C1E1E] flex items-center justify-center">
                       <MessageCircle className="w-6 h-6 text-[#FEE500]" />
                     </div>
