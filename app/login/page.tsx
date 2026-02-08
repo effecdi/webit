@@ -21,6 +21,18 @@ export default function LoginPage() {
     window.location.href = `/api/auth/${provider}`
   }
 
+  const handleDevLogin = async () => {
+    setLoadingProvider("dev")
+    try {
+      const res = await fetch("/api/auth/dev-login", { method: "POST" })
+      if (res.ok) {
+        router.push("/splash")
+      }
+    } catch {
+      setLoadingProvider(null)
+    }
+  }
+
   return (
     <main className="min-h-dvh bg-white flex flex-col px-6 py-12">
       <div className="flex-1 flex flex-col items-center justify-center">
@@ -37,6 +49,28 @@ export default function LoginPage() {
         </div>
 
         <div className="w-full max-w-sm space-y-3">
+          <button
+            onClick={handleDevLogin}
+            disabled={loadingProvider !== null}
+            className="w-full h-14 bg-blue-500 rounded-[16px] flex items-center justify-center gap-3 font-semibold text-white transition-all hover:bg-blue-600 active:scale-[0.98] disabled:opacity-70"
+            data-testid="button-login-dev"
+          >
+            {loadingProvider === "dev" ? (
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            ) : (
+              <>
+                <Heart className="w-5 h-5 fill-white" />
+                바로 시작하기
+              </>
+            )}
+          </button>
+
+          <div className="flex items-center gap-3 my-4">
+            <div className="flex-1 h-px bg-[#E5E8EB]" />
+            <span className="text-xs text-[#B0B8C1]">소셜 로그인</span>
+            <div className="flex-1 h-px bg-[#E5E8EB]" />
+          </div>
+
           <button
             onClick={() => handleSocialLogin("kakao")}
             disabled={loadingProvider !== null}
