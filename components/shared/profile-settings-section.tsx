@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { 
   Bell, 
   Shield, 
@@ -108,6 +109,7 @@ const FAQ_ITEMS = [
 ]
 
 export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
+  const router = useRouter()
   const [showNotificationSettings, setShowNotificationSettings] = useState(false)
   const [showPrivacySettings, setShowPrivacySettings] = useState(false)
   const [showSupportSettings, setShowSupportSettings] = useState(false)
@@ -391,8 +393,12 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                   <span className="text-[14px] font-medium text-[#191F28]">자주 묻는 질문 (FAQ)</span>
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
-                <button data-testid="button-contact" className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
-                  <span className="text-[14px] font-medium text-[#191F28]">1:1 문의하기</span>
+                <button 
+                  data-testid="button-contact" 
+                  onClick={() => router.push("/chatbot")}
+                  className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors"
+                >
+                  <span className="text-[14px] font-medium text-[#191F28]">1:1 문의하기 (AI 상담)</span>
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
                 <button data-testid="button-terms" className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">

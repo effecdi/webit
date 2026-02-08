@@ -47,6 +47,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 }
 
 
+// Validate ../../../app/chatbot/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/chatbot">> = Specific
+  const handler = {} as typeof import("../../../app/chatbot/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/dating/calendar/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/dating/calendar">> = Specific
@@ -497,6 +506,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../app/api/chatbot/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/chatbot">> = Specific
+  const handler = {} as typeof import("../../../app/api/chatbot/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/api/checklist/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/checklist">> = Specific
@@ -725,6 +743,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 
 
 
+
+// Validate ../../../app/chatbot/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/chatbot">> = Specific
+  const handler = {} as typeof import("../../../app/chatbot/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
 
 // Validate ../../../app/layout.tsx
 {
