@@ -186,6 +186,16 @@ export const guests = pgTable('guests', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
+export const invitations = pgTable('invitations', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  templateId: text('template_id').notNull(),
+  title: text('title'),
+  invitationData: jsonb('invitation_data'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
 export const sessions = pgTable('sessions', {
   sid: varchar('sid').primaryKey(),
   sess: jsonb('sess').notNull(),
@@ -207,3 +217,4 @@ export type TravelSchedule = typeof travelSchedules.$inferSelect;
 export type Widget = typeof widgets.$inferSelect;
 export type WeddingInfo = typeof weddingInfo.$inferSelect;
 export type Guest = typeof guests.$inferSelect;
+export type Invitation = typeof invitations.$inferSelect;
