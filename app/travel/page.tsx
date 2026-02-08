@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import WheelDatePicker from "@/components/ui/wheel-date-picker"
 import { useRouter } from "next/navigation"
 import { 
   ArrowLeft, 
@@ -239,22 +240,22 @@ export default function TravelListPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="text-[13px] font-medium text-[#4E5968] mb-1.5 block">출발일</label>
-                  <input
-                    type="date"
+                  <WheelDatePicker
                     value={newTrip.startDate}
-                    onChange={(e) => setNewTrip({ ...newTrip, startDate: e.target.value })}
-                    className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#3B82F6]"
-                    data-testid="input-start-date"
+                    onChange={(val) => setNewTrip({ ...newTrip, startDate: val })}
+                    placeholder="출발일 선택"
+                    className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                    label="출발일"
                   />
                 </div>
                 <div>
                   <label className="text-[13px] font-medium text-[#4E5968] mb-1.5 block">도착일</label>
-                  <input
-                    type="date"
+                  <WheelDatePicker
                     value={newTrip.endDate}
-                    onChange={(e) => setNewTrip({ ...newTrip, endDate: e.target.value })}
-                    className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#3B82F6]"
-                    data-testid="input-end-date"
+                    onChange={(val) => setNewTrip({ ...newTrip, endDate: val })}
+                    placeholder="도착일 선택"
+                    className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                    label="도착일"
                   />
                 </div>
               </div>

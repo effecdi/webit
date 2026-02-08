@@ -2526,6 +2526,10 @@
     height: 100%;
   }
 
+  .\!h-14 {
+    height: calc(var(--spacing) * 14) !important;
+  }
+
   .h-\(--cell-size\) {
     height: var(--cell-size);
   }
@@ -2684,6 +2688,10 @@
 
   .h-\[40px\] {
     height: 40px;
+  }
+
+  .h-\[42px\] {
+    height: 42px;
   }
 
   .h-\[45dvh\] {
@@ -3016,6 +3024,10 @@
 
   .w-36 {
     width: calc(var(--spacing) * 36);
+  }
+
+  .w-40 {
+    width: calc(var(--spacing) * 40);
   }
 
   .w-48 {
@@ -4639,6 +4651,18 @@
     scroll-behavior: smooth;
   }
 
+  .\!rounded-\[12px\] {
+    border-radius: 12px !important;
+  }
+
+  .\!rounded-\[16px\] {
+    border-radius: 16px !important;
+  }
+
+  .\!rounded-lg {
+    border-radius: var(--radius) !important;
+  }
+
   .rounded {
     border-radius: .25rem;
   }
@@ -4994,6 +5018,14 @@
     border-style: solid;
   }
 
+  .\!border-blue-200 {
+    border-color: var(--color-blue-200) !important;
+  }
+
+  .\!border-pink-200 {
+    border-color: var(--color-pink-200) !important;
+  }
+
   .border-\(--color-border\) {
     border-color: var(--color-border);
   }
@@ -5088,6 +5120,10 @@
 
   .border-\[\#F0F0F0\] {
     border-color: #f0f0f0;
+  }
+
+  .border-\[\#F2F3F5\] {
+    border-color: #f2f3f5;
   }
 
   .border-\[\#F2F4F6\] {
@@ -5326,6 +5362,14 @@
     border-left-color: #0000;
   }
 
+  .\!bg-\[\#F2F4F6\] {
+    background-color: #f2f4f6 !important;
+  }
+
+  .\!bg-\[\#F3F5F7\] {
+    background-color: #f3f5f7 !important;
+  }
+
   .bg-\(--color-bg\) {
     background-color: var(--color-bg);
   }
@@ -5541,6 +5585,11 @@
 
   .bg-\[\#F7F8FA\] {
     background-color: #f7f8fa;
+  }
+
+  .bg-\[\#F7F8FA\]\/50 {
+    background-color: #f7f8fa80;
+    background-color: lab(97.5443% -.0787377 -1.08479 / .5);
   }
 
   .bg-\[\#F8F9FA\] {
@@ -7263,6 +7312,18 @@
     padding: 1px;
   }
 
+  .\!px-2 {
+    padding-inline: calc(var(--spacing) * 2) !important;
+  }
+
+  .\!px-4 {
+    padding-inline: calc(var(--spacing) * 4) !important;
+  }
+
+  .\!px-5 {
+    padding-inline: calc(var(--spacing) * 5) !important;
+  }
+
   .px-\(--cell-size\) {
     padding-inline: var(--cell-size);
   }
@@ -7313,6 +7374,22 @@
 
   .px-10 {
     padding-inline: calc(var(--spacing) * 10);
+  }
+
+  .\!py-1 {
+    padding-block: calc(var(--spacing) * 1) !important;
+  }
+
+  .\!py-1\.5 {
+    padding-block: calc(var(--spacing) * 1.5) !important;
+  }
+
+  .\!py-3\.5 {
+    padding-block: calc(var(--spacing) * 3.5) !important;
+  }
+
+  .\!py-4 {
+    padding-block: calc(var(--spacing) * 4) !important;
   }
 
   .py-0\.5 {
@@ -7665,6 +7742,22 @@
   .text-xs {
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+
+  .\!text-\[12px\] {
+    font-size: 12px !important;
+  }
+
+  .\!text-\[14px\] {
+    font-size: 14px !important;
+  }
+
+  .\!text-\[15px\] {
+    font-size: 15px !important;
+  }
+
+  .\!text-\[17px\] {
+    font-size: 17px !important;
   }
 
   .text-\[0\.8rem\] {
@@ -11096,10 +11189,6 @@
     border-color: var(--color-blue-400);
   }
 
-  .focus\:border-pink-400:focus {
-    border-color: var(--color-pink-400);
-  }
-
   .focus\:border-primary:focus {
     border-color: var(--primary);
   }
@@ -11143,6 +11232,10 @@
 
   .focus\:ring-\[\#c9a86c\]:focus {
     --tw-ring-color: #c9a86c;
+  }
+
+  .focus\:ring-blue-200:focus {
+    --tw-ring-color: var(--color-blue-200);
   }
 
   .focus\:ring-blue-300:focus {
@@ -13096,10 +13189,6 @@
 
   .\[\&\+\[data-slot\=item-content\]\]\:flex-none + [data-slot="item-content"] {
     flex: none;
-  }
-
-  .\[\&\:\:-webkit-calendar-picker-indicator\]\:opacity-100::-webkit-calendar-picker-indicator {
-    opacity: 1;
   }
 
   .\[\&\:first-child\[data-selected\=true\]_button\]\:rounded-l-md:first-child[data-selected="true"] button {

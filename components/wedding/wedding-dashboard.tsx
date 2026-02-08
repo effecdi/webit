@@ -4,6 +4,7 @@ import React from "react"
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import WheelDatePicker from "@/components/ui/wheel-date-picker"
 import { 
   Bell, 
   ChevronRight, 
@@ -872,12 +873,12 @@ export function WeddingDashboard() {
             <div className="space-y-4">
               <div>
                 <label className="text-[13px] font-medium text-[#4E5968] mb-1.5 block">결혼식 날짜</label>
-                <input
-                  type="date"
+                <WheelDatePicker
                   value={editWeddingDate}
-                  onChange={(e) => setEditWeddingDate(e.target.value)}
-                  className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
-                  data-testid="input-edit-wedding-date"
+                  onChange={setEditWeddingDate}
+                  placeholder="결혼식 날짜 선택"
+                  className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                  label="결혼식 날짜"
                 />
               </div>
               

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Heart, Calendar, MapPin, DollarSign, ChevronRight, ArrowLeft } from "lucide-react"
+import WheelDatePicker from "@/components/ui/wheel-date-picker"
 
 type Step = 1 | 2 | 3
 
@@ -149,12 +150,14 @@ export default function WeddingOnboardingPage() {
             <div className="space-y-4">
               <div>
                 <label className="text-[14px] font-medium text-[#4E5968] mb-2 block">결혼식 날짜</label>
-                <input
-                  type="date"
+                <WheelDatePicker
                   value={data.weddingDate}
-                  onChange={(e) => setData({ ...data, weddingDate: e.target.value })}
-                  className="w-full h-14 px-5 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] outline-none focus:ring-2 focus:ring-[#3182F6] [&::-webkit-calendar-picker-indicator]:opacity-100"
-                  data-testid="input-wedding-date"
+                  onChange={(val) => setData({ ...data, weddingDate: val })}
+                  placeholder="결혼식 날짜를 선택해주세요"
+                  className="!h-14 !px-5 !bg-[#F3F5F7] !rounded-[16px] !text-[17px]"
+                  label="결혼식 날짜"
+                  minYear={new Date().getFullYear()}
+                  maxYear={new Date().getFullYear() + 5}
                 />
               </div>
             </div>

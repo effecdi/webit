@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
+import WheelDatePicker from "@/components/ui/wheel-date-picker"
 import { 
   ArrowLeft, 
   Plus, 
@@ -365,11 +366,12 @@ export default function ChecklistPage() {
             {/* Due Date */}
             <div>
               <label className="block text-[13px] font-medium text-[#4E5968] mb-2">마감일</label>
-              <input
-                type="date"
+              <WheelDatePicker
                 value={newItem.dueDate}
-                onChange={(e) => setNewItem({ ...newItem, dueDate: e.target.value })}
-                className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                onChange={(val) => setNewItem({ ...newItem, dueDate: val })}
+                placeholder="마감일 선택"
+                className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                label="마감일"
               />
             </div>
 

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
+import WheelDatePicker from "@/components/ui/wheel-date-picker"
 import { 
   ArrowLeft, 
   Plus, 
@@ -312,11 +313,12 @@ export default function DressTourPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[13px] font-medium text-[#4E5968] mb-2">방문일 *</label>
-                  <input
-                    type="date"
+                  <WheelDatePicker
                     value={newShop.visitDate}
-                    onChange={(e) => setNewShop({ ...newShop, visitDate: e.target.value })}
-                    className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                    onChange={(val) => setNewShop({ ...newShop, visitDate: val })}
+                    placeholder="방문일 선택"
+                    className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                    label="방문일"
                   />
                 </div>
                 <div>

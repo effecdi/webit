@@ -3,6 +3,7 @@
 import { useState, useEffect, KeyboardEvent } from "react"
 import { useRouter } from "next/navigation"
 import { Calendar } from "lucide-react"
+import WheelDatePicker from "@/components/ui/wheel-date-picker"
 
 export default function SurveyStep1() {
   const router = useRouter()
@@ -99,17 +100,14 @@ export default function SurveyStep1() {
 
           <div>
             <p className="text-[15px] text-[#8B95A1] mb-3">생년월일</p>
-            <div className="relative">
-              <input
-                type="date"
-                value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
-                max={new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString().split("T")[0]}
-                className="w-full h-14 px-5 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] outline-none focus:ring-2 focus:ring-blue-500"
-                data-testid="input-my-birthday"
-              />
-              <Calendar className="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B95A1] pointer-events-none" />
-            </div>
+            <WheelDatePicker
+              value={birthday}
+              onChange={setBirthday}
+              placeholder="생년월일을 선택해주세요"
+              className="!h-14 !px-5 !bg-[#F3F5F7] !rounded-[16px] !text-[17px]"
+              label="생년월일"
+              maxYear={new Date().getFullYear()}
+            />
           </div>
         </div>
       </div>

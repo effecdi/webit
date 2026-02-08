@@ -3,6 +3,7 @@
 import React, { Suspense } from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import WheelDatePicker from "@/components/ui/wheel-date-picker"
 import { useSearchParams } from "next/navigation"
 import { 
   ArrowLeft, 
@@ -663,11 +664,12 @@ function BudgetPageContent() {
               <>
                 <div>
                   <label className="block text-[13px] font-medium text-[#4E5968] mb-2">결제일</label>
-                  <input
-                    type="date"
+                  <WheelDatePicker
                     value={newExpense.date}
-                    onChange={(e) => setNewExpense({ ...newExpense, date: e.target.value })}
-                    className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#191F28]"
+                    onChange={(val) => setNewExpense({ ...newExpense, date: val })}
+                    placeholder="결제일 선택"
+                    className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                    label="결제일"
                   />
                 </div>
 
@@ -737,11 +739,12 @@ function BudgetPageContent() {
                 {/* Due Date */}
                 <div>
                   <label className="block text-[13px] font-medium text-[#4E5968] mb-2">잔금 결제 예정일</label>
-                  <input
-                    type="date"
+                  <WheelDatePicker
                     value={newExpense.dueDate}
-                    onChange={(e) => setNewExpense({ ...newExpense, dueDate: e.target.value })}
-                    className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#191F28]"
+                    onChange={(val) => setNewExpense({ ...newExpense, dueDate: val })}
+                    placeholder="예정일 선택"
+                    className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                    label="잔금 결제 예정일"
                   />
                 </div>
 

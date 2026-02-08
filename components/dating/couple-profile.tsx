@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Heart, Camera, Edit2, Check, Calendar } from "lucide-react"
+import WheelDatePicker from "@/components/ui/wheel-date-picker"
 
 interface ProfileData {
   name: string
@@ -166,13 +167,13 @@ export function CoupleProfile() {
             <span className="mt-3 text-[15px] font-bold text-[#191F28]">{myProfile.name}</span>
           )}
           {isEditing ? (
-            <div className="relative mt-1">
-              <input
-                type="date"
+            <div className="mt-1 w-32">
+              <WheelDatePicker
                 value={editMyBirthday}
-                onChange={(e) => setEditMyBirthday(e.target.value)}
-                className="w-28 text-center text-[12px] text-[#8B95A1] border-b border-[#E5E8EB] bg-transparent focus:outline-none focus:border-pink-400 py-1"
-                data-testid="input-my-birthday-edit"
+                onChange={setEditMyBirthday}
+                placeholder="생일 선택"
+                className="!px-2 !py-1 !rounded-lg !text-[12px] !border-pink-200 text-center"
+                label="생일"
               />
             </div>
           ) : (
@@ -221,13 +222,13 @@ export function CoupleProfile() {
             <span className="mt-3 text-[15px] font-bold text-[#191F28]">{partnerProfile.name}</span>
           )}
           {isEditing ? (
-            <div className="relative mt-1">
-              <input
-                type="date"
+            <div className="mt-1 w-32">
+              <WheelDatePicker
                 value={editPartnerBirthday}
-                onChange={(e) => setEditPartnerBirthday(e.target.value)}
-                className="w-28 text-center text-[12px] text-[#8B95A1] border-b border-[#E5E8EB] bg-transparent focus:outline-none focus:border-blue-400 py-1"
-                data-testid="input-partner-birthday-edit"
+                onChange={setEditPartnerBirthday}
+                placeholder="생일 선택"
+                className="!px-2 !py-1 !rounded-lg !text-[12px] !border-blue-200 text-center"
+                label="생일"
               />
             </div>
           ) : (
@@ -250,13 +251,15 @@ export function CoupleProfile() {
         <div className="flex items-center justify-between">
           <span className="text-[13px] text-[#8B95A1]">사귀기 시작한 날</span>
           {isEditing ? (
-            <input
-              type="date"
-              value={editStartDate}
-              onChange={(e) => setEditStartDate(e.target.value)}
-              className="text-[14px] font-medium text-[#191F28] text-right border-b border-[#E5E8EB] bg-transparent focus:outline-none focus:border-pink-400"
-              data-testid="input-start-date-edit"
-            />
+            <div className="w-40">
+              <WheelDatePicker
+                value={editStartDate}
+                onChange={setEditStartDate}
+                placeholder="날짜 선택"
+                className="!py-1.5 !text-[14px] !border-pink-200"
+                label="사귀기 시작한 날"
+              />
+            </div>
           ) : (
             <span className="text-[14px] font-medium text-[#191F28]">
               {startDate ? formatBirthdayDisplay(startDate) : "날짜 미입력"}

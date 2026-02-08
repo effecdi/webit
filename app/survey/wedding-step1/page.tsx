@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Calendar, Clock } from "lucide-react"
+import WheelDatePicker from "@/components/ui/wheel-date-picker"
 
 export default function WeddingSurveyStep1() {
   const router = useRouter()
@@ -55,12 +56,14 @@ export default function WeddingSurveyStep1() {
               <Calendar className="w-4 h-4 inline mr-1.5 mb-0.5" />
               결혼 예정일
             </label>
-            <input
-              type="date"
+            <WheelDatePicker
               value={weddingDate}
-              onChange={(e) => setWeddingDate(e.target.value)}
-              className="w-full px-5 py-4 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] outline-none focus:ring-2 focus:ring-blue-500"
-              data-testid="input-wedding-date"
+              onChange={setWeddingDate}
+              placeholder="결혼 예정일을 선택해주세요"
+              className="!px-5 !py-4 !bg-[#F3F5F7] !rounded-[16px] !text-[17px]"
+              label="결혼 예정일"
+              minYear={new Date().getFullYear()}
+              maxYear={new Date().getFullYear() + 5}
             />
           </div>
           <div>
