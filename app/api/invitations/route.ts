@@ -3,8 +3,13 @@ import { db } from '@/db';
 import { invitations } from '@/db/schema';
 import { eq, and, desc } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import crypto from 'crypto';
 
 const FREE_INVITATION_LIMIT = 2;
+
+function generateShareId(): string {
+  return crypto.randomBytes(8).toString('hex');
+}
 
 export async function GET() {
   const auth = await requireAuth();
@@ -46,6 +51,7 @@ export async function POST(request: NextRequest) {
       userId,
       templateId: templateId || 'modern',
       title: title || null,
+      shareId: generateShareId(),
       invitationData: invitationData || null,
     }).returning();
 

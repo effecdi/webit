@@ -191,6 +191,7 @@ export const invitations = pgTable('invitations', {
   userId: text('user_id').notNull(),
   templateId: text('template_id').notNull(),
   title: text('title'),
+  shareId: text('share_id').unique(),
   invitationData: jsonb('invitation_data'),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),

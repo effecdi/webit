@@ -28,6 +28,14 @@ The application is built with **Next.js 16** using the App Router and React Serv
 ### Invitation Layout Architecture
 The invitation editor utilizes a `LayoutRenderer` pattern, allowing the dynamic rendering of nine unique invitation layout sub-components (e.g., Cinematic, Modern, Classic, Magazine, Polaroid, Chat, Traditional, Garden, Gallery). Each layout provides a complete JSX structure for all invitation sections, with shared state and logic extracted into a `usePreviewState` hook.
 
+### Invitation Sharing System
+- Each invitation has a unique `shareId` (hex string) stored in the `invitations` table
+- Shared invitations are accessible at `/s/{shareId}` without authentication
+- Public API: `GET /api/shared/invitation?id={shareId}` returns invitation data without auth
+- Kakao SDK (v2.7.4) loaded in root layout for KakaoTalk sharing via `Kakao.Share.sendDefault`
+- Shared invitation page includes share buttons: KakaoTalk, link copy, native share
+- OG meta tags generated dynamically via `generateMetadata` in the shared page layout
+
 ## External Dependencies
 
 - **Analytics**: Vercel Analytics

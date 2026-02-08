@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import type { InvitationData } from "@/app/wedding/editor/page"
 import { MUSIC_TRACKS } from "@/lib/music-tracks"
-import { Phone, Copy, ChevronLeft, ChevronRight, X, Volume2, VolumeX } from "lucide-react"
+import { Phone, Copy, ChevronLeft, ChevronRight, X, Volume2, VolumeX, MessageCircle, Share2, Link2 } from "lucide-react"
 import { usePreviewState } from "./invitation-layouts/use-preview-state"
 import { CinematicLayout } from "./invitation-layouts/CinematicLayout"
 import { ModernLayout } from "./invitation-layouts/ModernLayout"
@@ -23,6 +23,7 @@ interface InvitationPreviewProps {
   showMusicControls?: boolean
   onTextScaleChange?: (scale: number) => void
   textScale?: number
+  shareId?: string
 }
 
 function getLayoutPageBg(template: string): string {
@@ -40,7 +41,7 @@ function getLayoutPageBg(template: string): string {
   }
 }
 
-export function InvitationPreview({ data, isShared = false, autoPlayMusic = false, showMusicControls = false, onTextScaleChange, textScale: externalTextScale }: InvitationPreviewProps) {
+export function InvitationPreview({ data, isShared = false, autoPlayMusic = false, showMusicControls = false, onTextScaleChange, textScale: externalTextScale, shareId }: InvitationPreviewProps) {
   const { state, helpers } = usePreviewState(data)
   const [openingDone, setOpeningDone] = useState(!data.showOpening)
   const [showRsvpModal, setShowRsvpModal] = useState(false)
@@ -159,6 +160,83 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
       default: return <ModernLayout {...props} />
     }
   }
+
+  const [shareCopied, setShareCopied] = useState(false)
+
+  const currentShareUrl = typeof window !== "undefined" && shareId
+    ? `${window.location.origin}/s/${shareId}`
+    : typeof window !== "undefined"
+    ? window.location.href
+    : ""
+
+  const handleKakaoShare = useCallback(() => {
+    const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY
+    if (!kakaoKey) return
+
+    const w = window as any
+    if (!w.Kakao) {
+      alert("카카오 SDK를 로딩 중입니다. 잠시 후 다시 시도해주세요.")
+      return
+    }
+
+    if (!w.Kakao.isInitialized()) {
+      w.Kakao.init(kakaoKey)
+    }
+
+    const groomName = data.groomName || "신랑"
+    const brideName = data.brideName || "신부"
+    const weddingDate = data.weddingDate || ""
+
+    const shareLink = currentShareUrl
+
+    w.Kakao.Share.sendDefault({
+      objectType: "feed",
+      content: {
+        title: `${groomName} ♥ ${brideName} 결혼합니다`,
+        description: weddingDate
+          ? `${weddingDate}에 열리는 저희 결혼식에 초대합니다.`
+          : "저희 결혼식에 초대합니다.",
+        imageUrl: data.sharePhoto || data.mainPhotos?.[0] || `${window.location.origin}/invitation-og.png`,
+        link: {
+          mobileWebUrl: shareLink,
+          webUrl: shareLink,
+        },
+      },
+      buttons: [
+        {
+          title: "청첩장 보기",
+          link: {
+            mobileWebUrl: shareLink,
+            webUrl: shareLink,
+          },
+        },
+      ],
+    })
+  }, [data, currentShareUrl])
+
+  const handleCopyShareUrl = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(currentShareUrl)
+      setShareCopied(true)
+      setTimeout(() => setShareCopied(false), 2000)
+    } catch (err) {
+      console.error("Failed to copy:", err)
+    }
+  }, [currentShareUrl])
+
+  const handleNativeShare = useCallback(async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `${data.groomName || "신랑"} ♥ ${data.brideName || "신부"} 결혼합니다`,
+          text: "저희 결혼식에 초대합니다.",
+          url: currentShareUrl,
+        })
+      } catch {}
+    } else {
+      handleCopyShareUrl()
+    }
+  }, [data, currentShareUrl, handleCopyShareUrl])
 
   return (
     <div
@@ -384,6 +462,45 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
         </AnimatePresence>
 
         {(openingDone || !data.showOpening) && renderLayout()}
+
+        {isShared && (openingDone || !data.showOpening) && (
+          <div className="max-w-[420px] mx-auto px-6 py-10">
+            <div className="flex items-center justify-center gap-6">
+              <button
+                onClick={handleKakaoShare}
+                className="flex flex-col items-center gap-2"
+                data-testid="button-shared-kakao"
+              >
+                <div className="w-14 h-14 rounded-full bg-[#FEE500] flex items-center justify-center">
+                  <MessageCircle className="w-7 h-7 text-[#3C1E1E]" />
+                </div>
+                <span className="text-[12px] text-[#8B95A1]">카카오톡</span>
+              </button>
+              <button
+                onClick={handleCopyShareUrl}
+                className="flex flex-col items-center gap-2"
+                data-testid="button-shared-copy-url"
+              >
+                <div className="w-14 h-14 rounded-full bg-[#F2F4F6] flex items-center justify-center">
+                  {shareCopied
+                    ? <span className="text-[14px] font-bold text-[#3182F6]">OK</span>
+                    : <Link2 className="w-7 h-7 text-[#4E5968]" />}
+                </div>
+                <span className="text-[12px] text-[#8B95A1]">{shareCopied ? "복사됨" : "링크 복사"}</span>
+              </button>
+              <button
+                onClick={handleNativeShare}
+                className="flex flex-col items-center gap-2"
+                data-testid="button-shared-more"
+              >
+                <div className="w-14 h-14 rounded-full bg-[#F2F4F6] flex items-center justify-center">
+                  <Share2 className="w-7 h-7 text-[#4E5968]" />
+                </div>
+                <span className="text-[12px] text-[#8B95A1]">공유하기</span>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {state.showContact && (

@@ -919,6 +919,7 @@ function InvitationEditorContent() {
   const [showShareCountInput, setShowShareCountInput] = useState(false);
   const [shareCount, setShareCount] = useState("");
   const [currentInvitationId, setCurrentInvitationId] = useState<string | null>(invitationId);
+  const [currentShareId, setCurrentShareId] = useState<string | null>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
   const mainPhotoRef = useRef<HTMLInputElement>(null);
   const editorAudioRef = useRef<HTMLAudioElement>(null);
@@ -941,6 +942,9 @@ function InvitationEditorContent() {
                 ...result.invitationData,
                 ...(urlTemplate ? { mainTemplate: urlTemplate } : {}),
               }));
+              if (result.shareId) {
+                setCurrentShareId(result.shareId);
+              }
             }
           }
         } else {
@@ -1037,6 +1041,27 @@ function InvitationEditorContent() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ invitationData: data }),
         });
+
+        if (!currentShareId) {
+          try {
+            const createRes = await fetch("/api/invitations", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                templateId: data.mainTemplate,
+                title: data.title || `${data.groomName || ""} & ${data.brideName || ""}`,
+                invitationData: data,
+              }),
+            });
+            if (createRes.ok) {
+              const created = await createRes.json();
+              if (created.shareId) {
+                setCurrentShareId(created.shareId);
+                setCurrentInvitationId(String(created.id));
+              }
+            }
+          } catch {}
+        }
       }
       setViewMode(true);
     } catch (error) {
@@ -1117,7 +1142,9 @@ function InvitationEditorContent() {
   };
 
   const shareUrl =
-    typeof window !== "undefined"
+    typeof window !== "undefined" && currentShareId
+      ? `${window.location.origin}/s/${currentShareId}`
+      : typeof window !== "undefined"
       ? `${window.location.origin}/invitation/preview`
       : "";
 
