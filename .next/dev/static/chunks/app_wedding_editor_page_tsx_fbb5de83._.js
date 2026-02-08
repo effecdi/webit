@@ -13,7 +13,8 @@
   "static/chunks/components_invitation-layouts_f0b2c61e._.js",
   "static/chunks/components_invitation-preview_tsx_d107dfeb._.js",
   "static/chunks/app_wedding_editor_page_tsx_13d7ba9a._.js",
-  "static/chunks/node_modules__pnpm_1df359dd._.js"
+  "static/chunks/lib_music-tracks_ts_bfd2d3e2._.js",
+  "static/chunks/node_modules__pnpm_89c50e0d._.js"
 ],
     source: "dynamic"
 });

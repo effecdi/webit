@@ -19,6 +19,8 @@ import { GalleryLayout } from "./invitation-layouts/GalleryLayout"
 interface InvitationPreviewProps {
   data: InvitationData & { date?: string; time?: string }
   isShared?: boolean
+  autoPlayMusic?: boolean
+  showMusicControls?: boolean
   onTextScaleChange?: (scale: number) => void
   textScale?: number
 }
@@ -38,7 +40,7 @@ function getLayoutPageBg(template: string): string {
   }
 }
 
-export function InvitationPreview({ data, isShared = false, onTextScaleChange, textScale: externalTextScale }: InvitationPreviewProps) {
+export function InvitationPreview({ data, isShared = false, autoPlayMusic = false, showMusicControls = false, onTextScaleChange, textScale: externalTextScale }: InvitationPreviewProps) {
   const { state, helpers } = usePreviewState(data)
   const [openingDone, setOpeningDone] = useState(!data.showOpening)
   const [showRsvpModal, setShowRsvpModal] = useState(false)
@@ -47,6 +49,8 @@ export function InvitationPreview({ data, isShared = false, onTextScaleChange, t
   const [internalTextScale, setInternalTextScale] = useState(1)
   const textScale = externalTextScale ?? internalTextScale
   const [showControls, setShowControls] = useState(true)
+  const shouldAutoPlay = isShared || autoPlayMusic
+  const shouldShowMusicControls = isShared || showMusicControls
 
   const getMusicUrl = useCallback(() => {
     if (!data.showMusic || !data.musicTrack) return ""
@@ -78,7 +82,7 @@ export function InvitationPreview({ data, isShared = false, onTextScaleChange, t
     audio.addEventListener("play", handlePlay)
     audio.addEventListener("pause", handlePause)
 
-    if (isShared) {
+    if (shouldAutoPlay) {
       audio.play().catch(() => {
         setIsMusicPlaying(false)
       })
@@ -90,7 +94,7 @@ export function InvitationPreview({ data, isShared = false, onTextScaleChange, t
       audio.removeEventListener("pause", handlePause)
       audio.pause()
     }
-  }, [getMusicUrl, isShared])
+  }, [getMusicUrl, shouldAutoPlay])
 
   useEffect(() => {
     if (!data.showOpening || openingDone) return
@@ -104,6 +108,12 @@ export function InvitationPreview({ data, isShared = false, onTextScaleChange, t
       return () => clearTimeout(timer)
     }
   }, [isShared, showControls])
+
+  useEffect(() => {
+    if (shouldShowMusicControls && !isShared) {
+      setShowControls(true)
+    }
+  }, [shouldShowMusicControls, isShared])
 
   const toggleMusic = () => {
     const audio = audioRef.current
@@ -155,16 +165,16 @@ export function InvitationPreview({ data, isShared = false, onTextScaleChange, t
       className="w-full h-full overflow-y-auto relative"
       style={{ backgroundColor: pageBg }}
       data-testid="invitation-preview"
-      onClick={() => isShared && setShowControls(true)}
+      onClick={() => (isShared || shouldShowMusicControls) && setShowControls(true)}
     >
       <audio ref={audioRef} preload="auto" />
 
-      {isShared && (
+      {(shouldShowMusicControls || isShared) && (
         <div
           className={`fixed top-4 right-4 z-50 flex flex-col gap-2 transition-opacity duration-300 ${showControls ? "opacity-100" : "opacity-0 pointer-events-none"}`}
           style={{ fontSize: "16px" }}
         >
-          {data.showMusic && data.musicTrack && (
+          {shouldShowMusicControls && data.showMusic && data.musicTrack && (
             <button
               onClick={(e) => { e.stopPropagation(); toggleMusic(); }}
               className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white shadow-lg"
@@ -173,20 +183,24 @@ export function InvitationPreview({ data, isShared = false, onTextScaleChange, t
               {isMusicPlaying ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
             </button>
           )}
-          <button
-            onClick={(e) => { e.stopPropagation(); increaseTextSize(); }}
-            className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white shadow-lg"
-            data-testid="button-text-increase"
-          >
-            <span className="text-[13px] font-bold">A+</span>
-          </button>
-          <button
-            onClick={(e) => { e.stopPropagation(); decreaseTextSize(); }}
-            className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white shadow-lg"
-            data-testid="button-text-decrease"
-          >
-            <span className="text-[13px] font-bold">A-</span>
-          </button>
+          {isShared && (
+            <>
+              <button
+                onClick={(e) => { e.stopPropagation(); increaseTextSize(); }}
+                className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white shadow-lg"
+                data-testid="button-text-increase"
+              >
+                <span className="text-[13px] font-bold">A+</span>
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); decreaseTextSize(); }}
+                className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white shadow-lg"
+                data-testid="button-text-decrease"
+              >
+                <span className="text-[13px] font-bold">A-</span>
+              </button>
+            </>
+          )}
         </div>
       )}
 

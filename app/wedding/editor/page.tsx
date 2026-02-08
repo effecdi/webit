@@ -1016,6 +1016,11 @@ function InvitationEditorContent() {
 
   const handleSave = async () => {
     setIsSaving(true);
+    const editorAudio = editorAudioRef.current;
+    if (editorAudio) {
+      editorAudio.pause();
+      setIsEditorPlaying(false);
+    }
     try {
       if (currentInvitationId) {
         await fetch(`/api/invitations/${currentInvitationId}`, {
@@ -1242,7 +1247,7 @@ function InvitationEditorContent() {
         </header>
 
         <div className="flex-1 overflow-y-auto">
-          <InvitationPreview data={previewData as any} />
+          <InvitationPreview data={previewData as any} autoPlayMusic={true} showMusicControls={true} />
         </div>
 
         {showShareOptions && (
