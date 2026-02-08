@@ -39,6 +39,7 @@ export default function WeddingProfilePage() {
   const [showNotifications, setShowNotifications] = useState(false)
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [isLoggingOut, setIsLoggingOut] = useState(false)
+  const [stats, setStats] = useState({ completedTodos: 0, invitations: 0, events: 0 })
 
   const handleLogout = () => {
     setIsLoggingOut(true)
@@ -76,7 +77,25 @@ export default function WeddingProfilePage() {
     setGroomProfile({ name: partnerName, photo: "" })
     
     fetchNotifications()
+    fetchStats()
   }, [])
+
+  const fetchStats = async () => {
+    try {
+      const [checklistRes, invitationsRes, eventsRes] = await Promise.all([
+        fetch('/api/checklist?mode=wedding').then(r => r.ok ? r.json() : []),
+        fetch('/api/invitations').then(r => r.ok ? r.json() : []),
+        fetch('/api/events?mode=wedding').then(r => r.ok ? r.json() : []),
+      ])
+      setStats({
+        completedTodos: Array.isArray(checklistRes) ? checklistRes.filter((item: { completed?: boolean }) => item.completed).length : 0,
+        invitations: Array.isArray(invitationsRes) ? invitationsRes.length : 0,
+        events: Array.isArray(eventsRes) ? eventsRes.length : 0,
+      })
+    } catch {
+      setStats({ completedTodos: 0, invitations: 0, events: 0 })
+    }
+  }
 
   const fetchNotifications = async () => {
     try {
@@ -253,20 +272,24 @@ export default function WeddingProfilePage() {
           </div>
 
           {/* Wedding Info */}
-          <div className="bg-gradient-to-r from-blue-50 via-pink-50 to-pink-50 rounded-[16px] p-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-[#FF8A80]" />
-                <span className="text-[14px] text-[#4E5968]">결혼식</span>
+          {weddingDate && (
+            <div className="bg-gradient-to-r from-blue-50 via-pink-50 to-pink-50 rounded-[16px] p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-[#FF8A80]" />
+                  <span className="text-[14px] text-[#4E5968]">결혼식</span>
+                </div>
+                <span className="text-[14px] font-bold text-[#191F28]">{weddingDate}</span>
               </div>
-              <span className="text-[14px] font-bold text-[#191F28]">2025.05.24</span>
-            </div>
-            <div className="flex items-center justify-center mt-3">
-              <div className="px-4 py-2 bg-white rounded-full shadow-sm">
-                <span className="text-[18px] font-bold text-[#FF8A80]">D-{dday}</span>
+              <div className="flex items-center justify-center mt-3">
+                <div className="px-4 py-2 bg-white rounded-full shadow-sm">
+                  <span className="text-[18px] font-bold text-[#FF8A80]">
+                    {dday > 0 ? `D-${dday}` : dday === 0 ? "D-Day" : `D+${Math.abs(dday)}`}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Quick Stats */}
@@ -275,21 +298,21 @@ export default function WeddingProfilePage() {
             <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-2">
               <Check className="w-5 h-5 text-[#3182F6]" />
             </div>
-            <p className="text-[20px] font-bold text-[#191F28]">12</p>
+            <p className="text-[20px] font-bold text-[#191F28]">{stats.completedTodos}</p>
             <p className="text-[12px] text-[#8B95A1]">완료한 할일</p>
           </div>
           <div className="bg-white rounded-[16px] p-4 text-center shadow-sm">
             <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center mx-auto mb-2">
               <Gift className="w-5 h-5 text-[#FF8A80]" />
             </div>
-            <p className="text-[20px] font-bold text-[#191F28]">3</p>
+            <p className="text-[20px] font-bold text-[#191F28]">{stats.invitations}</p>
             <p className="text-[12px] text-[#8B95A1]">청첩장</p>
           </div>
           <div className="bg-white rounded-[16px] p-4 text-center shadow-sm">
             <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-2">
               <Calendar className="w-5 h-5 text-green-500" />
             </div>
-            <p className="text-[20px] font-bold text-[#191F28]">5</p>
+            <p className="text-[20px] font-bold text-[#191F28]">{stats.events}</p>
             <p className="text-[12px] text-[#8B95A1]">예약 일정</p>
           </div>
         </div>
