@@ -939,14 +939,18 @@ function InvitationEditorContent() {
         if (res.ok) {
           const result = await res.json();
           if (result && typeof result === "object") {
-            if (result.invitationData) {
-              setData((prev) => ({ ...prev, ...result.invitationData }));
-            } else if (
-              result.groomName !== undefined ||
-              result.brideName !== undefined ||
-              result.title !== undefined
-            ) {
-              setData((prev) => ({ ...prev, ...result }));
+            const savedData = result.invitationData || (
+              (result.groomName !== undefined || result.brideName !== undefined || result.title !== undefined)
+                ? result : null
+            );
+            if (savedData) {
+              const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "gallery"];
+              const urlTemplate = templateParam && validTemplates.includes(templateParam) ? templateParam : null;
+              setData((prev) => ({
+                ...prev,
+                ...savedData,
+                ...(urlTemplate ? { mainTemplate: urlTemplate } : {}),
+              }));
             }
           }
         }
@@ -957,7 +961,7 @@ function InvitationEditorContent() {
       }
     };
     loadInvitation();
-  }, []);
+  }, [templateParam]);
 
   const updateField = <K extends keyof InvitationData>(
     field: K,

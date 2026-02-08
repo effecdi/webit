@@ -1482,18 +1482,27 @@ function InvitationEditorContent() {
                         if (res.ok) {
                             const result = await res.json();
                             if (result && typeof result === "object") {
-                                if (result.invitationData) {
+                                const savedData = result.invitationData || (result.groomName !== undefined || result.brideName !== undefined || result.title !== undefined ? result : null);
+                                if (savedData) {
+                                    const validTemplates = [
+                                        "cinematic",
+                                        "modern",
+                                        "classic",
+                                        "magazine",
+                                        "polaroid",
+                                        "chat",
+                                        "traditional",
+                                        "garden",
+                                        "gallery"
+                                    ];
+                                    const urlTemplate = templateParam && validTemplates.includes(templateParam) ? templateParam : null;
                                     setData({
                                         "InvitationEditorContent.useEffect.loadInvitation": (prev)=>({
                                                 ...prev,
-                                                ...result.invitationData
-                                            })
-                                    }["InvitationEditorContent.useEffect.loadInvitation"]);
-                                } else if (result.groomName !== undefined || result.brideName !== undefined || result.title !== undefined) {
-                                    setData({
-                                        "InvitationEditorContent.useEffect.loadInvitation": (prev)=>({
-                                                ...prev,
-                                                ...result
+                                                ...savedData,
+                                                ...urlTemplate ? {
+                                                    mainTemplate: urlTemplate
+                                                } : {}
                                             })
                                     }["InvitationEditorContent.useEffect.loadInvitation"]);
                                 }
@@ -1508,7 +1517,9 @@ function InvitationEditorContent() {
             }["InvitationEditorContent.useEffect.loadInvitation"];
             loadInvitation();
         }
-    }["InvitationEditorContent.useEffect"], []);
+    }["InvitationEditorContent.useEffect"], [
+        templateParam
+    ]);
     const updateField = (field, value)=>{
         setData((prev)=>({
                 ...prev,
@@ -1668,7 +1679,7 @@ function InvitationEditorContent() {
                         className: "w-8 h-8 border-2 border-[#FF8A80] border-t-transparent rounded-full animate-spin mx-auto mb-3"
                     }, void 0, false, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 1118,
+                        lineNumber: 1122,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1676,18 +1687,18 @@ function InvitationEditorContent() {
                         children: "청첩장을 불러오는 중..."
                     }, void 0, false, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 1119,
+                        lineNumber: 1123,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/wedding/editor/page.tsx",
-                lineNumber: 1117,
+                lineNumber: 1121,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/wedding/editor/page.tsx",
-            lineNumber: 1116,
+            lineNumber: 1120,
             columnNumber: 7
         }, this);
     }
@@ -1709,14 +1720,14 @@ function InvitationEditorContent() {
                                         className: "w-5 h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 1135,
+                                        lineNumber: 1139,
                                         columnNumber: 15
                                     }, this),
                                     "편집하기"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1130,
+                                lineNumber: 1134,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1724,7 +1735,7 @@ function InvitationEditorContent() {
                                 children: "청첩장"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1138,
+                                lineNumber: 1142,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1736,25 +1747,25 @@ function InvitationEditorContent() {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 1144,
+                                        lineNumber: 1148,
                                         columnNumber: 15
                                     }, this),
                                     "공유하기"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1139,
+                                lineNumber: 1143,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 1129,
+                        lineNumber: 1133,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/wedding/editor/page.tsx",
-                    lineNumber: 1128,
+                    lineNumber: 1132,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1763,12 +1774,12 @@ function InvitationEditorContent() {
                         data: previewData
                     }, void 0, false, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 1151,
+                        lineNumber: 1155,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/wedding/editor/page.tsx",
-                    lineNumber: 1150,
+                    lineNumber: 1154,
                     columnNumber: 9
                 }, this),
                 showShareOptions && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1780,10 +1791,42 @@ function InvitationEditorContent() {
                         "data-testid": "modal-share",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "w-12 h-1 bg-[#E5E8EB] rounded-full mx-auto mb-6"
-                            }, void 0, false, {
+                                className: "flex items-center justify-between mb-6",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "w-8"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/wedding/editor/page.tsx",
+                                        lineNumber: 1169,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "w-12 h-1 bg-[#E5E8EB] rounded-full"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/wedding/editor/page.tsx",
+                                        lineNumber: 1170,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>setShowShareOptions(false),
+                                        "data-testid": "button-share-close",
+                                        className: "w-8 h-8 flex items-center justify-center rounded-full bg-[#F2F4F6] text-[#8B95A1]",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
+                                            className: "w-4 h-4"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/wedding/editor/page.tsx",
+                                            lineNumber: 1176,
+                                            columnNumber: 19
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/wedding/editor/page.tsx",
+                                        lineNumber: 1171,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1164,
+                                lineNumber: 1168,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1791,7 +1834,7 @@ function InvitationEditorContent() {
                                 children: "청첩장 공유하기"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1165,
+                                lineNumber: 1179,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1808,12 +1851,12 @@ function InvitationEditorContent() {
                                                     className: "w-6 h-6 text-[#FEE500]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1175,
+                                                    lineNumber: 1189,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                lineNumber: 1174,
+                                                lineNumber: 1188,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1824,7 +1867,7 @@ function InvitationEditorContent() {
                                                         children: "카카오톡으로 공유"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 1178,
+                                                        lineNumber: 1192,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1832,19 +1875,19 @@ function InvitationEditorContent() {
                                                         children: "친구에게 청첩장을 보내세요"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 1181,
+                                                        lineNumber: 1195,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                lineNumber: 1177,
+                                                lineNumber: 1191,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 1169,
+                                        lineNumber: 1183,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1861,18 +1904,18 @@ function InvitationEditorContent() {
                                                     className: "w-6 h-6 text-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1197,
+                                                    lineNumber: 1211,
                                                     columnNumber: 23
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$link$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Link2$3e$__["Link2"], {
                                                     className: "w-6 h-6 text-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1199,
+                                                    lineNumber: 1213,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                lineNumber: 1195,
+                                                lineNumber: 1209,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1883,7 +1926,7 @@ function InvitationEditorContent() {
                                                         children: copied ? "복사 완료!" : "URL 복사하기"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 1203,
+                                                        lineNumber: 1217,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1891,25 +1934,25 @@ function InvitationEditorContent() {
                                                         children: shareUrl
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 1206,
+                                                        lineNumber: 1220,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                lineNumber: 1202,
+                                                lineNumber: 1216,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 1187,
+                                        lineNumber: 1201,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1168,
+                                lineNumber: 1182,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1918,18 +1961,18 @@ function InvitationEditorContent() {
                                 children: "닫기"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1213,
+                                lineNumber: 1227,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 1159,
+                        lineNumber: 1163,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/wedding/editor/page.tsx",
-                    lineNumber: 1155,
+                    lineNumber: 1159,
                     columnNumber: 11
                 }, this),
                 showShareCountInput && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1945,7 +1988,7 @@ function InvitationEditorContent() {
                                 children: "공유 인원 입력"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1233,
+                                lineNumber: 1247,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1953,7 +1996,7 @@ function InvitationEditorContent() {
                                 children: "카카오톡으로 몇 명에게 공유했나요?"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1236,
+                                lineNumber: 1250,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1966,7 +2009,7 @@ function InvitationEditorContent() {
                                 autoFocus: true
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1239,
+                                lineNumber: 1253,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1982,7 +2025,7 @@ function InvitationEditorContent() {
                                         children: "건너뛰기"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 1249,
+                                        lineNumber: 1263,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1992,24 +2035,24 @@ function InvitationEditorContent() {
                                         children: "확인"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 1256,
+                                        lineNumber: 1270,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1248,
+                                lineNumber: 1262,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 1228,
+                        lineNumber: 1242,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/wedding/editor/page.tsx",
-                    lineNumber: 1224,
+                    lineNumber: 1238,
                     columnNumber: 11
                 }, this),
                 copied && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2017,13 +2060,13 @@ function InvitationEditorContent() {
                     children: "URL이 복사되었습니다"
                 }, void 0, false, {
                     fileName: "[project]/app/wedding/editor/page.tsx",
-                    lineNumber: 1269,
+                    lineNumber: 1283,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/wedding/editor/page.tsx",
-            lineNumber: 1127,
+            lineNumber: 1131,
             columnNumber: 7
         }, this);
     }
@@ -2043,12 +2086,12 @@ function InvitationEditorContent() {
                                 className: "w-5 h-5 text-[#191F28]"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 1287,
+                                lineNumber: 1301,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/editor/page.tsx",
-                            lineNumber: 1282,
+                            lineNumber: 1296,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -2056,7 +2099,7 @@ function InvitationEditorContent() {
                             children: "청첩장"
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/editor/page.tsx",
-                            lineNumber: 1289,
+                            lineNumber: 1303,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2074,12 +2117,12 @@ function InvitationEditorContent() {
                                         d: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 1297,
+                                        lineNumber: 1311,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 1291,
+                                    lineNumber: 1305,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2087,24 +2130,24 @@ function InvitationEditorContent() {
                                     children: "비공개"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 1304,
+                                    lineNumber: 1318,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wedding/editor/page.tsx",
-                            lineNumber: 1290,
+                            lineNumber: 1304,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/wedding/editor/page.tsx",
-                    lineNumber: 1281,
+                    lineNumber: 1295,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wedding/editor/page.tsx",
-                lineNumber: 1280,
+                lineNumber: 1294,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2126,7 +2169,7 @@ function InvitationEditorContent() {
                                             required: true
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1317,
+                                            lineNumber: 1331,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2134,13 +2177,13 @@ function InvitationEditorContent() {
                                             children: "구분을 위한 제목으로, 하객에게는 노출되지 않아요"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1324,
+                                            lineNumber: 1338,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 1316,
+                                    lineNumber: 1330,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2153,7 +2196,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showOpening", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1331,
+                                            lineNumber: 1345,
                                             columnNumber: 15
                                         }, this),
                                         data.showOpening && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2170,13 +2213,13 @@ function InvitationEditorContent() {
                                                                     children: "*"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1341,
+                                                                    lineNumber: 1355,
                                                                     columnNumber: 28
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1340,
+                                                            lineNumber: 1354,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2202,23 +2245,23 @@ function InvitationEditorContent() {
                                                                         children: type.label
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 1358,
+                                                                        lineNumber: 1372,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, type.id, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1349,
+                                                                    lineNumber: 1363,
                                                                     columnNumber: 25
                                                                 }, this))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1343,
+                                                            lineNumber: 1357,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1339,
+                                                    lineNumber: 1353,
                                                     columnNumber: 19
                                                 }, this),
                                                 [
@@ -2241,13 +2284,13 @@ function InvitationEditorContent() {
                                                                                 children: "*"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                lineNumber: 1370,
+                                                                                lineNumber: 1384,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 1368,
+                                                                        lineNumber: 1382,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ImageUploadBox, {
@@ -2272,13 +2315,13 @@ function InvitationEditorContent() {
                                                                         }
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 1372,
+                                                                        lineNumber: 1386,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                lineNumber: 1367,
+                                                                lineNumber: 1381,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -2294,25 +2337,25 @@ function InvitationEditorContent() {
                                                                 placeholder: num === 1 ? "2000-00-00-SAT" : num === 2 ? "저희의 첫걸음을" : "함께해주세요."
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                lineNumber: 1390,
+                                                                lineNumber: 1404,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, num, true, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 1366,
+                                                        lineNumber: 1380,
                                                         columnNumber: 21
                                                     }, this))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1338,
+                                            lineNumber: 1352,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 1330,
+                                    lineNumber: 1344,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2322,7 +2365,7 @@ function InvitationEditorContent() {
                                             title: "메인"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1414,
+                                            lineNumber: 1428,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2349,12 +2392,12 @@ function InvitationEditorContent() {
                                                                                     id: t.id
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                    lineNumber: 1436,
+                                                                                    lineNumber: 1450,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                lineNumber: 1435,
+                                                                                lineNumber: 1449,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             t.premium && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2363,18 +2406,18 @@ function InvitationEditorContent() {
                                                                                     className: "w-2.5 h-2.5 text-white"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                    lineNumber: 1440,
+                                                                                    lineNumber: 1454,
                                                                                     columnNumber: 31
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                lineNumber: 1439,
+                                                                                lineNumber: 1453,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 1426,
+                                                                        lineNumber: 1440,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2385,7 +2428,7 @@ function InvitationEditorContent() {
                                                                                 children: t.label
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                lineNumber: 1445,
+                                                                                lineNumber: 1459,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             t.premium && data.mainTemplate === t.id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2393,29 +2436,29 @@ function InvitationEditorContent() {
                                                                                 children: "프리미엄"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                lineNumber: 1449,
+                                                                                lineNumber: 1463,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 1444,
+                                                                        lineNumber: 1458,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, t.id, true, {
                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                lineNumber: 1422,
+                                                                lineNumber: 1436,
                                                                 columnNumber: 23
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 1417,
+                                                        lineNumber: 1431,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1416,
+                                                    lineNumber: 1430,
                                                     columnNumber: 17
                                                 }, this),
                                                 MAIN_TEMPLATES.find((t)=>t.id === data.mainTemplate)?.premium && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2425,20 +2468,20 @@ function InvitationEditorContent() {
                                                             className: "w-3.5 h-3.5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1461,
+                                                            lineNumber: 1475,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "이 템플릿은 프리미엄 템플릿입니다. 청첩장 발행 시 구매가 필요합니다."
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1462,
+                                                            lineNumber: 1476,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1460,
+                                                    lineNumber: 1474,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2448,7 +2491,7 @@ function InvitationEditorContent() {
                                                             children: "사진"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1470,
+                                                            lineNumber: 1484,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2460,7 +2503,7 @@ function InvitationEditorContent() {
                                                             className: "hidden"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1473,
+                                                            lineNumber: 1487,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2475,7 +2518,7 @@ function InvitationEditorContent() {
                                                                                 className: "w-full h-full object-cover rounded-[8px]"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                lineNumber: 1484,
+                                                                                lineNumber: 1498,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2485,18 +2528,18 @@ function InvitationEditorContent() {
                                                                                     className: "w-3 h-3 text-white"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                    lineNumber: 1498,
+                                                                                    lineNumber: 1512,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                lineNumber: 1489,
+                                                                                lineNumber: 1503,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, i, true, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 1483,
+                                                                        lineNumber: 1497,
                                                                         columnNumber: 23
                                                                     }, this)),
                                                                 data.mainPhotos.length < 5 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2507,7 +2550,7 @@ function InvitationEditorContent() {
                                                                             className: "w-4 h-4 text-[#B0B8C1]"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 1507,
+                                                                            lineNumber: 1521,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2518,19 +2561,19 @@ function InvitationEditorContent() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 1508,
+                                                                            lineNumber: 1522,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1503,
+                                                                    lineNumber: 1517,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1481,
+                                                            lineNumber: 1495,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2538,13 +2581,13 @@ function InvitationEditorContent() {
                                                             children: "사진은 원본 비율 그대로 보여지지만, 화면에 맞춰 일부가 가려질 수 있어요. 얼굴이나 중요한 요소는 여백이 있는 세로 사진을 추천해요."
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1514,
+                                                            lineNumber: 1528,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1469,
+                                                    lineNumber: 1483,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2554,7 +2597,7 @@ function InvitationEditorContent() {
                                                             children: "텍스트 컬러"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1522,
+                                                            lineNumber: 1536,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2565,7 +2608,7 @@ function InvitationEditorContent() {
                                                                     className: `w-10 h-10 rounded-full border-2 bg-[#191F28] ${data.textColor === "dark" ? "border-[#FF8A80]" : "border-transparent"}`
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1526,
+                                                                    lineNumber: 1540,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2573,19 +2616,19 @@ function InvitationEditorContent() {
                                                                     className: `w-10 h-10 rounded-full border-2 bg-white ${data.textColor === "light" ? "border-[#FF8A80]" : "border-[#E5E8EB]"}`
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1534,
+                                                                    lineNumber: 1548,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1525,
+                                                            lineNumber: 1539,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1521,
+                                                    lineNumber: 1535,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -2608,19 +2651,19 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("coverDisplayStyle", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1545,
+                                                    lineNumber: 1559,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1415,
+                                            lineNumber: 1429,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 1413,
+                                    lineNumber: 1427,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2630,7 +2673,7 @@ function InvitationEditorContent() {
                                             title: "기본 정보"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1560,
+                                            lineNumber: 1574,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2648,13 +2691,13 @@ function InvitationEditorContent() {
                                                                     children: "*"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1565,
+                                                                    lineNumber: 1579,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1564,
+                                                            lineNumber: 1578,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2666,7 +2709,7 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1567,
+                                                            lineNumber: 1581,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2677,13 +2720,13 @@ function InvitationEditorContent() {
                                                             className: "w-[80px] px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1575,
+                                                            lineNumber: 1589,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1563,
+                                                    lineNumber: 1577,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -2693,7 +2736,7 @@ function InvitationEditorContent() {
                                                     placeholder: "전화번호"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1585,
+                                                    lineNumber: 1599,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2704,7 +2747,7 @@ function InvitationEditorContent() {
                                                             children: "아버지"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1593,
+                                                            lineNumber: 1607,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2718,7 +2761,7 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1596,
+                                                            lineNumber: 1610,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CheckboxField, {
@@ -2730,13 +2773,13 @@ function InvitationEditorContent() {
                                                                 })
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1608,
+                                                            lineNumber: 1622,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1592,
+                                                    lineNumber: 1606,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2747,7 +2790,7 @@ function InvitationEditorContent() {
                                                             children: "어머니"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1621,
+                                                            lineNumber: 1635,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2761,7 +2804,7 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1624,
+                                                            lineNumber: 1638,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CheckboxField, {
@@ -2773,20 +2816,20 @@ function InvitationEditorContent() {
                                                                 })
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1636,
+                                                            lineNumber: 1650,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1620,
+                                                    lineNumber: 1634,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "h-px bg-[#E5E8EB]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1648,
+                                                    lineNumber: 1662,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2801,13 +2844,13 @@ function InvitationEditorContent() {
                                                                     children: "*"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1653,
+                                                                    lineNumber: 1667,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1652,
+                                                            lineNumber: 1666,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2819,7 +2862,7 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1655,
+                                                            lineNumber: 1669,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2830,13 +2873,13 @@ function InvitationEditorContent() {
                                                             className: "w-[80px] px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1663,
+                                                            lineNumber: 1677,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1651,
+                                                    lineNumber: 1665,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -2846,7 +2889,7 @@ function InvitationEditorContent() {
                                                     placeholder: "전화번호"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1673,
+                                                    lineNumber: 1687,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2857,7 +2900,7 @@ function InvitationEditorContent() {
                                                             children: "아버지"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1681,
+                                                            lineNumber: 1695,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2871,7 +2914,7 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1684,
+                                                            lineNumber: 1698,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CheckboxField, {
@@ -2883,13 +2926,13 @@ function InvitationEditorContent() {
                                                                 })
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1696,
+                                                            lineNumber: 1710,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1680,
+                                                    lineNumber: 1694,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2900,7 +2943,7 @@ function InvitationEditorContent() {
                                                             children: "어머니"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1709,
+                                                            lineNumber: 1723,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2914,7 +2957,7 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1712,
+                                                            lineNumber: 1726,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CheckboxField, {
@@ -2926,20 +2969,20 @@ function InvitationEditorContent() {
                                                                 })
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1724,
+                                                            lineNumber: 1738,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1708,
+                                                    lineNumber: 1722,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "h-px bg-[#E5E8EB]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1735,
+                                                    lineNumber: 1749,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CheckboxField, {
@@ -2948,19 +2991,19 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("brideFirst", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1737,
+                                                    lineNumber: 1751,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1561,
+                                            lineNumber: 1575,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 1559,
+                                    lineNumber: 1573,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2970,7 +3013,7 @@ function InvitationEditorContent() {
                                             title: "초대 인사말"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1747,
+                                            lineNumber: 1761,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2984,7 +3027,7 @@ function InvitationEditorContent() {
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1749,
+                                                    lineNumber: 1763,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2999,13 +3042,13 @@ function InvitationEditorContent() {
                                                                     children: "*"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1758,
+                                                                    lineNumber: 1772,
                                                                     columnNumber: 24
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1757,
+                                                            lineNumber: 1771,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3019,7 +3062,7 @@ function InvitationEditorContent() {
                                                                     className: "w-full px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none leading-relaxed"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1761,
+                                                                    lineNumber: 1775,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3035,20 +3078,20 @@ function InvitationEditorContent() {
                                                                                     className: "w-3 h-3 animate-spin"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                    lineNumber: 1775,
+                                                                                    lineNumber: 1789,
                                                                                     columnNumber: 50
                                                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
                                                                                     className: "w-3 h-3"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                    lineNumber: 1775,
+                                                                                    lineNumber: 1789,
                                                                                     columnNumber: 97
                                                                                 }, this),
                                                                                 "제목 AI 추천"
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 1769,
+                                                                            lineNumber: 1783,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3061,38 +3104,38 @@ function InvitationEditorContent() {
                                                                                     className: "w-3 h-3 animate-spin"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                    lineNumber: 1784,
+                                                                                    lineNumber: 1798,
                                                                                     columnNumber: 52
                                                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
                                                                                     className: "w-3 h-3"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                    lineNumber: 1784,
+                                                                                    lineNumber: 1798,
                                                                                     columnNumber: 99
                                                                                 }, this),
                                                                                 "인사말 AI 추천"
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 1778,
+                                                                            lineNumber: 1792,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1768,
+                                                                    lineNumber: 1782,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1760,
+                                                            lineNumber: 1774,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1756,
+                                                    lineNumber: 1770,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CheckboxField, {
@@ -3101,7 +3144,7 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("showNameAtBottom", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1790,
+                                                    lineNumber: 1804,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -3120,7 +3163,7 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("messageAlign", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1795,
+                                                    lineNumber: 1809,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -3139,19 +3182,19 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("nameDisplayStyle", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1804,
+                                                    lineNumber: 1818,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1748,
+                                            lineNumber: 1762,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 1746,
+                                    lineNumber: 1760,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3161,7 +3204,7 @@ function InvitationEditorContent() {
                                             title: "예식 정보"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1818,
+                                            lineNumber: 1832,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3172,7 +3215,7 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("weddingDate", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1820,
+                                                    lineNumber: 1834,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3183,7 +3226,7 @@ function InvitationEditorContent() {
                                                             children: "예식 시간"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1825,
+                                                            lineNumber: 1839,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -3196,7 +3239,7 @@ function InvitationEditorContent() {
                                                                     children: "오전"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1835,
+                                                                    lineNumber: 1849,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3204,13 +3247,13 @@ function InvitationEditorContent() {
                                                                     children: "오후"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1836,
+                                                                    lineNumber: 1850,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1828,
+                                                            lineNumber: 1842,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -3225,12 +3268,12 @@ function InvitationEditorContent() {
                                                                     ]
                                                                 }, h, true, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1844,
+                                                                    lineNumber: 1858,
                                                                     columnNumber: 23
                                                                 }, this))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1838,
+                                                            lineNumber: 1852,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -3245,18 +3288,18 @@ function InvitationEditorContent() {
                                                                     ]
                                                                 }, m, true, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1855,
+                                                                    lineNumber: 1869,
                                                                     columnNumber: 23
                                                                 }, this))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 1849,
+                                                            lineNumber: 1863,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1824,
+                                                    lineNumber: 1838,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -3266,7 +3309,7 @@ function InvitationEditorContent() {
                                                     placeholder: "웨딩홀명을 입력해주세요."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1861,
+                                                    lineNumber: 1875,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -3276,7 +3319,7 @@ function InvitationEditorContent() {
                                                     placeholder: "층과 웨딩홀 이름을 입력해주세요."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1867,
+                                                    lineNumber: 1881,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -3286,7 +3329,7 @@ function InvitationEditorContent() {
                                                     placeholder: "웨딩홀 주소를 검색해주세요."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1873,
+                                                    lineNumber: 1887,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -3296,7 +3339,7 @@ function InvitationEditorContent() {
                                                     placeholder: "웨딩홀 연락처(02-1234-1234)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1879,
+                                                    lineNumber: 1893,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -3315,7 +3358,7 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("showCalendar", v === "show")
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1885,
+                                                    lineNumber: 1899,
                                                     columnNumber: 17
                                                 }, this),
                                                 data.showCalendar && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -3334,7 +3377,7 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("calendarStyle", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1895,
+                                                    lineNumber: 1909,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -3353,19 +3396,19 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("showCountdown", v === "show")
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1905,
+                                                    lineNumber: 1919,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1819,
+                                            lineNumber: 1833,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 1817,
+                                    lineNumber: 1831,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3375,7 +3418,7 @@ function InvitationEditorContent() {
                                             title: "교통 수단"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1919,
+                                            lineNumber: 1933,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3395,7 +3438,7 @@ function InvitationEditorContent() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 1924,
+                                                                        lineNumber: 1938,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -3415,7 +3458,7 @@ function InvitationEditorContent() {
                                                                         className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 1927,
+                                                                        lineNumber: 1941,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     data.transportItems.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3429,18 +3472,18 @@ function InvitationEditorContent() {
                                                                             className: "w-4 h-4 text-[#8B95A1]"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 1952,
+                                                                            lineNumber: 1966,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 1942,
+                                                                        lineNumber: 1956,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                lineNumber: 1923,
+                                                                lineNumber: 1937,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3462,18 +3505,18 @@ function InvitationEditorContent() {
                                                                     className: "w-full px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 1957,
+                                                                    lineNumber: 1971,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                lineNumber: 1956,
+                                                                lineNumber: 1970,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, index, true, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 1922,
+                                                        lineNumber: 1936,
                                                         columnNumber: 19
                                                     }, this)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3488,7 +3531,7 @@ function InvitationEditorContent() {
                                                     children: "+ 추가하기"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1974,
+                                                    lineNumber: 1988,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CheckboxField, {
@@ -3497,19 +3540,19 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("showTransportNotice", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 1985,
+                                                    lineNumber: 1999,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1920,
+                                            lineNumber: 1934,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 1918,
+                                    lineNumber: 1932,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3522,7 +3565,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showFunding", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 1995,
+                                            lineNumber: 2009,
                                             columnNumber: 15
                                         }, this),
                                         data.showFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3535,12 +3578,12 @@ function InvitationEditorContent() {
                                                         children: "모바일 청첩장을 받은 지인은 평범한 축의금 대신 의미있는 펀딩으로 마음을 전할 수 있어요. 펀딩은 카드 결제로 간편하게 참여할 수 있으며, 모인 금액은 수수료 없이 언제든 출금 가능합니다."
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 2004,
+                                                        lineNumber: 2018,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2003,
+                                                    lineNumber: 2017,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3555,13 +3598,13 @@ function InvitationEditorContent() {
                                                                     children: "*"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2013,
+                                                                    lineNumber: 2027,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2012,
+                                                            lineNumber: 2026,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -3572,13 +3615,13 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2015,
+                                                            lineNumber: 2029,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2011,
+                                                    lineNumber: 2025,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3589,7 +3632,7 @@ function InvitationEditorContent() {
                                                             children: "펀딩 영역 상단에 표시되는 안내 문구예요. 하객에게 목적이나 분위기를 간단히 알려주세요."
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2026,
+                                                            lineNumber: 2040,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3602,26 +3645,26 @@ function InvitationEditorContent() {
                                                                     className: "w-3 h-3 animate-spin"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2036,
+                                                                    lineNumber: 2050,
                                                                     columnNumber: 57
                                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
                                                                     className: "w-3 h-3"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2036,
+                                                                    lineNumber: 2050,
                                                                     columnNumber: 104
                                                                 }, this),
                                                                 "AI 추천"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2030,
+                                                            lineNumber: 2044,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2025,
+                                                    lineNumber: 2039,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3636,13 +3679,13 @@ function InvitationEditorContent() {
                                                                     children: "*"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2042,
+                                                                    lineNumber: 2056,
                                                                     columnNumber: 26
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2041,
+                                                            lineNumber: 2055,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3658,7 +3701,7 @@ function InvitationEditorContent() {
                                                                             className: "accent-[#FF8A80]"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2046,
+                                                                            lineNumber: 2060,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3666,13 +3709,13 @@ function InvitationEditorContent() {
                                                                             children: "기본 이미지"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2054,
+                                                                            lineNumber: 2068,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2045,
+                                                                    lineNumber: 2059,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -3685,7 +3728,7 @@ function InvitationEditorContent() {
                                                                             className: "accent-[#FF8A80]"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2059,
+                                                                            lineNumber: 2073,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3693,25 +3736,25 @@ function InvitationEditorContent() {
                                                                             children: "내 이미지 추가"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2067,
+                                                                            lineNumber: 2081,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2058,
+                                                                    lineNumber: 2072,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2044,
+                                                            lineNumber: 2058,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2040,
+                                                    lineNumber: 2054,
                                                     columnNumber: 19
                                                 }, this),
                                                 data.fundingImageType === "custom" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3729,7 +3772,7 @@ function InvitationEditorContent() {
                                                                     "data-testid": "input-funding-image"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2079,
+                                                                    lineNumber: 2093,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 data.fundingImage ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -3738,7 +3781,7 @@ function InvitationEditorContent() {
                                                                     className: "w-full h-full object-cover"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2087,
+                                                                    lineNumber: 2101,
                                                                     columnNumber: 27
                                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "text-center",
@@ -3747,7 +3790,7 @@ function InvitationEditorContent() {
                                                                             className: "w-8 h-8 text-[#B0B8C1] mx-auto mb-2"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2090,
+                                                                            lineNumber: 2104,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3755,19 +3798,19 @@ function InvitationEditorContent() {
                                                                             children: "사진을 선택해주세요"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2091,
+                                                                            lineNumber: 2105,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2089,
+                                                                    lineNumber: 2103,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2075,
+                                                            lineNumber: 2089,
                                                             columnNumber: 23
                                                         }, this),
                                                         data.fundingImage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3778,13 +3821,13 @@ function InvitationEditorContent() {
                                                             children: "이미지 삭제"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2096,
+                                                            lineNumber: 2110,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2074,
+                                                    lineNumber: 2088,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -3795,7 +3838,7 @@ function InvitationEditorContent() {
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2107,
+                                                    lineNumber: 2121,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3810,13 +3853,13 @@ function InvitationEditorContent() {
                                                                     children: "*"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2116,
+                                                                    lineNumber: 2130,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2115,
+                                                            lineNumber: 2129,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3830,7 +3873,7 @@ function InvitationEditorContent() {
                                                                     className: "w-full px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2119,
+                                                                    lineNumber: 2133,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3843,44 +3886,44 @@ function InvitationEditorContent() {
                                                                             className: "w-3 h-3 animate-spin"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2134,
+                                                                            lineNumber: 2148,
                                                                             columnNumber: 58
                                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
                                                                             className: "w-3 h-3"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2134,
+                                                                            lineNumber: 2148,
                                                                             columnNumber: 105
                                                                         }, this),
                                                                         "AI 추천"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2128,
+                                                                    lineNumber: 2142,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2118,
+                                                            lineNumber: 2132,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2114,
+                                                    lineNumber: 2128,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2002,
+                                            lineNumber: 2016,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 1994,
+                                    lineNumber: 2008,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3893,7 +3936,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showGiftFunding", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2145,
+                                            lineNumber: 2159,
                                             columnNumber: 15
                                         }, this),
                                         data.showGiftFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3906,12 +3949,12 @@ function InvitationEditorContent() {
                                                         children: "하객은 위시리스트에서 선물을 선택해 직접 선물하거나, 필요한 경우 금액을 보태 함께 선물할 수 있어요."
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 2154,
+                                                        lineNumber: 2168,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2153,
+                                                    lineNumber: 2167,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3926,13 +3969,13 @@ function InvitationEditorContent() {
                                                                     children: "*"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2161,
+                                                                    lineNumber: 2175,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2160,
+                                                            lineNumber: 2174,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -3943,13 +3986,13 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2163,
+                                                            lineNumber: 2177,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2159,
+                                                    lineNumber: 2173,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -3960,19 +4003,19 @@ function InvitationEditorContent() {
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2173,
+                                                    lineNumber: 2187,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2152,
+                                            lineNumber: 2166,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2144,
+                                    lineNumber: 2158,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3985,7 +4028,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showAccount", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2186,
+                                            lineNumber: 2200,
                                             columnNumber: 15
                                         }, this),
                                         data.showAccount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4007,7 +4050,7 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("accountDisplayStyle", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2194,
+                                                    lineNumber: 2208,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4020,7 +4063,7 @@ function InvitationEditorContent() {
                                                     placeholder: "예금주명"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2206,
+                                                    lineNumber: 2220,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4037,7 +4080,7 @@ function InvitationEditorContent() {
                                                             className: "w-[100px] px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2218,
+                                                            lineNumber: 2232,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -4051,13 +4094,13 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2230,
+                                                            lineNumber: 2244,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2217,
+                                                    lineNumber: 2231,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4070,7 +4113,7 @@ function InvitationEditorContent() {
                                                     placeholder: "예금주명"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2244,
+                                                    lineNumber: 2258,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4087,7 +4130,7 @@ function InvitationEditorContent() {
                                                             className: "w-[100px] px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2256,
+                                                            lineNumber: 2270,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -4101,20 +4144,20 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2268,
+                                                            lineNumber: 2282,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2255,
+                                                    lineNumber: 2269,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "h-px bg-[#E5E8EB]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2282,
+                                                    lineNumber: 2296,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4127,7 +4170,7 @@ function InvitationEditorContent() {
                                                     placeholder: "예금주명"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2285,
+                                                    lineNumber: 2299,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4144,7 +4187,7 @@ function InvitationEditorContent() {
                                                             className: "w-[100px] px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2297,
+                                                            lineNumber: 2311,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -4158,13 +4201,13 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2309,
+                                                            lineNumber: 2323,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2296,
+                                                    lineNumber: 2310,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4177,7 +4220,7 @@ function InvitationEditorContent() {
                                                     placeholder: "예금주명"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2323,
+                                                    lineNumber: 2337,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4194,7 +4237,7 @@ function InvitationEditorContent() {
                                                             className: "w-[100px] px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2335,
+                                                            lineNumber: 2349,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -4208,25 +4251,25 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2347,
+                                                            lineNumber: 2361,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2334,
+                                                    lineNumber: 2348,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2193,
+                                            lineNumber: 2207,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2185,
+                                    lineNumber: 2199,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4239,7 +4282,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showGallery", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2366,
+                                            lineNumber: 2380,
                                             columnNumber: 15
                                         }, this),
                                         data.showGallery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4252,7 +4295,7 @@ function InvitationEditorContent() {
                                                             children: "사진"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2375,
+                                                            lineNumber: 2389,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -4264,7 +4307,7 @@ function InvitationEditorContent() {
                                                             className: "hidden"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2378,
+                                                            lineNumber: 2392,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4279,7 +4322,7 @@ function InvitationEditorContent() {
                                                                                 className: "w-full h-full object-cover rounded-[6px]"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                lineNumber: 2389,
+                                                                                lineNumber: 2403,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4289,18 +4332,18 @@ function InvitationEditorContent() {
                                                                                     className: "w-2.5 h-2.5 text-white"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                    lineNumber: 2405,
+                                                                                    lineNumber: 2419,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                                lineNumber: 2394,
+                                                                                lineNumber: 2408,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, i, true, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 2388,
+                                                                        lineNumber: 2402,
                                                                         columnNumber: 25
                                                                     }, this)),
                                                                 data.galleryImages.length < 20 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4311,7 +4354,7 @@ function InvitationEditorContent() {
                                                                             className: "w-4 h-4 text-[#B0B8C1]"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2414,
+                                                                            lineNumber: 2428,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4322,19 +4365,19 @@ function InvitationEditorContent() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2415,
+                                                                            lineNumber: 2429,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2410,
+                                                                    lineNumber: 2424,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2386,
+                                                            lineNumber: 2400,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4343,20 +4386,20 @@ function InvitationEditorContent() {
                                                                 "-사진을 드래그하여 순서 변경 가능합니다.",
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2423,
+                                                                    lineNumber: 2437,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 "-최대 20장까지 등록할 수 있습니다."
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2421,
+                                                            lineNumber: 2435,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2374,
+                                                    lineNumber: 2388,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -4375,19 +4418,19 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("galleryStyle", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2427,
+                                                    lineNumber: 2441,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2373,
+                                            lineNumber: 2387,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2365,
+                                    lineNumber: 2379,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4400,7 +4443,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showMidPhoto", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2442,
+                                            lineNumber: 2456,
                                             columnNumber: 15
                                         }, this),
                                         data.showMidPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4414,7 +4457,7 @@ function InvitationEditorContent() {
                                                             children: "사진"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2451,
+                                                            lineNumber: 2465,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ImageUploadBox, {
@@ -4426,13 +4469,13 @@ function InvitationEditorContent() {
                                                             onRemove: ()=>updateField("midPhoto", "")
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2452,
+                                                            lineNumber: 2466,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2450,
+                                                    lineNumber: 2464,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4440,19 +4483,19 @@ function InvitationEditorContent() {
                                                     children: "사진은 원본 비율 그대로 보여지지만, 화면에 맞춰 일부가 가려질 수 있어요."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2462,
+                                                    lineNumber: 2476,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2449,
+                                            lineNumber: 2463,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2441,
+                                    lineNumber: 2455,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4466,7 +4509,7 @@ function InvitationEditorContent() {
                                             badge: "NEW"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2472,
+                                            lineNumber: 2486,
                                             columnNumber: 15
                                         }, this),
                                         data.showMusic && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4480,12 +4523,12 @@ function InvitationEditorContent() {
                                                             children: track
                                                         }, track, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2483,
+                                                            lineNumber: 2497,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2481,
+                                                    lineNumber: 2495,
                                                     columnNumber: 19
                                                 }, this),
                                                 data.musicTrack && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4497,12 +4540,12 @@ function InvitationEditorContent() {
                                                                 className: "w-4 h-4 text-[#191F28] ml-0.5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                lineNumber: 2499,
+                                                                lineNumber: 2513,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2498,
+                                                            lineNumber: 2512,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4510,7 +4553,7 @@ function InvitationEditorContent() {
                                                             children: "0:00 / 1:31"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2501,
+                                                            lineNumber: 2515,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4519,30 +4562,30 @@ function InvitationEditorContent() {
                                                                 className: "w-0 h-full bg-[#FF8A80] rounded-full"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                lineNumber: 2505,
+                                                                lineNumber: 2519,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2504,
+                                                            lineNumber: 2518,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2497,
+                                                    lineNumber: 2511,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2480,
+                                            lineNumber: 2494,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2471,
+                                    lineNumber: 2485,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4555,7 +4598,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showBaptismalName", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2515,
+                                            lineNumber: 2529,
                                             columnNumber: 15
                                         }, this),
                                         data.showBaptismalName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4568,7 +4611,7 @@ function InvitationEditorContent() {
                                                     placeholder: "신랑 세례명을 입력해주세요."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2523,
+                                                    lineNumber: 2537,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4578,7 +4621,7 @@ function InvitationEditorContent() {
                                                     placeholder: "신랑 아버지 세례명을 입력해주세요."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2529,
+                                                    lineNumber: 2543,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4588,14 +4631,14 @@ function InvitationEditorContent() {
                                                     placeholder: "신랑 어머니 세례명을 입력해주세요."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2535,
+                                                    lineNumber: 2549,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "h-px bg-[#E5E8EB]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2541,
+                                                    lineNumber: 2555,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4605,7 +4648,7 @@ function InvitationEditorContent() {
                                                     placeholder: "신부 세례명을 입력해주세요."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2542,
+                                                    lineNumber: 2556,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4615,7 +4658,7 @@ function InvitationEditorContent() {
                                                     placeholder: "신부 아버지 세례명을 입력해주세요."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2548,
+                                                    lineNumber: 2562,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4625,19 +4668,19 @@ function InvitationEditorContent() {
                                                     placeholder: "신부 어머니 세례명을 입력해주세요."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2554,
+                                                    lineNumber: 2568,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2522,
+                                            lineNumber: 2536,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2514,
+                                    lineNumber: 2528,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4650,7 +4693,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showRsvp", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2566,
+                                            lineNumber: 2580,
                                             columnNumber: 15
                                         }, this),
                                         data.showRsvp && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4664,7 +4707,7 @@ function InvitationEditorContent() {
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2574,
+                                                    lineNumber: 2588,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4675,7 +4718,7 @@ function InvitationEditorContent() {
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2581,
+                                                    lineNumber: 2595,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -4686,7 +4729,7 @@ function InvitationEditorContent() {
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2588,
+                                                    lineNumber: 2602,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4697,7 +4740,7 @@ function InvitationEditorContent() {
                                                             children: "항목 선택"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2596,
+                                                            lineNumber: 2610,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -4716,7 +4759,7 @@ function InvitationEditorContent() {
                                                             onChange: (v)=>updateField("rsvpMeal", v === "on")
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2599,
+                                                            lineNumber: 2613,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -4735,7 +4778,7 @@ function InvitationEditorContent() {
                                                             onChange: (v)=>updateField("rsvpBus", v === "on")
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2608,
+                                                            lineNumber: 2622,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -4754,13 +4797,13 @@ function InvitationEditorContent() {
                                                             onChange: (v)=>updateField("rsvpGift", v === "on")
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2617,
+                                                            lineNumber: 2631,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2595,
+                                                    lineNumber: 2609,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioField, {
@@ -4779,7 +4822,7 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("rsvpPopup", v === "on")
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2627,
+                                                    lineNumber: 2641,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4787,19 +4830,19 @@ function InvitationEditorContent() {
                                                     children: "※ RSVP 응답 내역은 청첩장 관리 메뉴에서 확인할 수 있습니다."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2636,
+                                                    lineNumber: 2650,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2573,
+                                            lineNumber: 2587,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2565,
+                                    lineNumber: 2579,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4811,12 +4854,12 @@ function InvitationEditorContent() {
                                         onChange: (v)=>updateField("showGuestbook", v)
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 2645,
+                                        lineNumber: 2659,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2644,
+                                    lineNumber: 2658,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4830,7 +4873,7 @@ function InvitationEditorContent() {
                                             badge: "NEW"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2655,
+                                            lineNumber: 2669,
                                             columnNumber: 15
                                         }, this),
                                         data.showGuestSnap && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4843,12 +4886,12 @@ function InvitationEditorContent() {
                                                         children: "신랑, 신부가 하객 스냅 기능을 ON 하면, 하객이 예식 후 청첩장에서 직접 사진을 업로드할 수 있어요. 올라온 사진은 하객 전용 웨딩북 폴더에 저장되며, 언제든 다운로드할 수 있습니다."
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 2665,
+                                                        lineNumber: 2679,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2664,
+                                                    lineNumber: 2678,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4863,13 +4906,13 @@ function InvitationEditorContent() {
                                                                     children: "*"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2674,
+                                                                    lineNumber: 2688,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2673,
+                                                            lineNumber: 2687,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -4880,25 +4923,25 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2676,
+                                                            lineNumber: 2690,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2672,
+                                                    lineNumber: 2686,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2663,
+                                            lineNumber: 2677,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2654,
+                                    lineNumber: 2668,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4911,7 +4954,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showNotice", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2692,
+                                            lineNumber: 2706,
                                             columnNumber: 15
                                         }, this),
                                         data.showNotice && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4925,7 +4968,7 @@ function InvitationEditorContent() {
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2700,
+                                                    lineNumber: 2714,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4938,20 +4981,20 @@ function InvitationEditorContent() {
                                                             className: "w-3 h-3 animate-spin"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2713,
+                                                            lineNumber: 2727,
                                                             columnNumber: 52
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
                                                             className: "w-3 h-3"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2713,
+                                                            lineNumber: 2727,
                                                             columnNumber: 99
                                                         }, this),
                                                         "제목 AI 추천"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2707,
+                                                    lineNumber: 2721,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4963,7 +5006,7 @@ function InvitationEditorContent() {
                                                     children: "+ 추가하기"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2716,
+                                                    lineNumber: 2730,
                                                     columnNumber: 19
                                                 }, this),
                                                 data.noticeItems.map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4983,7 +5026,7 @@ function InvitationEditorContent() {
                                                                 className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                lineNumber: 2726,
+                                                                lineNumber: 2740,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4993,30 +5036,30 @@ function InvitationEditorContent() {
                                                                     className: "w-4 h-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2746,
+                                                                    lineNumber: 2760,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                lineNumber: 2737,
+                                                                lineNumber: 2751,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, i, true, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 2725,
+                                                        lineNumber: 2739,
                                                         columnNumber: 21
                                                     }, this))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2699,
+                                            lineNumber: 2713,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2691,
+                                    lineNumber: 2705,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5029,7 +5072,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showEndingMessage", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2756,
+                                            lineNumber: 2770,
                                             columnNumber: 15
                                         }, this),
                                         data.showEndingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5055,7 +5098,7 @@ function InvitationEditorContent() {
                                                     onChange: (v)=>updateField("endingStyle", v)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2764,
+                                                    lineNumber: 2778,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5066,7 +5109,7 @@ function InvitationEditorContent() {
                                                             children: "사진"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2775,
+                                                            lineNumber: 2789,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ImageUploadBox, {
@@ -5078,13 +5121,13 @@ function InvitationEditorContent() {
                                                             onRemove: ()=>updateField("endingPhoto", "")
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2776,
+                                                            lineNumber: 2790,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2774,
+                                                    lineNumber: 2788,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5095,7 +5138,7 @@ function InvitationEditorContent() {
                                                             children: "내용"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2787,
+                                                            lineNumber: 2801,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5109,7 +5152,7 @@ function InvitationEditorContent() {
                                                                     className: "w-full px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2791,
+                                                                    lineNumber: 2805,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5122,32 +5165,32 @@ function InvitationEditorContent() {
                                                                             className: "w-3 h-3 animate-spin"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2806,
+                                                                            lineNumber: 2820,
                                                                             columnNumber: 58
                                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
                                                                             className: "w-3 h-3"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                            lineNumber: 2806,
+                                                                            lineNumber: 2820,
                                                                             columnNumber: 105
                                                                         }, this),
                                                                         "AI 추천"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2800,
+                                                                    lineNumber: 2814,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2790,
+                                                            lineNumber: 2804,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2786,
+                                                    lineNumber: 2800,
                                                     columnNumber: 19
                                                 }, this),
                                                 (data.endingStyle === "full" || data.endingStyle === "simple") && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5158,7 +5201,7 @@ function InvitationEditorContent() {
                                                             children: "글자색"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2815,
+                                                            lineNumber: 2829,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5187,35 +5230,35 @@ function InvitationEditorContent() {
                                                                         className: `w-4 h-4 ${c.value === "#FFFFFF" ? "text-gray-600" : "text-white"}`
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                        lineNumber: 2849,
+                                                                        lineNumber: 2863,
                                                                         columnNumber: 33
                                                                     }, this)
                                                                 }, c.value, false, {
                                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                                    lineNumber: 2836,
+                                                                    lineNumber: 2850,
                                                                     columnNumber: 29
                                                                 }, this))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2818,
+                                                            lineNumber: 2832,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2814,
+                                                    lineNumber: 2828,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2763,
+                                            lineNumber: 2777,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2755,
+                                    lineNumber: 2769,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5228,7 +5271,7 @@ function InvitationEditorContent() {
                                             onChange: (v)=>updateField("showShareImage", v)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2864,
+                                            lineNumber: 2878,
                                             columnNumber: 15
                                         }, this),
                                         data.showShareImage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5247,14 +5290,14 @@ function InvitationEditorContent() {
                                                             className: "w-3 h-3"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2887,
+                                                            lineNumber: 2901,
                                                             columnNumber: 21
                                                         }, this),
                                                         "청첩장 정보에서 자동 채우기"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2872,
+                                                    lineNumber: 2886,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -5264,7 +5307,7 @@ function InvitationEditorContent() {
                                                     placeholder: "예)김신랑 이신부 결혼식에 초대합니다"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2890,
+                                                    lineNumber: 2904,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(InputField, {
@@ -5274,7 +5317,7 @@ function InvitationEditorContent() {
                                                     placeholder: "예)2025년 5월 24일 토 오후 2시, 라움웨딩홀"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2896,
+                                                    lineNumber: 2910,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5285,7 +5328,7 @@ function InvitationEditorContent() {
                                                             children: "사진"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2903,
+                                                            lineNumber: 2917,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ImageUploadBox, {
@@ -5297,13 +5340,13 @@ function InvitationEditorContent() {
                                                             onRemove: ()=>updateField("sharePhoto", "")
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2904,
+                                                            lineNumber: 2918,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2902,
+                                                    lineNumber: 2916,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5311,19 +5354,19 @@ function InvitationEditorContent() {
                                                     children: "예식 분위기에 맞는 사진과 문구를 입력하면, 링크 미리보기가 더 예쁘게 보여요. 별도로 설정하지 않으시면 대표이미지와 동일하게 노출됩니다."
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2914,
+                                                    lineNumber: 2928,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2871,
+                                            lineNumber: 2885,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2863,
+                                    lineNumber: 2877,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5333,7 +5376,7 @@ function InvitationEditorContent() {
                                             title: "청첩장 링크"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2925,
+                                            lineNumber: 2939,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5347,7 +5390,7 @@ function InvitationEditorContent() {
                                                             children: "청첩장 주소"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2928,
+                                                            lineNumber: 2942,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -5358,7 +5401,7 @@ function InvitationEditorContent() {
                                                             className: "flex-1 px-4 py-3 bg-[#F2F4F6] border-0 rounded-[16px] text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2931,
+                                                            lineNumber: 2945,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5366,13 +5409,13 @@ function InvitationEditorContent() {
                                                             children: "확인"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 2940,
+                                                            lineNumber: 2954,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2927,
+                                                    lineNumber: 2941,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -5381,35 +5424,35 @@ function InvitationEditorContent() {
                                                         children: "주소 뒤에 들어갈 문자만 입력해주세요. 영문 소문자, 숫자만 사용 가능하며, 3~20자까지 설정할 수 있어요."
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 2945,
+                                                        lineNumber: 2959,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 2944,
+                                                    lineNumber: 2958,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2926,
+                                            lineNumber: 2940,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 2924,
+                                    lineNumber: 2938,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wedding/editor/page.tsx",
-                            lineNumber: 1314,
+                            lineNumber: 1328,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 1313,
+                        lineNumber: 1327,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5420,23 +5463,23 @@ function InvitationEditorContent() {
                                 data: previewData
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 2958,
+                                lineNumber: 2972,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/editor/page.tsx",
-                            lineNumber: 2957,
+                            lineNumber: 2971,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 2956,
+                        lineNumber: 2970,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/wedding/editor/page.tsx",
-                lineNumber: 1311,
+                lineNumber: 1325,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5447,12 +5490,12 @@ function InvitationEditorContent() {
                     className: "w-6 h-6"
                 }, void 0, false, {
                     fileName: "[project]/app/wedding/editor/page.tsx",
-                    lineNumber: 2969,
+                    lineNumber: 2983,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wedding/editor/page.tsx",
-                lineNumber: 2964,
+                lineNumber: 2978,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5467,17 +5510,17 @@ function InvitationEditorContent() {
                         children: isSaving ? "저장 중..." : "저장하기"
                     }, void 0, false, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 2975,
+                        lineNumber: 2989,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/wedding/editor/page.tsx",
-                    lineNumber: 2974,
+                    lineNumber: 2988,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wedding/editor/page.tsx",
-                lineNumber: 2973,
+                lineNumber: 2987,
                 columnNumber: 7
             }, this),
             showPreview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5500,12 +5543,12 @@ function InvitationEditorContent() {
                                             className: "w-5 h-5 text-[#191F28]"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 2999,
+                                            lineNumber: 3013,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 2991,
+                                        lineNumber: 3005,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -5513,7 +5556,7 @@ function InvitationEditorContent() {
                                         children: "청첩장 미리보기"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 3001,
+                                        lineNumber: 3015,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5523,18 +5566,18 @@ function InvitationEditorContent() {
                                             className: "w-5 h-5 text-white"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 3008,
+                                            lineNumber: 3022,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                        lineNumber: 3004,
+                                        lineNumber: 3018,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 2990,
+                                lineNumber: 3004,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5543,18 +5586,18 @@ function InvitationEditorContent() {
                                     data: previewData
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 3013,
+                                    lineNumber: 3027,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/editor/page.tsx",
-                                lineNumber: 3012,
+                                lineNumber: 3026,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 2989,
+                        lineNumber: 3003,
                         columnNumber: 11
                     }, this),
                     showShareOptions && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5568,7 +5611,7 @@ function InvitationEditorContent() {
                                     className: "w-12 h-1 bg-[#E5E8EB] rounded-full mx-auto mb-6"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 3026,
+                                    lineNumber: 3040,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -5576,7 +5619,7 @@ function InvitationEditorContent() {
                                     children: "청첩장 공유하기"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 3027,
+                                    lineNumber: 3041,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5591,12 +5634,12 @@ function InvitationEditorContent() {
                                                         className: "w-6 h-6 text-[#FEE500]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 3033,
+                                                        lineNumber: 3047,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 3032,
+                                                    lineNumber: 3046,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5607,7 +5650,7 @@ function InvitationEditorContent() {
                                                             children: "카카오톡으로 공유"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 3036,
+                                                            lineNumber: 3050,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5615,19 +5658,19 @@ function InvitationEditorContent() {
                                                             children: "친구에게 청첩장을 보내세요"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 3039,
+                                                            lineNumber: 3053,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 3035,
+                                                    lineNumber: 3049,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 3031,
+                                            lineNumber: 3045,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5640,18 +5683,18 @@ function InvitationEditorContent() {
                                                         className: "w-6 h-6 text-white"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 3051,
+                                                        lineNumber: 3065,
                                                         columnNumber: 25
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$link$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Link2$3e$__["Link2"], {
                                                         className: "w-6 h-6 text-white"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/editor/page.tsx",
-                                                        lineNumber: 3053,
+                                                        lineNumber: 3067,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 3049,
+                                                    lineNumber: 3063,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5662,7 +5705,7 @@ function InvitationEditorContent() {
                                                             children: copied ? "복사 완료!" : "URL 복사하기"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 3057,
+                                                            lineNumber: 3071,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5670,25 +5713,25 @@ function InvitationEditorContent() {
                                                             children: shareUrl
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                                            lineNumber: 3060,
+                                                            lineNumber: 3074,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                                    lineNumber: 3056,
+                                                    lineNumber: 3070,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/editor/page.tsx",
-                                            lineNumber: 3045,
+                                            lineNumber: 3059,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 3030,
+                                    lineNumber: 3044,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5697,30 +5740,30 @@ function InvitationEditorContent() {
                                     children: "닫기"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/editor/page.tsx",
-                                    lineNumber: 3067,
+                                    lineNumber: 3081,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wedding/editor/page.tsx",
-                            lineNumber: 3022,
+                            lineNumber: 3036,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/wedding/editor/page.tsx",
-                        lineNumber: 3018,
+                        lineNumber: 3032,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/wedding/editor/page.tsx",
-                lineNumber: 2988,
+                lineNumber: 3002,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/wedding/editor/page.tsx",
-        lineNumber: 1278,
+        lineNumber: 1292,
         columnNumber: 5
     }, this);
 }
