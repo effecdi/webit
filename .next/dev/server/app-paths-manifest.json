@@ -1,7 +1,15 @@
 {
+  "/api/auth/google/callback/route": "app/api/auth/google/callback/route.js",
+  "/api/auth/google/route": "app/api/auth/google/route.js",
   "/api/auth/kakao/route": "app/api/auth/kakao/route.js",
   "/api/auth/user/route": "app/api/auth/user/route.js",
+  "/api/checklist/route": "app/api/checklist/route.js",
+  "/api/expenses/route": "app/api/expenses/route.js",
+  "/api/notifications/route": "app/api/notifications/route.js",
+  "/api/travels/route": "app/api/travels/route.js",
+  "/api/wedding-info/route": "app/api/wedding-info/route.js",
   "/login/page": "app/login/page.js",
   "/page": "app/page.js",
-  "/splash/page": "app/splash/page.js"
+  "/splash/page": "app/splash/page.js",
+  "/wedding/page": "app/wedding/page.js"
 }
