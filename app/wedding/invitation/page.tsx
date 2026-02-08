@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { X, Play, Eye, Pencil, QrCode, Share2, Plus, Crown, Check } from "lucide-react"
+import { X, Play, Eye, Pencil, QrCode, Share2, Plus, Crown, Check, Trash2, Settings, List, Loader2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 interface Template {
@@ -13,6 +13,17 @@ interface Template {
   badge?: "NEW" | "PREMIUM" | "FREE"
   description: string
 }
+
+interface SavedInvitation {
+  id: number
+  templateId: string
+  title: string | null
+  invitationData: any
+  createdAt: string
+  updatedAt: string
+}
+
+const FREE_LIMIT = 2
 
 const TEMPLATES: Template[] = [
   {
@@ -78,6 +89,11 @@ export default function InvitationGalleryPage() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [startX, setStartX] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
+  const [showManageModal, setShowManageModal] = useState(false)
+  const [savedInvitations, setSavedInvitations] = useState<SavedInvitation[]>([])
+  const [isLoadingInvitations, setIsLoadingInvitations] = useState(false)
+  const [deletingId, setDeletingId] = useState<number | null>(null)
+  const [showLimitPayment, setShowLimitPayment] = useState(false)
 
   const currentTemplate = TEMPLATES[currentIndex]
 
@@ -85,6 +101,41 @@ export default function InvitationGalleryPage() {
     const saved = localStorage.getItem("weve_premium_user")
     if (saved === "true") setIsPremiumUser(true)
   }, [])
+
+  const fetchInvitations = async () => {
+    setIsLoadingInvitations(true)
+    try {
+      const res = await fetch("/api/invitations")
+      if (res.ok) {
+        const data = await res.json()
+        setSavedInvitations(data)
+      }
+    } catch (err) {
+      console.error("Failed to load invitations:", err)
+    } finally {
+      setIsLoadingInvitations(false)
+    }
+  }
+
+  const handleDeleteInvitation = async (id: number) => {
+    setDeletingId(id)
+    try {
+      const res = await fetch(`/api/invitations/${id}`, { method: "DELETE" })
+      if (res.ok) {
+        setSavedInvitations((prev) => prev.filter((inv) => inv.id !== id))
+        showToastMessage("청첩장이 삭제되었습니다")
+      }
+    } catch (err) {
+      console.error("Failed to delete invitation:", err)
+    } finally {
+      setDeletingId(null)
+    }
+  }
+
+  const handleOpenManage = () => {
+    fetchInvitations()
+    setShowManageModal(true)
+  }
 
   const goToIndex = (index: number) => {
     if (index < 0 || index >= TEMPLATES.length) return
@@ -122,11 +173,39 @@ export default function InvitationGalleryPage() {
     setIsDragging(false)
   }
 
-  const handleCreate = () => {
-    if (currentTemplate.type === "basic" || isPremiumUser) {
-      router.push(`/wedding/editor?template=${currentTemplate.id}`)
-    } else {
-      setShowPaymentModal(true)
+  const handleCreate = async () => {
+    try {
+      const countRes = await fetch("/api/invitations")
+      if (countRes.ok) {
+        const existing = await countRes.json()
+        if (existing.length >= FREE_LIMIT) {
+          setShowLimitPayment(true)
+          return
+        }
+      }
+
+      if (currentTemplate.type === "premium" && !isPremiumUser) {
+        setShowPaymentModal(true)
+        return
+      }
+
+      const res = await fetch("/api/invitations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ templateId: currentTemplate.id }),
+      })
+
+      if (res.status === 403) {
+        setShowLimitPayment(true)
+        return
+      }
+
+      if (res.ok) {
+        const created = await res.json()
+        router.push(`/wedding/editor?id=${created.id}&template=${currentTemplate.id}`)
+      }
+    } catch (err) {
+      console.error("Failed to create invitation:", err)
     }
   }
 
@@ -267,11 +346,12 @@ export default function InvitationGalleryPage() {
                                 <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2" />
                               </svg>
                             </button>
-                            <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm" data-testid="button-manage-settings">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                                <circle cx="12" cy="12" r="3" />
-                                <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
-                              </svg>
+                            <button
+                              onClick={(e) => { e.stopPropagation(); handleOpenManage() }}
+                              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm"
+                              data-testid="button-manage-settings"
+                            >
+                              <Settings className="w-3.5 h-3.5 text-white" />
                               <span className="text-[12px] text-white font-medium">청첩장 관리</span>
                             </button>
                           </div>
@@ -501,6 +581,218 @@ export default function InvitationGalleryPage() {
                     </div>
                   </>
                 )}
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Invitation Management Modal */}
+      <AnimatePresence>
+        {showManageModal && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/60"
+              onClick={() => setShowManageModal(false)}
+            />
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-[24px] max-h-[80vh] overflow-hidden flex flex-col"
+              data-testid="modal-manage-invitations"
+            >
+              <div className="p-6 pb-0">
+                <div className="w-10 h-1 bg-[#E5E8EB] rounded-full mx-auto mb-4" />
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-[20px] font-bold text-[#191F28]" data-testid="text-manage-title">
+                    청첩장 관리
+                  </h2>
+                  <button
+                    onClick={() => setShowManageModal(false)}
+                    className="w-8 h-8 rounded-full bg-[#F2F4F6] flex items-center justify-center"
+                    data-testid="button-close-manage"
+                  >
+                    <X className="w-4 h-4 text-[#8B95A1]" />
+                  </button>
+                </div>
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="px-2.5 py-1 rounded-full bg-[#F2F4F6]">
+                    <span className="text-[12px] font-medium text-[#4E5968]">
+                      {savedInvitations.length} / {FREE_LIMIT} 무료
+                    </span>
+                  </div>
+                  {savedInvitations.length >= FREE_LIMIT && (
+                    <span className="text-[12px] text-[#FF6B6B]">
+                      무료 한도에 도달했습니다
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex-1 overflow-y-auto px-6 pb-6">
+                {isLoadingInvitations ? (
+                  <div className="flex items-center justify-center py-12">
+                    <Loader2 className="w-6 h-6 text-[#8B95A1] animate-spin" />
+                  </div>
+                ) : savedInvitations.length === 0 ? (
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 rounded-full bg-[#F2F4F6] flex items-center justify-center mx-auto mb-4">
+                      <List className="w-7 h-7 text-[#B0B8C1]" />
+                    </div>
+                    <p className="text-[15px] text-[#8B95A1] mb-1">아직 만든 청첩장이 없습니다</p>
+                    <p className="text-[13px] text-[#B0B8C1]">템플릿을 선택해서 청첩장을 만들어보세요</p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {savedInvitations.map((inv) => {
+                      const templateInfo = TEMPLATES.find((t) => t.id === inv.templateId)
+                      const displayName = inv.invitationData?.groomName && inv.invitationData?.brideName
+                        ? `${inv.invitationData.groomName} ♥ ${inv.invitationData.brideName}`
+                        : inv.title || templateInfo?.name || inv.templateId
+                      const updatedDate = new Date(inv.updatedAt || inv.createdAt).toLocaleDateString("ko-KR", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })
+
+                      return (
+                        <div
+                          key={inv.id}
+                          className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[16px]"
+                          data-testid={`card-invitation-${inv.id}`}
+                        >
+                          <div
+                            className="w-14 h-20 rounded-[10px] bg-[#E5E8EB] overflow-hidden flex-shrink-0 cursor-pointer"
+                            onClick={() => {
+                              setShowManageModal(false)
+                              router.push(`/wedding/editor?id=${inv.id}&template=${inv.templateId}`)
+                            }}
+                          >
+                            {templateInfo?.image ? (
+                              <img src={templateInfo.image} alt={templateInfo.name} className="w-full h-full object-cover" />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center">
+                                <Pencil className="w-4 h-4 text-[#B0B8C1]" />
+                              </div>
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p
+                              className="text-[14px] font-semibold text-[#191F28] truncate cursor-pointer"
+                              onClick={() => {
+                                setShowManageModal(false)
+                                router.push(`/wedding/editor?id=${inv.id}&template=${inv.templateId}`)
+                              }}
+                              data-testid={`text-invitation-name-${inv.id}`}
+                            >
+                              {displayName}
+                            </p>
+                            <p className="text-[12px] text-[#8B95A1] mt-0.5">
+                              {templateInfo?.name || inv.templateId} 템플릿
+                            </p>
+                            <p className="text-[11px] text-[#B0B8C1] mt-0.5">
+                              {updatedDate} 수정
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => handleDeleteInvitation(inv.id)}
+                            disabled={deletingId === inv.id}
+                            className="w-10 h-10 rounded-full flex items-center justify-center text-[#FF6B6B] hover:bg-[#FFF0F0] transition-colors disabled:opacity-50"
+                            data-testid={`button-delete-invitation-${inv.id}`}
+                          >
+                            {deletingId === inv.id ? (
+                              <Loader2 className="w-4 h-4 animate-spin" />
+                            ) : (
+                              <Trash2 className="w-4 h-4" />
+                            )}
+                          </button>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Limit Reached Payment Modal */}
+      <AnimatePresence>
+        {showLimitPayment && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/60"
+              onClick={() => setShowLimitPayment(false)}
+            />
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-[24px] max-h-[80vh] overflow-y-auto"
+              data-testid="modal-limit-payment"
+            >
+              <div className="p-6">
+                <div className="w-10 h-1 bg-[#E5E8EB] rounded-full mx-auto mb-6" />
+                <div className="flex justify-center mb-4">
+                  <div className="w-14 h-14 rounded-full bg-[#FFF0F0] flex items-center justify-center">
+                    <Crown className="w-7 h-7 text-[#FF6B6B]" />
+                  </div>
+                </div>
+                <h2 className="text-[22px] font-bold text-[#191F28] text-center mb-2" data-testid="text-limit-title">
+                  무료 청첩장 한도 초과
+                </h2>
+                <p className="text-[14px] text-[#8B95A1] text-center leading-relaxed mb-6">
+                  무료로 2개까지 만들 수 있습니다.
+                  <br />
+                  추가 청첩장을 만들려면 결제가 필요합니다.
+                </p>
+
+                <div className="bg-[#F8F9FA] rounded-[16px] p-4 mb-6 text-center">
+                  <p className="text-[12px] text-[#8B95A1] mb-1">추가 청첩장</p>
+                  <p className="text-[32px] font-bold text-[#191F28]" data-testid="text-additional-price">
+                    &#8361;3,900
+                  </p>
+                  <p className="text-[12px] text-[#8B95A1]">청첩장 1개당</p>
+                </div>
+
+                <div className="space-y-2 mb-8">
+                  {["기존 청첩장 유지", "추가 템플릿 사용 가능", "무제한 수정"].map((benefit) => (
+                    <div key={benefit} className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-[#4CAF50]" />
+                      <span className="text-[14px] text-[#4E5968]">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-3">
+                  <button
+                    onClick={() => {
+                      setShowLimitPayment(false)
+                      showToastMessage("결제 기능이 곧 지원될 예정입니다")
+                    }}
+                    className="w-full py-4 bg-[#191F28] rounded-[12px] text-[15px] font-bold text-white flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+                    data-testid="button-pay-additional"
+                  >
+                    결제하기
+                  </button>
+                  <button
+                    onClick={() => setShowLimitPayment(false)}
+                    className="w-full py-3 text-[14px] text-[#8B95A1]"
+                    data-testid="button-cancel-limit"
+                  >
+                    나중에 하기
+                  </button>
+                </div>
               </div>
             </motion.div>
           </>

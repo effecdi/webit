@@ -915,6 +915,7 @@ export default function InvitationEditorPage() {
 function InvitationEditorContent() {
   const searchParams = useSearchParams();
   const templateParam = searchParams.get("template");
+  const invitationId = searchParams.get("id");
   const [data, setData] = useState<InvitationData>(() => {
     const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "gallery"];
     const template = templateParam && validTemplates.includes(templateParam) ? templateParam : initialData.mainTemplate;
@@ -929,28 +930,45 @@ function InvitationEditorContent() {
   const [viewMode, setViewMode] = useState(false);
   const [showShareCountInput, setShowShareCountInput] = useState(false);
   const [shareCount, setShareCount] = useState("");
+  const [currentInvitationId, setCurrentInvitationId] = useState<string | null>(invitationId);
   const galleryInputRef = useRef<HTMLInputElement>(null);
   const mainPhotoRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const loadInvitation = async () => {
       try {
-        const res = await fetch("/api/invitation");
-        if (res.ok) {
-          const result = await res.json();
-          if (result && typeof result === "object") {
-            const savedData = result.invitationData || (
-              (result.groomName !== undefined || result.brideName !== undefined || result.title !== undefined)
-                ? result : null
-            );
-            if (savedData) {
+        if (currentInvitationId) {
+          const res = await fetch(`/api/invitations/${currentInvitationId}`);
+          if (res.ok) {
+            const result = await res.json();
+            if (result && result.invitationData) {
               const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "gallery"];
               const urlTemplate = templateParam && validTemplates.includes(templateParam) ? templateParam : null;
               setData((prev) => ({
                 ...prev,
-                ...savedData,
+                ...result.invitationData,
                 ...(urlTemplate ? { mainTemplate: urlTemplate } : {}),
               }));
+            }
+          }
+        } else {
+          const res = await fetch("/api/invitation");
+          if (res.ok) {
+            const result = await res.json();
+            if (result && typeof result === "object") {
+              const savedData = result.invitationData || (
+                (result.groomName !== undefined || result.brideName !== undefined || result.title !== undefined)
+                  ? result : null
+              );
+              if (savedData) {
+                const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "gallery"];
+                const urlTemplate = templateParam && validTemplates.includes(templateParam) ? templateParam : null;
+                setData((prev) => ({
+                  ...prev,
+                  ...savedData,
+                  ...(urlTemplate ? { mainTemplate: urlTemplate } : {}),
+                }));
+              }
             }
           }
         }
@@ -961,7 +979,7 @@ function InvitationEditorContent() {
       }
     };
     loadInvitation();
-  }, [templateParam]);
+  }, [templateParam, currentInvitationId]);
 
   const updateField = <K extends keyof InvitationData>(
     field: K,
@@ -973,11 +991,22 @@ function InvitationEditorContent() {
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await fetch("/api/invitation", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ invitationData: data }),
-      });
+      if (currentInvitationId) {
+        await fetch(`/api/invitations/${currentInvitationId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            invitationData: data,
+            templateId: data.mainTemplate,
+          }),
+        });
+      } else {
+        await fetch("/api/invitation", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ invitationData: data }),
+        });
+      }
       setViewMode(true);
     } catch (error) {
       console.error("Failed to save invitation:", error);

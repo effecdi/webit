@@ -5434,6 +5434,10 @@
     background-color: #fff0ef;
   }
 
+  .bg-\[\#FFF0F0\] {
+    background-color: #fff0f0;
+  }
+
   .bg-\[\#FFF5F5\] {
     background-color: #fff5f5;
   }
@@ -7336,6 +7340,10 @@
 
   .pr-12 {
     padding-right: calc(var(--spacing) * 12);
+  }
+
+  .pb-0 {
+    padding-bottom: calc(var(--spacing) * 0);
   }
 
   .pb-0\.5 {
@@ -10459,6 +10467,12 @@
   @media (hover: hover) {
     .hover\:bg-\[\#FFF0EF\]:hover {
       background-color: #fff0ef;
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-\[\#FFF0F0\]:hover {
+      background-color: #fff0f0;
     }
   }
 
