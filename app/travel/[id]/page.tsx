@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useRouter, useParams } from "next/navigation"
+import WheelTimePicker from "@/components/ui/wheel-time-picker"
 import { 
   ArrowLeft, 
   Plus, 
@@ -432,16 +433,12 @@ export default function TravelDetailPage() {
             <div className="space-y-4">
               <div>
                 <label className="text-[13px] font-medium text-[#4E5968] mb-1.5 block">시간</label>
-                <div className="relative">
-                  <Clock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B95A1]" />
-                  <input
-                    type="time"
-                    value={newSchedule.time}
-                    onChange={(e) => setNewSchedule({ ...newSchedule, time: e.target.value })}
-                    className="w-full pl-12 pr-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#3B82F6]"
-                    data-testid="input-schedule-time"
-                  />
-                </div>
+                <WheelTimePicker
+                  value={newSchedule.time}
+                  onChange={(val) => setNewSchedule({ ...newSchedule, time: val })}
+                  placeholder="시간 선택"
+                  className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px] !border-0"
+                />
               </div>
               
               <div>

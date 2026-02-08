@@ -4663,6 +4663,10 @@
     border-radius: var(--radius) !important;
   }
 
+  .\!rounded-none {
+    border-radius: 0 !important;
+  }
+
   .rounded {
     border-radius: .25rem;
   }
@@ -4878,6 +4882,16 @@
     border-bottom-left-radius: 4px;
   }
 
+  .\!border-0 {
+    border-style: var(--tw-border-style) !important;
+    border-width: 0 !important;
+  }
+
+  .\!border-2 {
+    border-style: var(--tw-border-style) !important;
+    border-width: 2px !important;
+  }
+
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -5024,6 +5038,10 @@
 
   .\!border-pink-200 {
     border-color: var(--color-pink-200) !important;
+  }
+
+  .\!border-secondary {
+    border-color: var(--secondary) !important;
   }
 
   .border-\(--color-border\) {
@@ -7252,6 +7270,10 @@
     object-position: right top;
   }
 
+  .\!p-2 {
+    padding: calc(var(--spacing) * 2) !important;
+  }
+
   .p-0 {
     padding: calc(var(--spacing) * 0);
   }
@@ -7382,6 +7404,10 @@
 
   .\!py-1\.5 {
     padding-block: calc(var(--spacing) * 1.5) !important;
+  }
+
+  .\!py-3 {
+    padding-block: calc(var(--spacing) * 3) !important;
   }
 
   .\!py-3\.5 {
@@ -7682,6 +7708,11 @@
 
   .font-serif {
     font-family: Playfair Display, Playfair Display Fallback;
+  }
+
+  .\!text-sm {
+    font-size: var(--text-sm) !important;
+    line-height: var(--tw-leading, var(--text-sm--line-height)) !important;
   }
 
   .text-2xl {

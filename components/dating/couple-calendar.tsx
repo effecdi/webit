@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Plus, X, MapPin, Clock, Edit2, Trash2 } from "lucide-react"
 import Link from "next/link"
+import WheelTimePicker from "@/components/ui/wheel-time-picker"
 
 type ScheduleOwner = "me" | "you" | "we"
 
@@ -358,11 +359,11 @@ export function CoupleCalendar() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="text-[13px] text-[#8B95A1] mb-1 block">시간</label>
-                  <input
-                    type="time"
+                  <WheelTimePicker
                     value={newSchedule.time}
-                    onChange={e => setNewSchedule({ ...newSchedule, time: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] focus:outline-none focus:ring-2 focus:ring-pink-300"
+                    onChange={(val) => setNewSchedule({ ...newSchedule, time: val })}
+                    placeholder="시간 선택"
+                    className="!px-4 !py-3 !bg-[#F2F4F6] !rounded-[12px] !text-[15px] !border-0"
                   />
                 </div>
                 <div>

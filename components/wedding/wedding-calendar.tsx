@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronLeft, ChevronRight, Plus, X, Gem, Heart } from "lucide-react"
+import WheelTimePicker from "@/components/ui/wheel-time-picker"
 
 interface Event {
   id: string
@@ -263,11 +264,11 @@ export function WeddingCalendar() {
 
               <div>
                 <label className="block text-xs font-bold mb-1 uppercase tracking-wider">시간</label>
-                <input
-                  type="time"
+                <WheelTimePicker
                   value={newEvent.time}
-                  onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
-                  className="w-full border-2 border-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+                  onChange={(val) => setNewEvent({ ...newEvent, time: val })}
+                  placeholder="시간 선택"
+                  className="!border-2 !border-secondary !p-2 !text-sm !rounded-none"
                 />
               </div>
 

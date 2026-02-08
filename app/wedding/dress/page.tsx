@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import Link from "next/link"
 import WheelDatePicker from "@/components/ui/wheel-date-picker"
+import WheelTimePicker from "@/components/ui/wheel-time-picker"
 import { 
   ArrowLeft, 
   Plus, 
@@ -323,11 +324,11 @@ export default function DressTourPage() {
                 </div>
                 <div>
                   <label className="block text-[13px] font-medium text-[#4E5968] mb-2">시간</label>
-                  <input
-                    type="time"
+                  <WheelTimePicker
                     value={newShop.visitTime}
-                    onChange={(e) => setNewShop({ ...newShop, visitTime: e.target.value })}
-                    className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                    onChange={(val) => setNewShop({ ...newShop, visitTime: val })}
+                    placeholder="시간 선택"
+                    className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px] !border-0"
                   />
                 </div>
               </div>

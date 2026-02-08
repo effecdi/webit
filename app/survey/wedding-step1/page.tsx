@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Calendar, Clock } from "lucide-react"
 import WheelDatePicker from "@/components/ui/wheel-date-picker"
+import WheelTimePicker from "@/components/ui/wheel-time-picker"
 
 export default function WeddingSurveyStep1() {
   const router = useRouter()
@@ -71,12 +72,12 @@ export default function WeddingSurveyStep1() {
               <Clock className="w-4 h-4 inline mr-1.5 mb-0.5" />
               예식 시간
             </label>
-            <input
-              type="time"
+            <WheelTimePicker
               value={weddingTime}
-              onChange={(e) => setWeddingTime(e.target.value)}
-              className="w-full px-5 py-4 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] outline-none focus:ring-2 focus:ring-blue-500"
-              data-testid="input-wedding-time"
+              onChange={(val) => setWeddingTime(val)}
+              placeholder="시간 선택"
+              label="예식 시간"
+              className="!px-5 !py-4 !bg-[#F3F5F7] !rounded-[16px] !text-[17px] !border-0"
             />
           </div>
         </div>
