@@ -80,16 +80,20 @@ export async function handleKakaoCallback(code: string, state: string): Promise<
 
     const config = getKakaoConfig();
 
+    const tokenParams: Record<string, string> = {
+      grant_type: "authorization_code",
+      client_id: config.clientId,
+      redirect_uri: config.redirectUri,
+      code,
+    };
+    if (config.clientSecret) {
+      tokenParams.client_secret = config.clientSecret;
+    }
+
     const tokenRes = await fetch(config.tokenUrl, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        grant_type: "authorization_code",
-        client_id: config.clientId,
-        client_secret: config.clientSecret,
-        redirect_uri: config.redirectUri,
-        code,
-      }),
+      body: new URLSearchParams(tokenParams),
     });
 
     if (!tokenRes.ok) {
