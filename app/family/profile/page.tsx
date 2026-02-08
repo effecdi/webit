@@ -4,7 +4,7 @@ import { useState } from "react"
 import { FamilyCoupleProfile } from "@/components/family/family-couple-profile"
 import { FamilyBottomNav } from "@/components/family/family-bottom-nav"
 import { ProfileSettingsSection } from "@/components/shared/profile-settings-section"
-import { ArrowLeft, Settings, LogOut, Crown, Star, X, Heart, ImageIcon, Calendar, Home, Check } from "lucide-react"
+import { ArrowLeft, LogOut, Crown, Star, X, Heart, ImageIcon, Calendar, Home, Check } from "lucide-react"
 import Link from "next/link"
 import { useAuth } from "@/hooks/use-auth"
 
@@ -95,12 +95,6 @@ export default function FamilyProfilePage() {
             </Link>
             <h1 className="text-[17px] font-bold text-[#191F28]">프로필</h1>
           </div>
-          <button 
-            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
-            data-testid="button-settings"
-          >
-            <Settings className="w-5 h-5 text-[#4E5968]" />
-          </button>
         </div>
       </header>
 
