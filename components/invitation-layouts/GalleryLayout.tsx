@@ -2,6 +2,7 @@
 
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
+import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 
 export function GalleryLayout({ data, state, helpers }: LayoutProps) {
   const pageBg = "#F5F5F5"
@@ -390,17 +391,7 @@ export function GalleryLayout({ data, state, helpers }: LayoutProps) {
           )}
         </div>
 
-        <div
-          className="h-[180px] flex items-center justify-center mb-4 rounded-none"
-          style={{ border: `1px solid ${borderColor}`, backgroundColor: sectionBg2 }}
-        >
-          <div className="text-center">
-            <svg width="28" height="36" viewBox="0 0 32 40" fill="none" className="mx-auto mb-2">
-              <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 24 16 24s16-12 16-24C32 7.16 24.84 0 16 0zm0 22c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill={textSecondary}/>
-            </svg>
-            <p className="text-[10px] uppercase" style={{ color: textSecondary, letterSpacing: "0.15em" }}>Map Area</p>
-          </div>
-        </div>
+        <MapEmbed address={data.address} height={200} borderColor={borderColor} bgColor={sectionBg2 || sectionBg1 || "#F5F5F0"} />
 
         <button
           className="w-full py-3 rounded-none text-[11px] uppercase mb-6"
@@ -412,6 +403,7 @@ export function GalleryLayout({ data, state, helpers }: LayoutProps) {
             fontFamily: sansFont,
           }}
           data-testid="button-directions"
+          onClick={() => openNaverDirections(data.address)}
         >
           길찾기
         </button>
@@ -594,6 +586,14 @@ export function GalleryLayout({ data, state, helpers }: LayoutProps) {
             </p>
           )}
 
+          {data.fundingImageType === "custom" && data.fundingImage && (
+            <div className="flex justify-center mb-6">
+              <div className="w-[200px] h-[200px] rounded-[12px] overflow-hidden">
+                <img src={data.fundingImage} alt="펀딩" className="w-full h-full object-cover" data-testid="img-funding-custom" />
+              </div>
+            </div>
+          )}
+
           <button
             className="w-full py-3 rounded-none text-[11px] uppercase mb-4 border-0"
             style={{
@@ -603,6 +603,7 @@ export function GalleryLayout({ data, state, helpers }: LayoutProps) {
               fontFamily: sansFont,
             }}
             data-testid="button-funding"
+            onClick={() => openKakaoTransfer()}
           >
             {data.fundingButtonName || "신혼여행 축하하기"}
           </button>
@@ -632,6 +633,7 @@ export function GalleryLayout({ data, state, helpers }: LayoutProps) {
                 fontFamily: sansFont,
               }}
               data-testid="button-gift-funding"
+              onClick={() => openKakaoGift()}
             >
               {data.giftFundingButtonName}
             </button>

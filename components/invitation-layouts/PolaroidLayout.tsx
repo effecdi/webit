@@ -2,6 +2,7 @@
 
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
+import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 
 export function PolaroidLayout({ data, state, helpers }: LayoutProps) {
   const pageBg = "#F0F0F0"
@@ -311,19 +312,13 @@ export function PolaroidLayout({ data, state, helpers }: LayoutProps) {
           )}
         </div>
 
-        <div className={`${frosted} rounded-2xl h-[200px] flex items-center justify-center mb-4 relative overflow-hidden`} style={{ backgroundColor: frostedBg }}>
-          <div className="text-center">
-            <svg width="32" height="40" viewBox="0 0 32 40" fill="none" className="mx-auto mb-2">
-              <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 24 16 24s16-12 16-24C32 7.16 24.84 0 16 0zm0 22c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill={accent}/>
-            </svg>
-            <p className="text-[12px]" style={{ color: textSecondary }}>지도 영역</p>
-          </div>
-        </div>
+        <MapEmbed address={data.address} height={200} borderColor="#E5E8EB" bgColor={pageBg || "#F5F5F0"} />
 
         <button
           className={`w-full py-3.5 rounded-full text-[14px] mb-6 ${frosted}`}
           style={{ backgroundColor: frostedBg, color: textPrimary, border: "none" }}
           data-testid="button-directions"
+          onClick={() => openNaverDirections(data.address)}
         >
           길찾기
         </button>
@@ -483,24 +478,31 @@ export function PolaroidLayout({ data, state, helpers }: LayoutProps) {
           )}
 
           <div className="flex justify-center mb-6">
-            <div className="w-[200px] h-[200px] flex items-center justify-center">
-              <svg viewBox="0 0 200 200" width="160" height="160" fill="none">
-                <path d="M60 180c-5-5 0-20 15-35s30-20 40-15 15 20 5 35-25 20-35 15z" stroke={accent} strokeWidth="1" fill="none"/>
-                <path d="M80 145l-5-80c0-5 3-10 8-12l20-8" stroke={accent} strokeWidth="1" fill="none"/>
-                <rect x="70" y="50" width="18" height="26" rx="3" stroke={accent} strokeWidth="1" fill="none"/>
-                <circle cx="80" cy="45" r="10" stroke={accent} strokeWidth="1" fill="none"/>
-                <path d="M130 175c5-5 0-20-15-35s-30-20-40-15-15 20-5 35 25 20 35 15z" stroke={accent} strokeWidth="1" fill="none"/>
-                <path d="M110 140l10-70c0-5-3-10-8-12l-15-5" stroke={accent} strokeWidth="1" fill="none"/>
-                <path d="M105 55q15-5 20 5t-5 20" stroke={accent} strokeWidth="1" fill="none"/>
-                <circle cx="120" cy="45" r="10" stroke={accent} strokeWidth="1" fill="none"/>
-              </svg>
-            </div>
+            {data.fundingImageType === "custom" && data.fundingImage ? (
+              <div className="w-[200px] h-[200px] rounded-[12px] overflow-hidden">
+                <img src={data.fundingImage} alt="펀딩" className="w-full h-full object-cover" data-testid="img-funding-custom" />
+              </div>
+            ) : (
+              <div className="w-[200px] h-[200px] flex items-center justify-center">
+                <svg viewBox="0 0 200 200" width="160" height="160" fill="none">
+                  <path d="M60 180c-5-5 0-20 15-35s30-20 40-15 15 20 5 35-25 20-35 15z" stroke={accent} strokeWidth="1" fill="none"/>
+                  <path d="M80 145l-5-80c0-5 3-10 8-12l20-8" stroke={accent} strokeWidth="1" fill="none"/>
+                  <rect x="70" y="50" width="18" height="26" rx="3" stroke={accent} strokeWidth="1" fill="none"/>
+                  <circle cx="80" cy="45" r="10" stroke={accent} strokeWidth="1" fill="none"/>
+                  <path d="M130 175c5-5 0-20-15-35s-30-20-40-15-15 20-5 35 25 20 35 15z" stroke={accent} strokeWidth="1" fill="none"/>
+                  <path d="M110 140l10-70c0-5-3-10-8-12l-15-5" stroke={accent} strokeWidth="1" fill="none"/>
+                  <path d="M105 55q15-5 20 5t-5 20" stroke={accent} strokeWidth="1" fill="none"/>
+                  <circle cx="120" cy="45" r="10" stroke={accent} strokeWidth="1" fill="none"/>
+                </svg>
+              </div>
+            )}
           </div>
 
           <button
             className="w-full py-3.5 rounded-full text-[14px] font-medium mb-4"
             style={{ backgroundColor: buttonBg, color: buttonText }}
             data-testid="button-funding"
+            onClick={() => openKakaoTransfer()}
           >
             {data.fundingButtonName || "신혼여행 축하하기"}
           </button>
@@ -525,6 +527,7 @@ export function PolaroidLayout({ data, state, helpers }: LayoutProps) {
               className="w-full py-3.5 rounded-full text-[14px] font-medium"
               style={{ backgroundColor: buttonBg, color: buttonText }}
               data-testid="button-gift-funding"
+              onClick={() => openKakaoGift()}
             >
               {data.giftFundingButtonName}
             </button>

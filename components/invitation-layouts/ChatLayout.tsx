@@ -2,6 +2,7 @@
 
 import { Phone, Copy, X, ChevronLeft, ChevronRight, Heart } from "lucide-react"
 import type { LayoutProps } from "./types"
+import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 
 export function ChatLayout({ data, state, helpers }: LayoutProps) {
   const pageBg1 = "#FFF5F7"
@@ -328,23 +329,13 @@ export function ChatLayout({ data, state, helpers }: LayoutProps) {
           )}
         </div>
 
-        <div className="rounded-[20px] h-[200px] flex items-center justify-center mb-4 relative overflow-hidden" style={{ backgroundColor: pageBg1, border: `2px solid ${borderColor}` }}>
-          <div className="text-center">
-            <svg width="32" height="40" viewBox="0 0 32 40" fill="none" className="mx-auto mb-2">
-              <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 24 16 24s16-12 16-24C32 7.16 24.84 0 16 0z" fill={accent} opacity="0.2"/>
-              <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 24 16 24s16-12 16-24C32 7.16 24.84 0 16 0zm0 22c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill={accent}/>
-              <svg x="10" y="6" viewBox="0 0 12 12" width="12" height="12">
-                <path d="M6 10.675l-.725-.66C2.7 7.68 1 6.14 1 4.25 1 2.71 2.21 1.5 3.75 1.5c.87 0 1.705.405 2.25 1.045C6.545 1.905 7.38 1.5 8.25 1.5 9.79 1.5 11 2.71 11 4.25c0 1.89-1.7 3.43-4.275 5.77L6 10.675z" fill="#FFFFFF"/>
-              </svg>
-            </svg>
-            <p className="text-[12px]" style={{ color: textSecondary }}>지도 영역</p>
-          </div>
-        </div>
+        <MapEmbed address={data.address} height={200} borderColor={borderColor} bgColor={pageBg1 || "#F5F5F0"} />
 
         <button
           className="w-full py-3.5 rounded-full text-[14px] font-medium mb-6"
           style={{ backgroundColor: buttonBg, color: buttonText }}
           data-testid="button-directions"
+          onClick={() => openNaverDirections(data.address)}
         >
           길찾기
         </button>
@@ -501,21 +492,28 @@ export function ChatLayout({ data, state, helpers }: LayoutProps) {
           )}
 
           <div className="flex justify-center mb-6">
-            <div className="w-[160px] h-[160px] flex items-center justify-center">
-              <svg viewBox="0 0 160 160" width="140" height="140" fill="none">
-                <circle cx="55" cy="80" r="25" fill={accent} opacity="0.15"/>
-                <circle cx="105" cy="80" r="25" fill={accent} opacity="0.15"/>
-                <circle cx="55" cy="65" r="12" fill={accent} opacity="0.2"/>
-                <circle cx="105" cy="65" r="12" fill={accent} opacity="0.2"/>
-                <path d="M80 120l-2-1.8C66 107 58 100 58 92c0-5.5 4-10 9.5-10 2.1 0 4.1.6 5.5 1.6 1.4-1 3.4-1.6 5.5-1.6 5.5 0 9.5 4.5 9.5 10 0 8-8 15-20 26.2L80 120z" fill={accent} opacity="0.5"/>
-              </svg>
-            </div>
+            {data.fundingImageType === "custom" && data.fundingImage ? (
+              <div className="w-[200px] h-[200px] rounded-[12px] overflow-hidden">
+                <img src={data.fundingImage} alt="펀딩" className="w-full h-full object-cover" data-testid="img-funding-custom" />
+              </div>
+            ) : (
+              <div className="w-[160px] h-[160px] flex items-center justify-center">
+                <svg viewBox="0 0 160 160" width="140" height="140" fill="none">
+                  <circle cx="55" cy="80" r="25" fill={accent} opacity="0.15"/>
+                  <circle cx="105" cy="80" r="25" fill={accent} opacity="0.15"/>
+                  <circle cx="55" cy="65" r="12" fill={accent} opacity="0.2"/>
+                  <circle cx="105" cy="65" r="12" fill={accent} opacity="0.2"/>
+                  <path d="M80 120l-2-1.8C66 107 58 100 58 92c0-5.5 4-10 9.5-10 2.1 0 4.1.6 5.5 1.6 1.4-1 3.4-1.6 5.5-1.6 5.5 0 9.5 4.5 9.5 10 0 8-8 15-20 26.2L80 120z" fill={accent} opacity="0.5"/>
+                </svg>
+              </div>
+            )}
           </div>
 
           <button
             className="w-full py-3.5 rounded-full text-[14px] font-medium"
             style={{ backgroundColor: buttonBg, color: buttonText }}
             data-testid="button-funding"
+            onClick={() => openKakaoTransfer()}
           >
             {data.fundingButtonName || "축의금 보내기"}
           </button>

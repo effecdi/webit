@@ -1048,6 +1048,14 @@ function InvitationEditorContent() {
     }
   };
 
+  const handleFundingImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files && files[0]) {
+      const imageUrl = URL.createObjectURL(files[0]);
+      updateField("fundingImage", imageUrl);
+    }
+  };
+
   const getFormattedTime = () => {
     return `${data.ampm} ${data.hour}시 ${data.minute !== "00" ? data.minute + "분" : ""}`;
   };
@@ -1871,6 +1879,40 @@ function InvitationEditorContent() {
                       </label>
                     </div>
                   </div>
+                  {data.fundingImageType === "custom" && (
+                    <div className="ml-[82px]">
+                      <label
+                        className="flex items-center justify-center w-full h-[140px] border-2 border-dashed border-[#D1D5DB] rounded-[16px] cursor-pointer hover:border-[#FF8A80] transition-colors overflow-hidden"
+                        data-testid="label-funding-image-upload"
+                      >
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFundingImageUpload}
+                          className="hidden"
+                          data-testid="input-funding-image"
+                        />
+                        {data.fundingImage ? (
+                          <img src={data.fundingImage} alt="펀딩 이미지" className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="text-center">
+                            <Plus className="w-8 h-8 text-[#B0B8C1] mx-auto mb-2" />
+                            <p className="text-[13px] text-[#8B95A1]">사진을 선택해주세요</p>
+                          </div>
+                        )}
+                      </label>
+                      {data.fundingImage && (
+                        <button
+                          type="button"
+                          onClick={() => updateField("fundingImage", "")}
+                          className="mt-2 text-[12px] text-[#FF8A80] font-medium"
+                          data-testid="button-funding-image-remove"
+                        >
+                          이미지 삭제
+                        </button>
+                      )}
+                    </div>
+                  )}
                   <InputField
                     label="버튼명"
                     value={data.fundingButtonName}
