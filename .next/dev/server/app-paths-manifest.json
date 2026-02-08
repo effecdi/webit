@@ -1,1 +1,7 @@
-{}
+{
+  "/api/auth/kakao/route": "app/api/auth/kakao/route.js",
+  "/api/auth/user/route": "app/api/auth/user/route.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/splash/page": "app/splash/page.js"
+}
