@@ -983,12 +983,19 @@ function InvitationEditorContent() {
   };
 
   const handleKakaoShare = () => {
-    const kakaoUrl = `https://sharer.kakao.com/talk/friends/picker/link?url=${encodeURIComponent(shareUrl)}`
-    window.open(kakaoUrl, "_blank", "width=480,height=640")
+    const text = `청첩장이 도착했어요 💌\n${shareUrl}`;
+    const kakaoUrl = `https://story.kakao.com/share?url=${encodeURIComponent(shareUrl)}`;
+    const mobileKakaoUrl = `kakaotalk://msg/text/send?text=${encodeURIComponent(text)}`;
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = mobileKakaoUrl;
+    } else {
+      window.open(kakaoUrl, "_blank", "width=480,height=640");
+    }
     setTimeout(() => {
       setShowShareOptions(false)
       setShowShareCountInput(true)
-    }, 1000)
+    }, 1500)
   }
 
   const handleShareCountSubmit = async () => {
@@ -1154,7 +1161,17 @@ function InvitationEditorContent() {
               onClick={(e) => e.stopPropagation()}
               data-testid="modal-share"
             >
-              <div className="w-12 h-1 bg-[#E5E8EB] rounded-full mx-auto mb-6" />
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-8" />
+                <div className="w-12 h-1 bg-[#E5E8EB] rounded-full" />
+                <button
+                  onClick={() => setShowShareOptions(false)}
+                  data-testid="button-share-close"
+                  className="w-8 h-8 flex items-center justify-center rounded-full bg-[#F2F4F6] text-[#8B95A1]"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
               <h3 className="text-[18px] font-bold text-[#191F28] text-center mb-6">
                 청첩장 공유하기
               </h3>
