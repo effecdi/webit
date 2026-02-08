@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { MUSIC_TRACKS } from "@/lib/music-tracks";
 
 interface AccountInfo {
   bank: string;
@@ -260,19 +261,6 @@ const initialData: InvitationData = {
 
 const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
 const minutes = ["00", "10", "20", "30", "40", "50"];
-
-const MUSIC_TRACKS = [
-  "Pure Morning Light",
-  "Soft Promise",
-  "First Snow Whisper",
-  "Garden Walk",
-  "Timeless Vow",
-  "Blush Pink Moment",
-  "Golden Hour Breeze",
-  "Forever Whisper",
-  "Eternal Bloom",
-  "Dear My Love",
-];
 
 const MAIN_TEMPLATES = [
   { id: "cinematic", label: "시네마틱", premium: true },
@@ -933,6 +921,10 @@ function InvitationEditorContent() {
   const [currentInvitationId, setCurrentInvitationId] = useState<string | null>(invitationId);
   const galleryInputRef = useRef<HTMLInputElement>(null);
   const mainPhotoRef = useRef<HTMLInputElement>(null);
+  const editorAudioRef = useRef<HTMLAudioElement>(null);
+  const [isEditorPlaying, setIsEditorPlaying] = useState(false);
+  const [editorCurrentTime, setEditorCurrentTime] = useState(0);
+  const [editorDuration, setEditorDuration] = useState(0);
 
   useEffect(() => {
     const loadInvitation = async () => {
@@ -986,6 +978,40 @@ function InvitationEditorContent() {
     value: InvitationData[K],
   ) => {
     setData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const getMusicFileUrl = (trackName: string) => {
+    const track = MUSIC_TRACKS.find(t => t.name === trackName);
+    return track ? track.file : "";
+  };
+
+  const toggleEditorPlay = () => {
+    const audio = editorAudioRef.current;
+    if (!audio) return;
+    if (isEditorPlaying) {
+      audio.pause();
+      setIsEditorPlaying(false);
+    } else {
+      audio.play().catch(() => {});
+      setIsEditorPlaying(true);
+    }
+  };
+
+  const handleTrackSelect = (trackName: string) => {
+    updateField("musicTrack", trackName);
+    const audio = editorAudioRef.current;
+    if (audio) {
+      audio.pause();
+      setIsEditorPlaying(false);
+      setEditorCurrentTime(0);
+      setEditorDuration(0);
+    }
+  };
+
+  const formatTime = (sec: number) => {
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${s.toString().padStart(2, "0")}`;
   };
 
   const handleSave = async () => {
@@ -2559,28 +2585,62 @@ function InvitationEditorContent() {
                   <div className="flex flex-wrap gap-2">
                     {MUSIC_TRACKS.map((track) => (
                       <button
-                        key={track}
-                        onClick={() => updateField("musicTrack", track)}
+                        key={track.name}
+                        onClick={() => handleTrackSelect(track.name)}
                         className={`px-4 py-2 rounded-full text-[13px] border ${
-                          data.musicTrack === track
+                          data.musicTrack === track.name
                             ? "border-[#FF8A80] text-[#FF8A80] bg-[#FFF0EF]"
                             : "border-[#E5E8EB] text-[#8B95A1]"
                         }`}
+                        data-testid={`button-music-track-${track.name.replace(/\s+/g, '-')}`}
                       >
-                        {track}
+                        {track.name}
                       </button>
                     ))}
                   </div>
                   {data.musicTrack && (
                     <div className="flex items-center gap-3 bg-[#F8F9FA] rounded-[10px] p-3">
-                      <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
-                        <Play className="w-4 h-4 text-[#191F28] ml-0.5" />
+                      <audio
+                        ref={editorAudioRef}
+                        src={getMusicFileUrl(data.musicTrack)}
+                        onTimeUpdate={() => {
+                          const audio = editorAudioRef.current;
+                          if (audio) setEditorCurrentTime(audio.currentTime);
+                        }}
+                        onLoadedMetadata={() => {
+                          const audio = editorAudioRef.current;
+                          if (audio) setEditorDuration(audio.duration);
+                        }}
+                        onEnded={() => setIsEditorPlaying(false)}
+                      />
+                      <button
+                        onClick={toggleEditorPlay}
+                        className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm flex-shrink-0"
+                        data-testid="button-music-play-pause"
+                      >
+                        {isEditorPlaying ? (
+                          <Pause className="w-4 h-4 text-[#191F28]" />
+                        ) : (
+                          <Play className="w-4 h-4 text-[#191F28] ml-0.5" />
+                        )}
                       </button>
-                      <span className="text-[13px] text-[#4E5968]">
-                        0:00 / 1:31
+                      <span className="text-[13px] text-[#4E5968] flex-shrink-0">
+                        {formatTime(editorCurrentTime)} / {formatTime(editorDuration)}
                       </span>
-                      <div className="flex-1 h-1 bg-[#E5E8EB] rounded-full">
-                        <div className="w-0 h-full bg-[#FF8A80] rounded-full" />
+                      <div
+                        className="flex-1 h-1 bg-[#E5E8EB] rounded-full cursor-pointer"
+                        onClick={(e) => {
+                          const audio = editorAudioRef.current;
+                          if (!audio || !editorDuration) return;
+                          const rect = e.currentTarget.getBoundingClientRect();
+                          const ratio = (e.clientX - rect.left) / rect.width;
+                          audio.currentTime = ratio * editorDuration;
+                        }}
+                      >
+                        <div
+                          className="h-full bg-[#FF8A80] rounded-full transition-all"
+                          style={{ width: editorDuration ? `${(editorCurrentTime / editorDuration) * 100}%` : "0%" }}
+                        />
                       </div>
                     </div>
                   )}

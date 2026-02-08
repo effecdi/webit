@@ -8,6 +8,7 @@ import type { InvitationData } from "@/app/wedding/editor/page"
 export default function InvitationPreviewPage() {
   const [data, setData] = useState<(InvitationData & { date?: string; time?: string }) | null>(null)
   const [loading, setLoading] = useState(true)
+  const [textScale, setTextScale] = useState(1)
 
   useEffect(() => {
     const loadInvitation = async () => {
@@ -69,8 +70,8 @@ export default function InvitationPreviewPage() {
 
   return (
     <div className="min-h-screen bg-[#faf9f7]">
-      <InvitationPreview data={data} />
-      <div className="max-w-[360px] mx-auto pb-10">
+      <InvitationPreview data={data} isShared={true} textScale={textScale} onTextScaleChange={setTextScale} />
+      <div className="max-w-[360px] mx-auto pb-10" style={textScale !== 1 ? { zoom: textScale } : undefined}>
         <RsvpFormSection />
       </div>
     </div>

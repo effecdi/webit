@@ -1,9 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import type { InvitationData } from "@/app/wedding/editor/page"
-import { Phone, Copy, ChevronLeft, ChevronRight, X } from "lucide-react"
+import { MUSIC_TRACKS } from "@/lib/music-tracks"
+import { Phone, Copy, ChevronLeft, ChevronRight, X, Volume2, VolumeX } from "lucide-react"
 import { usePreviewState } from "./invitation-layouts/use-preview-state"
 import { CinematicLayout } from "./invitation-layouts/CinematicLayout"
 import { ModernLayout } from "./invitation-layouts/ModernLayout"
@@ -17,6 +18,9 @@ import { GalleryLayout } from "./invitation-layouts/GalleryLayout"
 
 interface InvitationPreviewProps {
   data: InvitationData & { date?: string; time?: string }
+  isShared?: boolean
+  onTextScaleChange?: (scale: number) => void
+  textScale?: number
 }
 
 function getLayoutPageBg(template: string): string {
@@ -34,16 +38,95 @@ function getLayoutPageBg(template: string): string {
   }
 }
 
-export function InvitationPreview({ data }: InvitationPreviewProps) {
+export function InvitationPreview({ data, isShared = false, onTextScaleChange, textScale: externalTextScale }: InvitationPreviewProps) {
   const { state, helpers } = usePreviewState(data)
   const [openingDone, setOpeningDone] = useState(!data.showOpening)
   const [showRsvpModal, setShowRsvpModal] = useState(false)
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false)
+  const [internalTextScale, setInternalTextScale] = useState(1)
+  const textScale = externalTextScale ?? internalTextScale
+  const [showControls, setShowControls] = useState(true)
+
+  const getMusicUrl = useCallback(() => {
+    if (!data.showMusic || !data.musicTrack) return ""
+    const track = MUSIC_TRACKS.find(t => t.name === data.musicTrack)
+    return track ? track.file : ""
+  }, [data.showMusic, data.musicTrack])
+
+  useEffect(() => {
+    const audio = audioRef.current
+    const musicUrl = getMusicUrl()
+
+    if (!musicUrl || !audio) {
+      if (audio) {
+        audio.pause()
+        audio.src = ""
+      }
+      setIsMusicPlaying(false)
+      return
+    }
+
+    audio.src = musicUrl
+    audio.loop = true
+    audio.volume = 0.5
+
+    const handleEnded = () => setIsMusicPlaying(false)
+    const handlePlay = () => setIsMusicPlaying(true)
+    const handlePause = () => setIsMusicPlaying(false)
+    audio.addEventListener("ended", handleEnded)
+    audio.addEventListener("play", handlePlay)
+    audio.addEventListener("pause", handlePause)
+
+    if (isShared) {
+      audio.play().catch(() => {
+        setIsMusicPlaying(false)
+      })
+    }
+
+    return () => {
+      audio.removeEventListener("ended", handleEnded)
+      audio.removeEventListener("play", handlePlay)
+      audio.removeEventListener("pause", handlePause)
+      audio.pause()
+    }
+  }, [getMusicUrl, isShared])
 
   useEffect(() => {
     if (!data.showOpening || openingDone) return
     const autoAdvance = setTimeout(() => setOpeningDone(true), 6000)
     return () => clearTimeout(autoAdvance)
   }, [data.showOpening, openingDone])
+
+  useEffect(() => {
+    if (isShared && showControls) {
+      const timer = setTimeout(() => setShowControls(false), 4000)
+      return () => clearTimeout(timer)
+    }
+  }, [isShared, showControls])
+
+  const toggleMusic = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    if (isMusicPlaying) {
+      audio.pause()
+      setIsMusicPlaying(false)
+    } else {
+      audio.play().then(() => setIsMusicPlaying(true)).catch(() => {})
+    }
+  }
+
+  const increaseTextSize = () => {
+    const newScale = Math.min(textScale + 0.1, 1.5)
+    setInternalTextScale(newScale)
+    onTextScaleChange?.(newScale)
+  }
+
+  const decreaseTextSize = () => {
+    const newScale = Math.max(textScale - 0.1, 0.7)
+    setInternalTextScale(newScale)
+    onTextScaleChange?.(newScale)
+  }
 
   const pageBg = getLayoutPageBg(data.mainTemplate || "modern")
 
@@ -68,8 +151,49 @@ export function InvitationPreview({ data }: InvitationPreviewProps) {
   }
 
   return (
-    <div className="w-full h-full overflow-y-auto" style={{ backgroundColor: pageBg }} data-testid="invitation-preview">
-      <div className="max-w-[420px] mx-auto">
+    <div
+      className="w-full h-full overflow-y-auto relative"
+      style={{ backgroundColor: pageBg }}
+      data-testid="invitation-preview"
+      onClick={() => isShared && setShowControls(true)}
+    >
+      <audio ref={audioRef} preload="auto" />
+
+      {isShared && (
+        <div
+          className={`fixed top-4 right-4 z-50 flex flex-col gap-2 transition-opacity duration-300 ${showControls ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          style={{ fontSize: "16px" }}
+        >
+          {data.showMusic && data.musicTrack && (
+            <button
+              onClick={(e) => { e.stopPropagation(); toggleMusic(); }}
+              className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white shadow-lg"
+              data-testid="button-toggle-music"
+            >
+              {isMusicPlaying ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
+            </button>
+          )}
+          <button
+            onClick={(e) => { e.stopPropagation(); increaseTextSize(); }}
+            className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white shadow-lg"
+            data-testid="button-text-increase"
+          >
+            <span className="text-[13px] font-bold">A+</span>
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); decreaseTextSize(); }}
+            className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white shadow-lg"
+            data-testid="button-text-decrease"
+          >
+            <span className="text-[13px] font-bold">A-</span>
+          </button>
+        </div>
+      )}
+
+      <div
+        className="max-w-[420px] mx-auto"
+        style={isShared && textScale !== 1 ? { zoom: textScale } : undefined}
+      >
 
         <AnimatePresence mode="wait">
           {data.showOpening && !openingDone && (
