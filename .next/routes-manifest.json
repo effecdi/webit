@@ -161,6 +161,42 @@
       "namedRegex": "^/api/profile(?:/)?$"
     },
     {
+      "page": "/api/stripe/checkout",
+      "regex": "^/api/stripe/checkout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/checkout(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/portal",
+      "regex": "^/api/stripe/portal(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/portal(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/products",
+      "regex": "^/api/stripe/products(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/products(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/publishable-key",
+      "regex": "^/api/stripe/publishable\\-key(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/publishable\\-key(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/subscription",
+      "regex": "^/api/stripe/subscription(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/subscription(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/webhook",
+      "regex": "^/api/stripe/webhook(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/webhook(?:/)?$"
+    },
+    {
       "page": "/api/todos",
       "regex": "^/api/todos(?:/)?$",
       "routeKeys": {},

@@ -346,7 +346,7 @@ const SESSION_COOKIE_NAME = "weve_session";
 let oidcConfig = null;
 async function getOIDCConfig() {
     if (oidcConfig) return oidcConfig;
-    const issuerUrl = process.env.ISSUER_URL || "https://replit.com/";
+    const issuerUrl = process.env.ISSUER_URL || "https://replit.com/oidc";
     const callbackUrl = getCallbackUrl();
     oidcConfig = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$openid$2d$client$40$6$2e$8$2e$1$2f$node_modules$2f$openid$2d$client$2f$build$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__["discovery"](new URL(issuerUrl), process.env.REPL_ID, undefined, undefined, {
         execute: [

@@ -12,7 +12,7 @@ let oidcConfig: client.Configuration | null = null;
 async function getOIDCConfig(): Promise<client.Configuration> {
   if (oidcConfig) return oidcConfig;
 
-  const issuerUrl = process.env.ISSUER_URL || "https://replit.com/";
+  const issuerUrl = process.env.ISSUER_URL || "https://replit.com/oidc";
   const callbackUrl = getCallbackUrl();
 
   oidcConfig = await client.discovery(
