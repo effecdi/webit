@@ -416,10 +416,64 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../app/api/auth/apple/callback/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/apple/callback">> = Specific
+  const handler = {} as typeof import("../../../app/api/auth/apple/callback/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/api/auth/apple/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/apple">> = Specific
+  const handler = {} as typeof import("../../../app/api/auth/apple/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/api/auth/callback/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/callback">> = Specific
   const handler = {} as typeof import("../../../app/api/auth/callback/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/api/auth/google/callback/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/google/callback">> = Specific
+  const handler = {} as typeof import("../../../app/api/auth/google/callback/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/api/auth/google/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/google">> = Specific
+  const handler = {} as typeof import("../../../app/api/auth/google/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/api/auth/kakao/callback/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/kakao/callback">> = Specific
+  const handler = {} as typeof import("../../../app/api/auth/kakao/callback/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/api/auth/kakao/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/kakao">> = Specific
+  const handler = {} as typeof import("../../../app/api/auth/kakao/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
