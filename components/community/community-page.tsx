@@ -12,6 +12,9 @@ import {
   User,
   Clock,
   TrendingUp,
+  Sparkles,
+  Users,
+  BookOpen,
 } from "lucide-react"
 
 interface CommunityPost {
@@ -115,31 +118,10 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
     router.push(basePath)
   }
 
-  const gradientStyle = {
-    background: `linear-gradient(-45deg, ${config.gradientColors.join(", ")})`,
-    backgroundSize: "400% 400%",
-    animation: "communityGradientShift 4s ease infinite",
-  }
+  const bannerBg = `linear-gradient(135deg, ${config.gradientColors[0]}, ${config.gradientColors[1]})`
 
   return (
     <div className="min-h-screen bg-[#F2F4F6] pb-24">
-      <style jsx>{`
-        @keyframes communityGradientShift {
-          0% { background-position: 0% 50%; }
-          25% { background-position: 50% 100%; }
-          50% { background-position: 100% 50%; }
-          75% { background-position: 50% 0%; }
-          100% { background-position: 0% 50%; }
-        }
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(12px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .post-card-enter {
-          animation: fadeInUp 0.3s ease forwards;
-        }
-      `}</style>
-
       <header className="bg-white px-5 py-4 sticky top-0 z-40">
         <div className="flex items-center justify-between max-w-md mx-auto">
           <div className="flex items-center gap-3">
@@ -154,24 +136,41 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
       <main className="px-5 py-5 max-w-md mx-auto space-y-4">
         <div
           className="rounded-[20px] p-5 text-white relative overflow-hidden"
-          style={gradientStyle}
+          style={{ background: bannerBg }}
           data-testid="community-gradient-banner"
         >
           <div className="absolute inset-0 bg-black/10" />
           <div className="relative z-10">
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className="w-4 h-4 text-white/90" />
-              <p className="text-[13px] text-white/90 font-medium">{config.title}</p>
-            </div>
             <p className="text-[22px] font-bold mb-1 leading-tight">함께 나누는 이야기</p>
-            <p className="text-[13px] text-white/80">고민 상담, 정보 교환, 경험을 공유해 보세요</p>
+            <p className="text-[13px] text-white/80 mb-4">고민 상담, 정보 교환, 경험을 공유해 보세요</p>
+
+            <div className="flex items-center gap-3">
+              <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                  <Sparkles className="w-[18px] h-[18px] text-white" />
+                </div>
+                <span className="text-[11px] text-white/90 font-medium">트렌드</span>
+              </div>
+              <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                  <Users className="w-[18px] h-[18px] text-white" />
+                </div>
+                <span className="text-[11px] text-white/90 font-medium">소통</span>
+              </div>
+              <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                  <BookOpen className="w-[18px] h-[18px] text-white" />
+                </div>
+                <span className="text-[11px] text-white/90 font-medium">정보</span>
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
           <button
             onClick={() => setActiveCategory("전체")}
-            className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-all ${
+            className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors ${
               activeCategory === "전체"
                 ? "bg-[#191F28] text-white shadow-sm"
                 : "bg-white text-[#4E5968] hover:bg-[#E5E8EB]"
@@ -184,7 +183,7 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-all ${
+              className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors ${
                 activeCategory === cat
                   ? "bg-[#191F28] text-white shadow-sm"
                   : "bg-white text-[#4E5968] hover:bg-[#E5E8EB]"
@@ -209,12 +208,11 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
           </div>
         ) : posts.length > 0 ? (
           <div className="space-y-3">
-            {posts.map((post, index) => (
+            {posts.map((post) => (
               <button
                 key={post.id}
                 onClick={() => handlePostClick(post.id)}
-                className="w-full text-left bg-white rounded-[16px] p-5 shadow-sm hover:shadow-md transition-all post-card-enter active:scale-[0.98]"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="w-full text-left bg-white rounded-[16px] p-5 shadow-sm hover:shadow-md transition-shadow active:scale-[0.98]"
                 data-testid={`post-card-${post.id}`}
               >
                 <div className="flex items-start justify-between gap-2 mb-2.5">
@@ -264,7 +262,7 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
         onClick={() => setShowWriteModal(true)}
         className={`fixed bottom-24 right-5 w-14 h-14 rounded-full text-white shadow-lg flex items-center justify-center z-30`}
         style={{
-          ...gradientStyle,
+          background: bannerBg,
           right: "max(1.25rem, calc((100vw - 28rem) / 2 + 1.25rem))",
         }}
         data-testid="button-write-post"

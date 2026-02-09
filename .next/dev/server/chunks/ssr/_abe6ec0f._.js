@@ -2284,7 +2284,7 @@ function BudgetPageContent() {
                                             className: "flex justify-between items-center",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-[14px] font-medium text-[#FF8A80]",
+                                                    className: "text-[14px] font-medium text-[#FF6B6B]",
                                                     children: "남은 잔금"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/budget/page.tsx",
@@ -2292,7 +2292,7 @@ function BudgetPageContent() {
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-[18px] font-bold text-[#FF8A80]",
+                                                    className: "text-[18px] font-bold text-[#FF6B6B]",
                                                     children: [
                                                         (selectedExpense.balance || 0).toLocaleString(),
                                                         "원"
@@ -2389,7 +2389,7 @@ function BudgetPageContent() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: handleFullPayment,
-                                            className: "w-full py-4 rounded-[14px] bg-[#FF8A80] hover:bg-[#FF6B6B] text-white font-semibold text-[16px] transition-all",
+                                            className: "w-full py-4 rounded-[14px] bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold text-[16px] transition-all",
                                             children: "전체 잔금 결제 완료"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/budget/page.tsx",
