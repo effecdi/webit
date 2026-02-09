@@ -149,19 +149,19 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
                 <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
                   <Sparkles className="w-[18px] h-[18px] text-white" />
                 </div>
-                <span className="text-[11px] text-white/90 font-medium">트렌드</span>
+                <span className="text-[11px] text-white/90 font-medium">고민</span>
               </div>
               <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
                 <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
                   <Users className="w-[18px] h-[18px] text-white" />
                 </div>
-                <span className="text-[11px] text-white/90 font-medium">소통</span>
+                <span className="text-[11px] text-white/90 font-medium">공감</span>
               </div>
               <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
                 <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
                   <BookOpen className="w-[18px] h-[18px] text-white" />
                 </div>
-                <span className="text-[11px] text-white/90 font-medium">정보</span>
+                <span className="text-[11px] text-white/90 font-medium">정보공유</span>
               </div>
             </div>
           </div>
