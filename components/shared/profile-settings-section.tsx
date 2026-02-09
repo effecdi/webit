@@ -363,12 +363,20 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                   <span className="text-[14px] font-medium text-[#191F28]">1:1 문의하기 (AI 상담)</span>
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
-                <button data-testid="button-terms" className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
-                  <span className="text-[14px] font-medium text-[#191F28]">이용약관</span>
+                <button 
+                  data-testid="button-terms" 
+                  onClick={() => router.push("/terms")}
+                  className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] dark:bg-gray-800 rounded-[12px] hover:bg-[#F2F4F6] dark:hover:bg-gray-700 transition-colors"
+                >
+                  <span className="text-[14px] font-medium text-[#191F28] dark:text-white">이용약관</span>
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
-                <button data-testid="button-privacy-policy" className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors">
-                  <span className="text-[14px] font-medium text-[#191F28]">개인정보 처리방침</span>
+                <button 
+                  data-testid="button-privacy-policy" 
+                  onClick={() => router.push("/privacy")}
+                  className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] dark:bg-gray-800 rounded-[12px] hover:bg-[#F2F4F6] dark:hover:bg-gray-700 transition-colors"
+                >
+                  <span className="text-[14px] font-medium text-[#191F28] dark:text-white">개인정보 처리방침</span>
                   <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
                 </button>
               </div>
