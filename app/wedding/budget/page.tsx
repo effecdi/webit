@@ -287,7 +287,7 @@ function BudgetPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F4F6] pb-24">
+    <div className="min-h-screen bg-[#F2F4F6] pb-36">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-[#E5E8EB]">
         <div className="flex items-center justify-between h-14 px-4 max-w-md mx-auto">

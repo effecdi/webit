@@ -455,7 +455,7 @@ export default function GoodsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F4F6] pb-24">
+    <div className="min-h-screen bg-[#F2F4F6] pb-36">
       <header className="bg-white px-5 py-4 sticky top-0 z-40">
         <div className="flex items-center justify-between max-w-md mx-auto">
           <div className="flex items-center gap-3">

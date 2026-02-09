@@ -234,7 +234,7 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#F2F4F6] pb-24">
+      <div className="min-h-screen bg-[#F2F4F6] pb-36">
         <header className="bg-white px-5 py-4 sticky top-0 z-40">
           <div className="flex items-center gap-3 max-w-md mx-auto">
             <Link href={config.backHref} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors">
@@ -259,7 +259,7 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-[#F2F4F6] pb-24">
+      <div className="min-h-screen bg-[#F2F4F6] pb-36">
         <header className="bg-white px-5 py-4 sticky top-0 z-40">
           <div className="flex items-center gap-3 max-w-md mx-auto">
             <Link href={config.backHref} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors">
@@ -277,7 +277,7 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F4F6] pb-24">
+    <div className="min-h-screen bg-[#F2F4F6] pb-36">
       <header className="bg-white px-5 py-4 sticky top-0 z-40 border-b border-[#F2F4F6]">
         <div className="flex items-center justify-between max-w-md mx-auto">
           <div className="flex items-center gap-3">

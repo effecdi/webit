@@ -77,7 +77,7 @@ export default function TravelListPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F4F6] pb-24">
+    <div className="min-h-screen bg-[#F2F4F6] pb-36">
       <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#E5E8EB]">
         <div className="flex items-center justify-between px-5 py-3 max-w-md mx-auto">
           <button 
