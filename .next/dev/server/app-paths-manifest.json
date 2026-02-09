@@ -1,4 +1,8 @@
 {
+  "/api/auth/user/route": "app/api/auth/user/route.js",
+  "/api/couple-invite/route": "app/api/couple-invite/route.js",
+  "/api/couple/route": "app/api/couple/route.js",
+  "/api/user-settings/route": "app/api/user-settings/route.js",
   "/dating/profile/page": "app/dating/profile/page.js",
   "/family/page": "app/family/page.js",
   "/page": "app/page.js"
