@@ -142,9 +142,9 @@ function LoginPage() {
                         className: "mb-12 text-center",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6",
+                                className: "w-20 h-20 bg-[#F3E8FF] rounded-full flex items-center justify-center mx-auto mb-6",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__["Heart"], {
-                                    className: "w-10 h-10 text-blue-500 fill-blue-500"
+                                    className: "w-10 h-10 text-[#b455e0] fill-[#b455e0]"
                                 }, void 0, false, {
                                     fileName: "[project]/app/login/page.tsx",
                                     lineNumber: 127,
@@ -156,7 +156,7 @@ function LoginPage() {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                className: "text-3xl font-bold text-blue-500 tracking-tight mb-2",
+                                className: "text-3xl font-bold text-[#b455e0] tracking-tight mb-2",
                                 children: "WE:VE"
                             }, void 0, false, {
                                 fileName: "[project]/app/login/page.tsx",
@@ -183,7 +183,7 @@ function LoginPage() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>handleLoginClick("dev"),
                                 disabled: loadingProvider !== null,
-                                className: "w-full h-14 bg-blue-500 rounded-[16px] flex items-center justify-center gap-3 font-semibold text-white transition-all hover:bg-blue-600 active:scale-[0.98] disabled:opacity-70",
+                                className: "w-full h-14 bg-[#b455e0] rounded-[16px] flex items-center justify-center gap-3 font-semibold text-white transition-all hover:bg-[#9240b8] active:scale-[0.98] disabled:opacity-70",
                                 "data-testid": "button-login-dev",
                                 children: loadingProvider === "dev" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
@@ -420,7 +420,7 @@ function LoginPage() {
                                     className: "w-full flex items-center gap-3 py-4 px-4 bg-[#F8F9FA] rounded-[16px] mb-4",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: `w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-colors ${allChecked ? "bg-blue-500" : "bg-white border-2 border-[#D1D6DB]"}`,
+                                            className: `w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-colors ${allChecked ? "bg-[#b455e0]" : "bg-white border-2 border-[#D1D6DB]"}`,
                                             children: allChecked && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Check$3e$__["Check"], {
                                                 className: "w-4 h-4 text-white"
                                             }, void 0, false, {
@@ -460,7 +460,7 @@ function LoginPage() {
                                                             className: "flex items-center gap-3 flex-1 min-w-0",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: `w-5 h-5 rounded-full flex items-center justify-center shrink-0 transition-colors ${consents[item.id] ? "bg-blue-500" : "bg-white border-2 border-[#D1D6DB]"}`,
+                                                                    className: `w-5 h-5 rounded-full flex items-center justify-center shrink-0 transition-colors ${consents[item.id] ? "bg-[#b455e0]" : "bg-white border-2 border-[#D1D6DB]"}`,
                                                                     children: consents[item.id] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Check$3e$__["Check"], {
                                                                         className: "w-3 h-3 text-white"
                                                                     }, void 0, false, {
@@ -477,7 +477,7 @@ function LoginPage() {
                                                                     className: "text-[14px] text-[#191F28] text-left",
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                            className: `${item.required ? "text-blue-500" : "text-[#8B95A1]"} text-[13px] mr-1`,
+                                                                            className: `${item.required ? "text-[#b455e0]" : "text-[#8B95A1]"} text-[13px] mr-1`,
                                                                             children: item.required ? "[필수]" : "[선택]"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/login/page.tsx",
@@ -557,7 +557,7 @@ function LoginPage() {
                                 onClick: handleConsentConfirm,
                                 disabled: !allRequiredChecked,
                                 "data-testid": "button-consent-confirm",
-                                className: `w-full h-14 rounded-[16px] flex items-center justify-center font-semibold text-[16px] transition-all active:scale-[0.98] ${allRequiredChecked ? "bg-blue-500 text-white" : "bg-[#E5E8EB] text-[#B0B8C1] cursor-not-allowed"}`,
+                                className: `w-full h-14 rounded-[16px] flex items-center justify-center font-semibold text-[16px] transition-all active:scale-[0.98] ${allRequiredChecked ? "bg-[#b455e0] text-white" : "bg-[#E5E8EB] text-[#B0B8C1] cursor-not-allowed"}`,
                                 children: "동의하고 계속하기"
                             }, void 0, false, {
                                 fileName: "[project]/app/login/page.tsx",

@@ -3,22 +3,19 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/hooks/use-auth"
+import { motion, AnimatePresence } from "framer-motion"
+import splashLogo from "@/attached_assets/weve.logo_1770639762406.png"
+import Image from "next/image"
 
 export default function SplashPage() {
   const router = useRouter()
   const { isAuthenticated, isLoading, user } = useAuth()
-  const [showLogo, setShowLogo] = useState(false)
   const [fadeOut, setFadeOut] = useState(false)
-
-  useEffect(() => {
-    const logoTimer = setTimeout(() => setShowLogo(true), 300)
-    return () => clearTimeout(logoTimer)
-  }, [])
 
   useEffect(() => {
     if (isLoading) return
 
-    const fadeTimer = setTimeout(() => setFadeOut(true), 1500)
+    const fadeTimer = setTimeout(() => setFadeOut(true), 2200)
     
     const navigateTimer = setTimeout(() => {
       if (!isAuthenticated) {
@@ -69,7 +66,7 @@ export default function SplashPage() {
       } else {
         router.push("/survey/step1")
       }
-    }, 2000)
+    }, 2700)
 
     return () => {
       clearTimeout(fadeTimer)
@@ -78,27 +75,34 @@ export default function SplashPage() {
   }, [isLoading, isAuthenticated, user, router])
 
   return (
-    <main 
-      className={`min-h-dvh bg-white flex items-center justify-center transition-opacity duration-500 ${
-        fadeOut ? "opacity-0" : "opacity-100"
-      }`}
-    >
-      <div 
-        className={`text-center transition-all duration-1000 ${
-          showLogo ? "opacity-100 scale-100" : "opacity-0 scale-90"
-        }`}
+    <AnimatePresence>
+      <motion.main
+        className="min-h-dvh bg-[#b455e0] flex items-center justify-center"
+        animate={{ opacity: fadeOut ? 0 : 1 }}
+        transition={{ duration: 0.5 }}
       >
-        <h1 className="text-5xl font-bold text-[#b455e0] tracking-tight">
-          WE:VE
-        </h1>
-        <p className="mt-3 text-[15px] text-[#8B95A1]">
-          Our Every Moment Together
-        </p>
-        
-        <div className="mt-8 flex justify-center">
-          <div className="w-8 h-8 border-3 border-[#b455e0] border-t-transparent rounded-full animate-spin" />
+        <div className="flex flex-col items-center gap-5">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <motion.div
+              animate={{ scale: [1, 1.06, 1] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image
+                src={splashLogo}
+                alt="WE:VE"
+                width={80}
+                height={80}
+                priority
+                data-testid="img-splash-logo"
+              />
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
-    </main>
+      </motion.main>
+    </AnimatePresence>
   )
 }
