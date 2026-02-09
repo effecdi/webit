@@ -13942,11 +13942,15 @@
   color: #505050 !important;
 }
 
+.dark .text-\[\#191919\] {
+  color: #e8e8e8 !important;
+}
+
 .dark .border-\[\#E5E8EB\] {
   border-color: #2a2a2a !important;
 }
 
-.dark .border-\[\#F2F4F6\] {
+.dark .border-\[\#F2F3F5\], .dark .border-\[\#F2F4F6\] {
   border-color: #1e1e1e !important;
 }
 

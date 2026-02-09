@@ -219,10 +219,16 @@
 .dark .text-\[\#D1D6DB\] {
   color: #505050 !important;
 }
+.dark .text-\[\#191919\] {
+  color: #E8E8E8 !important;
+}
 
 /* Border color overrides */
 .dark .border-\[\#E5E8EB\] {
   border-color: #2A2A2A !important;
+}
+.dark .border-\[\#F2F3F5\] {
+  border-color: #1E1E1E !important;
 }
 .dark .border-\[\#F2F4F6\] {
   border-color: #1E1E1E !important;
@@ -432,6 +438,9 @@
 }
 .dark .hover\:bg-\[\#F9FAFB\]:hover {
   background-color: #1A1A1A !important;
+}
+.dark .hover\:bg-gray-100:hover {
+  background-color: #222222 !important;
 }
 .dark .hover\:bg-gray-200:hover {
   background-color: #2A2A2A !important;
