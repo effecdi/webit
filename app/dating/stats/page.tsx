@@ -91,7 +91,7 @@ export default function CoupleStatsPage() {
             고급 또는 프리미엄 멤버십을 구독하면<br />커플 통계 리포트를 확인할 수 있어요
           </p>
           <button
-            onClick={() => router.push("/dating/profile")}
+            onClick={() => router.push("/dating/membership")}
             className="px-8 py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-white font-bold rounded-[14px] flex items-center gap-2"
             data-testid="button-go-premium"
           >

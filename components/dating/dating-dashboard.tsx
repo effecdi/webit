@@ -148,7 +148,6 @@ export function DatingDashboard() {
   const [eventCount, setEventCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showCommentModal, setShowCommentModal] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState<TodoItem | null>(null);
   const [newComment, setNewComment] = useState("");
@@ -609,13 +608,14 @@ export function DatingDashboard() {
                 );
               })()}
             </div>
-            <button
-              onClick={() => setShowPremiumModal(true)}
+            <Link
+              href="/dating/membership"
               className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full shadow-sm hover:shadow-md transition-shadow"
+              data-testid="link-membership"
             >
               <Crown className="w-3.5 h-3.5 text-white" />
               <span className="text-[11px] font-bold text-white">Premium</span>
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -1044,94 +1044,6 @@ export function DatingDashboard() {
           </Link>
         </div>
       </main>
-
-      {showPremiumModal && (
-        <div
-          className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5"
-          onClick={() => setShowPremiumModal(false)}
-        >
-          <div
-            className="bg-white rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="bg-gradient-to-br from-amber-400 to-amber-500 p-6 text-center">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Crown className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-[22px] font-bold text-white">
-                WE:BEAT Premium
-              </h3>
-              <p className="text-white/80 text-[14px] mt-1">
-                더 특별한 우리의 이야기
-              </p>
-            </div>
-            <div className="p-5 space-y-3">
-              <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-                  <ImageIcon className="w-5 h-5 text-amber-600" />
-                </div>
-                <div>
-                  <p className="text-[14px] font-semibold text-[#191F28]">
-                    무제한 사진 저장
-                  </p>
-                  <p className="text-[12px] text-[#8B95A1]">
-                    용량 걱정 없이 추억을 저장하세요
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-pink-500" />
-                </div>
-                <div>
-                  <p className="text-[14px] font-semibold text-[#191F28]">
-                    커플 통계 리포트
-                  </p>
-                  <p className="text-[12px] text-[#8B95A1]">
-                    우리만의 데이트 기록과 통계를 확인하세요
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-[#d63bf2]" />
-                </div>
-                <div>
-                  <p className="text-[14px] font-semibold text-[#191F28]">
-                    AI 데이트 추천
-                  </p>
-                  <p className="text-[12px] text-[#8B95A1]">
-                    AI가 맞춤 데이트 코스를 추천해드려요
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="px-5 pb-6">
-              <div className="text-center mb-4">
-                <span className="text-[28px] font-bold text-[#191F28]">
-                  ₩4,900
-                </span>
-                <span className="text-[14px] text-[#8B95A1]"> / 월</span>
-              </div>
-              <button
-                onClick={() => {
-                  alert("결제 페이지로 이동합니다");
-                  setShowPremiumModal(false);
-                }}
-                className="w-full py-4 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold rounded-[14px] transition-all"
-              >
-                프리미엄 구독하기
-              </button>
-              <button
-                onClick={() => setShowPremiumModal(false)}
-                className="w-full py-3 text-[#8B95A1] text-[14px] mt-2"
-              >
-                나중에 할게요
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {showCommentModal && selectedTodo && (
         <div

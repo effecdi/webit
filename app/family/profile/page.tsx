@@ -1,72 +1,17 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { FamilyCoupleProfile } from "@/components/family/family-couple-profile"
 import { FamilyBottomNav } from "@/components/family/family-bottom-nav"
 import { ProfileSettingsSection } from "@/components/shared/profile-settings-section"
-import { ArrowLeft, LogOut, Crown, Star, X, Heart, ImageIcon, Calendar, Home, Check } from "lucide-react"
-import Link from "next/link"
+import { LogOut, Crown, Star } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
 
 export default function FamilyProfilePage() {
+  const router = useRouter()
   const { user } = useAuth()
-  const [showPremiumModal, setShowPremiumModal] = useState(false)
-  const [showPaymentModal, setShowPaymentModal] = useState(false)
-  const [selectedPlan, setSelectedPlan] = useState<"advanced" | "premium">("advanced")
   const [isLoggingOut, setIsLoggingOut] = useState(false)
-  const [isProcessingPayment, setIsProcessingPayment] = useState(false)
-
-  const handleStripeCheckout = async (planType: "monthly" | "yearly") => {
-    setIsProcessingPayment(true)
-    try {
-      const productsRes = await fetch("/api/stripe/products")
-      const { products } = await productsRes.json()
-
-      const targetTier = selectedPlan
-      const targetProduct = products.find((p: any) => p.metadata?.tier === targetTier)
-
-      if (!targetProduct || !targetProduct.prices?.length) {
-        alert("구독 상품을 찾을 수 없습니다.")
-        setIsProcessingPayment(false)
-        return
-      }
-
-      const targetPrice = targetProduct.prices.find((p: any) => {
-        const meta = p.metadata || {}
-        if (planType === "monthly" && p.recurring?.interval === "month") {
-          return meta.mode === "family" || !meta.mode
-        }
-        if (planType === "yearly" && p.recurring?.interval === "year") {
-          return meta.mode === "family" || !meta.mode
-        }
-        return false
-      })
-
-      if (!targetPrice) {
-        alert("가격 정보를 찾을 수 없습니다.")
-        setIsProcessingPayment(false)
-        return
-      }
-
-      const checkoutRes = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ priceId: targetPrice.id, mode: "family" }),
-      })
-
-      const { url, error } = await checkoutRes.json()
-      if (error) {
-        alert(error)
-        setIsProcessingPayment(false)
-        return
-      }
-      window.location.href = url
-    } catch (err) {
-      console.error("Checkout error:", err)
-      alert("결제 처리 중 오류가 발생했습니다.")
-      setIsProcessingPayment(false)
-    }
-  }
 
   const handleLogout = () => {
     setIsLoggingOut(true)
@@ -106,7 +51,7 @@ export default function FamilyProfilePage() {
             무제한 가족 앨범, 캘린더 공유, 위젯 커스터마이징 등 다양한 혜택을 누려보세요
           </p>
           <button 
-            onClick={() => setShowPremiumModal(true)}
+            onClick={() => router.push("/family/membership")}
             className="w-full py-3 bg-white/20 hover:bg-white/30 rounded-[12px] text-[14px] font-semibold text-white transition-colors flex items-center justify-center gap-2"
             data-testid="button-membership-subscribe"
           >
@@ -130,181 +75,6 @@ export default function FamilyProfilePage() {
         </button>
       </div>
 
-      {/* Premium Subscription Modal */}
-      {showPremiumModal && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center px-5"
-          onClick={() => setShowPremiumModal(false)}
-        >
-          <div 
-            className="bg-white rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200 max-h-[85vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header with gradient */}
-            <div className="bg-gradient-to-br from-green-500 to-green-600 p-6 text-center relative">
-              <button 
-                onClick={() => setShowPremiumModal(false)}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
-                data-testid="button-close-premium-modal"
-              >
-                <X className="w-4 h-4 text-white" />
-              </button>
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Crown className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-[24px] font-bold text-white">Family Premium</h3>
-              <p className="text-white/80 text-[14px] mt-1">더 행복한 가족 이야기</p>
-            </div>
-
-            {/* Plan Tabs */}
-            <div className="flex border-b border-[#F2F4F6]">
-              <button 
-                onClick={() => setSelectedPlan("advanced")}
-                className={`flex-1 py-3 text-[14px] font-semibold transition-colors ${selectedPlan === "advanced" ? "text-green-600 border-b-2 border-green-600" : "text-[#8B95A1]"}`}
-                data-testid="tab-advanced"
-              >
-                고급
-              </button>
-              <button 
-                onClick={() => setSelectedPlan("premium")}
-                className={`flex-1 py-3 text-[14px] font-semibold transition-colors ${selectedPlan === "premium" ? "text-green-600 border-b-2 border-green-600" : "text-[#8B95A1]"}`}
-                data-testid="tab-premium"
-              >
-                프리미엄
-              </button>
-            </div>
-
-            {/* Advanced Plan */}
-            {selectedPlan === "advanced" && (
-              <>
-                <div className="py-5 text-center border-b border-[#F2F4F6]">
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <span className="text-[14px] text-[#8B95A1] line-through">3,900원/월</span>
-                    <span className="px-2 py-0.5 bg-red-50 text-red-500 text-[11px] font-bold rounded-full">할인 중</span>
-                  </div>
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-[36px] font-bold text-[#191F28]">1,900</span>
-                    <span className="text-[18px] text-[#8B95A1]">원/월</span>
-                  </div>
-                  <p className="text-[12px] text-green-600 mt-1">연간 결제 시 20% 할인 (월 1,520원)</p>
-                </div>
-                
-                <div className="p-5 space-y-3">
-                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <ImageIcon className="w-5 h-5 text-green-600" />
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">가족 앨범 500장</p>
-                      <p className="text-[12px] text-[#8B95A1]">고화질 원본 사진 저장</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Heart className="w-5 h-5 text-pink-500" />
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">가족 성장 리포트</p>
-                      <p className="text-[12px] text-[#8B95A1]">아이 성장 기록과 가족 활동 통계</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Calendar className="w-5 h-5 text-[#d63bf2]" />
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">가족 캘린더</p>
-                      <p className="text-[12px] text-[#8B95A1]">가족 일정 공유 및 리마인더</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Home className="w-5 h-5 text-orange-500" />
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">가족 위젯</p>
-                      <p className="text-[12px] text-[#8B95A1]">커스텀 위젯 디자인 5종</p>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-
-            {/* Premium Plan - 준비 중 */}
-            {selectedPlan === "premium" && (
-              <>
-                <div className="py-5 text-center border-b border-[#F2F4F6]">
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <span className="px-2 py-0.5 bg-green-50 text-green-600 text-[11px] font-bold rounded-full">BEST</span>
-                  </div>
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-[36px] font-bold text-[#191F28]">6,900</span>
-                    <span className="text-[18px] text-[#8B95A1]">원/월</span>
-                  </div>
-                  <p className="text-[12px] text-green-600 mt-1">연간 결제 시 20% 할인 (월 5,520원)</p>
-                </div>
-                
-                <div className="p-5 space-y-3">
-                  <div className="flex items-center justify-center py-8 px-4">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Star className="w-8 h-8 text-green-500" />
-                      </div>
-                      <p className="text-[18px] font-bold text-[#191F28] dark:text-white mb-2">곧 출시 예정</p>
-                      <p className="text-[14px] text-[#8B95A1] leading-relaxed">
-                        AI 가족 활동 추천, 무제한 가족 앨범,<br />
-                        프리미엄 위젯 전체, 히스토리 북 등<br />
-                        더 강력한 기능이 준비 중이에요
-                      </p>
-                      <div className="mt-4 px-4 py-2 bg-green-50 dark:bg-green-900/20 rounded-[12px] inline-block">
-                        <p className="text-[12px] text-green-600 dark:text-green-400 font-medium">업데이트 알림을 받으시겠어요?</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-            
-            {/* CTA */}
-            <div className="px-5 pb-6">
-              {selectedPlan === "advanced" ? (
-                <>
-                  <button 
-                    onClick={() => handleStripeCheckout("monthly")}
-                    disabled={isProcessingPayment}
-                    className="w-full py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-[14px] transition-all disabled:opacity-50"
-                    data-testid="button-subscribe-monthly"
-                  >
-                    {isProcessingPayment ? "처리 중..." : "고급 월간 구독하기 (1,900원/월)"}
-                  </button>
-                  <button 
-                    onClick={() => handleStripeCheckout("yearly")}
-                    disabled={isProcessingPayment}
-                    className="w-full py-3 mt-2 border-2 border-green-500 text-green-600 font-semibold rounded-[14px] hover:bg-green-50 transition-all disabled:opacity-50"
-                    data-testid="button-subscribe-yearly"
-                  >
-                    {isProcessingPayment ? "처리 중..." : "연간 구독하기 (20% 할인)"}
-                  </button>
-                </>
-              ) : (
-                <div className="w-full py-4 bg-[#E5E8EB] dark:bg-[#333] text-[#8B95A1] font-bold rounded-[14px] text-center cursor-not-allowed"
-                  data-testid="button-premium-coming-soon"
-                >
-                  출시 알림 받기
-                </div>
-              )}
-              <button 
-                onClick={() => setShowPremiumModal(false)}
-                className="w-full py-3 text-[#8B95A1] text-[14px] mt-2"
-              >
-                나중에 할게요
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Payment processing is now handled via Stripe Checkout redirect */}
 
       <FamilyBottomNav />
     </main>
