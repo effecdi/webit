@@ -14,7 +14,7 @@ export default function FamilyCommunityPage() {
         accentBg: "bg-green-600",
         accentLight: "bg-green-50",
         gradient: "from-green-400 to-emerald-500",
-        gradientColors: ["#4ADE80", "#34D399", "#10B981"],
+        gradientColors: ["#4ADE80", "#34D399", "#10B981", "#059669", "#4ADE80"],
         categories: ["육아", "가족생활", "교육", "가족여행", "살림/요리", "건강", "자유"],
         bottomNav: <FamilyBottomNav />,
       }}

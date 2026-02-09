@@ -116,9 +116,9 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
   }
 
   const gradientStyle = {
-    background: `linear-gradient(-45deg, ${config.gradientColors.join(", ")}, ${config.gradientColors[0]})`,
-    backgroundSize: "300% 300%",
-    animation: "communityGradientShift 6s ease infinite",
+    background: `linear-gradient(-45deg, ${config.gradientColors.join(", ")})`,
+    backgroundSize: "400% 400%",
+    animation: "communityGradientShift 4s ease infinite",
   }
 
   return (
@@ -126,7 +126,9 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
       <style jsx>{`
         @keyframes communityGradientShift {
           0% { background-position: 0% 50%; }
+          25% { background-position: 50% 100%; }
           50% { background-position: 100% 50%; }
+          75% { background-position: 50% 0%; }
           100% { background-position: 0% 50%; }
         }
         @keyframes fadeInUp {
