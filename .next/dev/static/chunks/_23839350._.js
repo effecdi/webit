@@ -1022,14 +1022,16 @@ function WeddingCommunityDetailPage({ params }) {
             mode: "wedding",
             postId: id,
             backHref: "/wedding/community",
-            accentColor: "text-[#FF8A80]",
-            accentBg: "bg-[#FF8A80]",
-            accentLight: "bg-red-50",
-            gradient: "from-[#FF8A80] to-[#FF6B6B]",
+            accentColor: "text-[#3182F6]",
+            accentBg: "bg-[#3182F6]",
+            accentLight: "bg-blue-50",
+            gradient: "from-[#E8927C] to-[#3182F6]",
             gradientColors: [
-                "#FF8A80",
-                "#FF6B6B",
-                "#FF5252"
+                "#E8927C",
+                "#F4845F",
+                "#3182F6",
+                "#5BA8F7",
+                "#E8927C"
             ],
             bottomNav: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$wedding$2f$wedding$2d$bottom$2d$nav$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WeddingBottomNav"], {}, void 0, false, {
                 fileName: "[project]/app/wedding/community/[id]/page.tsx",
