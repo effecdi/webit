@@ -73,11 +73,11 @@ function WeddingBottomNav() {
                 "data-testid": "button-back-nav",
                 className: "w-[52px] h-[52px] rounded-full shadow-lg flex items-center justify-center flex-shrink-0 transition-transform duration-150 ease-out active:scale-[0.9]",
                 style: {
-                    background: isDark ? "rgba(26, 26, 26, 0.85)" : "rgba(249, 250, 251, 0.82)",
+                    background: isDark ? "rgba(28, 28, 30, 0.88)" : "rgba(249, 250, 251, 0.82)",
                     backdropFilter: "blur(20px) saturate(180%)",
                     WebkitBackdropFilter: "blur(20px) saturate(180%)",
                     borderWidth: 1,
-                    borderColor: isDark ? "rgba(255,255,255,0.08)" : "rgba(209,213,219,0.4)"
+                    borderColor: isDark ? "rgba(255,255,255,0.1)" : "rgba(209,213,219,0.4)"
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__["ArrowLeft"], {
                     className: "w-[22px] h-[22px]",
@@ -97,11 +97,11 @@ function WeddingBottomNav() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
                 className: "relative rounded-[50px] shadow-lg flex-1",
                 style: {
-                    background: isDark ? "rgba(26, 26, 26, 0.85)" : "rgba(249, 250, 251, 0.82)",
+                    background: isDark ? "rgba(28, 28, 30, 0.88)" : "rgba(249, 250, 251, 0.82)",
                     backdropFilter: "blur(20px) saturate(180%)",
                     WebkitBackdropFilter: "blur(20px) saturate(180%)",
                     borderWidth: 1,
-                    borderColor: isDark ? "rgba(255,255,255,0.08)" : "rgba(209,213,219,0.4)"
+                    borderColor: isDark ? "rgba(255,255,255,0.1)" : "rgba(209,213,219,0.4)"
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex items-end justify-around h-16 px-1",
@@ -377,7 +377,7 @@ const DEFAULTS = {
     notifGift: false,
     notifDaily: false,
     privacyProfileVisible: true,
-    privacyLocationShare: false,
+    privacyActivityNotify: false,
     privacyReadReceipt: true,
     privacyOnlineStatus: true,
     privacyActivityShare: false,
@@ -409,7 +409,7 @@ const FAQ_ITEMS = [
     },
     {
         q: "멤버십 구독 요금은 얼마인가요?",
-        a: "WE:BEAT 멤버십은 Advanced(월 4,900원)와 Premium(월 9,900원) 두 가지 플랜을 제공합니다. Advanced는 커플 통계 리포트와 추가 저장 공간을, Premium은 AI 추천, 무제한 저장 공간, 프리미엄 템플릿 등 모든 기능을 이용할 수 있습니다."
+        a: "WE:BEAT 멤버십은 고급(월 1,900원, 정가 3,900원에서 할인)과 프리미엄(월 6,900원, 출시 예정) 두 가지 플랜을 제공합니다. 고급 플랜은 사진 500장 저장, 커플 통계 리포트, 고급 캘린더, 스마트 알림을 제공하며, 연간 결제 시 20% 할인됩니다."
     },
     {
         q: "사진과 데이터는 안전하게 보관되나요?",
@@ -504,7 +504,7 @@ function ProfileSettingsSection({ mode }) {
     };
     const privacy = {
         profileVisible: settings.privacyProfileVisible,
-        locationShare: settings.privacyLocationShare,
+        activityNotify: settings.privacyActivityNotify,
         readReceipt: settings.privacyReadReceipt,
         onlineStatus: settings.privacyOnlineStatus,
         activityShare: settings.privacyActivityShare
@@ -524,7 +524,7 @@ function ProfileSettingsSection({ mode }) {
     };
     const privacyKeyMap = {
         profileVisible: "privacyProfileVisible",
-        locationShare: "privacyLocationShare",
+        activityNotify: "privacyActivityNotify",
         readReceipt: "privacyReadReceipt",
         onlineStatus: "privacyOnlineStatus",
         activityShare: "privacyActivityShare"
@@ -877,9 +877,9 @@ function ProfileSettingsSection({ mode }) {
                                     desc: "다른 사용자에게 프로필 공개"
                                 },
                                 {
-                                    key: "locationShare",
-                                    label: "위치 공유",
-                                    desc: "상대방에게 위치 공유 허용"
+                                    key: "activityNotify",
+                                    label: "활동 알림",
+                                    desc: "상대방의 새 활동 시 알림 받기"
                                 },
                                 {
                                     key: "readReceipt",
@@ -2084,254 +2084,279 @@ function WeddingProfilePage() {
                 className: "px-5 py-5 max-w-md mx-auto space-y-4",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "bg-white rounded-[24px] p-6 shadow-sm",
+                        className: "bg-white rounded-[24px] overflow-hidden shadow-sm",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex justify-end gap-2 mb-2",
+                                className: "relative px-6 pt-10 pb-6",
+                                style: {
+                                    background: "linear-gradient(135deg, #f8f0ff 0%, #f0e6ff 30%, #e8f4ff 70%, #f0f8ff 100%)"
+                                },
                                 children: [
-                                    !isCoupled && !isEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: handleInviteClick,
-                                        disabled: isLoadingInvite,
-                                        className: "px-3 py-1.5 rounded-full bg-[#d63bf2] text-white text-[13px] font-medium flex items-center gap-1 disabled:opacity-50",
-                                        "data-testid": "button-invite-partner-wedding",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute top-3 right-3 flex gap-2",
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2d$plus$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__UserPlus$3e$__["UserPlus"], {
-                                                className: "w-3 h-3"
-                                            }, void 0, false, {
+                                            !isCoupled && !isEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                onClick: handleInviteClick,
+                                                disabled: isLoadingInvite,
+                                                className: "px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm text-[#6B4C8A] text-[13px] font-medium flex items-center gap-1 disabled:opacity-50 border border-white/60",
+                                                "data-testid": "button-invite-partner-wedding",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2d$plus$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__UserPlus$3e$__["UserPlus"], {
+                                                        className: "w-3 h-3"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/wedding/profile/page.tsx",
+                                                        lineNumber: 283,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    isLoadingInvite ? "..." : "초대"
+                                                ]
+                                            }, void 0, true, {
                                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 283,
+                                                lineNumber: 277,
                                                 columnNumber: 17
                                             }, this),
-                                            isLoadingInvite ? "생성 중..." : "상대방 초대"
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                onClick: ()=>setIsEditing(!isEditing),
+                                                className: `px-3 py-1.5 rounded-full text-[13px] font-medium transition-colors ${isEditing ? "bg-[#6B4C8A] text-white" : "bg-white/80 backdrop-blur-sm text-[#6B4C8A] border border-white/60"}`,
+                                                children: isEditing ? "완료" : "편집"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/wedding/profile/page.tsx",
+                                                lineNumber: 287,
+                                                columnNumber: 15
+                                            }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 277,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>setIsEditing(!isEditing),
-                                        className: `px-3 py-1.5 rounded-full text-[13px] font-medium transition-colors ${isEditing ? "bg-[#FF8A80] text-white" : "bg-[#F2F4F6] text-[#4E5968] hover:bg-[#E5E8EB]"}`,
-                                        children: isEditing ? "완료" : "편집"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 287,
+                                        lineNumber: 275,
                                         columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/wedding/profile/page.tsx",
-                                lineNumber: 275,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center justify-center gap-4 mb-6",
-                                children: [
+                                    }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex flex-col items-center",
+                                        className: "flex items-center justify-center gap-6 mb-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "relative",
+                                                className: "flex flex-col items-center",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-20 h-20 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center overflow-hidden border-3 border-[#3182F6]",
-                                                        children: groomProfile.photo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                            src: groomProfile.photo || "/placeholder.svg",
-                                                            alt: "신랑",
-                                                            className: "w-full h-full object-cover"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 306,
-                                                            columnNumber: 21
-                                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-2xl font-bold text-[#3182F6]",
-                                                            children: groomProfile.name[0]
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 308,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    }, void 0, false, {
+                                                        className: "relative",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "w-[84px] h-[84px] rounded-full flex items-center justify-center overflow-hidden border-[3px] border-white shadow-md",
+                                                                style: {
+                                                                    background: "linear-gradient(135deg, #E8DEF8 0%, #D0BCFF 100%)"
+                                                                },
+                                                                children: groomProfile.photo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                    src: groomProfile.photo || "/placeholder.svg",
+                                                                    alt: "신랑",
+                                                                    className: "w-full h-full object-cover"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                    lineNumber: 304,
+                                                                    columnNumber: 23
+                                                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "text-[22px] font-bold text-[#6B4C8A]",
+                                                                    children: groomProfile.name[0]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                    lineNumber: 306,
+                                                                    columnNumber: 23
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                lineNumber: 302,
+                                                                columnNumber: 19
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "absolute -bottom-1 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-[#6B4C8A] shadow-sm",
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "text-[10px] font-bold text-white tracking-wide",
+                                                                    children: "GROOM"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                    lineNumber: 310,
+                                                                    columnNumber: 21
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                lineNumber: 309,
+                                                                columnNumber: 19
+                                                            }, this),
+                                                            isEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                onClick: ()=>setShowPhotoModal("groom"),
+                                                                className: "absolute top-0 right-0 w-7 h-7 rounded-full bg-white border border-[#E5E8EB] flex items-center justify-center shadow-sm",
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$camera$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Camera$3e$__["Camera"], {
+                                                                    className: "w-3.5 h-3.5 text-[#6B4C8A]"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                    lineNumber: 317,
+                                                                    columnNumber: 23
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                lineNumber: 313,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 304,
+                                                        lineNumber: 301,
                                                         columnNumber: 17
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#3182F6] flex items-center justify-center",
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-[10px] font-bold text-white",
-                                                            children: "신랑"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 312,
-                                                            columnNumber: 19
-                                                        }, this)
+                                                    isEditing ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                        type: "text",
+                                                        value: groomProfile.name,
+                                                        onChange: (e)=>setGroomProfile({
+                                                                ...groomProfile,
+                                                                name: e.target.value
+                                                            }),
+                                                        className: "mt-4 w-16 text-center text-[15px] font-bold text-[#191F28] bg-transparent border-b-2 border-[#6B4C8A] focus:outline-none"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 311,
-                                                        columnNumber: 17
-                                                    }, this),
-                                                    isEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                        onClick: ()=>setShowPhotoModal("groom"),
-                                                        className: "absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-white border border-[#E5E8EB] flex items-center justify-center shadow-sm",
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$camera$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Camera$3e$__["Camera"], {
-                                                            className: "w-3.5 h-3.5 text-[#4E5968]"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 319,
-                                                            columnNumber: 21
-                                                        }, this)
+                                                        lineNumber: 322,
+                                                        columnNumber: 19
+                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "mt-4 text-[15px] font-bold text-[#191F28]",
+                                                        children: groomProfile.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 315,
+                                                        lineNumber: 329,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 303,
+                                                lineNumber: 300,
                                                 columnNumber: 15
                                             }, this),
-                                            isEditing ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                type: "text",
-                                                value: groomProfile.name,
-                                                onChange: (e)=>setGroomProfile({
-                                                        ...groomProfile,
-                                                        name: e.target.value
-                                                    }),
-                                                className: "mt-2 w-16 text-center text-[15px] font-bold text-[#191F28] bg-transparent border-b-2 border-[#3182F6] focus:outline-none"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 324,
-                                                columnNumber: 17
-                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "mt-2 text-[15px] font-bold text-[#191F28]",
-                                                children: groomProfile.name
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 331,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 302,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex flex-col items-center -mt-6",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__["Heart"], {
-                                            className: "w-8 h-8 text-[#FF8A80]",
-                                            fill: "currentColor"
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 337,
-                                            columnNumber: 15
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 336,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex flex-col items-center",
-                                        children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "relative",
+                                                className: "flex flex-col items-center -mt-4",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm flex items-center justify-center shadow-sm",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__["Heart"], {
+                                                        className: "w-5 h-5 text-[#C77DEF]",
+                                                        fill: "currentColor"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/wedding/profile/page.tsx",
+                                                        lineNumber: 335,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/wedding/profile/page.tsx",
+                                                    lineNumber: 334,
+                                                    columnNumber: 17
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/wedding/profile/page.tsx",
+                                                lineNumber: 333,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex flex-col items-center",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-20 h-20 rounded-full bg-gradient-to-br from-pink-100 to-pink-200 flex items-center justify-center overflow-hidden border-3 border-[#FF8A80]",
-                                                        children: brideProfile.photo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                            src: brideProfile.photo || "/placeholder.svg",
-                                                            alt: "신부",
-                                                            className: "w-full h-full object-cover"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 345,
-                                                            columnNumber: 21
-                                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-2xl font-bold text-[#FF8A80]",
-                                                            children: brideProfile.name[0]
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 347,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    }, void 0, false, {
+                                                        className: "relative",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "w-[84px] h-[84px] rounded-full flex items-center justify-center overflow-hidden border-[3px] border-white shadow-md",
+                                                                style: {
+                                                                    background: "linear-gradient(135deg, #FFE0F0 0%, #F8BBD0 100%)"
+                                                                },
+                                                                children: brideProfile.photo ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                                    src: brideProfile.photo || "/placeholder.svg",
+                                                                    alt: "신부",
+                                                                    className: "w-full h-full object-cover"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                    lineNumber: 343,
+                                                                    columnNumber: 23
+                                                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "text-[22px] font-bold text-[#8E4585]",
+                                                                    children: brideProfile.name[0]
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                    lineNumber: 345,
+                                                                    columnNumber: 23
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                lineNumber: 341,
+                                                                columnNumber: 19
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "absolute -bottom-1 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-[#8E4585] shadow-sm",
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "text-[10px] font-bold text-white tracking-wide",
+                                                                    children: "BRIDE"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                    lineNumber: 349,
+                                                                    columnNumber: 21
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                lineNumber: 348,
+                                                                columnNumber: 19
+                                                            }, this),
+                                                            isEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                onClick: ()=>setShowPhotoModal("bride"),
+                                                                className: "absolute top-0 right-0 w-7 h-7 rounded-full bg-white border border-[#E5E8EB] flex items-center justify-center shadow-sm",
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$camera$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Camera$3e$__["Camera"], {
+                                                                    className: "w-3.5 h-3.5 text-[#8E4585]"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                    lineNumber: 356,
+                                                                    columnNumber: 23
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/wedding/profile/page.tsx",
+                                                                lineNumber: 352,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 343,
+                                                        lineNumber: 340,
                                                         columnNumber: 17
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#FF8A80] flex items-center justify-center",
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-[10px] font-bold text-white",
-                                                            children: "신부"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 351,
-                                                            columnNumber: 19
-                                                        }, this)
+                                                    isEditing ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                        type: "text",
+                                                        value: brideProfile.name,
+                                                        onChange: (e)=>setBrideProfile({
+                                                                ...brideProfile,
+                                                                name: e.target.value
+                                                            }),
+                                                        className: "mt-4 w-16 text-center text-[15px] font-bold text-[#191F28] bg-transparent border-b-2 border-[#8E4585] focus:outline-none"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 350,
-                                                        columnNumber: 17
-                                                    }, this),
-                                                    isEditing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                        onClick: ()=>setShowPhotoModal("bride"),
-                                                        className: "absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-white border border-[#E5E8EB] flex items-center justify-center shadow-sm",
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$camera$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Camera$3e$__["Camera"], {
-                                                            className: "w-3.5 h-3.5 text-[#4E5968]"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 358,
-                                                            columnNumber: 21
-                                                        }, this)
+                                                        lineNumber: 361,
+                                                        columnNumber: 19
+                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "mt-4 text-[15px] font-bold text-[#191F28]",
+                                                        children: brideProfile.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 354,
+                                                        lineNumber: 368,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 342,
+                                                lineNumber: 339,
                                                 columnNumber: 15
-                                            }, this),
-                                            isEditing ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                type: "text",
-                                                value: brideProfile.name,
-                                                onChange: (e)=>setBrideProfile({
-                                                        ...brideProfile,
-                                                        name: e.target.value
-                                                    }),
-                                                className: "mt-2 w-16 text-center text-[15px] font-bold text-[#191F28] bg-transparent border-b-2 border-[#FF8A80] focus:outline-none"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 363,
-                                                columnNumber: 17
-                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "mt-2 text-[15px] font-bold text-[#191F28]",
-                                                children: brideProfile.name
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 370,
-                                                columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 341,
+                                        lineNumber: 299,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                lineNumber: 300,
+                                lineNumber: 274,
                                 columnNumber: 11
                             }, this),
                             weddingDate && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "bg-gradient-to-r from-blue-50 via-pink-50 to-pink-50 rounded-[16px] p-4",
+                                className: "px-6 py-4 border-t border-[#F2F4F6]",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex items-center justify-between",
@@ -2340,10 +2365,10 @@ function WeddingProfilePage() {
                                                 className: "flex items-center gap-2",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__["Calendar"], {
-                                                        className: "w-4 h-4 text-[#FF8A80]"
+                                                        className: "w-4 h-4 text-[#8B95A1]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 380,
+                                                        lineNumber: 378,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2351,55 +2376,58 @@ function WeddingProfilePage() {
                                                         children: "결혼식"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 381,
+                                                        lineNumber: 379,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 379,
+                                                lineNumber: 377,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-[14px] font-bold text-[#191F28]",
+                                                className: "text-[14px] font-medium text-[#191F28]",
                                                 children: weddingDate
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 383,
+                                                lineNumber: 381,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 378,
+                                        lineNumber: 376,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex items-center justify-center mt-3",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "px-4 py-2 bg-white rounded-full shadow-sm",
+                                            className: "px-5 py-1.5 rounded-full",
+                                            style: {
+                                                background: "linear-gradient(135deg, #f3e8ff 0%, #fce7f3 100%)"
+                                            },
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-[18px] font-bold text-[#FF8A80]",
+                                                className: "text-[17px] font-bold text-[#6B4C8A]",
                                                 children: dday > 0 ? `D-${dday}` : dday === 0 ? "D-Day" : `D+${Math.abs(dday)}`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 387,
+                                                lineNumber: 385,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 386,
+                                            lineNumber: 384,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 385,
+                                        lineNumber: 383,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                lineNumber: 377,
+                                lineNumber: 375,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -2415,17 +2443,20 @@ function WeddingProfilePage() {
                                 className: "bg-white rounded-[16px] p-4 text-center shadow-sm",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-10 h-10 rounded-full bg-[#F3E8FF] flex items-center justify-center mx-auto mb-2",
+                                        className: "w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2",
+                                        style: {
+                                            background: "linear-gradient(135deg, #f3e8ff, #ede5ff)"
+                                        },
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Check$3e$__["Check"], {
-                                            className: "w-5 h-5 text-[#d63bf2]"
+                                            className: "w-5 h-5 text-[#6B4C8A]"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 400,
+                                            lineNumber: 398,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 399,
+                                        lineNumber: 397,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2433,7 +2464,7 @@ function WeddingProfilePage() {
                                         children: stats.completedTodos
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 402,
+                                        lineNumber: 400,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2441,30 +2472,33 @@ function WeddingProfilePage() {
                                         children: "완료한 할일"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 403,
+                                        lineNumber: 401,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                lineNumber: 398,
+                                lineNumber: 396,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "bg-white rounded-[16px] p-4 text-center shadow-sm",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center mx-auto mb-2",
+                                        className: "w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2",
+                                        style: {
+                                            background: "linear-gradient(135deg, #fce7f3, #fdf2f8)"
+                                        },
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$gift$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Gift$3e$__["Gift"], {
-                                            className: "w-5 h-5 text-[#FF8A80]"
+                                            className: "w-5 h-5 text-[#8E4585]"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 407,
+                                            lineNumber: 405,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 406,
+                                        lineNumber: 404,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2472,7 +2506,7 @@ function WeddingProfilePage() {
                                         children: stats.invitations
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 409,
+                                        lineNumber: 407,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2480,30 +2514,33 @@ function WeddingProfilePage() {
                                         children: "청첩장"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 410,
+                                        lineNumber: 408,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                lineNumber: 405,
+                                lineNumber: 403,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "bg-white rounded-[16px] p-4 text-center shadow-sm",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-10 h-10 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-2",
+                                        className: "w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2",
+                                        style: {
+                                            background: "linear-gradient(135deg, #e8f4ff, #f0f8ff)"
+                                        },
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__["Calendar"], {
-                                            className: "w-5 h-5 text-green-500"
+                                            className: "w-5 h-5 text-[#5B7FA5]"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 414,
+                                            lineNumber: 412,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 413,
+                                        lineNumber: 411,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2511,7 +2548,7 @@ function WeddingProfilePage() {
                                         children: stats.events
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 416,
+                                        lineNumber: 414,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2519,46 +2556,46 @@ function WeddingProfilePage() {
                                         children: "예약 일정"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                        lineNumber: 417,
+                                        lineNumber: 415,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                lineNumber: 412,
+                                lineNumber: 410,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/profile/page.tsx",
-                        lineNumber: 397,
+                        lineNumber: 395,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$shared$2f$profile$2d$settings$2d$section$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ProfileSettingsSection"], {
                         mode: "wedding"
                     }, void 0, false, {
                         fileName: "[project]/app/wedding/profile/page.tsx",
-                        lineNumber: 422,
+                        lineNumber: 420,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: handleLogout,
                         disabled: isLoggingOut,
-                        className: "w-full flex items-center justify-center gap-2 py-4 text-[#FF6B6B] text-[15px] font-medium hover:bg-white rounded-[16px] transition-colors disabled:opacity-50",
+                        className: "w-full flex items-center justify-center gap-2 py-4 text-[#E05252] text-[15px] font-medium hover:bg-white rounded-[16px] transition-colors disabled:opacity-50",
                         "data-testid": "button-logout",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__["LogOut"], {
                                 className: "w-5 h-5"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                lineNumber: 431,
+                                lineNumber: 429,
                                 columnNumber: 11
                             }, this),
                             isLoggingOut ? "로그아웃 중..." : "로그아웃"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/wedding/profile/page.tsx",
-                        lineNumber: 425,
+                        lineNumber: 423,
                         columnNumber: 9
                     }, this)
                 ]
@@ -2580,12 +2617,12 @@ function WeddingProfilePage() {
                                 className: "w-10 h-1 bg-[#E5E8EB] rounded-full"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                lineNumber: 447,
+                                lineNumber: 445,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/profile/page.tsx",
-                            lineNumber: 446,
+                            lineNumber: 444,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2596,7 +2633,7 @@ function WeddingProfilePage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wedding/profile/page.tsx",
-                            lineNumber: 449,
+                            lineNumber: 447,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2609,7 +2646,7 @@ function WeddingProfilePage() {
                                             className: "w-5 h-5"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 454,
+                                            lineNumber: 452,
                                             columnNumber: 17
                                         }, this),
                                         "사진 선택",
@@ -2620,13 +2657,13 @@ function WeddingProfilePage() {
                                             className: "hidden"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 456,
+                                            lineNumber: 454,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/profile/page.tsx",
-                                    lineNumber: 453,
+                                    lineNumber: 451,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2635,31 +2672,31 @@ function WeddingProfilePage() {
                                     children: "취소"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wedding/profile/page.tsx",
-                                    lineNumber: 463,
+                                    lineNumber: 461,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wedding/profile/page.tsx",
-                            lineNumber: 452,
+                            lineNumber: 450,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "h-8"
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/profile/page.tsx",
-                            lineNumber: 470,
+                            lineNumber: 468,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/wedding/profile/page.tsx",
-                    lineNumber: 442,
+                    lineNumber: 440,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wedding/profile/page.tsx",
-                lineNumber: 438,
+                lineNumber: 436,
                 columnNumber: 9
             }, this),
             showShareModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2675,12 +2712,12 @@ function WeddingProfilePage() {
                                 className: "w-10 h-1 bg-[#E5E8EB] dark:bg-gray-700 rounded-full"
                             }, void 0, false, {
                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                lineNumber: 485,
+                                lineNumber: 483,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/profile/page.tsx",
-                            lineNumber: 484,
+                            lineNumber: 482,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2694,7 +2731,7 @@ function WeddingProfilePage() {
                                             children: "상대방 초대하기"
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 489,
+                                            lineNumber: 487,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2705,18 +2742,18 @@ function WeddingProfilePage() {
                                                 className: "w-5 h-5 text-[#8B95A1]"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wedding/profile/page.tsx",
-                                                lineNumber: 495,
+                                                lineNumber: 493,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 490,
+                                            lineNumber: 488,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/profile/page.tsx",
-                                    lineNumber: 488,
+                                    lineNumber: 486,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2733,12 +2770,12 @@ function WeddingProfilePage() {
                                                         className: "w-6 h-6 text-[#FEE500]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 505,
+                                                        lineNumber: 503,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/profile/page.tsx",
-                                                    lineNumber: 504,
+                                                    lineNumber: 502,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2749,7 +2786,7 @@ function WeddingProfilePage() {
                                                             children: "카카오톡으로 공유"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 508,
+                                                            lineNumber: 506,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2757,19 +2794,19 @@ function WeddingProfilePage() {
                                                             children: "카카오톡 채팅으로 초대 링크를 보냅니다"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 509,
+                                                            lineNumber: 507,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/profile/page.tsx",
-                                                    lineNumber: 507,
+                                                    lineNumber: 505,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 499,
+                                            lineNumber: 497,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2786,18 +2823,18 @@ function WeddingProfilePage() {
                                                         className: "w-6 h-6 text-green-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 518,
+                                                        lineNumber: 516,
                                                         columnNumber: 31
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$link$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Link2$3e$__["Link2"], {
                                                         className: "w-6 h-6 text-[#4E5968] dark:text-gray-300"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/wedding/profile/page.tsx",
-                                                        lineNumber: 518,
+                                                        lineNumber: 516,
                                                         columnNumber: 78
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wedding/profile/page.tsx",
-                                                    lineNumber: 517,
+                                                    lineNumber: 515,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2808,7 +2845,7 @@ function WeddingProfilePage() {
                                                             children: copied ? "복사됨!" : "링크 복사"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 521,
+                                                            lineNumber: 519,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2816,54 +2853,54 @@ function WeddingProfilePage() {
                                                             children: copied ? "클립보드에 복사되었습니다" : "초대 링크를 클립보드에 복사합니다"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                                            lineNumber: 522,
+                                                            lineNumber: 520,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wedding/profile/page.tsx",
-                                                    lineNumber: 520,
+                                                    lineNumber: 518,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wedding/profile/page.tsx",
-                                            lineNumber: 512,
+                                            lineNumber: 510,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/wedding/profile/page.tsx",
-                                    lineNumber: 498,
+                                    lineNumber: 496,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wedding/profile/page.tsx",
-                            lineNumber: 487,
+                            lineNumber: 485,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "h-10"
                         }, void 0, false, {
                             fileName: "[project]/app/wedding/profile/page.tsx",
-                            lineNumber: 527,
+                            lineNumber: 525,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/wedding/profile/page.tsx",
-                    lineNumber: 480,
+                    lineNumber: 478,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wedding/profile/page.tsx",
-                lineNumber: 476,
+                lineNumber: 474,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$wedding$2f$wedding$2d$bottom$2d$nav$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["WeddingBottomNav"], {}, void 0, false, {
                 fileName: "[project]/app/wedding/profile/page.tsx",
-                lineNumber: 532,
+                lineNumber: 530,
                 columnNumber: 7
             }, this)
         ]
