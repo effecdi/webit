@@ -2826,10 +2826,6 @@
     height: calc(100% - 1px);
   }
 
-  .h-\[env\(safe-area-inset-bottom\)\] {
-    height: env(safe-area-inset-bottom);
-  }
-
   .h-\[var\(--radix-navigation-menu-viewport-height\)\] {
     height: var(--radix-navigation-menu-viewport-height);
   }
@@ -8173,10 +8169,6 @@
 
   .pb-32 {
     padding-bottom: calc(var(--spacing) * 32);
-  }
-
-  .pb-36 {
-    padding-bottom: calc(var(--spacing) * 36);
   }
 
   .pl-2 {
@@ -15783,6 +15775,35 @@
 .dark .glass-menu-item {
   background: #ffffff0f;
   border: 1px solid #ffffff0f;
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-left {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+.safe-right {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+.fixed-bottom-nav {
+  bottom: calc(env(safe-area-inset-bottom, 0px)  + 12px);
+}
+
+.sticky-header-safe, .fixed-header-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+  top: 0;
+}
+
+.pb-nav-safe {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px)  + 120px);
 }
 
 @property --tw-translate-x {

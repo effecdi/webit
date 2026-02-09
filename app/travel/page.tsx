@@ -78,8 +78,8 @@ export default function TravelListPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F4F6] pb-36">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#E5E8EB]">
+    <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe">
+      <header className="fixed top-0 fixed-header-safe left-0 right-0 z-50 bg-white border-b border-[#E5E8EB]">
         <div className="flex items-center justify-center px-5 py-3 max-w-md mx-auto">
           <h1 className="text-[17px] font-bold text-[#191F28]">우리의 여행</h1>
         </div>

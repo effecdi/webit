@@ -233,7 +233,7 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#F2F4F6] dark:bg-[#0a0a0a] pb-36">
+      <div className="min-h-screen bg-[#F2F4F6] dark:bg-[#0a0a0a] pb-nav-safe">
         <header className="bg-white dark:bg-[#111] px-5 py-4 sticky top-0 z-40">
           <div className="flex items-center gap-3 max-w-md mx-auto">
             <div className="h-5 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded w-24 animate-pulse" />
@@ -275,7 +275,7 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-[#F2F4F6] pb-36">
+      <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe">
         <header className="bg-white px-5 py-4 sticky top-0 z-40">
           <div className="flex items-center gap-3 max-w-md mx-auto">
             <span className="text-[15px] text-[#8B95A1]">게시글</span>
@@ -290,8 +290,8 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F4F6] pb-36">
-      <header className="bg-white px-5 py-4 sticky top-0 z-40 border-b border-[#F2F4F6]">
+    <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe">
+      <header className="bg-white px-5 py-4 sticky top-0 sticky-header-safe z-40 border-b border-[#F2F4F6]">
         <div className="flex items-center justify-between max-w-md mx-auto">
           <span className="text-[15px] font-medium text-[#191F28]">게시글</span>
           <div className="flex items-center gap-1">

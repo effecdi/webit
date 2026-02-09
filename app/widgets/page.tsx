@@ -363,7 +363,7 @@ export default function WidgetStorePage() {
 
   return (
     <div className="min-h-dvh bg-[#F7F8FA] dark:bg-gray-950">
-      <div className="sticky top-0 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-[#F2F4F6] dark:border-gray-800">
+      <div className="sticky top-0 sticky-header-safe z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-[#F2F4F6] dark:border-gray-800">
         <div className="flex items-center px-4 h-14">
           <h1 className="flex-1 text-center text-[17px] font-bold text-[#191F28] dark:text-white">
             위젯 스토어

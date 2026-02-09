@@ -240,7 +240,7 @@ export default function WeddingProfilePage() {
   return (
     <main className="min-h-dvh bg-[#F2F4F6] pb-20">
       {/* Header */}
-      <header className="sticky top-0 z-30 bg-white border-b border-[#E5E8EB]">
+      <header className="sticky top-0 sticky-header-safe z-30 bg-white border-b border-[#E5E8EB]">
         <div className="flex items-center justify-between px-4 h-14 max-w-md mx-auto">
           <div className="flex items-center gap-3">
             <h1 className="text-[17px] font-bold text-[#191F28]">프로필</h1>

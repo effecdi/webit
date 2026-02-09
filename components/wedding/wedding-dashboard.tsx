@@ -256,9 +256,9 @@ export function WeddingDashboard() {
   }))
 
   return (
-    <div className="min-h-screen bg-[#F2F4F6] pb-36">
+    <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe">
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#F2F4F6]/90 backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#F2F4F6]/90 backdrop-blur-md fixed-header-safe">
         <div className="flex items-center justify-between px-5 py-3 max-w-md mx-auto">
           <ModeSwitch currentMode="wedding" />
           <div className="relative">

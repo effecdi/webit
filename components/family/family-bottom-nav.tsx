@@ -24,7 +24,7 @@ export function FamilyBottomNav() {
   const isSubPage = !navItems.some(item => pathname === item.href)
 
   return (
-    <div className="fixed bottom-[30px] left-3 right-3 z-50 max-w-md mx-auto flex items-end gap-2">
+    <div className="fixed fixed-bottom-nav left-3 right-3 z-50 max-w-md mx-auto flex items-end gap-2">
       {isSubPage && (
         <button
           onClick={() => router.back()}
@@ -90,7 +90,6 @@ export function FamilyBottomNav() {
             )
           })}
         </div>
-        <div style={{ height: "env(safe-area-inset-bottom)" }} />
       </nav>
     </div>
   )

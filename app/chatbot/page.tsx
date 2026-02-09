@@ -69,7 +69,7 @@ export default function ChatbotPage() {
 
   return (
     <div className="min-h-dvh bg-white flex flex-col" data-testid="page-chatbot">
-      <header className="sticky top-0 z-50 bg-white border-b border-[#F2F4F6] px-4 py-3 flex items-center gap-3">
+      <header className="sticky top-0 sticky-header-safe z-50 bg-white border-b border-[#F2F4F6] px-4 py-3 flex items-center gap-3">
         <div>
           <h1 className="text-[16px] font-bold text-[#191F28]">1:1 문의하기</h1>
           <p className="text-[12px] text-[#8B95A1]">AI 상담사가 도와드립니다</p>

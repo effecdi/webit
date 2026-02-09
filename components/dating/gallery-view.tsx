@@ -293,7 +293,7 @@ export function GalleryView() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#E5E8EB]">
+      <header className="sticky top-0 sticky-header-safe z-50 bg-white/80 backdrop-blur-md border-b border-[#E5E8EB]">
         <div className="flex items-center justify-between px-5 h-14 max-w-md mx-auto">
           {isSelectMode ? (
             <>
@@ -342,7 +342,7 @@ export function GalleryView() {
         </div>
       </header>
 
-      <div className="px-5 py-5 max-w-md mx-auto pb-36">
+      <div className="px-5 py-5 max-w-md mx-auto pb-nav-safe">
         <div className="mb-6">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-[17px] font-bold text-[#191F28]">앨범</h3>

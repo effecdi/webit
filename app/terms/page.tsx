@@ -8,7 +8,7 @@ export default function TermsPage() {
 
   return (
     <main className="min-h-dvh bg-white dark:bg-[#1a1a1a]">
-      <header className="sticky top-0 z-50 bg-white/80 dark:bg-[#1a1a1a]/80 backdrop-blur-md border-b border-[#E5E8EB] dark:border-gray-800">
+      <header className="sticky top-0 sticky-header-safe z-50 bg-white/80 dark:bg-[#1a1a1a]/80 backdrop-blur-md border-b border-[#E5E8EB] dark:border-gray-800">
         <div className="flex items-center justify-center px-4 h-14 max-w-md mx-auto">
           <h1 className="text-[18px] font-bold text-[#191F28] dark:text-white">이용약관</h1>
         </div>

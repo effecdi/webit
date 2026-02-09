@@ -286,9 +286,9 @@ function BudgetPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F4F6] pb-36">
+    <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-[#E5E8EB]">
+      <header className="sticky top-0 sticky-header-safe z-50 bg-white border-b border-[#E5E8EB]">
         <div className="flex items-center justify-between h-14 px-5 max-w-md mx-auto">
           <h1 className="text-[17px] font-bold text-[#191F28]">예산 관리</h1>
           <button 
