@@ -18,7 +18,7 @@ export function DatingBottomNav() {
   return (
     <div className="fixed bottom-[30px] left-3 right-3 z-50 max-w-md mx-auto">
       <nav
-        className="relative rounded-[25px] border border-gray-200/40 shadow-lg"
+        className="relative rounded-[50px] border border-gray-200/40 shadow-lg"
         style={{
           background: "rgba(249, 250, 251, 0.82)",
           backdropFilter: "blur(20px) saturate(180%)",
