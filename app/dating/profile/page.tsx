@@ -104,7 +104,7 @@ export default function ProfilePage() {
         <CoupleProfile />
 
         {/* Membership Card */}
-        <div className="bg-gradient-to-r from-[#FFE4EC] to-[#E4F0FF] rounded-[20px] p-5 shadow-sm">
+        <div className="bg-gradient-to-r from-[#FFE4EC] to-[#E4F0FF] dark:from-[#3D1F2E] dark:to-[#1F2E3D] rounded-[20px] p-5 shadow-sm">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-white/80 flex items-center justify-center">
