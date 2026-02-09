@@ -1,4 +1,19 @@
 {
+  "/api/albums/route": "app/api/albums/route.js",
+  "/api/auth/user/route": "app/api/auth/user/route.js",
+  "/api/checklist/route": "app/api/checklist/route.js",
+  "/api/events/route": "app/api/events/route.js",
+  "/api/expenses/route": "app/api/expenses/route.js",
+  "/api/mood/route": "app/api/mood/route.js",
+  "/api/notifications/route": "app/api/notifications/route.js",
+  "/api/photos/route": "app/api/photos/route.js",
+  "/api/todos/route": "app/api/todos/route.js",
+  "/api/travels/route": "app/api/travels/route.js",
   "/api/user-settings/route": "app/api/user-settings/route.js",
-  "/page": "app/page.js"
+  "/api/wedding-info/route": "app/api/wedding-info/route.js",
+  "/dating/page": "app/dating/page.js",
+  "/family/page": "app/family/page.js",
+  "/page": "app/page.js",
+  "/splash/page": "app/splash/page.js",
+  "/wedding/page": "app/wedding/page.js"
 }
