@@ -19,17 +19,17 @@ export function WeddingBottomNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-24px)] max-w-[calc(448px-24px)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 max-w-md mx-auto">
       <LiquidGlass
-        displacementScale={30}
-        blurAmount={0.5}
+        displacementScale={25}
+        blurAmount={0.4}
         saturation={140}
-        aberrationIntensity={1}
-        elasticity={0.15}
-        cornerRadius={22}
+        aberrationIntensity={0.6}
+        elasticity={0.1}
+        cornerRadius={0}
         overLight={true}
       >
-        <div className="flex justify-around items-center px-1 py-2">
+        <div className="flex justify-around items-end px-2 pt-2 pb-[calc(8px+env(safe-area-inset-bottom))]">
           {navItems.map((item) => {
             const Icon = item.icon
             const isActive = pathname === item.href || (item.href !== "/wedding" && pathname?.startsWith(item.href))
@@ -39,21 +39,31 @@ export function WeddingBottomNav() {
                 key={item.href}
                 href={item.href}
                 data-testid={`nav-wedding-${item.label}`}
-                className="flex flex-col items-center gap-0.5 py-1 px-3 rounded-2xl transition-all duration-200 relative"
+                className={`
+                  flex flex-col items-center justify-center gap-0.5 w-14 relative
+                  transition-transform duration-200 ease-out
+                  active:scale-90
+                  ${isActive ? "-translate-y-1" : ""}
+                `}
               >
-                {isActive && (
-                  <div
-                    className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-4 h-1 rounded-full"
-                    style={{ background: "linear-gradient(90deg, #E8927C, #F4845F)" }}
+                <div
+                  className={`
+                    flex items-center justify-center rounded-full transition-all duration-300 ease-out
+                    ${isActive ? "w-11 h-11 shadow-lg" : "w-9 h-9"}
+                  `}
+                  style={isActive ? {
+                    background: "linear-gradient(135deg, #E8927C, #F4845F)",
+                    boxShadow: "0 4px 14px rgba(232, 146, 124, 0.4)",
+                  } : {}}
+                >
+                  <Icon
+                    className={`transition-all duration-300 ${isActive ? "w-5 h-5" : "w-[22px] h-[22px]"}`}
+                    style={{ color: isActive ? "#fff" : "#8B95A1" }}
+                    strokeWidth={isActive ? 2 : 1.5}
                   />
-                )}
-                <Icon
-                  className="w-5 h-5 transition-colors duration-200"
-                  style={{ color: isActive ? "#E8927C" : "#8B95A1" }}
-                  strokeWidth={isActive ? 2.2 : 1.5}
-                />
+                </div>
                 <span
-                  className="text-[10px] font-medium transition-colors duration-200"
+                  className="text-[10px] font-semibold transition-colors duration-300"
                   style={{ color: isActive ? "#E8927C" : "#8B95A1" }}
                 >
                   {item.label}

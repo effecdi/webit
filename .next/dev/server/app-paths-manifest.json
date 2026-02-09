@@ -16,6 +16,7 @@
   "/page": "app/page.js",
   "/splash/page": "app/splash/page.js",
   "/wedding/budget/page": "app/wedding/budget/page.js",
+  "/wedding/checklist/page": "app/wedding/checklist/page.js",
   "/wedding/community/page": "app/wedding/community/page.js",
   "/wedding/guests/page": "app/wedding/guests/page.js",
   "/wedding/page": "app/wedding/page.js",

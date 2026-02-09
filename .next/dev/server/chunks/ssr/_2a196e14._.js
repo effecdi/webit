@@ -2515,55 +2515,64 @@ const navItems = [
 function WeddingBottomNav() {
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-        className: "fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-24px)] max-w-[calc(448px-24px)]",
+        className: "fixed bottom-0 left-0 right-0 z-50 max-w-md mx-auto",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(LiquidGlass, {
-            displacementScale: 30,
-            blurAmount: 0.5,
+            displacementScale: 25,
+            blurAmount: 0.4,
             saturation: 140,
-            aberrationIntensity: 1,
-            elasticity: 0.15,
-            cornerRadius: 22,
+            aberrationIntensity: 0.6,
+            elasticity: 0.1,
+            cornerRadius: 0,
             overLight: true,
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex justify-around items-center px-1 py-2",
+                className: "flex justify-around items-end px-2 pt-2 pb-[calc(8px+env(safe-area-inset-bottom))]",
                 children: navItems.map((item)=>{
                     const Icon = item.icon;
                     const isActive = pathname === item.href || item.href !== "/wedding" && pathname?.startsWith(item.href);
                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         href: item.href,
                         "data-testid": `nav-wedding-${item.label}`,
-                        className: "flex flex-col items-center gap-0.5 py-1 px-3 rounded-2xl transition-all duration-200 relative",
+                        className: `
+                  flex flex-col items-center justify-center gap-0.5 w-14 relative
+                  transition-transform duration-200 ease-out
+                  active:scale-90
+                  ${isActive ? "-translate-y-1" : ""}
+                `,
                         children: [
-                            isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "absolute -top-0.5 left-1/2 -translate-x-1/2 w-4 h-1 rounded-full",
-                                style: {
-                                    background: "linear-gradient(90deg, #E8927C, #F4845F)"
-                                }
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: `
+                    flex items-center justify-center rounded-full transition-all duration-300 ease-out
+                    ${isActive ? "w-11 h-11 shadow-lg" : "w-9 h-9"}
+                  `,
+                                style: isActive ? {
+                                    background: "linear-gradient(135deg, #E8927C, #F4845F)",
+                                    boxShadow: "0 4px 14px rgba(232, 146, 124, 0.4)"
+                                } : {},
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
+                                    className: `transition-all duration-300 ${isActive ? "w-5 h-5" : "w-[22px] h-[22px]"}`,
+                                    style: {
+                                        color: isActive ? "#fff" : "#8B95A1"
+                                    },
+                                    strokeWidth: isActive ? 2 : 1.5
+                                }, void 0, false, {
+                                    fileName: "[project]/components/wedding/wedding-bottom-nav.tsx",
+                                    lineNumber: 59,
+                                    columnNumber: 19
+                                }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/wedding-bottom-nav.tsx",
-                                lineNumber: 45,
-                                columnNumber: 19
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                className: "w-5 h-5 transition-colors duration-200",
-                                style: {
-                                    color: isActive ? "#E8927C" : "#8B95A1"
-                                },
-                                strokeWidth: isActive ? 2.2 : 1.5
-                            }, void 0, false, {
-                                fileName: "[project]/components/wedding/wedding-bottom-nav.tsx",
-                                lineNumber: 50,
+                                lineNumber: 49,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-[10px] font-medium transition-colors duration-200",
+                                className: "text-[10px] font-semibold transition-colors duration-300",
                                 style: {
                                     color: isActive ? "#E8927C" : "#8B95A1"
                                 },
                                 children: item.label
                             }, void 0, false, {
                                 fileName: "[project]/components/wedding/wedding-bottom-nav.tsx",
-                                lineNumber: 55,
+                                lineNumber: 65,
                                 columnNumber: 17
                             }, this)
                         ]
