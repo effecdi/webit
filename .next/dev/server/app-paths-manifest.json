@@ -1,10 +1,13 @@
 {
   "/api/albums/route": "app/api/albums/route.js",
+  "/api/auth/user/route": "app/api/auth/user/route.js",
   "/api/events/route": "app/api/events/route.js",
+  "/api/notifications/route": "app/api/notifications/route.js",
   "/api/photos/route": "app/api/photos/route.js",
   "/api/todos/route": "app/api/todos/route.js",
   "/api/travels/route": "app/api/travels/route.js",
   "/family/page": "app/family/page.js",
   "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/splash/page": "app/splash/page.js"
 }
