@@ -99,7 +99,7 @@ function WheelDatePicker({ value, onChange, placeholder = "날짜 선택", class
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                 type: "button",
                 onClick: ()=>setIsOpen(true),
-                className: `w-full text-left px-4 py-3 rounded-xl border border-[#E5E8EB] bg-white text-[15px] transition-colors focus:outline-none focus:ring-2 focus:ring-blue-200 ${displayValue ? "text-[#191919]" : "text-[#B0B8C1]"} ${className}`,
+                className: `w-full text-left px-4 py-3 rounded-xl border border-[#E5E8EB] bg-white text-[15px] transition-colors focus:outline-none focus:ring-2 focus:ring-[#e0b3f5] ${displayValue ? "text-[#191919]" : "text-[#B0B8C1]"} ${className}`,
                 "data-testid": "button-date-picker",
                 children: displayValue || placeholder
             }, void 0, false, {

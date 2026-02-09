@@ -50,7 +50,7 @@ export function StatusCards({ selectedStatus, onSelect }: StatusCardsProps) {
               className={`group relative bg-[#F3F5F7] rounded-[32px] p-6
                 transition-all duration-200 ease-out
                 hover:bg-[#EBEEF1] active:scale-[0.98]
-                ${isSelected ? "ring-2 ring-blue-500" : ""}
+                ${isSelected ? "ring-2 ring-[#b455e0]" : ""}
               `}
             >
               <div className="flex items-center gap-4">

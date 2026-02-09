@@ -5268,8 +5268,8 @@
     border-top-color: #191f28;
   }
 
-  .border-t-blue-500 {
-    border-top-color: var(--color-blue-500);
+  .border-t-\[\#b455e0\] {
+    border-top-color: #b455e0;
   }
 
   .border-t-pink-400 {
@@ -7276,10 +7276,6 @@
     fill: var(--color-amber-400);
   }
 
-  .fill-blue-500 {
-    fill: var(--color-blue-500);
-  }
-
   .fill-current {
     fill: currentColor;
   }
@@ -9284,8 +9280,8 @@
     --tw-ring-color: #ff8a80;
   }
 
-  .ring-blue-500 {
-    --tw-ring-color: var(--color-blue-500);
+  .ring-\[\#b455e0\] {
+    --tw-ring-color: #b455e0;
   }
 
   .ring-green-500 {
@@ -11489,8 +11485,8 @@
     --tw-ring-color: #c9a86c;
   }
 
-  .focus\:ring-blue-200:focus {
-    --tw-ring-color: var(--color-blue-200);
+  .focus\:ring-\[\#e0b3f5\]:focus {
+    --tw-ring-color: #e0b3f5;
   }
 
   .focus\:ring-blue-300:focus {

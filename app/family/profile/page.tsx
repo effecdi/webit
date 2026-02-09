@@ -216,7 +216,7 @@ export default function FamilyProfilePage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
                       <Calendar className="w-5 h-5 text-[#b455e0]" />
                     </div>
                     <div>
@@ -271,7 +271,7 @@ export default function FamilyProfilePage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
                       <Calendar className="w-5 h-5 text-[#b455e0]" />
                     </div>
                     <div>

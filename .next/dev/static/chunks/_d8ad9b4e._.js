@@ -1597,7 +1597,7 @@ function ProfileSettingsSection({ mode }) {
                                                     [item.key]: !notifications[item.key]
                                                 }),
                                             "data-testid": `switch-notification-${item.key}`,
-                                            className: `relative w-14 h-8 rounded-full transition-colors ${notifications[item.key] ? "bg-[#3182F6]" : "bg-[#E5E8EB]"}`,
+                                            className: `relative w-14 h-8 rounded-full transition-colors ${notifications[item.key] ? "bg-[#b455e0]" : "bg-[#E5E8EB]"}`,
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: `absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${notifications[item.key] ? "translate-x-7" : "translate-x-1"}`
                                             }, void 0, false, {
@@ -1780,7 +1780,7 @@ function ProfileSettingsSection({ mode }) {
                                                     [item.key]: !privacy[item.key]
                                                 }),
                                             "data-testid": `switch-privacy-${item.key}`,
-                                            className: `relative w-14 h-8 rounded-full transition-colors ${privacy[item.key] ? "bg-[#3182F6]" : "bg-[#E5E8EB]"}`,
+                                            className: `relative w-14 h-8 rounded-full transition-colors ${privacy[item.key] ? "bg-[#b455e0]" : "bg-[#E5E8EB]"}`,
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: `absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${privacy[item.key] ? "translate-x-7" : "translate-x-1"}`
                                             }, void 0, false, {
@@ -1959,7 +1959,7 @@ function ProfileSettingsSection({ mode }) {
                                                         [item.key]: !support[item.key]
                                                     }),
                                                 "data-testid": `switch-support-${item.key}`,
-                                                className: `relative w-14 h-8 rounded-full transition-colors ${support[item.key] ? "bg-[#3182F6]" : "bg-[#E5E8EB]"}`,
+                                                className: `relative w-14 h-8 rounded-full transition-colors ${support[item.key] ? "bg-[#b455e0]" : "bg-[#E5E8EB]"}`,
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: `absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${support[item.key] ? "translate-x-7" : "translate-x-1"}`
                                                 }, void 0, false, {
@@ -2206,7 +2206,7 @@ function ProfileSettingsSection({ mode }) {
                                                     className: "flex items-start gap-2 text-left",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-[#3182F6] font-bold shrink-0",
+                                                            className: "text-[#b455e0] font-bold shrink-0",
                                                             children: "Q."
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/shared/profile-settings-section.tsx",
@@ -2352,7 +2352,7 @@ function ProfileSettingsSection({ mode }) {
                                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: ()=>!widget.isPremium && setSelectedWidget(widget.id),
                                             "data-testid": `button-widget-${widget.id}`,
-                                            className: `relative p-4 rounded-[16px] border-2 transition-all text-left ${isSelected ? "border-[#3182F6] bg-blue-50" : "border-[#E5E8EB] bg-white hover:border-[#B0B8C1]"} ${widget.isPremium ? "opacity-80" : ""}`,
+                                            className: `relative p-4 rounded-[16px] border-2 transition-all text-left ${isSelected ? "border-[#b455e0] bg-[#F3E8FF]" : "border-[#E5E8EB] bg-white hover:border-[#B0B8C1]"} ${widget.isPremium ? "opacity-80" : ""}`,
                                             children: [
                                                 widget.isPremium && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "absolute top-3 right-3",
@@ -2371,7 +2371,7 @@ function ProfileSettingsSection({ mode }) {
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "absolute top-3 right-3",
                                                     children: !widget.isPremium && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: `w-5 h-5 rounded-full border-2 flex items-center justify-center ${isSelected ? "border-[#3182F6] bg-[#3182F6]" : "border-[#B0B8C1]"}`,
+                                                        className: `w-5 h-5 rounded-full border-2 flex items-center justify-center ${isSelected ? "border-[#b455e0] bg-[#b455e0]" : "border-[#B0B8C1]"}`,
                                                         children: isSelected && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "w-2 h-2 rounded-full bg-white"
                                                         }, void 0, false, {
@@ -2390,7 +2390,7 @@ function ProfileSettingsSection({ mode }) {
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: `w-12 h-12 rounded-full flex items-center justify-center mb-3 ${isSelected ? "bg-[#3182F6] text-white" : "bg-[#F2F4F6] text-[#4E5968]"}`,
+                                                    className: `w-12 h-12 rounded-full flex items-center justify-center mb-3 ${isSelected ? "bg-[#b455e0] text-white" : "bg-[#F2F4F6] text-[#4E5968]"}`,
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(IconComponent, {
                                                         className: "w-6 h-6"
                                                     }, void 0, false, {
@@ -3058,9 +3058,9 @@ function FamilyProfilePage() {
                                             className: "flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0",
+                                                    className: "w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__["Calendar"], {
-                                                        className: "w-5 h-5 text-blue-500"
+                                                        className: "w-5 h-5 text-[#b455e0]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/family/profile/page.tsx",
                                                         lineNumber: 220,
@@ -3316,9 +3316,9 @@ function FamilyProfilePage() {
                                             className: "flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0",
+                                                    className: "w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__["Calendar"], {
-                                                        className: "w-5 h-5 text-blue-500"
+                                                        className: "w-5 h-5 text-[#b455e0]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/family/profile/page.tsx",
                                                         lineNumber: 275,

@@ -171,7 +171,7 @@ function InviteWelcomeContent() {
     return (
       <div className="min-h-dvh flex items-center justify-center bg-white dark:bg-gray-950">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-3 border-gray-200 border-t-blue-500 rounded-full animate-spin" />
+          <div className="w-10 h-10 border-3 border-gray-200 border-t-[#b455e0] rounded-full animate-spin" />
           <p className="text-[14px] text-[#8B95A1] dark:text-gray-400">초대를 수락하는 중...</p>
         </div>
       </div>
@@ -224,7 +224,7 @@ export default function InviteWelcomePage() {
   return (
     <Suspense fallback={
       <div className="min-h-dvh flex items-center justify-center bg-white dark:bg-gray-950">
-        <div className="w-10 h-10 border-3 border-gray-200 border-t-blue-500 rounded-full animate-spin" />
+        <div className="w-10 h-10 border-3 border-gray-200 border-t-[#b455e0] rounded-full animate-spin" />
       </div>
     }>
       <InviteWelcomeContent />

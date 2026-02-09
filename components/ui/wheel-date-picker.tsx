@@ -116,7 +116,7 @@ export default function WheelDatePicker({
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className={`w-full text-left px-4 py-3 rounded-xl border border-[#E5E8EB] bg-white text-[15px] transition-colors focus:outline-none focus:ring-2 focus:ring-blue-200 ${
+        className={`w-full text-left px-4 py-3 rounded-xl border border-[#E5E8EB] bg-white text-[15px] transition-colors focus:outline-none focus:ring-2 focus:ring-[#e0b3f5] ${
           displayValue ? "text-[#191919]" : "text-[#B0B8C1]"
         } ${className}`}
         data-testid="button-date-picker"
