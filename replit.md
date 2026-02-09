@@ -48,7 +48,7 @@ The invitation editor utilizes a `LayoutRenderer` pattern, allowing the dynamic 
 - Inviter creates invite via profile page → generates unique `inviteCode` stored in `coupleInvites` table with inviter's mode
 - Invite link shared via KakaoTalk or URL copy: `/invite/{code}`
 - Recipient visits link → sees invite landing page → clicks "초대 수락하기"
-- Click goes to `/api/invite/set-cookie?code=xxx` which sets `pending_invite_code` cookie and redirects to `/login`
+- Click calls `POST /api/invite/set-cookie` with `{code}` to set `pending_invite_code` cookie, then navigates client-side to `/login`
 - After login (Kakao/Google/dev), auth callback checks for cookie → redirects to `/invite-welcome?code=xxx` instead of `/splash`
 - `/invite-welcome` page calls `/api/couple-invite/accept` to accept invite, sets localStorage (selected_mode, survey_myName, survey_partnerName), shows welcome splash, then redirects to correct mode
 - Cookie is cleared after acceptance to prevent repeat redirects

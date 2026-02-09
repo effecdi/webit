@@ -3,6 +3,7 @@
 import { useState, useEffect, use } from "react"
 import { Heart, Sparkles, ArrowRight, Home } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 interface InviteData {
   inviterName: string | null
@@ -48,11 +49,13 @@ const MODE_CONFIG = {
 
 export default function InvitePage({ params }: { params: Promise<{ code: string }> }) {
   const { code } = use(params)
+  const router = useRouter()
   const [invite, setInvite] = useState<InviteData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [showSplash, setShowSplash] = useState(true)
   const [splashPhase, setSplashPhase] = useState<"entering" | "visible" | "exiting">("entering")
+  const [isAccepting, setIsAccepting] = useState(false)
 
   useEffect(() => {
     const fetchInvite = async () => {
@@ -190,14 +193,34 @@ export default function InvitePage({ params }: { params: Promise<{ code: string 
             일정 관리, 사진 공유, D-day 추적 등 다양한 기능이 준비되어 있어요.
           </p>
 
-          <Link
-            href={`/api/invite/set-cookie?code=${code}`}
-            className={`w-full py-4 ${config.buttonBg} text-white font-bold rounded-[14px] transition-all flex items-center justify-center gap-2 text-[15px]`}
-            data-testid="link-accept-invite"
+          <button
+            onClick={async () => {
+              if (isAccepting) return
+              setIsAccepting(true)
+              try {
+                const res = await fetch("/api/invite/set-cookie", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ code }),
+                })
+                if (!res.ok) {
+                  setError("쿠키 설정에 실패했습니다. 다시 시도해주세요.")
+                  setIsAccepting(false)
+                  return
+                }
+                router.push("/login")
+              } catch {
+                setError("네트워크 오류가 발생했습니다. 다시 시도해주세요.")
+                setIsAccepting(false)
+              }
+            }}
+            disabled={isAccepting}
+            className={`w-full py-4 ${config.buttonBg} text-white font-bold rounded-[14px] transition-all flex items-center justify-center gap-2 text-[15px] disabled:opacity-60`}
+            data-testid="button-accept-invite"
           >
-            초대 수락하기
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+            {isAccepting ? "이동 중..." : "초대 수락하기"}
+            {!isAccepting && <ArrowRight className="w-4 h-4" />}
+          </button>
         </div>
 
         <p className="text-center text-[12px] text-[#B0B8C1] dark:text-gray-500">

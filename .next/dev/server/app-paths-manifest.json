@@ -8,7 +8,6 @@
   "/api/events/route": "app/api/events/route.js",
   "/api/expenses/route": "app/api/expenses/route.js",
   "/api/invitations/route": "app/api/invitations/route.js",
-  "/api/invite/set-cookie/route": "app/api/invite/set-cookie/route.js",
   "/api/notifications/route": "app/api/notifications/route.js",
   "/dating/profile/page": "app/dating/profile/page.js",
   "/invite-welcome/page": "app/invite-welcome/page.js",

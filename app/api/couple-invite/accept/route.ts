@@ -83,11 +83,14 @@ export async function POST(request: NextRequest) {
     }
 
     const [inviterUser] = await db
-      .select()
+      .select({ firstName: users.firstName, lastName: users.lastName })
       .from(users)
       .where(eq(users.id, invite.userId));
 
-    const inviterName = invite.inviterName || inviterUser?.firstName || "상대방";
+    const inviterRealName = inviterUser
+      ? [inviterUser.lastName, inviterUser.firstName].filter(Boolean).join("") || null
+      : null;
+    const inviterName = inviterRealName || invite.inviterName || "상대방";
 
     return NextResponse.json({
       success: true,
