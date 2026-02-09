@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { FloatingBackButton } from "@/components/shared/floating-back-button"
 import { 
-  ArrowLeft, Heart, Calendar, Sparkles, Music2, 
-  MessageCircle, MapPin, Crown, Check, Lock, 
+  ArrowLeft, Heart, Calendar, Sparkles, CheckSquare, 
+  MessageCircle, Wallet, Crown, Check, Lock, 
   Smartphone, X, Zap
 } from "lucide-react"
 import Image from "next/image"
@@ -168,64 +168,61 @@ function LoveLetterWidgetPreview() {
   )
 }
 
-function LocationWidgetPreview() {
+function TodoWidgetPreview() {
   return (
-    <div className="bg-gradient-to-br from-[#0d1b2a] to-[#1b2838] rounded-[20px] p-4 border border-[#d63bf2]/20 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-8 left-6 w-20 h-20 border border-[#d63bf2]/30 rounded-full" />
-        <div className="absolute top-12 left-10 w-12 h-12 border border-[#d63bf2]/20 rounded-full" />
+    <div className="bg-gradient-to-br from-[#0d1b2a] to-[#1b2838] rounded-[20px] p-4 border border-[#d63bf2]/20">
+      <div className="flex items-center gap-2 mb-3">
+        <CheckSquare className="w-4 h-4 text-[#d63bf2]" />
+        <span className="text-white/60 text-[10px]">커플 할 일</span>
       </div>
-      <div className="relative z-10">
-        <div className="flex items-center gap-2 mb-3">
-          <MapPin className="w-4 h-4 text-[#d63bf2]" />
-          <span className="text-white/60 text-[10px]">우리의 위치</span>
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded border border-[#d63bf2] flex items-center justify-center">
+            <Check className="w-2.5 h-2.5 text-[#d63bf2]" />
+          </div>
+          <span className="text-white/40 text-[10px] line-through">카페 예약하기</span>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="flex flex-col items-center">
-            <div className="w-8 h-8 rounded-full bg-[#d63bf2]/30 flex items-center justify-center">
-              <div className="w-3 h-3 rounded-full bg-[#d63bf2]" />
-            </div>
-            <span className="text-white/40 text-[8px] mt-1">나</span>
-          </div>
-          <div className="flex-1 h-[1px] bg-gradient-to-r from-[#d63bf2]/60 to-[#d63bf2]/20 relative">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/40 text-[8px] bg-[#0d1b2a] px-1">2.3km</div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="w-8 h-8 rounded-full bg-pink-500/30 flex items-center justify-center">
-              <div className="w-3 h-3 rounded-full bg-pink-500" />
-            </div>
-            <span className="text-white/40 text-[8px] mt-1">상대</span>
-          </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded border border-white/20" />
+          <span className="text-white text-[10px]">선물 준비</span>
         </div>
-        <p className="text-white/40 text-[9px] mt-2 text-center">서로 가까이 있어요</p>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded border border-white/20" />
+          <span className="text-white text-[10px]">여행 계획 세우기</span>
+        </div>
+      </div>
+      <div className="mt-3 bg-white/5 rounded-[8px] p-2 text-center">
+        <span className="text-white/40 text-[9px]">완료 1/3</span>
       </div>
     </div>
   )
 }
 
-function MusicWidgetPreview() {
+function ExpenseWidgetPreview() {
   return (
     <div className="bg-gradient-to-br from-[#1e0533] to-[#0d001a] rounded-[20px] p-4 border border-[#d63bf2]/20">
       <div className="flex items-center gap-2 mb-2">
-        <Music2 className="w-4 h-4 text-[#d63bf2]" />
-        <span className="text-white/60 text-[10px]">커플 음악</span>
+        <Wallet className="w-4 h-4 text-[#d63bf2]" />
+        <span className="text-white/60 text-[10px]">커플 가계부</span>
       </div>
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-[8px] bg-gradient-to-br from-[#d63bf2] to-[#6b2fa0] flex items-center justify-center flex-shrink-0">
-          <Music2 className="w-5 h-5 text-white" />
-        </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-white text-[11px] font-medium truncate">우리의 노래</p>
-          <p className="text-white/40 text-[9px] truncate">Artist</p>
-        </div>
+      <div className="text-center my-2">
+        <p className="text-white/40 text-[9px]">이번 달 지출</p>
+        <p className="text-white text-[18px] font-bold">284,500<span className="text-[10px] text-white/40">원</span></p>
       </div>
-      <div className="mt-3">
-        <div className="w-full h-[3px] bg-white/10 rounded-full overflow-hidden">
-          <div className="w-[60%] h-full bg-gradient-to-r from-[#d63bf2] to-pink-400 rounded-full" />
+      <div className="space-y-1.5">
+        <div className="flex items-center justify-between">
+          <span className="text-white/60 text-[9px]">식비</span>
+          <div className="flex-1 mx-2 h-[3px] bg-white/10 rounded-full overflow-hidden">
+            <div className="w-[65%] h-full bg-[#d63bf2] rounded-full" />
+          </div>
+          <span className="text-white/40 text-[8px]">65%</span>
         </div>
-        <div className="flex justify-between mt-1">
-          <span className="text-white/30 text-[8px]">2:14</span>
-          <span className="text-white/30 text-[8px]">3:42</span>
+        <div className="flex items-center justify-between">
+          <span className="text-white/60 text-[9px]">데이트</span>
+          <div className="flex-1 mx-2 h-[3px] bg-white/10 rounded-full overflow-hidden">
+            <div className="w-[25%] h-full bg-pink-400 rounded-full" />
+          </div>
+          <span className="text-white/40 text-[8px]">25%</span>
         </div>
       </div>
     </div>
@@ -270,22 +267,22 @@ const WIDGET_DATA: WidgetType[] = [
     previewComponent: <LoveLetterWidgetPreview />,
   },
   {
-    id: "location",
-    name: "위치 공유 위젯",
-    description: "상대방과의 거리를 실시간 표시",
-    icon: MapPin,
+    id: "todo",
+    name: "할 일 위젯",
+    description: "커플 할 일 목록을 한눈에 확인",
+    icon: CheckSquare,
     isPremium: true,
     category: "premium",
-    previewComponent: <LocationWidgetPreview />,
+    previewComponent: <TodoWidgetPreview />,
   },
   {
-    id: "music",
-    name: "커플 뮤직 위젯",
-    description: "함께 듣는 음악을 위젯으로 공유",
-    icon: Music2,
+    id: "expense",
+    name: "가계부 위젯",
+    description: "이번 달 커플 지출 현황 요약",
+    icon: Wallet,
     isPremium: true,
     category: "premium",
-    previewComponent: <MusicWidgetPreview />,
+    previewComponent: <ExpenseWidgetPreview />,
   },
 ]
 
@@ -497,7 +494,7 @@ export default function WidgetStorePage() {
                 <span className="text-white/90 text-[14px] font-bold">프리미엄 구독</span>
               </div>
               <p className="text-white/70 text-[13px] mb-4 leading-relaxed">
-                프리미엄 위젯 4종 + 무제한 저장공간 + AI 추천 기능을 한번에 이용하세요
+                프리미엄 위젯 4종 + 커플 통계 + 고급 캘린더를 한번에 이용하세요
               </p>
               <button
                 onClick={handlePremiumSubscribe}

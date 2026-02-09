@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { ArrowLeft, Crown, ImageIcon, Heart, Calendar, Star, Sparkles, BookOpen, Palette, BarChart3, Zap } from "lucide-react"
+import { ArrowLeft, Crown, ImageIcon, Heart, Calendar, Star, Sparkles, BookOpen, Bell, BarChart3, Zap } from "lucide-react"
 
 interface MembershipPageProps {
   mode: "dating" | "family"
@@ -25,13 +25,13 @@ const featureCards = {
     {
       icon: Calendar,
       title: "고급 캘린더",
-      description: "반복 일정, 스마트 알림, D-day 위젯으로 중요한 날을 놓치지 마세요.",
+      description: "반복 일정, 스마트 알림, D-day 카운트다운으로 중요한 날을 놓치지 마세요.",
       gradient: "from-[#9B59B6] to-[#C471ED]",
     },
     {
-      icon: Palette,
-      title: "프리미엄 위젯 5종",
-      description: "커스텀 디자인 위젯으로 홈 화면을 우리만의 스타일로 꾸며보세요.",
+      icon: Bell,
+      title: "스마트 알림",
+      description: "기념일, 생일, 커플 할 일 마감일에 맞춰 자동으로 알려드려요.",
       gradient: "from-[#E74C8B] to-[#F472B6]",
     },
   ],
@@ -84,9 +84,9 @@ const familyFeatureCards = {
       gradient: "from-[#3498DB] to-[#5DADE2]",
     },
     {
-      icon: Palette,
-      title: "가족 위젯 5종",
-      description: "커스텀 디자인 위젯으로 홈 화면을 우리 가족 스타일로 꾸며보세요.",
+      icon: Bell,
+      title: "스마트 알림",
+      description: "아이 일정, 가족 기념일, 할 일 마감일에 맞춰 자동으로 알려드려요.",
       gradient: "from-[#9B59B6] to-[#C471ED]",
     },
   ],

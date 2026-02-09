@@ -48,7 +48,7 @@ export default function FamilyProfilePage() {
             <span className="text-[15px] font-bold">Family Premium</span>
           </div>
           <p className="text-[13px] opacity-80 mb-4">
-            무제한 가족 앨범, 캘린더 공유, 위젯 커스터마이징 등 다양한 혜택을 누려보세요
+            가족 앨범 500장, 성장 리포트, 스마트 알림 등 다양한 혜택을 누려보세요
           </p>
           <button 
             onClick={() => router.push("/family/membership")}

@@ -58,7 +58,7 @@ export default function ProfilePage() {
             </span>
           </div>
           <p className="text-[13px] text-[#4E5968] mb-4">
-            무제한 사진 저장, 위젯 커스터마이징 등 다양한 혜택을 누려보세요
+            사진 500장 저장, 커플 통계, 고급 캘린더 등 다양한 혜택을 누려보세요
           </p>
           <button 
             onClick={() => router.push("/dating/membership")}

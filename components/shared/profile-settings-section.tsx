@@ -36,7 +36,7 @@ interface SettingsData {
   notifGift: boolean
   notifDaily: boolean
   privacyProfileVisible: boolean
-  privacyLocationShare: boolean
+  privacyActivityNotify: boolean
   privacyReadReceipt: boolean
   privacyOnlineStatus: boolean
   privacyActivityShare: boolean
@@ -53,7 +53,7 @@ const DEFAULTS: SettingsData = {
   notifGift: false,
   notifDaily: false,
   privacyProfileVisible: true,
-  privacyLocationShare: false,
+  privacyActivityNotify: false,
   privacyReadReceipt: true,
   privacyOnlineStatus: true,
   privacyActivityShare: false,
@@ -86,7 +86,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "멤버십 구독 요금은 얼마인가요?",
-    a: "WE:BEAT 멤버십은 Advanced(월 4,900원)와 Premium(월 9,900원) 두 가지 플랜을 제공합니다. Advanced는 커플 통계 리포트와 추가 저장 공간을, Premium은 AI 추천, 무제한 저장 공간, 프리미엄 템플릿 등 모든 기능을 이용할 수 있습니다.",
+    a: "WE:BEAT 멤버십은 고급(월 1,900원, 정가 3,900원에서 할인)과 프리미엄(월 6,900원, 출시 예정) 두 가지 플랜을 제공합니다. 고급 플랜은 사진 500장 저장, 커플 통계 리포트, 고급 캘린더, 스마트 알림을 제공하며, 연간 결제 시 20% 할인됩니다.",
   },
   {
     q: "사진과 데이터는 안전하게 보관되나요?",
@@ -165,7 +165,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
 
   const privacy = {
     profileVisible: settings.privacyProfileVisible,
-    locationShare: settings.privacyLocationShare,
+    activityNotify: settings.privacyActivityNotify,
     readReceipt: settings.privacyReadReceipt,
     onlineStatus: settings.privacyOnlineStatus,
     activityShare: settings.privacyActivityShare,
@@ -188,7 +188,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
 
   const privacyKeyMap: Record<string, keyof SettingsData> = {
     profileVisible: "privacyProfileVisible",
-    locationShare: "privacyLocationShare",
+    activityNotify: "privacyActivityNotify",
     readReceipt: "privacyReadReceipt",
     onlineStatus: "privacyOnlineStatus",
     activityShare: "privacyActivityShare",
@@ -344,7 +344,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
             <div className="px-5 py-4 space-y-1">
               {[
                 { key: "profileVisible", label: "프로필 공개", desc: "다른 사용자에게 프로필 공개" },
-                { key: "locationShare", label: "위치 공유", desc: "상대방에게 위치 공유 허용" },
+                { key: "activityNotify", label: "활동 알림", desc: "상대방의 새 활동 시 알림 받기" },
                 { key: "readReceipt", label: "읽음 표시", desc: "메시지 읽음 표시 보내기" },
                 { key: "onlineStatus", label: "온라인 상태", desc: "접속 상태 표시하기" },
                 { key: "activityShare", label: "활동 공유", desc: "앱 활동 내역 공유" },
