@@ -5063,6 +5063,16 @@
     border-color: var(--color-gray-200);
   }
 
+  .border-gray-200\/60 {
+    border-color: #e5e7eb99;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-gray-200\/60 {
+      border-color: color-mix(in oklab, var(--color-gray-200) 60%, transparent);
+    }
+  }
+
   .border-gray-300 {
     border-color: var(--color-gray-300);
   }
@@ -11421,6 +11431,10 @@
     --tw-scale-y: 95%;
     --tw-scale-z: 95%;
     scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+
+  .active\:scale-\[0\.85\]:active {
+    scale: .85;
   }
 
   .active\:scale-\[0\.98\]:active {
