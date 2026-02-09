@@ -1801,10 +1801,6 @@
     z-index: 3;
   }
 
-  .z-\[55\] {
-    z-index: 55;
-  }
-
   .z-\[60\] {
     z-index: 60;
   }
@@ -10114,11 +10110,6 @@
   .duration-200 {
     --tw-duration: .2s;
     transition-duration: .2s;
-  }
-
-  .duration-250 {
-    --tw-duration: .25s;
-    transition-duration: .25s;
   }
 
   .duration-300 {

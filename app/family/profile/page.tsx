@@ -204,8 +204,8 @@ export default function FamilyProfilePage() {
                       <Heart className="w-5 h-5 text-pink-500" />
                     </div>
                     <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">광고 제거</p>
-                      <p className="text-[12px] text-[#8B95A1]">방해 없이 가족 공간을 즐기세요</p>
+                      <p className="text-[14px] font-semibold text-[#191F28]">가족 성장 리포트</p>
+                      <p className="text-[12px] text-[#8B95A1]">아이 성장 기록과 가족 활동 통계</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
@@ -259,8 +259,8 @@ export default function FamilyProfilePage() {
                       <Heart className="w-5 h-5 text-pink-500" />
                     </div>
                     <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">광고 제거</p>
-                      <p className="text-[12px] text-[#8B95A1]">방해 없이 가족 공간을 즐기세요</p>
+                      <p className="text-[14px] font-semibold text-[#191F28]">AI 가족 활동 추천</p>
+                      <p className="text-[12px] text-[#8B95A1]">맞춤형 가족 활동과 나들이 코스 추천</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">

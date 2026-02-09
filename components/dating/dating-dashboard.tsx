@@ -1063,10 +1063,10 @@ export function DatingDashboard() {
                 </div>
                 <div>
                   <p className="text-[14px] font-semibold text-[#191F28]">
-                    광고 없는 환경
+                    커플 통계 리포트
                   </p>
                   <p className="text-[12px] text-[#8B95A1]">
-                    방해 없이 둘만의 공간을 즐기세요
+                    우리만의 데이트 기록과 통계를 확인하세요
                   </p>
                 </div>
               </div>

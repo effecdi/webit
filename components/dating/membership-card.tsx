@@ -16,7 +16,7 @@ const MEMBERSHIP_PLANS = [
     id: "premium",
     name: "Premium",
     price: "₩1,900/월",
-    features: ["무제한 캘린더", "사진 무제한", "프리미엄 위젯", "광고 제거", "고화질 원본 평생 보관", "히스토리 북 무제한"],
+    features: ["무제한 캘린더", "사진 무제한", "프리미엄 위젯", "커플 통계 리포트", "고화질 원본 평생 보관", "히스토리 북 무제한"],
     color: "bg-primary/20",
     borderColor: "border-primary",
     popular: true,

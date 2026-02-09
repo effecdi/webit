@@ -1615,7 +1615,7 @@ const FAQ_ITEMS = [
     },
     {
         q: "멤버십 구독 요금은 얼마인가요?",
-        a: "WE:BEAT 멤버십은 Advanced(월 4,900원)와 Premium(월 9,900원) 두 가지 플랜을 제공합니다. Advanced는 광고 제거와 추가 저장 공간을, Premium은 AI 추천, 무제한 저장 공간, 프리미엄 템플릿 등 모든 기능을 이용할 수 있습니다."
+        a: "WE:BEAT 멤버십은 Advanced(월 4,900원)와 Premium(월 9,900원) 두 가지 플랜을 제공합니다. Advanced는 커플 통계 리포트와 추가 저장 공간을, Premium은 AI 추천, 무제한 저장 공간, 프리미엄 템플릿 등 모든 기능을 이용할 수 있습니다."
     },
     {
         q: "사진과 데이터는 안전하게 보관되나요?",
@@ -3175,7 +3175,7 @@ function ProfilePage() {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             className: "text-[14px] font-semibold text-[#191F28]",
-                                                            children: "광고 제거"
+                                                            children: "커플 통계 리포트"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dating/profile/page.tsx",
                                                             lineNumber: 225,
@@ -3183,7 +3183,7 @@ function ProfilePage() {
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             className: "text-[12px] text-[#8B95A1]",
-                                                            children: "방해 없이 둘만의 공간을 즐기세요"
+                                                            children: "우리만의 데이트 기록과 통계를 확인하세요"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dating/profile/page.tsx",
                                                             lineNumber: 226,
@@ -3433,7 +3433,7 @@ function ProfilePage() {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             className: "text-[14px] font-semibold text-[#191F28]",
-                                                            children: "광고 제거"
+                                                            children: "AI 데이트 코스 추천"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dating/profile/page.tsx",
                                                             lineNumber: 280,
@@ -3441,7 +3441,7 @@ function ProfilePage() {
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             className: "text-[12px] text-[#8B95A1]",
-                                                            children: "방해 없이 둘만의 공간을 즐기세요"
+                                                            children: "취향 맞춤 데이트 장소와 코스를 추천받으세요"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/dating/profile/page.tsx",
                                                             lineNumber: 281,

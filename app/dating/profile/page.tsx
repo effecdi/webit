@@ -222,8 +222,8 @@ export default function ProfilePage() {
                       <Heart className="w-5 h-5 text-pink-500" />
                     </div>
                     <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">광고 제거</p>
-                      <p className="text-[12px] text-[#8B95A1]">방해 없이 둘만의 공간을 즐기세요</p>
+                      <p className="text-[14px] font-semibold text-[#191F28]">커플 통계 리포트</p>
+                      <p className="text-[12px] text-[#8B95A1]">우리만의 데이트 기록과 통계를 확인하세요</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
@@ -277,8 +277,8 @@ export default function ProfilePage() {
                       <Heart className="w-5 h-5 text-pink-500" />
                     </div>
                     <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">광고 제거</p>
-                      <p className="text-[12px] text-[#8B95A1]">방해 없이 둘만의 공간을 즐기세요</p>
+                      <p className="text-[14px] font-semibold text-[#191F28]">AI 데이트 코스 추천</p>
+                      <p className="text-[12px] text-[#8B95A1]">취향 맞춤 데이트 장소와 코스를 추천받으세요</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">

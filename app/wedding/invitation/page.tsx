@@ -544,7 +544,7 @@ export default function InvitationGalleryPage() {
 
                     {/* Benefits */}
                     <div className="space-y-2 mb-8">
-                      {["모든 프리미엄 템플릿 사용", "고급 오프닝 애니메이션", "광고 없는 청첩장"].map((benefit) => (
+                      {["모든 프리미엄 템플릿 사용", "고급 오프닝 애니메이션", "맞춤형 RSVP 관리"].map((benefit) => (
                         <div key={benefit} className="flex items-center gap-2">
                           <Check className="w-4 h-4 text-[#4CAF50]" />
                           <span className="text-[14px] text-[#4E5968]">{benefit}</span>

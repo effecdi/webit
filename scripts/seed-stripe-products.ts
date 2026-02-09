@@ -10,10 +10,10 @@ async function seedProducts() {
     console.log('Creating Advanced plan...');
     const advancedProduct = await stripe.products.create({
       name: 'WE:BEAT 고급 (Advanced)',
-      description: '광고 제거, 무제한 저장공간, 우선 지원',
+      description: '커플 통계 리포트, 무제한 저장공간, 우선 지원',
       metadata: {
         tier: 'advanced',
-        features: 'ad_free,unlimited_storage,priority_support',
+        features: 'couple_stats,unlimited_storage,priority_support',
       },
     });
 
@@ -47,7 +47,7 @@ async function seedProducts() {
       description: 'AI 추천, 프리미엄 테마, 데이터 분석 포함 모든 기능',
       metadata: {
         tier: 'premium',
-        features: 'ad_free,unlimited_storage,priority_support,ai_recommendations,premium_themes,data_analytics',
+        features: 'couple_stats,unlimited_storage,priority_support,ai_recommendations,premium_themes,data_analytics',
       },
     });
 
