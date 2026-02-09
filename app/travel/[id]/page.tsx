@@ -325,7 +325,7 @@ export default function TravelDetailPage() {
                     </span>
                     <span className={`text-[11px] px-2 py-0.5 rounded-full ${
                       item.category === "shared" 
-                        ? "bg-[#F3E8FF] text-[#b455e0]" 
+                        ? "bg-[#F3E8FF] text-[#d63bf2]" 
                         : "bg-purple-50 text-purple-500"
                     }`}>
                       {item.category === "shared" ? "공유" : "개인"}

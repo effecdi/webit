@@ -50,13 +50,13 @@ export function StatusCards({ selectedStatus, onSelect }: StatusCardsProps) {
               className={`group relative bg-[#F3F5F7] rounded-[32px] p-6
                 transition-all duration-200 ease-out
                 hover:bg-[#EBEEF1] active:scale-[0.98]
-                ${isSelected ? "ring-2 ring-[#b455e0]" : ""}
+                ${isSelected ? "ring-2 ring-[#d63bf2]" : ""}
               `}
             >
               <div className="flex items-center gap-4">
                 {/* Icon Container - White circle with blue icon */}
                 <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm">
-                  <Icon className="w-7 h-7 text-[#b455e0]" />
+                  <Icon className="w-7 h-7 text-[#d63bf2]" />
                 </div>
 
                 {/* Text Content */}

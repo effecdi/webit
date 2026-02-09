@@ -25,7 +25,7 @@ const ICON_MAP: Record<string, typeof Heart> = {
 const ICON_OPTIONS = [
   { key: "Heart", icon: Heart, label: "하트", color: "text-pink-500" },
   { key: "Sparkles", icon: Sparkles, label: "별", color: "text-amber-500" },
-  { key: "Gem", icon: Gem, label: "반지", color: "text-[#b455e0]" },
+  { key: "Gem", icon: Gem, label: "반지", color: "text-[#d63bf2]" },
   { key: "Home", icon: Home, label: "집", color: "text-green-500" },
 ]
 

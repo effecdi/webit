@@ -36,11 +36,11 @@ export default function SurveyStep5() {
       <div className="flex-1 flex flex-col justify-center">
         <div className="mb-8">
           <div className="flex gap-1.5 mb-8">
-            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
-            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
-            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
-            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
-            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-8 h-1.5 bg-[#d63bf2] rounded-full" />
+            <div className="w-8 h-1.5 bg-[#d63bf2] rounded-full" />
+            <div className="w-8 h-1.5 bg-[#d63bf2] rounded-full" />
+            <div className="w-8 h-1.5 bg-[#d63bf2] rounded-full" />
+            <div className="w-8 h-1.5 bg-[#d63bf2] rounded-full" />
           </div>
           <h1 className="text-[28px] font-bold text-[#191F28] leading-tight">
             우리 커플을<br/>소개해주세요
@@ -58,7 +58,7 @@ export default function SurveyStep5() {
           onCompositionEnd={() => setIsComposing(false)}
           placeholder="예) 같은 회사에서 만났어요, 대학교 동기예요..."
           rows={4}
-          className="w-full p-5 rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-[#b455e0] resize-none"
+          className="w-full p-5 rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-[#d63bf2] resize-none"
           data-testid="input-couple-intro"
         />
       </div>
@@ -73,7 +73,7 @@ export default function SurveyStep5() {
         </button>
         <button
           onClick={handleNext}
-          className="flex-1 h-14 rounded-[16px] font-semibold text-white bg-[#b455e0] hover:bg-[#9240b8] active:scale-[0.98] transition-all"
+          className="flex-1 h-14 rounded-[16px] font-semibold text-white bg-[#d63bf2] hover:bg-[#a82cbf] active:scale-[0.98] transition-all"
           data-testid="button-next"
         >
           완료

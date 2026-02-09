@@ -12,7 +12,7 @@ export default function RootPage() {
 
   return (
     <main className="min-h-dvh bg-white flex items-center justify-center">
-      <div className="w-8 h-8 border-3 border-[#b455e0] border-t-transparent rounded-full animate-spin" />
+      <div className="w-8 h-8 border-3 border-[#d63bf2] border-t-transparent rounded-full animate-spin" />
     </main>
   )
 }

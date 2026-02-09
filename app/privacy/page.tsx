@@ -70,28 +70,28 @@ export default function PrivacyPolicyPage() {
             <p className="mb-3">수집한 개인정보는 다음의 목적을 위해 이용됩니다:</p>
             <div className="space-y-3">
               <div className="flex gap-3">
-                <span className="text-[#b455e0] font-bold shrink-0">1.</span>
+                <span className="text-[#d63bf2] font-bold shrink-0">1.</span>
                 <div>
                   <p className="font-semibold text-[#191F28] dark:text-white">회원 관리</p>
                   <p className="text-[13px] text-[#8B95A1]">본인 확인, 회원 식별, 서비스 부정 이용 방지, 고지 및 통지사항 전달</p>
                 </div>
               </div>
               <div className="flex gap-3">
-                <span className="text-[#b455e0] font-bold shrink-0">2.</span>
+                <span className="text-[#d63bf2] font-bold shrink-0">2.</span>
                 <div>
                   <p className="font-semibold text-[#191F28] dark:text-white">서비스 제공</p>
                   <p className="text-[13px] text-[#8B95A1]">커플 데이터 공유, 캘린더·사진·투두 등 핵심 기능 제공, 커뮤니티 운영</p>
                 </div>
               </div>
               <div className="flex gap-3">
-                <span className="text-[#b455e0] font-bold shrink-0">3.</span>
+                <span className="text-[#d63bf2] font-bold shrink-0">3.</span>
                 <div>
                   <p className="font-semibold text-[#191F28] dark:text-white">서비스 개선</p>
                   <p className="text-[13px] text-[#8B95A1]">서비스 이용 통계 분석, 신규 기능 개발, 이용자 맞춤 서비스 제공</p>
                 </div>
               </div>
               <div className="flex gap-3">
-                <span className="text-[#b455e0] font-bold shrink-0">4.</span>
+                <span className="text-[#d63bf2] font-bold shrink-0">4.</span>
                 <div>
                   <p className="font-semibold text-[#191F28] dark:text-white">결제 처리</p>
                   <p className="text-[13px] text-[#8B95A1]">유료 서비스 결제 및 환불 처리, 구독 관리</p>

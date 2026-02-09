@@ -14,7 +14,7 @@ export function OnboardingHero() {
     <section className="pt-6 pb-8 px-5 bg-white">
       {/* Header Logo */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-[#b455e0] tracking-tight">
+        <h1 className="text-2xl font-bold text-[#d63bf2] tracking-tight">
           WE:BEAT
         </h1>
       </div>
@@ -35,12 +35,12 @@ export function OnboardingHero() {
         </div>
 
         {/* Heart Badge - Top Right */}
-        <div className="absolute -top-2 -right-2 w-10 h-10 bg-[#b455e0] rounded-full flex items-center justify-center shadow-lg">
+        <div className="absolute -top-2 -right-2 w-10 h-10 bg-[#d63bf2] rounded-full flex items-center justify-center shadow-lg">
           <Heart className="w-5 h-5 text-white fill-white" />
         </div>
 
         {/* Small Badge - Bottom Left */}
-        <div className="absolute -bottom-1 -left-1 w-8 h-8 bg-[#b455e0] rounded-full flex items-center justify-center shadow-lg">
+        <div className="absolute -bottom-1 -left-1 w-8 h-8 bg-[#d63bf2] rounded-full flex items-center justify-center shadow-lg">
           <div className="w-3 h-3 bg-white rounded-full" />
         </div>
       </div>

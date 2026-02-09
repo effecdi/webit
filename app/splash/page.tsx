@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/hooks/use-auth"
 import { motion, AnimatePresence } from "framer-motion"
-import splashLogo from "@/attached_assets/weve.logo_1770639762406.png"
+import splashLogo from "@/attached_assets/webeat.logo_1770644808504.png"
 import Image from "next/image"
 
 export default function SplashPage() {
@@ -77,7 +77,7 @@ export default function SplashPage() {
   return (
     <AnimatePresence>
       <motion.main
-        className="min-h-dvh bg-[#b455e0] flex items-center justify-center"
+        className="min-h-dvh bg-[#d63bf2] flex items-center justify-center"
         animate={{ opacity: fadeOut ? 0 : 1 }}
         transition={{ duration: 0.5 }}
       >

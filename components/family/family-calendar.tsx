@@ -15,7 +15,7 @@ interface Event {
 
 const CATEGORY_STYLES = {
   me: { bg: "bg-pink-500", light: "bg-pink-50", text: "text-pink-500", label: "나" },
-  partner: { bg: "bg-[#b455e0]", light: "bg-[#F3E8FF]", text: "text-[#b455e0]", label: "파트너" },
+  partner: { bg: "bg-[#d63bf2]", light: "bg-[#F3E8FF]", text: "text-[#d63bf2]", label: "파트너" },
   together: { bg: "bg-green-500", light: "bg-green-50", text: "text-green-500", label: "함께" },
   anniversary: { bg: "bg-amber-500", light: "bg-amber-50", text: "text-amber-500", label: "기념일" },
 }

@@ -30,7 +30,7 @@ const OWNER_COLORS: Record<
   { bg: string; dot: string; light: string }
 > = {
   me: { bg: "bg-pink-500", dot: "bg-pink-400", light: "bg-pink-50" },
-  you: { bg: "bg-[#b455e0]", dot: "bg-[#c77def]", light: "bg-[#F3E8FF]" },
+  you: { bg: "bg-[#d63bf2]", dot: "bg-[#e06cf7]", light: "bg-[#F3E8FF]" },
   we: { bg: "bg-purple-500", dot: "bg-purple-400", light: "bg-purple-50" },
 };
 
@@ -257,7 +257,7 @@ export function CoupleCalendar() {
                   day === "일"
                     ? "text-[#FF6B6B]"
                     : day === "토"
-                      ? "text-[#b455e0]"
+                      ? "text-[#d63bf2]"
                       : ""
                 }
               >
@@ -292,7 +292,7 @@ export function CoupleCalendar() {
                             : index % 7 === 0
                               ? "text-[#FF6B6B]"
                               : index % 7 === 6
-                                ? "text-[#b455e0]"
+                                ? "text-[#d63bf2]"
                                 : "text-[#333D4B]"
                         }`}
                       >

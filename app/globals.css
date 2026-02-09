@@ -11,20 +11,20 @@
   --card-foreground: #191F28;
   --popover: #FFFFFF;
   --popover-foreground: #191F28;
-  --primary: #b455e0;
+  --primary: #d63bf2;
   --primary-foreground: #FFFFFF;
   --secondary: #F2F4F6;
   --secondary-foreground: #4E5968;
   --muted: #F2F4F6;
   --muted-foreground: #8B95A1;
   --accent: #F3E8FF;
-  --accent-foreground: #b455e0;
+  --accent-foreground: #d63bf2;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   --border: #E5E8EB;
   --input: #F2F4F6;
-  --ring: #b455e0;
-  --chart-1: #b455e0;
+  --ring: #d63bf2;
+  --chart-1: #d63bf2;
   --chart-2: #191F28;
   --chart-3: #E8F3FF;
   --chart-4: #8B95A1;
@@ -32,16 +32,16 @@
   --radius: 1.5rem;
   --sidebar: #FFFFFF;
   --sidebar-foreground: #191F28;
-  --sidebar-primary: #b455e0;
+  --sidebar-primary: #d63bf2;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #F3E8FF;
-  --sidebar-accent-foreground: #b455e0;
+  --sidebar-accent-foreground: #d63bf2;
   --sidebar-border: #E5E8EB;
-  --sidebar-ring: #b455e0;
+  --sidebar-ring: #d63bf2;
   
   /* WE:BEAT signature color */
-  --weve-purple: #b455e0;
-  --weve-purple-dark: #9240b8;
+  --weve-purple: #d63bf2;
+  --weve-purple-dark: #a82cbf;
   --weve-bg: #F2F4F6;
   --weve-text: #191F28;
   --weve-text-sub: #8B95A1;
@@ -59,32 +59,32 @@
   --card-foreground: #E8E8E8;
   --popover: #1A1A1A;
   --popover-foreground: #E8E8E8;
-  --primary: #c77def;
+  --primary: #e06cf7;
   --primary-foreground: #FFFFFF;
   --secondary: #1E1E1E;
   --secondary-foreground: #C0C0C0;
   --muted: #1E1E1E;
   --muted-foreground: #888888;
   --accent: #2A1A3A;
-  --accent-foreground: #c77def;
+  --accent-foreground: #e06cf7;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   --border: #2A2A2A;
   --input: #1E1E1E;
-  --ring: #c77def;
-  --chart-1: #c77def;
+  --ring: #e06cf7;
+  --chart-1: #e06cf7;
   --chart-2: #E8E8E8;
   --chart-3: #1A2A3A;
   --chart-4: #888888;
   --chart-5: #555555;
   --sidebar: #0D0D0D;
   --sidebar-foreground: #E8E8E8;
-  --sidebar-primary: #c77def;
+  --sidebar-primary: #e06cf7;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #2A1A3A;
-  --sidebar-accent-foreground: #c77def;
+  --sidebar-accent-foreground: #e06cf7;
   --sidebar-border: #2A2A2A;
-  --sidebar-ring: #c77def;
+  --sidebar-ring: #e06cf7;
 
   --weve-bg: #0D0D0D;
   --weve-text: #E8E8E8;
@@ -440,14 +440,14 @@
 }
 
 /* Purple signature color overrides for dark mode */
-.dark .bg-\[\#b455e0\] {
-  background-color: #c77def !important;
+.dark .bg-\[\#d63bf2\] {
+  background-color: #e06cf7 !important;
 }
-.dark .text-\[\#b455e0\] {
-  color: #c77def !important;
+.dark .text-\[\#d63bf2\] {
+  color: #e06cf7 !important;
 }
-.dark .border-\[\#b455e0\] {
-  border-color: #c77def !important;
+.dark .border-\[\#d63bf2\] {
+  border-color: #e06cf7 !important;
 }
 .dark .border-\[\#E0C4F5\] {
   border-color: #4A2A5A !important;
@@ -455,10 +455,10 @@
 .dark .bg-\[\#F3E8FF\] {
   background-color: #2A1A3A !important;
 }
-.dark .bg-\[\#9240b8\] {
+.dark .bg-\[\#a82cbf\] {
   background-color: #a855c7 !important;
 }
-.dark .hover\:bg-\[\#9240b8\]:hover {
+.dark .hover\:bg-\[\#a82cbf\]:hover {
   background-color: #a855c7 !important;
 }
 .dark .hover\:bg-\[\#9333ea\]:hover {
@@ -692,10 +692,10 @@
 .dark .focus\:ring-\[\#FF8A80\]:focus {
   --tw-ring-color: #FF9E95 !important;
 }
-.dark .focus\:ring-\[\#b455e0\]:focus {
-  --tw-ring-color: #c77def !important;
+.dark .focus\:ring-\[\#d63bf2\]:focus {
+  --tw-ring-color: #e06cf7 !important;
 }
-.dark .focus\:ring-\[\#b455e0\]\/20:focus {
+.dark .focus\:ring-\[\#d63bf2\]\/20:focus {
   --tw-ring-color: rgba(199, 125, 239, 0.2) !important;
 }
 

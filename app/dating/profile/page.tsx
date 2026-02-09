@@ -237,7 +237,7 @@ export default function ProfilePage() {
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
                     <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Star className="w-5 h-5 text-[#b455e0]" />
+                      <Star className="w-5 h-5 text-[#d63bf2]" />
                     </div>
                     <div>
                       <p className="text-[14px] font-semibold text-[#191F28]">프리미엄 위젯</p>
@@ -292,7 +292,7 @@ export default function ProfilePage() {
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
                     <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Star className="w-5 h-5 text-[#b455e0]" />
+                      <Star className="w-5 h-5 text-[#d63bf2]" />
                     </div>
                     <div>
                       <p className="text-[14px] font-semibold text-[#191F28]">프리미엄 위젯 전체</p>

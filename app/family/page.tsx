@@ -103,9 +103,9 @@ export default function FamilyHomePage() {
                   </p>
                 </div>
                 <div className="flex items-start gap-3 p-3 bg-[#F3E8FF] rounded-[14px]">
-                  <Calendar className="w-5 h-5 text-[#b455e0] mt-0.5 flex-shrink-0" />
+                  <Calendar className="w-5 h-5 text-[#d63bf2] mt-0.5 flex-shrink-0" />
                   <p className="text-[13px] text-[#4E5968] leading-relaxed">
-                    우리의 일정도 <span className="font-semibold text-[#b455e0]">캘린더</span>에 그대로 남아있으니 앞으로도 여기에서 이용해주세요
+                    우리의 일정도 <span className="font-semibold text-[#d63bf2]">캘린더</span>에 그대로 남아있으니 앞으로도 여기에서 이용해주세요
                   </p>
                 </div>
               </div>

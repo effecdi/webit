@@ -30,7 +30,7 @@ const MODE_CONFIG = {
     bgGradient: "from-blue-50 via-white to-indigo-50",
     darkBgGradient: "dark:from-blue-950 dark:via-gray-950 dark:to-indigo-950",
     iconColor: "text-blue-400",
-    buttonBg: "bg-[#b455e0] hover:bg-[#9240b8]",
+    buttonBg: "bg-[#d63bf2] hover:bg-[#a82cbf]",
     sparkleColor: "text-blue-300",
     redirectPath: "/wedding",
   },

@@ -206,7 +206,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     onClick={() => setNotifications({...notifications, [item.key]: !notifications[item.key as keyof typeof notifications]})}
                     data-testid={`switch-notification-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
-                      notifications[item.key as keyof typeof notifications] ? "bg-[#b455e0]" : "bg-[#E5E8EB]"
+                      notifications[item.key as keyof typeof notifications] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
                     }`}
                   >
                     <div 
@@ -270,7 +270,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     onClick={() => setPrivacy({...privacy, [item.key]: !privacy[item.key as keyof typeof privacy]})}
                     data-testid={`switch-privacy-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
-                      privacy[item.key as keyof typeof privacy] ? "bg-[#b455e0]" : "bg-[#E5E8EB]"
+                      privacy[item.key as keyof typeof privacy] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
                     }`}
                   >
                     <div 
@@ -333,7 +333,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     onClick={() => setSupport({...support, [item.key]: !support[item.key as keyof typeof support]})}
                     data-testid={`switch-support-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
-                      support[item.key as keyof typeof support] ? "bg-[#b455e0]" : "bg-[#E5E8EB]"
+                      support[item.key as keyof typeof support] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
                     }`}
                   >
                     <div 
@@ -424,7 +424,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                       data-testid={`faq-question-${idx}`}
                     >
                       <span className="flex items-start gap-2 text-left">
-                        <span className="text-[#b455e0] font-bold shrink-0">Q.</span>
+                        <span className="text-[#d63bf2] font-bold shrink-0">Q.</span>
                         {item.q}
                       </span>
                     </AccordionTrigger>

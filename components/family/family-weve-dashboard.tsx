@@ -31,7 +31,7 @@ const QUICK_ACTIONS = [
 
 const ASSIGNEE_COLORS: Record<string, string> = {
   me: "bg-pink-100 text-pink-600",
-  you: "bg-[#F3E8FF] text-[#b455e0]",
+  you: "bg-[#F3E8FF] text-[#d63bf2]",
   we: "bg-purple-100 text-purple-600",
 }
 
@@ -365,7 +365,7 @@ export function FamilyWeveDashboard() {
                 <Heart className="w-6 h-6 text-pink-400" />
               </div>
               <div className="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center border-2 border-white">
-                <Home className="w-6 h-6 text-[#b455e0]" />
+                <Home className="w-6 h-6 text-[#d63bf2]" />
               </div>
             </div>
             <div className="flex-1">

@@ -90,14 +90,14 @@ export default function ChatbotPage() {
             data-testid={`message-${msg.role}-${i}`}
           >
             {msg.role === "assistant" && (
-              <div className="w-8 h-8 rounded-full bg-[#b455e0] flex items-center justify-center mr-2 flex-shrink-0 mt-1">
+              <div className="w-8 h-8 rounded-full bg-[#d63bf2] flex items-center justify-center mr-2 flex-shrink-0 mt-1">
                 <span className="text-white text-[11px] font-bold">AI</span>
               </div>
             )}
             <div
               className={`max-w-[75%] rounded-[16px] px-4 py-3 text-[14px] leading-relaxed whitespace-pre-wrap ${
                 msg.role === "user"
-                  ? "bg-[#b455e0] text-white rounded-br-[4px]"
+                  ? "bg-[#d63bf2] text-white rounded-br-[4px]"
                   : "bg-[#F2F4F6] text-[#191F28] rounded-bl-[4px]"
               }`}
             >
@@ -108,7 +108,7 @@ export default function ChatbotPage() {
 
         {isLoading && (
           <div className="flex justify-start" data-testid="message-loading">
-            <div className="w-8 h-8 rounded-full bg-[#b455e0] flex items-center justify-center mr-2 flex-shrink-0 mt-1">
+            <div className="w-8 h-8 rounded-full bg-[#d63bf2] flex items-center justify-center mr-2 flex-shrink-0 mt-1">
               <span className="text-white text-[11px] font-bold">AI</span>
             </div>
             <div className="bg-[#F2F4F6] rounded-[16px] rounded-bl-[4px] px-4 py-3">
@@ -133,14 +133,14 @@ export default function ChatbotPage() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="메시지를 입력하세요..."
-            className="flex-1 h-11 px-4 bg-[#F8F9FA] rounded-full text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none focus:ring-2 focus:ring-[#b455e0]/20"
+            className="flex-1 h-11 px-4 bg-[#F8F9FA] rounded-full text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none focus:ring-2 focus:ring-[#d63bf2]/20"
             disabled={isLoading}
             data-testid="input-chatbot-message"
           />
           <button
             onClick={handleSend}
             disabled={!input.trim() || isLoading}
-            className="w-11 h-11 flex items-center justify-center rounded-full bg-[#b455e0] text-white disabled:opacity-40 transition-all active:scale-95"
+            className="w-11 h-11 flex items-center justify-center rounded-full bg-[#d63bf2] text-white disabled:opacity-40 transition-all active:scale-95"
             data-testid="button-chatbot-send"
           >
             <Send className="w-5 h-5" />

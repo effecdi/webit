@@ -115,7 +115,7 @@ const SHORTCUTS = [
     label: "앨범",
     icon: ImageIcon,
     href: "/dating/gallery",
-    color: "bg-[#F3E8FF] text-[#b455e0]",
+    color: "bg-[#F3E8FF] text-[#d63bf2]",
   },
   {
     id: "travel",
@@ -128,7 +128,7 @@ const SHORTCUTS = [
 
 const ASSIGNEE_COLORS = {
   me: "bg-pink-100 text-pink-600",
-  you: "bg-[#F3E8FF] text-[#b455e0]",
+  you: "bg-[#F3E8FF] text-[#d63bf2]",
   we: "bg-purple-100 text-purple-600",
 };
 
