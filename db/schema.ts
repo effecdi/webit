@@ -207,6 +207,7 @@ export const communityPosts = pgTable('community_posts', {
   authorName: text('author_name'),
   likeCount: integer('like_count').default(0),
   commentCount: integer('comment_count').default(0),
+  viewCount: integer('view_count').default(0),
   createdAt: timestamp('created_at').defaultNow(),
 });
 

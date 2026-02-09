@@ -1999,10 +1999,6 @@
     margin-right: calc(var(--spacing) * 4);
   }
 
-  .mr-5 {
-    margin-right: calc(var(--spacing) * 5);
-  }
-
   .mr-8 {
     margin-right: calc(var(--spacing) * 8);
   }
@@ -2456,10 +2452,6 @@
 
   .h-\[1px\] {
     height: 1px;
-  }
-
-  .h-\[2\.5px\] {
-    height: 2.5px;
   }
 
   .h-\[2px\] {
@@ -6023,10 +6015,6 @@
 
   .bg-orange-100 {
     background-color: var(--color-orange-100);
-  }
-
-  .bg-orange-500 {
-    background-color: var(--color-orange-500);
   }
 
   .bg-pink-50 {
