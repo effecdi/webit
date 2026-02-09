@@ -335,19 +335,19 @@ export function WeddingDashboard() {
         </div>
 
         {/* Quick Actions Grid */}
-        <div className="grid grid-cols-4 gap-3">
+        <div className="glass-menu rounded-[24px] p-4 grid grid-cols-4 gap-2">
           {quickActions.map((action) => {
             const Icon = action.icon
             return (
               <Link
                 key={action.id}
                 href={action.href}
-                className="flex flex-col items-center gap-2 py-3"
+                className="glass-menu-item flex flex-col items-center gap-2 py-3 rounded-[16px] hover:scale-[1.03] active:scale-[0.97] transition-all"
               >
                 <div className={`w-14 h-14 rounded-full ${action.color} flex items-center justify-center`}>
                   <Icon className="w-6 h-6" />
                 </div>
-                <span className="text-[12px] font-medium text-[#4E5968] text-center">{action.label}</span>
+                <span className="text-[12px] font-medium text-[#4E5968] dark:text-[#ccc] text-center">{action.label}</span>
               </Link>
             )
           })}

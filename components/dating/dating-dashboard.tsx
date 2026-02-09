@@ -757,7 +757,7 @@ export function DatingDashboard() {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
+        <div className="glass-menu rounded-[24px] p-4 grid grid-cols-3 gap-3">
           {SHORTCUTS.map((shortcut) => {
             const Icon = shortcut.icon;
             let badge = "";
@@ -774,14 +774,14 @@ export function DatingDashboard() {
               <Link
                 key={shortcut.id}
                 href={shortcut.href}
-                className="bg-white rounded-[20px] p-4 shadow-weve flex flex-col items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-transform"
+                className="glass-menu-item rounded-[16px] p-3 flex flex-col items-center gap-2 hover:scale-[1.03] active:scale-[0.97] transition-all"
               >
                 <div
                   className={`w-12 h-12 rounded-full ${shortcut.color} flex items-center justify-center`}
                 >
                   <Icon className="w-6 h-6" />
                 </div>
-                <span className="text-[13px] font-medium text-[#333D4B]">
+                <span className="text-[13px] font-medium text-[#333D4B] dark:text-[#ccc]">
                   {shortcut.label}
                 </span>
                 {badge && (

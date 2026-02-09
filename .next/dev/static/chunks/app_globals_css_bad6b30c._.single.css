@@ -10987,6 +10987,12 @@
   }
 
   @media (hover: hover) {
+    .hover\:scale-\[1\.03\]:hover {
+      scale: 1.03;
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:rotate-0:hover {
       rotate: none;
     }
@@ -11954,6 +11960,10 @@
 
   .active\:scale-\[0\.85\]:active {
     scale: .85;
+  }
+
+  .active\:scale-\[0\.97\]:active {
+    scale: .97;
   }
 
   .active\:scale-\[0\.98\]:active {
@@ -13718,6 +13728,10 @@
 
   .dark\:text-\[\#999\]:is(.dark *) {
     color: #999;
+  }
+
+  .dark\:text-\[\#ccc\]:is(.dark *) {
+    color: #ccc;
   }
 
   .dark\:text-\[\#e5e5e5\]:is(.dark *) {
@@ -15512,6 +15526,29 @@
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.glass-menu {
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: #ffffff8c;
+  border: 1px solid #ffffff59;
+  box-shadow: 0 8px 32px #0000000f;
+}
+
+.dark .glass-menu {
+  background: #1e1e1ea6;
+  border: 1px solid #ffffff14;
+  box-shadow: 0 8px 32px #0000004d;
+}
+
+.glass-menu-item {
+  background: #ffffff80;
+  border: 1px solid #fff6;
+}
+
+.dark .glass-menu-item {
+  background: #ffffff0f;
+  border: 1px solid #ffffff0f;
 }
 
 @property --tw-translate-x {
