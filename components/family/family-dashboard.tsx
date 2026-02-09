@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { CalendarDays, ImageIcon, Book, Plus, ChevronRight } from "lucide-react"
+import { CalendarDays, ImageIcon, Book, Plus, ChevronRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 
 const QUICK_ACTIONS = [
@@ -90,6 +90,24 @@ export function FamilyDashboard() {
           </div>
         )}
       </section>
+
+      {/* AI Family Activity */}
+      <Link
+        href="/family/ai-recommend"
+        className="block bg-gradient-to-r from-green-500 to-emerald-600 rounded-[16px] p-4 shadow-sm"
+        data-testid="link-family-ai-recommend"
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <Sparkles className="w-6 h-6 text-white" />
+          </div>
+          <div className="flex-1">
+            <p className="text-[15px] font-bold text-white">AI 가족 활동 추천</p>
+            <p className="text-[12px] text-white/70 mt-0.5">맞춤형 가족 나들이와 활동을 추천받으세요</p>
+          </div>
+          <ChevronRight className="w-5 h-5 text-white/60" />
+        </div>
+      </Link>
 
       {/* Memory Archive Preview */}
       <section className="bg-card border-3 border-secondary p-4 shadow-brutalist">

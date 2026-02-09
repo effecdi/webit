@@ -21,6 +21,8 @@ import {
   Gift,
   Cake,
   ExternalLink,
+  BarChart3,
+  Sparkles,
 } from "lucide-react";
 import Image from "next/image";
 import moodLove from "@/attached_assets/love_1770352834619.png";
@@ -987,6 +989,32 @@ export function DatingDashboard() {
           )}
         </div>
 
+        {/* Premium Features Quick Access */}
+        <div className="grid grid-cols-2 gap-3">
+          <Link
+            href="/dating/stats"
+            className="bg-white dark:bg-[#1A1A1A] rounded-[20px] p-4 shadow-weve"
+            data-testid="link-couple-stats"
+          >
+            <div className="w-10 h-10 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center mb-3">
+              <BarChart3 className="w-5 h-5 text-pink-500" />
+            </div>
+            <p className="text-[14px] font-bold text-[#333D4B] dark:text-white">커플 통계</p>
+            <p className="text-[11px] text-[#8B95A1] dark:text-gray-400 mt-0.5">우리의 기록 분석</p>
+          </Link>
+          <Link
+            href="/dating/ai-recommend"
+            className="bg-white dark:bg-[#1A1A1A] rounded-[20px] p-4 shadow-weve"
+            data-testid="link-ai-recommend"
+          >
+            <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mb-3">
+              <Sparkles className="w-5 h-5 text-[#d63bf2]" />
+            </div>
+            <p className="text-[14px] font-bold text-[#333D4B] dark:text-white">AI 추천</p>
+            <p className="text-[11px] text-[#8B95A1] dark:text-gray-400 mt-0.5">맞춤 데이트 코스</p>
+          </Link>
+        </div>
+
         <div className="bg-white rounded-[24px] overflow-hidden shadow-weve">
           <div
             className="w-full h-32 bg-cover bg-center relative"
@@ -1072,14 +1100,14 @@ export function DatingDashboard() {
               </div>
               <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
                 <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                  <Calendar className="w-5 h-5 text-purple-500" />
+                  <Sparkles className="w-5 h-5 text-[#d63bf2]" />
                 </div>
                 <div>
                   <p className="text-[14px] font-semibold text-[#191F28]">
-                    고급 캘린더 기능
+                    AI 데이트 추천
                   </p>
                   <p className="text-[12px] text-[#8B95A1]">
-                    반복 일정, 알림 설정 등 추가 기능
+                    AI가 맞춤 데이트 코스를 추천해드려요
                   </p>
                 </div>
               </div>

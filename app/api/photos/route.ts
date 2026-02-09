@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
-import { photos } from '@/db/schema';
-import { eq, and, desc, inArray } from 'drizzle-orm';
+import { photos, users } from '@/db/schema';
+import { eq, and, desc, inArray, count } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 import { getCoupleUserIds } from '@/lib/couple-utils';
+
+const PHOTO_LIMITS: Record<string, number> = {
+  free: 50,
+  advanced: 500,
+  premium: Infinity,
+};
 
 export async function GET(request: NextRequest) {
   const auth = await requireAuth();
@@ -43,6 +49,30 @@ export async function POST(request: NextRequest) {
     if (isUnauthorized(auth)) return auth;
     const userId = auth.userId;
     const { url, caption, albumId, mode = 'dating' } = body;
+
+    const [user] = await db.select().from(users).where(eq(users.id, userId));
+    const plan = user?.subscriptionPlan || 'free';
+    const limit = PHOTO_LIMITS[plan] || 50;
+
+    if (limit !== Infinity) {
+      const coupleUserIds = await getCoupleUserIds(userId);
+      const [photoCount] = await db
+        .select({ total: count() })
+        .from(photos)
+        .where(inArray(photos.userId, coupleUserIds));
+
+      if (photoCount.total >= limit) {
+        return NextResponse.json(
+          {
+            error: 'PHOTO_LIMIT_REACHED',
+            message: `사진 저장 한도(${limit}장)에 도달했습니다. 멤버십을 업그레이드하면 더 많은 사진을 저장할 수 있어요.`,
+            currentCount: photoCount.total,
+            limit,
+          },
+          { status: 403 }
+        );
+      }
+    }
 
     const [newPhoto] = await db.insert(photos).values({
       userId,
