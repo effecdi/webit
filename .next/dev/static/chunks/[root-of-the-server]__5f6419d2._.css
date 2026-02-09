@@ -14996,10 +14996,6 @@
   --tw-ring-color: #5ba8f7 !important;
 }
 
-.dark .focus\:ring-\[\#FF8A80\]:focus {
-  --tw-ring-color: #ff9e95 !important;
-}
-
 .dark .bg-white\/80 {
   background-color: #1a1a1ad9 !important;
 }
@@ -15109,7 +15105,92 @@
 }
 
 .dark .bg-\[\#191F28\] {
-  background-color: #2a2a2a !important;
+  background-color: #333 !important;
+}
+
+.dark .hover\:bg-\[\#191F28\]:hover {
+  background-color: #404040 !important;
+}
+
+.dark .hover\:bg-\[\#333D4B\]:hover, .dark .bg-\[\#3d3d3d\] {
+  background-color: #444 !important;
+}
+
+.dark .focus\:ring-pink-300:focus {
+  --tw-ring-color: #f472b680 !important;
+}
+
+.dark .focus\:ring-pink-200:focus {
+  --tw-ring-color: #f472b666 !important;
+}
+
+.dark .focus\:ring-blue-200:focus {
+  --tw-ring-color: #60a5fa66 !important;
+}
+
+.dark .focus\:ring-blue-300:focus {
+  --tw-ring-color: #60a5fa80 !important;
+}
+
+.dark .focus\:ring-green-300:focus {
+  --tw-ring-color: #4ade8080 !important;
+}
+
+.dark .focus\:ring-\[\#333D4B\]:focus {
+  --tw-ring-color: #b4b4b466 !important;
+}
+
+.dark .bg-\[\#333D4B\] {
+  background-color: #3a3a3a !important;
+}
+
+.dark .bg-\[\#D4AF37\] {
+  background-color: #b8962e !important;
+}
+
+.dark .bg-\[\#1B64DA\] {
+  background-color: #2b74ea !important;
+}
+
+.dark .bg-\[\#FEE500\] {
+  background-color: #d4c000 !important;
+}
+
+.dark .bg-\[\#F5DC00\] {
+  background-color: #d4bc00 !important;
+}
+
+.dark .bg-\[\#2D8B57\] {
+  background-color: #2d8b57 !important;
+}
+
+.dark .bg-\[\#FF6B9D\] {
+  background-color: #e85a8a !important;
+}
+
+.dark .bg-\[\#3C1E1E\] {
+  background-color: #3c1e1e !important;
+}
+
+.dark .bg-\[\#FFF0F5\] {
+  background-color: #2a1520 !important;
+}
+
+.dark .bg-\[\#D4836B\] {
+  background-color: #b8705a !important;
+}
+
+.dark .focus\:ring-\[\#c9a86c\]:focus {
+  --tw-ring-color: #c9a86c80 !important;
+}
+
+.dark .focus\:ring-\[\#FF8A80\]:focus {
+  --tw-ring-color: #ff8a8080 !important;
+}
+
+.dark select option {
+  color: #e8e8e8 !important;
+  background-color: #1e1e1e !important;
 }
 
 .dark {

@@ -1,12 +1,15 @@
 {
   "app": {
-    "[project]/app/dating/profile/page": [
+    "[project]/app/dating/page": [
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+    ],
+    "[project]/app/family/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
     "[project]/app/invite-welcome/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
-    "[project]/app/invite/[code]/page": [
+    "[project]/app/login/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
     "[project]/app/page": [
