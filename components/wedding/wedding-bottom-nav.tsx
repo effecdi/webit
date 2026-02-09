@@ -16,9 +16,9 @@ export function WeddingBottomNav() {
   const pathname = usePathname()
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 max-w-md mx-auto">
+    <div className="fixed bottom-[30px] left-3 right-3 z-50 max-w-md mx-auto">
       <nav
-        className="relative border-t border-gray-200/60"
+        className="relative rounded-[25px] border border-gray-200/40 shadow-lg"
         style={{
           background: "rgba(249, 250, 251, 0.82)",
           backdropFilter: "blur(20px) saturate(180%)",

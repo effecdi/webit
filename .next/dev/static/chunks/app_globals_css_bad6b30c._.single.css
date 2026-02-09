@@ -1413,6 +1413,10 @@
     bottom: 10px;
   }
 
+  .bottom-\[30px\] {
+    bottom: 30px;
+  }
+
   .-left-1 {
     left: calc(var(--spacing) * -1);
   }
@@ -4556,6 +4560,10 @@
     border-radius: 24px;
   }
 
+  .rounded-\[25px\] {
+    border-radius: 25px;
+  }
+
   .rounded-\[28px\] {
     border-radius: 28px;
   }
@@ -5061,6 +5069,16 @@
 
   .border-gray-200 {
     border-color: var(--color-gray-200);
+  }
+
+  .border-gray-200\/40 {
+    border-color: #e5e7eb66;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-gray-200\/40 {
+      border-color: color-mix(in oklab, var(--color-gray-200) 40%, transparent);
+    }
   }
 
   .border-gray-200\/60 {
