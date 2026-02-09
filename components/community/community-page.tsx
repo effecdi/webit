@@ -61,7 +61,7 @@ function timeAgo(dateStr: string): string {
 export function CommunityPage({ config }: { config: ModeConfig }) {
   const router = useRouter()
   const [posts, setPosts] = useState<CommunityPost[]>([])
-  const [activeCategory, setActiveCategory] = useState("전체")
+  const [activeCategory, setActiveCategory] = useState("추천")
   const [activeTab, setActiveTab] = useState<"추천" | "인기">("추천")
   const [loading, setLoading] = useState(true)
   const [showWriteModal, setShowWriteModal] = useState(false)
@@ -70,7 +70,8 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
 
   const fetchPosts = useCallback(async () => {
     try {
-      const cat = activeCategory !== "전체" ? `&category=${encodeURIComponent(activeCategory)}` : ""
+      const isSpecialTab = activeCategory === "추천" || activeCategory === "인기"
+      const cat = !isSpecialTab && activeCategory !== "전체" ? `&category=${encodeURIComponent(activeCategory)}` : ""
       const sortParam = activeTab === "인기" ? "&sort=popular" : ""
       const res = await fetch(`/api/community/posts?mode=${config.mode}${cat}${sortParam}`)
       if (res.ok) {
@@ -124,100 +125,72 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
 
   return (
     <div className="min-h-screen bg-[#F2F4F6] dark:bg-[#0a0a0a] pb-36">
-      <header className="bg-white dark:bg-[#111] sticky top-0 z-40">
-        <div className="px-5 pt-4 pb-0 max-w-md mx-auto">
-          <h1 className="text-[20px] font-bold text-[#191F28] dark:text-[#e5e5e5] mb-3" data-testid="text-community-title">{config.title}</h1>
-        </div>
-        <div className="max-w-md mx-auto px-5">
-          <div className="flex items-center gap-0 border-b border-[#F2F4F6] dark:border-[#2a2a2a]">
-            <button
-              onClick={() => setActiveTab("추천")}
-              className={`relative flex items-center gap-1 px-1 py-2.5 text-[15px] font-semibold transition-colors mr-5 ${
-                activeTab === "추천" ? "text-[#191F28] dark:text-white" : "text-[#B0B8C1] dark:text-[#666]"
-              }`}
-              data-testid="tab-recommended"
-            >
-              추천
-              {activeTab === "추천" && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2.5px] rounded-full" style={{ background: config.gradientColors[0] }} />
-              )}
-            </button>
-            <button
-              onClick={() => setActiveTab("인기")}
-              className={`relative flex items-center gap-1 px-1 py-2.5 text-[15px] font-semibold transition-colors ${
-                activeTab === "인기" ? "text-[#191F28] dark:text-white" : "text-[#B0B8C1] dark:text-[#666]"
-              }`}
-              data-testid="tab-popular"
-            >
-              <Flame className={`w-4 h-4 ${activeTab === "인기" ? "text-orange-500" : "text-[#B0B8C1]"}`} />
-              인기
-              {activeTab === "인기" && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2.5px] rounded-full bg-orange-500" />
-              )}
-            </button>
-          </div>
+      <header className="bg-white dark:bg-[#111] px-5 py-4 sticky top-0 z-40">
+        <div className="flex items-center justify-between max-w-md mx-auto">
+          <h1 className="text-[20px] font-bold text-[#191F28] dark:text-[#e5e5e5]" data-testid="text-community-title">{config.title}</h1>
         </div>
       </header>
 
       <main className="px-5 py-5 max-w-md mx-auto space-y-4">
-        {activeTab === "추천" && (
-          <div
-            className="rounded-[20px] p-5 text-white relative overflow-hidden"
-            style={{ background: bannerBg }}
-            data-testid="community-gradient-banner"
-          >
-            <div className="absolute inset-0 bg-black/10" />
-            <div className="relative z-10">
-              <p className="text-[22px] font-bold mb-1 leading-tight">함께 나누는 이야기</p>
-              <p className="text-[13px] text-white/80 mb-4">고민 상담, 정보 교환, 경험을 공유해 보세요</p>
+        <div
+          className="rounded-[20px] p-5 text-white relative overflow-hidden"
+          style={{ background: bannerBg }}
+          data-testid="community-gradient-banner"
+        >
+          <div className="absolute inset-0 bg-black/10" />
+          <div className="relative z-10">
+            <p className="text-[22px] font-bold mb-1 leading-tight">함께 나누는 이야기</p>
+            <p className="text-[13px] text-white/80 mb-4">고민 상담, 정보 교환, 경험을 공유해 보세요</p>
 
-              <div className="flex items-center gap-3">
-                <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
-                  <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
-                    <Sparkles className="w-[18px] h-[18px] text-white" />
-                  </div>
-                  <span className="text-[11px] text-white/90 font-medium">트렌드</span>
+            <div className="flex items-center gap-3">
+              <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                  <Sparkles className="w-[18px] h-[18px] text-white" />
                 </div>
-                <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
-                  <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
-                    <Users className="w-[18px] h-[18px] text-white" />
-                  </div>
-                  <span className="text-[11px] text-white/90 font-medium">소통</span>
+                <span className="text-[11px] text-white/90 font-medium">트렌드</span>
+              </div>
+              <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                  <Users className="w-[18px] h-[18px] text-white" />
                 </div>
-                <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
-                  <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
-                    <BookOpen className="w-[18px] h-[18px] text-white" />
-                  </div>
-                  <span className="text-[11px] text-white/90 font-medium">정보</span>
+                <span className="text-[11px] text-white/90 font-medium">소통</span>
+              </div>
+              <div className="flex flex-col items-center gap-1.5 flex-1 bg-white/15 backdrop-blur-sm rounded-[14px] py-3">
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                  <BookOpen className="w-[18px] h-[18px] text-white" />
                 </div>
+                <span className="text-[11px] text-white/90 font-medium">정보</span>
               </div>
             </div>
           </div>
-        )}
-
-        {activeTab === "인기" && (
-          <div
-            className="rounded-[20px] p-5 text-white relative overflow-hidden"
-            style={{ background: "linear-gradient(135deg, #FF6B35, #FF8C42, #F7931E)" }}
-            data-testid="community-popular-banner"
-          >
-            <div className="absolute inset-0 bg-black/10" />
-            <div className="relative z-10 flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                <Flame className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <p className="text-[16px] font-bold leading-tight">사람들이 많이 얘기하고 있어요</p>
-                <p className="text-[12px] text-white/80 mt-0.5">커뮤니티 인기 글 모아보기</p>
-              </div>
-              <TrendingUp className="w-5 h-5 text-white/60 ml-auto flex-shrink-0" />
-            </div>
-          </div>
-        )}
+        </div>
 
         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
           <button
-            onClick={() => setActiveCategory("전체")}
+            onClick={() => { setActiveTab("추천"); setActiveCategory("추천"); }}
+            className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors flex items-center gap-1 ${
+              activeCategory === "추천"
+                ? "bg-[#191F28] dark:bg-white text-white dark:text-[#191F28] shadow-sm"
+                : "bg-white dark:bg-[#1a1a1a] text-[#4E5968] dark:text-[#999] hover:bg-[#E5E8EB] dark:hover:bg-[#2a2a2a]"
+            }`}
+            data-testid="filter-category-추천"
+          >
+            추천
+          </button>
+          <button
+            onClick={() => { setActiveTab("인기"); setActiveCategory("인기"); }}
+            className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors flex items-center gap-1 ${
+              activeCategory === "인기"
+                ? "bg-[#191F28] dark:bg-white text-white dark:text-[#191F28] shadow-sm"
+                : "bg-white dark:bg-[#1a1a1a] text-[#4E5968] dark:text-[#999] hover:bg-[#E5E8EB] dark:hover:bg-[#2a2a2a]"
+            }`}
+            data-testid="filter-category-인기"
+          >
+            <Flame className={`w-3.5 h-3.5 ${activeCategory === "인기" ? "text-orange-400" : "text-orange-500"}`} />
+            인기
+          </button>
+          <button
+            onClick={() => { setActiveTab("추천"); setActiveCategory("전체"); }}
             className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors ${
               activeCategory === "전체"
                 ? "bg-[#191F28] dark:bg-white text-white dark:text-[#191F28] shadow-sm"
@@ -230,7 +203,7 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
           {config.categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setActiveCategory(cat)}
+              onClick={() => { setActiveTab("추천"); setActiveCategory(cat); }}
               className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors ${
                 activeCategory === cat
                   ? "bg-[#191F28] dark:bg-white text-white dark:text-[#191F28] shadow-sm"
