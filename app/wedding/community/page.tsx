@@ -14,6 +14,7 @@ export default function WeddingCommunityPage() {
         accentBg: "bg-[#FF8A80]",
         accentLight: "bg-red-50",
         gradient: "from-[#FF8A80] to-[#FF6B6B]",
+        gradientColors: ["#FF8A80", "#FF6B6B", "#FF5252"],
         categories: ["결혼준비", "웨딩업체", "예산/비용", "스드메", "허니문", "고민상담", "자유"],
         bottomNav: <WeddingBottomNav />,
       }}

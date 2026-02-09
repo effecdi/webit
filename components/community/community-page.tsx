@@ -2,18 +2,16 @@
 
 import React, { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import {
   ArrowLeft,
   Heart,
   MessageCircle,
   Plus,
   X,
-  Send,
-  ChevronDown,
-  ChevronUp,
   User,
   Clock,
-  Trash2,
+  TrendingUp,
 } from "lucide-react"
 
 interface CommunityPost {
@@ -30,15 +28,6 @@ interface CommunityPost {
   createdAt: string
 }
 
-interface CommunityComment {
-  id: number
-  postId: number
-  userId: string
-  content: string
-  authorName: string | null
-  createdAt: string
-}
-
 interface ModeConfig {
   mode: string
   backHref: string
@@ -47,6 +36,7 @@ interface ModeConfig {
   accentBg: string
   accentLight: string
   gradient: string
+  gradientColors: string[]
   categories: string[]
   bottomNav: React.ReactNode
 }
@@ -66,13 +56,11 @@ function timeAgo(dateStr: string): string {
 }
 
 export function CommunityPage({ config }: { config: ModeConfig }) {
+  const router = useRouter()
   const [posts, setPosts] = useState<CommunityPost[]>([])
   const [activeCategory, setActiveCategory] = useState("전체")
   const [loading, setLoading] = useState(true)
   const [showWriteModal, setShowWriteModal] = useState(false)
-  const [expandedPost, setExpandedPost] = useState<number | null>(null)
-  const [comments, setComments] = useState<Record<number, CommunityComment[]>>({})
-  const [newComment, setNewComment] = useState("")
   const [newPost, setNewPost] = useState({ title: "", content: "", category: config.categories[0] })
   const [submitting, setSubmitting] = useState(false)
 
@@ -95,29 +83,6 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
     setLoading(true)
     fetchPosts()
   }, [fetchPosts])
-
-  const fetchComments = async (postId: number) => {
-    try {
-      const res = await fetch(`/api/community/comments?postId=${postId}`)
-      if (res.ok) {
-        const data = await res.json()
-        setComments(prev => ({ ...prev, [postId]: data }))
-      }
-    } catch (error) {
-      console.error("Error fetching comments:", error)
-    }
-  }
-
-  const handleTogglePost = (postId: number) => {
-    if (expandedPost === postId) {
-      setExpandedPost(null)
-    } else {
-      setExpandedPost(postId)
-      if (!comments[postId]) {
-        fetchComments(postId)
-      }
-    }
-  }
 
   const handleCreatePost = async () => {
     if (!newPost.title.trim() || !newPost.content.trim() || submitting) return
@@ -145,70 +110,34 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
     }
   }
 
-  const handleAddComment = async (postId: number) => {
-    if (!newComment.trim() || submitting) return
-    setSubmitting(true)
-    try {
-      const res = await fetch("/api/community/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          postId,
-          content: newComment,
-        }),
-      })
-      if (res.ok) {
-        setNewComment("")
-        fetchComments(postId)
-        setPosts(prev => prev.map(p =>
-          p.id === postId ? { ...p, commentCount: (p.commentCount || 0) + 1 } : p
-        ))
-      }
-    } catch (error) {
-      console.error("Error adding comment:", error)
-    } finally {
-      setSubmitting(false)
-    }
+  const handlePostClick = (postId: number) => {
+    const basePath = `/${config.mode}/community/${postId}`
+    router.push(basePath)
   }
 
-  const handleToggleLike = async (postId: number) => {
-    try {
-      const res = await fetch("/api/community/likes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ postId }),
-      })
-      if (res.ok) {
-        const data = await res.json()
-        setPosts(prev => prev.map(p =>
-          p.id === postId
-            ? {
-                ...p,
-                isLiked: data.liked,
-                likeCount: data.liked ? (p.likeCount || 0) + 1 : Math.max((p.likeCount || 0) - 1, 0),
-              }
-            : p
-        ))
-      }
-    } catch (error) {
-      console.error("Error toggling like:", error)
-    }
-  }
-
-  const handleDeletePost = async (postId: number) => {
-    try {
-      const res = await fetch(`/api/community/posts?id=${postId}`, { method: "DELETE" })
-      if (res.ok) {
-        setPosts(prev => prev.filter(p => p.id !== postId))
-        if (expandedPost === postId) setExpandedPost(null)
-      }
-    } catch (error) {
-      console.error("Error deleting post:", error)
-    }
+  const gradientStyle = {
+    background: `linear-gradient(-45deg, ${config.gradientColors.join(", ")}, ${config.gradientColors[0]})`,
+    backgroundSize: "300% 300%",
+    animation: "communityGradientShift 6s ease infinite",
   }
 
   return (
     <div className="min-h-screen bg-[#F2F4F6] pb-24">
+      <style jsx>{`
+        @keyframes communityGradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .post-card-enter {
+          animation: fadeInUp 0.3s ease forwards;
+        }
+      `}</style>
+
       <header className="bg-white px-5 py-4 sticky top-0 z-40">
         <div className="flex items-center justify-between max-w-md mx-auto">
           <div className="flex items-center gap-3">
@@ -221,19 +150,29 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
       </header>
 
       <main className="px-5 py-5 max-w-md mx-auto space-y-4">
-        <div className={`bg-gradient-to-br ${config.gradient} rounded-[20px] p-5 text-white`}>
-          <p className="text-[13px] text-white/80 mb-1">{config.title}</p>
-          <p className="text-[20px] font-bold mb-1">함께 나누는 이야기</p>
-          <p className="text-[13px] text-white/80">고민 상담, 정보 교환, 경험을 공유해 보세요</p>
+        <div
+          className="rounded-[20px] p-5 text-white relative overflow-hidden"
+          style={gradientStyle}
+          data-testid="community-gradient-banner"
+        >
+          <div className="absolute inset-0 bg-black/10" />
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-2">
+              <TrendingUp className="w-4 h-4 text-white/90" />
+              <p className="text-[13px] text-white/90 font-medium">{config.title}</p>
+            </div>
+            <p className="text-[22px] font-bold mb-1 leading-tight">함께 나누는 이야기</p>
+            <p className="text-[13px] text-white/80">고민 상담, 정보 교환, 경험을 공유해 보세요</p>
+          </div>
         </div>
 
         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
           <button
             onClick={() => setActiveCategory("전체")}
-            className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors ${
+            className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-all ${
               activeCategory === "전체"
-                ? "bg-[#191F28] text-white"
-                : "bg-white text-[#4E5968]"
+                ? "bg-[#191F28] text-white shadow-sm"
+                : "bg-white text-[#4E5968] hover:bg-[#E5E8EB]"
             }`}
             data-testid="filter-category-all"
           >
@@ -243,10 +182,10 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors ${
+              className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-all ${
                 activeCategory === cat
-                  ? "bg-[#191F28] text-white"
-                  : "bg-white text-[#4E5968]"
+                  ? "bg-[#191F28] text-white shadow-sm"
+                  : "bg-white text-[#4E5968] hover:bg-[#E5E8EB]"
               }`}
               data-testid={`filter-category-${cat}`}
             >
@@ -259,7 +198,8 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
           <div className="space-y-3">
             {[1, 2, 3].map(i => (
               <div key={i} className="bg-white rounded-[16px] p-5 animate-pulse">
-                <div className="h-4 bg-[#F2F4F6] rounded w-3/4 mb-3" />
+                <div className="h-4 bg-[#F2F4F6] rounded w-1/4 mb-3" />
+                <div className="h-5 bg-[#F2F4F6] rounded w-3/4 mb-3" />
                 <div className="h-3 bg-[#F2F4F6] rounded w-full mb-2" />
                 <div className="h-3 bg-[#F2F4F6] rounded w-2/3" />
               </div>
@@ -267,140 +207,47 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
           </div>
         ) : posts.length > 0 ? (
           <div className="space-y-3">
-            {posts.map((post) => {
-              const isExpanded = expandedPost === post.id
-              const postComments = comments[post.id] || []
-
-              return (
-                <div key={post.id} className="bg-white rounded-[16px] overflow-hidden shadow-sm" data-testid={`post-card-${post.id}`}>
-                  <button
-                    onClick={() => handleTogglePost(post.id)}
-                    className="w-full p-5 text-left"
-                    data-testid={`button-toggle-post-${post.id}`}
-                  >
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-medium ${config.accentLight} ${config.accentColor}`}>
-                        {post.category}
-                      </span>
-                      <div className="flex items-center gap-1 text-[11px] text-[#B0B8C1]">
-                        <Clock className="w-3 h-3" />
-                        {timeAgo(post.createdAt)}
-                      </div>
-                    </div>
-
-                    <h3 className="text-[15px] font-bold text-[#191F28] mb-2 line-clamp-2">{post.title}</h3>
-                    <p className="text-[13px] text-[#8B95A1] line-clamp-2 leading-relaxed">{post.content}</p>
-
-                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-[#F2F4F6]">
-                      <div className="flex items-center gap-1.5">
-                        <div className="w-5 h-5 rounded-full bg-[#E5E8EB] flex items-center justify-center">
-                          <User className="w-3 h-3 text-[#8B95A1]" />
-                        </div>
-                        <span className="text-[12px] text-[#8B95A1]">{post.authorName || "익명"}</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <span className="flex items-center gap-1 text-[12px] text-[#8B95A1]">
-                          <Heart className={`w-3.5 h-3.5 ${post.isLiked ? "fill-red-500 text-red-500" : ""}`} />
-                          {post.likeCount || 0}
-                        </span>
-                        <span className="flex items-center gap-1 text-[12px] text-[#8B95A1]">
-                          <MessageCircle className="w-3.5 h-3.5" />
-                          {post.commentCount || 0}
-                        </span>
-                        {isExpanded ? <ChevronUp className="w-4 h-4 text-[#B0B8C1]" /> : <ChevronDown className="w-4 h-4 text-[#B0B8C1]" />}
-                      </div>
-                    </div>
-                  </button>
-
-                  {isExpanded && (
-                    <div className="border-t border-[#F2F4F6]">
-                      <div className="px-5 py-3">
-                        <p className="text-[14px] text-[#191F28] leading-relaxed whitespace-pre-wrap">{post.content}</p>
-
-                        <div className="flex items-center gap-2 mt-4">
-                          <button
-                            onClick={() => handleToggleLike(post.id)}
-                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-medium transition-colors ${
-                              post.isLiked
-                                ? `${config.accentLight} ${config.accentColor}`
-                                : "bg-[#F2F4F6] text-[#8B95A1]"
-                            }`}
-                            data-testid={`button-like-${post.id}`}
-                          >
-                            <Heart className={`w-3.5 h-3.5 ${post.isLiked ? "fill-current" : ""}`} />
-                            {post.isLiked ? "공감했어요" : "공감"}
-                          </button>
-                          <button
-                            onClick={() => handleDeletePost(post.id)}
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-medium bg-[#F2F4F6] text-[#B0B8C1]"
-                            data-testid={`button-delete-post-${post.id}`}
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                            삭제
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="bg-[#F8F9FA] px-5 py-4 space-y-3">
-                        <p className="text-[13px] font-semibold text-[#4E5968]">
-                          댓글 {post.commentCount || 0}
-                        </p>
-
-                        {postComments.length > 0 ? (
-                          <div className="space-y-3">
-                            {postComments.map((comment) => (
-                              <div key={comment.id} className="bg-white rounded-[12px] p-3" data-testid={`comment-${comment.id}`}>
-                                <div className="flex items-center justify-between mb-1.5">
-                                  <div className="flex items-center gap-1.5">
-                                    <div className="w-4 h-4 rounded-full bg-[#E5E8EB] flex items-center justify-center">
-                                      <User className="w-2.5 h-2.5 text-[#8B95A1]" />
-                                    </div>
-                                    <span className="text-[11px] font-medium text-[#4E5968]">{comment.authorName || "익명"}</span>
-                                  </div>
-                                  <span className="text-[10px] text-[#B0B8C1]">{timeAgo(comment.createdAt)}</span>
-                                </div>
-                                <p className="text-[13px] text-[#191F28] leading-relaxed">{comment.content}</p>
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <p className="text-[12px] text-[#B0B8C1] text-center py-3">아직 댓글이 없어요. 첫 댓글을 남겨보세요!</p>
-                        )}
-
-                        <div className="flex gap-2">
-                          <input
-                            type="text"
-                            value={newComment}
-                            onChange={(e) => setNewComment(e.target.value)}
-                            placeholder="댓글을 입력하세요"
-                            className="flex-1 px-4 py-2.5 bg-white rounded-[10px] text-[13px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-1 focus:ring-[#E5E8EB]"
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter" && !e.shiftKey) {
-                                e.preventDefault()
-                                handleAddComment(post.id)
-                              }
-                            }}
-                            data-testid={`input-comment-${post.id}`}
-                          />
-                          <button
-                            onClick={() => handleAddComment(post.id)}
-                            disabled={!newComment.trim() || submitting}
-                            className={`w-10 h-10 flex items-center justify-center rounded-[10px] transition-colors ${
-                              newComment.trim()
-                                ? `${config.accentBg} text-white`
-                                : "bg-[#E5E8EB] text-[#B0B8C1]"
-                            }`}
-                            data-testid={`button-send-comment-${post.id}`}
-                          >
-                            <Send className="w-4 h-4" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+            {posts.map((post, index) => (
+              <button
+                key={post.id}
+                onClick={() => handlePostClick(post.id)}
+                className="w-full text-left bg-white rounded-[16px] p-5 shadow-sm hover:shadow-md transition-all post-card-enter active:scale-[0.98]"
+                style={{ animationDelay: `${index * 50}ms` }}
+                data-testid={`post-card-${post.id}`}
+              >
+                <div className="flex items-start justify-between gap-2 mb-2.5">
+                  <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-medium ${config.accentLight} ${config.accentColor}`}>
+                    {post.category}
+                  </span>
+                  <div className="flex items-center gap-1 text-[11px] text-[#B0B8C1]">
+                    <Clock className="w-3 h-3" />
+                    {timeAgo(post.createdAt)}
+                  </div>
                 </div>
-              )
-            })}
+
+                <h3 className="text-[15px] font-bold text-[#191F28] mb-1.5 line-clamp-1">{post.title}</h3>
+                <p className="text-[13px] text-[#8B95A1] line-clamp-2 leading-relaxed">{post.content}</p>
+
+                <div className="flex items-center justify-between mt-3 pt-3 border-t border-[#F2F4F6]">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-5 h-5 rounded-full bg-[#E5E8EB] flex items-center justify-center">
+                      <User className="w-3 h-3 text-[#8B95A1]" />
+                    </div>
+                    <span className="text-[12px] text-[#8B95A1]">{post.authorName || "익명"}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="flex items-center gap-1 text-[12px] text-[#8B95A1]">
+                      <Heart className={`w-3.5 h-3.5 ${post.isLiked ? "fill-red-400 text-red-400" : ""}`} />
+                      {post.likeCount || 0}
+                    </span>
+                    <span className="flex items-center gap-1 text-[12px] text-[#8B95A1]">
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      {post.commentCount || 0}
+                    </span>
+                  </div>
+                </div>
+              </button>
+            ))}
           </div>
         ) : (
           <div className="bg-white rounded-[16px] p-8 text-center" data-testid="empty-posts">
@@ -413,8 +260,11 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
 
       <button
         onClick={() => setShowWriteModal(true)}
-        className={`fixed bottom-24 right-5 w-14 h-14 rounded-full ${config.accentBg} text-white shadow-lg flex items-center justify-center z-30 max-w-md`}
-        style={{ right: "max(1.25rem, calc((100vw - 28rem) / 2 + 1.25rem))" }}
+        className={`fixed bottom-24 right-5 w-14 h-14 rounded-full text-white shadow-lg flex items-center justify-center z-30`}
+        style={{
+          ...gradientStyle,
+          right: "max(1.25rem, calc((100vw - 28rem) / 2 + 1.25rem))",
+        }}
         data-testid="button-write-post"
       >
         <Plus className="w-6 h-6" />

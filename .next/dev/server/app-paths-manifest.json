@@ -12,7 +12,7 @@
   "/page": "app/page.js",
   "/splash/page": "app/splash/page.js",
   "/wedding/community/page": "app/wedding/community/page.js",
-  "/wedding/goods/page": "app/wedding/goods/page.js",
+  "/wedding/invitation/page": "app/wedding/invitation/page.js",
   "/wedding/page": "app/wedding/page.js",
   "/wedding/profile/page": "app/wedding/profile/page.js"
 }
