@@ -202,13 +202,7 @@ export default function AlbumDetailPage() {
               </>
             ) : (
               <>
-                <button
-                  onClick={() => router.back()}
-                  className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center"
-                  data-testid="button-back"
-                >
-                  <ChevronLeft className="w-6 h-6 text-white" />
-                </button>
+                <div className="w-10 h-10" />
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setShowMoreMenu(true)}

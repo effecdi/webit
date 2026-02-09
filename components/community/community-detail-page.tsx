@@ -4,7 +4,6 @@ import React, { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import {
-  ArrowLeft,
   Heart,
   MessageCircle,
   Send,
@@ -237,9 +236,6 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
       <div className="min-h-screen bg-[#F2F4F6] pb-36">
         <header className="bg-white px-5 py-4 sticky top-0 z-40">
           <div className="flex items-center gap-3 max-w-md mx-auto">
-            <Link href={config.backHref} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors">
-              <ArrowLeft className="w-5 h-5 text-[#191F28]" />
-            </Link>
             <div className="h-5 bg-[#E5E8EB] rounded w-24 animate-pulse" />
           </div>
         </header>
@@ -262,9 +258,6 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
       <div className="min-h-screen bg-[#F2F4F6] pb-36">
         <header className="bg-white px-5 py-4 sticky top-0 z-40">
           <div className="flex items-center gap-3 max-w-md mx-auto">
-            <Link href={config.backHref} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors">
-              <ArrowLeft className="w-5 h-5 text-[#191F28]" />
-            </Link>
             <span className="text-[15px] text-[#8B95A1]">게시글</span>
           </div>
         </header>
@@ -280,12 +273,7 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
     <div className="min-h-screen bg-[#F2F4F6] pb-36">
       <header className="bg-white px-5 py-4 sticky top-0 z-40 border-b border-[#F2F4F6]">
         <div className="flex items-center justify-between max-w-md mx-auto">
-          <div className="flex items-center gap-3">
-            <Link href={config.backHref} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors" data-testid="link-back-detail">
-              <ArrowLeft className="w-5 h-5 text-[#191F28]" />
-            </Link>
-            <span className="text-[15px] font-medium text-[#191F28]">게시글</span>
-          </div>
+          <span className="text-[15px] font-medium text-[#191F28]">게시글</span>
           <div className="flex items-center gap-1">
             <button
               onClick={handleShare}

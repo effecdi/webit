@@ -4,7 +4,6 @@ import React, { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import {
-  ArrowLeft,
   Heart,
   MessageCircle,
   Plus,
@@ -124,12 +123,7 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
     <div className="min-h-screen bg-[#F2F4F6] pb-36">
       <header className="bg-white px-5 py-4 sticky top-0 z-40">
         <div className="flex items-center justify-between max-w-md mx-auto">
-          <div className="flex items-center gap-3">
-            <Link href={config.backHref} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors" data-testid="link-back">
-              <ArrowLeft className="w-5 h-5 text-[#191F28]" />
-            </Link>
-            <h1 className="text-[20px] font-bold text-[#191F28]" data-testid="text-community-title">{config.title}</h1>
-          </div>
+          <h1 className="text-[20px] font-bold text-[#191F28]" data-testid="text-community-title">{config.title}</h1>
         </div>
       </header>
 

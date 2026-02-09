@@ -4,7 +4,6 @@ import React, { useState } from "react"
 import Link from "next/link"
 import WheelDatePicker from "@/components/ui/wheel-date-picker"
 import { 
-  ArrowLeft, 
   Plus, 
   X,
   Check,
@@ -136,10 +135,7 @@ export default function ChecklistPage() {
     <div className="min-h-screen bg-[#F2F4F6] pb-36">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-[#E5E8EB]">
-        <div className="flex items-center justify-between px-4 h-14">
-          <Link href="/wedding" className="w-10 h-10 flex items-center justify-center">
-            <ArrowLeft className="w-6 h-6 text-[#191F28]" />
-          </Link>
+        <div className="flex items-center justify-between px-5 h-14">
           <h1 className="text-[17px] font-bold text-[#191F28]">체크리스트</h1>
           <button 
             onClick={() => setShowAddModal(true)}

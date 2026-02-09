@@ -140,12 +140,7 @@ export default function DressTourPage() {
       {/* Header */}
       <header className="bg-white px-5 py-4 sticky top-0 z-40">
         <div className="flex items-center justify-between max-w-md mx-auto">
-          <div className="flex items-center gap-3">
-            <Link href="/wedding" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors">
-              <ArrowLeft className="w-5 h-5 text-[#191F28]" />
-            </Link>
-            <h1 className="text-[20px] font-bold text-[#191F28]">드레스 투어</h1>
-          </div>
+          <h1 className="text-[20px] font-bold text-[#191F28]">드레스 투어</h1>
           <button 
             onClick={() => setShowAddModal(true)}
             className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF8A80] hover:bg-[#FF6B6B] transition-colors"

@@ -6,7 +6,6 @@ import Link from "next/link"
 import WheelDatePicker from "@/components/ui/wheel-date-picker"
 import { useSearchParams } from "next/navigation"
 import { 
-  ArrowLeft, 
   Download, 
   Plus, 
   X,
@@ -290,13 +289,7 @@ function BudgetPageContent() {
     <div className="min-h-screen bg-[#F2F4F6] pb-36">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-[#E5E8EB]">
-        <div className="flex items-center justify-between h-14 px-4 max-w-md mx-auto">
-          <Link
-            href="/wedding"
-            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5 text-[#191F28]" />
-          </Link>
+        <div className="flex items-center justify-between h-14 px-5 max-w-md mx-auto">
           <h1 className="text-[17px] font-bold text-[#191F28]">예산 관리</h1>
           <button 
             onClick={exportToExcel}

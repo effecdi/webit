@@ -582,14 +582,7 @@ export default function ArchiveDetailPage({ params }: { params: Promise<{ id: st
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none" />
         </div>
 
-        <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 pt-14">
-          <Link
-            href="/family/archive"
-            className="w-9 h-9 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-sm"
-            data-testid="link-back-archive"
-          >
-            <ArrowLeft className="w-5 h-5 text-white" />
-          </Link>
+        <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-end px-4 pt-14">
           <div className="flex items-center gap-2">
             <button className="w-9 h-9 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-sm">
               <MoreHorizontal className="w-5 h-5 text-white" />
