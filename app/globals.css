@@ -150,7 +150,7 @@
 /* ===== DARK MODE GLOBAL OVERRIDES ===== */
 /* These override hardcoded Tailwind arbitrary colors used throughout the app */
 
-/* Background overrides */
+/* ---- Background overrides (light surfaces → dark surfaces) ---- */
 .dark .bg-white {
   background-color: #1A1A1A !important;
 }
@@ -166,23 +166,52 @@
 .dark .bg-\[\#FAFBFC\] {
   background-color: #141414 !important;
 }
+.dark .bg-\[\#F9FAFB\] {
+  background-color: #141414 !important;
+}
+.dark .bg-\[\#F3F5F7\] {
+  background-color: #1E1E1E !important;
+}
+.dark .bg-\[\#F5F5F5\] {
+  background-color: #1E1E1E !important;
+}
+.dark .bg-\[\#EBEBEB\] {
+  background-color: #2A2A2A !important;
+}
 .dark .bg-\[\#E5E8EB\] {
   background-color: #2A2A2A !important;
 }
 .dark .bg-\[\#D1D6DB\] {
   background-color: #333333 !important;
 }
-.dark .bg-\[\#FFF0EE\] {
-  background-color: #2A1A18 !important;
+.dark .bg-\[\#B0B8C1\] {
+  background-color: #444444 !important;
 }
 .dark .bg-\[\#E8F3FF\] {
   background-color: #1A2A3A !important;
 }
-.dark .bg-\[\#FFF5F5\] {
-  background-color: #2A1515 !important;
+
+/* Tinted light backgrounds */
+.dark .bg-\[\#FFF0EE\] {
+  background-color: #2A1A18 !important;
+}
+.dark .bg-\[\#FFF0EF\] {
+  background-color: #2A1A18 !important;
 }
 .dark .bg-\[\#FFF0ED\] {
   background-color: #2A1A15 !important;
+}
+.dark .bg-\[\#FFF0F0\] {
+  background-color: #2A1515 !important;
+}
+.dark .bg-\[\#FFF5F5\] {
+  background-color: #2A1515 !important;
+}
+.dark .bg-\[\#FFF5F7\] {
+  background-color: #2A1520 !important;
+}
+.dark .bg-\[\#FFE4EC\] {
+  background-color: #2A1525 !important;
 }
 .dark .bg-\[\#FFFDE7\] {
   background-color: #2A2815 !important;
@@ -193,12 +222,71 @@
 .dark .bg-\[\#EBF8FF\] {
   background-color: #152028 !important;
 }
-.dark .bg-\[\#FFF5F7\] {
-  background-color: #2A1520 !important;
+
+/* More tinted/colored light backgrounds */
+.dark .bg-\[\#E4F0FF\] {
+  background-color: #1A2A3A !important;
 }
 
-/* Text color overrides */
+/* Additional light backgrounds */
+.dark .bg-\[\#EBEEF1\] {
+  background-color: #1A1A1A !important;
+}
+.dark .bg-\[\#EBF4FF\] {
+  background-color: #152030 !important;
+}
+.dark .bg-\[\#EEF4FF\] {
+  background-color: #152030 !important;
+}
+.dark .bg-\[\#F0E4FF\] {
+  background-color: #1A152A !important;
+}
+.dark .bg-\[\#F0F4F0\] {
+  background-color: #141A14 !important;
+}
+.dark .bg-\[\#E8F5E9\] {
+  background-color: #152A1A !important;
+}
+.dark .bg-\[\#E0E0E0\] {
+  background-color: #2A2A2A !important;
+}
+.dark .bg-\[\#F5F0E8\] {
+  background-color: #1A1814 !important;
+}
+.dark .bg-\[\#E8DFD0\] {
+  background-color: #1E1A14 !important;
+}
+.dark .bg-\[\#D4C8B8\] {
+  background-color: #2A2518 !important;
+}
+
+/* Warm/cream/vintage backgrounds */
+.dark .bg-\[\#faf5eb\] {
+  background-color: #1E1A14 !important;
+}
+.dark .bg-\[\#faf9f7\] {
+  background-color: #1A1A18 !important;
+}
+.dark .bg-\[\#FAF6F0\] {
+  background-color: #1E1A14 !important;
+}
+
+/* Gray backgrounds for various UI */
+.dark .bg-gray-50 {
+  background-color: #141414 !important;
+}
+.dark .bg-gray-100 {
+  background-color: #1A1A1A !important;
+}
+.dark .bg-gray-200 {
+  background-color: #222222 !important;
+}
+
+/* ---- Text color overrides (dark text → light text) ---- */
 .dark .text-\[\#191F28\] {
+  color: #E8E8E8 !important;
+}
+.dark .text-\[\#191919\] {
   color: #E8E8E8 !important;
 }
 .dark .text-\[\#333D4B\] {
@@ -207,23 +295,104 @@
 .dark .text-\[\#4E5968\] {
   color: #B0B0B0 !important;
 }
+.dark .text-\[\#505050\] {
+  color: #AAAAAA !important;
+}
 .dark .text-\[\#6B7684\] {
   color: #999999 !important;
 }
 .dark .text-\[\#8B95A1\] {
   color: #888888 !important;
 }
+.dark .text-\[\#8B8B8B\] {
+  color: #888888 !important;
+}
 .dark .text-\[\#B0B8C1\] {
+  color: #777777 !important;
+}
+.dark .text-\[\#B0B0B0\] {
+  color: #777777 !important;
+}
+.dark .text-\[\#B8B8B8\] {
+  color: #707070 !important;
+}
+.dark .text-\[\#C8C8C8\] {
   color: #666666 !important;
+}
+.dark .text-\[\#D0D0D0\] {
+  color: #606060 !important;
 }
 .dark .text-\[\#D1D6DB\] {
   color: #505050 !important;
 }
-.dark .text-\[\#191919\] {
-  color: #E8E8E8 !important;
+.dark .text-\[\#D1D5DB\] {
+  color: #505050 !important;
+}
+.dark .text-\[\#E5E8EB\] {
+  color: #444444 !important;
+}
+.dark .text-\[\#ADB5BD\] {
+  color: #666666 !important;
 }
 
-/* Border color overrides */
+/* Accent text colors - keep vibrant but adjust for dark bg */
+.dark .text-\[\#D4836B\] {
+  color: #E09A82 !important;
+}
+.dark .text-\[\#E4280E\] {
+  color: #FF5B42 !important;
+}
+.dark .text-\[\#0A84FF\] {
+  color: #4DA6FF !important;
+}
+.dark .text-\[\#03C75A\] {
+  color: #1FDD72 !important;
+}
+.dark .text-\[\#F5A623\] {
+  color: #FFB940 !important;
+}
+.dark .text-\[\#8b7355\] {
+  color: #B89A78 !important;
+}
+.dark .text-\[\#FF5252\] {
+  color: #FF6B6B !important;
+}
+.dark .text-\[\#FF6B6B\] {
+  color: #FF8080 !important;
+}
+.dark .text-\[\#FF8A80\] {
+  color: #FFA090 !important;
+}
+.dark .text-\[\#FF6B9D\] {
+  color: #FF85AF !important;
+}
+
+/* White text should stay white in dark mode */
+.dark .text-white {
+  color: #FFFFFF !important;
+}
+
+/* Colored text on dark mode that need slight adjustments */
+.dark .text-gray-400 {
+  color: #777777 !important;
+}
+.dark .text-gray-500 {
+  color: #888888 !important;
+}
+.dark .text-gray-600 {
+  color: #999999 !important;
+}
+.dark .text-gray-700 {
+  color: #AAAAAA !important;
+}
+.dark .text-gray-800 {
+  color: #CCCCCC !important;
+}
+.dark .text-gray-900 {
+  color: #E0E0E0 !important;
+}
+
+/* ---- Border color overrides ---- */
 .dark .border-\[\#E5E8EB\] {
   border-color: #2A2A2A !important;
 }
@@ -233,27 +402,102 @@
 .dark .border-\[\#F2F4F6\] {
   border-color: #1E1E1E !important;
 }
+.dark .border-\[\#F5F5F5\] {
+  border-color: #1E1E1E !important;
+}
+.dark .border-\[\#F0F0F0\] {
+  border-color: #1E1E1E !important;
+}
 .dark .border-\[\#D1D6DB\] {
   border-color: #333333 !important;
 }
+.dark .border-\[\#D1D5DB\] {
+  border-color: #333333 !important;
+}
+.dark .border-\[\#D0D0D0\] {
+  border-color: #333333 !important;
+}
+.dark .border-\[\#B0B8C1\] {
+  border-color: #3A3A3A !important;
+}
+.dark .border-\[\#191F28\] {
+  border-color: #444444 !important;
+}
+.dark .border-\[\#202020\] {
+  border-color: #333333 !important;
+}
+.dark .border-\[\#f0ebe3\] {
+  border-color: #2A2518 !important;
+}
+.dark .border-\[\#c9a86c\] {
+  border-color: #8B7540 !important;
+}
+.dark .border-\[\#D4DFD4\] {
+  border-color: #2A352A !important;
+}
+.dark .border-\[\#C5A572\] {
+  border-color: #8B7540 !important;
+}
 
-/* Divide color overrides */
+/* Colored borders - keep visible */
+.dark .border-\[\#3182F6\] {
+  border-color: #5BA8F7 !important;
+}
+.dark .border-\[\#3B82F6\] {
+  border-color: #5BA8F7 !important;
+}
+.dark .border-\[\#FF8A80\] {
+  border-color: #FF9E95 !important;
+}
+.dark .border-\[\#FF6B6B\] {
+  border-color: #FF8080 !important;
+}
+
+/* Dark mode native dark borders (already dark, stay same or slight adjust) */
+.dark .border-\[\#38383A\] {
+  border-color: #38383A !important;
+}
+.dark .border-\[\#48484A\] {
+  border-color: #48484A !important;
+}
+
+/* Border direction overrides */
+.dark .border-b-\[\#E5E8EB\] {
+  border-bottom-color: #2A2A2A !important;
+}
+.dark .border-b-\[\#F2F4F6\] {
+  border-bottom-color: #1E1E1E !important;
+}
+.dark .border-t-\[\#E5E8EB\] {
+  border-top-color: #2A2A2A !important;
+}
+
+/* ---- Divide color overrides ---- */
 .dark .divide-\[\#F2F4F6\] > :not(:last-child) {
   border-color: #1E1E1E !important;
 }
 .dark .divide-\[\#E5E8EB\] > :not(:last-child) {
   border-color: #2A2A2A !important;
 }
+.dark .divide-\[\#F5F5F5\] > :not(:last-child) {
+  border-color: #1E1E1E !important;
+}
 
-/* Placeholder overrides */
+/* ---- Placeholder overrides ---- */
 .dark .placeholder\:text-\[\#B0B8C1\]::placeholder {
-  color: #555555 !important;
+  color: #666666 !important;
 }
 .dark .placeholder\:text-\[\#E5E8EB\]::placeholder {
-  color: #333333 !important;
+  color: #444444 !important;
+}
+.dark .placeholder\:text-\[\#8B95A1\]::placeholder {
+  color: #555555 !important;
+}
+.dark .placeholder\:text-\[\#D1D6DB\]::placeholder {
+  color: #444444 !important;
 }
 
-/* Input/surface background overrides */
+/* ---- Input/surface background overrides ---- */
 .dark input.bg-\[\#F2F4F6\],
 .dark textarea.bg-\[\#F2F4F6\],
 .dark select.bg-\[\#F2F4F6\] {
@@ -264,8 +508,18 @@
 .dark select.bg-\[\#F7F8FA\] {
   background-color: #1E1E1E !important;
 }
+.dark input.bg-\[\#F3F5F7\],
+.dark textarea.bg-\[\#F3F5F7\],
+.dark select.bg-\[\#F3F5F7\] {
+  background-color: #1E1E1E !important;
+}
+.dark input.bg-\[\#F5F5F5\],
+.dark textarea.bg-\[\#F5F5F5\],
+.dark select.bg-\[\#F5F5F5\] {
+  background-color: #1E1E1E !important;
+}
 
-/* Category pill/badge light backgrounds in dark mode */
+/* ---- Tailwind color-50 backgrounds (category pills/badges) ---- */
 .dark .bg-blue-50 {
   background-color: #1A2A3A !important;
 }
@@ -303,7 +557,7 @@
   background-color: #2A1520 !important;
 }
 
-/* Color-100 background overrides for profile/settings cards */
+/* ---- Tailwind color-100 backgrounds ---- */
 .dark .bg-blue-100 {
   background-color: #1A2540 !important;
 }
@@ -329,7 +583,7 @@
   background-color: #2A1520 !important;
 }
 
-/* Gradient overrides for from-blue-50 / from-pink-50 etc. */
+/* ---- Gradient overrides ---- */
 .dark .from-blue-50 {
   --tw-gradient-from: #1A2540 !important;
 }
@@ -344,6 +598,12 @@
 }
 .dark .via-white {
   --tw-gradient-via: #1A1A1A !important;
+}
+.dark .to-white {
+  --tw-gradient-to: #1A1A1A !important;
+}
+.dark .from-white {
+  --tw-gradient-from: #1A1A1A !important;
 }
 .dark .to-blue-50 {
   --tw-gradient-to: #1A2540 !important;
@@ -360,8 +620,17 @@
 .dark .to-pink-200 {
   --tw-gradient-to: #3A1A30 !important;
 }
+.dark .from-green-50 {
+  --tw-gradient-from: #152A1A !important;
+}
+.dark .to-green-50 {
+  --tw-gradient-to: #152A1A !important;
+}
+.dark .from-amber-50 {
+  --tw-gradient-from: #2A2515 !important;
+}
 
-/* Shadow overrides */
+/* ---- Shadow overrides ---- */
 .dark .shadow-sm {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
@@ -370,6 +639,9 @@
 }
 .dark .shadow-lg {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4) !important;
+}
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
 }
 .dark .shadow-weve {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.3) !important;
@@ -381,28 +653,21 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Border-b color overrides */
-.dark .border-b-\[\#E5E8EB\] {
-  border-bottom-color: #2A2A2A !important;
-}
-.dark .border-b-\[\#F2F4F6\] {
-  border-bottom-color: #1E1E1E !important;
-}
-.dark .border-t-\[\#E5E8EB\] {
-  border-top-color: #2A2A2A !important;
-}
-
-/* Ring color override */
+/* ---- Ring color overrides ---- */
 .dark .ring-\[\#E5E8EB\] {
   --tw-ring-color: #2A2A2A !important;
 }
-
-/* White text should stay white in dark mode (used on colored buttons) */
-.dark .text-white {
-  color: #FFFFFF !important;
+.dark .focus\:ring-\[\#E5E8EB\]:focus {
+  --tw-ring-color: #2A2A2A !important;
+}
+.dark .focus\:ring-\[\#3182F6\]:focus {
+  --tw-ring-color: #5BA8F7 !important;
+}
+.dark .focus\:ring-\[\#FF8A80\]:focus {
+  --tw-ring-color: #FF9E95 !important;
 }
 
-/* Bottom nav glass effect overrides */
+/* ---- Glass/transparency overrides ---- */
 .dark .bg-white\/80 {
   background-color: rgba(26, 26, 26, 0.85) !important;
 }
@@ -412,18 +677,29 @@
 .dark .bg-white\/95 {
   background-color: rgba(26, 26, 26, 0.95) !important;
 }
-
-/* Header transparency overrides */
+.dark .bg-white\/70 {
+  background-color: rgba(26, 26, 26, 0.75) !important;
+}
+.dark .bg-white\/60 {
+  background-color: rgba(26, 26, 26, 0.65) !important;
+}
+.dark .bg-white\/50 {
+  background-color: rgba(26, 26, 26, 0.55) !important;
+}
 .dark .bg-\[\#F2F4F6\]\/90 {
   background-color: rgba(13, 13, 13, 0.9) !important;
 }
-
-/* Modal/overlay backgrounds */
+.dark .bg-\[\#F2F4F6\]\/80 {
+  background-color: rgba(13, 13, 13, 0.85) !important;
+}
 .dark .bg-black\/50 {
   background-color: rgba(0, 0, 0, 0.7) !important;
 }
+.dark .bg-black\/30 {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
 
-/* Hover state overrides */
+/* ---- Hover state overrides ---- */
 .dark .hover\:bg-\[\#F2F4F6\]:hover {
   background-color: #1E1E1E !important;
 }
@@ -437,6 +713,24 @@
   background-color: #1A1A1A !important;
 }
 .dark .hover\:bg-\[\#F9FAFB\]:hover {
+  background-color: #1A1A1A !important;
+}
+.dark .hover\:bg-\[\#EBEBEB\]:hover {
+  background-color: #333333 !important;
+}
+.dark .hover\:bg-\[\#F3F5F7\]:hover {
+  background-color: #252525 !important;
+}
+.dark .hover\:bg-\[\#F5F5F5\]:hover {
+  background-color: #252525 !important;
+}
+.dark .hover\:bg-\[\#FFF0EF\]:hover {
+  background-color: #351F1C !important;
+}
+.dark .hover\:bg-\[\#FFF0F0\]:hover {
+  background-color: #351A1A !important;
+}
+.dark .hover\:bg-gray-50:hover {
   background-color: #1A1A1A !important;
 }
 .dark .hover\:bg-gray-100:hover {
@@ -454,25 +748,35 @@
 .dark .hover\:text-\[\#4E5968\]:hover {
   color: #B0B0B0 !important;
 }
+.dark .hover\:text-\[\#191F28\]:hover {
+  color: #E8E8E8 !important;
+}
+.dark .hover\:text-\[\#333D4B\]:hover {
+  color: #D0D0D0 !important;
+}
 
-/* Active button/pill bg overrides (dark on light → lighter on dark) */
-.dark .bg-\[\#191F28\] {
+/* ---- Active state overrides ---- */
+.dark .active\:bg-\[\#E5E8EB\]:active {
   background-color: #333333 !important;
 }
-
-/* Icon color overrides for inactive states */
-.dark .text-\[\#ADB5BD\] {
-  color: #555555 !important;
+.dark .active\:bg-\[\#F2F4F6\]:active {
+  background-color: #252525 !important;
 }
 
-/* Focus ring overrides */
-.dark .focus\:ring-\[\#E5E8EB\]:focus {
-  --tw-ring-color: #2A2A2A !important;
+/* Active button/pill bg overrides */
+.dark .bg-\[\#191F28\] {
+  background-color: #2A2A2A !important;
 }
 
-/* Scrollbar in dark mode */
+/* ---- Scrollbar & color scheme ---- */
 .dark {
   color-scheme: dark;
+}
+
+/* ---- Sticky header bg fix ---- */
+.dark .sticky.bg-white,
+.dark .sticky.bg-\[\#F2F4F6\] {
+  background-color: #0D0D0D !important;
 }
 
 /* ===== END DARK MODE OVERRIDES ===== */

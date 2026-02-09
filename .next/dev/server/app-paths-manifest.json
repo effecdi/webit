@@ -8,7 +8,6 @@
   "/api/travels/route": "app/api/travels/route.js",
   "/api/wedding-info/route": "app/api/wedding-info/route.js",
   "/page": "app/page.js",
-  "/splash/page": "app/splash/page.js",
   "/survey/step1/page": "app/survey/step1/page.js",
   "/wedding/page": "app/wedding/page.js",
   "/wedding/profile/page": "app/wedding/profile/page.js"
