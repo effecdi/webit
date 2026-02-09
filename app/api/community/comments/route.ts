@@ -56,3 +56,35 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Failed to create comment' }, { status: 500 });
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const auth = await requireAuth();
+    if (isUnauthorized(auth)) return auth;
+    const userId = auth.userId;
+
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 });
+
+    const comment = await db.select().from(communityComments)
+      .where(eq(communityComments.id, Number(id)));
+
+    if (!comment.length || comment[0].userId !== userId) {
+      return NextResponse.json({ error: 'Not authorized' }, { status: 403 });
+    }
+
+    const postId = comment[0].postId;
+
+    await db.delete(communityComments).where(eq(communityComments.id, Number(id)));
+
+    await db.update(communityPosts)
+      .set({ commentCount: sql`GREATEST(${communityPosts.commentCount} - 1, 0)` })
+      .where(eq(communityPosts.id, postId));
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Error deleting comment:', error);
+    return NextResponse.json({ error: 'Failed to delete comment' }, { status: 500 });
+  }
+}

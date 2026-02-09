@@ -74,6 +74,8 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
   const [submitting, setSubmitting] = useState(false)
   const [copied, setCopied] = useState(false)
   const [showShareMenu, setShowShareMenu] = useState(false)
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null)
+  const [deletingCommentId, setDeletingCommentId] = useState<number | null>(null)
 
   const fetchPost = useCallback(async () => {
     try {
@@ -105,6 +107,32 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
     fetchPost()
     fetchComments()
   }, [fetchPost, fetchComments])
+
+  useEffect(() => {
+    fetch("/api/auth/user")
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data?.id) setCurrentUserId(data.id)
+      })
+      .catch(() => {})
+  }, [])
+
+  const handleDeleteComment = async (commentId: number) => {
+    setDeletingCommentId(commentId)
+    try {
+      const res = await fetch(`/api/community/comments?id=${commentId}`, { method: "DELETE" })
+      if (res.ok) {
+        fetchComments()
+        setPost(prev =>
+          prev ? { ...prev, commentCount: Math.max((prev.commentCount || 0) - 1, 0) } : null
+        )
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error)
+    } finally {
+      setDeletingCommentId(null)
+    }
+  }
 
   const handleToggleLike = async () => {
     if (!post) return
@@ -338,7 +366,19 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
                       </div>
                       <span className="text-[13px] font-medium text-[#4E5968]">{comment.authorName || "익명"}</span>
                     </div>
-                    <span className="text-[11px] text-[#B0B8C1]">{timeAgo(comment.createdAt)}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[11px] text-[#B0B8C1]">{timeAgo(comment.createdAt)}</span>
+                      {currentUserId && comment.userId === currentUserId && (
+                        <button
+                          onClick={() => handleDeleteComment(comment.id)}
+                          disabled={deletingCommentId === comment.id}
+                          className="text-[#B0B8C1] hover:text-red-400 transition-colors p-0.5"
+                          data-testid={`button-delete-comment-${comment.id}`}
+                        >
+                          <Trash2 className={`w-3.5 h-3.5 ${deletingCommentId === comment.id ? "animate-pulse" : ""}`} />
+                        </button>
+                      )}
+                    </div>
                   </div>
                   <p className="text-[14px] text-[#191F28] leading-relaxed pl-9">{comment.content}</p>
                 </div>

@@ -15,8 +15,8 @@ export default function WeddingCommunityDetailPage({ params }: { params: Promise
         accentColor: "text-[#3182F6]",
         accentBg: "bg-[#3182F6]",
         accentLight: "bg-blue-50",
-        gradient: "from-[#E8927C] to-[#3182F6]",
-        gradientColors: ["#E8927C", "#F4845F", "#3182F6", "#5BA8F7", "#E8927C"],
+        gradient: "from-[#3182F6] to-[#5BA8F7]",
+        gradientColors: ["#3182F6", "#5BA8F7", "#2563EB", "#60A5FA", "#3182F6"],
         bottomNav: <WeddingBottomNav />,
       }}
     />
