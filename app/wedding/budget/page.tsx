@@ -402,7 +402,7 @@ function BudgetPageContent() {
               onClick={() => setActiveCategory(cat)}
               className={`flex-shrink-0 px-4 py-2 rounded-full text-[14px] font-medium transition-all ${
                 activeCategory === cat
-                  ? "bg-white text-[#191F28] border-2 border-[#191F28] shadow-sm"
+                  ? "bg-white text-[#3182F6] border-2 border-[#3182F6] shadow-sm"
                   : "bg-white text-[#8B95A1] border border-[#E5E8EB]"
               }`}
             >
@@ -547,7 +547,7 @@ function BudgetPageContent() {
       {/* FAB */}
       <button
         onClick={() => setShowAddModal(true)}
-        className="fixed bottom-24 right-5 w-14 h-14 bg-[#FF8A80] hover:bg-[#FF6B6B] rounded-full shadow-lg flex items-center justify-center z-40 transition-colors"
+        className="fixed bottom-24 right-5 w-14 h-14 bg-[#3182F6] hover:bg-[#2563EB] rounded-full shadow-lg flex items-center justify-center z-40 transition-colors"
       >
         <Plus className="w-7 h-7 text-white" />
       </button>
@@ -565,7 +565,7 @@ function BudgetPageContent() {
               onClick={handleAddExpense}
               disabled={!isFormValid()}
               className={`text-[15px] font-semibold transition-colors ${
-                isFormValid() ? "text-[#FF8A80]" : "text-[#B0B8C1]"
+                isFormValid() ? "text-[#3182F6]" : "text-[#B0B8C1]"
               }`}
             >
               저장
@@ -588,7 +588,7 @@ function BudgetPageContent() {
                       onClick={() => setNewExpense({ ...newExpense, category: cat })}
                       className={`flex flex-col items-center gap-1.5 py-3 rounded-[12px] transition-all ${
                         newExpense.category === cat
-                          ? "bg-white border-2 border-[#191F28]"
+                          ? "bg-white border-2 border-[#3182F6]"
                           : "bg-[#F2F4F6] border-2 border-transparent"
                       }`}
                     >
@@ -612,7 +612,7 @@ function BudgetPageContent() {
                 value={newExpense.title}
                 onChange={(e) => setNewExpense({ ...newExpense, title: e.target.value })}
                 placeholder="예: 빌라 드 지디 계약금"
-                className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#191F28]"
+                className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
               />
             </div>
 
@@ -626,7 +626,7 @@ function BudgetPageContent() {
                   value={newExpense.amount}
                   onChange={(e) => setNewExpense({ ...newExpense, amount: formatAmountInput(e.target.value) })}
                   placeholder="0"
-                  className="flex-1 text-[32px] font-bold text-[#191F28] placeholder:text-[#E5E8EB] focus:outline-none border-b-2 border-[#E5E8EB] focus:border-[#191F28] pb-1 transition-colors text-right"
+                  className="flex-1 text-[32px] font-bold text-[#191F28] placeholder:text-[#E5E8EB] focus:outline-none border-b-2 border-[#E5E8EB] focus:border-[#3182F6] pb-1 transition-colors text-right"
                 />
                 <span className="text-[18px] font-medium text-[#8B95A1] pb-2">원</span>
               </div>
@@ -686,7 +686,7 @@ function BudgetPageContent() {
                         onClick={() => setNewExpense({ ...newExpense, method: method.key })}
                         className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-[12px] text-[14px] font-medium transition-all ${
                           newExpense.method === method.key
-                            ? "bg-[#191F28] text-white"
+                            ? "bg-[#3182F6] text-white"
                             : "bg-[#F2F4F6] text-[#4E5968]"
                         }`}
                       >
@@ -778,7 +778,7 @@ function BudgetPageContent() {
                     onClick={() => setNewExpense({ ...newExpense, payer })}
                     className={`flex items-center justify-center gap-2 py-3 rounded-[12px] text-[14px] font-medium transition-all ${
                       newExpense.payer === payer
-                        ? "bg-[#191F28] text-white"
+                        ? "bg-[#3182F6] text-white"
                         : "bg-[#F2F4F6] text-[#4E5968]"
                     }`}
                   >
@@ -797,7 +797,7 @@ function BudgetPageContent() {
                 onChange={(e) => setNewExpense({ ...newExpense, memo: e.target.value })}
                 placeholder="추가 메모를 입력하세요"
                 rows={2}
-                className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#191F28] resize-none"
+                className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] resize-none"
               />
             </div>
           </div>
@@ -843,8 +843,8 @@ function BudgetPageContent() {
                 </div>
                 <div className="h-px bg-[#E5E8EB]" />
                 <div className="flex justify-between items-center">
-                  <span className="text-[14px] font-medium text-[#FF8A80]">남은 잔금</span>
-                  <span className="text-[18px] font-bold text-[#FF8A80]">{(selectedExpense.balance || 0).toLocaleString()}원</span>
+                  <span className="text-[14px] font-medium text-[#FF6B6B]">남은 잔금</span>
+                  <span className="text-[18px] font-bold text-[#FF6B6B]">{(selectedExpense.balance || 0).toLocaleString()}원</span>
                 </div>
                 {selectedExpense.dueDate && (
                   <p className="text-[12px] text-[#8B95A1] pt-1">
@@ -885,7 +885,7 @@ function BudgetPageContent() {
                 
                 <button
                   onClick={handleFullPayment}
-                  className="w-full py-4 rounded-[14px] bg-[#FF8A80] hover:bg-[#FF6B6B] text-white font-semibold text-[16px] transition-all"
+                  className="w-full py-4 rounded-[14px] bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold text-[16px] transition-all"
                 >
                   전체 잔금 결제 완료
                 </button>

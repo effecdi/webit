@@ -179,7 +179,7 @@ export default function ChecklistPage() {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 rounded-full text-[14px] font-medium whitespace-nowrap transition-all ${
                 activeCategory === cat
-                  ? "bg-[#191F28] text-white"
+                  ? "bg-[#3182F6] text-white"
                   : "bg-white text-[#4E5968] border border-[#E5E8EB]"
               }`}
             >
@@ -206,7 +206,7 @@ export default function ChecklistPage() {
             >
               {filter.label}
               <span className={`ml-1 text-[12px] ${
-                activeFilter === filter.key ? "text-[#FF8A80]" : "text-[#B0B8C1]"
+                activeFilter === filter.key ? "text-[#3182F6]" : "text-[#B0B8C1]"
               }`}>
                 {filter.count}
               </span>
@@ -233,7 +233,7 @@ export default function ChecklistPage() {
                       className="mr-4 flex-shrink-0"
                     >
                       {item.completed ? (
-                        <CheckCircle2 className="w-6 h-6 text-[#FF8A80]" />
+                        <CheckCircle2 className="w-6 h-6 text-[#3182F6]" />
                       ) : (
                         <Circle className="w-6 h-6 text-[#D1D6DB]" />
                       )}
@@ -293,7 +293,7 @@ export default function ChecklistPage() {
       {/* FAB */}
       <button
         onClick={() => setShowAddModal(true)}
-        className="fixed bottom-24 right-5 w-14 h-14 bg-[#FF8A80] hover:bg-[#FF6B6B] rounded-full shadow-lg flex items-center justify-center transition-colors z-40"
+        className="fixed bottom-24 right-5 w-14 h-14 bg-[#3182F6] hover:bg-[#2563EB] rounded-full shadow-lg flex items-center justify-center transition-colors z-40"
       >
         <Plus className="w-7 h-7 text-white" />
       </button>
@@ -312,7 +312,7 @@ export default function ChecklistPage() {
               disabled={!newItem.title || !newItem.category || !newItem.dueDate}
               className={`text-[15px] font-semibold transition-colors ${
                 newItem.title && newItem.category && newItem.dueDate
-                  ? "text-[#FF8A80]" 
+                  ? "text-[#3182F6]" 
                   : "text-[#B0B8C1]"
               }`}
             >
@@ -330,7 +330,7 @@ export default function ChecklistPage() {
                 value={newItem.title}
                 onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
                 placeholder="예: 드레스 가봉 예약"
-                className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
+                className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
               />
             </div>
 
@@ -347,7 +347,7 @@ export default function ChecklistPage() {
                       onClick={() => setNewItem({ ...newItem, category: cat })}
                       className={`flex flex-col items-center gap-1.5 py-3 rounded-[12px] transition-all ${
                         newItem.category === cat
-                          ? "bg-white border-2 border-[#191F28]"
+                          ? "bg-white border-2 border-[#3182F6]"
                           : "bg-[#F2F4F6] border-2 border-transparent"
                       }`}
                     >
@@ -403,7 +403,7 @@ export default function ChecklistPage() {
                 onChange={(e) => setNewItem({ ...newItem, memo: e.target.value })}
                 placeholder="추가 메모를 입력하세요"
                 rows={3}
-                className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
+                className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] resize-none"
               />
             </div>
           </div>

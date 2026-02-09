@@ -10568,6 +10568,12 @@
   }
 
   @media (hover: hover) {
+    .hover\:bg-\[\#2563EB\]:hover {
+      background-color: #2563eb;
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:bg-\[\#C4735B\]:hover {
       background-color: #c4735b;
     }
@@ -11192,6 +11198,10 @@
 
   .focus\:border-\[\#191F28\]:focus {
     border-color: #191f28;
+  }
+
+  .focus\:border-\[\#3182F6\]:focus {
+    border-color: #3182f6;
   }
 
   .focus\:border-blue-400:focus {
