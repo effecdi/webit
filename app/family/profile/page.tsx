@@ -193,7 +193,7 @@ export default function FamilyProfilePage() {
                     <span className="text-[36px] font-bold text-[#191F28]">1,900</span>
                     <span className="text-[18px] text-[#8B95A1]">원/월</span>
                   </div>
-                  <p className="text-[12px] text-green-600 mt-1">연간 결제 시 20% 할인 (월 1,520원)</p>
+                  <p className="text-[12px] text-[#8B95A1] mt-1">첫 달 이후 3,000원/월</p>
                 </div>
                 
                 <div className="p-5 space-y-3">
@@ -320,14 +320,16 @@ export default function FamilyProfilePage() {
               >
                 {isProcessingPayment ? "처리 중..." : `${selectedPlan === "advanced" ? "고급" : "프리미엄"} 월간 구독하기`}
               </button>
-              <button 
-                onClick={() => handleStripeCheckout("yearly")}
-                disabled={isProcessingPayment}
-                className="w-full py-3 mt-2 border-2 border-green-500 text-green-600 font-semibold rounded-[14px] hover:bg-green-50 transition-all disabled:opacity-50"
-                data-testid="button-subscribe-yearly"
-              >
-                {isProcessingPayment ? "처리 중..." : "연간 구독하기 (20% 할인)"}
-              </button>
+              {selectedPlan === "premium" && (
+                <button 
+                  onClick={() => handleStripeCheckout("yearly")}
+                  disabled={isProcessingPayment}
+                  className="w-full py-3 mt-2 border-2 border-green-500 text-green-600 font-semibold rounded-[14px] hover:bg-green-50 transition-all disabled:opacity-50"
+                  data-testid="button-subscribe-yearly"
+                >
+                  {isProcessingPayment ? "처리 중..." : "연간 구독하기 (20% 할인)"}
+                </button>
+              )}
               <button 
                 onClick={() => setShowPremiumModal(false)}
                 className="w-full py-3 text-[#8B95A1] text-[14px] mt-2"
