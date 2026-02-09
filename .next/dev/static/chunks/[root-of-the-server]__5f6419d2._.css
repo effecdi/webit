@@ -14151,6 +14151,10 @@
     color: var(--color-amber-300);
   }
 
+  .dark\:text-amber-400:is(.dark *) {
+    color: var(--color-amber-400);
+  }
+
   .dark\:text-gray-100:is(.dark *) {
     color: var(--color-gray-100);
   }

@@ -10,8 +10,6 @@
   "/api/travels/route": "app/api/travels/route.js",
   "/api/user-settings/route": "app/api/user-settings/route.js",
   "/dating/profile/page": "app/dating/profile/page.js",
-  "/family/ai-recommend/page": "app/family/ai-recommend/page.js",
   "/family/page": "app/family/page.js",
-  "/login/page": "app/login/page.js",
   "/page": "app/page.js"
 }

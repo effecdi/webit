@@ -38,7 +38,7 @@ All shared data APIs (todos, events, photos, albums, expenses, checklist, travel
 - **Family Mode**: Provides a memory archive with animated photo displays, a shared calendar, photo organization, and todo lists (inheriting all dating/wedding todos). Family congratulations modal shows on first entry after D-day transition.
 - **Community Feature**: Each mode (Dating, Wedding, Family) has a dedicated community section where users can share concerns, exchange information, and interact. Features include categorized posts, comments, likes, and post creation. Community is accessible via the bottom navigation bar in each mode.
 - **Travel Module**: A shared feature across all modes for trip planning, including schedules, checklists, and budget tracking.
-- **Subscription System**: A two-tier membership model (Advanced and Premium) offers enhanced features like ad-free experience, unlimited storage, and AI recommendations for Dating and Family modes. Wedding mode features are not tied to this subscription.
+- **Subscription System**: A two-tier membership model (Advanced ₩3,900/월 → 할인가 ₩1,900/월, Premium ₩6,900/월). Advanced offers photo 500장, 커플 통계, 고급 캘린더, 프리미엄 위젯 5종. Premium is currently "coming soon" (UI hidden) - will include AI 추천, 무제한 저장, 히스토리 북 등. Annual subscription gets 20% discount. Premium feature pages (AI recommend, couple stats) exist but are hidden from dashboards until ready. Wedding mode features are not tied to this subscription.
 - **Anniversary & Birthday Reminders**: The app tracks relationship milestones and birthdays, providing timely reminders and gift shopping suggestions.
 
 ### Invitation Layout Architecture

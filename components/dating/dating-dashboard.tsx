@@ -989,24 +989,17 @@ export function DatingDashboard() {
           )}
         </div>
 
-        {/* Premium Features Quick Access */}
+        {/* Premium Features Quick Access - 프리미엄 기능 준비 중이므로 숨김 처리 */}
+        {/* 
         <div className="grid grid-cols-2 gap-3">
-          <Link
-            href="/dating/stats"
-            className="bg-white dark:bg-[#1A1A1A] rounded-[20px] p-4 shadow-weve"
-            data-testid="link-couple-stats"
-          >
+          <Link href="/dating/stats" className="bg-white dark:bg-[#1A1A1A] rounded-[20px] p-4 shadow-weve" data-testid="link-couple-stats">
             <div className="w-10 h-10 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center mb-3">
               <BarChart3 className="w-5 h-5 text-pink-500" />
             </div>
             <p className="text-[14px] font-bold text-[#333D4B] dark:text-white">커플 통계</p>
             <p className="text-[11px] text-[#8B95A1] dark:text-gray-400 mt-0.5">우리의 기록 분석</p>
           </Link>
-          <Link
-            href="/dating/ai-recommend"
-            className="bg-white dark:bg-[#1A1A1A] rounded-[20px] p-4 shadow-weve"
-            data-testid="link-ai-recommend"
-          >
+          <Link href="/dating/ai-recommend" className="bg-white dark:bg-[#1A1A1A] rounded-[20px] p-4 shadow-weve" data-testid="link-ai-recommend">
             <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mb-3">
               <Sparkles className="w-5 h-5 text-[#d63bf2]" />
             </div>
@@ -1014,6 +1007,7 @@ export function DatingDashboard() {
             <p className="text-[11px] text-[#8B95A1] dark:text-gray-400 mt-0.5">맞춤 데이트 코스</p>
           </Link>
         </div>
+        */}
 
         <div className="bg-white rounded-[24px] overflow-hidden shadow-weve">
           <div

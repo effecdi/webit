@@ -591,7 +591,8 @@ export function FamilyWeveDashboard() {
           )}
         </div>
 
-        {/* AI Family Activity */}
+        {/* AI Family Activity - 프리미엄 기능 준비 중이므로 숨김 처리 */}
+        {/*
         <Link
           href="/family/ai-recommend"
           className="block bg-gradient-to-r from-green-500 to-emerald-600 rounded-[20px] p-4 shadow-sm"
@@ -608,6 +609,7 @@ export function FamilyWeveDashboard() {
             <ChevronRight className="w-5 h-5 text-white/60" />
           </div>
         </Link>
+        */}
 
         <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex justify-between items-center mb-4">

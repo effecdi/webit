@@ -197,14 +197,14 @@ export default function ProfilePage() {
               <>
                 <div className="py-5 text-center border-b border-[#F2F4F6]">
                   <div className="flex items-center justify-center gap-2 mb-1">
-                    <span className="text-[14px] text-[#8B95A1] line-through">3,000원/월</span>
-                    <span className="px-2 py-0.5 bg-red-50 text-red-500 text-[11px] font-bold rounded-full">첫 달 할인</span>
+                    <span className="text-[14px] text-[#8B95A1] line-through">3,900원/월</span>
+                    <span className="px-2 py-0.5 bg-red-50 text-red-500 text-[11px] font-bold rounded-full">할인 중</span>
                   </div>
                   <div className="flex items-baseline justify-center gap-1">
                     <span className="text-[36px] font-bold text-[#191F28]">1,900</span>
                     <span className="text-[18px] text-[#8B95A1]">원/월</span>
                   </div>
-                  <p className="text-[12px] text-[#8B95A1] mt-1">첫 달 이후 3,000원/월</p>
+                  <p className="text-[12px] text-amber-500 mt-1">연간 결제 시 20% 할인 (월 1,520원)</p>
                 </div>
                 
                 <div className="p-5 space-y-3">
@@ -248,7 +248,7 @@ export default function ProfilePage() {
               </>
             )}
 
-            {/* Premium Plan */}
+            {/* Premium Plan - 준비 중 */}
             {selectedPlan === "premium" && (
               <>
                 <div className="py-5 text-center border-b border-[#F2F4F6]">
@@ -256,65 +256,27 @@ export default function ProfilePage() {
                     <span className="px-2 py-0.5 bg-amber-50 text-amber-600 text-[11px] font-bold rounded-full">BEST</span>
                   </div>
                   <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-[36px] font-bold text-[#191F28]">4,900</span>
+                    <span className="text-[36px] font-bold text-[#191F28]">6,900</span>
                     <span className="text-[18px] text-[#8B95A1]">원/월</span>
                   </div>
-                  <p className="text-[12px] text-amber-500 mt-1">연간 결제 시 20% 할인 (월 3,920원)</p>
+                  <p className="text-[12px] text-amber-500 mt-1">연간 결제 시 20% 할인 (월 5,520원)</p>
                 </div>
                 
                 <div className="p-5 space-y-3">
-                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <ImageIcon className="w-5 h-5 text-amber-600" />
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">무제한 사진 저장</p>
-                      <p className="text-[12px] text-[#8B95A1]">용량 걱정 없이 추억을 저장하세요</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Heart className="w-5 h-5 text-pink-500" />
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">AI 데이트 코스 추천</p>
-                      <p className="text-[12px] text-[#8B95A1]">취향 맞춤 데이트 장소와 코스를 추천받으세요</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Calendar className="w-5 h-5 text-purple-500" />
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">고급 캘린더 + 공유</p>
-                      <p className="text-[12px] text-[#8B95A1]">커플 캘린더 실시간 공유 및 동기화</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Star className="w-5 h-5 text-[#d63bf2]" />
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">프리미엄 위젯 전체</p>
-                      <p className="text-[12px] text-[#8B95A1]">모든 위젯 디자인 + 커스터마이징</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check className="w-5 h-5 text-green-500" />
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">고화질 원본 평생 보관</p>
-                      <p className="text-[12px] text-[#8B95A1]">추억을 영원히 간직하세요</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-[12px]">
-                    <div className="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Crown className="w-5 h-5 text-rose-500" />
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-[#191F28]">히스토리 북 무제한</p>
-                      <p className="text-[12px] text-[#8B95A1]">커플 히스토리 북 무제한 생성</p>
+                  <div className="flex items-center justify-center py-8 px-4">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Star className="w-8 h-8 text-amber-500" />
+                      </div>
+                      <p className="text-[18px] font-bold text-[#191F28] dark:text-white mb-2">곧 출시 예정</p>
+                      <p className="text-[14px] text-[#8B95A1] leading-relaxed">
+                        AI 데이트 코스 추천, 무제한 사진 저장,<br />
+                        프리미엄 위젯 전체, 히스토리 북 등<br />
+                        더 강력한 기능이 준비 중이에요
+                      </p>
+                      <div className="mt-4 px-4 py-2 bg-amber-50 dark:bg-amber-900/20 rounded-[12px] inline-block">
+                        <p className="text-[12px] text-amber-600 dark:text-amber-400 font-medium">업데이트 알림을 받으시겠어요?</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -323,23 +285,31 @@ export default function ProfilePage() {
             
             {/* CTA */}
             <div className="px-5 pb-6">
-              <button 
-                onClick={() => handleStripeCheckout("monthly")}
-                disabled={isProcessingPayment}
-                className="w-full py-4 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold rounded-[14px] transition-all disabled:opacity-50"
-                data-testid="button-subscribe-monthly"
-              >
-                {isProcessingPayment ? "처리 중..." : `${selectedPlan === "advanced" ? "고급" : "프리미엄"} 월간 구독하기`}
-              </button>
-              {selectedPlan === "premium" && (
-                <button 
-                  onClick={() => handleStripeCheckout("yearly")}
-                  disabled={isProcessingPayment}
-                  className="w-full py-3 mt-2 border-2 border-amber-400 text-amber-600 font-semibold rounded-[14px] hover:bg-amber-50 transition-all disabled:opacity-50"
-                  data-testid="button-subscribe-yearly"
+              {selectedPlan === "advanced" ? (
+                <>
+                  <button 
+                    onClick={() => handleStripeCheckout("monthly")}
+                    disabled={isProcessingPayment}
+                    className="w-full py-4 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold rounded-[14px] transition-all disabled:opacity-50"
+                    data-testid="button-subscribe-monthly"
+                  >
+                    {isProcessingPayment ? "처리 중..." : "고급 월간 구독하기 (1,900원/월)"}
+                  </button>
+                  <button 
+                    onClick={() => handleStripeCheckout("yearly")}
+                    disabled={isProcessingPayment}
+                    className="w-full py-3 mt-2 border-2 border-amber-400 text-amber-600 font-semibold rounded-[14px] hover:bg-amber-50 transition-all disabled:opacity-50"
+                    data-testid="button-subscribe-yearly"
+                  >
+                    {isProcessingPayment ? "처리 중..." : "연간 구독하기 (20% 할인)"}
+                  </button>
+                </>
+              ) : (
+                <div className="w-full py-4 bg-[#E5E8EB] dark:bg-[#333] text-[#8B95A1] font-bold rounded-[14px] text-center cursor-not-allowed"
+                  data-testid="button-premium-coming-soon"
                 >
-                  {isProcessingPayment ? "처리 중..." : "연간 구독하기 (20% 할인)"}
-                </button>
+                  출시 알림 받기
+                </div>
               )}
               <button 
                 onClick={() => setShowPremiumModal(false)}

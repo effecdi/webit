@@ -10,10 +10,10 @@ async function seedProducts() {
     console.log('Creating Advanced plan...');
     const advancedProduct = await stripe.products.create({
       name: 'WE:BEAT 고급 (Advanced)',
-      description: '커플 통계 리포트, 무제한 저장공간, 우선 지원',
+      description: '커플 통계 리포트, 사진 500장 저장, 고급 캘린더',
       metadata: {
         tier: 'advanced',
-        features: 'couple_stats,unlimited_storage,priority_support',
+        features: 'couple_stats,photo_500,advanced_calendar,premium_widgets',
       },
     });
 
@@ -22,7 +22,7 @@ async function seedProducts() {
       unit_amount: 1900,
       currency: 'krw',
       recurring: { interval: 'month' },
-      metadata: { plan_type: 'monthly', display_price: '1,900원/월' },
+      metadata: { plan_type: 'monthly', display_price: '1,900원/월 (정가 3,900원)' },
     });
 
     const advancedYearly = await stripe.prices.create({
@@ -30,12 +30,12 @@ async function seedProducts() {
       unit_amount: 18240,
       currency: 'krw',
       recurring: { interval: 'year' },
-      metadata: { plan_type: 'yearly', display_price: '18,240원/년 (20% 할인)' },
+      metadata: { plan_type: 'yearly', display_price: '18,240원/년 (월 1,520원, 20% 할인)' },
     });
 
     console.log(`Advanced product: ${advancedProduct.id}`);
-    console.log(`  Monthly price: ${advancedMonthly.id} (1,900 KRW/month)`);
-    console.log(`  Yearly price: ${advancedYearly.id} (18,240 KRW/year)`);
+    console.log(`  Monthly price: ${advancedMonthly.id} (1,900 KRW/month, discounted from 3,900)`);
+    console.log(`  Yearly price: ${advancedYearly.id} (18,240 KRW/year, 20% off monthly)`);
   } else {
     console.log('Advanced plan already exists, skipping...');
   }
@@ -44,19 +44,19 @@ async function seedProducts() {
     console.log('Creating Premium plan...');
     const premiumProduct = await stripe.products.create({
       name: 'WE:BEAT 프리미엄 (Premium)',
-      description: 'AI 추천, 프리미엄 테마, 데이터 분석 포함 모든 기능',
+      description: '무제한 사진 저장, 프리미엄 테마, 히스토리 북 포함 모든 기능 (AI 추천 추후 추가 예정)',
       metadata: {
         tier: 'premium',
-        features: 'couple_stats,unlimited_storage,priority_support,ai_recommendations,premium_themes,data_analytics',
+        features: 'couple_stats,unlimited_storage,priority_support,premium_themes,premium_widgets,history_book',
       },
     });
 
     const premiumMonthlyDating = await stripe.prices.create({
       product: premiumProduct.id,
-      unit_amount: 4900,
+      unit_amount: 6900,
       currency: 'krw',
       recurring: { interval: 'month' },
-      metadata: { plan_type: 'monthly', mode: 'dating', display_price: '4,900원/월' },
+      metadata: { plan_type: 'monthly', mode: 'dating', display_price: '6,900원/월' },
     });
 
     const premiumMonthlyFamily = await stripe.prices.create({
@@ -69,10 +69,10 @@ async function seedProducts() {
 
     const premiumYearlyDating = await stripe.prices.create({
       product: premiumProduct.id,
-      unit_amount: 47040,
+      unit_amount: 66240,
       currency: 'krw',
       recurring: { interval: 'year' },
-      metadata: { plan_type: 'yearly', mode: 'dating', display_price: '47,040원/년 (20% 할인)' },
+      metadata: { plan_type: 'yearly', mode: 'dating', display_price: '66,240원/년 (20% 할인)' },
     });
 
     const premiumYearlyFamily = await stripe.prices.create({
@@ -84,9 +84,9 @@ async function seedProducts() {
     });
 
     console.log(`Premium product: ${premiumProduct.id}`);
-    console.log(`  Monthly Dating: ${premiumMonthlyDating.id} (4,900 KRW/month)`);
+    console.log(`  Monthly Dating: ${premiumMonthlyDating.id} (6,900 KRW/month)`);
     console.log(`  Monthly Family: ${premiumMonthlyFamily.id} (6,900 KRW/month)`);
-    console.log(`  Yearly Dating: ${premiumYearlyDating.id} (47,040 KRW/year)`);
+    console.log(`  Yearly Dating: ${premiumYearlyDating.id} (66,240 KRW/year)`);
     console.log(`  Yearly Family: ${premiumYearlyFamily.id} (66,240 KRW/year)`);
   } else {
     console.log('Premium plan already exists, skipping...');
