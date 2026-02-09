@@ -42,13 +42,13 @@ export function WeddingBottomNav() {
                     <div
                       className="w-12 h-12 rounded-full flex items-center justify-center mb-0.5 transition-all duration-300"
                       style={{
-                        background: "linear-gradient(135deg, #E8927C, #F4845F)",
-                        boxShadow: "0 4px 16px rgba(232, 146, 124, 0.45)",
+                        background: "linear-gradient(135deg, #3182F6, #5BA8F7)",
+                        boxShadow: "0 4px 16px rgba(49, 130, 246, 0.45)",
                       }}
                     >
                       <Icon className="w-[22px] h-[22px] text-white" strokeWidth={2} />
                     </div>
-                    <span className="text-[10px] font-bold" style={{ color: "#E8927C" }}>
+                    <span className="text-[10px] font-bold" style={{ color: "#3182F6" }}>
                       {item.label}
                     </span>
                   </div>
