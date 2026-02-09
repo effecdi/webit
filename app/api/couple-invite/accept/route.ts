@@ -11,9 +11,10 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { inviteCode } = body;
+    const inviteCode = body.inviteCode || body.code;
 
     if (!inviteCode) {
+      console.log("Accept invite body received:", JSON.stringify(body));
       return NextResponse.json({ error: "Invite code is required" }, { status: 400 });
     }
 

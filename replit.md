@@ -21,7 +21,15 @@ The app supports **system-level dark/light mode** via `next-themes` with `defaul
 - No manual toggle is provided — the app follows the device's system setting automatically
 
 ### Backend and Database
-**PostgreSQL** is used as the database, accessed through **Drizzle ORM** for type-safe operations. API routes follow a RESTful pattern (`/app/api/{resource}/route.ts`) supporting standard CRUD operations. User authentication is handled via **Replit Auth OIDC**, supporting Google, Apple, and GitHub logins, with PostgreSQL-backed sessions.
+**PostgreSQL** is used as the database, accessed through **Drizzle ORM** for type-safe operations. API routes follow a RESTful pattern (`/app/api/{resource}/route.ts`) supporting standard CRUD operations. User authentication is handled via **Replit Auth OIDC**, supporting Google, Apple, and GitHub logins, with PostgreSQL-backed sessions. Dev login (`POST /api/auth/dev-login`) supports custom userId/firstName/lastName for testing multi-user flows.
+
+### Couple Data Sharing System
+Two users are linked via the `couples` table (user1Id, user2Id). The `lib/couple-utils.ts` module provides helpers:
+- `getCoupleUserIds(userId)`: Returns both partner IDs if coupled, or [userId] if solo
+- `getPartnerId(userId)`: Returns partner's ID or null
+- `getCoupleRecord(userId)`: Returns the couple record or null
+
+All shared data APIs (todos, events, photos, albums, expenses, checklist, travels, wedding-info, guests, invitations, guestbook) use `inArray(table.userId, coupleUserIds)` to query data from both partners. Write operations (POST) record the creating user's ID. Community posts/comments/likes remain public and are NOT filtered by couple - all users can participate. Notifications are per-user. Unique indexes on couples(user1_id) and couples(user2_id) prevent duplicate couple links. Both inviter and acceptor are checked for existing couples before creating a new link.
 
 ### Key Features
 - **Mode Lifecycle Progression**: Dating → Wedding → Family. Dating mode shows [연애, 결혼] switches. Clicking 결혼 triggers wedding survey + congratulations modal (first time only). Wedding mode shows [결혼, 가족] switches. When wedding D-day+1 arrives, auto-transitions to Family mode with congratulations modal. Family mode shows only [가족]. All historical data (todos, events, photos) from dating and wedding modes is preserved and accessible in family mode.
