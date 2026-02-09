@@ -53,43 +53,43 @@
 }
 
 .dark {
-  --background: #0D0D0D;
-  --foreground: #E8E8E8;
-  --card: #1A1A1A;
-  --card-foreground: #E8E8E8;
-  --popover: #1A1A1A;
-  --popover-foreground: #E8E8E8;
-  --primary: #e06cf7;
+  --background: #111111;
+  --foreground: #EBEBEB;
+  --card: #1C1C1E;
+  --card-foreground: #EBEBEB;
+  --popover: #1C1C1E;
+  --popover-foreground: #EBEBEB;
+  --primary: #D96EF0;
   --primary-foreground: #FFFFFF;
-  --secondary: #1E1E1E;
-  --secondary-foreground: #C0C0C0;
-  --muted: #1E1E1E;
-  --muted-foreground: #888888;
-  --accent: #2A1A3A;
-  --accent-foreground: #e06cf7;
-  --destructive: #EF4444;
+  --secondary: #222224;
+  --secondary-foreground: #C5C5C5;
+  --muted: #222224;
+  --muted-foreground: #8E8E93;
+  --accent: #2D1B40;
+  --accent-foreground: #D96EF0;
+  --destructive: #FF453A;
   --destructive-foreground: #FFFFFF;
-  --border: #2A2A2A;
-  --input: #1E1E1E;
-  --ring: #e06cf7;
-  --chart-1: #e06cf7;
-  --chart-2: #E8E8E8;
-  --chart-3: #1A2A3A;
-  --chart-4: #888888;
-  --chart-5: #555555;
-  --sidebar: #0D0D0D;
-  --sidebar-foreground: #E8E8E8;
-  --sidebar-primary: #e06cf7;
+  --border: #2C2C2E;
+  --input: #222224;
+  --ring: #D96EF0;
+  --chart-1: #D96EF0;
+  --chart-2: #EBEBEB;
+  --chart-3: #1C2D3E;
+  --chart-4: #8E8E93;
+  --chart-5: #636366;
+  --sidebar: #111111;
+  --sidebar-foreground: #EBEBEB;
+  --sidebar-primary: #D96EF0;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #2A1A3A;
-  --sidebar-accent-foreground: #e06cf7;
-  --sidebar-border: #2A2A2A;
-  --sidebar-ring: #e06cf7;
+  --sidebar-accent: #2D1B40;
+  --sidebar-accent-foreground: #D96EF0;
+  --sidebar-border: #2C2C2E;
+  --sidebar-ring: #D96EF0;
 
-  --weve-bg: #0D0D0D;
-  --weve-text: #E8E8E8;
-  --weve-text-sub: #888888;
-  --weve-gray: #555555;
+  --weve-bg: #111111;
+  --weve-text: #EBEBEB;
+  --weve-text-sub: #8E8E93;
+  --weve-gray: #636366;
   --sage: #7A9B7E;
   --sage-light: #1A2A1E;
   --coral: #D4836B;
@@ -152,43 +152,43 @@
 
 /* ---- Background overrides (light surfaces → dark surfaces) ---- */
 .dark .bg-white {
-  background-color: #1A1A1A !important;
+  background-color: #1C1C1E !important;
 }
 .dark .bg-\[\#F2F4F6\] {
-  background-color: #0D0D0D !important;
+  background-color: #111111 !important;
 }
 .dark .bg-\[\#F7F8FA\] {
-  background-color: #0D0D0D !important;
+  background-color: #111111 !important;
 }
 .dark .bg-\[\#F8F9FA\] {
-  background-color: #141414 !important;
+  background-color: #161618 !important;
 }
 .dark .bg-\[\#FAFBFC\] {
-  background-color: #141414 !important;
+  background-color: #161618 !important;
 }
 .dark .bg-\[\#F9FAFB\] {
-  background-color: #141414 !important;
+  background-color: #161618 !important;
 }
 .dark .bg-\[\#F3F5F7\] {
-  background-color: #1E1E1E !important;
+  background-color: #222224 !important;
 }
 .dark .bg-\[\#F5F5F5\] {
-  background-color: #1E1E1E !important;
+  background-color: #222224 !important;
 }
 .dark .bg-\[\#EBEBEB\] {
-  background-color: #2A2A2A !important;
+  background-color: #2C2C2E !important;
 }
 .dark .bg-\[\#E5E8EB\] {
-  background-color: #2A2A2A !important;
+  background-color: #2C2C2E !important;
 }
 .dark .bg-\[\#D1D6DB\] {
-  background-color: #333333 !important;
+  background-color: #3A3A3C !important;
 }
 .dark .bg-\[\#B0B8C1\] {
-  background-color: #444444 !important;
+  background-color: #48484A !important;
 }
 .dark .bg-\[\#E8F3FF\] {
-  background-color: #1A2A3A !important;
+  background-color: #1C2D3E !important;
 }
 
 /* Tinted light backgrounds */
@@ -230,34 +230,34 @@
 
 /* Additional light backgrounds */
 .dark .bg-\[\#EBEEF1\] {
-  background-color: #1A1A1A !important;
+  background-color: #1C1C1E !important;
 }
 .dark .bg-\[\#EBF4FF\] {
-  background-color: #152030 !important;
+  background-color: #182535 !important;
 }
 .dark .bg-\[\#EEF4FF\] {
-  background-color: #152030 !important;
+  background-color: #182535 !important;
 }
 .dark .bg-\[\#F0E4FF\] {
-  background-color: #1A152A !important;
+  background-color: #1E182E !important;
 }
 .dark .bg-\[\#F0F4F0\] {
-  background-color: #141A14 !important;
+  background-color: #161C16 !important;
 }
 .dark .bg-\[\#E8F5E9\] {
-  background-color: #152A1A !important;
+  background-color: #172C1C !important;
 }
 .dark .bg-\[\#E0E0E0\] {
-  background-color: #2A2A2A !important;
+  background-color: #2C2C2E !important;
 }
 .dark .bg-\[\#F5F0E8\] {
-  background-color: #1A1814 !important;
+  background-color: #1E1A16 !important;
 }
 .dark .bg-\[\#E8DFD0\] {
-  background-color: #1E1A14 !important;
+  background-color: #201C16 !important;
 }
 .dark .bg-\[\#D4C8B8\] {
-  background-color: #2A2518 !important;
+  background-color: #2C261A !important;
 }
 
 /* Warm/cream/vintage backgrounds */
@@ -273,13 +273,13 @@
 
 /* Gray backgrounds for various UI */
 .dark .bg-gray-50 {
-  background-color: #141414 !important;
+  background-color: #161618 !important;
 }
 .dark .bg-gray-100 {
-  background-color: #1A1A1A !important;
+  background-color: #1C1C1E !important;
 }
 .dark .bg-gray-200 {
-  background-color: #222222 !important;
+  background-color: #252528 !important;
 }
 
 /* ---- Text color overrides (dark text → light text) ---- */
@@ -394,37 +394,37 @@
 
 /* ---- Border color overrides ---- */
 .dark .border-\[\#E5E8EB\] {
-  border-color: #2A2A2A !important;
+  border-color: #2C2C2E !important;
 }
 .dark .border-\[\#F2F3F5\] {
-  border-color: #1E1E1E !important;
+  border-color: #222224 !important;
 }
 .dark .border-\[\#F2F4F6\] {
-  border-color: #1E1E1E !important;
+  border-color: #222224 !important;
 }
 .dark .border-\[\#F5F5F5\] {
-  border-color: #1E1E1E !important;
+  border-color: #222224 !important;
 }
 .dark .border-\[\#F0F0F0\] {
-  border-color: #1E1E1E !important;
+  border-color: #222224 !important;
 }
 .dark .border-\[\#D1D6DB\] {
-  border-color: #333333 !important;
+  border-color: #3A3A3C !important;
 }
 .dark .border-\[\#D1D5DB\] {
-  border-color: #333333 !important;
+  border-color: #3A3A3C !important;
 }
 .dark .border-\[\#D0D0D0\] {
-  border-color: #333333 !important;
+  border-color: #3A3A3C !important;
 }
 .dark .border-\[\#B0B8C1\] {
-  border-color: #3A3A3A !important;
+  border-color: #3A3A3C !important;
 }
 .dark .border-\[\#191F28\] {
-  border-color: #444444 !important;
+  border-color: #48484A !important;
 }
 .dark .border-\[\#202020\] {
-  border-color: #333333 !important;
+  border-color: #3A3A3C !important;
 }
 .dark .border-\[\#f0ebe3\] {
   border-color: #2A2518 !important;
@@ -489,24 +489,24 @@
 
 /* Border direction overrides */
 .dark .border-b-\[\#E5E8EB\] {
-  border-bottom-color: #2A2A2A !important;
+  border-bottom-color: #2C2C2E !important;
 }
 .dark .border-b-\[\#F2F4F6\] {
-  border-bottom-color: #1E1E1E !important;
+  border-bottom-color: #222224 !important;
 }
 .dark .border-t-\[\#E5E8EB\] {
-  border-top-color: #2A2A2A !important;
+  border-top-color: #2C2C2E !important;
 }
 
 /* ---- Divide color overrides ---- */
 .dark .divide-\[\#F2F4F6\] > :not(:last-child) {
-  border-color: #1E1E1E !important;
+  border-color: #222224 !important;
 }
 .dark .divide-\[\#E5E8EB\] > :not(:last-child) {
-  border-color: #2A2A2A !important;
+  border-color: #2C2C2E !important;
 }
 .dark .divide-\[\#F5F5F5\] > :not(:last-child) {
-  border-color: #1E1E1E !important;
+  border-color: #222224 !important;
 }
 
 /* ---- Placeholder overrides ---- */
@@ -527,22 +527,22 @@
 .dark input.bg-\[\#F2F4F6\],
 .dark textarea.bg-\[\#F2F4F6\],
 .dark select.bg-\[\#F2F4F6\] {
-  background-color: #1E1E1E !important;
+  background-color: #222224 !important;
 }
 .dark input.bg-\[\#F7F8FA\],
 .dark textarea.bg-\[\#F7F8FA\],
 .dark select.bg-\[\#F7F8FA\] {
-  background-color: #1E1E1E !important;
+  background-color: #222224 !important;
 }
 .dark input.bg-\[\#F3F5F7\],
 .dark textarea.bg-\[\#F3F5F7\],
 .dark select.bg-\[\#F3F5F7\] {
-  background-color: #1E1E1E !important;
+  background-color: #222224 !important;
 }
 .dark input.bg-\[\#F5F5F5\],
 .dark textarea.bg-\[\#F5F5F5\],
 .dark select.bg-\[\#F5F5F5\] {
-  background-color: #1E1E1E !important;
+  background-color: #222224 !important;
 }
 
 /* ---- Tailwind color-50 backgrounds (category pills/badges) ---- */
@@ -701,28 +701,28 @@
 
 /* ---- Glass/transparency overrides ---- */
 .dark .bg-white\/80 {
-  background-color: rgba(26, 26, 26, 0.85) !important;
+  background-color: rgba(28, 28, 30, 0.88) !important;
 }
 .dark .bg-white\/90 {
-  background-color: rgba(26, 26, 26, 0.9) !important;
+  background-color: rgba(28, 28, 30, 0.92) !important;
 }
 .dark .bg-white\/95 {
-  background-color: rgba(26, 26, 26, 0.95) !important;
+  background-color: rgba(28, 28, 30, 0.96) !important;
 }
 .dark .bg-white\/70 {
-  background-color: rgba(26, 26, 26, 0.75) !important;
+  background-color: rgba(28, 28, 30, 0.78) !important;
 }
 .dark .bg-white\/60 {
-  background-color: rgba(26, 26, 26, 0.65) !important;
+  background-color: rgba(28, 28, 30, 0.68) !important;
 }
 .dark .bg-white\/50 {
-  background-color: rgba(26, 26, 26, 0.55) !important;
+  background-color: rgba(28, 28, 30, 0.58) !important;
 }
 .dark .bg-\[\#F2F4F6\]\/90 {
-  background-color: rgba(13, 13, 13, 0.9) !important;
+  background-color: rgba(17, 17, 17, 0.92) !important;
 }
 .dark .bg-\[\#F2F4F6\]\/80 {
-  background-color: rgba(13, 13, 13, 0.85) !important;
+  background-color: rgba(17, 17, 17, 0.88) !important;
 }
 .dark .bg-black\/50 {
   background-color: rgba(0, 0, 0, 0.7) !important;
@@ -733,28 +733,28 @@
 
 /* ---- Hover state overrides ---- */
 .dark .hover\:bg-\[\#F2F4F6\]:hover {
-  background-color: #1E1E1E !important;
+  background-color: #222224 !important;
 }
 .dark .hover\:bg-\[\#E5E8EB\]:hover {
-  background-color: #2A2A2A !important;
+  background-color: #2C2C2E !important;
 }
 .dark .hover\:bg-\[\#F8F9FA\]:hover {
-  background-color: #1A1A1A !important;
+  background-color: #1C1C1E !important;
 }
 .dark .hover\:bg-\[\#F7F8FA\]:hover {
-  background-color: #1A1A1A !important;
+  background-color: #1C1C1E !important;
 }
 .dark .hover\:bg-\[\#F9FAFB\]:hover {
-  background-color: #1A1A1A !important;
+  background-color: #1C1C1E !important;
 }
 .dark .hover\:bg-\[\#EBEBEB\]:hover {
-  background-color: #333333 !important;
+  background-color: #3A3A3C !important;
 }
 .dark .hover\:bg-\[\#F3F5F7\]:hover {
-  background-color: #252525 !important;
+  background-color: #2A2A2C !important;
 }
 .dark .hover\:bg-\[\#F5F5F5\]:hover {
-  background-color: #252525 !important;
+  background-color: #2A2A2C !important;
 }
 .dark .hover\:bg-\[\#FFF0EF\]:hover {
   background-color: #351F1C !important;
@@ -763,19 +763,19 @@
   background-color: #351A1A !important;
 }
 .dark .hover\:bg-gray-50:hover {
-  background-color: #1A1A1A !important;
+  background-color: #1C1C1E !important;
 }
 .dark .hover\:bg-gray-100:hover {
-  background-color: #222222 !important;
+  background-color: #252528 !important;
 }
 .dark .hover\:bg-gray-200:hover {
-  background-color: #2A2A2A !important;
+  background-color: #2C2C2E !important;
 }
 .dark .hover\:bg-white:hover {
-  background-color: #222222 !important;
+  background-color: #252528 !important;
 }
 .dark .hover\:bg-white\/90:hover {
-  background-color: rgba(26, 26, 26, 0.9) !important;
+  background-color: rgba(28, 28, 30, 0.92) !important;
 }
 .dark .hover\:text-\[\#4E5968\]:hover {
   color: #B0B0B0 !important;
@@ -789,24 +789,24 @@
 
 /* ---- Active state overrides ---- */
 .dark .active\:bg-\[\#E5E8EB\]:active {
-  background-color: #333333 !important;
+  background-color: #3A3A3C !important;
 }
 .dark .active\:bg-\[\#F2F4F6\]:active {
-  background-color: #252525 !important;
+  background-color: #2A2A2C !important;
 }
 
 /* Active button/pill bg overrides - keep dark buttons visible */
 .dark .bg-\[\#191F28\] {
-  background-color: #333333 !important;
+  background-color: #3A3A3C !important;
 }
 .dark .hover\:bg-\[\#191F28\]:hover {
-  background-color: #404040 !important;
+  background-color: #48484A !important;
 }
 .dark .hover\:bg-\[\#333D4B\]:hover {
-  background-color: #444444 !important;
+  background-color: #48484A !important;
 }
 .dark .bg-\[\#3d3d3d\] {
-  background-color: #444444 !important;
+  background-color: #48484A !important;
 }
 
 /* Focus ring overrides for inputs/selects in dark mode */
@@ -831,7 +831,7 @@
 
 /* Additional dark button/surface overrides */
 .dark .bg-\[\#333D4B\] {
-  background-color: #3A3A3A !important;
+  background-color: #3A3A3C !important;
 }
 .dark .bg-\[\#D4AF37\] {
   background-color: #B8962E !important;
@@ -870,8 +870,8 @@
 
 /* Select/option dark mode */
 .dark select option {
-  background-color: #1E1E1E !important;
-  color: #E8E8E8 !important;
+  background-color: #222224 !important;
+  color: #EBEBEB !important;
 }
 
 /* ---- Scrollbar & color scheme ---- */
@@ -882,7 +882,7 @@
 /* ---- Sticky header bg fix ---- */
 .dark .sticky.bg-white,
 .dark .sticky.bg-\[\#F2F4F6\] {
-  background-color: #0D0D0D !important;
+  background-color: #111111 !important;
 }
 
 /* ===== END DARK MODE OVERRIDES ===== */
@@ -944,9 +944,9 @@
 }
 
 .dark .glass-menu {
-  background: rgba(30, 30, 30, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: rgba(28, 28, 30, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 .glass-menu-item {
@@ -955,8 +955,8 @@
 }
 
 .dark .glass-menu-item {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* iOS/Android Safe Area Utilities */

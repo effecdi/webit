@@ -19,11 +19,11 @@ export function FloatingBackButton() {
         data-testid="button-back-nav"
         className="w-[52px] h-[52px] rounded-full shadow-lg flex items-center justify-center flex-shrink-0 transition-transform duration-150 ease-out active:scale-[0.9] pointer-events-auto"
         style={{
-          background: isDark ? "rgba(26, 26, 26, 0.85)" : "rgba(249, 250, 251, 0.82)",
+          background: isDark ? "rgba(28, 28, 30, 0.88)" : "rgba(249, 250, 251, 0.82)",
           backdropFilter: "blur(20px) saturate(180%)",
           WebkitBackdropFilter: "blur(20px) saturate(180%)",
           borderWidth: 1,
-          borderColor: isDark ? "rgba(255,255,255,0.08)" : "rgba(209,213,219,0.4)",
+          borderColor: isDark ? "rgba(255,255,255,0.1)" : "rgba(209,213,219,0.4)",
         }}
       >
         <ArrowLeft className="w-[22px] h-[22px]" style={{ color: isDark ? "#d1d5db" : "#191F28" }} />
