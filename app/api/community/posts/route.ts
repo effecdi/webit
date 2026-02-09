@@ -11,9 +11,17 @@ export async function GET(request: NextRequest) {
   const sort = searchParams.get('sort');
 
   try {
-    const orderClause = sort === 'popular'
-      ? desc(communityPosts.likeCount)
-      : desc(communityPosts.createdAt);
+    const popularScore = sql`(COALESCE(${communityPosts.likeCount}, 0) * 3 + COALESCE(${communityPosts.viewCount}, 0))`;
+    const trendingScore = sql`(COALESCE(${communityPosts.likeCount}, 0) * 3 + COALESCE(${communityPosts.viewCount}, 0) + EXTRACT(EPOCH FROM (${communityPosts.createdAt} - NOW() + INTERVAL '7 days')) / 3600)`;
+
+    let orderBy;
+    if (sort === 'popular') {
+      orderBy = desc(popularScore);
+    } else if (sort === 'trending') {
+      orderBy = desc(trendingScore);
+    } else {
+      orderBy = desc(communityPosts.createdAt);
+    }
 
     let query = db.select().from(communityPosts)
       .where(
@@ -21,7 +29,7 @@ export async function GET(request: NextRequest) {
           ? and(eq(communityPosts.mode, mode), eq(communityPosts.category, category))
           : eq(communityPosts.mode, mode)
       )
-      .orderBy(orderClause);
+      .orderBy(orderBy);
 
     const result = await query;
 
@@ -70,6 +78,7 @@ export async function POST(request: NextRequest) {
       authorName: displayName,
       likeCount: 0,
       commentCount: 0,
+      viewCount: 0,
     }).returning();
 
     return NextResponse.json(newPost);

@@ -15,6 +15,7 @@ import {
   Users,
   BookOpen,
   Flame,
+  Eye,
 } from "lucide-react"
 
 interface CommunityPost {
@@ -27,6 +28,7 @@ interface CommunityPost {
   authorName: string | null
   likeCount: number | null
   commentCount: number | null
+  viewCount: number | null
   isLiked: boolean
   createdAt: string
 }
@@ -72,7 +74,7 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
     try {
       const isSpecialTab = activeCategory === "추천" || activeCategory === "인기"
       const cat = !isSpecialTab && activeCategory !== "전체" ? `&category=${encodeURIComponent(activeCategory)}` : ""
-      const sortParam = activeTab === "인기" ? "&sort=popular" : ""
+      const sortParam = activeTab === "인기" ? "&sort=popular" : "&sort=trending"
       const res = await fetch(`/api/community/posts?mode=${config.mode}${cat}${sortParam}`)
       if (res.ok) {
         const data = await res.json()
@@ -250,9 +252,18 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
                       <span className="text-[11px] text-[#B0B8C1] dark:text-[#666]">{post.authorName || "익명"}</span>
                     </div>
                   </div>
-                  <Heart className={`w-5 h-5 flex-shrink-0 ${
-                    post.isLiked ? "fill-red-400 text-red-400" : "text-[#D1D5DB] dark:text-[#555]"
-                  }`} />
+                  <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                    <div className="flex items-center gap-1">
+                      <Heart className={`w-4 h-4 ${
+                        post.isLiked ? "fill-red-400 text-red-400" : "text-[#D1D5DB] dark:text-[#555]"
+                      }`} />
+                      <span className="text-[11px] text-[#B0B8C1] dark:text-[#666]">{post.likeCount || 0}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Eye className="w-3.5 h-3.5 text-[#D1D5DB] dark:text-[#555]" />
+                      <span className="text-[11px] text-[#B0B8C1] dark:text-[#666]">{post.viewCount || 0}</span>
+                    </div>
+                  </div>
                 </button>
               ))}
             </div>
@@ -286,6 +297,10 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
                       <span className="text-[12px] text-[#8B95A1]">{post.authorName || "익명"}</span>
                     </div>
                     <div className="flex items-center gap-3">
+                      <span className="flex items-center gap-1 text-[12px] text-[#8B95A1]">
+                        <Eye className="w-3.5 h-3.5" />
+                        {post.viewCount || 0}
+                      </span>
                       <span className="flex items-center gap-1 text-[12px] text-[#8B95A1]">
                         <Heart className={`w-3.5 h-3.5 ${post.isLiked ? "fill-red-400 text-red-400" : ""}`} />
                         {post.likeCount || 0}

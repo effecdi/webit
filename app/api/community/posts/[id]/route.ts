@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { communityPosts, communityLikes } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
 export async function GET(
@@ -11,14 +11,16 @@ export async function GET(
   const { id } = await params;
 
   try {
-    const result = await db.select().from(communityPosts)
-      .where(eq(communityPosts.id, Number(id)));
+    const updated = await db.update(communityPosts)
+      .set({ viewCount: sql`COALESCE(${communityPosts.viewCount}, 0) + 1` })
+      .where(eq(communityPosts.id, Number(id)))
+      .returning();
 
-    if (!result.length) {
+    if (!updated.length) {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 });
     }
 
-    const post = result[0];
+    const post = updated[0];
 
     const auth = await requireAuth();
     let isLiked = false;
