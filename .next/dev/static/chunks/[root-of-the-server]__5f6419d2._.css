@@ -1377,10 +1377,6 @@
     inset-block: calc(var(--spacing) * 0);
   }
 
-  .-top-0\.5 {
-    top: calc(var(--spacing) * -.5);
-  }
-
   .-top-1 {
     top: calc(var(--spacing) * -1);
   }
@@ -3210,10 +3206,6 @@
     width: calc(100% - 2.5rem);
   }
 
-  .w-\[calc\(100\%-24px\)\] {
-    width: calc(100% - 24px);
-  }
-
   .w-auto {
     width: auto;
   }
@@ -3304,10 +3296,6 @@
 
   .max-w-\[calc\(100\%-2rem\)\] {
     max-width: calc(100% - 2rem);
-  }
-
-  .max-w-\[calc\(448px-24px\)\] {
-    max-width: 424px;
   }
 
   .max-w-full {
