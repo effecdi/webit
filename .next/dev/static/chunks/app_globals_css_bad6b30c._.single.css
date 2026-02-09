@@ -13801,7 +13801,7 @@
   background-color: #1a1a1a !important;
 }
 
-.dark .bg-\[\#F2F4F6\] {
+.dark .bg-\[\#F2F4F6\], .dark .bg-\[\#F7F8FA\] {
   background-color: #0d0d0d !important;
 }
 
@@ -13811,6 +13811,14 @@
 
 .dark .bg-\[\#E5E8EB\] {
   background-color: #2a2a2a !important;
+}
+
+.dark .bg-\[\#D1D6DB\] {
+  background-color: #333 !important;
+}
+
+.dark .bg-\[\#FFF0EE\] {
+  background-color: #2a1a18 !important;
 }
 
 .dark .bg-\[\#E8F3FF\] {
@@ -13845,20 +13853,28 @@
   color: #e8e8e8 !important;
 }
 
+.dark .text-\[\#333D4B\] {
+  color: #d0d0d0 !important;
+}
+
 .dark .text-\[\#4E5968\] {
   color: #b0b0b0 !important;
 }
 
+.dark .text-\[\#6B7684\] {
+  color: #999 !important;
+}
+
 .dark .text-\[\#8B95A1\] {
-  color: gray !important;
+  color: #888 !important;
 }
 
 .dark .text-\[\#B0B8C1\] {
-  color: #606060 !important;
+  color: #666 !important;
 }
 
 .dark .text-\[\#D1D6DB\] {
-  color: #444 !important;
+  color: #505050 !important;
 }
 
 .dark .border-\[\#E5E8EB\] {
@@ -13889,7 +13905,7 @@
   color: #333 !important;
 }
 
-.dark input.bg-\[\#F2F4F6\], .dark textarea.bg-\[\#F2F4F6\], .dark select.bg-\[\#F2F4F6\] {
+.dark input.bg-\[\#F2F4F6\], .dark textarea.bg-\[\#F2F4F6\], .dark select.bg-\[\#F2F4F6\], .dark input.bg-\[\#F7F8FA\], .dark textarea.bg-\[\#F7F8FA\], .dark select.bg-\[\#F7F8FA\] {
   background-color: #1e1e1e !important;
 }
 
@@ -13939,6 +13955,78 @@
 
 .dark .bg-rose-50 {
   background-color: #2a1520 !important;
+}
+
+.dark .bg-blue-100 {
+  background-color: #1a2540 !important;
+}
+
+.dark .bg-pink-100 {
+  background-color: #301525 !important;
+}
+
+.dark .bg-green-100 {
+  background-color: #152a1a !important;
+}
+
+.dark .bg-amber-100 {
+  background-color: #2a2515 !important;
+}
+
+.dark .bg-purple-100 {
+  background-color: #221530 !important;
+}
+
+.dark .bg-orange-100 {
+  background-color: #2a2015 !important;
+}
+
+.dark .bg-indigo-100 {
+  background-color: #151a30 !important;
+}
+
+.dark .bg-rose-100 {
+  background-color: #2a1520 !important;
+}
+
+.dark .from-blue-50 {
+  --tw-gradient-from: #1a2540 !important;
+}
+
+.dark .from-pink-50 {
+  --tw-gradient-from: #2a1525 !important;
+}
+
+.dark .via-pink-50 {
+  --tw-gradient-via: #2a1525 !important;
+}
+
+.dark .to-pink-50 {
+  --tw-gradient-to: #2a1525 !important;
+}
+
+.dark .via-white {
+  --tw-gradient-via: #1a1a1a !important;
+}
+
+.dark .to-blue-50 {
+  --tw-gradient-to: #1a2540 !important;
+}
+
+.dark .from-blue-100 {
+  --tw-gradient-from: #1a2540 !important;
+}
+
+.dark .to-blue-200 {
+  --tw-gradient-to: #1a3050 !important;
+}
+
+.dark .from-pink-100 {
+  --tw-gradient-from: #301525 !important;
+}
+
+.dark .to-pink-200 {
+  --tw-gradient-to: #3a1a30 !important;
 }
 
 .dark .shadow-sm {
@@ -14013,12 +14101,24 @@
   background-color: #2a2a2a !important;
 }
 
-.dark .hover\:bg-\[\#F8F9FA\]:hover, .dark .hover\:bg-\[\#F9FAFB\]:hover {
+.dark .hover\:bg-\[\#F8F9FA\]:hover, .dark .hover\:bg-\[\#F7F8FA\]:hover, .dark .hover\:bg-\[\#F9FAFB\]:hover {
   background-color: #1a1a1a !important;
 }
 
 .dark .hover\:bg-gray-200:hover {
   background-color: #2a2a2a !important;
+}
+
+.dark .hover\:bg-white:hover {
+  background-color: #222 !important;
+}
+
+.dark .hover\:bg-white\/90:hover {
+  background-color: #1a1a1ae6 !important;
+}
+
+.dark .hover\:text-\[\#4E5968\]:hover {
+  color: #b0b0b0 !important;
 }
 
 .dark .bg-\[\#191F28\] {

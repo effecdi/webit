@@ -25,7 +25,8 @@ export function FamilyGallery() {
     try {
       const res = await fetch('/api/photos?mode=family')
       const data = await res.json()
-      const formatted = data.map((p: { id: number; url: string; createdAt: string; liked: boolean }) => ({
+      const items = Array.isArray(data) ? data : []
+      const formatted = items.map((p: { id: number; url: string; createdAt: string; liked: boolean }) => ({
         id: p.id,
         src: p.url,
         date: new Date(p.createdAt).toLocaleDateString("ko-KR", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\./g, "."),

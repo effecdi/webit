@@ -323,7 +323,8 @@ function CoupleCalendar() {
         try {
             const res = await fetch("/api/events?mode=dating");
             const data = await res.json();
-            setSchedules(data.map((e)=>({
+            const items = Array.isArray(data) ? data : [];
+            setSchedules(items.map((e)=>({
                     ...e,
                     date: e.date.split("T")[0]
                 })));
@@ -482,12 +483,12 @@ function CoupleCalendar() {
                                             className: "w-5 h-5 text-[#4E5968]"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                            lineNumber: 238,
+                                            lineNumber: 239,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 234,
+                                        lineNumber: 235,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -500,7 +501,7 @@ function CoupleCalendar() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 240,
+                                        lineNumber: 241,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -510,18 +511,18 @@ function CoupleCalendar() {
                                             className: "w-5 h-5 text-[#4E5968]"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                            lineNumber: 247,
+                                            lineNumber: 248,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 243,
+                                        lineNumber: 244,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                lineNumber: 233,
+                                lineNumber: 234,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -539,12 +540,12 @@ function CoupleCalendar() {
                                         children: day
                                     }, day, false, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 253,
+                                        lineNumber: 254,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                lineNumber: 251,
+                                lineNumber: 252,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -563,7 +564,7 @@ function CoupleCalendar() {
                                                     children: day
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                    lineNumber: 287,
+                                                    lineNumber: 288,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -572,31 +573,31 @@ function CoupleCalendar() {
                                                             className: `w-1.5 h-1.5 rounded-full ${OWNER_COLORS[getCategoryColor(s.category)].dot}`
                                                         }, s.id, false, {
                                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                            lineNumber: 302,
+                                                            lineNumber: 303,
                                                             columnNumber: 27
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                    lineNumber: 300,
+                                                    lineNumber: 301,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true)
                                     }, index, false, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 277,
+                                        lineNumber: 278,
                                         columnNumber: 17
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                lineNumber: 268,
+                                lineNumber: 269,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                        lineNumber: 232,
+                        lineNumber: 233,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -615,7 +616,7 @@ function CoupleCalendar() {
                                                 className: `w-3 h-3 rounded-full ${OWNER_COLORS[owner].dot}`
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                lineNumber: 320,
+                                                lineNumber: 321,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -623,18 +624,18 @@ function CoupleCalendar() {
                                                 children: OWNER_LABELS[owner]
                                             }, void 0, false, {
                                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                lineNumber: 323,
+                                                lineNumber: 324,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, owner, true, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 319,
+                                        lineNumber: 320,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                lineNumber: 317,
+                                lineNumber: 318,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -642,7 +643,7 @@ function CoupleCalendar() {
                                 children: "다가오는 일정"
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                lineNumber: 330,
+                                lineNumber: 331,
                                 columnNumber: 11
                             }, this),
                             isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -650,7 +651,7 @@ function CoupleCalendar() {
                                 children: "로딩 중..."
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                lineNumber: 335,
+                                lineNumber: 336,
                                 columnNumber: 13
                             }, this) : schedules.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "py-8 text-center",
@@ -660,7 +661,7 @@ function CoupleCalendar() {
                                         children: "등록된 일정이 없어요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 338,
+                                        lineNumber: 339,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -668,13 +669,13 @@ function CoupleCalendar() {
                                         children: "날짜를 클릭해서 일정을 추가해보세요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 339,
+                                        lineNumber: 340,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                lineNumber: 337,
+                                lineNumber: 338,
                                 columnNumber: 13
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-2",
@@ -690,7 +691,7 @@ function CoupleCalendar() {
                                                             children: schedule.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                            lineNumber: 363,
+                                                            lineNumber: 364,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -700,7 +701,7 @@ function CoupleCalendar() {
                                                                     children: schedule.date.replace(/-/g, ".")
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                                    lineNumber: 367,
+                                                                    lineNumber: 368,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 schedule.time && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -709,14 +710,14 @@ function CoupleCalendar() {
                                                                             className: "w-3 h-3"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                                            lineNumber: 370,
+                                                                            lineNumber: 371,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                             children: schedule.time
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                                            lineNumber: 371,
+                                                                            lineNumber: 372,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
@@ -724,7 +725,7 @@ function CoupleCalendar() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                            lineNumber: 366,
+                                                            lineNumber: 367,
                                                             columnNumber: 25
                                                         }, this),
                                                         schedule.location && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -734,26 +735,26 @@ function CoupleCalendar() {
                                                                     className: "w-3 h-3"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                                    lineNumber: 377,
+                                                                    lineNumber: 378,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: schedule.location
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                                    lineNumber: 378,
+                                                                    lineNumber: 379,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                            lineNumber: 376,
+                                                            lineNumber: 377,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                    lineNumber: 362,
+                                                    lineNumber: 363,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -766,12 +767,12 @@ function CoupleCalendar() {
                                                                 className: "w-4 h-4 text-[#8B95A1]"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                                lineNumber: 387,
+                                                                lineNumber: 388,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                            lineNumber: 383,
+                                                            lineNumber: 384,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -781,46 +782,46 @@ function CoupleCalendar() {
                                                                 className: "w-4 h-4 text-[#8B95A1]"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                                lineNumber: 393,
+                                                                lineNumber: 394,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                            lineNumber: 389,
+                                                            lineNumber: 390,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                    lineNumber: 382,
+                                                    lineNumber: 383,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                            lineNumber: 361,
+                                            lineNumber: 362,
                                             columnNumber: 21
                                         }, this)
                                     }, schedule.id, false, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 357,
+                                        lineNumber: 358,
                                         columnNumber: 19
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                lineNumber: 344,
+                                lineNumber: 345,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                        lineNumber: 316,
+                        lineNumber: 317,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                lineNumber: 231,
+                lineNumber: 232,
                 columnNumber: 7
             }, this),
             showModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -838,7 +839,7 @@ function CoupleCalendar() {
                                     children: editingSchedule ? "일정 수정" : "새 일정"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                    lineNumber: 414,
+                                    lineNumber: 415,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -848,18 +849,18 @@ function CoupleCalendar() {
                                         className: "w-5 h-5 text-[#8B95A1]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 421,
+                                        lineNumber: 422,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                    lineNumber: 417,
+                                    lineNumber: 418,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                            lineNumber: 413,
+                            lineNumber: 414,
                             columnNumber: 13
                         }, this),
                         selectedSchedules.length > 0 && !editingSchedule && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -870,7 +871,7 @@ function CoupleCalendar() {
                                     children: "이 날의 일정"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                    lineNumber: 427,
+                                    lineNumber: 428,
                                     columnNumber: 17
                                 }, this),
                                 selectedSchedules.map((s)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -883,7 +884,7 @@ function CoupleCalendar() {
                                                         className: `w-2 h-2 rounded-full ${OWNER_COLORS[getCategoryColor(s.category)].dot}`
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                        lineNumber: 434,
+                                                        lineNumber: 435,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -891,13 +892,13 @@ function CoupleCalendar() {
                                                         children: s.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                        lineNumber: 437,
+                                                        lineNumber: 438,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                lineNumber: 433,
+                                                lineNumber: 434,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -910,12 +911,12 @@ function CoupleCalendar() {
                                                             className: "w-4 h-4 text-[#8B95A1]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                            lineNumber: 446,
+                                                            lineNumber: 447,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                        lineNumber: 442,
+                                                        lineNumber: 443,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -925,30 +926,30 @@ function CoupleCalendar() {
                                                             className: "w-4 h-4 text-[#8B95A1]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                            lineNumber: 452,
+                                                            lineNumber: 453,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                        lineNumber: 448,
+                                                        lineNumber: 449,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                lineNumber: 441,
+                                                lineNumber: 442,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, s.id, true, {
                                         fileName: "[project]/components/dating/couple-calendar.tsx",
-                                        lineNumber: 429,
+                                        lineNumber: 430,
                                         columnNumber: 19
                                     }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                            lineNumber: 426,
+                            lineNumber: 427,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -961,7 +962,7 @@ function CoupleCalendar() {
                                             children: "일정 제목"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                            lineNumber: 462,
+                                            lineNumber: 463,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -976,13 +977,13 @@ function CoupleCalendar() {
                                             "data-testid": "input-schedule-title"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                            lineNumber: 465,
+                                            lineNumber: 466,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                    lineNumber: 461,
+                                    lineNumber: 462,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -995,7 +996,7 @@ function CoupleCalendar() {
                                                     children: "시간"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                    lineNumber: 479,
+                                                    lineNumber: 480,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$wheel$2d$time$2d$picker$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1008,13 +1009,13 @@ function CoupleCalendar() {
                                                     className: "!px-4 !py-3 !bg-[#F2F4F6] !rounded-[12px] !text-[15px] !border-0"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                    lineNumber: 482,
+                                                    lineNumber: 483,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                            lineNumber: 478,
+                                            lineNumber: 479,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1024,7 +1025,7 @@ function CoupleCalendar() {
                                                     children: "장소"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                    lineNumber: 492,
+                                                    lineNumber: 493,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1038,19 +1039,19 @@ function CoupleCalendar() {
                                                     className: "w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] focus:outline-none focus:ring-2 focus:ring-pink-300"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                    lineNumber: 495,
+                                                    lineNumber: 496,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                            lineNumber: 491,
+                                            lineNumber: 492,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                    lineNumber: 477,
+                                    lineNumber: 478,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1060,7 +1061,7 @@ function CoupleCalendar() {
                                             children: "담당"
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                            lineNumber: 511,
+                                            lineNumber: 512,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1078,24 +1079,24 @@ function CoupleCalendar() {
                                                     children: OWNER_LABELS[owner]
                                                 }, owner, false, {
                                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                                    lineNumber: 516,
+                                                    lineNumber: 517,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                                            lineNumber: 514,
+                                            lineNumber: 515,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                    lineNumber: 510,
+                                    lineNumber: 511,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                            lineNumber: 460,
+                            lineNumber: 461,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1108,23 +1109,23 @@ function CoupleCalendar() {
                                 children: editingSchedule ? "수정하기" : "저장하기"
                             }, void 0, false, {
                                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                                lineNumber: 533,
+                                lineNumber: 534,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                            lineNumber: 532,
+                            lineNumber: 533,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                    lineNumber: 409,
+                    lineNumber: 410,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                lineNumber: 405,
+                lineNumber: 406,
                 columnNumber: 9
             }, this),
             showDeleteModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1137,7 +1138,7 @@ function CoupleCalendar() {
                             children: "일정 삭제"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                            lineNumber: 549,
+                            lineNumber: 550,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1145,7 +1146,7 @@ function CoupleCalendar() {
                             children: "이 일정을 삭제할까요?"
                         }, void 0, false, {
                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                            lineNumber: 552,
+                            lineNumber: 553,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1160,7 +1161,7 @@ function CoupleCalendar() {
                                     children: "취소"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                    lineNumber: 556,
+                                    lineNumber: 557,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1169,24 +1170,24 @@ function CoupleCalendar() {
                                     children: "삭제"
                                 }, void 0, false, {
                                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                                    lineNumber: 565,
+                                    lineNumber: 566,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/dating/couple-calendar.tsx",
-                            lineNumber: 555,
+                            lineNumber: 556,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                    lineNumber: 548,
+                    lineNumber: 549,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                lineNumber: 547,
+                lineNumber: 548,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1200,19 +1201,19 @@ function CoupleCalendar() {
                     className: "w-6 h-6"
                 }, void 0, false, {
                     fileName: "[project]/components/dating/couple-calendar.tsx",
-                    lineNumber: 584,
+                    lineNumber: 585,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                lineNumber: 576,
+                lineNumber: 577,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "h-20"
             }, void 0, false, {
                 fileName: "[project]/components/dating/couple-calendar.tsx",
-                lineNumber: 587,
+                lineNumber: 588,
                 columnNumber: 7
             }, this)
         ]
@@ -1234,8 +1235,10 @@ __turbopack_context__.s([
     ()=>DatingBottomNav
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.0.10_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.0.10_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.0.10_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.0.10_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/navigation.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$2d$themes$40$0$2e$4$2e$6_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next-themes@0.4.6_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next-themes/dist/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$house$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Home$3e$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/lucide-react@0.454.0_react@19.2.0/node_modules/lucide-react/dist/esm/icons/house.js [app-client] (ecmascript) <export default as Home>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/lucide-react@0.454.0_react@19.2.0/node_modules/lucide-react/dist/esm/icons/calendar.js [app-client] (ecmascript) <export default as Calendar>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ImageIcon$3e$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/lucide-react@0.454.0_react@19.2.0/node_modules/lucide-react/dist/esm/icons/image.js [app-client] (ecmascript) <export default as ImageIcon>");
@@ -1244,6 +1247,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lu
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
+;
 ;
 ;
 ;
@@ -1277,14 +1282,24 @@ const navItems = [
 function DatingBottomNav() {
     _s();
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"])();
+    const { resolvedTheme } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$2d$themes$40$0$2e$4$2e$6_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTheme"])();
+    const [mounted, setMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "DatingBottomNav.useEffect": ()=>{
+            setMounted(true);
+        }
+    }["DatingBottomNav.useEffect"], []);
+    const isDark = mounted && resolvedTheme === "dark";
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "fixed bottom-[30px] left-3 right-3 z-50 max-w-md mx-auto",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-            className: "relative rounded-[50px] border border-gray-200/40 shadow-lg",
+            className: "relative rounded-[50px] shadow-lg",
             style: {
-                background: "rgba(249, 250, 251, 0.82)",
+                background: isDark ? "rgba(26, 26, 26, 0.85)" : "rgba(249, 250, 251, 0.82)",
                 backdropFilter: "blur(20px) saturate(180%)",
-                WebkitBackdropFilter: "blur(20px) saturate(180%)"
+                WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                borderWidth: 1,
+                borderColor: isDark ? "rgba(255,255,255,0.08)" : "rgba(209,213,219,0.4)"
             },
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1310,12 +1325,12 @@ function DatingBottomNav() {
                                             strokeWidth: 2
                                         }, void 0, false, {
                                             fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-                                            lineNumber: 49,
+                                            lineNumber: 57,
                                             columnNumber: 23
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-                                        lineNumber: 42,
+                                        lineNumber: 50,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1326,13 +1341,13 @@ function DatingBottomNav() {
                                         children: item.label
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-                                        lineNumber: 51,
+                                        lineNumber: 59,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-                                lineNumber: 41,
+                                lineNumber: 49,
                                 columnNumber: 19
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex flex-col items-center",
@@ -1340,40 +1355,40 @@ function DatingBottomNav() {
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
                                         className: "w-[22px] h-[22px] mb-1",
                                         style: {
-                                            color: "#ADB5BD"
+                                            color: isDark ? "#666666" : "#ADB5BD"
                                         },
                                         strokeWidth: 1.5
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-                                        lineNumber: 57,
+                                        lineNumber: 65,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "text-[10px] font-medium",
                                         style: {
-                                            color: "#ADB5BD"
+                                            color: isDark ? "#666666" : "#ADB5BD"
                                         },
                                         children: item.label
                                     }, void 0, false, {
                                         fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-                                        lineNumber: 58,
+                                        lineNumber: 66,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-                                lineNumber: 56,
+                                lineNumber: 64,
                                 columnNumber: 19
                             }, this)
                         }, item.href, false, {
                             fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-                            lineNumber: 34,
+                            lineNumber: 42,
                             columnNumber: 15
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-                    lineNumber: 28,
+                    lineNumber: 36,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1382,24 +1397,25 @@ function DatingBottomNav() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-                    lineNumber: 67,
+                    lineNumber: 75,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-            lineNumber: 20,
+            lineNumber: 26,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/dating/dating-bottom-nav.tsx",
-        lineNumber: 19,
+        lineNumber: 25,
         columnNumber: 5
     }, this);
 }
-_s(DatingBottomNav, "xbyQPtUVMO7MNj7WjJlpdWqRcTo=", false, function() {
+_s(DatingBottomNav, "kCU8xJiJwTy5CvulaYVnOX25RcI=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$2d$themes$40$0$2e$4$2e$6_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTheme"]
     ];
 });
 _c = DatingBottomNav;

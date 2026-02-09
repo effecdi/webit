@@ -67,8 +67,9 @@ export function CoupleCalendar() {
     try {
       const res = await fetch("/api/events?mode=dating");
       const data = await res.json();
+      const items = Array.isArray(data) ? data : [];
       setSchedules(
-        data.map(
+        items.map(
           (e: {
             id: number;
             title: string;

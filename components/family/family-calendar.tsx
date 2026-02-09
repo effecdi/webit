@@ -32,7 +32,8 @@ export function FamilyCalendar() {
     try {
       const res = await fetch('/api/events?mode=family')
       const data = await res.json()
-      const formatted = data.map((e: { id: number; date: string; title: string; category: string; time?: string; location?: string }) => ({
+      const items = Array.isArray(data) ? data : []
+      const formatted = items.map((e: { id: number; date: string; title: string; category: string; time?: string; location?: string }) => ({
         id: String(e.id),
         date: new Date(e.date).toISOString().split('T')[0],
         title: e.title,

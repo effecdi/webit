@@ -92,8 +92,8 @@ export function GalleryView() {
       ]);
       const albumsData = await albumsRes.json();
       const photosData = await photosRes.json();
-      setAlbums(albumsData);
-      setPhotos(photosData);
+      setAlbums(Array.isArray(albumsData) ? albumsData : []);
+      setPhotos(Array.isArray(photosData) ? photosData : []);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {

@@ -157,6 +157,9 @@
 .dark .bg-\[\#F2F4F6\] {
   background-color: #0D0D0D !important;
 }
+.dark .bg-\[\#F7F8FA\] {
+  background-color: #0D0D0D !important;
+}
 .dark .bg-\[\#F8F9FA\] {
   background-color: #141414 !important;
 }
@@ -165,6 +168,12 @@
 }
 .dark .bg-\[\#E5E8EB\] {
   background-color: #2A2A2A !important;
+}
+.dark .bg-\[\#D1D6DB\] {
+  background-color: #333333 !important;
+}
+.dark .bg-\[\#FFF0EE\] {
+  background-color: #2A1A18 !important;
 }
 .dark .bg-\[\#E8F3FF\] {
   background-color: #1A2A3A !important;
@@ -192,17 +201,23 @@
 .dark .text-\[\#191F28\] {
   color: #E8E8E8 !important;
 }
+.dark .text-\[\#333D4B\] {
+  color: #D0D0D0 !important;
+}
 .dark .text-\[\#4E5968\] {
   color: #B0B0B0 !important;
 }
+.dark .text-\[\#6B7684\] {
+  color: #999999 !important;
+}
 .dark .text-\[\#8B95A1\] {
-  color: #808080 !important;
+  color: #888888 !important;
 }
 .dark .text-\[\#B0B8C1\] {
-  color: #606060 !important;
+  color: #666666 !important;
 }
 .dark .text-\[\#D1D6DB\] {
-  color: #444444 !important;
+  color: #505050 !important;
 }
 
 /* Border color overrides */
@@ -236,6 +251,11 @@
 .dark input.bg-\[\#F2F4F6\],
 .dark textarea.bg-\[\#F2F4F6\],
 .dark select.bg-\[\#F2F4F6\] {
+  background-color: #1E1E1E !important;
+}
+.dark input.bg-\[\#F7F8FA\],
+.dark textarea.bg-\[\#F7F8FA\],
+.dark select.bg-\[\#F7F8FA\] {
   background-color: #1E1E1E !important;
 }
 
@@ -275,6 +295,64 @@
 }
 .dark .bg-rose-50 {
   background-color: #2A1520 !important;
+}
+
+/* Color-100 background overrides for profile/settings cards */
+.dark .bg-blue-100 {
+  background-color: #1A2540 !important;
+}
+.dark .bg-pink-100 {
+  background-color: #301525 !important;
+}
+.dark .bg-green-100 {
+  background-color: #152A1A !important;
+}
+.dark .bg-amber-100 {
+  background-color: #2A2515 !important;
+}
+.dark .bg-purple-100 {
+  background-color: #221530 !important;
+}
+.dark .bg-orange-100 {
+  background-color: #2A2015 !important;
+}
+.dark .bg-indigo-100 {
+  background-color: #151A30 !important;
+}
+.dark .bg-rose-100 {
+  background-color: #2A1520 !important;
+}
+
+/* Gradient overrides for from-blue-50 / from-pink-50 etc. */
+.dark .from-blue-50 {
+  --tw-gradient-from: #1A2540 !important;
+}
+.dark .from-pink-50 {
+  --tw-gradient-from: #2A1525 !important;
+}
+.dark .via-pink-50 {
+  --tw-gradient-via: #2A1525 !important;
+}
+.dark .to-pink-50 {
+  --tw-gradient-to: #2A1525 !important;
+}
+.dark .via-white {
+  --tw-gradient-via: #1A1A1A !important;
+}
+.dark .to-blue-50 {
+  --tw-gradient-to: #1A2540 !important;
+}
+.dark .from-blue-100 {
+  --tw-gradient-from: #1A2540 !important;
+}
+.dark .to-blue-200 {
+  --tw-gradient-to: #1A3050 !important;
+}
+.dark .from-pink-100 {
+  --tw-gradient-from: #301525 !important;
+}
+.dark .to-pink-200 {
+  --tw-gradient-to: #3A1A30 !important;
 }
 
 /* Shadow overrides */
@@ -349,11 +427,23 @@
 .dark .hover\:bg-\[\#F8F9FA\]:hover {
   background-color: #1A1A1A !important;
 }
+.dark .hover\:bg-\[\#F7F8FA\]:hover {
+  background-color: #1A1A1A !important;
+}
 .dark .hover\:bg-\[\#F9FAFB\]:hover {
   background-color: #1A1A1A !important;
 }
 .dark .hover\:bg-gray-200:hover {
   background-color: #2A2A2A !important;
+}
+.dark .hover\:bg-white:hover {
+  background-color: #222222 !important;
+}
+.dark .hover\:bg-white\/90:hover {
+  background-color: rgba(26, 26, 26, 0.9) !important;
+}
+.dark .hover\:text-\[\#4E5968\]:hover {
+  color: #B0B0B0 !important;
 }
 
 /* Active button/pill bg overrides (dark on light → lighter on dark) */
