@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Heart, Camera, Edit2, Check, Calendar, X, UserPlus, Link2, Copy } from "lucide-react"
+import { Heart, Camera, Edit2, Check, Calendar, X, UserPlus, Link2, MessageCircle } from "lucide-react"
 import WheelDatePicker from "@/components/ui/wheel-date-picker"
 
 interface ProfileData {
@@ -52,8 +52,9 @@ export function CoupleProfile() {
   const [editStartDate, setEditStartDate] = useState("")
   const [diffDays, setDiffDays] = useState(0)
   const [inviteCode, setInviteCode] = useState("")
-  const [showInvite, setShowInvite] = useState(false)
+  const [showShareModal, setShowShareModal] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [isLoadingInvite, setIsLoadingInvite] = useState(false)
 
   useEffect(() => {
     const myName = localStorage.getItem("survey_myName") || "나"
@@ -96,7 +97,26 @@ export function CoupleProfile() {
       .catch(() => {})
   }, [])
 
-  const handleCreateInvite = async () => {
+  useEffect(() => {
+    if (coupleInfo && !coupleInfo.coupled) {
+      fetch("/api/couple-invite")
+        .then(res => res.json())
+        .then(data => {
+          if (data.invites) {
+            const pending = data.invites.find((inv: any) => inv.mode === "dating" && inv.status === "pending")
+            if (pending) setInviteCode(pending.inviteCode)
+          }
+        })
+        .catch(() => {})
+    }
+  }, [coupleInfo])
+
+  const handleInviteClick = async () => {
+    if (inviteCode) {
+      setShowShareModal(true)
+      return
+    }
+    setIsLoadingInvite(true)
     try {
       const myName = localStorage.getItem("survey_myName") || "나"
       const res = await fetch("/api/couple-invite", {
@@ -106,18 +126,56 @@ export function CoupleProfile() {
       })
       if (res.ok) {
         const data = await res.json()
-        setInviteCode(data.inviteCode)
-        setShowInvite(true)
+        if (data.invite) setInviteCode(data.invite.inviteCode)
+        else if (data.inviteCode) setInviteCode(data.inviteCode)
+        setShowShareModal(true)
       }
     } catch {}
+    setIsLoadingInvite(false)
   }
 
-  const handleCopyLink = () => {
-    const link = `${window.location.origin}/invite/${inviteCode}`
-    navigator.clipboard.writeText(link).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+  const inviteUrl = inviteCode
+    ? `${typeof window !== "undefined" ? window.location.origin : ""}/invite/${inviteCode}`
+    : ""
+
+  const handleCopyLink = async () => {
+    if (!inviteUrl) return
+    try {
+      await navigator.clipboard.writeText(inviteUrl)
+    } catch {
+      const textArea = document.createElement("textarea")
+      textArea.value = inviteUrl
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand("copy")
+      document.body.removeChild(textArea)
+    }
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  const handleKakaoShare = () => {
+    const w = window as any
+    if (!w.Kakao) {
+      alert("카카오 SDK를 로딩 중입니다. 잠시 후 다시 시도해주세요.")
+      return
+    }
+    const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY
+    if (kakaoKey && !w.Kakao.isInitialized()) {
+      w.Kakao.init(kakaoKey)
+    }
+    const senderName = myProfile.name || "상대방"
+    w.Kakao.Share.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "WE:VE - 커플 초대",
+        description: `${senderName}님이 WE:VE에서 함께하자고 초대했어요!`,
+        imageUrl: `${window.location.origin}/og-image.png`,
+        link: { mobileWebUrl: inviteUrl, webUrl: inviteUrl },
+      },
+      buttons: [{ title: "초대 수락하기", link: { mobileWebUrl: inviteUrl, webUrl: inviteUrl } }],
     })
+    setShowShareModal(false)
   }
 
   const handleSave = () => {
@@ -157,16 +215,6 @@ export function CoupleProfile() {
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-[17px] font-bold text-[#191F28]">우리 프로필</h2>
         <div className="flex items-center gap-2">
-          {!isCoupled && !showInvite && (
-            <button
-              onClick={handleCreateInvite}
-              className="px-3 py-1.5 rounded-[10px] bg-[#FF6B9D] text-white text-[12px] font-semibold flex items-center gap-1"
-              data-testid="button-invite-partner"
-            >
-              <UserPlus className="w-3 h-3" />
-              상대방 초대
-            </button>
-          )}
           {isEditing ? (
             <div className="flex gap-2">
               <button
@@ -187,44 +235,29 @@ export function CoupleProfile() {
               </button>
             </div>
           ) : (
-            <button
-              onClick={() => setIsEditing(true)}
-              className="w-8 h-8 rounded-full flex items-center justify-center bg-[#F2F4F6] text-[#8B95A1] hover:bg-[#E5E8EB] transition-colors"
-              data-testid="button-edit-profile"
-            >
-              <Edit2 className="w-4 h-4" />
-            </button>
+            <>
+              {!isCoupled && (
+                <button
+                  onClick={handleInviteClick}
+                  disabled={isLoadingInvite}
+                  className="px-3 py-1.5 rounded-[10px] bg-[#FF6B9D] text-white text-[12px] font-semibold flex items-center gap-1 disabled:opacity-50"
+                  data-testid="button-invite-partner"
+                >
+                  <UserPlus className="w-3 h-3" />
+                  {isLoadingInvite ? "생성 중..." : "상대방 초대"}
+                </button>
+              )}
+              <button
+                onClick={() => setIsEditing(true)}
+                className="w-8 h-8 rounded-full flex items-center justify-center bg-[#F2F4F6] text-[#8B95A1] hover:bg-[#E5E8EB] transition-colors"
+                data-testid="button-edit-profile"
+              >
+                <Edit2 className="w-4 h-4" />
+              </button>
+            </>
           )}
         </div>
       </div>
-
-      {showInvite && !isCoupled && (
-        <div className="mb-5 p-4 bg-[#FFF0F5] rounded-[14px] border border-[#FFD6E7]">
-          <div className="flex items-center gap-2 mb-2">
-            <Link2 className="w-4 h-4 text-[#FF6B9D]" />
-            <span className="text-[13px] font-bold text-[#191F28]">초대 링크</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <input
-              readOnly
-              value={`${typeof window !== 'undefined' ? window.location.origin : ''}/invite/${inviteCode}`}
-              className="flex-1 text-[12px] bg-white rounded-lg px-3 py-2 border border-[#E5E8EB] text-[#4E5968]"
-              data-testid="input-invite-link"
-            />
-            <button
-              onClick={handleCopyLink}
-              className="px-3 py-2 rounded-lg bg-[#FF6B9D] text-white text-[12px] font-semibold flex items-center gap-1"
-              data-testid="button-copy-invite"
-            >
-              <Copy className="w-3 h-3" />
-              {copied ? "복사됨" : "복사"}
-            </button>
-          </div>
-          <p className="text-[11px] text-[#8B95A1] mt-2">
-            링크를 상대방에게 공유하면 함께 사용할 수 있어요
-          </p>
-        </div>
-      )}
 
       {isCoupled && (
         <div className="mb-4 px-3 py-2 bg-[#FFF0F5] rounded-[10px] flex items-center gap-2">
@@ -355,6 +388,63 @@ export function CoupleProfile() {
           )}
         </div>
       </div>
+
+      {showShareModal && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/50"
+          onClick={() => setShowShareModal(false)}
+        >
+          <div
+            className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-900 rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-center pt-3 pb-2">
+              <div className="w-10 h-1 bg-[#E5E8EB] dark:bg-gray-700 rounded-full" />
+            </div>
+            <div className="px-5 pb-2">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-[17px] font-bold text-[#191F28] dark:text-gray-100">상대방 초대하기</h3>
+                <button
+                  onClick={() => setShowShareModal(false)}
+                  className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] dark:hover:bg-gray-800 flex items-center justify-center transition-colors"
+                  data-testid="button-close-share-modal"
+                >
+                  <X className="w-5 h-5 text-[#8B95A1]" />
+                </button>
+              </div>
+              <div className="space-y-2">
+                <button
+                  onClick={handleKakaoShare}
+                  className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#FEE500] hover:bg-[#FDD800] transition-colors"
+                  data-testid="button-share-kakao"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#3C1E1E] flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-[#FEE500]" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[15px] font-bold text-[#3C1E1E]">카카오톡으로 공유</p>
+                    <p className="text-[12px] text-[#3C1E1E]/60">카카오톡 채팅으로 초대 링크를 보냅니다</p>
+                  </div>
+                </button>
+                <button
+                  onClick={() => { handleCopyLink(); setTimeout(() => setShowShareModal(false), 800) }}
+                  className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#F2F4F6] dark:bg-gray-800 hover:bg-[#E5E8EB] dark:hover:bg-gray-700 transition-colors"
+                  data-testid="button-share-copy-link"
+                >
+                  <div className="w-12 h-12 rounded-full bg-white dark:bg-gray-700 flex items-center justify-center">
+                    {copied ? <Check className="w-6 h-6 text-green-500" /> : <Link2 className="w-6 h-6 text-[#4E5968] dark:text-gray-300" />}
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[15px] font-bold text-[#191F28] dark:text-gray-100">{copied ? "복사됨!" : "링크 복사"}</p>
+                    <p className="text-[12px] text-[#8B95A1] dark:text-gray-400">{copied ? "클립보드에 복사되었습니다" : "초대 링크를 클립보드에 복사합니다"}</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div className="h-10" />
+          </div>
+        </div>
+      )}
     </section>
   )
 }
