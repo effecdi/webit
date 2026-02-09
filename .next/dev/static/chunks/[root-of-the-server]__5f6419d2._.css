@@ -1377,6 +1377,10 @@
     inset-block: calc(var(--spacing) * 0);
   }
 
+  .-top-0\.5 {
+    top: calc(var(--spacing) * -.5);
+  }
+
   .-top-1 {
     top: calc(var(--spacing) * -1);
   }
@@ -10243,12 +10247,6 @@
       .group-hover\:bg-black\/20:is(:where(.group):hover *) {
         background-color: color-mix(in oklab, var(--color-black) 20%, transparent);
       }
-    }
-  }
-
-  @media (hover: hover) {
-    .group-hover\:text-\[\#191F28\]:is(:where(.group):hover *) {
-      color: #191f28;
     }
   }
 

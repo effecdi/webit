@@ -1,1 +1,9 @@
-{}
+{
+  "[project]/node_modules/.pnpm/liquid-glass-react@1.1.1_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/liquid-glass-react/dist/index.esm.js [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/node_modules/.pnpm/liquid-glass-react@1.1.1_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/liquid-glass-react/dist/index.esm.js [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/43557_liquid-glass-react_dist_index_esm_77cdc2f9.js",
+      "static/chunks/43557_liquid-glass-react_dist_index_esm_f24eda0a.js"
+    ]
+  }
+}

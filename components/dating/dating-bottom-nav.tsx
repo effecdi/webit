@@ -3,6 +3,9 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Home, Calendar, ImageIcon, User, MessageSquare } from "lucide-react"
+import dynamic from "next/dynamic"
+
+const LiquidGlass = dynamic(() => import("liquid-glass-react"), { ssr: false })
 
 const navItems = [
   { icon: Home, label: "홈", href: "/dating" },
@@ -16,36 +19,67 @@ export function DatingBottomNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#E5E8EB]">
-      <div className="flex items-center justify-around h-14 px-2 max-w-md mx-auto">
-        {navItems.map((item) => {
-          const Icon = item.icon
-          const isActive = pathname === item.href
+    <div className="fixed bottom-4 left-3 right-3 z-50 max-w-md mx-auto">
+      <LiquidGlass
+        displacementScale={40}
+        blurAmount={0.6}
+        saturation={120}
+        aberrationIntensity={1}
+        elasticity={0.15}
+        cornerRadius={24}
+        overLight={false}
+      >
+        <nav
+          className="relative flex justify-around items-center px-2 py-2"
+          style={{
+            background: "rgba(20, 20, 25, 0.75)",
+            borderRadius: "24px",
+            backdropFilter: "blur(20px) saturate(180%)",
+            WebkitBackdropFilter: "blur(20px) saturate(180%)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05)",
+          }}
+        >
+          {navItems.map((item) => {
+            const Icon = item.icon
+            const isActive = pathname === item.href || (item.href !== "/dating" && pathname?.startsWith(item.href))
 
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="flex flex-col items-center justify-center gap-0.5 w-16 py-1.5 transition-colors"
-            >
-              <Icon
-                className={`w-6 h-6 transition-colors ${
-                  isActive ? "text-pink-500" : "text-[#B0B8C1]"
-                }`}
-                strokeWidth={isActive ? 2 : 1.5}
-              />
-              <span
-                className={`text-[10px] ${
-                  isActive ? "text-pink-500 font-medium" : "text-[#B0B8C1]"
-                }`}
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                data-testid={`nav-dating-${item.label}`}
+                className="flex flex-col items-center gap-0.5 py-1.5 px-3 rounded-2xl transition-all duration-300 relative"
+                style={isActive ? {
+                  background: "rgba(236, 72, 153, 0.2)",
+                } : {}}
               >
-                {item.label}
-              </span>
-            </Link>
-          )
-        })}
-      </div>
-      <div className="h-[env(safe-area-inset-bottom)] bg-white" />
-    </nav>
+                {isActive && (
+                  <div
+                    className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-4 h-1 rounded-full"
+                    style={{ background: "linear-gradient(90deg, #EC4899, #F472B6)" }}
+                  />
+                )}
+                <Icon
+                  className="w-5 h-5 transition-all duration-300"
+                  style={{
+                    color: isActive ? "#EC4899" : "rgba(255,255,255,0.45)",
+                  }}
+                  strokeWidth={isActive ? 2.2 : 1.5}
+                />
+                <span
+                  className="text-[10px] font-medium transition-all duration-300"
+                  style={{
+                    color: isActive ? "#EC4899" : "rgba(255,255,255,0.45)",
+                  }}
+                >
+                  {item.label}
+                </span>
+              </Link>
+            )
+          })}
+        </nav>
+      </LiquidGlass>
+    </div>
   )
 }
