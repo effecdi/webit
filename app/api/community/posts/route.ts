@@ -8,15 +8,20 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const mode = searchParams.get('mode') || 'dating';
   const category = searchParams.get('category');
+  const sort = searchParams.get('sort');
 
   try {
+    const orderClause = sort === 'popular'
+      ? desc(communityPosts.likeCount)
+      : desc(communityPosts.createdAt);
+
     let query = db.select().from(communityPosts)
       .where(
         category && category !== '전체'
           ? and(eq(communityPosts.mode, mode), eq(communityPosts.category, category))
           : eq(communityPosts.mode, mode)
       )
-      .orderBy(desc(communityPosts.createdAt));
+      .orderBy(orderClause);
 
     const result = await query;
 

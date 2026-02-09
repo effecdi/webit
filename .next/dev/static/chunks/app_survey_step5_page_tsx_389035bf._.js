@@ -50,35 +50,35 @@ function SurveyStep5() {
                                 className: "flex gap-1.5 mb-8",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-8 h-1.5 bg-blue-500 rounded-full"
+                                        className: "w-8 h-1.5 bg-[#d63bf2] rounded-full"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/step5/page.tsx",
                                         lineNumber: 39,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-8 h-1.5 bg-blue-500 rounded-full"
+                                        className: "w-8 h-1.5 bg-[#d63bf2] rounded-full"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/step5/page.tsx",
                                         lineNumber: 40,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-8 h-1.5 bg-blue-500 rounded-full"
+                                        className: "w-8 h-1.5 bg-[#d63bf2] rounded-full"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/step5/page.tsx",
                                         lineNumber: 41,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-8 h-1.5 bg-blue-500 rounded-full"
+                                        className: "w-8 h-1.5 bg-[#d63bf2] rounded-full"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/step5/page.tsx",
                                         lineNumber: 42,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-8 h-1.5 bg-blue-500 rounded-full"
+                                        className: "w-8 h-1.5 bg-[#d63bf2] rounded-full"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/step5/page.tsx",
                                         lineNumber: 43,
@@ -128,7 +128,7 @@ function SurveyStep5() {
                         onCompositionEnd: ()=>setIsComposing(false),
                         placeholder: "예) 같은 회사에서 만났어요, 대학교 동기예요...",
                         rows: 4,
-                        className: "w-full p-5 rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500 resize-none",
+                        className: "w-full p-5 rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-[#d63bf2] resize-none",
                         "data-testid": "input-couple-intro"
                     }, void 0, false, {
                         fileName: "[project]/app/survey/step5/page.tsx",
@@ -156,7 +156,7 @@ function SurveyStep5() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: handleNext,
-                        className: "flex-1 h-14 rounded-[16px] font-semibold text-white bg-blue-500 hover:bg-blue-600 active:scale-[0.98] transition-all",
+                        className: "flex-1 h-14 rounded-[16px] font-semibold text-white bg-[#d63bf2] hover:bg-[#a82cbf] active:scale-[0.98] transition-all",
                         "data-testid": "button-next",
                         children: "완료"
                     }, void 0, false, {

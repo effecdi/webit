@@ -105,7 +105,7 @@ function WheelDatePicker({ value, onChange, placeholder = "날짜 선택", class
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                 type: "button",
                 onClick: ()=>setIsOpen(true),
-                className: `w-full text-left px-4 py-3 rounded-xl border border-[#E5E8EB] bg-white text-[15px] transition-colors focus:outline-none focus:ring-2 focus:ring-blue-200 ${displayValue ? "text-[#191919]" : "text-[#B0B8C1]"} ${className}`,
+                className: `w-full text-left px-4 py-3 rounded-xl border border-[#E5E8EB] bg-white text-[15px] transition-colors focus:outline-none focus:ring-2 focus:ring-[#e0b3f5] ${displayValue ? "text-[#191919]" : "text-[#B0B8C1]"} ${className}`,
                 "data-testid": "button-date-picker",
                 children: displayValue || placeholder
             }, void 0, false, {
@@ -148,7 +148,7 @@ function WheelDatePicker({ value, onChange, placeholder = "날짜 선택", class
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     type: "button",
                                     onClick: handleConfirm,
-                                    className: "text-[15px] text-blue-500 font-semibold",
+                                    className: "text-[15px] text-[#d63bf2] font-semibold",
                                     "data-testid": "button-date-confirm",
                                     children: "확인"
                                 }, void 0, false, {
@@ -380,7 +380,7 @@ function WheelTimePicker({ value, onChange, placeholder = "시간 선택", class
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                 type: "button",
                 onClick: ()=>setIsOpen(true),
-                className: `w-full text-left px-4 py-3 rounded-xl border border-[#E5E8EB] bg-white text-[15px] transition-colors focus:outline-none focus:ring-2 focus:ring-blue-200 ${displayValue ? "text-[#191919]" : "text-[#B0B8C1]"} ${className}`,
+                className: `w-full text-left px-4 py-3 rounded-xl border border-[#E5E8EB] bg-white text-[15px] transition-colors focus:outline-none focus:ring-2 focus:ring-[#e0b3f5] ${displayValue ? "text-[#191919]" : "text-[#B0B8C1]"} ${className}`,
                 "data-testid": "button-time-picker",
                 children: displayValue || placeholder
             }, void 0, false, {
@@ -423,7 +423,7 @@ function WheelTimePicker({ value, onChange, placeholder = "시간 선택", class
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     type: "button",
                                     onClick: handleConfirm,
-                                    className: "text-[15px] text-blue-500 font-semibold",
+                                    className: "text-[15px] text-[#d63bf2] font-semibold",
                                     "data-testid": "button-time-confirm",
                                     children: "확인"
                                 }, void 0, false, {
@@ -593,35 +593,35 @@ function WeddingSurveyStep1() {
                                 className: "flex gap-1.5 mb-8",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-6 h-1.5 bg-blue-500 rounded-full"
+                                        className: "w-6 h-1.5 bg-[#d63bf2] rounded-full"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/wedding-step1/page.tsx",
                                         lineNumber: 37,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-6 h-1.5 bg-blue-500 rounded-full"
+                                        className: "w-6 h-1.5 bg-[#d63bf2] rounded-full"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/wedding-step1/page.tsx",
                                         lineNumber: 38,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-6 h-1.5 bg-blue-500 rounded-full"
+                                        className: "w-6 h-1.5 bg-[#d63bf2] rounded-full"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/wedding-step1/page.tsx",
                                         lineNumber: 39,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-6 h-1.5 bg-blue-500 rounded-full"
+                                        className: "w-6 h-1.5 bg-[#d63bf2] rounded-full"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/wedding-step1/page.tsx",
                                         lineNumber: 40,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-6 h-1.5 bg-blue-500 rounded-full"
+                                        className: "w-6 h-1.5 bg-[#d63bf2] rounded-full"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/wedding-step1/page.tsx",
                                         lineNumber: 41,
@@ -776,7 +776,7 @@ function WeddingSurveyStep1() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                 onClick: handleNext,
                 disabled: !weddingDate,
-                className: `w-full h-14 rounded-[16px] font-semibold text-white transition-all ${weddingDate ? "bg-blue-500 hover:bg-blue-600 active:scale-[0.98]" : "bg-[#B0B8C1]"}`,
+                className: `w-full h-14 rounded-[16px] font-semibold text-white transition-all ${weddingDate ? "bg-[#d63bf2] hover:bg-[#a82cbf] active:scale-[0.98]" : "bg-[#B0B8C1]"}`,
                 "data-testid": "button-next",
                 children: "다음"
             }, void 0, false, {
