@@ -1583,7 +1583,7 @@ const DEFAULTS = {
     notifGift: false,
     notifDaily: false,
     privacyProfileVisible: true,
-    privacyLocationShare: false,
+    privacyActivityNotify: false,
     privacyReadReceipt: true,
     privacyOnlineStatus: true,
     privacyActivityShare: false,
@@ -1615,7 +1615,7 @@ const FAQ_ITEMS = [
     },
     {
         q: "멤버십 구독 요금은 얼마인가요?",
-        a: "WE:BEAT 멤버십은 Advanced(월 4,900원)와 Premium(월 9,900원) 두 가지 플랜을 제공합니다. Advanced는 커플 통계 리포트와 추가 저장 공간을, Premium은 AI 추천, 무제한 저장 공간, 프리미엄 템플릿 등 모든 기능을 이용할 수 있습니다."
+        a: "WE:BEAT 멤버십은 고급(월 1,900원, 정가 3,900원에서 할인)과 프리미엄(월 6,900원, 출시 예정) 두 가지 플랜을 제공합니다. 고급 플랜은 사진 500장 저장, 커플 통계 리포트, 고급 캘린더, 스마트 알림을 제공하며, 연간 결제 시 20% 할인됩니다."
     },
     {
         q: "사진과 데이터는 안전하게 보관되나요?",
@@ -1710,7 +1710,7 @@ function ProfileSettingsSection({ mode }) {
     };
     const privacy = {
         profileVisible: settings.privacyProfileVisible,
-        locationShare: settings.privacyLocationShare,
+        activityNotify: settings.privacyActivityNotify,
         readReceipt: settings.privacyReadReceipt,
         onlineStatus: settings.privacyOnlineStatus,
         activityShare: settings.privacyActivityShare
@@ -1730,7 +1730,7 @@ function ProfileSettingsSection({ mode }) {
     };
     const privacyKeyMap = {
         profileVisible: "privacyProfileVisible",
-        locationShare: "privacyLocationShare",
+        activityNotify: "privacyActivityNotify",
         readReceipt: "privacyReadReceipt",
         onlineStatus: "privacyOnlineStatus",
         activityShare: "privacyActivityShare"
@@ -2083,9 +2083,9 @@ function ProfileSettingsSection({ mode }) {
                                     desc: "다른 사용자에게 프로필 공개"
                                 },
                                 {
-                                    key: "locationShare",
-                                    label: "위치 공유",
-                                    desc: "상대방에게 위치 공유 허용"
+                                    key: "activityNotify",
+                                    label: "활동 알림",
+                                    desc: "상대방의 새 활동 시 알림 받기"
                                 },
                                 {
                                     key: "readReceipt",
@@ -2807,7 +2807,7 @@ function ProfilePage() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-[13px] text-[#4E5968] mb-4",
-                                children: "무제한 사진 저장, 위젯 커스터마이징 등 다양한 혜택을 누려보세요"
+                                children: "사진 500장 저장, 커플 통계, 고급 캘린더 등 다양한 혜택을 누려보세요"
                             }, void 0, false, {
                                 fileName: "[project]/app/dating/profile/page.tsx",
                                 lineNumber: 60,

@@ -1251,7 +1251,7 @@ function FamilyWeveDashboard() {
                             currentMode: "family"
                         }, void 0, false, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 314,
+                            lineNumber: 315,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1267,20 +1267,20 @@ function FamilyWeveDashboard() {
                                             strokeWidth: 1.8
                                         }, void 0, false, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 321,
+                                            lineNumber: 322,
                                             columnNumber: 15
                                         }, this),
                                         notifications.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             className: "absolute top-0 right-0 w-1.5 h-1.5 bg-green-500 rounded-full"
                                         }, void 0, false, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 323,
+                                            lineNumber: 324,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 316,
+                                    lineNumber: 317,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$shared$2f$notification$2d$modal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["NotificationModal"], {
@@ -1291,24 +1291,24 @@ function FamilyWeveDashboard() {
                                     mode: "family"
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 326,
+                                    lineNumber: 327,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 315,
+                            lineNumber: 316,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                    lineNumber: 313,
+                    lineNumber: 314,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                lineNumber: 312,
+                lineNumber: 313,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -1327,7 +1327,7 @@ function FamilyWeveDashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 340,
+                                        lineNumber: 341,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1337,7 +1337,7 @@ function FamilyWeveDashboard() {
                                                 "함께한 지",
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 345,
+                                                    lineNumber: 346,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1348,7 +1348,7 @@ function FamilyWeveDashboard() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 346,
+                                                    lineNumber: 347,
                                                     columnNumber: 19
                                                 }, this),
                                                 "일"
@@ -1358,7 +1358,7 @@ function FamilyWeveDashboard() {
                                                 "우리 가족의",
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 351,
+                                                    lineNumber: 352,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1366,20 +1366,20 @@ function FamilyWeveDashboard() {
                                                     children: "일상"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 352,
+                                                    lineNumber: 353,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 341,
+                                        lineNumber: 342,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 339,
+                                lineNumber: 340,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1388,18 +1388,18 @@ function FamilyWeveDashboard() {
                                     className: "w-6 h-6 text-green-600"
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 358,
+                                    lineNumber: 359,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 357,
+                                lineNumber: 358,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                        lineNumber: 338,
+                        lineNumber: 339,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1416,12 +1416,12 @@ function FamilyWeveDashboard() {
                                                 className: "w-6 h-6 text-pink-400"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 366,
+                                                lineNumber: 367,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 365,
+                                            lineNumber: 366,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1430,18 +1430,18 @@ function FamilyWeveDashboard() {
                                                 className: "w-6 h-6 text-[#d63bf2]"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 369,
+                                                lineNumber: 370,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 368,
+                                            lineNumber: 369,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 364,
+                                    lineNumber: 365,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1452,7 +1452,7 @@ function FamilyWeveDashboard() {
                                             children: coupleNames.my && coupleNames.partner ? `${coupleNames.my} & ${coupleNames.partner}` : "우리 가족"
                                         }, void 0, false, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 373,
+                                            lineNumber: 374,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1460,13 +1460,13 @@ function FamilyWeveDashboard() {
                                             children: "함께하는 일상"
                                         }, void 0, false, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 374,
+                                            lineNumber: 375,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 372,
+                                    lineNumber: 373,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__["Heart"], {
@@ -1474,18 +1474,18 @@ function FamilyWeveDashboard() {
                                     fill: "#22c55e"
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 376,
+                                    lineNumber: 377,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 363,
+                            lineNumber: 364,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                        lineNumber: 362,
+                        lineNumber: 363,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1502,12 +1502,12 @@ function FamilyWeveDashboard() {
                                             className: "w-6 h-6"
                                         }, void 0, false, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 390,
+                                            lineNumber: 391,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 389,
+                                        lineNumber: 390,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1515,19 +1515,19 @@ function FamilyWeveDashboard() {
                                         children: action.label
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 392,
+                                        lineNumber: 393,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, action.label, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 384,
+                                lineNumber: 385,
                                 columnNumber: 15
                             }, this);
                         })
                     }, void 0, false, {
                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                        lineNumber: 380,
+                        lineNumber: 381,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1541,7 +1541,7 @@ function FamilyWeveDashboard() {
                                         children: "오늘의 일정"
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 400,
+                                        lineNumber: 401,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1553,19 +1553,19 @@ function FamilyWeveDashboard() {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 402,
+                                                lineNumber: 403,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 401,
+                                        lineNumber: 402,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 399,
+                                lineNumber: 400,
                                 columnNumber: 11
                             }, this),
                             isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1580,7 +1580,7 @@ function FamilyWeveDashboard() {
                                                 className: "w-12 h-12 rounded-[14px] bg-[#E5E8EB] dark:bg-[#2a2a2a] flex-shrink-0"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 410,
+                                                lineNumber: 411,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1590,31 +1590,31 @@ function FamilyWeveDashboard() {
                                                         className: "h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-2/3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                        lineNumber: 412,
+                                                        lineNumber: 413,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-full w-12"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                        lineNumber: 413,
+                                                        lineNumber: 414,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 411,
+                                                lineNumber: 412,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, i, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 409,
+                                        lineNumber: 410,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 407,
+                                lineNumber: 408,
                                 columnNumber: 13
                             }, this) : todayEvents.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-2",
@@ -1628,12 +1628,12 @@ function FamilyWeveDashboard() {
                                                     children: event.time
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 423,
+                                                    lineNumber: 424,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 422,
+                                                lineNumber: 423,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1644,7 +1644,7 @@ function FamilyWeveDashboard() {
                                                         children: event.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                        lineNumber: 426,
+                                                        lineNumber: 427,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1652,31 +1652,31 @@ function FamilyWeveDashboard() {
                                                         children: event.category
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                        lineNumber: 427,
+                                                        lineNumber: 428,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 425,
+                                                lineNumber: 426,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                                 className: "w-5 h-5 text-[#B0B8C1]"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 431,
+                                                lineNumber: 432,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, event.id, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 421,
+                                        lineNumber: 422,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 419,
+                                lineNumber: 420,
                                 columnNumber: 13
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "py-8 text-center",
@@ -1686,7 +1686,7 @@ function FamilyWeveDashboard() {
                                         children: "오늘 일정이 없어요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 437,
+                                        lineNumber: 438,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1697,26 +1697,26 @@ function FamilyWeveDashboard() {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 442,
+                                                lineNumber: 443,
                                                 columnNumber: 17
                                             }, this),
                                             "일정 추가하기"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 438,
+                                        lineNumber: 439,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 436,
+                                lineNumber: 437,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                        lineNumber: 398,
+                        lineNumber: 399,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1732,7 +1732,7 @@ function FamilyWeveDashboard() {
                                                 children: "오늘의 할 일"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 452,
+                                                lineNumber: 453,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1740,13 +1740,13 @@ function FamilyWeveDashboard() {
                                                 children: todos.length > 0 ? `${completedCount}/${todos.length} 완료` : "할 일을 추가해보세요"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 453,
+                                                lineNumber: 454,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 451,
+                                        lineNumber: 452,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1757,18 +1757,18 @@ function FamilyWeveDashboard() {
                                             className: "w-4 h-4 text-green-600"
                                         }, void 0, false, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 462,
+                                            lineNumber: 463,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 457,
+                                        lineNumber: 458,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 450,
+                                lineNumber: 451,
                                 columnNumber: 11
                             }, this),
                             showAddTodo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1792,7 +1792,7 @@ function FamilyWeveDashboard() {
                                                 "data-testid": "input-new-todo-family"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 469,
+                                                lineNumber: 470,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1803,13 +1803,13 @@ function FamilyWeveDashboard() {
                                                 children: isAddingTodo ? "추가 중..." : "추가"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 483,
+                                                lineNumber: 484,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 468,
+                                        lineNumber: 469,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1820,7 +1820,7 @@ function FamilyWeveDashboard() {
                                                 children: "담당:"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 497,
+                                                lineNumber: 498,
                                                 columnNumber: 17
                                             }, this),
                                             [
@@ -1834,19 +1834,19 @@ function FamilyWeveDashboard() {
                                                     children: ASSIGNEE_LABELS[assignee]
                                                 }, assignee, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 499,
+                                                    lineNumber: 500,
                                                     columnNumber: 19
                                                 }, this))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 496,
+                                        lineNumber: 497,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 467,
+                                lineNumber: 468,
                                 columnNumber: 13
                             }, this),
                             isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1862,7 +1862,7 @@ function FamilyWeveDashboard() {
                                                 className: "w-6 h-6 rounded-full bg-[#E5E8EB] dark:bg-[#2a2a2a] flex-shrink-0"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 518,
+                                                lineNumber: 519,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1871,30 +1871,30 @@ function FamilyWeveDashboard() {
                                                     className: "h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-3/4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 520,
+                                                    lineNumber: 521,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 519,
+                                                lineNumber: 520,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "h-5 w-8 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-full"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 522,
+                                                lineNumber: 523,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, i, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 517,
+                                        lineNumber: 518,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 515,
+                                lineNumber: 516,
                                 columnNumber: 13
                             }, this) : todos.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "py-8 text-center",
@@ -1904,7 +1904,7 @@ function FamilyWeveDashboard() {
                                         children: "아직 할 일이 없어요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 528,
+                                        lineNumber: 529,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1912,13 +1912,13 @@ function FamilyWeveDashboard() {
                                         children: "위의 + 버튼을 눌러 추가해보세요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 529,
+                                        lineNumber: 530,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 527,
+                                lineNumber: 528,
                                 columnNumber: 13
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-1",
@@ -1934,12 +1934,12 @@ function FamilyWeveDashboard() {
                                                     strokeWidth: 3
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 542,
+                                                    lineNumber: 543,
                                                     columnNumber: 40
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 535,
+                                                lineNumber: 536,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1947,7 +1947,7 @@ function FamilyWeveDashboard() {
                                                 children: todo.text
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 544,
+                                                lineNumber: 545,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1955,7 +1955,7 @@ function FamilyWeveDashboard() {
                                                 children: ASSIGNEE_LABELS[todo.assignee]
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 547,
+                                                lineNumber: 548,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1966,7 +1966,7 @@ function FamilyWeveDashboard() {
                                                         className: "w-4 h-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                        lineNumber: 556,
+                                                        lineNumber: 557,
                                                         columnNumber: 21
                                                     }, this),
                                                     todo.comments.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1974,13 +1974,13 @@ function FamilyWeveDashboard() {
                                                         children: todo.comments.length
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                        lineNumber: 557,
+                                                        lineNumber: 558,
                                                         columnNumber: 50
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 550,
+                                                lineNumber: 551,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1994,12 +1994,12 @@ function FamilyWeveDashboard() {
                                                             className: "w-4 h-4 text-[#8B95A1]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                            lineNumber: 565,
+                                                            lineNumber: 566,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                        lineNumber: 560,
+                                                        lineNumber: 561,
                                                         columnNumber: 21
                                                     }, this),
                                                     showTodoMenu === todo.id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2014,14 +2014,14 @@ function FamilyWeveDashboard() {
                                                                         className: "w-4 h-4"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                                        lineNumber: 574,
+                                                                        lineNumber: 575,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     "수정"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                                lineNumber: 569,
+                                                                lineNumber: 570,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2033,43 +2033,43 @@ function FamilyWeveDashboard() {
                                                                         className: "w-4 h-4"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                                        lineNumber: 582,
+                                                                        lineNumber: 583,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     "삭제"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                                lineNumber: 577,
+                                                                lineNumber: 578,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                        lineNumber: 568,
+                                                        lineNumber: 569,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 559,
+                                                lineNumber: 560,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, todo.id, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 534,
+                                        lineNumber: 535,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 532,
+                                lineNumber: 533,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                        lineNumber: 449,
+                        lineNumber: 450,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2085,7 +2085,7 @@ function FamilyWeveDashboard() {
                                                 className: "w-5 h-5 text-amber-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 617,
+                                                lineNumber: 618,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2093,13 +2093,13 @@ function FamilyWeveDashboard() {
                                                 children: "추억 보관함"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 618,
+                                                lineNumber: 619,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 616,
+                                        lineNumber: 617,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2111,19 +2111,19 @@ function FamilyWeveDashboard() {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 621,
+                                                lineNumber: 622,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 620,
+                                        lineNumber: 621,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 615,
+                                lineNumber: 616,
                                 columnNumber: 11
                             }, this),
                             isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2139,32 +2139,32 @@ function FamilyWeveDashboard() {
                                                 className: "w-full aspect-square bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-[12px] mb-2"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 629,
+                                                lineNumber: 630,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-2/3 mb-1"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 630,
+                                                lineNumber: 631,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-1/3"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 631,
+                                                lineNumber: 632,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, i, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 628,
+                                        lineNumber: 629,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 626,
+                                lineNumber: 627,
                                 columnNumber: 13
                             }, this) : recentAlbums.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex gap-3 overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1",
@@ -2179,12 +2179,12 @@ function FamilyWeveDashboard() {
                                                         className: "w-8 h-8 text-amber-400"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                        lineNumber: 644,
+                                                        lineNumber: 645,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 643,
+                                                    lineNumber: 644,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2192,7 +2192,7 @@ function FamilyWeveDashboard() {
                                                     children: album.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 646,
+                                                    lineNumber: 647,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2203,13 +2203,13 @@ function FamilyWeveDashboard() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 647,
+                                                    lineNumber: 648,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, album.id, true, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 638,
+                                            lineNumber: 639,
                                             columnNumber: 17
                                         }, this)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2222,12 +2222,12 @@ function FamilyWeveDashboard() {
                                                     className: "w-5 h-5 text-[#8B95A1]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 656,
+                                                    lineNumber: 657,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 655,
+                                                lineNumber: 656,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2235,19 +2235,19 @@ function FamilyWeveDashboard() {
                                                 children: "더 많은 추억"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 658,
+                                                lineNumber: 659,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 651,
+                                        lineNumber: 652,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 636,
+                                lineNumber: 637,
                                 columnNumber: 13
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "py-6 text-center",
@@ -2256,7 +2256,7 @@ function FamilyWeveDashboard() {
                                         className: "w-12 h-12 text-amber-200 mx-auto mb-2"
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 663,
+                                        lineNumber: 664,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2264,7 +2264,7 @@ function FamilyWeveDashboard() {
                                         children: "아직 추억이 없어요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 664,
+                                        lineNumber: 665,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2272,19 +2272,19 @@ function FamilyWeveDashboard() {
                                         children: "사진을 추가해서 추억을 남겨보세요"
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 665,
+                                        lineNumber: 666,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 662,
+                                lineNumber: 663,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                        lineNumber: 614,
+                        lineNumber: 615,
                         columnNumber: 9
                     }, this),
                     upcomingTravel && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$travel$2f$travel$2d$entry$2d$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TravelEntryCard"], {
@@ -2297,7 +2297,7 @@ function FamilyWeveDashboard() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                        lineNumber: 671,
+                        lineNumber: 672,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2318,7 +2318,7 @@ function FamilyWeveDashboard() {
                                                 children: "우리의 추억"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 689,
+                                                lineNumber: 690,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2326,23 +2326,23 @@ function FamilyWeveDashboard() {
                                                 children: photoCount > 0 ? "사진을 확인해보세요" : "사진을 추가해보세요"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 690,
+                                                lineNumber: 691,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 688,
+                                        lineNumber: 689,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 687,
+                                    lineNumber: 688,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 683,
+                                lineNumber: 684,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2356,7 +2356,7 @@ function FamilyWeveDashboard() {
                                                 children: "추억 보기"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 698,
+                                                lineNumber: 699,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2364,38 +2364,38 @@ function FamilyWeveDashboard() {
                                                 children: photoCount > 0 ? `${photoCount}장의 사진` : "아직 사진이 없어요"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 699,
+                                                lineNumber: 700,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 697,
+                                        lineNumber: 698,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$454$2e$0_react$40$19$2e$2$2e$0$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                         className: "w-5 h-5 text-[#B0B8C1]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 703,
+                                        lineNumber: 704,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 696,
+                                lineNumber: 697,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                        lineNumber: 682,
+                        lineNumber: 683,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                lineNumber: 337,
+                lineNumber: 338,
                 columnNumber: 7
             }, this),
             showCommentModal && selectedTodo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2413,7 +2413,7 @@ function FamilyWeveDashboard() {
                                     children: "댓글"
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 712,
+                                    lineNumber: 713,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2424,18 +2424,18 @@ function FamilyWeveDashboard() {
                                         className: "w-4 h-4 text-[#8B95A1]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 714,
+                                        lineNumber: 715,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 713,
+                                    lineNumber: 714,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 711,
+                            lineNumber: 712,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2443,7 +2443,7 @@ function FamilyWeveDashboard() {
                             children: selectedTodo.text
                         }, void 0, false, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 717,
+                            lineNumber: 718,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2453,7 +2453,7 @@ function FamilyWeveDashboard() {
                                 children: "아직 댓글이 없어요"
                             }, void 0, false, {
                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                lineNumber: 720,
+                                lineNumber: 721,
                                 columnNumber: 17
                             }, this) : selectedTodo.comments.map((comment)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex gap-3",
@@ -2465,12 +2465,12 @@ function FamilyWeveDashboard() {
                                                 children: comment.author === "me" ? "나" : "상대"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                lineNumber: 725,
+                                                lineNumber: 726,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 724,
+                                            lineNumber: 725,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2481,7 +2481,7 @@ function FamilyWeveDashboard() {
                                                     children: comment.text
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 730,
+                                                    lineNumber: 731,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2489,24 +2489,24 @@ function FamilyWeveDashboard() {
                                                     children: formatTimeAgo(comment.createdAt)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                                    lineNumber: 731,
+                                                    lineNumber: 732,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                            lineNumber: 729,
+                                            lineNumber: 730,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, comment.id, true, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 723,
+                                    lineNumber: 724,
                                     columnNumber: 19
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 718,
+                            lineNumber: 719,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2527,7 +2527,7 @@ function FamilyWeveDashboard() {
                                     "data-testid": "input-comment-family"
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 738,
+                                    lineNumber: 739,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2538,24 +2538,24 @@ function FamilyWeveDashboard() {
                                     children: "전송"
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 747,
+                                    lineNumber: 748,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 737,
+                            lineNumber: 738,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                    lineNumber: 710,
+                    lineNumber: 711,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                lineNumber: 709,
+                lineNumber: 710,
                 columnNumber: 9
             }, this),
             showEditModal && editingTodo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2573,7 +2573,7 @@ function FamilyWeveDashboard() {
                                     children: "할 일 수정"
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 766,
+                                    lineNumber: 767,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2584,18 +2584,18 @@ function FamilyWeveDashboard() {
                                         className: "w-4 h-4 text-[#8B95A1]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 768,
+                                        lineNumber: 769,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 767,
+                                    lineNumber: 768,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 765,
+                            lineNumber: 766,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2606,7 +2606,7 @@ function FamilyWeveDashboard() {
                             "data-testid": "input-edit-todo-family"
                         }, void 0, false, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 771,
+                            lineNumber: 772,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2617,7 +2617,7 @@ function FamilyWeveDashboard() {
                                     children: "담당:"
                                 }, void 0, false, {
                                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                    lineNumber: 779,
+                                    lineNumber: 780,
                                     columnNumber: 15
                                 }, this),
                                 [
@@ -2631,13 +2631,13 @@ function FamilyWeveDashboard() {
                                         children: ASSIGNEE_LABELS[assignee]
                                     }, assignee, false, {
                                         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                                        lineNumber: 781,
+                                        lineNumber: 782,
                                         columnNumber: 17
                                     }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 778,
+                            lineNumber: 779,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2647,24 +2647,24 @@ function FamilyWeveDashboard() {
                             children: "수정 완료"
                         }, void 0, false, {
                             fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                            lineNumber: 793,
+                            lineNumber: 794,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                    lineNumber: 764,
+                    lineNumber: 765,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/family/family-weve-dashboard.tsx",
-                lineNumber: 763,
+                lineNumber: 764,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/family/family-weve-dashboard.tsx",
-        lineNumber: 311,
+        lineNumber: 312,
         columnNumber: 5
     }, this);
 }

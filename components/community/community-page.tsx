@@ -17,6 +17,7 @@ import {
   Flame,
   Eye,
 } from "lucide-react"
+import { PostListSkeleton } from "@/components/shared/skeleton-ui"
 
 interface CommunityPost {
   id: number
@@ -219,16 +220,7 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
         </div>
 
         {loading ? (
-          <div className="space-y-3">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="bg-white dark:bg-[#1a1a1a] rounded-[16px] p-5 animate-pulse">
-                <div className="h-4 bg-[#F2F4F6] dark:bg-[#2a2a2a] rounded w-1/4 mb-3" />
-                <div className="h-5 bg-[#F2F4F6] dark:bg-[#2a2a2a] rounded w-3/4 mb-3" />
-                <div className="h-3 bg-[#F2F4F6] dark:bg-[#2a2a2a] rounded w-full mb-2" />
-                <div className="h-3 bg-[#F2F4F6] dark:bg-[#2a2a2a] rounded w-2/3" />
-              </div>
-            ))}
-          </div>
+          <PostListSkeleton />
         ) : posts.length > 0 ? (
           activeTab === "인기" ? (
             <div className="bg-white dark:bg-[#1a1a1a] rounded-[16px] shadow-sm divide-y divide-[#F2F4F6] dark:divide-[#2a2a2a]">

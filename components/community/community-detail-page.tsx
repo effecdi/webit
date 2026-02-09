@@ -14,6 +14,7 @@ import {
   Copy,
   Check,
 } from "lucide-react"
+import { CommunityDetailSkeleton } from "@/components/shared/skeleton-ui"
 
 interface CommunityPost {
   id: number
@@ -240,33 +241,7 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
           </div>
         </header>
         <main className="px-5 py-5 max-w-md mx-auto space-y-4">
-          <div className="bg-white dark:bg-[#1a1a1a] rounded-[16px] p-5 animate-pulse">
-            <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-full w-16 mb-4" />
-            <div className="h-6 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-3/4 mb-4" />
-            <div className="flex items-center gap-2 mb-5">
-              <div className="w-6 h-6 rounded-full bg-[#E5E8EB] dark:bg-[#2a2a2a]" />
-              <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-16" />
-              <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-12" />
-            </div>
-            <div className="space-y-2.5">
-              <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-full" />
-              <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-full" />
-              <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-5/6" />
-              <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-2/3" />
-            </div>
-          </div>
-          <div className="bg-white dark:bg-[#1a1a1a] rounded-[16px] p-5 animate-pulse">
-            <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-20 mb-4" />
-            {[1, 2].map(i => (
-              <div key={i} className="flex items-start gap-3 mb-4">
-                <div className="w-8 h-8 rounded-full bg-[#E5E8EB] dark:bg-[#2a2a2a] flex-shrink-0" />
-                <div className="flex-1 space-y-2">
-                  <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-24" />
-                  <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-full" />
-                </div>
-              </div>
-            ))}
-          </div>
+          <CommunityDetailSkeleton />
         </main>
         {config.bottomNav}
       </div>

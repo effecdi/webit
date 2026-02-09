@@ -135,8 +135,15 @@ export default function AlbumDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen bg-black">
+        <div className="px-5 py-4">
+          <div className="h-6 w-32 bg-[#333] rounded-md animate-pulse mb-4" />
+        </div>
+        <div className="grid grid-cols-3 gap-0.5 px-0.5">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div key={i} className="aspect-square bg-[#1a1a1a] animate-pulse" />
+          ))}
+        </div>
       </div>
     )
   }
