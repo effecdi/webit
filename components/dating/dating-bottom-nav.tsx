@@ -2,11 +2,12 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Calendar, ImageIcon, User } from "lucide-react"
+import { Home, Calendar, ImageIcon, User, MessageSquare } from "lucide-react"
 
 const navItems = [
   { icon: Home, label: "홈", href: "/dating" },
   { icon: Calendar, label: "캘린더", href: "/dating/calendar" },
+  { icon: MessageSquare, label: "커뮤니티", href: "/dating/community" },
   { icon: ImageIcon, label: "갤러리", href: "/dating/gallery" },
   { icon: User, label: "프로필", href: "/dating/profile" },
 ]

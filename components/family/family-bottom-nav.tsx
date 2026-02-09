@@ -2,13 +2,13 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Calendar, ImageIcon, Book, User } from "lucide-react"
+import { Home, Calendar, ImageIcon, Book, User, MessageSquare } from "lucide-react"
 
 const navItems = [
   { icon: Home, label: "홈", href: "/family" },
   { icon: Calendar, label: "캘린더", href: "/family/calendar" },
+  { icon: MessageSquare, label: "커뮤니티", href: "/family/community" },
   { icon: ImageIcon, label: "갤러리", href: "/family/gallery" },
-  { icon: Book, label: "추억", href: "/family/archive" },
   { icon: User, label: "프로필", href: "/family/profile" },
 ]
 

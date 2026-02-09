@@ -19,8 +19,9 @@ The application is built with **Next.js 16** using the App Router and React Serv
 ### Key Features
 - **Mode-switching**: Users can select between Dating, Wedding, and Family modes, each offering tailored features and a distinct UI theme.
 - **Dating Mode**: Includes couple calendars, photo galleries, todo lists, and D-day tracking.
-- **Wedding Mode**: Features budget tracking, checklist management, a digital invitation editor with RSVP functionality, vendor management, and a guest manager. It offers a range of invitation templates, some requiring a premium subscription. AI recommendations (via OpenAI) assist in generating invitation content.
+- **Wedding Mode**: Features budget tracking, checklist management, a digital invitation editor with RSVP functionality, vendor management, and a guest manager. It offers a range of invitation templates, some requiring a premium subscription. AI recommendations (via OpenAI) assist in generating invitation content. Wedding Goods page includes a "제작 가이드" tab with information about creating wedding posters, mirrors, and frames (professional ordering and DIY).
 - **Family Mode**: Provides a memory archive with animated photo displays, a shared calendar, and photo organization.
+- **Community Feature**: Each mode (Dating, Wedding, Family) has a dedicated community section where users can share concerns, exchange information, and interact. Features include categorized posts, comments, likes, and post creation. Community is accessible via the bottom navigation bar in each mode.
 - **Travel Module**: A shared feature across all modes for trip planning, including schedules, checklists, and budget tracking.
 - **Subscription System**: A two-tier membership model (Advanced and Premium) offers enhanced features like ad-free experience, unlimited storage, and AI recommendations for Dating and Family modes. Wedding mode features are not tied to this subscription.
 - **Anniversary & Birthday Reminders**: The app tracks relationship milestones and birthdays, providing timely reminders and gift shopping suggestions.

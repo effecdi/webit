@@ -2,12 +2,12 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, CheckSquare, Mail, Wallet, User, Users } from "lucide-react"
+import { Home, CheckSquare, Mail, Wallet, User, Users, MessageSquare } from "lucide-react"
 
 const navItems = [
   { icon: Home, label: "홈", href: "/wedding" },
   { icon: CheckSquare, label: "체크리스트", href: "/wedding/checklist" },
-  { icon: Users, label: "하객매니저", href: "/wedding/guests" },
+  { icon: MessageSquare, label: "커뮤니티", href: "/wedding/community" },
   { icon: Wallet, label: "예산", href: "/wedding/budget" },
   { icon: User, label: "마이", href: "/wedding/profile" },
 ]

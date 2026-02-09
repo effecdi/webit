@@ -1,18 +1,21 @@
 {
   "app": {
-    "[project]/app/page": [
+    "[project]/app/dating/community/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
-    "[project]/app/s/[shareId]/page": [
+    "[project]/app/family/community/page": [
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+    ],
+    "[project]/app/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
     "[project]/app/splash/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
-    "[project]/app/wedding/goods/page": [
+    "[project]/app/wedding/community/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
-    "[project]/app/wedding/page": [
+    "[project]/app/wedding/goods/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
     "[project]/app/wedding/profile/page": [

@@ -197,6 +197,35 @@ export const invitations = pgTable('invitations', {
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 
+export const communityPosts = pgTable('community_posts', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  mode: text('mode').notNull(),
+  category: text('category').notNull(),
+  title: text('title').notNull(),
+  content: text('content').notNull(),
+  authorName: text('author_name'),
+  likeCount: integer('like_count').default(0),
+  commentCount: integer('comment_count').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const communityComments = pgTable('community_comments', {
+  id: serial('id').primaryKey(),
+  postId: integer('post_id').notNull(),
+  userId: text('user_id').notNull(),
+  content: text('content').notNull(),
+  authorName: text('author_name'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const communityLikes = pgTable('community_likes', {
+  id: serial('id').primaryKey(),
+  postId: integer('post_id').notNull(),
+  userId: text('user_id').notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
 export const sessions = pgTable('sessions', {
   sid: varchar('sid').primaryKey(),
   sess: jsonb('sess').notNull(),
@@ -219,3 +248,6 @@ export type Widget = typeof widgets.$inferSelect;
 export type WeddingInfo = typeof weddingInfo.$inferSelect;
 export type Guest = typeof guests.$inferSelect;
 export type Invitation = typeof invitations.$inferSelect;
+export type CommunityPost = typeof communityPosts.$inferSelect;
+export type CommunityComment = typeof communityComments.$inferSelect;
+export type CommunityLike = typeof communityLikes.$inferSelect;
