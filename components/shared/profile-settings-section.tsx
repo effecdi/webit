@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import { 
   Bell, 
@@ -15,7 +15,8 @@ import {
   Lock,
   ChevronRight,
   ChevronLeft,
-  X
+  X,
+  Loader2
 } from "lucide-react"
 import {
   Accordion,
@@ -28,6 +29,39 @@ interface ProfileSettingsSectionProps {
   mode: "dating" | "wedding" | "family"
 }
 
+interface SettingsData {
+  notifMessage: boolean
+  notifSchedule: boolean
+  notifAnniversary: boolean
+  notifGift: boolean
+  notifDaily: boolean
+  privacyProfileVisible: boolean
+  privacyLocationShare: boolean
+  privacyReadReceipt: boolean
+  privacyOnlineStatus: boolean
+  privacyActivityShare: boolean
+  supportNewsletter: boolean
+  supportEventNotify: boolean
+  supportFeedback: boolean
+  supportSurvey: boolean
+}
+
+const DEFAULTS: SettingsData = {
+  notifMessage: true,
+  notifSchedule: true,
+  notifAnniversary: true,
+  notifGift: false,
+  notifDaily: false,
+  privacyProfileVisible: true,
+  privacyLocationShare: false,
+  privacyReadReceipt: true,
+  privacyOnlineStatus: true,
+  privacyActivityShare: false,
+  supportNewsletter: true,
+  supportEventNotify: true,
+  supportFeedback: false,
+  supportSurvey: false,
+}
 
 const FAQ_ITEMS = [
   {
@@ -78,32 +112,94 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
   const [showPrivacySettings, setShowPrivacySettings] = useState(false)
   const [showSupportSettings, setShowSupportSettings] = useState(false)
   const [showFaq, setShowFaq] = useState(false)
+  const [settingsLoaded, setSettingsLoaded] = useState(false)
+  const [saving, setSaving] = useState(false)
   
-  // Notification states
-  const [notifications, setNotifications] = useState({
-    message: true,
-    schedule: true,
-    anniversary: true,
-    gift: false,
-    daily: false,
-  })
+  const [settings, setSettings] = useState<SettingsData>(DEFAULTS)
 
-  // Privacy states
-  const [privacy, setPrivacy] = useState({
-    profileVisible: true,
-    locationShare: false,
-    readReceipt: true,
-    onlineStatus: true,
-    activityShare: false,
-  })
+  useEffect(() => {
+    fetch("/api/user-settings")
+      .then(res => {
+        if (!res.ok) throw new Error("unauthorized")
+        return res.json()
+      })
+      .then(data => {
+        const merged: SettingsData = { ...DEFAULTS }
+        for (const k of Object.keys(DEFAULTS) as (keyof SettingsData)[]) {
+          if (typeof data[k] === "boolean") merged[k] = data[k]
+        }
+        setSettings(merged)
+        setSettingsLoaded(true)
+      })
+      .catch(() => setSettingsLoaded(true))
+  }, [])
 
-  // Support states
-  const [support, setSupport] = useState({
-    newsletter: true,
-    eventNotify: true,
-    feedback: false,
-    survey: false,
-  })
+  const updateSetting = useCallback((key: keyof SettingsData, value: boolean) => {
+    const prev = { ...settings }
+    const updated = { ...settings, [key]: value }
+    setSettings(updated as SettingsData)
+    setSaving(true)
+    fetch("/api/user-settings", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updated),
+    })
+      .then(res => {
+        if (!res.ok) {
+          setSettings(prev)
+        }
+      })
+      .catch(() => {
+        setSettings(prev)
+      })
+      .finally(() => setSaving(false))
+  }, [settings])
+
+  const notifications = {
+    message: settings.notifMessage,
+    schedule: settings.notifSchedule,
+    anniversary: settings.notifAnniversary,
+    gift: settings.notifGift,
+    daily: settings.notifDaily,
+  }
+
+  const privacy = {
+    profileVisible: settings.privacyProfileVisible,
+    locationShare: settings.privacyLocationShare,
+    readReceipt: settings.privacyReadReceipt,
+    onlineStatus: settings.privacyOnlineStatus,
+    activityShare: settings.privacyActivityShare,
+  }
+
+  const support = {
+    newsletter: settings.supportNewsletter,
+    eventNotify: settings.supportEventNotify,
+    feedback: settings.supportFeedback,
+    survey: settings.supportSurvey,
+  }
+
+  const notifKeyMap: Record<string, keyof SettingsData> = {
+    message: "notifMessage",
+    schedule: "notifSchedule",
+    anniversary: "notifAnniversary",
+    gift: "notifGift",
+    daily: "notifDaily",
+  }
+
+  const privacyKeyMap: Record<string, keyof SettingsData> = {
+    profileVisible: "privacyProfileVisible",
+    locationShare: "privacyLocationShare",
+    readReceipt: "privacyReadReceipt",
+    onlineStatus: "privacyOnlineStatus",
+    activityShare: "privacyActivityShare",
+  }
+
+  const supportKeyMap: Record<string, keyof SettingsData> = {
+    newsletter: "supportNewsletter",
+    eventNotify: "supportEventNotify",
+    feedback: "supportFeedback",
+    survey: "supportSurvey",
+  }
 
   const themeColor = mode === "dating" ? "#FF8A80" : mode === "wedding" ? "#FF8A80" : "#22C55E"
   const themeColorLight = mode === "dating" ? "pink" : mode === "wedding" ? "pink" : "green"
@@ -203,7 +299,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     type="button"
                     role="switch"
                     aria-checked={notifications[item.key as keyof typeof notifications]}
-                    onClick={() => setNotifications({...notifications, [item.key]: !notifications[item.key as keyof typeof notifications]})}
+                    onClick={() => updateSetting(notifKeyMap[item.key], !notifications[item.key as keyof typeof notifications])}
                     data-testid={`switch-notification-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
                       notifications[item.key as keyof typeof notifications] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
@@ -267,7 +363,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     type="button"
                     role="switch"
                     aria-checked={privacy[item.key as keyof typeof privacy]}
-                    onClick={() => setPrivacy({...privacy, [item.key]: !privacy[item.key as keyof typeof privacy]})}
+                    onClick={() => updateSetting(privacyKeyMap[item.key], !privacy[item.key as keyof typeof privacy])}
                     data-testid={`switch-privacy-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
                       privacy[item.key as keyof typeof privacy] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
@@ -330,7 +426,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     type="button"
                     role="switch"
                     aria-checked={support[item.key as keyof typeof support]}
-                    onClick={() => setSupport({...support, [item.key]: !support[item.key as keyof typeof support]})}
+                    onClick={() => updateSetting(supportKeyMap[item.key], !support[item.key as keyof typeof support])}
                     data-testid={`switch-support-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
                       support[item.key as keyof typeof support] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"

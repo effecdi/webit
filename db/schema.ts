@@ -249,6 +249,26 @@ export const sessions = pgTable('sessions', {
   expire: timestamp('expire').notNull(),
 });
 
+export const userSettings = pgTable('user_settings', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull().unique(),
+  notifMessage: boolean('notif_message').default(true),
+  notifSchedule: boolean('notif_schedule').default(true),
+  notifAnniversary: boolean('notif_anniversary').default(true),
+  notifGift: boolean('notif_gift').default(false),
+  notifDaily: boolean('notif_daily').default(false),
+  privacyProfileVisible: boolean('privacy_profile_visible').default(true),
+  privacyLocationShare: boolean('privacy_location_share').default(false),
+  privacyReadReceipt: boolean('privacy_read_receipt').default(true),
+  privacyOnlineStatus: boolean('privacy_online_status').default(true),
+  privacyActivityShare: boolean('privacy_activity_share').default(false),
+  supportNewsletter: boolean('support_newsletter').default(true),
+  supportEventNotify: boolean('support_event_notify').default(true),
+  supportFeedback: boolean('support_feedback').default(false),
+  supportSurvey: boolean('support_survey').default(false),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
 export type User = typeof users.$inferSelect;
 export type Profile = typeof profiles.$inferSelect;
 export type Event = typeof events.$inferSelect;
@@ -270,3 +290,4 @@ export type CommunityComment = typeof communityComments.$inferSelect;
 export type CommunityLike = typeof communityLikes.$inferSelect;
 export type Couple = typeof couples.$inferSelect;
 export type CoupleInvite = typeof coupleInvites.$inferSelect;
+export type UserSettings = typeof userSettings.$inferSelect;
