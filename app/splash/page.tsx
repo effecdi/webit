@@ -34,10 +34,24 @@ export default function SplashPage() {
       }
 
       if (hasCompletedSurvey && selectedMode) {
-        if (selectedMode === "dating") {
-          router.push("/dating")
-        } else if (selectedMode === "wedding") {
+        if (selectedMode === "wedding") {
+          const weddingDate = localStorage.getItem("wedding_date")
+          if (weddingDate) {
+            const target = new Date(weddingDate)
+            const today = new Date()
+            today.setHours(0, 0, 0, 0)
+            target.setHours(0, 0, 0, 0)
+            const diff = Math.ceil((target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+            if (diff < 0) {
+              localStorage.setItem("selected_mode", "family")
+              localStorage.setItem("family_transition_pending", "true")
+              router.push("/family")
+              return
+            }
+          }
           router.push("/wedding")
+        } else if (selectedMode === "dating") {
+          router.push("/dating")
         } else if (selectedMode === "family") {
           router.push("/family")
         } else {

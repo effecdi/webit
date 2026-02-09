@@ -2850,6 +2850,10 @@
     max-height: var(--radix-select-content-available-height);
   }
 
+  .max-h-60 {
+    max-height: calc(var(--spacing) * 60);
+  }
+
   .max-h-80 {
     max-height: calc(var(--spacing) * 80);
   }
@@ -4894,6 +4898,11 @@
     border-top-right-radius: 24px;
   }
 
+  .rounded-t-\[28px\] {
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+  }
+
   .rounded-t-\[100px\] {
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
@@ -6872,6 +6881,11 @@
 
   .to-green-600 {
     --tw-gradient-to: var(--color-green-600);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+
+  .to-green-700 {
+    --tw-gradient-to: var(--color-green-700);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
@@ -10976,6 +10990,12 @@
   }
 
   @media (hover: hover) {
+    .hover\:bg-green-100:hover {
+      background-color: var(--color-green-100);
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:bg-green-600:hover {
       background-color: var(--color-green-600);
     }
@@ -11540,6 +11560,10 @@
     .focus\:ring-blue-500\/20:focus {
       --tw-ring-color: color-mix(in oklab, var(--color-blue-500) 20%, transparent);
     }
+  }
+
+  .focus\:ring-green-300:focus {
+    --tw-ring-color: var(--color-green-300);
   }
 
   .focus\:ring-green-500:focus {
@@ -14404,6 +14428,10 @@
 
 .dark .hover\:bg-\[\#F8F9FA\]:hover, .dark .hover\:bg-\[\#F7F8FA\]:hover, .dark .hover\:bg-\[\#F9FAFB\]:hover {
   background-color: #1a1a1a !important;
+}
+
+.dark .hover\:bg-gray-100:hover {
+  background-color: #222 !important;
 }
 
 .dark .hover\:bg-gray-200:hover {

@@ -48,46 +48,55 @@ export function ModeSwitch({ currentMode }: ModeSwitchProps) {
     router.push("/survey/wedding-step1");
   };
 
-  const showDating = currentMode === "dating" || currentMode === "wedding";
-  const showFamily = currentMode === "family" || currentMode === "wedding";
-
   return (
     <>
       <div className="flex items-center bg-[#F2F4F6] rounded-full p-1">
-        {showDating && (
-          <button
-            onClick={handleDatingClick}
-            className={`flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all ${
-              currentMode === "dating"
-                ? "bg-white text-pink-500 shadow-sm"
-                : "text-[#8B95A1] hover:text-[#4E5968]"
-            }`}
-            data-testid="button-mode-dating"
-          >
-            <Heart className="w-4 h-4" />
-            <span>연애</span>
-          </button>
+        {currentMode === "dating" && (
+          <>
+            <button
+              onClick={handleDatingClick}
+              className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all bg-white text-pink-500 shadow-sm"
+              data-testid="button-mode-dating"
+            >
+              <Heart className="w-4 h-4" />
+              <span>연애</span>
+            </button>
+            <button
+              onClick={handleWeddingClick}
+              className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all text-[#8B95A1] hover:text-[#4E5968]"
+              data-testid="button-mode-wedding"
+            >
+              <Gem className="w-4 h-4" />
+              <span>결혼</span>
+            </button>
+          </>
         )}
-        <button
-          onClick={handleWeddingClick}
-          className={`flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all ${
-            currentMode === "wedding"
-              ? "bg-white text-[#3182F6] shadow-sm"
-              : "text-[#8B95A1] hover:text-[#4E5968]"
-          }`}
-          data-testid="button-mode-wedding"
-        >
-          <Gem className="w-4 h-4" />
-          <span>결혼</span>
-        </button>
-        {showFamily && (
+
+        {currentMode === "wedding" && (
+          <>
+            <button
+              onClick={handleWeddingClick}
+              className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all bg-white text-[#3182F6] shadow-sm"
+              data-testid="button-mode-wedding"
+            >
+              <Gem className="w-4 h-4" />
+              <span>결혼</span>
+            </button>
+            <button
+              onClick={handleFamilyClick}
+              className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all text-[#8B95A1] hover:text-[#4E5968]"
+              data-testid="button-mode-family"
+            >
+              <Home className="w-4 h-4" />
+              <span>가족</span>
+            </button>
+          </>
+        )}
+
+        {currentMode === "family" && (
           <button
             onClick={handleFamilyClick}
-            className={`flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all ${
-              currentMode === "family"
-                ? "bg-white text-green-600 shadow-sm"
-                : "text-[#8B95A1] hover:text-[#4E5968]"
-            }`}
+            className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all bg-white text-green-600 shadow-sm"
             data-testid="button-mode-family"
           >
             <Home className="w-4 h-4" />

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { todos, todoComments } from '@/db/schema';
-import { eq, and, desc } from 'drizzle-orm';
+import { eq, and, desc, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
 export async function GET(request: NextRequest) {
@@ -12,8 +12,12 @@ export async function GET(request: NextRequest) {
   const mode = searchParams.get('mode') || 'dating';
 
   try {
+    const modeFilter = mode === 'family'
+      ? inArray(todos.mode, ['dating', 'wedding', 'family'])
+      : eq(todos.mode, mode);
+
     const result = await db.select().from(todos)
-      .where(and(eq(todos.userId, userId), eq(todos.mode, mode)))
+      .where(and(eq(todos.userId, userId), modeFilter))
       .orderBy(desc(todos.createdAt));
 
     const todosWithComments = await Promise.all(

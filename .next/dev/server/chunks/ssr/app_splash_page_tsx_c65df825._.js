@@ -38,10 +38,24 @@ function SplashPage() {
                 localStorage.setItem("survey_myName", user.firstName);
             }
             if (hasCompletedSurvey && selectedMode) {
-                if (selectedMode === "dating") {
-                    router.push("/dating");
-                } else if (selectedMode === "wedding") {
+                if (selectedMode === "wedding") {
+                    const weddingDate = localStorage.getItem("wedding_date");
+                    if (weddingDate) {
+                        const target = new Date(weddingDate);
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        target.setHours(0, 0, 0, 0);
+                        const diff = Math.ceil((target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+                        if (diff < 0) {
+                            localStorage.setItem("selected_mode", "family");
+                            localStorage.setItem("family_transition_pending", "true");
+                            router.push("/family");
+                            return;
+                        }
+                    }
                     router.push("/wedding");
+                } else if (selectedMode === "dating") {
+                    router.push("/dating");
                 } else if (selectedMode === "family") {
                     router.push("/family");
                 } else {
@@ -73,7 +87,7 @@ function SplashPage() {
                     children: "WE:VE"
                 }, void 0, false, {
                     fileName: "[project]/app/splash/page.tsx",
-                    lineNumber: 70,
+                    lineNumber: 84,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -81,7 +95,7 @@ function SplashPage() {
                     children: "Our Every Moment Together"
                 }, void 0, false, {
                     fileName: "[project]/app/splash/page.tsx",
-                    lineNumber: 73,
+                    lineNumber: 87,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -90,23 +104,23 @@ function SplashPage() {
                         className: "w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin"
                     }, void 0, false, {
                         fileName: "[project]/app/splash/page.tsx",
-                        lineNumber: 78,
+                        lineNumber: 92,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/splash/page.tsx",
-                    lineNumber: 77,
+                    lineNumber: 91,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/splash/page.tsx",
-            lineNumber: 65,
+            lineNumber: 79,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/splash/page.tsx",
-        lineNumber: 60,
+        lineNumber: 74,
         columnNumber: 5
     }, this);
 }
