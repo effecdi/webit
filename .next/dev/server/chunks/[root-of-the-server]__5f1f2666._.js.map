@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///home/runner/workspace/app/api/invite/set-cookie/route.ts"],"sourcesContent":["import { NextRequest, NextResponse } from \"next/server\";\nimport { cookies } from \"next/headers\";\n\nexport async function GET(request: NextRequest) {\n  const { searchParams } = new URL(request.url);\n  const code = searchParams.get(\"code\");\n\n  if (!code) {\n    return NextResponse.json({ error: \"Missing invite code\" }, { status: 400 });\n  }\n\n  const cookieStore = await cookies();\n  cookieStore.set(\"pending_invite_code\", code, {\n    httpOnly: false,\n    secure: true,\n    maxAge: 3600,\n    path: \"/\",\n    sameSite: \"lax\",\n  });\n\n  return NextResponse.redirect(new URL(\"/login\", request.url));\n}\n"],"names":[],"mappings":";;;;AAAA;AACA;;;AAEO,eAAe,IAAI,OAAoB;IAC5C,MAAM,EAAE,YAAY,EAAE,GAAG,IAAI,IAAI,QAAQ,GAAG;IAC5C,MAAM,OAAO,aAAa,GAAG,CAAC;IAE9B,IAAI,CAAC,MAAM;QACT,OAAO,gRAAY,CAAC,IAAI,CAAC;YAAE,OAAO;QAAsB,GAAG;YAAE,QAAQ;QAAI;IAC3E;IAEA,MAAM,cAAc,MAAM,IAAA,4QAAO;IACjC,YAAY,GAAG,CAAC,uBAAuB,MAAM;QAC3C,UAAU;QACV,QAAQ;QACR,QAAQ;QACR,MAAM;QACN,UAAU;IACZ;IAEA,OAAO,gRAAY,CAAC,QAAQ,CAAC,IAAI,IAAI,UAAU,QAAQ,GAAG;AAC5D"}}]
+}
