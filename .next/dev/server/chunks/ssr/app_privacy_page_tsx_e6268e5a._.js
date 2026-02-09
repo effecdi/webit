@@ -66,7 +66,7 @@ function PrivacyPolicyPage() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "mb-4",
-                                children: 'WE:VE(이하 "서비스")는 이용자의 개인정보를 중요시하며, 「개인정보 보호법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 등 관련 법령을 준수하고 있습니다. 본 개인정보 처리방침을 통해 이용자의 개인정보가 어떠한 목적과 방식으로 수집·이용·관리되고 있는지 알려드립니다.'
+                                children: 'WE:BEAT(이하 "서비스")는 이용자의 개인정보를 중요시하며, 「개인정보 보호법」(제30조에 따른 개인정보 처리방침 공개), 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「전자상거래 등에서의 소비자보호에 관한 법률」, 「통신비밀보호법」 등 관련 법령을 준수하고 있습니다. 본 개인정보 처리방침을 통해 이용자의 개인정보가 어떠한 목적과 방식으로 수집·이용·관리되고 있는지 알려드립니다.'
                             }, void 0, false, {
                                 fileName: "[project]/app/privacy/page.tsx",
                                 lineNumber: 28,
@@ -992,7 +992,7 @@ function PrivacyPolicyPage() {
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "text-[#191F28] dark:text-white font-medium",
-                                                        children: "WE:VE 개인정보 보호 담당"
+                                                        children: "WE:BEAT 개인정보 보호 담당"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/privacy/page.tsx",
                                                         lineNumber: 199,
@@ -1207,7 +1207,7 @@ function PrivacyPolicyPage() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-[13px] text-[#8B95A1] dark:text-gray-500",
-                                    children: "시행일: 2025년 1월 1일"
+                                    children: "시행일: 2026년 2월 9일"
                                 }, void 0, false, {
                                     fileName: "[project]/app/privacy/page.tsx",
                                     lineNumber: 240,
@@ -1215,7 +1215,7 @@ function PrivacyPolicyPage() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-[13px] text-[#8B95A1] dark:text-gray-500 mt-1",
-                                    children: "최종 수정일: 2025년 2월 1일"
+                                    children: "최종 수정일: 2026년 2월 9일"
                                 }, void 0, false, {
                                     fileName: "[project]/app/privacy/page.tsx",
                                     lineNumber: 243,

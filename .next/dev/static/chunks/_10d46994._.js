@@ -76,7 +76,7 @@ function TermsPage() {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    children: '본 약관은 WE:VE(이하 "서비스")의 이용 조건 및 절차, 서비스 제공자와 이용자 간의 권리·의무 및 책임 사항, 기타 필요한 사항을 규정함을 목적으로 합니다. 본 약관은 「전자상거래 등에서의 소비자보호에 관한 법률」, 「약관의 규제에 관한 법률」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「콘텐츠산업 진흥법」 등 관련 법령을 준수합니다.'
+                                    children: '본 약관은 WE:BEAT(이하 "서비스")의 이용 조건 및 절차, 서비스 제공자와 이용자 간의 권리·의무 및 책임 사항, 기타 필요한 사항을 규정함을 목적으로 합니다. 본 약관은 「전자상거래 등에서의 소비자보호에 관한 법률」, 「약관의 규제에 관한 법률」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「콘텐츠산업 진흥법」 등 관련 법령을 준수합니다.'
                                 }, void 0, false, {
                                     fileName: "[project]/app/terms/page.tsx",
                                     lineNumber: 29,
@@ -114,7 +114,7 @@ function TermsPage() {
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "text-[#191F28] dark:text-white font-medium",
-                                                    children: "WE:VE"
+                                                    children: "WE:BEAT"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/terms/page.tsx",
                                                     lineNumber: 39,
@@ -139,7 +139,7 @@ function TermsPage() {
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "text-[#191F28] dark:text-white font-medium",
-                                                    children: "WE:VE 운영팀"
+                                                    children: "WE:BEAT 운영팀"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/terms/page.tsx",
                                                     lineNumber: 43,
@@ -202,7 +202,7 @@ function TermsPage() {
                                     className: "list-decimal pl-5 space-y-2",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                            children: '"서비스"란 WE:VE가 제공하는 커플 라이프사이클 관리 애플리케이션 및 관련 서비스 일체를 말합니다.'
+                                            children: '"서비스"란 WE:BEAT가 제공하는 커플 라이프사이클 관리 애플리케이션 및 관련 서비스 일체를 말합니다.'
                                         }, void 0, false, {
                                             fileName: "[project]/app/terms/page.tsx",
                                             lineNumber: 55,

@@ -238,10 +238,10 @@ export default function PrivacyPolicyPage() {
 
           <section className="pt-4 border-t border-[#E5E8EB] dark:border-gray-700">
             <p className="text-[13px] text-[#8B95A1] dark:text-gray-500">
-              시행일: 2025년 1월 1일
+              시행일: 2026년 2월 9일
             </p>
             <p className="text-[13px] text-[#8B95A1] dark:text-gray-500 mt-1">
-              최종 수정일: 2025년 2월 1일
+              최종 수정일: 2026년 2월 9일
             </p>
           </section>
         </div>

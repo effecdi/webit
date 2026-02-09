@@ -17,6 +17,7 @@
   "/family/page": "app/family/page.js",
   "/family/profile/page": "app/family/profile/page.js",
   "/page": "app/page.js",
+  "/privacy/page": "app/privacy/page.js",
   "/splash/page": "app/splash/page.js",
   "/terms/page": "app/terms/page.js",
   "/wedding/page": "app/wedding/page.js",

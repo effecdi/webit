@@ -152,8 +152,8 @@ function FamilyCoupleProfile() {
         w.Kakao.Share.sendDefault({
             objectType: "feed",
             content: {
-                title: "WE:VE - 커플 초대",
-                description: `${senderName}님이 WE:VE에서 함께하자고 초대했어요!`,
+                title: "WE:BEAT - 커플 초대",
+                description: `${senderName}님이 WE:BEAT에서 함께하자고 초대했어요!`,
                 imageUrl: `${window.location.origin}/og-image.png`,
                 link: {
                     mobileWebUrl: inviteUrl,
@@ -1185,8 +1185,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$accordio
 ;
 const FAQ_ITEMS = [
     {
-        q: "WE:VE는 어떤 앱인가요?",
-        a: "WE:VE는 커플의 연애부터 결혼, 가족까지 모든 라이프사이클을 함께하는 슈퍼앱입니다. 연애모드, 결혼모드, 가족모드를 전환하며 각 단계에 맞는 다양한 기능을 이용할 수 있습니다."
+        q: "WE:BEAT는 어떤 앱인가요?",
+        a: "WE:BEAT는 커플의 연애부터 결혼, 가족까지 모든 라이프사이클을 함께하는 슈퍼앱입니다. 연애모드, 결혼모드, 가족모드를 전환하며 각 단계에 맞는 다양한 기능을 이용할 수 있습니다."
     },
     {
         q: "모드 전환은 어떻게 하나요?",
@@ -1206,7 +1206,7 @@ const FAQ_ITEMS = [
     },
     {
         q: "멤버십 구독 요금은 얼마인가요?",
-        a: "WE:VE 멤버십은 Advanced(월 4,900원)와 Premium(월 9,900원) 두 가지 플랜을 제공합니다. Advanced는 광고 제거와 추가 저장 공간을, Premium은 AI 추천, 무제한 저장 공간, 프리미엄 템플릿 등 모든 기능을 이용할 수 있습니다."
+        a: "WE:BEAT 멤버십은 Advanced(월 4,900원)와 Premium(월 9,900원) 두 가지 플랜을 제공합니다. Advanced는 광고 제거와 추가 저장 공간을, Premium은 AI 추천, 무제한 저장 공간, 프리미엄 템플릿 등 모든 기능을 이용할 수 있습니다."
     },
     {
         q: "사진과 데이터는 안전하게 보관되나요?",
