@@ -54,12 +54,12 @@ export function FamilyWeveDashboard() {
   const [travels, setTravels] = useState<Travel[]>([])
   const [photoCount, setPhotoCount] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
-  const [coupleNames, setCoupleNames] = useState({ my: "현정", partner: "주호" })
+  const [coupleNames, setCoupleNames] = useState({ my: "", partner: "" })
   const [daysTogether, setDaysTogether] = useState(0)
 
   useEffect(() => {
-    const myName = localStorage.getItem("survey_myName") || "현정"
-    const partnerName = localStorage.getItem("survey_partnerName") || "주호"
+    const myName = localStorage.getItem("survey_myName") || ""
+    const partnerName = localStorage.getItem("survey_partnerName") || ""
     const savedDate = localStorage.getItem("survey_firstMeetDate")
     
     setCoupleNames({ my: myName, partner: partnerName })
@@ -70,11 +70,16 @@ export function FamilyWeveDashboard() {
       const diffTime = Math.abs(today.getTime() - start.getTime())
       setDaysTogether(Math.ceil(diffTime / (1000 * 60 * 60 * 24)))
     } else {
-      const weddingDate = new Date("2025-12-20")
-      const today = new Date()
-      const diffTime = today.getTime() - weddingDate.getTime()
-      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
-      setDDay(diffDays > 0 ? diffDays : 0)
+      const savedWeddingDate = localStorage.getItem("wedding_date")
+      if (savedWeddingDate) {
+        const wDate = new Date(savedWeddingDate)
+        if (!isNaN(wDate.getTime())) {
+          const today = new Date()
+          const diffTime = today.getTime() - wDate.getTime()
+          const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
+          setDDay(diffDays > 0 ? diffDays : 0)
+        }
+      }
     }
 
     const hour = new Date().getHours()
@@ -104,7 +109,13 @@ export function FamilyWeveDashboard() {
       const travelsData = await travelsRes.json()
       const photosData = await photosRes.json()
       
-      setNotifications(notificationsData.map((n: { id: number; type: string; title: string; message: string; createdAt: string }) => ({
+      const notifArr = Array.isArray(notificationsData) ? notificationsData : []
+      const eventsArr = Array.isArray(eventsData) ? eventsData : []
+      const albumsArr = Array.isArray(albumsData) ? albumsData : []
+      const travelsArr = Array.isArray(travelsData) ? travelsData : []
+      const photosArr = Array.isArray(photosData) ? photosData : []
+      
+      setNotifications(notifArr.map((n: { id: number; type: "schedule" | "photo" | "travel" | "todo" | "general"; title: string; message: string; createdAt: string }) => ({
         id: String(n.id),
         type: n.type,
         title: n.title,
@@ -112,16 +123,16 @@ export function FamilyWeveDashboard() {
         time: formatTimeAgo(n.createdAt)
       })))
       
-      setTodayEvents(eventsData.map((e: { id: number; time: string; title: string; category: string }) => ({
+      setTodayEvents(eventsArr.map((e: { id: number; time: string; title: string; category: string }) => ({
         id: e.id,
         time: e.time || "00:00",
         title: e.title,
         category: e.category || "일정"
       })))
       
-      setRecentAlbums(albumsData.slice(0, 3))
-      setTravels(travelsData)
-      setPhotoCount(photosData.length)
+      setRecentAlbums(albumsArr.slice(0, 3))
+      setTravels(travelsArr)
+      setPhotoCount(photosArr.length)
     } catch (error) {
       console.error('Error fetching data:', error)
     } finally {
@@ -187,7 +198,7 @@ export function FamilyWeveDashboard() {
       <main className="pt-16 px-5 space-y-4 max-w-md mx-auto">
         <div className="mt-2 flex justify-between items-start">
           <div>
-            <p className="text-[13px] text-[#8B95A1] mb-1">{greeting}, {coupleNames.my}님</p>
+            <p className="text-[13px] text-[#8B95A1] mb-1">{greeting}{coupleNames.my ? `, ${coupleNames.my}님` : ""}</p>
             <h1 className="text-[26px] leading-[1.35] font-bold text-[#191F28]">
               {daysTogether > 0 || dDay > 0 ? (
                 <>
@@ -220,7 +231,7 @@ export function FamilyWeveDashboard() {
               </div>
             </div>
             <div className="flex-1">
-              <p className="text-[17px] font-bold text-[#191F28]">{coupleNames.my} & {coupleNames.partner}</p>
+              <p className="text-[17px] font-bold text-[#191F28]">{coupleNames.my && coupleNames.partner ? `${coupleNames.my} & ${coupleNames.partner}` : "우리 가족"}</p>
               <p className="text-[13px] text-[#8B95A1]">함께하는 일상</p>
             </div>
             <Heart className="w-6 h-6 text-green-500" fill="#22c55e" />

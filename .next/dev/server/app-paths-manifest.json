@@ -12,7 +12,6 @@
   "/family/page": "app/family/page.js",
   "/page": "app/page.js",
   "/splash/page": "app/splash/page.js",
-  "/wedding/community/page": "app/wedding/community/page.js",
   "/wedding/page": "app/wedding/page.js",
   "/wedding/profile/page": "app/wedding/profile/page.js"
 }
