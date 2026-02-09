@@ -7,6 +7,7 @@ import { ProfileSettingsSection } from "@/components/shared/profile-settings-sec
 import { ArrowLeft, LogOut, Crown, Star, X, Heart, ImageIcon, Calendar, Home, Check } from "lucide-react"
 import Link from "next/link"
 import { useAuth } from "@/hooks/use-auth"
+import { PartnerInviteSection } from "@/components/shared/partner-invite-section"
 
 export default function FamilyProfilePage() {
   const { user } = useAuth()
@@ -100,6 +101,9 @@ export default function FamilyProfilePage() {
 
       <div className="px-5 py-5 max-w-md mx-auto space-y-4">
         <FamilyCoupleProfile />
+
+        {/* Partner Invite */}
+        <PartnerInviteSection mode="family" />
         
         {/* Membership Card */}
         <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-[20px] p-5 text-white">

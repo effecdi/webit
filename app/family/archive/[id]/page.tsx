@@ -12,6 +12,7 @@ import {
   VolumeX,
   ChevronLeft,
   ChevronRight,
+  SkipForward,
 } from "lucide-react"
 import { FamilyBottomNav } from "@/components/family/family-bottom-nav"
 
@@ -194,49 +195,101 @@ const ARCHIVE_DATA: Record<string, {
   }
 }
 
-type MusicTheme = "dating" | "wedding" | "family"
+const MUSIC_TRACKS = [
+  { src: "/music/Balanced_Winter_Breeze.mp3", name: "Balanced Winter Breeze" },
+  { src: "/music/December_in_the_Middle.mp3", name: "December in the Middle" },
+  { src: "/music/First_Guest.mp3", name: "First Guest" },
+  { src: "/music/Gentle_Holiday_Drift.mp3", name: "Gentle Holiday Drift" },
+  { src: "/music/Gleaming_Grove.mp3", name: "Gleaming Grove" },
+  { src: "/music/Lemon_Light.mp3", name: "Lemon Light" },
+  { src: "/music/Morning_Glow.mp3", name: "Morning Glow" },
+  { src: "/music/Quivering_Aria.mp3", name: "Quivering Aria" },
+  { src: "/music/Radiant_Journey.mp3", name: "Radiant Journey" },
+  { src: "/music/Snow_Dance_Party.mp3", name: "Snow Dance Party" },
+  { src: "/music/Snowfall_at_Ease.mp3", name: "Snowfall at Ease" },
+  { src: "/music/Soft_Winter_Motion.mp3", name: "Soft Winter Motion" },
+  { src: "/music/Under_the_Fairy_Lights.mp3", name: "Under the Fairy Lights" },
+  { src: "/music/Vibrant_Day.mp3", name: "Vibrant Day" },
+  { src: "/music/Warmth_in_the_Middle.mp3", name: "Warmth in the Middle" },
+]
 
-const MUSIC_SOURCES: Record<MusicTheme, string> = {
-  dating: "/music/dating.mp3",
-  wedding: "/music/wedding.mp3",
-  family: "/music/family.mp3",
+function shuffleArray<T>(arr: T[]): T[] {
+  const shuffled = [...arr]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
 }
 
 function SlideshowPlayer({
   photos,
   title,
   date,
-  musicTheme,
   onClose,
 }: {
   photos: string[]
   title: string
   date: string
-  musicTheme: MusicTheme
   onClose: () => void
 }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
   const [isMuted, setIsMuted] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [currentTrackName, setCurrentTrackName] = useState("")
+  const [showTrackName, setShowTrackName] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
   const progressRef = useRef<NodeJS.Timeout | null>(null)
+  const playlistRef = useRef<typeof MUSIC_TRACKS>([])
+  const trackIndexRef = useRef(0)
+  const trackNameTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const SLIDE_DURATION = 4000
 
+  const playNextTrack = useCallback(() => {
+    if (playlistRef.current.length === 0) {
+      playlistRef.current = shuffleArray(MUSIC_TRACKS)
+      trackIndexRef.current = 0
+    }
+
+    const track = playlistRef.current[trackIndexRef.current]
+    trackIndexRef.current = (trackIndexRef.current + 1) % playlistRef.current.length
+
+    if (trackIndexRef.current === 0) {
+      playlistRef.current = shuffleArray(MUSIC_TRACKS)
+    }
+
+    if (audioRef.current) {
+      audioRef.current.src = track.src
+      audioRef.current.play().catch(() => {})
+    }
+
+    setCurrentTrackName(track.name)
+    setShowTrackName(true)
+    if (trackNameTimeoutRef.current) clearTimeout(trackNameTimeoutRef.current)
+    trackNameTimeoutRef.current = setTimeout(() => setShowTrackName(false), 4000)
+  }, [])
+
   useEffect(() => {
-    const audio = new Audio(MUSIC_SOURCES[musicTheme])
-    audio.loop = true
+    const audio = new Audio()
     audio.volume = 0.5
     audioRef.current = audio
-    audio.play().catch(() => {})
+
+    audio.addEventListener("ended", playNextTrack)
+
+    playlistRef.current = shuffleArray(MUSIC_TRACKS)
+    trackIndexRef.current = 0
+    playNextTrack()
 
     return () => {
+      audio.removeEventListener("ended", playNextTrack)
       audio.pause()
       audio.src = ""
+      if (trackNameTimeoutRef.current) clearTimeout(trackNameTimeoutRef.current)
     }
-  }, [musicTheme])
+  }, [playNextTrack])
 
   useEffect(() => {
     if (audioRef.current) {
@@ -349,19 +402,37 @@ function SlideshowPlayer({
       <div className="absolute bottom-0 left-0 right-0 z-[3] p-6 pb-12">
         <h2 className="text-[28px] font-bold text-white leading-tight" data-testid="text-slideshow-title">{title}</h2>
         <p className="text-[15px] text-white/70 mt-1">{date}</p>
+        {currentTrackName && (
+          <div
+            className={`mt-3 inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full transition-opacity duration-700 ${showTrackName ? "opacity-100" : "opacity-0"}`}
+            data-testid="text-current-track"
+          >
+            <Volume2 className="w-3 h-3 text-white/70" />
+            <span className="text-[12px] text-white/70 font-medium">{currentTrackName}</span>
+          </div>
+        )}
       </div>
 
-      <button
-        onClick={togglePlay}
-        className="absolute bottom-24 right-6 z-[3] w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center"
-        data-testid="button-toggle-playback"
-      >
-        {isPlaying ? (
-          <Pause className="w-5 h-5 text-white fill-white" />
-        ) : (
-          <Play className="w-5 h-5 text-white fill-white ml-0.5" />
-        )}
-      </button>
+      <div className="absolute bottom-24 right-6 z-[3] flex items-center gap-2">
+        <button
+          onClick={playNextTrack}
+          className="w-10 h-10 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center"
+          data-testid="button-skip-track"
+        >
+          <SkipForward className="w-4 h-4 text-white" />
+        </button>
+        <button
+          onClick={togglePlay}
+          className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center"
+          data-testid="button-toggle-playback"
+        >
+          {isPlaying ? (
+            <Pause className="w-5 h-5 text-white fill-white" />
+          ) : (
+            <Play className="w-5 h-5 text-white fill-white ml-0.5" />
+          )}
+        </button>
+      </div>
 
       <style jsx>{`
         @keyframes slideshowKenBurns {
@@ -615,7 +686,6 @@ export default function ArchiveDetailPage({ params }: { params: Promise<{ id: st
           photos={allPhotos}
           title={archive.title}
           date={archive.date}
-          musicTheme={id.includes("dating") ? "dating" : id.includes("wedding") ? "wedding" : "family"}
           onClose={() => setShowSlideshow(false)}
         />
       )}

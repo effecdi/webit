@@ -7,6 +7,7 @@ import { CoupleProfile } from "@/components/dating/couple-profile"
 import { ProfileSettingsSection } from "@/components/shared/profile-settings-section"
 import { Bell, LogOut, Crown, Star, X, Heart, ImageIcon, Calendar, Check } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
+import { PartnerInviteSection } from "@/components/shared/partner-invite-section"
 
 export default function ProfilePage() {
   const router = useRouter()
@@ -102,6 +103,9 @@ export default function ProfilePage() {
       <div className="px-5 py-5 max-w-md mx-auto space-y-5">
         {/* Couple Profile */}
         <CoupleProfile />
+
+        {/* Partner Invite */}
+        <PartnerInviteSection mode="dating" />
 
         {/* Membership Card */}
         <div className="bg-gradient-to-r from-[#FFE4EC] to-[#E4F0FF] rounded-[20px] p-5 shadow-sm">

@@ -20,6 +20,7 @@ import Link from "next/link"
 import { ProfileSettingsSection } from "@/components/shared/profile-settings-section"
 import { NotificationModal, type Notification } from "@/components/shared/notification-modal"
 import { useAuth } from "@/hooks/use-auth"
+import { PartnerInviteSection } from "@/components/shared/partner-invite-section"
 
 const calculateDday = (date: string) => {
   const today = new Date()
@@ -291,6 +292,9 @@ export default function WeddingProfilePage() {
             </div>
           )}
         </div>
+
+        {/* Partner Invite */}
+        <PartnerInviteSection mode="wedding" />
 
         {/* Quick Stats */}
         <div className="grid grid-cols-3 gap-3">

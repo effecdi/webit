@@ -226,6 +226,16 @@ export const communityLikes = pgTable('community_likes', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
+export const coupleInvites = pgTable('couple_invites', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  inviteCode: varchar('invite_code').notNull().unique(),
+  inviterName: text('inviter_name'),
+  mode: text('mode').notNull(),
+  status: text('status').default('pending'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
 export const sessions = pgTable('sessions', {
   sid: varchar('sid').primaryKey(),
   sess: jsonb('sess').notNull(),
@@ -251,3 +261,4 @@ export type Invitation = typeof invitations.$inferSelect;
 export type CommunityPost = typeof communityPosts.$inferSelect;
 export type CommunityComment = typeof communityComments.$inferSelect;
 export type CommunityLike = typeof communityLikes.$inferSelect;
+export type CoupleInvite = typeof coupleInvites.$inferSelect;
