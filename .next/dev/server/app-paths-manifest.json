@@ -2,6 +2,7 @@
   "/api/albums/route": "app/api/albums/route.js",
   "/api/auth/user/route": "app/api/auth/user/route.js",
   "/api/checklist/route": "app/api/checklist/route.js",
+  "/api/couple/route": "app/api/couple/route.js",
   "/api/events/route": "app/api/events/route.js",
   "/api/expenses/route": "app/api/expenses/route.js",
   "/api/mood/route": "app/api/mood/route.js",
@@ -13,7 +14,8 @@
   "/api/wedding-info/route": "app/api/wedding-info/route.js",
   "/dating/page": "app/dating/page.js",
   "/family/page": "app/family/page.js",
+  "/family/profile/page": "app/family/profile/page.js",
   "/page": "app/page.js",
-  "/splash/page": "app/splash/page.js",
+  "/travel/page": "app/travel/page.js",
   "/wedding/page": "app/wedding/page.js"
 }

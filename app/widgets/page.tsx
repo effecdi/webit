@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
+import { FloatingBackButton } from "@/components/shared/floating-back-button"
 import { 
   ArrowLeft, Heart, Calendar, Sparkles, Music2, 
   MessageCircle, MapPin, Crown, Check, Lock, 
@@ -364,14 +365,7 @@ export default function WidgetStorePage() {
     <div className="min-h-dvh bg-[#F7F8FA] dark:bg-gray-950">
       <div className="sticky top-0 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-[#F2F4F6] dark:border-gray-800">
         <div className="flex items-center px-4 h-14">
-          <button
-            onClick={() => router.back()}
-            data-testid="button-widget-back"
-            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] dark:hover:bg-gray-800 transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5 text-[#191F28] dark:text-white" />
-          </button>
-          <h1 className="flex-1 text-center text-[17px] font-bold text-[#191F28] dark:text-white pr-10">
+          <h1 className="flex-1 text-center text-[17px] font-bold text-[#191F28] dark:text-white">
             위젯 스토어
           </h1>
         </div>
@@ -591,6 +585,7 @@ export default function WidgetStorePage() {
           </motion.div>
         )}
       </AnimatePresence>
+      <FloatingBackButton />
     </div>
   )
 }

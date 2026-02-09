@@ -243,13 +243,6 @@ export default function WeddingProfilePage() {
       <header className="sticky top-0 z-30 bg-white border-b border-[#E5E8EB]">
         <div className="flex items-center justify-between px-4 h-14 max-w-md mx-auto">
           <div className="flex items-center gap-3">
-            <Link 
-              href="/wedding" 
-              className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
-              data-testid="link-back-wedding"
-            >
-              <ArrowLeft className="w-5 h-5 text-[#191F28]" />
-            </Link>
             <h1 className="text-[17px] font-bold text-[#191F28]">프로필</h1>
           </div>
           <div className="relative">

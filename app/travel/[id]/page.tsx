@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import WheelTimePicker from "@/components/ui/wheel-time-picker"
+import { FloatingBackButton } from "@/components/shared/floating-back-button"
 import { 
   ArrowLeft, 
   Plus, 
@@ -167,21 +168,13 @@ export default function TravelDetailPage() {
   return (
     <div className="min-h-screen bg-[#F2F4F6] pb-36">
       <header className="fixed top-0 left-0 right-0 z-50 bg-white">
-        <div className="flex items-center justify-between px-5 py-3 max-w-md mx-auto">
-          <button 
-            onClick={() => router.back()} 
-            className="w-10 h-10 flex items-center justify-center -ml-2"
-            data-testid="button-back"
-          >
-            <ArrowLeft className="w-6 h-6 text-[#191F28]" />
-          </button>
+        <div className="flex items-center justify-center px-5 py-3 max-w-md mx-auto">
           <div className="text-center">
             <h1 className="text-[17px] font-bold text-[#191F28]">{trip.destination}</h1>
             <p className="text-[12px] text-[#8B95A1]">
               {new Date(trip.startDate).toLocaleDateString("ko-KR", { month: "short", day: "numeric" })} - {new Date(trip.endDate).toLocaleDateString("ko-KR", { month: "short", day: "numeric" })}
             </p>
           </div>
-          <div className="w-10" />
         </div>
         
         <div className="flex border-b border-[#E5E8EB]">
@@ -553,6 +546,7 @@ export default function TravelDetailPage() {
           </div>
         </div>
       )}
+      <FloatingBackButton />
     </div>
   )
 }

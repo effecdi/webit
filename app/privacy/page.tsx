@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { ChevronLeft } from "lucide-react"
+import { FloatingBackButton } from "@/components/shared/floating-back-button"
 
 export default function PrivacyPolicyPage() {
   const router = useRouter()
@@ -9,14 +9,7 @@ export default function PrivacyPolicyPage() {
   return (
     <main className="min-h-dvh bg-white dark:bg-[#1a1a1a]">
       <header className="sticky top-0 z-50 bg-white/80 dark:bg-[#1a1a1a]/80 backdrop-blur-md border-b border-[#E5E8EB] dark:border-gray-800">
-        <div className="flex items-center gap-3 px-4 h-14 max-w-md mx-auto">
-          <button
-            onClick={() => router.back()}
-            data-testid="button-privacy-back"
-            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] dark:hover:bg-gray-800 transition-colors"
-          >
-            <ChevronLeft className="w-5 h-5 text-[#191F28] dark:text-white" />
-          </button>
+        <div className="flex items-center justify-center px-4 h-14 max-w-md mx-auto">
           <h1 className="text-[18px] font-bold text-[#191F28] dark:text-white">개인정보 처리방침</h1>
         </div>
       </header>
@@ -246,6 +239,7 @@ export default function PrivacyPolicyPage() {
           </section>
         </div>
       </div>
+      <FloatingBackButton />
     </main>
   )
 }

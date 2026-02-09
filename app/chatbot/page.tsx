@@ -2,7 +2,8 @@
 
 import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { ChevronLeft, Send } from "lucide-react"
+import { Send } from "lucide-react"
+import { FloatingBackButton } from "@/components/shared/floating-back-button"
 
 interface Message {
   role: "user" | "assistant"
@@ -69,13 +70,6 @@ export default function ChatbotPage() {
   return (
     <div className="min-h-dvh bg-white flex flex-col" data-testid="page-chatbot">
       <header className="sticky top-0 z-50 bg-white border-b border-[#F2F4F6] px-4 py-3 flex items-center gap-3">
-        <button
-          onClick={() => router.back()}
-          className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F8F9FA] transition-colors"
-          data-testid="button-chatbot-back"
-        >
-          <ChevronLeft className="w-6 h-6 text-[#191F28]" />
-        </button>
         <div>
           <h1 className="text-[16px] font-bold text-[#191F28]">1:1 문의하기</h1>
           <p className="text-[12px] text-[#8B95A1]">AI 상담사가 도와드립니다</p>
@@ -147,6 +141,7 @@ export default function ChatbotPage() {
           </button>
         </div>
       </div>
+      <FloatingBackButton />
     </div>
   )
 }
