@@ -710,7 +710,7 @@ function WeddingSurveyStep1() {
                                         value: weddingDate,
                                         onChange: setWeddingDate,
                                         placeholder: "결혼 예정일을 선택해주세요",
-                                        className: "!px-5 !py-4 !bg-[#F3F5F7] !rounded-[16px] !text-[17px]",
+                                        className: "!px-5 !py-4 !bg-transparent !rounded-[16px] !text-[17px] !border !border-[#E5E8EB]",
                                         label: "결혼 예정일",
                                         minYear: new Date().getFullYear(),
                                         maxYear: new Date().getFullYear() + 5
@@ -749,7 +749,7 @@ function WeddingSurveyStep1() {
                                         onChange: (val)=>setWeddingTime(val),
                                         placeholder: "시간 선택",
                                         label: "예식 시간",
-                                        className: "!px-5 !py-4 !bg-[#F3F5F7] !rounded-[16px] !text-[17px] !border-0"
+                                        className: "!px-5 !py-4 !bg-transparent !rounded-[16px] !text-[17px] !border !border-[#E5E8EB]"
                                     }, void 0, false, {
                                         fileName: "[project]/app/survey/wedding-step1/page.tsx",
                                         lineNumber: 75,
