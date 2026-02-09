@@ -10,13 +10,13 @@ const CONSENT_ITEMS = [
     id: "terms",
     label: "서비스 이용약관 동의",
     required: true,
-    content: "WE:VE 서비스 이용약관에 동의합니다. 본 약관은 WE:VE 서비스의 이용 조건 및 절차, 회사와 회원 간의 권리, 의무 및 책임 사항 등을 규정합니다. 서비스 이용 중 발생하는 모든 사항은 본 약관에 따릅니다.",
+    content: "WE:BEAT 서비스 이용약관에 동의합니다. 본 약관은 WE:BEAT 서비스의 이용 조건 및 절차, 회사와 회원 간의 권리, 의무 및 책임 사항 등을 규정합니다. 서비스 이용 중 발생하는 모든 사항은 본 약관에 따릅니다.",
   },
   {
     id: "privacy",
     label: "개인정보 수집 및 이용 동의",
     required: true,
-    content: "WE:VE는 서비스 제공을 위해 다음 개인정보를 수집합니다: 이름, 이메일, 프로필 사진, 소셜 로그인 정보. 수집된 개인정보는 서비스 운영, 본인 확인, 고객 상담 등에 활용되며, 회원 탈퇴 시 즉시 파기됩니다.",
+    content: "WE:BEAT는 서비스 제공을 위해 다음 개인정보를 수집합니다: 이름, 이메일, 프로필 사진, 소셜 로그인 정보. 수집된 개인정보는 서비스 운영, 본인 확인, 고객 상담 등에 활용되며, 회원 탈퇴 시 즉시 파기됩니다.",
   },
   {
     id: "age",
@@ -28,7 +28,7 @@ const CONSENT_ITEMS = [
     id: "marketing",
     label: "마케팅 정보 수신 동의",
     required: false,
-    content: "WE:VE의 신규 기능, 이벤트, 프로모션 등의 마케팅 정보를 이메일, 푸시 알림 등으로 수신합니다. 수신 동의는 언제든지 설정에서 변경할 수 있습니다.",
+    content: "WE:BEAT의 신규 기능, 이벤트, 프로모션 등의 마케팅 정보를 이메일, 푸시 알림 등으로 수신합니다. 수신 동의는 언제든지 설정에서 변경할 수 있습니다.",
   },
 ]
 
@@ -127,7 +127,7 @@ export default function LoginPage() {
             <Heart className="w-10 h-10 text-[#b455e0] fill-[#b455e0]" />
           </div>
           <h1 className="text-3xl font-bold text-[#b455e0] tracking-tight mb-2">
-            WE:VE
+            WE:BEAT
           </h1>
           <p className="text-[15px] text-[#8B95A1]">
             우리만의 특별한 순간을 시작해요
@@ -221,7 +221,7 @@ export default function LoginPage() {
                 서비스 이용 동의
               </h3>
               <p className="text-[14px] text-[#8B95A1]">
-                WE:VE 서비스 이용을 위해 약관에 동의해주세요
+                WE:BEAT 서비스 이용을 위해 약관에 동의해주세요
               </p>
             </div>
 

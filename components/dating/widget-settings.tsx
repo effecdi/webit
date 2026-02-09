@@ -121,7 +121,7 @@ export function WidgetSettings() {
 
       <div className="mt-4 p-3 bg-muted border-2 border-dashed border-secondary">
         <p className="text-xs text-center text-muted-foreground">
-          위젯을 활성화한 후, 기기 홈 화면에서 WE:VE 위젯을 추가하세요
+          위젯을 활성화한 후, 기기 홈 화면에서 WE:BEAT 위젯을 추가하세요
         </p>
       </div>
     </section>

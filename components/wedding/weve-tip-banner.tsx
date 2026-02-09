@@ -33,7 +33,7 @@ export function WeveTipBanner() {
         <h2 className="text-[17px] font-bold text-[#202020]">추천</h2>
       </div>
 
-      {/* Recommend Items - WE:VE style */}
+      {/* Recommend Items - WE:BEAT style */}
       <div className="px-5">
         {recommendItems.map((item) => {
           const Icon = item.icon

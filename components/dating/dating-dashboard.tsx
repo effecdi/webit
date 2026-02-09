@@ -1027,7 +1027,7 @@ export function DatingDashboard() {
                 <Crown className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-[22px] font-bold text-white">
-                WE:VE Premium
+                WE:BEAT Premium
               </h3>
               <p className="text-white/80 text-[14px] mt-1">
                 더 특별한 우리의 이야기

@@ -26,7 +26,7 @@ export function WeveProgressSection() {
         </Link>
       </div>
 
-      {/* Category List - WE:VE transaction style */}
+      {/* Category List - WE:BEAT transaction style */}
       <div className="px-5 pb-4">
         {progressData.categories.map((category, index) => (
           <Link 

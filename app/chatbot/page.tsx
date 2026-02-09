@@ -14,7 +14,7 @@ export default function ChatbotPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "안녕하세요! WE:VE 고객센터입니다.\n궁금하신 점이나 도움이 필요하신 부분을 편하게 말씀해주세요."
+      content: "안녕하세요! WE:BEAT 고객센터입니다.\n궁금하신 점이나 도움이 필요하신 부분을 편하게 말씀해주세요."
     }
   ])
   const [input, setInput] = useState("")

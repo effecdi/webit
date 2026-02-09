@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: '청첩장 - WE:VE',
+    title: '청첩장 - WE:BEAT',
     description: '결혼식에 초대합니다.',
   }
 }

@@ -6,8 +6,8 @@ const openai = new OpenAI({
   baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
 });
 
-const SYSTEM_PROMPT = `당신은 WE:VE(위브) 앱의 AI 고객지원 상담사입니다.
-WE:VE는 커플의 연애, 결혼, 가정 생활을 지원하는 한국어 모바일 앱입니다.
+const SYSTEM_PROMPT = `당신은 WE:BEAT(위브) 앱의 AI 고객지원 상담사입니다.
+WE:BEAT는 커플의 연애, 결혼, 가정 생활을 지원하는 한국어 모바일 앱입니다.
 
 앱의 주요 기능:
 - 데이팅 모드: 커플 캘린더, 포토 갤러리, 투두리스트, D-Day 추적

@@ -938,7 +938,7 @@ export function GalleryLayout({ data, state, helpers, onRsvpClick }: LayoutProps
       <div className="px-6 pb-10 pt-4" style={{ backgroundColor: sectionBg1 }}>
         <div className="w-full h-px mb-6" style={{ backgroundColor: borderColor }} />
         <p className="text-[9px] uppercase" style={{ color: textSecondary, letterSpacing: "0.15em", fontFamily: sansFont }}>
-          MADE WITH WE:VE
+          MADE WITH WE:BEAT
         </p>
       </div>
     </>

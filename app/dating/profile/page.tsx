@@ -170,7 +170,7 @@ export default function ProfilePage() {
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Crown className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-[24px] font-bold text-white">WE:VE Premium</h3>
+              <h3 className="text-[24px] font-bold text-white">WE:BEAT Premium</h3>
               <p className="text-white/80 text-[14px] mt-1">더 특별한 우리의 이야기</p>
             </div>
 

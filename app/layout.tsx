@@ -9,7 +9,7 @@ import './globals.css'
 const _playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] });
 
 export const metadata: Metadata = {
-  title: 'WE:VE - 우리의 모든 순간',
+  title: 'WE:BEAT - 우리의 모든 순간',
   description: '커플의 생애주기를 함께하는 슈퍼앱',
   generator: 'v0.app',
   icons: {

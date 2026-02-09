@@ -792,7 +792,7 @@ export function ModernLayout({ data, state, helpers, onRsvpClick }: LayoutProps)
       <div className="px-8 pb-8 pt-4 text-center" style={{ backgroundColor: sectionBg1 }}>
         <div className="w-8 h-px mx-auto mb-4" style={{ backgroundColor: borderColor }} />
         <p className="text-[10px] tracking-[0.15em]" style={{ color: textSecondary }}>
-          MADE WITH WE:VE
+          MADE WITH WE:BEAT
         </p>
       </div>
     </>

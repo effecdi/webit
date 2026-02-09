@@ -33,7 +33,7 @@ export function DatingHero() {
       {/* Magazine Header */}
       <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-start">
         <div className="bg-background border-2 border-secondary px-3 py-1 shadow-brutalist-sm">
-          <span className="font-serif text-lg font-bold tracking-tight">WE:VE</span>
+          <span className="font-serif text-lg font-bold tracking-tight">WE:BEAT</span>
         </div>
         <ModeSwitch currentMode="dating" />
       </div>

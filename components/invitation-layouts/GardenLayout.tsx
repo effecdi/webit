@@ -865,7 +865,7 @@ export function GardenLayout({ data, state, helpers, onRsvpClick }: LayoutProps)
       <div className="px-8 pb-8 pt-4 text-center" style={{ backgroundColor: sectionBg1 }}>
         <FloralDivider />
         <p className="text-[10px] tracking-[0.15em]" style={{ color: rosyBrown }}>
-          MADE WITH WE:VE
+          MADE WITH WE:BEAT
         </p>
       </div>
     </>

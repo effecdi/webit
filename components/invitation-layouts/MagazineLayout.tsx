@@ -795,7 +795,7 @@ export function MagazineLayout({ data, state, helpers, onRsvpClick }: LayoutProp
       <div className="px-8 pb-10 pt-4 text-center" style={{ backgroundColor: sectionBg1 }}>
         <div className="w-full h-[1px] mx-auto mb-6" style={{ backgroundColor: "#E5E8EB" }} />
         <p className="text-[10px] font-bold tracking-[0.4em] uppercase" style={{ color: textSecondary }}>
-          MADE WITH WE:VE
+          MADE WITH WE:BEAT
         </p>
       </div>
     </>

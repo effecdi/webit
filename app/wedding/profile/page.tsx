@@ -214,8 +214,8 @@ export default function WeddingProfilePage() {
     w.Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
-        title: "WE:VE - 커플 초대",
-        description: `${senderName}님이 WE:VE에서 함께하자고 초대했어요!`,
+        title: "WE:BEAT - 커플 초대",
+        description: `${senderName}님이 WE:BEAT에서 함께하자고 초대했어요!`,
         imageUrl: `${window.location.origin}/og-image.png`,
         link: { mobileWebUrl: inviteUrl, webUrl: inviteUrl },
       },

@@ -783,7 +783,7 @@ export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
         <p className="text-[10px] tracking-[0.15em] flex items-center justify-center gap-1" style={{ color: textSecondary }}>
           MADE WITH
           <HeartIcon size={8} />
-          WE:VE
+          WE:BEAT
         </p>
       </div>
     </>

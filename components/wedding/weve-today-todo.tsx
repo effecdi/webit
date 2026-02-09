@@ -64,7 +64,7 @@ export function WeveTodayTodo() {
 
   return (
     <section className="bg-white mt-2">
-      {/* Section Header - WE:VE tab style */}
+      {/* Section Header - WE:BEAT tab style */}
       <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-[#F5F5F5]">
         <div className="flex items-center gap-4">
           <button className="text-[17px] font-bold text-[#202020] pb-2 border-b-2 border-[#202020]">
@@ -92,7 +92,7 @@ export function WeveTodayTodo() {
         </div>
       </div>
 
-      {/* Todo Items - WE:VE list style */}
+      {/* Todo Items - WE:BEAT list style */}
       <div className="px-5 pb-2">
         {todos.map((todo) => (
           <button
@@ -102,7 +102,7 @@ export function WeveTodayTodo() {
               completedAnimation === todo.id ? "scale-[0.99] opacity-70" : ""
             }`}
           >
-            {/* Checkbox - WE:VE style */}
+            {/* Checkbox - WE:BEAT style */}
             <div
               className={`relative w-[22px] h-[22px] rounded-full border-[1.5px] flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                 todo.completed

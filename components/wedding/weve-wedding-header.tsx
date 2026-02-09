@@ -32,7 +32,7 @@ export function WeveWeddingHeader() {
       {/* Top Bar */}
       <div className="flex items-center justify-between px-5 pt-14 pb-4">
         <Link href="/" className="text-[18px] font-bold tracking-tight text-[#202020]">
-          WE:VE
+          WE:BEAT
         </Link>
         <div className="flex items-center gap-1">
           <button className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-50 transition-colors">
@@ -44,7 +44,7 @@ export function WeveWeddingHeader() {
         </div>
       </div>
 
-      {/* Promo Banner - WE:VE style */}
+      {/* Promo Banner - WE:BEAT style */}
       <div className="px-5 pb-4">
         <Link 
           href="/wedding/tips"
@@ -65,7 +65,7 @@ export function WeveWeddingHeader() {
         </Link>
       </div>
 
-      {/* D-day Card - Main emphasis like WE:VE balance */}
+      {/* D-day Card - Main emphasis like WE:BEAT balance */}
       <div 
         className={`px-5 pb-6 transition-all duration-500 ${
           mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"

@@ -144,7 +144,7 @@ export function PartnerInviteSection({ mode, myName }: PartnerInviteSectionProps
     w.Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
-        title: "WE:VE - 커플 초대",
+        title: "WE:BEAT - 커플 초대",
         description: `환영해요! ${senderName}님과의 ${config.welcomeMessage}을 위해 위브가 도와줄게요!`,
         imageUrl: `${window.location.origin}/og-image.png`,
         link: {
@@ -171,8 +171,8 @@ export function PartnerInviteSection({ mode, myName }: PartnerInviteSectionProps
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "WE:VE - 커플 초대",
-          text: `${senderName}님이 WE:VE에서 함께하자고 초대했어요!`,
+          title: "WE:BEAT - 커플 초대",
+          text: `${senderName}님이 WE:BEAT에서 함께하자고 초대했어요!`,
           url: inviteUrl,
         })
       } catch {}

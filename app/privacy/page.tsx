@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
 
           <section>
             <p className="mb-4">
-              WE:VE(이하 &quot;서비스&quot;)는 이용자의 개인정보를 중요시하며, 「개인정보 보호법」(제30조에 따른 개인정보 처리방침 공개), 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「전자상거래 등에서의 소비자보호에 관한 법률」, 「통신비밀보호법」 등 관련 법령을 준수하고 있습니다. 본 개인정보 처리방침을 통해 이용자의 개인정보가 어떠한 목적과 방식으로 수집·이용·관리되고 있는지 알려드립니다.
+              WE:BEAT(이하 &quot;서비스&quot;)는 이용자의 개인정보를 중요시하며, 「개인정보 보호법」(제30조에 따른 개인정보 처리방침 공개), 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「전자상거래 등에서의 소비자보호에 관한 법률」, 「통신비밀보호법」 등 관련 법령을 준수하고 있습니다. 본 개인정보 처리방침을 통해 이용자의 개인정보가 어떠한 목적과 방식으로 수집·이용·관리되고 있는지 알려드립니다.
             </p>
           </section>
 
@@ -196,7 +196,7 @@ export default function PrivacyPolicyPage() {
               <div className="space-y-2 text-[13px]">
                 <div className="flex gap-3">
                   <span className="text-[#8B95A1] w-16 shrink-0">담당자</span>
-                  <span className="text-[#191F28] dark:text-white font-medium">WE:VE 개인정보 보호 담당</span>
+                  <span className="text-[#191F28] dark:text-white font-medium">WE:BEAT 개인정보 보호 담당</span>
                 </div>
                 <div className="flex gap-3">
                   <span className="text-[#8B95A1] w-16 shrink-0">연락처</span>

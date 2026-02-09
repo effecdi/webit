@@ -15,7 +15,7 @@ export function OnboardingHero() {
       {/* Header Logo */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-[#b455e0] tracking-tight">
-          WE:VE
+          WE:BEAT
         </h1>
       </div>
 

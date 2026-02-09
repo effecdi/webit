@@ -53,7 +53,7 @@ function DDayWidgetPreview() {
         <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
           <Heart className="w-4 h-4 text-white fill-white" />
         </div>
-        <span className="text-white/80 text-[11px] font-medium">WE:VE</span>
+        <span className="text-white/80 text-[11px] font-medium">WE:BEAT</span>
       </div>
       <div className="text-white text-[32px] font-bold tracking-tight leading-none">D+{days}</div>
       <div className="text-white/60 text-[11px] mt-1 font-medium">우리가 함께한 날</div>
@@ -77,7 +77,7 @@ function CalendarWidgetPreview() {
     <div className="bg-white/10 rounded-[20px] p-4 backdrop-blur-sm border border-white/10">
       <div className="flex items-center justify-between mb-3">
         <span className="text-white text-[13px] font-bold">{today.getMonth() + 1}월</span>
-        <span className="text-white/40 text-[10px]">WE:VE</span>
+        <span className="text-white/40 text-[10px]">WE:BEAT</span>
       </div>
       <div className="grid grid-cols-7 gap-1 mb-2">
         {dayNames.map(d => (

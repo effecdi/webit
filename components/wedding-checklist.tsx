@@ -32,7 +32,7 @@ const checklistItems: ChecklistItem[] = [
     id: "ad1",
     icon: Sparkles,
     title: "스냅사진 얼리버드 30% 할인",
-    description: "WE:VE 회원 전용 특가 - 더스튜디오",
+    description: "WE:BEAT 회원 전용 특가 - 더스튜디오",
     dueDate: "한정 혜택",
     completed: false,
     isAd: true,

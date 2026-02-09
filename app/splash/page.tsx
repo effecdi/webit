@@ -93,7 +93,7 @@ export default function SplashPage() {
             >
               <Image
                 src={splashLogo}
-                alt="WE:VE"
+                alt="WE:BEAT"
                 width={80}
                 height={80}
                 priority

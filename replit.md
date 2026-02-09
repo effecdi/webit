@@ -1,8 +1,8 @@
-# WE:VE - Couple Lifecycle Super App
+# WE:BEAT - Couple Lifecycle Super App
 
 ## Overview
 
-WE:VE is a Korean mobile-first super app designed to support couples through their entire relationship journey: dating, wedding planning, and family life. It offers mode-specific features such as shared calendars, photo galleries, budget tracking, checklists, and digital wedding invitations. The app aims to provide a comprehensive, integrated platform for couples, adapting its theme and functionalities to each stage of their relationship.
+WE:BEAT is a Korean mobile-first super app designed to support couples through their entire relationship journey: dating, wedding planning, and family life. It offers mode-specific features such as shared calendars, photo galleries, budget tracking, checklists, and digital wedding invitations. The app aims to provide a comprehensive, integrated platform for couples, adapting its theme and functionalities to each stage of their relationship.
 
 ## User Preferences
 

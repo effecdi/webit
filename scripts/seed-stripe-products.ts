@@ -6,10 +6,10 @@ async function seedProducts() {
   const existingProducts = await stripe.products.list({ limit: 100 });
   const existingNames = existingProducts.data.map(p => p.name);
 
-  if (!existingNames.includes('WE:VE 고급 (Advanced)')) {
+  if (!existingNames.includes('WE:BEAT 고급 (Advanced)')) {
     console.log('Creating Advanced plan...');
     const advancedProduct = await stripe.products.create({
-      name: 'WE:VE 고급 (Advanced)',
+      name: 'WE:BEAT 고급 (Advanced)',
       description: '광고 제거, 무제한 저장공간, 우선 지원',
       metadata: {
         tier: 'advanced',
@@ -40,10 +40,10 @@ async function seedProducts() {
     console.log('Advanced plan already exists, skipping...');
   }
 
-  if (!existingNames.includes('WE:VE 프리미엄 (Premium)')) {
+  if (!existingNames.includes('WE:BEAT 프리미엄 (Premium)')) {
     console.log('Creating Premium plan...');
     const premiumProduct = await stripe.products.create({
-      name: 'WE:VE 프리미엄 (Premium)',
+      name: 'WE:BEAT 프리미엄 (Premium)',
       description: 'AI 추천, 프리미엄 테마, 데이터 분석 포함 모든 기능',
       metadata: {
         tier: 'premium',

@@ -39,7 +39,7 @@
   --sidebar-border: #E5E8EB;
   --sidebar-ring: #b455e0;
   
-  /* WE:VE signature color */
+  /* WE:BEAT signature color */
   --weve-purple: #b455e0;
   --weve-purple-dark: #9240b8;
   --weve-bg: #F2F4F6;
@@ -901,7 +901,7 @@
   animation: marquee 20s linear infinite;
 }
 
-/* WE:VE-style soft shadow */
+/* WE:BEAT-style soft shadow */
 .shadow-weve {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
 }

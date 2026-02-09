@@ -177,7 +177,7 @@ export default function InvitePage({ params }: { params: Promise<{ code: string 
             <Heart className="w-8 h-8 text-white fill-white" />
           </div>
           <h1 className="text-[24px] font-bold text-[#191F28] dark:text-gray-100 mb-2">
-            WE:VE
+            WE:BEAT
           </h1>
           <p className="text-[15px] text-[#4E5968] dark:text-gray-300">
             {inviterName}님이 초대했어요
@@ -189,7 +189,7 @@ export default function InvitePage({ params }: { params: Promise<{ code: string 
             함께 시작해볼까요?
           </h2>
           <p className="text-[14px] text-[#8B95A1] dark:text-gray-400 leading-relaxed mb-5">
-            WE:VE에서 {inviterName}님과 함께 {config.welcomeAction}을 시작해보세요.
+            WE:BEAT에서 {inviterName}님과 함께 {config.welcomeAction}을 시작해보세요.
             일정 관리, 사진 공유, D-day 추적 등 다양한 기능이 준비되어 있어요.
           </p>
 

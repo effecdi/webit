@@ -795,7 +795,7 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
       <div className={`px-8 pb-8 pt-4 text-center ${frosted}`} style={{ backgroundColor: "rgba(255,255,255,0.5)" }}>
         <div className="w-8 h-px mx-auto mb-4" style={{ backgroundColor: accent, opacity: 0.2 }} />
         <p className="text-[10px] tracking-[0.15em]" style={{ color: "#B0B0B0" }}>
-          MADE WITH WE:VE
+          MADE WITH WE:BEAT
         </p>
       </div>
     </>

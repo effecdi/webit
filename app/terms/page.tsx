@@ -27,7 +27,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-[16px] font-bold text-[#191F28] dark:text-white mb-3">제1조 (목적)</h2>
             <p>
-              본 약관은 WE:VE(이하 &quot;서비스&quot;)의 이용 조건 및 절차, 서비스 제공자와 이용자 간의 권리·의무 및 책임 사항, 기타 필요한 사항을 규정함을 목적으로 합니다. 본 약관은 「전자상거래 등에서의 소비자보호에 관한 법률」, 「약관의 규제에 관한 법률」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「콘텐츠산업 진흥법」 등 관련 법령을 준수합니다.
+              본 약관은 WE:BEAT(이하 &quot;서비스&quot;)의 이용 조건 및 절차, 서비스 제공자와 이용자 간의 권리·의무 및 책임 사항, 기타 필요한 사항을 규정함을 목적으로 합니다. 본 약관은 「전자상거래 등에서의 소비자보호에 관한 법률」, 「약관의 규제에 관한 법률」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「콘텐츠산업 진흥법」 등 관련 법령을 준수합니다.
             </p>
           </section>
 
@@ -36,11 +36,11 @@ export default function TermsPage() {
             <div className="bg-[#F7F8FA] dark:bg-gray-800 rounded-[12px] p-4 space-y-2 text-[13px]">
               <div className="flex gap-3">
                 <span className="text-[#8B95A1] w-20 shrink-0">서비스명</span>
-                <span className="text-[#191F28] dark:text-white font-medium">WE:VE</span>
+                <span className="text-[#191F28] dark:text-white font-medium">WE:BEAT</span>
               </div>
               <div className="flex gap-3">
                 <span className="text-[#8B95A1] w-20 shrink-0">운영 책임자</span>
-                <span className="text-[#191F28] dark:text-white font-medium">WE:VE 운영팀</span>
+                <span className="text-[#191F28] dark:text-white font-medium">WE:BEAT 운영팀</span>
               </div>
               <div className="flex gap-3">
                 <span className="text-[#8B95A1] w-20 shrink-0">고객 문의</span>
@@ -52,7 +52,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-[16px] font-bold text-[#191F28] dark:text-white mb-3">제2조 (정의)</h2>
             <ol className="list-decimal pl-5 space-y-2">
-              <li>&quot;서비스&quot;란 WE:VE가 제공하는 커플 라이프사이클 관리 애플리케이션 및 관련 서비스 일체를 말합니다.</li>
+              <li>&quot;서비스&quot;란 WE:BEAT가 제공하는 커플 라이프사이클 관리 애플리케이션 및 관련 서비스 일체를 말합니다.</li>
               <li>&quot;이용자&quot;란 본 약관에 따라 서비스를 이용하는 자를 말합니다.</li>
               <li>&quot;회원&quot;이란 서비스에 가입하여 이용자 계정을 부여받은 자를 말합니다.</li>
               <li>&quot;커플 연결&quot;이란 두 명의 회원이 파트너로 연결되어 데이터를 공유하는 상태를 말합니다.</li>

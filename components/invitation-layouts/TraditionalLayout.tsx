@@ -819,7 +819,7 @@ export function TraditionalLayout({ data, state, helpers, onRsvpClick }: LayoutP
       <div className="px-8 pb-8 pt-4 text-center" style={{ backgroundColor: sectionBg2 }}>
         <div className="w-12 h-px mx-auto mb-4" style={{ backgroundColor: accent, opacity: 0.4 }} />
         <p className="text-[10px] tracking-[0.15em]" style={{ color: accent }}>
-          MADE WITH WE:VE
+          MADE WITH WE:BEAT
         </p>
       </div>
     </>

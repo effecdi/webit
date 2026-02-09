@@ -44,7 +44,7 @@ export function WeddingHeader() {
       {/* Top Navigation */}
       <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between p-4">
         <div className="bg-background/90 backdrop-blur-sm border-2 border-secondary px-3 py-1 shadow-brutalist-sm">
-          <span className="font-serif text-lg font-bold tracking-tight">WE:VE</span>
+          <span className="font-serif text-lg font-bold tracking-tight">WE:BEAT</span>
         </div>
         <div className="flex items-center gap-2">
           <ModeSwitch currentMode="wedding" />

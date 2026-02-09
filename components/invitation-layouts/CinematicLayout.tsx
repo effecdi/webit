@@ -795,7 +795,7 @@ export function CinematicLayout({ data, state, helpers, onRsvpClick }: LayoutPro
       <div className="px-8 pb-8 pt-4 text-center" style={{ backgroundColor: sectionBg2 }}>
         <div className="w-8 h-px mx-auto mb-4" style={{ backgroundColor: accent }} />
         <p className="text-[10px] tracking-[0.15em]" style={{ color: accent }}>
-          MADE WITH WE:VE
+          MADE WITH WE:BEAT
         </p>
       </div>
     </>

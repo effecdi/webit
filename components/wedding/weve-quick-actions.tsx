@@ -40,7 +40,7 @@ export function WeveQuickActions() {
         <ChevronRight className="w-5 h-5 text-[#B0B0B0]" />
       </div>
 
-      {/* Account List - WE:VE style */}
+      {/* Account List - WE:BEAT style */}
       <div className="px-5">
         {accountItems.map((item) => (
           <Link
