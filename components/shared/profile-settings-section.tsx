@@ -12,7 +12,6 @@ import {
   Gift, 
   Clock,
   LayoutGrid,
-  Crown,
   Lock,
   ChevronRight,
   ChevronLeft,
@@ -29,41 +28,6 @@ interface ProfileSettingsSectionProps {
   mode: "dating" | "wedding" | "family"
 }
 
-// Widget Data
-const WIDGETS = [
-  {
-    id: "dday",
-    name: "D-Day 위젯",
-    description: "홈 화면에서 D-Day 확인",
-    icon: Heart,
-    preview: "D+365",
-    isPremium: false,
-  },
-  {
-    id: "calendar",
-    name: "캘린더 위젯",
-    description: "이번 주 일정 미리보기",
-    icon: Calendar,
-    preview: "2월 14일 데이트",
-    isPremium: false,
-  },
-  {
-    id: "photo",
-    name: "포토 위젯",
-    description: "커플 사진 슬라이드쇼",
-    icon: LayoutGrid,
-    preview: "랜덤 사진",
-    isPremium: true,
-  },
-  {
-    id: "countdown",
-    name: "카운트다운 위젯",
-    description: "다음 기념일까지 남은 시간",
-    icon: Clock,
-    preview: "100일 D-30",
-    isPremium: true,
-  },
-]
 
 const FAQ_ITEMS = [
   {
@@ -113,9 +77,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
   const [showNotificationSettings, setShowNotificationSettings] = useState(false)
   const [showPrivacySettings, setShowPrivacySettings] = useState(false)
   const [showSupportSettings, setShowSupportSettings] = useState(false)
-  const [showWidgetSettings, setShowWidgetSettings] = useState(false)
   const [showFaq, setShowFaq] = useState(false)
-  const [selectedWidget, setSelectedWidget] = useState("dday")
   
   // Notification states
   const [notifications, setNotifications] = useState({
@@ -167,9 +129,9 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
     },
     { 
       icon: LayoutGrid, 
-      label: "위젯 설정", 
+      label: "위젯 스토어", 
       desc: "홈 화면 위젯 관리",
-      action: () => setShowWidgetSettings(true)
+      action: () => router.push("/widgets")
     },
   ]
 
@@ -474,110 +436,6 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
         </div>
       )}
 
-      {/* Widget Settings Modal */}
-      {showWidgetSettings && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center px-5"
-          onClick={() => setShowWidgetSettings(false)}
-        >
-          <div 
-            className="bg-white rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200 max-h-[85vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 bg-white z-10 px-5 pt-5 pb-4 border-b border-[#F2F4F6]">
-              <div className="flex items-center justify-between mb-1">
-                <div className="flex items-center gap-2">
-                  <LayoutGrid className="w-5 h-5 text-[#191F28]" />
-                  <h3 className="text-[19px] font-bold text-[#191F28]">위젯 설정</h3>
-                </div>
-                <button 
-                  onClick={() => setShowWidgetSettings(false)}
-                  data-testid="button-close-widget-modal"
-                  className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
-                >
-                  <X className="w-5 h-5 text-[#8B95A1]" />
-                </button>
-              </div>
-              <p className="text-[13px] text-[#8B95A1]">홈 화면에 추가할 위젯을 선택하세요</p>
-            </div>
-            
-            <div className="p-5">
-              <div className="grid grid-cols-2 gap-3">
-                {WIDGETS.map((widget) => {
-                  const IconComponent = widget.icon
-                  const isSelected = selectedWidget === widget.id
-                  
-                  return (
-                    <button
-                      key={widget.id}
-                      onClick={() => !widget.isPremium && setSelectedWidget(widget.id)}
-                      data-testid={`button-widget-${widget.id}`}
-                      className={`relative p-4 rounded-[16px] border-2 transition-all text-left ${
-                        isSelected 
-                          ? "border-[#b455e0] bg-[#F3E8FF]" 
-                          : "border-[#E5E8EB] bg-white hover:border-[#B0B8C1]"
-                      } ${widget.isPremium ? "opacity-80" : ""}`}
-                    >
-                      {/* Premium Badge */}
-                      {widget.isPremium && (
-                        <div className="absolute top-3 right-3">
-                          <Crown className="w-5 h-5 text-amber-500" />
-                        </div>
-                      )}
-                      
-                      {/* Radio */}
-                      <div className="absolute top-3 right-3">
-                        {!widget.isPremium && (
-                          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                            isSelected ? "border-[#b455e0] bg-[#b455e0]" : "border-[#B0B8C1]"
-                          }`}>
-                            {isSelected && <div className="w-2 h-2 rounded-full bg-white" />}
-                          </div>
-                        )}
-                      </div>
-                      
-                      {/* Icon */}
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-3 ${
-                        isSelected ? "bg-[#b455e0] text-white" : "bg-[#F2F4F6] text-[#4E5968]"
-                      }`}>
-                        <IconComponent className="w-6 h-6" />
-                      </div>
-                      
-                      {/* Content */}
-                      <p className="text-[14px] font-bold text-[#191F28] mb-0.5">{widget.name}</p>
-                      <p className="text-[12px] text-[#8B95A1] mb-3">{widget.description}</p>
-                      
-                      {/* Preview */}
-                      <div className="bg-[#F2F4F6] rounded-[8px] py-2 px-3 text-center">
-                        <span className="text-[13px] text-[#4E5968]">{widget.preview}</span>
-                      </div>
-                    </button>
-                  )
-                })}
-              </div>
-              
-              {/* Info Text */}
-              <p className="text-center text-[12px] text-[#8B95A1] mt-4 px-4">
-                위젯을 활성화한 후, 기기 홈 화면에서 WE:VE 위젯을 추가하세요
-              </p>
-              
-              {/* Premium CTA */}
-              <div className="mt-4 p-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-[16px]">
-                <div className="flex items-center gap-2 mb-2">
-                  <Crown className="w-5 h-5 text-amber-500" />
-                  <span className="text-[14px] font-bold text-[#191F28]">프리미엄 위젯</span>
-                </div>
-                <p className="text-[13px] text-[#4E5968] mb-3">
-                  포토 위젯, 카운트다운 위젯은 멤버십 구독 후 이용 가능합니다
-                </p>
-                <button data-testid="button-widget-premium-subscribe" className="w-full py-2.5 bg-gradient-to-r from-amber-400 to-amber-500 text-white font-semibold text-[14px] rounded-[10px]">
-                  프리미엄 구독하기
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   )
 }
