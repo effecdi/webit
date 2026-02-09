@@ -34,11 +34,11 @@ export default function WeddingSurveyStep1() {
       <div className="flex-1 flex flex-col justify-center">
         <div className="mb-10">
           <div className="flex gap-1.5 mb-8">
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
             <div className="w-6 h-1.5 bg-gray-200 rounded-full" />
             <div className="w-6 h-1.5 bg-gray-200 rounded-full" />
             <div className="w-6 h-1.5 bg-gray-200 rounded-full" />
@@ -88,7 +88,7 @@ export default function WeddingSurveyStep1() {
         disabled={!weddingDate}
         className={`w-full h-14 rounded-[16px] font-semibold text-white transition-all ${
           weddingDate
-            ? "bg-blue-500 hover:bg-blue-600 active:scale-[0.98]"
+            ? "bg-[#b455e0] hover:bg-[#9240b8] active:scale-[0.98]"
             : "bg-[#B0B8C1]"
         }`}
         data-testid="button-next"

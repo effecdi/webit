@@ -260,7 +260,7 @@ export default function WeddingProfilePage() {
             >
               <Bell className="w-5 h-5 text-[#4E5968]" />
               {notifications.length > 0 && (
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#3182F6] rounded-full" />
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#b455e0] rounded-full" />
               )}
             </button>
             <NotificationModal
@@ -284,7 +284,7 @@ export default function WeddingProfilePage() {
               <button
                 onClick={handleInviteClick}
                 disabled={isLoadingInvite}
-                className="px-3 py-1.5 rounded-full bg-[#3182F6] text-white text-[13px] font-medium flex items-center gap-1 disabled:opacity-50"
+                className="px-3 py-1.5 rounded-full bg-[#b455e0] text-white text-[13px] font-medium flex items-center gap-1 disabled:opacity-50"
                 data-testid="button-invite-partner-wedding"
               >
                 <UserPlus className="w-3 h-3" />
@@ -403,8 +403,8 @@ export default function WeddingProfilePage() {
         {/* Quick Stats */}
         <div className="grid grid-cols-3 gap-3">
           <div className="bg-white rounded-[16px] p-4 text-center shadow-sm">
-            <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-2">
-              <Check className="w-5 h-5 text-[#3182F6]" />
+            <div className="w-10 h-10 rounded-full bg-[#F3E8FF] flex items-center justify-center mx-auto mb-2">
+              <Check className="w-5 h-5 text-[#b455e0]" />
             </div>
             <p className="text-[20px] font-bold text-[#191F28]">{stats.completedTodos}</p>
             <p className="text-[12px] text-[#8B95A1]">완료한 할일</p>
@@ -457,7 +457,7 @@ export default function WeddingProfilePage() {
               {showPhotoModal === "groom" ? "신랑" : "신부"} 사진 변경
             </h3>
             <div className="space-y-3">
-              <label className="flex items-center justify-center gap-2 py-4 bg-[#3182F6] text-white rounded-[14px] font-semibold cursor-pointer">
+              <label className="flex items-center justify-center gap-2 py-4 bg-[#b455e0] text-white rounded-[14px] font-semibold cursor-pointer">
                 <Camera className="w-5 h-5" />
                 사진 선택
                 <input

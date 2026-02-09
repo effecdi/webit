@@ -244,7 +244,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     onClick={() => setNotifications({...notifications, [item.key]: !notifications[item.key as keyof typeof notifications]})}
                     data-testid={`switch-notification-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
-                      notifications[item.key as keyof typeof notifications] ? "bg-[#3182F6]" : "bg-[#E5E8EB]"
+                      notifications[item.key as keyof typeof notifications] ? "bg-[#b455e0]" : "bg-[#E5E8EB]"
                     }`}
                   >
                     <div 
@@ -308,7 +308,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     onClick={() => setPrivacy({...privacy, [item.key]: !privacy[item.key as keyof typeof privacy]})}
                     data-testid={`switch-privacy-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
-                      privacy[item.key as keyof typeof privacy] ? "bg-[#3182F6]" : "bg-[#E5E8EB]"
+                      privacy[item.key as keyof typeof privacy] ? "bg-[#b455e0]" : "bg-[#E5E8EB]"
                     }`}
                   >
                     <div 
@@ -371,7 +371,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                     onClick={() => setSupport({...support, [item.key]: !support[item.key as keyof typeof support]})}
                     data-testid={`switch-support-${item.key}`}
                     className={`relative w-14 h-8 rounded-full transition-colors ${
-                      support[item.key as keyof typeof support] ? "bg-[#3182F6]" : "bg-[#E5E8EB]"
+                      support[item.key as keyof typeof support] ? "bg-[#b455e0]" : "bg-[#E5E8EB]"
                     }`}
                   >
                     <div 
@@ -454,7 +454,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                       data-testid={`faq-question-${idx}`}
                     >
                       <span className="flex items-start gap-2 text-left">
-                        <span className="text-[#3182F6] font-bold shrink-0">Q.</span>
+                        <span className="text-[#b455e0] font-bold shrink-0">Q.</span>
                         {item.q}
                       </span>
                     </AccordionTrigger>
@@ -514,7 +514,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                       data-testid={`button-widget-${widget.id}`}
                       className={`relative p-4 rounded-[16px] border-2 transition-all text-left ${
                         isSelected 
-                          ? "border-[#3182F6] bg-blue-50" 
+                          ? "border-[#b455e0] bg-[#F3E8FF]" 
                           : "border-[#E5E8EB] bg-white hover:border-[#B0B8C1]"
                       } ${widget.isPremium ? "opacity-80" : ""}`}
                     >
@@ -529,7 +529,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                       <div className="absolute top-3 right-3">
                         {!widget.isPremium && (
                           <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                            isSelected ? "border-[#3182F6] bg-[#3182F6]" : "border-[#B0B8C1]"
+                            isSelected ? "border-[#b455e0] bg-[#b455e0]" : "border-[#B0B8C1]"
                           }`}>
                             {isSelected && <div className="w-2 h-2 rounded-full bg-white" />}
                           </div>
@@ -538,7 +538,7 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
                       
                       {/* Icon */}
                       <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-3 ${
-                        isSelected ? "bg-[#3182F6] text-white" : "bg-[#F2F4F6] text-[#4E5968]"
+                        isSelected ? "bg-[#b455e0] text-white" : "bg-[#F2F4F6] text-[#4E5968]"
                       }`}>
                         <IconComponent className="w-6 h-6" />
                       </div>

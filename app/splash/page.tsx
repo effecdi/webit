@@ -88,7 +88,7 @@ export default function SplashPage() {
           showLogo ? "opacity-100 scale-100" : "opacity-0 scale-90"
         }`}
       >
-        <h1 className="text-5xl font-bold text-blue-500 tracking-tight">
+        <h1 className="text-5xl font-bold text-[#b455e0] tracking-tight">
           WE:VE
         </h1>
         <p className="mt-3 text-[15px] text-[#8B95A1]">
@@ -96,7 +96,7 @@ export default function SplashPage() {
         </p>
         
         <div className="mt-8 flex justify-center">
-          <div className="w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-3 border-[#b455e0] border-t-transparent rounded-full animate-spin" />
         </div>
       </div>
     </main>

@@ -3,9 +3,6 @@
     "[project]/app/dating/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
-    "[project]/app/dating/profile/page": [
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
-    ],
     "[project]/app/family/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
@@ -13,6 +10,9 @@
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
     "[project]/app/splash/page": [
+      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
+    ],
+    "[project]/app/wedding/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
     "[project]/app/wedding/profile/page": [

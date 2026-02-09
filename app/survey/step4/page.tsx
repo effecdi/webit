@@ -18,9 +18,9 @@ const modes = [
     id: "wedding",
     label: "결혼준비중이에요",
     icon: Gem,
-    color: "bg-blue-50 text-blue-500 border-blue-200",
-    activeColor: "bg-blue-500 text-white border-blue-500",
-    iconColor: "text-blue-400",
+    color: "bg-[#F3E8FF] text-[#b455e0] border-[#E0C4F5]",
+    activeColor: "bg-[#b455e0] text-white border-[#b455e0]",
+    iconColor: "text-[#c77de6]",
     activeIconColor: "text-white",
   },
   {
@@ -68,10 +68,10 @@ export default function SurveyStep4() {
       <div className="flex-1 flex flex-col justify-center">
         <div className="mb-10">
           <div className="flex gap-1.5 mb-8">
-            <div className="w-8 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-8 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-8 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-8 h-1.5 bg-blue-500 rounded-full" />
+            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
             <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
           </div>
           <h1 className="text-[28px] font-bold text-[#191F28] leading-tight">
@@ -112,7 +112,7 @@ export default function SurveyStep4() {
         disabled={!selectedMode}
         className={`w-full h-14 rounded-[16px] font-semibold text-white transition-all ${
           selectedMode
-            ? "bg-blue-500 hover:bg-blue-600 active:scale-[0.98]"
+            ? "bg-[#b455e0] hover:bg-[#9240b8] active:scale-[0.98]"
             : "bg-[#B0B8C1]"
         }`}
         data-testid="button-next"

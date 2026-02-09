@@ -11,20 +11,20 @@
   --card-foreground: #191F28;
   --popover: #FFFFFF;
   --popover-foreground: #191F28;
-  --primary: #3182F6;
+  --primary: #b455e0;
   --primary-foreground: #FFFFFF;
   --secondary: #F2F4F6;
   --secondary-foreground: #4E5968;
   --muted: #F2F4F6;
   --muted-foreground: #8B95A1;
-  --accent: #E8F3FF;
-  --accent-foreground: #3182F6;
+  --accent: #F3E8FF;
+  --accent-foreground: #b455e0;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   --border: #E5E8EB;
   --input: #F2F4F6;
-  --ring: #3182F6;
-  --chart-1: #3182F6;
+  --ring: #b455e0;
+  --chart-1: #b455e0;
   --chart-2: #191F28;
   --chart-3: #E8F3FF;
   --chart-4: #8B95A1;
@@ -32,16 +32,16 @@
   --radius: 1.5rem;
   --sidebar: #FFFFFF;
   --sidebar-foreground: #191F28;
-  --sidebar-primary: #3182F6;
+  --sidebar-primary: #b455e0;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E8F3FF;
-  --sidebar-accent-foreground: #3182F6;
+  --sidebar-accent: #F3E8FF;
+  --sidebar-accent-foreground: #b455e0;
   --sidebar-border: #E5E8EB;
-  --sidebar-ring: #3182F6;
+  --sidebar-ring: #b455e0;
   
-  /* WE:VE specific colors */
-  --weve-blue: #3182F6;
-  --weve-blue-dark: #1B64DA;
+  /* WE:VE signature color */
+  --weve-purple: #b455e0;
+  --weve-purple-dark: #9240b8;
   --weve-bg: #F2F4F6;
   --weve-text: #191F28;
   --weve-text-sub: #8B95A1;
@@ -59,32 +59,32 @@
   --card-foreground: #E8E8E8;
   --popover: #1A1A1A;
   --popover-foreground: #E8E8E8;
-  --primary: #5BA8F7;
+  --primary: #c77def;
   --primary-foreground: #FFFFFF;
   --secondary: #1E1E1E;
   --secondary-foreground: #C0C0C0;
   --muted: #1E1E1E;
   --muted-foreground: #888888;
-  --accent: #1A2A3A;
-  --accent-foreground: #5BA8F7;
+  --accent: #2A1A3A;
+  --accent-foreground: #c77def;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   --border: #2A2A2A;
   --input: #1E1E1E;
-  --ring: #5BA8F7;
-  --chart-1: #5BA8F7;
+  --ring: #c77def;
+  --chart-1: #c77def;
   --chart-2: #E8E8E8;
   --chart-3: #1A2A3A;
   --chart-4: #888888;
   --chart-5: #555555;
   --sidebar: #0D0D0D;
   --sidebar-foreground: #E8E8E8;
-  --sidebar-primary: #5BA8F7;
+  --sidebar-primary: #c77def;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #1A2A3A;
-  --sidebar-accent-foreground: #5BA8F7;
+  --sidebar-accent: #2A1A3A;
+  --sidebar-accent-foreground: #c77def;
   --sidebar-border: #2A2A2A;
-  --sidebar-ring: #5BA8F7;
+  --sidebar-ring: #c77def;
 
   --weve-bg: #0D0D0D;
   --weve-text: #E8E8E8;
@@ -439,6 +439,32 @@
   border-color: #8B7540 !important;
 }
 
+/* Purple signature color overrides for dark mode */
+.dark .bg-\[\#b455e0\] {
+  background-color: #c77def !important;
+}
+.dark .text-\[\#b455e0\] {
+  color: #c77def !important;
+}
+.dark .border-\[\#b455e0\] {
+  border-color: #c77def !important;
+}
+.dark .border-\[\#E0C4F5\] {
+  border-color: #4A2A5A !important;
+}
+.dark .bg-\[\#F3E8FF\] {
+  background-color: #2A1A3A !important;
+}
+.dark .bg-\[\#9240b8\] {
+  background-color: #a855c7 !important;
+}
+.dark .hover\:bg-\[\#9240b8\]:hover {
+  background-color: #a855c7 !important;
+}
+.dark .hover\:bg-\[\#9333ea\]:hover {
+  background-color: #a855c7 !important;
+}
+
 /* Colored borders - keep visible */
 .dark .border-\[\#3182F6\] {
   border-color: #5BA8F7 !important;
@@ -665,6 +691,12 @@
 }
 .dark .focus\:ring-\[\#FF8A80\]:focus {
   --tw-ring-color: #FF9E95 !important;
+}
+.dark .focus\:ring-\[\#b455e0\]:focus {
+  --tw-ring-color: #c77def !important;
+}
+.dark .focus\:ring-\[\#b455e0\]\/20:focus {
+  --tw-ring-color: rgba(199, 125, 239, 0.2) !important;
 }
 
 /* ---- Glass/transparency overrides ---- */

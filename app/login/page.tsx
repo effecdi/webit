@@ -123,10 +123,10 @@ export default function LoginPage() {
     <main className="min-h-dvh bg-white flex flex-col px-6 py-12">
       <div className="flex-1 flex flex-col items-center justify-center">
         <div className="mb-12 text-center">
-          <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Heart className="w-10 h-10 text-blue-500 fill-blue-500" />
+          <div className="w-20 h-20 bg-[#F3E8FF] rounded-full flex items-center justify-center mx-auto mb-6">
+            <Heart className="w-10 h-10 text-[#b455e0] fill-[#b455e0]" />
           </div>
-          <h1 className="text-3xl font-bold text-blue-500 tracking-tight mb-2">
+          <h1 className="text-3xl font-bold text-[#b455e0] tracking-tight mb-2">
             WE:VE
           </h1>
           <p className="text-[15px] text-[#8B95A1]">
@@ -138,7 +138,7 @@ export default function LoginPage() {
           <button
             onClick={() => handleLoginClick("dev")}
             disabled={loadingProvider !== null}
-            className="w-full h-14 bg-blue-500 rounded-[16px] flex items-center justify-center gap-3 font-semibold text-white transition-all hover:bg-blue-600 active:scale-[0.98] disabled:opacity-70"
+            className="w-full h-14 bg-[#b455e0] rounded-[16px] flex items-center justify-center gap-3 font-semibold text-white transition-all hover:bg-[#9240b8] active:scale-[0.98] disabled:opacity-70"
             data-testid="button-login-dev"
           >
             {loadingProvider === "dev" ? (
@@ -234,7 +234,7 @@ export default function LoginPage() {
                 <div
                   className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                     allChecked
-                      ? "bg-blue-500"
+                      ? "bg-[#b455e0]"
                       : "bg-white border-2 border-[#D1D6DB]"
                   }`}
                 >
@@ -257,7 +257,7 @@ export default function LoginPage() {
                         <div
                           className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                             consents[item.id]
-                              ? "bg-blue-500"
+                              ? "bg-[#b455e0]"
                               : "bg-white border-2 border-[#D1D6DB]"
                           }`}
                         >
@@ -266,7 +266,7 @@ export default function LoginPage() {
                           )}
                         </div>
                         <span className="text-[14px] text-[#191F28] text-left">
-                          <span className={`${item.required ? "text-blue-500" : "text-[#8B95A1]"} text-[13px] mr-1`}>
+                          <span className={`${item.required ? "text-[#b455e0]" : "text-[#8B95A1]"} text-[13px] mr-1`}>
                             {item.required ? "[필수]" : "[선택]"}
                           </span>
                           {item.label}
@@ -307,7 +307,7 @@ export default function LoginPage() {
                 data-testid="button-consent-confirm"
                 className={`w-full h-14 rounded-[16px] flex items-center justify-center font-semibold text-[16px] transition-all active:scale-[0.98] ${
                   allRequiredChecked
-                    ? "bg-blue-500 text-white"
+                    ? "bg-[#b455e0] text-white"
                     : "bg-[#E5E8EB] text-[#B0B8C1] cursor-not-allowed"
                 }`}
               >

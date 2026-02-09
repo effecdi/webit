@@ -56,7 +56,7 @@ export function StatusCards({ selectedStatus, onSelect }: StatusCardsProps) {
               <div className="flex items-center gap-4">
                 {/* Icon Container - White circle with blue icon */}
                 <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm">
-                  <Icon className="w-7 h-7 text-blue-500" />
+                  <Icon className="w-7 h-7 text-[#b455e0]" />
                 </div>
 
                 {/* Text Content */}

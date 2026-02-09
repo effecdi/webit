@@ -73,7 +73,7 @@ export default function WelcomePage() {
               반가워요.
             </p>
             <div className="flex items-center justify-center gap-3 mt-4">
-              <span className="text-[32px] font-bold text-blue-500">{myName}</span>
+              <span className="text-[32px] font-bold text-[#b455e0]">{myName}</span>
               <Heart className="w-8 h-8 text-pink-500 fill-pink-500 animate-pulse" />
               <span className="text-[32px] font-bold text-pink-500">{partnerName}</span>
               <span className="text-[32px] font-bold text-[#191F28]">님 :)</span>
@@ -86,7 +86,7 @@ export default function WelcomePage() {
             <p className="text-[28px] font-bold text-[#191F28] leading-relaxed">
               우리의 시간이 벌써
             </p>
-            <p className="text-[48px] font-extrabold text-blue-500 my-4">
+            <p className="text-[48px] font-extrabold text-[#b455e0] my-4">
               {formatNumber(daysTogether)}일
             </p>
             <p className="text-[28px] font-bold text-[#191F28]">
@@ -112,8 +112,8 @@ export default function WelcomePage() {
               시작할게요 :)
             </p>
             <div className="mt-8">
-              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto animate-bounce">
-                <Heart className="w-8 h-8 text-blue-500 fill-blue-500" />
+              <div className="w-16 h-16 bg-[#F3E8FF] rounded-full flex items-center justify-center mx-auto animate-bounce">
+                <Heart className="w-8 h-8 text-[#b455e0] fill-[#b455e0]" />
               </div>
             </div>
           </div>

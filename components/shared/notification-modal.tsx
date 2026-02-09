@@ -29,7 +29,7 @@ const typeIcons = {
 
 const typeColors = {
   schedule: "bg-green-50 text-green-500",
-  photo: "bg-blue-50 text-blue-500",
+  photo: "bg-[#F3E8FF] text-[#b455e0]",
   travel: "bg-purple-50 text-purple-500",
   todo: "bg-pink-50 text-pink-500",
   general: "bg-gray-50 text-gray-500"

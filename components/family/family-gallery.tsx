@@ -207,8 +207,8 @@ export function FamilyGallery() {
                 </button>
                 
                 <button className="flex flex-col items-center gap-3 p-6 bg-[#F2F4F6] rounded-[16px] hover:bg-[#E5E8EB] transition-colors">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Camera className="w-6 h-6 text-blue-500" />
+                  <div className="w-12 h-12 bg-[#F3E8FF] rounded-full flex items-center justify-center">
+                    <Camera className="w-6 h-6 text-[#b455e0]" />
                   </div>
                   <span className="text-[14px] font-medium text-[#333D4B]">카메라로 촬영</span>
                 </button>

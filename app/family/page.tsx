@@ -102,10 +102,10 @@ export default function FamilyHomePage() {
                     여태껏 쌓아온 추억들은 <span className="font-semibold text-green-600">추억 보관함</span>에 소중히 보관되어 있어요
                   </p>
                 </div>
-                <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-[14px]">
-                  <Calendar className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                <div className="flex items-start gap-3 p-3 bg-[#F3E8FF] rounded-[14px]">
+                  <Calendar className="w-5 h-5 text-[#b455e0] mt-0.5 flex-shrink-0" />
                   <p className="text-[13px] text-[#4E5968] leading-relaxed">
-                    우리의 일정도 <span className="font-semibold text-blue-500">캘린더</span>에 그대로 남아있으니 앞으로도 여기에서 이용해주세요
+                    우리의 일정도 <span className="font-semibold text-[#b455e0]">캘린더</span>에 그대로 남아있으니 앞으로도 여기에서 이용해주세요
                   </p>
                 </div>
               </div>

@@ -151,7 +151,7 @@ export default function WheelDatePicker({
               <button
                 type="button"
                 onClick={handleConfirm}
-                className="text-[15px] text-blue-500 font-semibold"
+                className="text-[15px] text-[#b455e0] font-semibold"
                 data-testid="button-date-confirm"
               >
                 확인

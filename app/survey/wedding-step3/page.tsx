@@ -67,13 +67,13 @@ export default function WeddingSurveyStep3() {
       <div className="flex-1 flex flex-col justify-center">
         <div className="mb-10">
           <div className="flex gap-1.5 mb-8">
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-6 h-1.5 bg-blue-500 rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-6 h-1.5 bg-[#b455e0] rounded-full" />
             <div className="w-6 h-1.5 bg-gray-200 rounded-full" />
           </div>
           <h1 className="text-[28px] font-bold text-[#191F28] leading-tight">
@@ -100,7 +100,7 @@ export default function WeddingSurveyStep3() {
                     value={groomGuests ? formatNumber(groomGuests) : ""}
                     onChange={(e) => handleNumberInput(e.target.value, setGroomGuests)}
                     placeholder="0"
-                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500 pr-10"
+                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-[#b455e0] pr-10"
                     data-testid="input-groom-guests"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#8B95A1]">명</span>
@@ -115,7 +115,7 @@ export default function WeddingSurveyStep3() {
                     value={brideGuests ? formatNumber(brideGuests) : ""}
                     onChange={(e) => handleNumberInput(e.target.value, setBrideGuests)}
                     placeholder="0"
-                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500 pr-10"
+                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-[#b455e0] pr-10"
                     data-testid="input-bride-guests"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#8B95A1]">명</span>
@@ -139,7 +139,7 @@ export default function WeddingSurveyStep3() {
                     value={mealCostAdult ? formatNumber(mealCostAdult) : ""}
                     onChange={(e) => handleNumberInput(e.target.value, setMealCostAdult)}
                     placeholder="60,000"
-                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500 pr-10"
+                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-[#b455e0] pr-10"
                     data-testid="input-meal-cost-adult"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#8B95A1]">원</span>
@@ -154,7 +154,7 @@ export default function WeddingSurveyStep3() {
                     value={mealCostChild ? formatNumber(mealCostChild) : ""}
                     onChange={(e) => handleNumberInput(e.target.value, setMealCostChild)}
                     placeholder="30,000"
-                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500 pr-10"
+                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-[#b455e0] pr-10"
                     data-testid="input-meal-cost-child"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#8B95A1]">원</span>
@@ -175,7 +175,7 @@ export default function WeddingSurveyStep3() {
         </button>
         <button
           onClick={handleComplete}
-          className="flex-1 h-14 rounded-[16px] font-semibold text-white bg-blue-500 hover:bg-blue-600 active:scale-[0.98] transition-all"
+          className="flex-1 h-14 rounded-[16px] font-semibold text-white bg-[#b455e0] hover:bg-[#9240b8] active:scale-[0.98] transition-all"
           data-testid="button-next"
         >
           완료

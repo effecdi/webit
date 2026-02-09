@@ -31,7 +31,7 @@ const QUICK_ACTIONS = [
 
 const ASSIGNEE_COLORS: Record<string, string> = {
   me: "bg-pink-100 text-pink-600",
-  you: "bg-blue-100 text-blue-600",
+  you: "bg-[#F3E8FF] text-[#b455e0]",
   we: "bg-purple-100 text-purple-600",
 }
 

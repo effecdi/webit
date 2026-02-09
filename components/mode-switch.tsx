@@ -114,7 +114,7 @@ export function ModeSwitch({ currentMode }: ModeSwitchProps) {
             className="bg-white rounded-[28px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative bg-gradient-to-br from-[#3182F6] to-[#1B64DA] p-8 text-center">
+            <div className="relative bg-gradient-to-br from-[#b455e0] to-[#9333ea] p-8 text-center">
               <button
                 onClick={() => setShowCongratulations(false)}
                 className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
@@ -157,7 +157,7 @@ export function ModeSwitch({ currentMode }: ModeSwitchProps) {
               <div className="space-y-3">
                 <button
                   onClick={handleContinueToOnboarding}
-                  className="w-full py-4 bg-[#3182F6] hover:bg-[#1B64DA] text-white font-bold rounded-[14px] transition-all flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-[#b455e0] hover:bg-[#9333ea] text-white font-bold rounded-[14px] transition-all flex items-center justify-center gap-2"
                   data-testid="button-start-wedding-onboarding"
                 >
                   <Gem className="w-5 h-5" />

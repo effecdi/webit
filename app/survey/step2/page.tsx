@@ -44,8 +44,8 @@ export default function SurveyStep2() {
       <div className="flex-1 flex flex-col justify-center">
         <div className="mb-8">
           <div className="flex gap-1.5 mb-8">
-            <div className="w-8 h-1.5 bg-blue-500 rounded-full" />
-            <div className="w-8 h-1.5 bg-blue-500 rounded-full" />
+            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
+            <div className="w-8 h-1.5 bg-[#b455e0] rounded-full" />
             <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
             <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
             <div className="w-8 h-1.5 bg-gray-200 rounded-full" />
@@ -65,7 +65,7 @@ export default function SurveyStep2() {
               onCompositionStart={() => setIsComposing(true)}
               onCompositionEnd={() => setIsComposing(false)}
               placeholder="상대방 이름을 입력해주세요"
-              className="w-full h-14 px-5 rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500"
+              className="w-full h-14 px-5 rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-[#b455e0]"
               data-testid="input-partner-name"
             />
           </div>
@@ -77,7 +77,7 @@ export default function SurveyStep2() {
                 onClick={() => setGender("female")}
                 className={`flex-1 h-14 rounded-[16px] font-semibold transition-all ${
                   gender === "female"
-                    ? "bg-blue-500 text-white"
+                    ? "bg-[#b455e0] text-white"
                     : "bg-[#F3F5F7] text-[#4E5968] hover:bg-[#E5E8EB]"
                 }`}
                 data-testid="button-partner-gender-female"
@@ -88,7 +88,7 @@ export default function SurveyStep2() {
                 onClick={() => setGender("male")}
                 className={`flex-1 h-14 rounded-[16px] font-semibold transition-all ${
                   gender === "male"
-                    ? "bg-blue-500 text-white"
+                    ? "bg-[#b455e0] text-white"
                     : "bg-[#F3F5F7] text-[#4E5968] hover:bg-[#E5E8EB]"
                 }`}
                 data-testid="button-partner-gender-male"
@@ -117,7 +117,7 @@ export default function SurveyStep2() {
         disabled={!canProceed}
         className={`w-full h-14 rounded-[16px] font-semibold text-white transition-all ${
           canProceed 
-            ? "bg-blue-500 hover:bg-blue-600 active:scale-[0.98]" 
+            ? "bg-[#b455e0] hover:bg-[#9240b8] active:scale-[0.98]" 
             : "bg-[#B0B8C1]"
         }`}
         data-testid="button-next"
