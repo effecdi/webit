@@ -11,6 +11,7 @@
   "/api/user-settings/route": "app/api/user-settings/route.js",
   "/dating/profile/page": "app/dating/profile/page.js",
   "/family/page": "app/family/page.js",
+  "/login/page": "app/login/page.js",
   "/page": "app/page.js",
   "/splash/page": "app/splash/page.js"
 }
