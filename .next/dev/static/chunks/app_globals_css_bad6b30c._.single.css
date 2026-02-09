@@ -11132,6 +11132,12 @@
   }
 
   @media (hover: hover) {
+    .hover\:bg-\[\#a82cbf\]:hover {
+      background-color: #a82cbf;
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:bg-accent:hover {
       background-color: var(--accent);
     }
