@@ -11,7 +11,14 @@ Preferred communication style: Simple, everyday language.
 ## System Architecture
 
 ### Frontend
-The application is built with **Next.js 16** using the App Router and React Server Components, leveraging **TypeScript** for type safety. The UI is constructed using **shadcn/ui** components with the New York style variant and **Radix UI** primitives for accessibility. Styling is managed with **Tailwind CSS**, custom CSS variables for theming, and **Lucide React** for iconography, incorporating a unique brutalist-inspired shadow system. Three distinct mode-specific color schemes are implemented: pink for Dating, coral/blue for Wedding, and green for Family. Korean typography is handled via the Pretendard font.
+The application is built with **Next.js 16** using the App Router and React Server Components, leveraging **TypeScript** for type safety. The UI is constructed using **shadcn/ui** components with the New York style variant and **Radix UI** primitives for accessibility. Styling is managed with **Tailwind CSS**, custom CSS variables for theming, and **Lucide React** for iconography, incorporating a unique brutalist-inspired shadow system. Three distinct mode-specific color schemes are implemented: pink for Dating, blue for Wedding, and green for Family. Korean typography is handled via the Pretendard font.
+
+### Dark Mode
+The app supports **system-level dark/light mode** via `next-themes` with `defaultTheme="system"`. The ThemeProvider is configured in the root layout with `attribute="class"` so the `.dark` class is applied to `<html>` when the device is in dark mode. Dark mode is implemented via:
+- CSS custom variables in `.dark` selector (in `globals.css`)
+- Global CSS overrides that target Tailwind arbitrary value classes (e.g., `.dark .bg-white`, `.dark .bg-\[\#F2F4F6\]`, `.dark .text-\[\#191F28\]`)
+- Bottom nav components use `useTheme()` hook for inline style dark mode adaptation
+- No manual toggle is provided — the app follows the device's system setting automatically
 
 ### Backend and Database
 **PostgreSQL** is used as the database, accessed through **Drizzle ORM** for type-safe operations. API routes follow a RESTful pattern (`/app/api/{resource}/route.ts`) supporting standard CRUD operations. User authentication is handled via **Replit Auth OIDC**, supporting Google, Apple, and GitHub logins, with PostgreSQL-backed sessions.

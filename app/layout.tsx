@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { AuthProvider } from '@/components/auth-provider'
+import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
 const _playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] });
@@ -40,10 +41,12 @@ export default function RootLayout({
       <head>
         <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmEc1VDxu4yyC7wy6K1Hs90nk" crossOrigin="anonymous" async></script>
       </head>
-      <body className="font-sans antialiased bg-[#F2F4F6] text-[#191F28]" suppressHydrationWarning>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+      <body className="font-sans antialiased" suppressHydrationWarning>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

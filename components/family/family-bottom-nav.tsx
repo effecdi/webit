@@ -1,7 +1,9 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useTheme } from "next-themes"
 import { Home, Calendar, ImageIcon, User, MessageSquare } from "lucide-react"
 
 const navItems = [
@@ -14,15 +16,21 @@ const navItems = [
 
 export function FamilyBottomNav() {
   const pathname = usePathname()
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
+  const isDark = mounted && resolvedTheme === "dark"
 
   return (
     <div className="fixed bottom-[30px] left-3 right-3 z-50 max-w-md mx-auto">
       <nav
-        className="relative rounded-[25px] border border-gray-200/40 shadow-lg"
+        className="relative rounded-[25px] shadow-lg"
         style={{
-          background: "rgba(249, 250, 251, 0.82)",
+          background: isDark ? "rgba(26, 26, 26, 0.85)" : "rgba(249, 250, 251, 0.82)",
           backdropFilter: "blur(20px) saturate(180%)",
           WebkitBackdropFilter: "blur(20px) saturate(180%)",
+          borderWidth: 1,
+          borderColor: isDark ? "rgba(255,255,255,0.08)" : "rgba(209,213,219,0.4)",
         }}
       >
         <div className="flex items-end justify-around h-16 px-1">
@@ -54,8 +62,8 @@ export function FamilyBottomNav() {
                   </div>
                 ) : (
                   <div className="flex flex-col items-center">
-                    <Icon className="w-[22px] h-[22px] mb-1" style={{ color: "#ADB5BD" }} strokeWidth={1.5} />
-                    <span className="text-[10px] font-medium" style={{ color: "#ADB5BD" }}>
+                    <Icon className="w-[22px] h-[22px] mb-1" style={{ color: isDark ? "#666666" : "#ADB5BD" }} strokeWidth={1.5} />
+                    <span className="text-[10px] font-medium" style={{ color: isDark ? "#666666" : "#ADB5BD" }}>
                       {item.label}
                     </span>
                   </div>

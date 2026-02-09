@@ -1,268 +1,295 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Plus, X, ChevronLeft, ChevronRight, Heart, Upload, Check, MoreHorizontal, Share2, Trash2, FolderPlus } from "lucide-react"
-import { ImageIcon } from "lucide-react"
-import Link from "next/link"
+import { useState, useEffect } from "react";
+import {
+  Plus,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Heart,
+  Upload,
+  Check,
+  MoreHorizontal,
+  Share2,
+  Trash2,
+  FolderPlus,
+} from "lucide-react";
+import { ImageIcon } from "lucide-react";
+import Link from "next/link";
 
 interface Album {
-  id: number
-  title: string
-  thumbnail: string | null
-  eventDate: string | null
-  photoCount: number
+  id: number;
+  title: string;
+  thumbnail: string | null;
+  eventDate: string | null;
+  photoCount: number;
 }
 
 interface Photo {
-  id: number
-  url: string
-  caption: string | null
-  liked: boolean
-  createdAt: string
-  albumId?: number | null
+  id: number;
+  url: string;
+  caption: string | null;
+  liked: boolean;
+  createdAt: string;
+  albumId?: number | null;
 }
 
 export function GalleryView() {
-  const [albums, setAlbums] = useState<Album[]>([])
-  const [photos, setPhotos] = useState<Photo[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null)
-  const [showAddAlbumModal, setShowAddAlbumModal] = useState(false)
-  const [showAddPhotoModal, setShowAddPhotoModal] = useState(false)
-  const [newAlbumTitle, setNewAlbumTitle] = useState("")
-  const [uploading, setUploading] = useState(false)
-  const [newPhotoCaption, setNewPhotoCaption] = useState("")
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null)
-  
+  const [albums, setAlbums] = useState<Album[]>([]);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(
+    null,
+  );
+  const [showAddAlbumModal, setShowAddAlbumModal] = useState(false);
+  const [showAddPhotoModal, setShowAddPhotoModal] = useState(false);
+  const [newAlbumTitle, setNewAlbumTitle] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [newPhotoCaption, setNewPhotoCaption] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
   // Multi-select mode
-  const [isSelectMode, setIsSelectMode] = useState(false)
-  const [selectedPhotos, setSelectedPhotos] = useState<Set<number>>(new Set())
-  const [showMoreMenu, setShowMoreMenu] = useState(false)
-  const [showAlbumSheet, setShowAlbumSheet] = useState(false)
+  const [isSelectMode, setIsSelectMode] = useState(false);
+  const [selectedPhotos, setSelectedPhotos] = useState<Set<number>>(new Set());
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
+  const [showAlbumSheet, setShowAlbumSheet] = useState(false);
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   // Prevent body scroll when any modal is open
   useEffect(() => {
-    const isAnyModalOpen = showMoreMenu || showAlbumSheet || showAddAlbumModal || showAddPhotoModal || selectedPhotoIndex !== null
+    const isAnyModalOpen =
+      showMoreMenu ||
+      showAlbumSheet ||
+      showAddAlbumModal ||
+      showAddPhotoModal ||
+      selectedPhotoIndex !== null;
     if (isAnyModalOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ''
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = ''
-    }
-  }, [showMoreMenu, showAlbumSheet, showAddAlbumModal, showAddPhotoModal, selectedPhotoIndex])
+      document.body.style.overflow = "";
+    };
+  }, [
+    showMoreMenu,
+    showAlbumSheet,
+    showAddAlbumModal,
+    showAddPhotoModal,
+    selectedPhotoIndex,
+  ]);
 
   const fetchData = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
       const [albumsRes, photosRes] = await Promise.all([
-        fetch('/api/albums?mode=dating'),
-        fetch('/api/photos?mode=dating')
-      ])
-      const albumsData = await albumsRes.json()
-      const photosData = await photosRes.json()
-      setAlbums(albumsData)
-      setPhotos(photosData)
+        fetch("/api/albums?mode=dating"),
+        fetch("/api/photos?mode=dating"),
+      ]);
+      const albumsData = await albumsRes.json();
+      const photosData = await photosRes.json();
+      setAlbums(albumsData);
+      setPhotos(photosData);
     } catch (error) {
-      console.error('Error fetching data:', error)
+      console.error("Error fetching data:", error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   const handlePrev = () => {
     if (selectedPhotoIndex !== null && selectedPhotoIndex > 0) {
-      setSelectedPhotoIndex(selectedPhotoIndex - 1)
+      setSelectedPhotoIndex(selectedPhotoIndex - 1);
     }
-  }
+  };
 
   const handleNext = () => {
     if (selectedPhotoIndex !== null && selectedPhotoIndex < photos.length - 1) {
-      setSelectedPhotoIndex(selectedPhotoIndex + 1)
+      setSelectedPhotoIndex(selectedPhotoIndex + 1);
     }
-  }
+  };
 
   const toggleLike = async (id: number) => {
-    const photo = photos.find(p => p.id === id)
-    if (!photo) return
-    
+    const photo = photos.find((p) => p.id === id);
+    if (!photo) return;
+
     try {
-      await fetch('/api/photos', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, liked: !photo.liked })
-      })
-      setPhotos(photos.map(p => p.id === id ? { ...p, liked: !p.liked } : p))
+      await fetch("/api/photos", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, liked: !photo.liked }),
+      });
+      setPhotos(
+        photos.map((p) => (p.id === id ? { ...p, liked: !p.liked } : p)),
+      );
     } catch (error) {
-      console.error('Error toggling like:', error)
+      console.error("Error toggling like:", error);
     }
-  }
+  };
 
   const createAlbum = async () => {
-    if (!newAlbumTitle.trim()) return
-    
+    if (!newAlbumTitle.trim()) return;
+
     try {
-      const res = await fetch('/api/albums', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/albums", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           title: newAlbumTitle,
-          mode: 'dating'
-        })
-      })
-      const newAlbum = await res.json()
-      setAlbums([newAlbum, ...albums])
-      setNewAlbumTitle("")
-      setShowAddAlbumModal(false)
+          mode: "dating",
+        }),
+      });
+      const newAlbum = await res.json();
+      setAlbums([newAlbum, ...albums]);
+      setNewAlbumTitle("");
+      setShowAddAlbumModal(false);
     } catch (error) {
-      console.error('Error creating album:', error)
+      console.error("Error creating album:", error);
     }
-  }
+  };
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0];
     if (file) {
-      setSelectedFile(file)
-      const reader = new FileReader()
+      setSelectedFile(file);
+      const reader = new FileReader();
       reader.onloadend = () => {
-        setPreviewUrl(reader.result as string)
-      }
-      reader.readAsDataURL(file)
+        setPreviewUrl(reader.result as string);
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   const uploadPhoto = async () => {
-    if (!selectedFile) return
-    
-    setUploading(true)
+    if (!selectedFile) return;
+
+    setUploading(true);
     try {
-      const formData = new FormData()
-      formData.append('file', selectedFile)
-      
-      const uploadRes = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData
-      })
-      const { url } = await uploadRes.json()
-      
-      const photoRes = await fetch('/api/photos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      const uploadRes = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const { url } = await uploadRes.json();
+
+      const photoRes = await fetch("/api/photos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           url,
           caption: newPhotoCaption || null,
-          mode: 'dating'
-        })
-      })
-      const newPhoto = await photoRes.json()
-      setPhotos([newPhoto, ...photos])
-      
-      setShowAddPhotoModal(false)
-      setSelectedFile(null)
-      setPreviewUrl(null)
-      setNewPhotoCaption("")
+          mode: "dating",
+        }),
+      });
+      const newPhoto = await photoRes.json();
+      setPhotos([newPhoto, ...photos]);
+
+      setShowAddPhotoModal(false);
+      setSelectedFile(null);
+      setPreviewUrl(null);
+      setNewPhotoCaption("");
     } catch (error) {
-      console.error('Error uploading photo:', error)
+      console.error("Error uploading photo:", error);
     } finally {
-      setUploading(false)
+      setUploading(false);
     }
-  }
+  };
 
   const closePhotoModal = () => {
-    setShowAddPhotoModal(false)
-    setSelectedFile(null)
-    setPreviewUrl(null)
-    setNewPhotoCaption("")
-  }
+    setShowAddPhotoModal(false);
+    setSelectedFile(null);
+    setPreviewUrl(null);
+    setNewPhotoCaption("");
+  };
 
   const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr)
-    return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`
-  }
+    const date = new Date(dateStr);
+    return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
+  };
 
   // Multi-select functions
   const toggleSelectMode = () => {
-    setIsSelectMode(!isSelectMode)
-    setSelectedPhotos(new Set())
-    setShowMoreMenu(false)
-  }
+    setIsSelectMode(!isSelectMode);
+    setSelectedPhotos(new Set());
+    setShowMoreMenu(false);
+  };
 
   const togglePhotoSelection = (photoId: number) => {
-    const newSelected = new Set(selectedPhotos)
+    const newSelected = new Set(selectedPhotos);
     if (newSelected.has(photoId)) {
-      newSelected.delete(photoId)
+      newSelected.delete(photoId);
     } else {
-      newSelected.add(photoId)
+      newSelected.add(photoId);
     }
-    setSelectedPhotos(newSelected)
-  }
+    setSelectedPhotos(newSelected);
+  };
 
   const handlePhotoClick = (photo: Photo, index: number) => {
     if (isSelectMode) {
-      togglePhotoSelection(photo.id)
+      togglePhotoSelection(photo.id);
     } else {
-      setSelectedPhotoIndex(index)
+      setSelectedPhotoIndex(index);
     }
-  }
+  };
 
   const movePhotosToAlbum = async (albumId: number) => {
-    if (selectedPhotos.size === 0) return
-    
+    if (selectedPhotos.size === 0) return;
+
     try {
-      const promises = Array.from(selectedPhotos).map(photoId =>
-        fetch('/api/photos', {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: photoId, albumId })
-        })
-      )
-      await Promise.all(promises)
-      
+      const promises = Array.from(selectedPhotos).map((photoId) =>
+        fetch("/api/photos", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: photoId, albumId }),
+        }),
+      );
+      await Promise.all(promises);
+
       // Update local state
-      setPhotos(photos.map(p => 
-        selectedPhotos.has(p.id) ? { ...p, albumId } : p
-      ))
-      
+      setPhotos(
+        photos.map((p) => (selectedPhotos.has(p.id) ? { ...p, albumId } : p)),
+      );
+
       // Update album photo counts
-      await fetchData()
-      
-      setShowAlbumSheet(false)
-      setShowMoreMenu(false)
-      setIsSelectMode(false)
-      setSelectedPhotos(new Set())
+      await fetchData();
+
+      setShowAlbumSheet(false);
+      setShowMoreMenu(false);
+      setIsSelectMode(false);
+      setSelectedPhotos(new Set());
     } catch (error) {
-      console.error('Error moving photos:', error)
+      console.error("Error moving photos:", error);
     }
-  }
+  };
 
   const deleteSelectedPhotos = async () => {
-    if (selectedPhotos.size === 0) return
-    
-    if (!confirm(`${selectedPhotos.size}장의 사진을 삭제하시겠습니까?`)) return
-    
+    if (selectedPhotos.size === 0) return;
+
+    if (!confirm(`${selectedPhotos.size}장의 사진을 삭제하시겠습니까?`)) return;
+
     try {
-      const promises = Array.from(selectedPhotos).map(photoId =>
-        fetch('/api/photos', {
-          method: 'DELETE',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: photoId })
-        })
-      )
-      await Promise.all(promises)
-      
-      setPhotos(photos.filter(p => !selectedPhotos.has(p.id)))
-      setIsSelectMode(false)
-      setSelectedPhotos(new Set())
+      const promises = Array.from(selectedPhotos).map((photoId) =>
+        fetch("/api/photos", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: photoId }),
+        }),
+      );
+      await Promise.all(promises);
+
+      setPhotos(photos.filter((p) => !selectedPhotos.has(p.id)));
+      setIsSelectMode(false);
+      setSelectedPhotos(new Set());
     } catch (error) {
-      console.error('Error deleting photos:', error)
+      console.error("Error deleting photos:", error);
     }
-  }
+  };
 
   return (
     <>
@@ -270,7 +297,7 @@ export function GalleryView() {
         <div className="flex items-center justify-between px-5 h-14 max-w-md mx-auto">
           {isSelectMode ? (
             <>
-              <button 
+              <button
                 onClick={toggleSelectMode}
                 className="text-[15px] text-[#8B95A1]"
                 data-testid="button-cancel-select"
@@ -278,24 +305,32 @@ export function GalleryView() {
                 취소
               </button>
               <h1 className="text-[17px] font-bold text-[#191F28]">
-                {selectedPhotos.size > 0 ? `${selectedPhotos.size}장 선택됨` : '항목 선택'}
+                {selectedPhotos.size > 0
+                  ? `${selectedPhotos.size}장 선택됨`
+                  : "항목 선택"}
               </h1>
-              <button 
+              <button
                 onClick={() => setShowMoreMenu(true)}
                 className="p-2 -mr-2 rounded-full hover:bg-[#F2F4F6]"
                 data-testid="button-more-menu"
                 disabled={selectedPhotos.size === 0}
               >
-                <MoreHorizontal className={`w-6 h-6 ${selectedPhotos.size > 0 ? 'text-[#191F28]' : 'text-[#D1D6DB]'}`} />
+                <MoreHorizontal
+                  className={`w-6 h-6 ${selectedPhotos.size > 0 ? "text-[#191F28]" : "text-[#D1D6DB]"}`}
+                />
               </button>
             </>
           ) : (
             <>
-              <Link href="/dating" className="p-2 -ml-2 rounded-full hover:bg-[#F2F4F6]" data-testid="button-back">
+              <Link
+                href="/dating"
+                className="p-2 -ml-2 rounded-full hover:bg-[#F2F4F6]"
+                data-testid="button-back"
+              >
                 <ChevronLeft className="w-6 h-6 text-[#191F28]" />
               </Link>
               <h1 className="text-[17px] font-bold text-[#191F28]">갤러리</h1>
-              <button 
+              <button
                 onClick={toggleSelectMode}
                 className="text-[15px] text-pink-500 font-medium"
                 data-testid="button-select-mode"
@@ -313,7 +348,7 @@ export function GalleryView() {
             <h3 className="text-[17px] font-bold text-[#191F28]">앨범</h3>
           </div>
           <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2 -mx-5 px-5">
-            <button 
+            <button
               onClick={() => setShowAddAlbumModal(true)}
               className="flex-shrink-0 w-28 h-36 bg-[#F2F4F6] rounded-[16px] flex flex-col items-center justify-center gap-2 hover:bg-[#E5E8EB] transition-colors"
               data-testid="button-add-album"
@@ -323,7 +358,7 @@ export function GalleryView() {
               </div>
               <span className="text-[12px] text-[#8B95A1]">앨범 추가</span>
             </button>
-            
+
             {isLoading ? (
               <div className="flex-shrink-0 w-28 h-36 bg-[#F2F4F6] rounded-[16px] animate-pulse" />
             ) : albums.length === 0 ? (
@@ -352,8 +387,12 @@ export function GalleryView() {
                     )}
                   </div>
                   <div className="bg-white p-2">
-                    <p className="text-[13px] font-medium text-[#191F28] truncate">{album.title}</p>
-                    <p className="text-[11px] text-[#8B95A1]">{album.photoCount}장</p>
+                    <p className="text-[13px] font-medium text-[#191F28] truncate">
+                      {album.title}
+                    </p>
+                    <p className="text-[11px] text-[#8B95A1]">
+                      {album.photoCount}장
+                    </p>
                   </div>
                 </Link>
               ))
@@ -364,13 +403,18 @@ export function GalleryView() {
         <div>
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-[17px] font-bold text-[#191F28]">모든 사진</h3>
-            <span className="text-[13px] text-[#8B95A1]">{photos.length}장</span>
+            <span className="text-[13px] text-[#8B95A1]">
+              {photos.length}장
+            </span>
           </div>
-          
+
           {isLoading ? (
             <div className="grid grid-cols-3 gap-1">
-              {[1, 2, 3, 4, 5, 6].map(i => (
-                <div key={i} className="aspect-square bg-[#F2F4F6] rounded-[4px] animate-pulse" />
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div
+                  key={i}
+                  className="aspect-square bg-[#F2F4F6] rounded-[4px] animate-pulse"
+                />
               ))}
             </div>
           ) : photos.length === 0 ? (
@@ -379,8 +423,10 @@ export function GalleryView() {
                 <ImageIcon className="w-8 h-8 text-pink-300" />
               </div>
               <p className="text-[#8B95A1] text-[14px]">아직 사진이 없어요</p>
-              <p className="text-[#B0B8C1] text-[12px] mt-1">사진을 추가해서 추억을 남겨보세요</p>
-              <button 
+              <p className="text-[#B0B8C1] text-[12px] mt-1">
+                사진을 추가해서 추억을 남겨보세요
+              </p>
+              <button
                 onClick={() => setShowAddPhotoModal(true)}
                 className="mt-4 px-6 py-3 bg-pink-500 text-white rounded-full text-[14px] font-medium flex items-center gap-2 mx-auto hover:bg-pink-600 transition-colors"
                 data-testid="button-add-photo-empty"
@@ -404,12 +450,16 @@ export function GalleryView() {
                     className="w-full h-full object-cover transition-transform group-hover:scale-105"
                   />
                   {isSelectMode && (
-                    <div className={`absolute inset-0 ${selectedPhotos.has(photo.id) ? 'bg-black/20' : ''}`}>
-                      <div className={`absolute bottom-2 right-2 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
-                        selectedPhotos.has(photo.id) 
-                          ? 'bg-pink-500 border-pink-500' 
-                          : 'bg-white/80 border-white'
-                      }`}>
+                    <div
+                      className={`absolute inset-0 ${selectedPhotos.has(photo.id) ? "bg-black/20" : ""}`}
+                    >
+                      <div
+                        className={`absolute bottom-2 right-2 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
+                          selectedPhotos.has(photo.id)
+                            ? "bg-pink-500 border-pink-500"
+                            : "bg-white/80 border-white"
+                        }`}
+                      >
                         {selectedPhotos.has(photo.id) && (
                           <Check className="w-4 h-4 text-white" />
                         )}
@@ -432,8 +482,8 @@ export function GalleryView() {
       {isSelectMode && selectedPhotos.size > 0 && (
         <div className="fixed bottom-16 left-0 right-0 bg-white border-t border-[#E5E8EB] z-40">
           <div className="flex justify-around items-center h-16 max-w-md mx-auto px-5">
-            <button 
-              onClick={() => alert('공유 기능은 준비 중입니다')}
+            <button
+              onClick={() => alert("공유 기능은 준비 중입니다")}
               className="flex flex-col items-center gap-1 text-[#B0B8C1]"
               data-testid="button-share-photos"
             >
@@ -445,7 +495,7 @@ export function GalleryView() {
                 {selectedPhotos.size}장의 사진이 선택됨
               </span>
             </div>
-            <button 
+            <button
               onClick={deleteSelectedPhotos}
               className="flex flex-col items-center gap-1 text-red-500"
               data-testid="button-delete-photos"
@@ -527,20 +577,20 @@ export function GalleryView() {
 
       {/* More Menu Modal */}
       {showMoreMenu && (
-        <div 
+        <div
           className="fixed inset-0 z-50 bg-black/50 flex items-end justify-center"
           onClick={() => setShowMoreMenu(false)}
         >
-          <div 
+          <div
             className="bg-white w-full max-w-md rounded-t-[24px] overflow-hidden"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="w-10 h-1 bg-[#D1D6DB] rounded-full mx-auto mt-3" />
             <div className="py-4">
               <button
                 onClick={() => {
-                  setShowMoreMenu(false)
-                  setShowAlbumSheet(true)
+                  setShowMoreMenu(false);
+                  setShowAlbumSheet(true);
                 }}
                 className="w-full px-5 py-4 flex items-center gap-4 hover:bg-[#F2F4F6] transition-colors"
                 data-testid="button-add-to-album"
@@ -551,19 +601,21 @@ export function GalleryView() {
                 <span className="text-[15px] text-[#191F28]">앨범에 추가</span>
               </button>
               <button
-                onClick={() => alert('공유 기능은 준비 중입니다')}
+                onClick={() => alert("공유 기능은 준비 중입니다")}
                 className="w-full px-5 py-4 flex items-center gap-4 hover:bg-[#F2F4F6] transition-colors"
                 data-testid="button-share-menu"
               >
                 <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
                   <Share2 className="w-5 h-5 text-[#B0B8C1]" />
                 </div>
-                <span className="text-[15px] text-[#B0B8C1]">공유하기 (준비중)</span>
+                <span className="text-[15px] text-[#B0B8C1]">
+                  공유하기 (준비중)
+                </span>
               </button>
               <button
                 onClick={() => {
-                  setShowMoreMenu(false)
-                  deleteSelectedPhotos()
+                  setShowMoreMenu(false);
+                  deleteSelectedPhotos();
                 }}
                 className="w-full px-5 py-4 flex items-center gap-4 hover:bg-[#F2F4F6] transition-colors"
                 data-testid="button-delete-menu"
@@ -587,13 +639,13 @@ export function GalleryView() {
 
       {/* Album Selection Bottom Sheet */}
       {showAlbumSheet && (
-        <div 
+        <div
           className="fixed inset-0 z-[60] bg-black/50 flex items-end justify-center"
           onClick={() => setShowAlbumSheet(false)}
         >
-          <div 
+          <div
             className="bg-[#1C1C1E] w-full max-w-md rounded-t-[24px] overflow-hidden"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between px-5 py-4 border-b border-[#38383A]">
               <button
@@ -603,11 +655,13 @@ export function GalleryView() {
               >
                 <X className="w-5 h-5 text-white" />
               </button>
-              <span className="text-[17px] font-bold text-white">앨범에 추가</span>
+              <span className="text-[17px] font-bold text-white">
+                앨범에 추가
+              </span>
               <button
                 onClick={() => {
-                  setShowAlbumSheet(false)
-                  setShowAddAlbumModal(true)
+                  setShowAlbumSheet(false);
+                  setShowAddAlbumModal(true);
                 }}
                 className="w-8 h-8 flex items-center justify-center"
                 data-testid="button-create-album-sheet"
@@ -615,15 +669,15 @@ export function GalleryView() {
                 <Plus className="w-5 h-5 text-white" />
               </button>
             </div>
-            
+
             <div className="p-4 max-h-[60vh] overflow-y-auto">
               {albums.length === 0 ? (
                 <div className="py-8 text-center">
                   <p className="text-[#8B8B8D] text-[14px]">앨범이 없습니다</p>
                   <button
                     onClick={() => {
-                      setShowAlbumSheet(false)
-                      setShowAddAlbumModal(true)
+                      setShowAlbumSheet(false);
+                      setShowAddAlbumModal(true);
                     }}
                     className="mt-4 px-6 py-3 bg-pink-500 text-white rounded-full text-[14px] font-medium"
                     data-testid="button-create-first-album"
@@ -653,7 +707,9 @@ export function GalleryView() {
                           </div>
                         )}
                       </div>
-                      <p className="text-[13px] text-white truncate w-full">{album.title}</p>
+                      <p className="text-[13px] text-white truncate w-full">
+                        {album.title}
+                      </p>
                     </button>
                   ))}
                 </div>
@@ -665,13 +721,21 @@ export function GalleryView() {
 
       {/* Add Album Modal */}
       {showAddAlbumModal && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5" onClick={() => setShowAddAlbumModal(false)}>
-          <div className="bg-white rounded-[24px] w-full max-w-sm p-5" onClick={e => e.stopPropagation()}>
-            <h3 className="text-[17px] font-bold text-[#191F28] mb-4">새 앨범 만들기</h3>
+        <div
+          className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5"
+          onClick={() => setShowAddAlbumModal(false)}
+        >
+          <div
+            className="bg-white rounded-[24px] w-full max-w-sm p-5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-[17px] font-bold text-[#191F28] mb-4">
+              새 앨범 만들기
+            </h3>
             <input
               type="text"
               value={newAlbumTitle}
-              onChange={e => setNewAlbumTitle(e.target.value)}
+              onChange={(e) => setNewAlbumTitle(e.target.value)}
               placeholder="앨범 이름"
               className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] focus:outline-none focus:ring-2 focus:ring-pink-300 mb-4"
               data-testid="input-album-title"
@@ -699,17 +763,29 @@ export function GalleryView() {
 
       {/* Add Photo Modal */}
       {showAddPhotoModal && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5" onClick={closePhotoModal}>
-          <div className="bg-white rounded-[24px] w-full max-w-sm p-5" onClick={e => e.stopPropagation()}>
-            <h3 className="text-[17px] font-bold text-[#191F28] mb-4">사진 추가하기</h3>
-            
+        <div
+          className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-5"
+          onClick={closePhotoModal}
+        >
+          <div
+            className="bg-white rounded-[24px] w-full max-w-sm p-5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-[17px] font-bold text-[#191F28] mb-4">
+              사진 추가하기
+            </h3>
+
             {!previewUrl ? (
               <label className="flex flex-col items-center justify-center w-full h-48 bg-[#F2F4F6] rounded-[16px] cursor-pointer hover:bg-[#E5E8EB] transition-colors mb-4">
                 <div className="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center mb-3">
                   <Upload className="w-7 h-7 text-pink-500" />
                 </div>
-                <p className="text-[14px] text-[#4E5968] font-medium">사진 선택하기</p>
-                <p className="text-[12px] text-[#8B95A1] mt-1">탭하여 갤러리에서 선택</p>
+                <p className="text-[14px] text-[#4E5968] font-medium">
+                  사진 선택하기
+                </p>
+                <p className="text-[12px] text-[#8B95A1] mt-1">
+                  탭하여 갤러리에서 선택
+                </p>
                 <input
                   type="file"
                   accept="image/*"
@@ -727,8 +803,8 @@ export function GalleryView() {
                 />
                 <button
                   onClick={() => {
-                    setSelectedFile(null)
-                    setPreviewUrl(null)
+                    setSelectedFile(null);
+                    setPreviewUrl(null);
                   }}
                   className="absolute top-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center"
                   data-testid="button-remove-preview"
@@ -737,16 +813,16 @@ export function GalleryView() {
                 </button>
               </div>
             )}
-            
+
             <input
               type="text"
               value={newPhotoCaption}
-              onChange={e => setNewPhotoCaption(e.target.value)}
+              onChange={(e) => setNewPhotoCaption(e.target.value)}
               placeholder="사진 설명 (선택사항)"
               className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] focus:outline-none focus:ring-2 focus:ring-pink-300 mb-4"
               data-testid="input-photo-caption"
             />
-            
+
             <div className="flex gap-3">
               <button
                 onClick={closePhotoModal}
@@ -767,7 +843,7 @@ export function GalleryView() {
                     업로드 중...
                   </>
                 ) : (
-                  '업로드'
+                  "업로드"
                 )}
               </button>
             </div>
@@ -776,49 +852,6 @@ export function GalleryView() {
       )}
 
       <div className="h-20" />
-
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#E5E8EB] pb-safe z-30">
-        <div className="flex justify-around items-center h-16 max-w-md mx-auto px-5">
-          <Link href="/dating" className="flex flex-col items-center gap-1 text-[#8B95A1]" data-testid="nav-home">
-            <div className="w-6 h-6 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
-                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-              </svg>
-            </div>
-            <span className="text-[10px]">홈</span>
-          </Link>
-          <Link href="/dating/calendar" className="flex flex-col items-center gap-1 text-[#8B95A1]" data-testid="nav-calendar">
-            <div className="w-6 h-6 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
-                <rect x="3" y="4" width="18" height="18" rx="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-            </div>
-            <span className="text-[10px]">캘린더</span>
-          </Link>
-          <div className="flex flex-col items-center gap-1 text-pink-500" data-testid="nav-gallery-active">
-            <div className="w-6 h-6 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-            </div>
-            <span className="text-[10px] font-medium">갤러리</span>
-          </div>
-          <Link href="/dating/profile" className="flex flex-col items-center gap-1 text-[#8B95A1]" data-testid="nav-profile">
-            <div className="w-6 h-6 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
-                <circle cx="12" cy="7" r="4" />
-                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-              </svg>
-            </div>
-            <span className="text-[10px]">프로필</span>
-          </Link>
-        </div>
-      </nav>
     </>
-  )
+  );
 }
