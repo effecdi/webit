@@ -100,7 +100,7 @@ export default function WeddingSurveyStep3() {
                     value={groomGuests ? formatNumber(groomGuests) : ""}
                     onChange={(e) => handleNumberInput(e.target.value, setGroomGuests)}
                     placeholder="0"
-                    className="w-full px-4 py-3.5 bg-[#F3F5F7] rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500 pr-10"
                     data-testid="input-groom-guests"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#8B95A1]">명</span>
@@ -115,7 +115,7 @@ export default function WeddingSurveyStep3() {
                     value={brideGuests ? formatNumber(brideGuests) : ""}
                     onChange={(e) => handleNumberInput(e.target.value, setBrideGuests)}
                     placeholder="0"
-                    className="w-full px-4 py-3.5 bg-[#F3F5F7] rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500 pr-10"
                     data-testid="input-bride-guests"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#8B95A1]">명</span>
@@ -139,7 +139,7 @@ export default function WeddingSurveyStep3() {
                     value={mealCostAdult ? formatNumber(mealCostAdult) : ""}
                     onChange={(e) => handleNumberInput(e.target.value, setMealCostAdult)}
                     placeholder="60,000"
-                    className="w-full px-4 py-3.5 bg-[#F3F5F7] rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500 pr-10"
                     data-testid="input-meal-cost-adult"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#8B95A1]">원</span>
@@ -154,7 +154,7 @@ export default function WeddingSurveyStep3() {
                     value={mealCostChild ? formatNumber(mealCostChild) : ""}
                     onChange={(e) => handleNumberInput(e.target.value, setMealCostChild)}
                     placeholder="30,000"
-                    className="w-full px-4 py-3.5 bg-[#F3F5F7] rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                    className="w-full px-4 py-3.5 rounded-[14px] text-[16px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500 pr-10"
                     data-testid="input-meal-cost-child"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#8B95A1]">원</span>

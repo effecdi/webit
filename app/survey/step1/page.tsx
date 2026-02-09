@@ -65,7 +65,7 @@ export default function SurveyStep1() {
               onCompositionStart={() => setIsComposing(true)}
               onCompositionEnd={() => setIsComposing(false)}
               placeholder="이름을 입력해주세요"
-              className="w-full h-14 px-5 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full h-14 px-5 rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500"
               data-testid="input-my-name"
             />
           </div>
@@ -104,7 +104,7 @@ export default function SurveyStep1() {
               value={birthday}
               onChange={setBirthday}
               placeholder="생년월일을 선택해주세요"
-              className="!h-14 !px-5 !bg-[#F3F5F7] !rounded-[16px] !text-[17px]"
+              className="!h-14 !px-5 !bg-transparent !rounded-[16px] !text-[17px] !border !border-[#E5E8EB]"
               label="생년월일"
               maxYear={new Date().getFullYear()}
             />

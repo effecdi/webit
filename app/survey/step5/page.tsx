@@ -58,7 +58,7 @@ export default function SurveyStep5() {
           onCompositionEnd={() => setIsComposing(false)}
           placeholder="예) 같은 회사에서 만났어요, 대학교 동기예요..."
           rows={4}
-          className="w-full p-5 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className="w-full p-5 rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500 resize-none"
           data-testid="input-couple-intro"
         />
       </div>

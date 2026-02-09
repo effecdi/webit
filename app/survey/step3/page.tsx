@@ -58,7 +58,7 @@ export default function SurveyStep3() {
           value={date}
           onChange={setDate}
           placeholder="처음 만난 날을 선택해주세요"
-          className="!h-14 !px-5 !bg-[#F3F5F7] !rounded-[16px] !text-[17px]"
+          className="!h-14 !px-5 !bg-transparent !rounded-[16px] !text-[17px] !border !border-[#E5E8EB]"
           label="처음 만난 날"
           maxYear={new Date().getFullYear()}
         />

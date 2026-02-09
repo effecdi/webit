@@ -56,7 +56,7 @@ export default function WeddingSurveyStep2() {
             value={venue}
             onChange={(e) => setVenue(e.target.value)}
             placeholder="예) 더채플앳청담, 서울 강남구..."
-            className="w-full px-5 py-4 bg-[#F3F5F7] rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-5 py-4 rounded-[16px] text-[17px] text-[#191F28] placeholder:text-[#B0B8C1] outline-none border border-[#E5E8EB] focus:ring-2 focus:ring-blue-500"
             data-testid="input-wedding-venue"
           />
         </div>
