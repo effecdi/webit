@@ -1,6 +1,7 @@
 {
   "/api/albums/route": "app/api/albums/route.js",
   "/api/auth/user/route": "app/api/auth/user/route.js",
+  "/api/couple-invite/route": "app/api/couple-invite/route.js",
   "/api/couple/route": "app/api/couple/route.js",
   "/api/events/route": "app/api/events/route.js",
   "/api/notifications/route": "app/api/notifications/route.js",
