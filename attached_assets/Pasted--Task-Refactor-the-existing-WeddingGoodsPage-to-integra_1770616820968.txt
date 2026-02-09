@@ -1,0 +1,57 @@
+**Task:** Refactor the existing `WeddingGoodsPage` to integrate dynamic Data APIs and the "Purchase Verification" business logic, **WITHOUT modifying the existing 'Production Guide' tab.**
+
+**[1. Preservation Constraint (CRITICAL)]**
+* The current page has tabs (likely `Goods` and `Production Guide`).
+* **DO NOT** change, refactor, or delete the code related to the **'Production Guide' (제작 가이드)** tab. Keep it exactly as it is.
+* **Focus ONLY** on the **'Goods Shop' (웨딩 굿즈)** tab and the global data fetching logic.
+
+**[2. API Integration Strategy]**
+Refactor the 'Goods Shop' tab to fetch data from a mock API endpoint (`/api/shop/goods`) instead of using hardcoded arrays.
+
+* **Create Mock API Handler (`app/api/shop/goods/route.ts`):**
+    * Return a JSON array of products.
+    * **Data Schema:**
+        ```typescript
+        interface Product {
+          id: string;
+          category: 'favors' | 'appliances' | 'interior' | 'accessories';
+          title: string;
+          brand: string;
+          thumbnailUrl: string;
+          linkUrl: string; // Affiliate link (Coupang/Naver)
+          platform: 'COUPANG' | 'NAVER';
+          benefit?: string; // e.g., "5% Coupon", "1+1 Event"
+          isRecommended?: boolean;
+        }
+        ```
+    * **Mock Data:** Populate with 6-8 diverse items (Refrigerator, Frame, Wine, etc.) to demonstrate the layout.
+
+* **Frontend Integration:**
+    * Use `useEffect` or `SWR`/`React Query` to fetch this data in `WeddingGoodsPage`.
+    * Render the product cards dynamically based on the fetched data.
+
+**[3. Implement 'Buy & Verify' Business Logic]**
+Add the functionality to convert goods purchases into premium unlocks.
+
+* **A. The Trigger (Banner):**
+    * Insert a "Benefit Banner" at the top of the Goods tab:
+    * *"혼수/답례품 구매 인증하면 **7,900원 프리미엄 청첩장 무료!**"*
+    * Button: "인증하고 혜택 받기" -> Opens Verification Modal.
+
+* **B. Verification Modal (`VerificationModal.tsx`):**
+    * **Features:**
+        * Image Upload Area (for Receipt).
+        * Text Input (Order Number/Note).
+        * "Submit" Button.
+    * **Mock Logic:**
+        * On submit, call `POST /api/shop/verify`.
+        * Show a loading spinner (1.5s).
+        * Return `success: true`.
+        * **Global State Update:** Set `isPremiumUnlocked = true` (or store in `localStorage`).
+        * Show a Toast: "인증 완료! 프리미엄 템플릿이 잠금 해제되었습니다."
+
+**[4. Interaction Details]**
+* **Clicking a Product:** Must open `linkUrl` in a **new tab** (`window.open(url, '_blank')`).
+* **After Click:** Show a helper toast: "구매 후 [인증하기]를 눌러 혜택을 꼭 챙기세요!"
+
+**Action:** Wire up the Goods tab to be data-driven and implement the verification flow, ensuring the 'Production Guide' tab remains untouched.

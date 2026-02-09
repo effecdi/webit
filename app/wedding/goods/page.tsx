@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { 
   ArrowLeft, 
@@ -26,9 +26,31 @@ import {
   Star,
   Lightbulb,
   CircleDollarSign,
-  Wrench
+  Wrench,
+  ExternalLink,
+  BadgePercent,
+  Crown,
+  Upload,
+  Loader2,
+  ImageIcon,
+  Award,
+  Tag,
 } from "lucide-react"
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
+
+interface Product {
+  id: string
+  category: 'favors' | 'appliances' | 'interior' | 'accessories'
+  title: string
+  brand: string
+  thumbnailUrl: string
+  linkUrl: string
+  platform: 'COUPANG' | 'NAVER'
+  benefit?: string
+  isRecommended?: boolean
+  originalPrice?: number
+  salePrice?: number
+}
 
 interface GoodsItem {
   id: string
@@ -41,6 +63,14 @@ interface GoodsItem {
   notes?: string
   forWhom?: "bride" | "groom" | "both" | "guest"
 }
+
+const shopCategories = [
+  { id: "all", label: "전체" },
+  { id: "appliances", label: "혼수가전" },
+  { id: "interior", label: "인테리어" },
+  { id: "favors", label: "답례품" },
+  { id: "accessories", label: "액세서리" },
+]
 
 const categories = [
   { id: "ring", label: "예물", icon: Diamond },
@@ -253,6 +283,97 @@ export default function GoodsPage() {
   const [showAddModal, setShowAddModal] = useState(false)
   const [expandedGuide, setExpandedGuide] = useState<string | null>(null)
   const [expandedSection, setExpandedSection] = useState<Record<string, "pro" | "diy" | null>>({})
+
+  const [products, setProducts] = useState<Product[]>([])
+  const [shopLoading, setShopLoading] = useState(true)
+  const [shopCategory, setShopCategory] = useState("all")
+  const [showVerifyModal, setShowVerifyModal] = useState(false)
+  const [verifying, setVerifying] = useState(false)
+  const [orderNumber, setOrderNumber] = useState("")
+  const [receiptFile, setReceiptFile] = useState<File | null>(null)
+  const [receiptPreview, setReceiptPreview] = useState<string | null>(null)
+  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false)
+  const [toastMessage, setToastMessage] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    const stored = typeof window !== "undefined" && localStorage.getItem("weve_premium_unlocked")
+    if (stored === "true") setIsPremiumUnlocked(true)
+  }, [])
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await fetch("/api/shop/goods")
+        if (res.ok) {
+          const data = await res.json()
+          setProducts(data)
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error)
+      } finally {
+        setShopLoading(false)
+      }
+    }
+    fetchProducts()
+  }, [])
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg)
+    setTimeout(() => setToastMessage(null), 3000)
+  }
+
+  const handleProductClick = (product: Product) => {
+    window.open(product.linkUrl, "_blank")
+    showToast("구매 후 [인증하기]를 눌러 혜택을 꼭 챙기세요!")
+  }
+
+  const handleReceiptUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      setReceiptFile(file)
+      const reader = new FileReader()
+      reader.onloadend = () => setReceiptPreview(reader.result as string)
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleVerify = async () => {
+    if (!orderNumber.trim()) {
+      showToast("주문번호를 입력해주세요")
+      return
+    }
+    setVerifying(true)
+    try {
+      const formData = new FormData()
+      formData.append("orderNumber", orderNumber)
+      if (receiptFile) formData.append("receipt", receiptFile)
+
+      const res = await fetch("/api/shop/verify", {
+        method: "POST",
+        body: formData,
+      })
+      if (res.ok) {
+        setIsPremiumUnlocked(true)
+        localStorage.setItem("weve_premium_unlocked", "true")
+        setShowVerifyModal(false)
+        setOrderNumber("")
+        setReceiptFile(null)
+        setReceiptPreview(null)
+        showToast("인증 완료! 프리미엄 템플릿이 잠금 해제되었습니다.")
+      }
+    } catch (error) {
+      console.error("Error verifying:", error)
+      showToast("인증에 실패했습니다. 다시 시도해주세요.")
+    } finally {
+      setVerifying(false)
+    }
+  }
+
+  const filteredProducts = shopCategory === "all"
+    ? products
+    : products.filter(p => p.category === shopCategory)
+
   const [newItem, setNewItem] = useState<{
     name: string
     category: string
@@ -343,15 +464,7 @@ export default function GoodsPage() {
             </Link>
             <h1 className="text-[20px] font-bold text-[#191F28]">웨딩 굿즈</h1>
           </div>
-          {activeTab === "manage" && (
-            <button 
-              onClick={() => setShowAddModal(true)}
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-[#FF8A80] hover:bg-[#FF6B6B] transition-colors"
-              data-testid="button-add-goods"
-            >
-              <Plus className="w-5 h-5 text-white" />
-            </button>
-          )}
+          <div className="w-10" />
         </div>
 
         <div className="flex gap-1 mt-3 max-w-md mx-auto bg-[#F2F4F6] rounded-[12px] p-1">
@@ -384,133 +497,257 @@ export default function GoodsPage() {
 
       {activeTab === "manage" ? (
         <main className="px-5 py-5 max-w-md mx-auto space-y-5">
-          <div className="bg-gradient-to-br from-amber-400 to-orange-500 rounded-[20px] p-5 text-white">
-            <p className="text-[13px] text-white/80 mb-1">웨딩 굿즈</p>
-            <p className="text-[28px] font-bold mb-4">총 {goods.length}개</p>
-            <div className="flex gap-3">
-              <div className="flex-1 bg-white/20 rounded-[12px] p-3">
-                <p className="text-[11px] text-white/80 mb-1">위시리스트</p>
-                <p className="text-[16px] font-bold">{(totalWishlist / 10000).toFixed(0)}만원</p>
+          {!isPremiumUnlocked && (
+            <button
+              onClick={() => setShowVerifyModal(true)}
+              className="w-full bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 rounded-[16px] p-4 text-left relative overflow-hidden"
+              data-testid="button-benefit-banner"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Crown className="w-5 h-5 text-white" />
+                  <span className="text-[12px] font-semibold text-white/90 tracking-wide">PREMIUM BENEFIT</span>
+                </div>
+                <p className="text-[15px] font-bold text-white leading-snug mb-2">
+                  혼수/답례품 구매 인증하면{"\n"}
+                  <span className="text-[18px]">7,900원 프리미엄 청첩장 무료!</span>
+                </p>
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white rounded-full text-[13px] font-bold text-orange-500">
+                  <Award className="w-4 h-4" />
+                  인증하고 혜택 받기
+                </span>
               </div>
-              <div className="flex-1 bg-white/20 rounded-[12px] p-3">
-                <p className="text-[11px] text-white/80 mb-1">구매완료</p>
-                <p className="text-[16px] font-bold">{(totalPurchased / 10000).toFixed(0)}만원</p>
+            </button>
+          )}
+
+          {isPremiumUnlocked && (
+            <div className="bg-green-50 border border-green-200 rounded-[16px] p-4 flex items-center gap-3" data-testid="premium-unlocked-badge">
+              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                <Check className="w-5 h-5 text-green-600" />
+              </div>
+              <div>
+                <p className="text-[14px] font-bold text-green-700">프리미엄 혜택 적용 중</p>
+                <p className="text-[12px] text-green-600">프리미엄 청첩장 템플릿이 잠금 해제되었어요</p>
               </div>
             </div>
-          </div>
+          )}
 
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
-            <button
-              onClick={() => setActiveCategory("전체")}
-              className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors ${
-                activeCategory === "전체"
-                  ? "bg-[#191F28] text-white"
-                  : "bg-white text-[#4E5968]"
-              }`}
-              data-testid="filter-category-all"
-            >
-              전체
-            </button>
-            {categories.map((cat) => (
+            {shopCategories.map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setActiveCategory(cat.label)}
-                className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-colors flex items-center gap-1.5 ${
-                  activeCategory === cat.label
-                    ? "bg-[#191F28] text-white"
+                onClick={() => setShopCategory(cat.id)}
+                className={`px-4 py-2 rounded-full text-[13px] font-medium whitespace-nowrap transition-all ${
+                  shopCategory === cat.id
+                    ? "bg-[#191F28] text-white shadow-sm"
                     : "bg-white text-[#4E5968]"
                 }`}
-                data-testid={`filter-category-${cat.id}`}
+                data-testid={`filter-shop-${cat.id}`}
               >
-                <cat.icon className="w-3.5 h-3.5" />
                 {cat.label}
               </button>
             ))}
           </div>
 
-          <div className="flex gap-2 flex-wrap">
-            {(["all", "wishlist", "purchased", "received"] as const).map((status) => (
+          {shopLoading ? (
+            <div className="grid grid-cols-2 gap-3">
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} className="bg-white rounded-[16px] overflow-hidden animate-pulse">
+                  <div className="aspect-square bg-[#F2F4F6]" />
+                  <div className="p-3 space-y-2">
+                    <div className="h-3 bg-[#F2F4F6] rounded w-1/3" />
+                    <div className="h-4 bg-[#F2F4F6] rounded w-full" />
+                    <div className="h-4 bg-[#F2F4F6] rounded w-2/3" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-3">
+              {filteredProducts.map((product) => {
+                const discount = product.originalPrice && product.salePrice
+                  ? Math.round((1 - product.salePrice / product.originalPrice) * 100)
+                  : null
+
+                return (
+                  <button
+                    key={product.id}
+                    onClick={() => handleProductClick(product)}
+                    className="bg-white rounded-[16px] overflow-hidden shadow-sm text-left transition-all hover:shadow-md active:scale-[0.98]"
+                    data-testid={`product-card-${product.id}`}
+                  >
+                    <div className="relative aspect-square bg-[#F8F9FA]">
+                      <img
+                        src={product.thumbnailUrl}
+                        alt={product.title}
+                        className="w-full h-full object-cover"
+                      />
+                      {product.isRecommended && (
+                        <span className="absolute top-2 left-2 px-2 py-0.5 bg-[#FF8A80] text-white text-[10px] font-bold rounded-full">
+                          MD추천
+                        </span>
+                      )}
+                      {product.benefit && (
+                        <span className="absolute bottom-2 left-2 right-2 px-2 py-1 bg-black/70 text-white text-[11px] font-medium rounded-[6px] flex items-center gap-1 truncate">
+                          <Tag className="w-3 h-3 flex-shrink-0" />
+                          {product.benefit}
+                        </span>
+                      )}
+                    </div>
+                    <div className="p-3">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                          product.platform === "COUPANG"
+                            ? "bg-[#FFF0F0] text-[#E4280E]"
+                            : "bg-[#F0FFF4] text-[#03C75A]"
+                        }`}>
+                          {product.platform === "COUPANG" ? "쿠팡" : "네이버"}
+                        </span>
+                        <span className="text-[11px] text-[#8B95A1] truncate">{product.brand}</span>
+                      </div>
+                      <h3 className="text-[13px] font-medium text-[#191F28] line-clamp-2 leading-tight mb-1.5">{product.title}</h3>
+                      <div className="flex items-baseline gap-1.5 flex-wrap">
+                        {discount && (
+                          <span className="text-[14px] font-bold text-[#FF5252]">{discount}%</span>
+                        )}
+                        <span className="text-[15px] font-bold text-[#191F28]">
+                          {(product.salePrice || product.originalPrice || 0).toLocaleString()}원
+                        </span>
+                      </div>
+                      {product.originalPrice && product.salePrice && product.originalPrice !== product.salePrice && (
+                        <span className="text-[11px] text-[#B0B8C1] line-through">
+                          {product.originalPrice.toLocaleString()}원
+                        </span>
+                      )}
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
+          )}
+
+          <div className="border-t border-[#E5E8EB] pt-5">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-[17px] font-bold text-[#191F28]">내 굿즈 관리</h2>
+              <button 
+                onClick={() => setShowAddModal(true)}
+                className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#FF8A80] text-white text-[12px] font-semibold"
+                data-testid="button-add-goods"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                추가
+              </button>
+            </div>
+
+            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide mb-3">
               <button
-                key={status}
-                onClick={() => setActiveStatus(status)}
-                className={`px-3 py-1.5 rounded-full text-[12px] font-medium transition-colors ${
-                  activeStatus === status
+                onClick={() => setActiveCategory("전체")}
+                className={`px-3 py-1.5 rounded-full text-[12px] font-medium whitespace-nowrap transition-colors ${
+                  activeCategory === "전체"
                     ? "bg-[#4E5968] text-white"
                     : "bg-white text-[#8B95A1]"
                 }`}
-                data-testid={`filter-status-${status}`}
+                data-testid="filter-category-all"
               >
-                {status === "all" ? "전체" : statusConfig[status].label}
+                전체
               </button>
-            ))}
-          </div>
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.label)}
+                  className={`px-3 py-1.5 rounded-full text-[12px] font-medium whitespace-nowrap transition-colors ${
+                    activeCategory === cat.label
+                      ? "bg-[#4E5968] text-white"
+                      : "bg-white text-[#8B95A1]"
+                  }`}
+                  data-testid={`filter-category-${cat.id}`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
 
-          <div className="space-y-3">
-            {filteredGoods.length > 0 ? (
-              filteredGoods.map((item) => {
-                const StatusIcon = statusConfig[item.status].icon
-                return (
-                  <div key={item.id} className="bg-white rounded-[16px] p-4 shadow-sm" data-testid={`goods-item-${item.id}`}>
-                    <div className="flex items-start justify-between mb-2">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h3 className="text-[15px] font-bold text-[#191F28] line-clamp-1">{item.name}</h3>
-                        </div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-[11px] px-2 py-0.5 bg-[#F2F4F6] text-[#8B95A1] rounded">
-                            {item.category}
-                          </span>
-                          {item.forWhom && (
-                            <span className="text-[11px] text-[#8B95A1]">
-                              {forWhomLabels[item.forWhom]}
+            <div className="flex gap-2 flex-wrap mb-3">
+              {(["all", "wishlist", "purchased", "received"] as const).map((status) => (
+                <button
+                  key={status}
+                  onClick={() => setActiveStatus(status)}
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-medium transition-colors ${
+                    activeStatus === status
+                      ? "bg-[#191F28] text-white"
+                      : "bg-[#F2F4F6] text-[#8B95A1]"
+                  }`}
+                  data-testid={`filter-status-${status}`}
+                >
+                  {status === "all" ? "전체" : statusConfig[status].label}
+                </button>
+              ))}
+            </div>
+
+            <div className="space-y-3">
+              {filteredGoods.length > 0 ? (
+                filteredGoods.map((item) => {
+                  const StatusIcon = statusConfig[item.status].icon
+                  return (
+                    <div key={item.id} className="bg-white rounded-[16px] p-4 shadow-sm" data-testid={`goods-item-${item.id}`}>
+                      <div className="flex items-start justify-between mb-2">
+                        <div className="flex-1">
+                          <h3 className="text-[14px] font-bold text-[#191F28] line-clamp-1 mb-1">{item.name}</h3>
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-[11px] px-2 py-0.5 bg-[#F2F4F6] text-[#8B95A1] rounded">
+                              {item.category}
                             </span>
+                            {item.forWhom && (
+                              <span className="text-[11px] text-[#8B95A1]">
+                                {forWhomLabels[item.forWhom]}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <span className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium ${statusConfig[item.status].bg} ${statusConfig[item.status].text}`}>
+                          <StatusIcon className="w-3 h-3" />
+                          {statusConfig[item.status].label}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between mt-2">
+                        <p className="text-[16px] font-bold text-[#191F28]">
+                          {item.price.toLocaleString()}원
+                        </p>
+                        <div className="flex items-center gap-2">
+                          {item.status === "wishlist" && (
+                            <button
+                              onClick={() => updateStatus(item.id, "purchased")}
+                              className="px-3 py-1.5 bg-[#3182F6] text-white text-[11px] font-medium rounded-[8px]"
+                              data-testid={`button-purchase-${item.id}`}
+                            >
+                              구매완료
+                            </button>
                           )}
+                          <button
+                            onClick={() => deleteItem(item.id)}
+                            className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-[#F2F4F6]"
+                            data-testid={`button-delete-${item.id}`}
+                          >
+                            <Trash2 className="w-3.5 h-3.5 text-[#B0B8C1]" />
+                          </button>
                         </div>
                       </div>
-                      <span className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-medium ${statusConfig[item.status].bg} ${statusConfig[item.status].text}`}>
-                        <StatusIcon className="w-3 h-3" />
-                        {statusConfig[item.status].label}
-                      </span>
+                      {item.notes && (
+                        <p className="mt-2 pt-2 border-t border-[#F2F4F6] text-[12px] text-[#8B95A1]">
+                          {item.notes}
+                        </p>
+                      )}
                     </div>
-
-                    <div className="flex items-center justify-between mt-3">
-                      <p className="text-[18px] font-bold text-[#191F28]">
-                        {item.price.toLocaleString()}원
-                      </p>
-                      <div className="flex items-center gap-2">
-                        {item.status === "wishlist" && (
-                          <button
-                            onClick={() => updateStatus(item.id, "purchased")}
-                            className="px-3 py-1.5 bg-[#3182F6] text-white text-[12px] font-medium rounded-[8px]"
-                            data-testid={`button-purchase-${item.id}`}
-                          >
-                            구매완료
-                          </button>
-                        )}
-                        <button
-                          onClick={() => deleteItem(item.id)}
-                          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#F2F4F6]"
-                          data-testid={`button-delete-${item.id}`}
-                        >
-                          <Trash2 className="w-4 h-4 text-[#B0B8C1]" />
-                        </button>
-                      </div>
-                    </div>
-
-                    {item.notes && (
-                      <p className="mt-2 pt-2 border-t border-[#F2F4F6] text-[12px] text-[#8B95A1]">
-                        {item.notes}
-                      </p>
-                    )}
-                  </div>
-                )
-              })
-            ) : (
-              <div className="bg-white rounded-[16px] p-8 text-center">
-                <ShoppingBag className="w-12 h-12 text-[#E5E8EB] mx-auto mb-3" />
-                <p className="text-[14px] text-[#8B95A1]">등록된 굿즈가 없습니다</p>
-              </div>
-            )}
+                  )
+                })
+              ) : (
+                <div className="bg-white rounded-[16px] p-6 text-center">
+                  <ShoppingBag className="w-10 h-10 text-[#E5E8EB] mx-auto mb-2" />
+                  <p className="text-[13px] text-[#8B95A1]">등록된 굿즈가 없습니다</p>
+                </div>
+              )}
+            </div>
           </div>
         </main>
       ) : (
@@ -822,6 +1059,109 @@ export default function GoodsPage() {
             </div>
 
             <div className="h-8" />
+          </div>
+        </div>
+      )}
+
+      {showVerifyModal && (
+        <div className="fixed inset-0 z-[60] bg-black/50 flex items-end">
+          <div className="w-full bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300">
+            <div className="flex justify-center pt-3 pb-2">
+              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
+            </div>
+
+            <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
+              <button onClick={() => setShowVerifyModal(false)} data-testid="button-close-verify">
+                <X className="w-6 h-6 text-[#8B95A1]" />
+              </button>
+              <h3 className="text-[17px] font-bold text-[#191F28]">구매 인증</h3>
+              <div className="w-6" />
+            </div>
+
+            <div className="px-5 py-5 space-y-5 max-h-[70vh] overflow-y-auto">
+              <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-[16px] p-4 text-center">
+                <Crown className="w-8 h-8 text-orange-400 mx-auto mb-2" />
+                <p className="text-[15px] font-bold text-[#191F28] mb-1">구매 인증으로 프리미엄 혜택 받기</p>
+                <p className="text-[12px] text-[#8B95A1]">혼수/답례품 구매 영수증을 인증하면<br />7,900원 프리미엄 청첩장이 무료!</p>
+              </div>
+
+              <div>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">영수증 / 주문 캡처 (선택)</label>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleReceiptUpload}
+                  accept="image/*"
+                  className="hidden"
+                  data-testid="input-receipt-file"
+                />
+                {receiptPreview ? (
+                  <div className="relative">
+                    <img src={receiptPreview} alt="영수증" className="w-full h-48 object-cover rounded-[12px]" />
+                    <button
+                      onClick={() => { setReceiptFile(null); setReceiptPreview(null) }}
+                      className="absolute top-2 right-2 w-7 h-7 bg-black/60 rounded-full flex items-center justify-center"
+                    >
+                      <X className="w-4 h-4 text-white" />
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => fileInputRef.current?.click()}
+                    className="w-full h-36 border-2 border-dashed border-[#E5E8EB] rounded-[12px] flex flex-col items-center justify-center gap-2 hover:border-[#B0B8C1] transition-colors"
+                    data-testid="button-upload-receipt"
+                  >
+                    <Upload className="w-8 h-8 text-[#B0B8C1]" />
+                    <span className="text-[13px] text-[#8B95A1]">이미지를 업로드하세요</span>
+                  </button>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">주문번호 / 메모 *</label>
+                <input
+                  type="text"
+                  value={orderNumber}
+                  onChange={(e) => setOrderNumber(e.target.value)}
+                  placeholder="주문번호 또는 구매 관련 메모"
+                  className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-orange-300"
+                  data-testid="input-order-number"
+                />
+              </div>
+
+              <button
+                onClick={handleVerify}
+                disabled={verifying || !orderNumber.trim()}
+                className={`w-full py-4 rounded-[14px] text-[16px] font-bold transition-all flex items-center justify-center gap-2 ${
+                  orderNumber.trim() && !verifying
+                    ? "bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg"
+                    : "bg-[#E5E8EB] text-[#B0B8C1]"
+                }`}
+                data-testid="button-submit-verify"
+              >
+                {verifying ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    인증 중...
+                  </>
+                ) : (
+                  <>
+                    <Award className="w-5 h-5" />
+                    인증하기
+                  </>
+                )}
+              </button>
+            </div>
+
+            <div className="h-8" />
+          </div>
+        </div>
+      )}
+
+      {toastMessage && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-[70] max-w-sm w-[calc(100%-2.5rem)] animate-in fade-in slide-in-from-top-2 duration-300">
+          <div className="bg-[#191F28] text-white px-5 py-3.5 rounded-[14px] text-[14px] font-medium text-center shadow-xl" data-testid="toast-message">
+            {toastMessage}
           </div>
         </div>
       )}
