@@ -1,5 +1,6 @@
 import { handleAppleCallback } from "@/lib/social-auth";
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 export async function POST(request: NextRequest) {
   const baseUrl = process.env.REPLIT_DOMAINS
@@ -11,6 +12,14 @@ export async function POST(request: NextRequest) {
     const result = await handleAppleCallback(formData);
 
     if (result.success) {
+      const cookieStore = await cookies();
+      const inviteCode = cookieStore.get("pending_invite_code")?.value;
+
+      if (inviteCode) {
+        cookieStore.delete("pending_invite_code");
+        return NextResponse.redirect(new URL(`/invite-welcome?code=${inviteCode}`, baseUrl), { status: 303 });
+      }
+
       return NextResponse.redirect(new URL("/splash", baseUrl), { status: 303 });
     } else {
       console.error("Apple callback failed:", result.error);

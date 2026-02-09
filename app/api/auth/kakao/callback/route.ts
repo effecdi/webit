@@ -1,5 +1,6 @@
 import { handleKakaoCallback } from "@/lib/social-auth";
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 export async function GET(request: NextRequest) {
   const baseUrl = process.env.REPLIT_DOMAINS
@@ -18,6 +19,14 @@ export async function GET(request: NextRequest) {
     const result = await handleKakaoCallback(code, state);
 
     if (result.success) {
+      const cookieStore = await cookies();
+      const inviteCode = cookieStore.get("pending_invite_code")?.value;
+
+      if (inviteCode) {
+        cookieStore.delete("pending_invite_code");
+        return NextResponse.redirect(new URL(`/invite-welcome?code=${inviteCode}`, baseUrl));
+      }
+
       return NextResponse.redirect(new URL("/splash", baseUrl));
     } else {
       console.error("Kakao callback failed:", result.error);

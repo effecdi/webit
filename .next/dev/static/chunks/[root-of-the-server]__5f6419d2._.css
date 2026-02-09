@@ -5488,6 +5488,10 @@
     border-top-color: #191f28;
   }
 
+  .border-t-blue-500 {
+    border-top-color: var(--color-blue-500);
+  }
+
   .border-t-pink-400 {
     border-top-color: var(--color-pink-400);
   }

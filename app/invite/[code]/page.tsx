@@ -191,7 +191,7 @@ export default function InvitePage({ params }: { params: Promise<{ code: string 
           </p>
 
           <Link
-            href="/api/login"
+            href={`/api/invite/set-cookie?code=${code}`}
             className={`w-full py-4 ${config.buttonBg} text-white font-bold rounded-[14px] transition-all flex items-center justify-center gap-2 text-[15px]`}
             data-testid="link-accept-invite"
           >

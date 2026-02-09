@@ -1,15 +1,9 @@
 {
   "app": {
-    "[project]/app/dating/page": [
+    "[project]/app/invite/[code]/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
     "[project]/app/page": [
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
-    ],
-    "[project]/app/wedding/page": [
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
-    ],
-    "[project]/app/wedding/profile/page": [
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ]
   },

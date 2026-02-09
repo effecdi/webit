@@ -36,6 +36,16 @@ The app supports **system-level dark/light mode** via `next-themes` with `defaul
 ### Invitation Layout Architecture
 The invitation editor utilizes a `LayoutRenderer` pattern, allowing the dynamic rendering of nine unique invitation layout sub-components (e.g., Cinematic, Modern, Classic, Magazine, Polaroid, Chat, Traditional, Garden, Gallery). Each layout provides a complete JSX structure for all invitation sections, with shared state and logic extracted into a `usePreviewState` hook.
 
+### Partner Invitation Flow
+- Inviter creates invite via profile page → generates unique `inviteCode` stored in `coupleInvites` table with inviter's mode
+- Invite link shared via KakaoTalk or URL copy: `/invite/{code}`
+- Recipient visits link → sees invite landing page → clicks "초대 수락하기"
+- Click goes to `/api/invite/set-cookie?code=xxx` which sets `pending_invite_code` cookie and redirects to `/login`
+- After login (Kakao/Google/dev), auth callback checks for cookie → redirects to `/invite-welcome?code=xxx` instead of `/splash`
+- `/invite-welcome` page calls `/api/couple-invite/accept` to accept invite, sets localStorage (selected_mode, survey_myName, survey_partnerName), shows welcome splash, then redirects to correct mode
+- Cookie is cleared after acceptance to prevent repeat redirects
+- All auth callbacks (Replit OIDC, Kakao, Google, Apple) support the invite flow
+
 ### Invitation Sharing System
 - Each invitation has a unique `shareId` (hex string) stored in the `invitations` table
 - Shared invitations are accessible at `/s/{shareId}` without authentication

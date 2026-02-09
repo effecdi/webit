@@ -32,6 +32,12 @@ function SplashPage() {
                 router.push("/login");
                 return;
             }
+            const inviteCookieMatch = document.cookie.match(/(?:^|;\s*)pending_invite_code=([^;]*)/);
+            if (inviteCookieMatch) {
+                const inviteCode = decodeURIComponent(inviteCookieMatch[1]);
+                router.push(`/invite-welcome?code=${inviteCode}`);
+                return;
+            }
             const hasCompletedSurvey = localStorage.getItem("survey_myName");
             const selectedMode = localStorage.getItem("selected_mode");
             if (user?.firstName && !hasCompletedSurvey) {
@@ -87,7 +93,7 @@ function SplashPage() {
                     children: "WE:VE"
                 }, void 0, false, {
                     fileName: "[project]/app/splash/page.tsx",
-                    lineNumber: 84,
+                    lineNumber: 91,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -95,7 +101,7 @@ function SplashPage() {
                     children: "Our Every Moment Together"
                 }, void 0, false, {
                     fileName: "[project]/app/splash/page.tsx",
-                    lineNumber: 87,
+                    lineNumber: 94,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -104,23 +110,23 @@ function SplashPage() {
                         className: "w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin"
                     }, void 0, false, {
                         fileName: "[project]/app/splash/page.tsx",
-                        lineNumber: 92,
+                        lineNumber: 99,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/splash/page.tsx",
-                    lineNumber: 91,
+                    lineNumber: 98,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/splash/page.tsx",
-            lineNumber: 79,
+            lineNumber: 86,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/splash/page.tsx",
-        lineNumber: 74,
+        lineNumber: 81,
         columnNumber: 5
     }, this);
 }

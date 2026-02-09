@@ -26,6 +26,13 @@ export default function SplashPage() {
         return
       }
 
+      const inviteCookieMatch = document.cookie.match(/(?:^|;\s*)pending_invite_code=([^;]*)/)
+      if (inviteCookieMatch) {
+        const inviteCode = decodeURIComponent(inviteCookieMatch[1])
+        router.push(`/invite-welcome?code=${inviteCode}`)
+        return
+      }
+
       const hasCompletedSurvey = localStorage.getItem("survey_myName")
       const selectedMode = localStorage.getItem("selected_mode")
 

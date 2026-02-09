@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Heart, Check, ChevronRight, ChevronDown } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
 
@@ -32,6 +32,12 @@ const CONSENT_ITEMS = [
   },
 ]
 
+function getInviteCode(): string | null {
+  if (typeof document === "undefined") return null;
+  const match = document.cookie.match(/(?:^|;\s*)pending_invite_code=([^;]*)/)
+  return match ? decodeURIComponent(match[1]) : null
+}
+
 export default function LoginPage() {
   const router = useRouter()
   const { isAuthenticated, isLoading } = useAuth()
@@ -48,7 +54,12 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
-      router.push("/splash")
+      const inviteCode = getInviteCode()
+      if (inviteCode) {
+        router.push(`/invite-welcome?code=${inviteCode}`)
+      } else {
+        router.push("/splash")
+      }
     }
   }, [isLoading, isAuthenticated, router])
 
@@ -96,7 +107,12 @@ export default function LoginPage() {
     try {
       const res = await fetch("/api/auth/dev-login", { method: "POST" })
       if (res.ok) {
-        router.push("/splash")
+        const inviteCode = getInviteCode()
+        if (inviteCode) {
+          router.push(`/invite-welcome?code=${inviteCode}`)
+        } else {
+          router.push("/splash")
+        }
       }
     } catch {
       setLoadingProvider(null)
