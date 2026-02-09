@@ -19,25 +19,25 @@ export function DatingBottomNav() {
   const pathname = usePathname()
 
   return (
-    <div className="fixed bottom-4 left-3 right-3 z-50 max-w-md mx-auto">
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-24px)] max-w-[calc(448px-24px)]">
       <LiquidGlass
-        displacementScale={40}
-        blurAmount={0.6}
-        saturation={120}
-        aberrationIntensity={1}
-        elasticity={0.15}
-        cornerRadius={24}
-        overLight={false}
+        displacementScale={30}
+        blurAmount={0.4}
+        saturation={130}
+        aberrationIntensity={0.8}
+        elasticity={0.12}
+        cornerRadius={22}
+        overLight={true}
       >
         <nav
           className="relative flex justify-around items-center px-2 py-2"
           style={{
-            background: "rgba(20, 20, 25, 0.75)",
-            borderRadius: "24px",
-            backdropFilter: "blur(20px) saturate(180%)",
-            WebkitBackdropFilter: "blur(20px) saturate(180%)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05)",
+            background: "rgba(255, 255, 255, 0.72)",
+            borderRadius: "22px",
+            backdropFilter: "blur(24px) saturate(180%)",
+            WebkitBackdropFilter: "blur(24px) saturate(180%)",
+            border: "1px solid rgba(0,0,0,0.06)",
+            boxShadow: "0 4px 24px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04)",
           }}
         >
           {navItems.map((item) => {
@@ -51,7 +51,7 @@ export function DatingBottomNav() {
                 data-testid={`nav-dating-${item.label}`}
                 className="flex flex-col items-center gap-0.5 py-1.5 px-3 rounded-2xl transition-all duration-300 relative"
                 style={isActive ? {
-                  background: "rgba(236, 72, 153, 0.2)",
+                  background: "rgba(236, 72, 153, 0.1)",
                 } : {}}
               >
                 {isActive && (
@@ -63,14 +63,14 @@ export function DatingBottomNav() {
                 <Icon
                   className="w-5 h-5 transition-all duration-300"
                   style={{
-                    color: isActive ? "#EC4899" : "rgba(255,255,255,0.45)",
+                    color: isActive ? "#EC4899" : "#8B95A1",
                   }}
                   strokeWidth={isActive ? 2.2 : 1.5}
                 />
                 <span
                   className="text-[10px] font-medium transition-all duration-300"
                   style={{
-                    color: isActive ? "#EC4899" : "rgba(255,255,255,0.45)",
+                    color: isActive ? "#EC4899" : "#8B95A1",
                   }}
                 >
                   {item.label}
