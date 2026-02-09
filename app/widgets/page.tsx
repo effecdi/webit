@@ -6,8 +6,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { FloatingBackButton } from "@/components/shared/floating-back-button"
 import { 
   ArrowLeft, Heart, Calendar, Sparkles, CheckSquare, 
-  MessageCircle, Wallet, Crown, Check, Lock, 
-  Smartphone, X, Zap
+  MessageCircle, Gift, Image as ImageIcon, Crown, Check, Lock, 
+  Smartphone, X, Zap, Camera
 } from "lucide-react"
 import Image from "next/image"
 import splashLogo from "@/attached_assets/webeat.logo_1770644808504.png"
@@ -198,32 +198,67 @@ function TodoWidgetPreview() {
   )
 }
 
-function ExpenseWidgetPreview() {
+function AnniversaryWidgetPreview() {
   return (
     <div className="bg-gradient-to-br from-[#1e0533] to-[#0d001a] rounded-[20px] p-4 border border-[#d63bf2]/20">
       <div className="flex items-center gap-2 mb-2">
-        <Wallet className="w-4 h-4 text-[#d63bf2]" />
-        <span className="text-white/60 text-[10px]">커플 가계부</span>
+        <Gift className="w-4 h-4 text-[#d63bf2]" />
+        <span className="text-white/60 text-[10px]">기념일 리마인더</span>
       </div>
-      <div className="text-center my-2">
-        <p className="text-white/40 text-[9px]">이번 달 지출</p>
-        <p className="text-white text-[18px] font-bold">284,500<span className="text-[10px] text-white/40">원</span></p>
+      <div className="space-y-2.5 mt-2">
+        <div className="flex items-center justify-between bg-white/5 rounded-[10px] p-2">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-[#d63bf2]/30 flex items-center justify-center">
+              <Heart className="w-3 h-3 text-[#d63bf2] fill-[#d63bf2]" />
+            </div>
+            <span className="text-white text-[10px] font-medium">200일</span>
+          </div>
+          <span className="text-[#d63bf2] text-[10px] font-bold">D-12</span>
+        </div>
+        <div className="flex items-center justify-between bg-white/5 rounded-[10px] p-2">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-pink-500/30 flex items-center justify-center">
+              <Gift className="w-3 h-3 text-pink-400" />
+            </div>
+            <span className="text-white text-[10px] font-medium">생일</span>
+          </div>
+          <span className="text-pink-400 text-[10px] font-bold">D-28</span>
+        </div>
+        <div className="flex items-center justify-between bg-white/5 rounded-[10px] p-2">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-amber-500/30 flex items-center justify-center">
+              <Sparkles className="w-3 h-3 text-amber-400" />
+            </div>
+            <span className="text-white text-[10px] font-medium">1주년</span>
+          </div>
+          <span className="text-amber-400 text-[10px] font-bold">D-45</span>
+        </div>
       </div>
-      <div className="space-y-1.5">
-        <div className="flex items-center justify-between">
-          <span className="text-white/60 text-[9px]">식비</span>
-          <div className="flex-1 mx-2 h-[3px] bg-white/10 rounded-full overflow-hidden">
-            <div className="w-[65%] h-full bg-[#d63bf2] rounded-full" />
-          </div>
-          <span className="text-white/40 text-[8px]">65%</span>
+    </div>
+  )
+}
+
+function PhotoSlideWidgetPreview() {
+  return (
+    <div className="bg-gradient-to-br from-[#0d1b2a] to-[#1b2838] rounded-[20px] p-4 border border-[#d63bf2]/20">
+      <div className="flex items-center gap-2 mb-3">
+        <Camera className="w-4 h-4 text-[#d63bf2]" />
+        <span className="text-white/60 text-[10px]">포토 슬라이드</span>
+      </div>
+      <div className="relative w-full aspect-[4/3] rounded-[12px] overflow-hidden bg-gradient-to-br from-[#d63bf2]/40 to-purple-900/60 flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="flex items-center gap-2">
+          <ImageIcon className="w-8 h-8 text-white/40" />
         </div>
-        <div className="flex items-center justify-between">
-          <span className="text-white/60 text-[9px]">데이트</span>
-          <div className="flex-1 mx-2 h-[3px] bg-white/10 rounded-full overflow-hidden">
-            <div className="w-[25%] h-full bg-pink-400 rounded-full" />
-          </div>
-          <span className="text-white/40 text-[8px]">25%</span>
+        <div className="absolute bottom-2 left-2 right-2">
+          <p className="text-white text-[10px] font-medium">우리의 소중한 순간들</p>
+          <p className="text-white/40 text-[8px]">갤러리에서 자동 회전</p>
         </div>
+      </div>
+      <div className="flex items-center justify-center gap-1 mt-2">
+        <div className="w-1.5 h-1.5 rounded-full bg-[#d63bf2]" />
+        <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+        <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
       </div>
     </div>
   )
@@ -249,6 +284,15 @@ const WIDGET_DATA: WidgetType[] = [
     previewComponent: <CalendarWidgetPreview />,
   },
   {
+    id: "todo",
+    name: "할 일 위젯",
+    description: "커플 할 일 목록을 한눈에 확인",
+    icon: CheckSquare,
+    isPremium: false,
+    category: "basic",
+    previewComponent: <TodoWidgetPreview />,
+  },
+  {
     id: "mood_sync",
     name: "무드 싱크 위젯",
     description: "실시간 감정 공유 & 궁합도 표시",
@@ -267,22 +311,22 @@ const WIDGET_DATA: WidgetType[] = [
     previewComponent: <LoveLetterWidgetPreview />,
   },
   {
-    id: "todo",
-    name: "할 일 위젯",
-    description: "커플 할 일 목록을 한눈에 확인",
-    icon: CheckSquare,
+    id: "anniversary",
+    name: "기념일 리마인더 위젯",
+    description: "100일, 200일, 1주년 등 다가오는 기념일 자동 알림",
+    icon: Gift,
     isPremium: true,
     category: "premium",
-    previewComponent: <TodoWidgetPreview />,
+    previewComponent: <AnniversaryWidgetPreview />,
   },
   {
-    id: "expense",
-    name: "가계부 위젯",
-    description: "이번 달 커플 지출 현황 요약",
-    icon: Wallet,
+    id: "photo_slide",
+    name: "포토 슬라이드 위젯",
+    description: "커플 갤러리 사진을 자동으로 회전 감상",
+    icon: Camera,
     isPremium: true,
     category: "premium",
-    previewComponent: <ExpenseWidgetPreview />,
+    previewComponent: <PhotoSlideWidgetPreview />,
   },
 ]
 
@@ -494,7 +538,7 @@ export default function WidgetStorePage() {
                 <span className="text-white/90 text-[14px] font-bold">프리미엄 구독</span>
               </div>
               <p className="text-white/70 text-[13px] mb-4 leading-relaxed">
-                프리미엄 위젯 4종 + 커플 통계 + 고급 캘린더를 한번에 이용하세요
+                무드싱크, 러브레터, 기념일 리마인더, 포토 슬라이드 위젯을 모두 이용하세요
               </p>
               <button
                 onClick={handlePremiumSubscribe}
