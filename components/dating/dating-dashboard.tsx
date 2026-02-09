@@ -878,7 +878,17 @@ export function DatingDashboard() {
           )}
 
           {isLoading ? (
-            <div className="py-8 text-center text-[#8B95A1]">로딩 중...</div>
+            <div className="space-y-3 py-2">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="flex items-center gap-3 animate-pulse">
+                  <div className="w-6 h-6 rounded-full bg-[#E5E8EB] dark:bg-[#2a2a2a] flex-shrink-0" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-3/4" />
+                  </div>
+                  <div className="h-5 w-8 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-full" />
+                </div>
+              ))}
+            </div>
           ) : todos.length === 0 ? (
             <div className="py-8 text-center">
               <p className="text-[#8B95A1] text-[14px]">아직 할 일이 없어요</p>

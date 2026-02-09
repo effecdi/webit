@@ -333,7 +333,17 @@ export function CoupleCalendar() {
           </h3>
 
           {isLoading ? (
-            <div className="py-8 text-center text-[#8B95A1]">로딩 중...</div>
+            <div className="space-y-3 py-2 animate-pulse">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-[14px] bg-[#E5E8EB] dark:bg-[#2a2a2a] flex-shrink-0" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-2/3" />
+                    <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-1/3" />
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : schedules.length === 0 ? (
             <div className="py-8 text-center">
               <p className="text-[#8B95A1] text-[14px]">등록된 일정이 없어요</p>

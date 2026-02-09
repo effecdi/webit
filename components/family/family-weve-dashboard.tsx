@@ -403,7 +403,17 @@ export function FamilyWeveDashboard() {
           </div>
 
           {isLoading ? (
-            <div className="py-8 text-center text-[#8B95A1]">로딩 중...</div>
+            <div className="space-y-3 py-2">
+              {[1, 2].map(i => (
+                <div key={i} className="flex items-center gap-3 animate-pulse">
+                  <div className="w-12 h-12 rounded-[14px] bg-[#E5E8EB] dark:bg-[#2a2a2a] flex-shrink-0" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-2/3" />
+                    <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-full w-12" />
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : todayEvents.length > 0 ? (
             <div className="space-y-2">
               {todayEvents.map((event) => (
@@ -501,7 +511,17 @@ export function FamilyWeveDashboard() {
           )}
 
           {isLoading ? (
-            <div className="py-8 text-center text-[#8B95A1]">로딩 중...</div>
+            <div className="space-y-3 py-2">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="flex items-center gap-3 animate-pulse">
+                  <div className="w-6 h-6 rounded-full bg-[#E5E8EB] dark:bg-[#2a2a2a] flex-shrink-0" />
+                  <div className="flex-1 space-y-2">
+                    <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-3/4" />
+                  </div>
+                  <div className="h-5 w-8 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-full" />
+                </div>
+              ))}
+            </div>
           ) : todos.length === 0 ? (
             <div className="py-8 text-center">
               <p className="text-[#8B95A1] text-[14px]">아직 할 일이 없어요</p>
@@ -582,7 +602,15 @@ export function FamilyWeveDashboard() {
           </div>
 
           {isLoading ? (
-            <div className="py-4 text-center text-[#8B95A1]">로딩 중...</div>
+            <div className="flex gap-3 pb-2">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="flex-shrink-0 w-36 animate-pulse">
+                  <div className="w-full aspect-square bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-[12px] mb-2" />
+                  <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-2/3 mb-1" />
+                  <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-1/3" />
+                </div>
+              ))}
+            </div>
           ) : recentAlbums.length > 0 ? (
             <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2 -mx-1 px-1">
               {recentAlbums.map((album) => (

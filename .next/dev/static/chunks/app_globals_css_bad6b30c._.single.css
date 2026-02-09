@@ -2810,6 +2810,10 @@
     width: calc(var(--spacing) * 5);
   }
 
+  .w-5\/6 {
+    width: 83.3333%;
+  }
+
   .w-6 {
     width: calc(var(--spacing) * 6);
   }

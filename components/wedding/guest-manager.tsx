@@ -693,7 +693,18 @@ export function GuestManager() {
             </div>
 
             {isLoading ? (
-              <div className="py-12 text-center text-[#8B95A1]">로딩 중...</div>
+              <div className="space-y-3 py-4 animate-pulse">
+                {[1, 2, 3, 4].map(i => (
+                  <div key={i} className="flex items-center gap-3 px-4 py-3">
+                    <div className="w-10 h-10 rounded-full bg-[#E5E8EB] dark:bg-[#2a2a2a] flex-shrink-0" />
+                    <div className="flex-1 space-y-2">
+                      <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-1/3" />
+                      <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-1/2" />
+                    </div>
+                    <div className="h-5 w-12 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-full" />
+                  </div>
+                ))}
+              </div>
             ) : filteredGuests.length === 0 ? (
               <div className="py-12 text-center">
                 <Users className="w-10 h-10 text-[#D1D6DB] mx-auto mb-3" />

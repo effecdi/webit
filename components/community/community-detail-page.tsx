@@ -233,19 +233,39 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#F2F4F6] pb-36">
-        <header className="bg-white px-5 py-4 sticky top-0 z-40">
+      <div className="min-h-screen bg-[#F2F4F6] dark:bg-[#0a0a0a] pb-36">
+        <header className="bg-white dark:bg-[#111] px-5 py-4 sticky top-0 z-40">
           <div className="flex items-center gap-3 max-w-md mx-auto">
-            <div className="h-5 bg-[#E5E8EB] rounded w-24 animate-pulse" />
+            <div className="h-5 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded w-24 animate-pulse" />
           </div>
         </header>
-        <main className="px-5 py-5 max-w-md mx-auto">
-          <div className="bg-white rounded-[16px] p-5 animate-pulse">
-            <div className="h-4 bg-[#F2F4F6] rounded w-1/4 mb-4" />
-            <div className="h-6 bg-[#F2F4F6] rounded w-3/4 mb-3" />
-            <div className="h-4 bg-[#F2F4F6] rounded w-full mb-2" />
-            <div className="h-4 bg-[#F2F4F6] rounded w-full mb-2" />
-            <div className="h-4 bg-[#F2F4F6] rounded w-2/3" />
+        <main className="px-5 py-5 max-w-md mx-auto space-y-4">
+          <div className="bg-white dark:bg-[#1a1a1a] rounded-[16px] p-5 animate-pulse">
+            <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-full w-16 mb-4" />
+            <div className="h-6 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-3/4 mb-4" />
+            <div className="flex items-center gap-2 mb-5">
+              <div className="w-6 h-6 rounded-full bg-[#E5E8EB] dark:bg-[#2a2a2a]" />
+              <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-16" />
+              <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-12" />
+            </div>
+            <div className="space-y-2.5">
+              <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-full" />
+              <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-full" />
+              <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-5/6" />
+              <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-2/3" />
+            </div>
+          </div>
+          <div className="bg-white dark:bg-[#1a1a1a] rounded-[16px] p-5 animate-pulse">
+            <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-20 mb-4" />
+            {[1, 2].map(i => (
+              <div key={i} className="flex items-start gap-3 mb-4">
+                <div className="w-8 h-8 rounded-full bg-[#E5E8EB] dark:bg-[#2a2a2a] flex-shrink-0" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-3 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-24" />
+                  <div className="h-4 bg-[#E5E8EB] dark:bg-[#2a2a2a] rounded-md w-full" />
+                </div>
+              </div>
+            ))}
           </div>
         </main>
         {config.bottomNav}
