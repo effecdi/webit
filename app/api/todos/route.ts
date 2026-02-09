@@ -3,11 +3,13 @@ import { db } from '@/db';
 import { todos, todoComments } from '@/db/schema';
 import { eq, and, desc, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET(request: NextRequest) {
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
   const searchParams = request.nextUrl.searchParams;
   const mode = searchParams.get('mode') || 'dating';
 
@@ -17,7 +19,7 @@ export async function GET(request: NextRequest) {
       : eq(todos.mode, mode);
 
     const result = await db.select().from(todos)
-      .where(and(eq(todos.userId, userId), modeFilter))
+      .where(and(inArray(todos.userId, coupleUserIds), modeFilter))
       .orderBy(desc(todos.createdAt));
 
     const todosWithComments = await Promise.all(

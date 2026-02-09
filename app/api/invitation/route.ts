@@ -1,17 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { weddingInfo } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET() {
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
 
   try {
     const result = await db.select().from(weddingInfo)
-      .where(eq(weddingInfo.userId, userId))
+      .where(inArray(weddingInfo.userId, coupleUserIds))
       .limit(1);
 
     if (result.length === 0 || !result[0].invitationData) {
@@ -31,16 +33,17 @@ export async function PUT(request: NextRequest) {
     const auth = await requireAuth();
     if (isUnauthorized(auth)) return auth;
     const userId = auth.userId;
+    const coupleUserIds = await getCoupleUserIds(userId);
     const { invitationData } = body;
 
     const existing = await db.select().from(weddingInfo)
-      .where(eq(weddingInfo.userId, userId))
+      .where(inArray(weddingInfo.userId, coupleUserIds))
       .limit(1);
 
     if (existing.length > 0) {
       const [updated] = await db.update(weddingInfo)
         .set({ invitationData })
-        .where(eq(weddingInfo.userId, userId))
+        .where(eq(weddingInfo.id, existing[0].id))
         .returning();
       return NextResponse.json(updated);
     } else {

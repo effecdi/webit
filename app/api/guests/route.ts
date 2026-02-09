@@ -1,17 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { guests } from '@/db/schema';
-import { eq, and, desc } from 'drizzle-orm';
+import { eq, desc, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET() {
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
 
   try {
     const result = await db.select().from(guests)
-      .where(eq(guests.userId, userId))
+      .where(inArray(guests.userId, coupleUserIds))
       .orderBy(desc(guests.createdAt));
     return NextResponse.json(result);
   } catch (error) {

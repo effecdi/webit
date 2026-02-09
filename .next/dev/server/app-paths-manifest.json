@@ -1,18 +1,5 @@
 {
-  "/api/auth/user/route": "app/api/auth/user/route.js",
-  "/api/checklist/route": "app/api/checklist/route.js",
-  "/api/couple-invite/accept/route": "app/api/couple-invite/accept/route.js",
-  "/api/couple-invite/route": "app/api/couple-invite/route.js",
-  "/api/events/route": "app/api/events/route.js",
-  "/api/expenses/route": "app/api/expenses/route.js",
-  "/api/invitations/route": "app/api/invitations/route.js",
-  "/api/mood/route": "app/api/mood/route.js",
-  "/api/notifications/route": "app/api/notifications/route.js",
-  "/api/photos/route": "app/api/photos/route.js",
-  "/api/todos/route": "app/api/todos/route.js",
-  "/api/travels/route": "app/api/travels/route.js",
   "/dating/page": "app/dating/page.js",
   "/invite-welcome/page": "app/invite-welcome/page.js",
-  "/page": "app/page.js",
-  "/wedding/profile/page": "app/wedding/profile/page.js"
+  "/page": "app/page.js"
 }

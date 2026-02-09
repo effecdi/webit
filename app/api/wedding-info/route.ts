@@ -1,16 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { weddingInfo } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET() {
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
 
   try {
-    const result = await db.select().from(weddingInfo).where(eq(weddingInfo.userId, userId));
+    const result = await db.select().from(weddingInfo).where(inArray(weddingInfo.userId, coupleUserIds));
     if (result.length > 0) {
       return NextResponse.json(result[0]);
     }
@@ -27,14 +29,15 @@ export async function POST(request: NextRequest) {
     const auth = await requireAuth();
     if (isUnauthorized(auth)) return auth;
     const userId = auth.userId;
+    const coupleUserIds = await getCoupleUserIds(userId);
     const { weddingDate, weddingTime, venue, expectedGuests, groomGuests, brideGuests, mealCostAdult, mealCostChild } = body;
 
-    const existing = await db.select().from(weddingInfo).where(eq(weddingInfo.userId, userId));
+    const existing = await db.select().from(weddingInfo).where(inArray(weddingInfo.userId, coupleUserIds));
     
     if (existing.length > 0) {
       const [updated] = await db.update(weddingInfo)
         .set({ weddingDate, weddingTime, venue, expectedGuests, groomGuests, brideGuests, mealCostAdult, mealCostChild })
-        .where(eq(weddingInfo.userId, userId))
+        .where(eq(weddingInfo.id, existing[0].id))
         .returning();
       return NextResponse.json(updated);
     }
@@ -56,9 +59,10 @@ export async function PATCH(request: NextRequest) {
     const auth = await requireAuth();
     if (isUnauthorized(auth)) return auth;
     const userId = auth.userId;
+    const coupleUserIds = await getCoupleUserIds(userId);
     const { userId: _uid, incrementInvitationCount, ...updates } = body;
 
-    const existing = await db.select().from(weddingInfo).where(eq(weddingInfo.userId, userId));
+    const existing = await db.select().from(weddingInfo).where(inArray(weddingInfo.userId, coupleUserIds));
 
     if (existing.length === 0) {
       const initialValues: any = { userId, ...updates };
@@ -76,7 +80,7 @@ export async function PATCH(request: NextRequest) {
 
     const [updated] = await db.update(weddingInfo)
       .set(updates)
-      .where(eq(weddingInfo.userId, userId))
+      .where(eq(weddingInfo.id, existing[0].id))
       .returning();
 
     return NextResponse.json(updated);

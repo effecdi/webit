@@ -1,28 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { photos } from '@/db/schema';
-import { eq, and, desc } from 'drizzle-orm';
+import { eq, and, desc, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET(request: NextRequest) {
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
   const searchParams = request.nextUrl.searchParams;
   const mode = searchParams.get('mode') || 'dating';
   const albumId = searchParams.get('albumId');
 
   try {
-    let query = db.select().from(photos)
-      .where(and(eq(photos.userId, userId), eq(photos.mode, mode)));
-
+    let query;
     if (albumId) {
       query = db.select().from(photos)
         .where(and(
-          eq(photos.userId, userId),
+          inArray(photos.userId, coupleUserIds),
           eq(photos.mode, mode),
           eq(photos.albumId, parseInt(albumId))
         ));
+    } else {
+      query = db.select().from(photos)
+        .where(and(inArray(photos.userId, coupleUserIds), eq(photos.mode, mode)));
     }
 
     const result = await query.orderBy(desc(photos.createdAt));
@@ -81,7 +84,6 @@ export async function PATCH(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
-    // Support both query param and body for backward compatibility
     const searchParams = request.nextUrl.searchParams;
     let id = searchParams.get('id');
     

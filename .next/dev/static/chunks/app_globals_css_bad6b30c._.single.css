@@ -5052,6 +5052,10 @@
     border-color: #ff8a80;
   }
 
+  .border-\[\#FFD6E7\] {
+    border-color: #ffd6e7;
+  }
+
   .border-\[\#c9a86c\] {
     border-color: #c9a86c;
   }
@@ -5082,6 +5086,10 @@
 
   .border-blue-200 {
     border-color: var(--color-blue-200);
+  }
+
+  .border-blue-300 {
+    border-color: var(--color-blue-300);
   }
 
   .border-blue-400 {
@@ -5564,6 +5572,10 @@
 
   .bg-\[\#FFF0F0\] {
     background-color: #fff0f0;
+  }
+
+  .bg-\[\#FFF0F5\] {
+    background-color: #fff0f5;
   }
 
   .bg-\[\#FFF5F5\] {

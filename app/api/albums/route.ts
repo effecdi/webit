@@ -1,19 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { albums, photos } from '@/db/schema';
-import { eq, and, desc, count } from 'drizzle-orm';
+import { eq, and, desc, count, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET(request: NextRequest) {
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
   const searchParams = request.nextUrl.searchParams;
   const mode = searchParams.get('mode') || 'dating';
   const id = searchParams.get('id');
 
   try {
-    // If ID is specified, return single album
     if (id) {
       const [album] = await db.select().from(albums)
         .where(eq(albums.id, parseInt(id)));
@@ -29,9 +30,8 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ ...album, photoCount: Number(photoCount) });
     }
 
-    // Otherwise return all albums for user/mode
     const result = await db.select().from(albums)
-      .where(and(eq(albums.userId, userId), eq(albums.mode, mode)))
+      .where(and(inArray(albums.userId, coupleUserIds), eq(albums.mode, mode)))
       .orderBy(desc(albums.eventDate));
 
     const albumsWithCount = await Promise.all(
@@ -40,7 +40,6 @@ export async function GET(request: NextRequest) {
           .from(photos)
           .where(eq(photos.albumId, album.id));
         
-        // Get most recent photo as thumbnail
         const [latestPhoto] = await db.select({ url: photos.url })
           .from(photos)
           .where(eq(photos.albumId, album.id))

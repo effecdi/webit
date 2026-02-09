@@ -3,6 +3,7 @@ import { db } from '@/db';
 import { profiles } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getPartnerId } from '@/lib/couple-utils';
 
 export async function GET() {
   const auth = await requireAuth();
@@ -10,18 +11,23 @@ export async function GET() {
   const userId = auth.userId;
 
   try {
-    const [profile] = await db.select({
+    const [myProfile] = await db.select({
       myMood: profiles.myMood,
-      partnerMood: profiles.partnerMood,
     }).from(profiles).where(eq(profiles.userId, userId));
 
-    if (!profile) {
-      return NextResponse.json({ myMood: 'heart', partnerMood: 'heart' });
+    const partnerId = await getPartnerId(userId);
+    let partnerMood = 'heart';
+
+    if (partnerId) {
+      const [partnerProfile] = await db.select({
+        myMood: profiles.myMood,
+      }).from(profiles).where(eq(profiles.userId, partnerId));
+      partnerMood = partnerProfile?.myMood || 'heart';
     }
 
     return NextResponse.json({
-      myMood: profile.myMood || 'heart',
-      partnerMood: profile.partnerMood || 'heart',
+      myMood: myProfile?.myMood || 'heart',
+      partnerMood,
     });
   } catch (error) {
     console.error('Error fetching mood:', error);
@@ -35,30 +41,38 @@ export async function PATCH(request: NextRequest) {
     const auth = await requireAuth();
     if (isUnauthorized(auth)) return auth;
     const userId = auth.userId;
-    const { role, mood } = body;
+    const { mood } = body;
 
-    if (!role || !mood) {
-      return NextResponse.json({ error: 'role and mood are required' }, { status: 400 });
+    if (!mood) {
+      return NextResponse.json({ error: 'mood is required' }, { status: 400 });
     }
 
     const existing = await db.select().from(profiles).where(eq(profiles.userId, userId));
 
-    const updateField = role === 'me' ? { myMood: mood } : { partnerMood: mood };
-
     if (existing.length > 0) {
-      const [updated] = await db.update(profiles)
-        .set(updateField)
-        .where(eq(profiles.userId, userId))
-        .returning({ myMood: profiles.myMood, partnerMood: profiles.partnerMood });
-      return NextResponse.json(updated);
+      await db.update(profiles)
+        .set({ myMood: mood })
+        .where(eq(profiles.userId, userId));
+    } else {
+      await db.insert(profiles).values({
+        userId,
+        myMood: mood,
+      });
     }
 
-    const [newProfile] = await db.insert(profiles).values({
-      userId,
-      ...updateField,
-    }).returning({ myMood: profiles.myMood, partnerMood: profiles.partnerMood });
+    const partnerId = await getPartnerId(userId);
+    let partnerMood = 'heart';
+    if (partnerId) {
+      const [partnerProfile] = await db.select({
+        myMood: profiles.myMood,
+      }).from(profiles).where(eq(profiles.userId, partnerId));
+      partnerMood = partnerProfile?.myMood || 'heart';
+    }
 
-    return NextResponse.json(newProfile);
+    return NextResponse.json({
+      myMood: mood,
+      partnerMood,
+    });
   } catch (error) {
     console.error('Error updating mood:', error);
     return NextResponse.json({ error: 'Failed to update mood' }, { status: 500 });

@@ -1,19 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { expenses } from '@/db/schema';
-import { eq, and, desc } from 'drizzle-orm';
+import { eq, and, desc, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET(request: NextRequest) {
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
   const searchParams = request.nextUrl.searchParams;
   const mode = searchParams.get('mode') || 'wedding';
 
   try {
     const result = await db.select().from(expenses)
-      .where(and(eq(expenses.userId, userId), eq(expenses.mode, mode)))
+      .where(and(inArray(expenses.userId, coupleUserIds), eq(expenses.mode, mode)))
       .orderBy(desc(expenses.date));
 
     return NextResponse.json(result);

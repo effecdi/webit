@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { invitations } from '@/db/schema';
-import { eq, and, desc } from 'drizzle-orm';
+import { eq, desc, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 import crypto from 'crypto';
 
 const FREE_INVITATION_LIMIT = 2;
@@ -15,10 +16,11 @@ export async function GET() {
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
 
   try {
     const result = await db.select().from(invitations)
-      .where(eq(invitations.userId, userId))
+      .where(inArray(invitations.userId, coupleUserIds))
       .orderBy(desc(invitations.createdAt));
 
     return NextResponse.json(result);
@@ -34,9 +36,10 @@ export async function POST(request: NextRequest) {
     const auth = await requireAuth();
     if (isUnauthorized(auth)) return auth;
     const userId = auth.userId;
+    const coupleUserIds = await getCoupleUserIds(userId);
 
     const existing = await db.select().from(invitations)
-      .where(eq(invitations.userId, userId));
+      .where(inArray(invitations.userId, coupleUserIds));
 
     if (existing.length >= FREE_INVITATION_LIMIT) {
       return NextResponse.json(

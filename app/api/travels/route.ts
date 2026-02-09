@@ -1,17 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { travels, travelSchedules } from '@/db/schema';
-import { eq, desc } from 'drizzle-orm';
+import { eq, desc, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET() {
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
 
   try {
     const result = await db.select().from(travels)
-      .where(eq(travels.userId, userId))
+      .where(inArray(travels.userId, coupleUserIds))
       .orderBy(desc(travels.startDate));
 
     const travelsWithSchedules = await Promise.all(

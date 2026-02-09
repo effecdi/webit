@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { weddingInfo } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq, inArray } from 'drizzle-orm';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const userId = searchParams.get('userId') || 'default';
+  const coupleUserIds = await getCoupleUserIds(userId);
 
   try {
     const result = await db.select().from(weddingInfo)
-      .where(eq(weddingInfo.userId, userId))
+      .where(inArray(weddingInfo.userId, coupleUserIds))
       .limit(1);
 
     if (result.length === 0 || !result[0].invitationData) {
@@ -28,9 +30,10 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { userId = 'default', entry } = body;
+    const coupleUserIds = await getCoupleUserIds(userId);
 
     const result = await db.select().from(weddingInfo)
-      .where(eq(weddingInfo.userId, userId))
+      .where(inArray(weddingInfo.userId, coupleUserIds))
       .limit(1);
 
     if (result.length === 0) {
@@ -45,7 +48,7 @@ export async function POST(request: NextRequest) {
       .set({
         invitationData: { ...currentData, guestbookEntries: entries },
       })
-      .where(eq(weddingInfo.userId, userId));
+      .where(eq(weddingInfo.id, result[0].id));
 
     return NextResponse.json({ success: true });
   } catch (error) {

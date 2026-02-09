@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { invitations } from '@/db/schema';
-import { eq, and } from 'drizzle-orm';
+import { eq, and, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
+import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET(
   request: NextRequest,
@@ -11,11 +12,12 @@ export async function GET(
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
   const { id } = await params;
 
   try {
     const result = await db.select().from(invitations)
-      .where(and(eq(invitations.id, parseInt(id)), eq(invitations.userId, userId)))
+      .where(and(eq(invitations.id, parseInt(id)), inArray(invitations.userId, coupleUserIds)))
       .limit(1);
 
     if (result.length === 0) {
@@ -38,6 +40,7 @@ export async function PUT(
     const auth = await requireAuth();
     if (isUnauthorized(auth)) return auth;
     const userId = auth.userId;
+    const coupleUserIds = await getCoupleUserIds(userId);
     const { id } = await params;
 
     const { invitationData, templateId, title } = body;
@@ -49,7 +52,7 @@ export async function PUT(
 
     const [updated] = await db.update(invitations)
       .set(updates)
-      .where(and(eq(invitations.id, parseInt(id)), eq(invitations.userId, userId)))
+      .where(and(eq(invitations.id, parseInt(id)), inArray(invitations.userId, coupleUserIds)))
       .returning();
 
     if (!updated) {
@@ -70,11 +73,12 @@ export async function DELETE(
   const auth = await requireAuth();
   if (isUnauthorized(auth)) return auth;
   const userId = auth.userId;
+  const coupleUserIds = await getCoupleUserIds(userId);
   const { id } = await params;
 
   try {
     const [deleted] = await db.delete(invitations)
-      .where(and(eq(invitations.id, parseInt(id)), eq(invitations.userId, userId)))
+      .where(and(eq(invitations.id, parseInt(id)), inArray(invitations.userId, coupleUserIds)))
       .returning();
 
     if (!deleted) {
