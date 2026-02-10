@@ -2624,7 +2624,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         style: {
                             color: rosyBrown
                         },
-                        children: "MADE WITH WE:VE"
+                        children: "MADE WITH WE:BEAT"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
                         lineNumber: 867,

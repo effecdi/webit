@@ -2564,7 +2564,7 @@ function TraditionalLayout({ data, state, helpers, onRsvpClick }) {
                         style: {
                             color: accent
                         },
-                        children: "MADE WITH WE:VE"
+                        children: "MADE WITH WE:BEAT"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/TraditionalLayout.tsx",
                         lineNumber: 821,

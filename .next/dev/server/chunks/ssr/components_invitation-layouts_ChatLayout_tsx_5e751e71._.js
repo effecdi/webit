@@ -2610,7 +2610,7 @@ function ChatLayout({ data, state, helpers, onRsvpClick }) {
                                 lineNumber: 785,
                                 columnNumber: 11
                             }, this),
-                            "WE:VE"
+                            "WE:BEAT"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/ChatLayout.tsx",

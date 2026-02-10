@@ -2498,7 +2498,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             letterSpacing: "0.15em",
                             fontFamily: sansFont
                         },
-                        children: "MADE WITH WE:VE"
+                        children: "MADE WITH WE:BEAT"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
                         lineNumber: 940,

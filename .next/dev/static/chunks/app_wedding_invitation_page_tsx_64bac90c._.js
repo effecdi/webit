@@ -1014,7 +1014,7 @@ function InvitationGalleryPage() {
                                                 children: [
                                                     "모든 프리미엄 템플릿 사용",
                                                     "고급 오프닝 애니메이션",
-                                                    "광고 없는 청첩장"
+                                                    "맞춤형 RSVP 관리"
                                                 ].map((benefit)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "flex items-center gap-2",
                                                         children: [

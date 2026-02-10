@@ -2398,7 +2398,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         style: {
                             color: "#B0B0B0"
                         },
-                        children: "MADE WITH WE:VE"
+                        children: "MADE WITH WE:BEAT"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
                         lineNumber: 797,

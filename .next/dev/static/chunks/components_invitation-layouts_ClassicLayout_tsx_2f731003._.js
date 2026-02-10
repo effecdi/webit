@@ -2403,7 +2403,7 @@ function ClassicLayout({ data, state, helpers, onRsvpClick }) {
                         style: {
                             color: textSecondary
                         },
-                        children: "MADE WITH WE:VE"
+                        children: "MADE WITH WE:BEAT"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ClassicLayout.tsx",
                         lineNumber: 807,

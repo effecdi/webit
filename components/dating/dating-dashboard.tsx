@@ -43,35 +43,35 @@ const MOOD_OPTIONS: {
     image: moodLove,
     label: "사랑",
     color: "text-pink-500",
-    bgColor: "bg-pink-100",
+    bgColor: "bg-pink-100 dark:bg-pink-900/30",
   },
   {
     id: "happy",
     image: moodHappy,
     label: "행복",
     color: "text-amber-500",
-    bgColor: "bg-amber-100",
+    bgColor: "bg-amber-100 dark:bg-amber-900/30",
   },
   {
     id: "normal",
     image: moodNormal,
     label: "보통",
     color: "text-green-500",
-    bgColor: "bg-green-100",
+    bgColor: "bg-green-100 dark:bg-green-900/30",
   },
   {
     id: "sad",
     image: moodSad,
     label: "슬픔",
     color: "text-purple-500",
-    bgColor: "bg-purple-100",
+    bgColor: "bg-purple-100 dark:bg-purple-900/30",
   },
   {
     id: "angry",
     image: moodAngry,
     label: "화남",
     color: "text-red-500",
-    bgColor: "bg-red-100",
+    bgColor: "bg-red-100 dark:bg-red-900/30",
   },
 ];
 import { ModeSwitch } from "@/components/mode-switch";
@@ -111,28 +111,28 @@ const SHORTCUTS = [
     label: "캘린더",
     icon: Calendar,
     href: "/dating/calendar",
-    color: "bg-pink-50 text-pink-500",
+    color: "bg-pink-50 dark:bg-pink-900/20 text-pink-500",
   },
   {
     id: "album",
     label: "앨범",
     icon: ImageIcon,
     href: "/dating/gallery",
-    color: "bg-[#F3E8FF] text-[#d63bf2]",
+    color: "bg-[#F3E8FF] dark:bg-purple-900/20 text-[#d63bf2]",
   },
   {
     id: "travel",
     label: "여행 계획",
     icon: Plane,
     href: "/travel",
-    color: "bg-purple-50 text-purple-500",
+    color: "bg-purple-50 dark:bg-purple-900/20 text-purple-500",
   },
 ];
 
 const ASSIGNEE_COLORS = {
-  me: "bg-pink-100 text-pink-600",
-  you: "bg-[#F3E8FF] text-[#d63bf2]",
-  we: "bg-purple-100 text-purple-600",
+  me: "bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400",
+  you: "bg-[#F3E8FF] dark:bg-purple-900/30 text-[#d63bf2]",
+  we: "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400",
 };
 
 const ASSIGNEE_LABELS = {
@@ -533,8 +533,8 @@ export function DatingDashboard() {
   });
 
   return (
-    <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#F2F4F6]/90 backdrop-blur-md fixed-header-safe">
+    <div className="min-h-screen bg-[#F2F4F6] dark:bg-[#111111] pb-nav-safe">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#F2F4F6]/90 dark:bg-[#111111]/90 backdrop-blur-md fixed-header-safe">
         <div className="flex items-center justify-between px-5 py-3 max-w-md mx-auto">
           <ModeSwitch currentMode="dating" />
           <div className="relative">
@@ -543,7 +543,7 @@ export function DatingDashboard() {
               className="relative"
               data-testid="button-notifications"
             >
-              <Bell className="w-6 h-6 text-[#4E5968]" strokeWidth={1.8} />
+              <Bell className="w-6 h-6 text-[#4E5968] dark:text-[#8B95A1]" strokeWidth={1.8} />
               {notifications.length > 0 && (
                 <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-pink-500 rounded-full" />
               )}
@@ -565,7 +565,7 @@ export function DatingDashboard() {
             <p className="text-[13px] text-[#8B95A1] mb-1">
               {coupleNames.my} & {coupleNames.partner}
             </p>
-            <h1 className="text-[26px] leading-[1.35] font-bold text-[#191F28]">
+            <h1 className="text-[26px] leading-[1.35] font-bold text-[#191F28] dark:text-white">
               {diffDays > 0 ? (
                 <>
                   우리 사랑한 지
@@ -638,12 +638,12 @@ export function DatingDashboard() {
                 <Cake className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
-                <p className="text-[16px] font-bold text-[#191F28] mb-1">
+                <p className="text-[16px] font-bold text-[#191F28] dark:text-white mb-1">
                   {todayBirthdays.length === 2
                     ? `오늘은 ${todayBirthdays[0]}님과 ${todayBirthdays[1]}님의 생일이에요!`
                     : `오늘은 ${todayBirthdays[0]}님의 생일이에요!`}
                 </p>
-                <p className="text-[14px] text-[#4E5968] mb-3">
+                <p className="text-[14px] text-[#4E5968] dark:text-[#A0A0A0] mb-3">
                   {todayBirthdays.length === 2
                     ? "둘 다 생일 축하해요! 함께 축하할 선물을 골라볼까요?"
                     : `축하해요! ${todayBirthdays[0]}님에게 줄 선물을 골라볼까요?`}
@@ -662,7 +662,7 @@ export function DatingDashboard() {
           </div>
         )}
 
-        {todayBirthdays.length === 0 && upcomingBirthdays.length > 0 && (
+        {upcomingBirthdays.length > 0 && (
           <div
             className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-[#2A2015] dark:to-[#2A1A10] rounded-[24px] p-5 shadow-weve border border-amber-100 dark:border-amber-900/30"
             data-testid="upcoming-birthday-banner"
@@ -675,7 +675,7 @@ export function DatingDashboard() {
                 {upcomingBirthdays.map((bday, idx) => (
                   <div key={idx} className={idx > 0 ? "mt-3 pt-3 border-t border-amber-100 dark:border-amber-800/30" : ""}>
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <p className="text-[16px] font-bold text-[#191F28]">
+                      <p className="text-[16px] font-bold text-[#191F28] dark:text-white">
                         {bday.person}님의 생일이 다가와요!
                       </p>
                       <span className="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-[12px] font-bold rounded-full">
@@ -684,7 +684,7 @@ export function DatingDashboard() {
                     </div>
                     {idx === upcomingBirthdays.length - 1 && (
                       <>
-                        <p className="text-[14px] text-[#4E5968] mb-3">
+                        <p className="text-[14px] text-[#4E5968] dark:text-[#A0A0A0] mb-3">
                           미리 선물을 준비해보세요!
                         </p>
                         <button
@@ -718,7 +718,7 @@ export function DatingDashboard() {
                 {upcomingMilestones.map((milestone, idx) => (
                   <div key={idx} className={idx > 0 ? "mt-3 pt-3 border-t border-purple-100 dark:border-purple-800/30" : ""}>
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <p className="text-[16px] font-bold text-[#191F28]">
+                      <p className="text-[16px] font-bold text-[#191F28] dark:text-white">
                         {milestone.label} 기념일이 다가와요!
                       </p>
                       <span className={`px-2 py-0.5 text-[12px] font-bold rounded-full ${
@@ -731,7 +731,7 @@ export function DatingDashboard() {
                     </div>
                   </div>
                 ))}
-                <p className="text-[14px] text-[#4E5968] mt-2 mb-3">
+                <p className="text-[14px] text-[#4E5968] dark:text-[#A0A0A0] mt-2 mb-3">
                   특별한 날을 위한 선물을 준비해보세요!
                 </p>
                 <button
@@ -748,16 +748,16 @@ export function DatingDashboard() {
           </div>
         )}
 
-        <div className="bg-white rounded-[24px] p-5 shadow-weve">
+        <div className="bg-white dark:bg-[#1C1C1E] rounded-[24px] p-5 shadow-weve">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
               <Heart className="w-5 h-5 text-pink-500" fill="#ec4899" />
             </div>
             <div>
-              <p className="text-[15px] font-bold text-[#333D4B]">
+              <p className="text-[15px] font-bold text-[#333D4B] dark:text-white">
                 오늘의 기분
               </p>
-              <p className="text-[13px] text-[#8B95A1]">
+              <p className="text-[13px] text-[#8B95A1] dark:text-[#8B95A1]">
                 서로의 감정을 공유해요
               </p>
             </div>
@@ -771,7 +771,7 @@ export function DatingDashboard() {
                   className={`flex-1 py-2.5 rounded-[12px] transition-all flex flex-col items-center gap-1 ${
                     myMood === mood.id
                       ? `${mood.bgColor} scale-105`
-                      : "bg-[#F2F4F6] hover:bg-pink-50"
+                      : "bg-[#F2F4F6] dark:bg-[#2C2C2E] hover:bg-pink-50 dark:hover:bg-pink-900/20"
                   }`}
                   data-testid={`button-my-mood-${mood.id}`}
                 >
@@ -816,7 +816,7 @@ export function DatingDashboard() {
                   {shortcut.label}
                 </span>
                 {badge && (
-                  <span className="text-[11px] font-bold text-pink-500 bg-pink-50 px-2 py-0.5 rounded-full">
+                  <span className="text-[11px] font-bold text-pink-500 bg-pink-50 dark:bg-pink-900/30 px-2 py-0.5 rounded-full">
                     {badge}
                   </span>
                 )}
@@ -837,10 +837,10 @@ export function DatingDashboard() {
           />
         )}
 
-        <div className="bg-white rounded-[24px] p-5 shadow-weve">
+        <div className="bg-white dark:bg-[#1C1C1E] rounded-[24px] p-5 shadow-weve">
           <div className="flex justify-between items-center mb-4">
             <div>
-              <h3 className="font-bold text-[19px] text-[#191F28]">
+              <h3 className="font-bold text-[19px] text-[#191F28] dark:text-white">
                 오늘의 할 일
               </h3>
               <p className="text-[13px] text-[#8B95A1]">
@@ -851,7 +851,7 @@ export function DatingDashboard() {
             </div>
             <button
               onClick={() => setShowAddTodo(!showAddTodo)}
-              className="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center hover:bg-pink-100 transition-colors"
+              className="w-8 h-8 rounded-full bg-pink-50 dark:bg-pink-900/30 flex items-center justify-center hover:bg-pink-100 dark:hover:bg-pink-900/50 transition-colors"
               data-testid="button-add-todo"
             >
               <Plus className="w-4 h-4 text-pink-500" />
@@ -866,7 +866,7 @@ export function DatingDashboard() {
                   value={newTodoText}
                   onChange={(e) => setNewTodoText(e.target.value)}
                   placeholder="새 할 일 입력"
-                  className="flex-1 px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[14px] focus:outline-none focus:ring-2 focus:ring-pink-300"
+                  className="flex-1 px-4 py-3 bg-[#F2F4F6] dark:bg-[#2C2C2E] rounded-[12px] text-[14px] text-[#191F28] dark:text-white placeholder:text-[#B0B8C1] dark:placeholder:text-[#666] focus:outline-none focus:ring-2 focus:ring-pink-300"
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       e.preventDefault();
@@ -880,7 +880,7 @@ export function DatingDashboard() {
                   disabled={isAddingTodo || !newTodoText.trim()}
                   className={`px-4 py-2 rounded-[12px] text-[14px] font-medium transition-colors ${
                     isAddingTodo || !newTodoText.trim()
-                      ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      ? "bg-gray-300 dark:bg-[#3A3A3C] text-gray-500 dark:text-[#666] cursor-not-allowed"
                       : "bg-pink-500 text-white"
                   }`}
                   data-testid="button-submit-todo"
@@ -897,7 +897,7 @@ export function DatingDashboard() {
                     className={`px-3 py-1.5 rounded-full text-[12px] font-bold transition-all ${
                       newTodoAssignee === assignee
                         ? ASSIGNEE_COLORS[assignee]
-                        : "bg-[#F2F4F6] text-[#8B95A1]"
+                        : "bg-[#F2F4F6] dark:bg-[#2C2C2E] text-[#8B95A1]"
                     }`}
                     data-testid={`button-assignee-${assignee}`}
                   >
@@ -913,7 +913,7 @@ export function DatingDashboard() {
           ) : todos.length === 0 ? (
             <div className="py-8 text-center">
               <p className="text-[#8B95A1] text-[14px]">아직 할 일이 없어요</p>
-              <p className="text-[#B0B8C1] text-[12px] mt-1">
+              <p className="text-[#B0B8C1] dark:text-[#555] text-[12px] mt-1">
                 위의 + 버튼을 눌러 추가해보세요
               </p>
             </div>
@@ -929,7 +929,7 @@ export function DatingDashboard() {
                     className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
                       todo.completed
                         ? "bg-pink-500 border-pink-500"
-                        : "border-[#D0D0D0]"
+                        : "border-[#D0D0D0] dark:border-[#555]"
                     }`}
                     data-testid={`button-toggle-todo-${todo.id}`}
                   >
@@ -943,8 +943,8 @@ export function DatingDashboard() {
                   <span
                     className={`flex-1 text-[15px] ${
                       todo.completed
-                        ? "text-[#B0B8C1] line-through"
-                        : "text-[#333D4B]"
+                        ? "text-[#B0B8C1] dark:text-[#555] line-through"
+                        : "text-[#333D4B] dark:text-[#E0E0E0]"
                     }`}
                   >
                     {todo.text}
@@ -958,8 +958,8 @@ export function DatingDashboard() {
                     onClick={() => openCommentModal(todo)}
                     className={`flex items-center gap-1 px-2 py-1 rounded-full transition-colors ${
                       todo.comments.length > 0
-                        ? "bg-pink-50 text-pink-500"
-                        : "text-[#B0B8C1] hover:bg-[#F2F4F6]"
+                        ? "bg-pink-50 dark:bg-pink-900/20 text-pink-500"
+                        : "text-[#B0B8C1] hover:bg-[#F2F4F6] dark:hover:bg-[#2C2C2E]"
                     }`}
                   >
                     <MessageCircle className="w-4 h-4" />
@@ -976,16 +976,16 @@ export function DatingDashboard() {
                           showTodoMenu === todo.id ? null : todo.id,
                         )
                       }
-                      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
+                      className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] dark:hover:bg-[#2C2C2E] transition-colors"
                       data-testid={`button-todo-menu-${todo.id}`}
                     >
                       <MoreHorizontal className="w-4 h-4 text-[#8B95A1]" />
                     </button>
                     {showTodoMenu === todo.id && (
-                      <div className="absolute right-0 top-full mt-1 bg-white rounded-[12px] shadow-lg border border-[#E5E8EB] overflow-hidden z-20 min-w-[120px]">
+                      <div className="absolute right-0 top-full mt-1 bg-white dark:bg-[#2C2C2E] rounded-[12px] shadow-lg border border-[#E5E8EB] dark:border-[#3A3A3C] overflow-hidden z-20 min-w-[120px]">
                         <button
                           onClick={() => openEditModal(todo)}
-                          className="w-full px-4 py-3 flex items-center gap-2 text-[14px] text-[#333D4B] hover:bg-[#F2F4F6] transition-colors"
+                          className="w-full px-4 py-3 flex items-center gap-2 text-[14px] text-[#333D4B] dark:text-[#E0E0E0] hover:bg-[#F2F4F6] dark:hover:bg-[#3A3A3C] transition-colors"
                           data-testid={`button-edit-todo-${todo.id}`}
                         >
                           <Pencil className="w-4 h-4" />
@@ -993,7 +993,7 @@ export function DatingDashboard() {
                         </button>
                         <button
                           onClick={() => handleDeleteTodo(todo.id)}
-                          className="w-full px-4 py-3 flex items-center gap-2 text-[14px] text-red-500 hover:bg-red-50 transition-colors"
+                          className="w-full px-4 py-3 flex items-center gap-2 text-[14px] text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                           data-testid={`button-delete-todo-${todo.id}`}
                         >
                           <Trash2 className="w-4 h-4" />
@@ -1028,7 +1028,7 @@ export function DatingDashboard() {
         </div>
         */}
 
-        <div className="bg-white rounded-[24px] overflow-hidden shadow-weve">
+        <div className="bg-white dark:bg-[#1C1C1E] rounded-[24px] overflow-hidden shadow-weve">
           <div
             className="w-full h-32 bg-cover bg-center relative"
             style={{
@@ -1050,7 +1050,7 @@ export function DatingDashboard() {
             className="p-4 flex justify-between items-center"
           >
             <div>
-              <div className="text-[15px] font-bold text-[#333D4B]">
+              <div className="text-[15px] font-bold text-[#333D4B] dark:text-white">
                 추억 앨범
               </div>
               <div className="text-[12px] text-[#8B95A1] mt-0.5">
@@ -1074,12 +1074,12 @@ export function DatingDashboard() {
           }}
         >
           <div
-            className="relative w-full max-w-md bg-white rounded-[24px] animate-in zoom-in-95 duration-200 max-h-[70vh] flex flex-col shadow-xl"
+            className="relative w-full max-w-md bg-white dark:bg-[#1C1C1E] rounded-[24px] animate-in zoom-in-95 duration-200 max-h-[70vh] flex flex-col shadow-xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-[#F2F4F6]">
+            <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-[#F2F4F6] dark:border-[#2C2C2E]">
               <div className="flex-1 min-w-0 pr-3">
-                <h3 className="text-[17px] font-bold text-[#191F28]">댓글</h3>
+                <h3 className="text-[17px] font-bold text-[#191F28] dark:text-white">댓글</h3>
                 <p className="text-[13px] text-[#8B95A1] mt-0.5 truncate">
                   {selectedTodo.text}
                 </p>
@@ -1090,7 +1090,7 @@ export function DatingDashboard() {
                   setSelectedTodo(null);
                   setNewComment("");
                 }}
-                className="flex-shrink-0 w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
+                className="flex-shrink-0 w-8 h-8 rounded-full hover:bg-[#F2F4F6] dark:hover:bg-[#2C2C2E] flex items-center justify-center transition-colors"
                 data-testid="button-close-comment"
               >
                 <X className="w-5 h-5 text-[#8B95A1]" />
@@ -1111,7 +1111,7 @@ export function DatingDashboard() {
                       className={`max-w-[80%] px-4 py-2.5 rounded-[16px] ${
                         comment.author === "me"
                           ? "bg-pink-500 text-white rounded-br-[4px]"
-                          : "bg-[#F2F4F6] text-[#191F28] rounded-bl-[4px]"
+                          : "bg-[#F2F4F6] dark:bg-[#2C2C2E] text-[#191F28] dark:text-[#E0E0E0] rounded-bl-[4px]"
                       }`}
                     >
                       <p className="text-[14px]">{comment.text}</p>
@@ -1125,7 +1125,7 @@ export function DatingDashboard() {
                 ))
               )}
             </div>
-            <div className="px-5 py-4 border-t border-[#F2F4F6] flex gap-3 rounded-b-[24px]">
+            <div className="px-5 py-4 border-t border-[#F2F4F6] dark:border-[#2C2C2E] flex gap-3 rounded-b-[24px]">
               <input
                 type="text"
                 value={newComment}
@@ -1137,7 +1137,7 @@ export function DatingDashboard() {
                   isComposing.current = false;
                 }}
                 placeholder="댓글을 입력하세요"
-                className="flex-1 px-4 py-3 bg-[#F2F4F6] rounded-full text-[14px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-pink-300"
+                className="flex-1 px-4 py-3 bg-[#F2F4F6] dark:bg-[#2C2C2E] rounded-full text-[14px] text-[#191F28] dark:text-white placeholder:text-[#B0B8C1] dark:placeholder:text-[#666] focus:outline-none focus:ring-2 focus:ring-pink-300"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !isComposing.current) {
                     e.preventDefault();
@@ -1152,7 +1152,7 @@ export function DatingDashboard() {
                 className={`w-11 h-11 rounded-full flex items-center justify-center transition-colors ${
                   newComment.trim()
                     ? "bg-pink-500 text-white"
-                    : "bg-[#E5E8EB] text-[#B0B8C1]"
+                    : "bg-[#E5E8EB] dark:bg-[#3A3A3C] text-[#B0B8C1]"
                 }`}
                 data-testid="button-send-comment"
               >
@@ -1174,12 +1174,12 @@ export function DatingDashboard() {
           }}
         >
           <div
-            className="bg-white rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200"
+            className="bg-white dark:bg-[#1C1C1E] rounded-[24px] w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="px-5 pt-5 pb-4 border-b border-[#F2F4F6]">
+            <div className="px-5 pt-5 pb-4 border-b border-[#F2F4F6] dark:border-[#2C2C2E]">
               <div className="flex items-center justify-between">
-                <h3 className="text-[17px] font-bold text-[#191F28]">
+                <h3 className="text-[17px] font-bold text-[#191F28] dark:text-white">
                   할 일 수정
                 </h3>
                 <button
@@ -1189,7 +1189,7 @@ export function DatingDashboard() {
                     setEditText("");
                     setEditAssignee("we");
                   }}
-                  className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
+                  className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] dark:hover:bg-[#2C2C2E] flex items-center justify-center transition-colors"
                   data-testid="button-close-edit-modal"
                 >
                   <X className="w-5 h-5 text-[#8B95A1]" />
@@ -1206,7 +1206,7 @@ export function DatingDashboard() {
                   value={editText}
                   onChange={(e) => setEditText(e.target.value)}
                   placeholder="할 일 입력"
-                  className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-pink-300"
+                  className="w-full px-4 py-3 bg-[#F2F4F6] dark:bg-[#2C2C2E] rounded-[12px] text-[15px] text-[#191F28] dark:text-white placeholder:text-[#B0B8C1] dark:placeholder:text-[#666] focus:outline-none focus:ring-2 focus:ring-pink-300"
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       e.preventDefault();
@@ -1229,7 +1229,7 @@ export function DatingDashboard() {
                       className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${
                         editAssignee === assignee
                           ? ASSIGNEE_COLORS[assignee]
-                          : "bg-[#F2F4F6] text-[#8B95A1]"
+                          : "bg-[#F2F4F6] dark:bg-[#2C2C2E] text-[#8B95A1]"
                       }`}
                       data-testid={`button-edit-assignee-${assignee}`}
                     >
@@ -1247,7 +1247,7 @@ export function DatingDashboard() {
                   setEditText("");
                   setEditAssignee("we");
                 }}
-                className="flex-1 py-3 bg-[#F2F4F6] text-[#4E5968] font-medium rounded-[12px] transition-colors hover:bg-[#E5E8EB]"
+                className="flex-1 py-3 bg-[#F2F4F6] dark:bg-[#2C2C2E] text-[#4E5968] dark:text-[#A0A0A0] font-medium rounded-[12px] transition-colors hover:bg-[#E5E8EB] dark:hover:bg-[#3A3A3C]"
                 data-testid="button-cancel-edit"
               >
                 취소
@@ -1258,7 +1258,7 @@ export function DatingDashboard() {
                 className={`flex-1 py-3 font-medium rounded-[12px] transition-colors ${
                   editText.trim()
                     ? "bg-pink-500 text-white hover:bg-pink-600"
-                    : "bg-[#E5E8EB] text-[#B0B8C1]"
+                    : "bg-[#E5E8EB] dark:bg-[#3A3A3C] text-[#B0B8C1]"
                 }`}
                 data-testid="button-save-edit"
               >
