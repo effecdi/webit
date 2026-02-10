@@ -331,32 +331,30 @@ function TemplateThumbnail({ id }: { id: string }) {
       );
     case "polaroid":
       return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden relative flex flex-col items-center justify-center" style={{ backgroundColor: "#FDFCF9" }}>
-          {/* Doodle border */}
-          <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 60 72">
-            <path d="M4,4 Q30,2 56,4 Q58,36 56,68 Q30,70 4,68 Q2,36 4,4" fill="none" stroke="#C5BFB5" strokeWidth="0.5" strokeDasharray="2,1.5" />
+        <div className="w-full h-full rounded-[6px] overflow-hidden relative flex flex-col items-center justify-center" style={{ backgroundColor: "#FAF8F5" }}>
+          {/* Corner ornaments */}
+          <svg className="absolute top-1.5 left-1.5 w-3 h-3" viewBox="0 0 16 16" fill="none" stroke="#C9A88C" strokeWidth="0.6">
+            <path d="M1,8 L1,2 Q1,1 2,1 L8,1" />
           </svg>
-          {/* Stick figures */}
-          <svg width="28" height="24" viewBox="0 0 50 40" fill="none" stroke="#8B8578" strokeWidth="0.8" className="mb-1">
-            <circle cx="17" cy="8" r="4" />
-            <path d="M17 12v10" />
-            <path d="M17 15l-6 5" />
-            <path d="M17 15l6 5" />
-            <path d="M17 22l-5 9" />
-            <path d="M17 22l5 9" />
-            <circle cx="33" cy="8" r="4" />
-            <path d="M33 12v10" />
-            <path d="M33 15l-6 5" />
-            <path d="M33 15l6 5" />
-            <path d="M28 22q5 9 10 0" />
-            <path d="M23 20l4 0" strokeDasharray="1,1" />
+          <svg className="absolute top-1.5 right-1.5 w-3 h-3" viewBox="0 0 16 16" fill="none" stroke="#C9A88C" strokeWidth="0.6">
+            <path d="M8,1 L14,1 Q15,1 15,2 L15,8" />
           </svg>
-          <div className="text-[5px] mb-0.5" style={{ color: "#3D3830", fontFamily: "'Caveat', cursive" }}>G + B</div>
-          <div className="flex items-center gap-0.5">
-            <svg width="6" height="6" viewBox="0 0 12 12" fill="#D4A59A" stroke="none">
-              <path d="M6 10.5l-0.7-0.65C2.7 7.6 1 6.1 1 4.25 1 2.7 2.2 1.5 3.75 1.5c0.87 0 1.7.4 2.25 1.05C6.55 1.9 7.38 1.5 8.25 1.5 9.8 1.5 11 2.7 11 4.25c0 1.85-1.7 3.35-4.3 5.6L6 10.5z" />
-            </svg>
-          </div>
+          <svg className="absolute bottom-1.5 left-1.5 w-3 h-3" viewBox="0 0 16 16" fill="none" stroke="#C9A88C" strokeWidth="0.6">
+            <path d="M1,8 L1,14 Q1,15 2,15 L8,15" />
+          </svg>
+          <svg className="absolute bottom-1.5 right-1.5 w-3 h-3" viewBox="0 0 16 16" fill="none" stroke="#C9A88C" strokeWidth="0.6">
+            <path d="M8,15 L14,15 Q15,15 15,14 L15,8" />
+          </svg>
+          {/* Illustration couple image */}
+          <img src="/illustration-couple.png" alt="" className="w-[32px] h-auto object-contain mb-1" style={{ mixBlendMode: 'multiply', opacity: 0.8 }} />
+          {/* Names */}
+          <div className="text-[5px] tracking-wider" style={{ color: "#2C2720", fontFamily: "'Playfair Display', Georgia, serif" }}>G &amp; B</div>
+          {/* Diamond divider */}
+          <svg width="20" height="6" viewBox="0 0 20 6" fill="none" className="mt-0.5">
+            <line x1="2" y1="3" x2="8" y2="3" stroke="#E8DDD3" strokeWidth="0.4" />
+            <path d="M10 1L11 3L10 5L9 3L10 1Z" fill="#C9A88C" />
+            <line x1="12" y1="3" x2="18" y2="3" stroke="#E8DDD3" strokeWidth="0.4" />
+          </svg>
         </div>
       );
     case "chat":
