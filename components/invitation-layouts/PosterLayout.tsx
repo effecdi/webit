@@ -645,50 +645,90 @@ export function PosterLayout({
 
       {/* ===== GALLERY SECTION ===== */}
       {data.showGallery && state.galleryImages.length > 0 && (
-        <div className="py-10" style={{ backgroundColor: sectionBg1 }}>
-          {data.galleryStyle === "grid" || !data.galleryStyle ? (
-            <div className="grid grid-cols-2 gap-[2px]">
-              {state.galleryImages.map((img, index) => (
-                <div
-                  key={index}
-                  className="aspect-square cursor-pointer overflow-hidden group"
-                  onClick={() => {
-                    state.setViewerIndex(index);
-                    state.setShowPhotoViewer(true);
-                  }}
-                  data-testid={`gallery-photo-${index}`}
-                >
-                  <img
-                    src={img}
-                    alt={`Gallery ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
+        <div className="py-14 relative" style={{ backgroundColor: sectionBg1 }}>
+          <SectionTitle title="우리의 순간" subtitle="Gallery" />
+
+          <div className="relative px-6 mb-8">
+            <div className="relative mx-auto" style={{ maxWidth: "340px" }}>
+              <div
+                className="absolute -top-3 -left-3 -right-3 -bottom-3 pointer-events-none"
+                style={{
+                  border: `1px solid ${accentSoft}`,
+                  borderRadius: "16px",
+                }}
+              />
+
+              {data.galleryStyle === "grid" || !data.galleryStyle ? (
+                <div className="grid grid-cols-2 gap-[3px]" style={{ borderRadius: "12px", overflow: "hidden" }}>
+                  {state.galleryImages.map((img, index) => (
+                    <div
+                      key={index}
+                      className="aspect-square cursor-pointer overflow-hidden group"
+                      onClick={() => {
+                        state.setViewerIndex(index);
+                        state.setShowPhotoViewer(true);
+                      }}
+                      data-testid={`gallery-photo-${index}`}
+                    >
+                      <img
+                        src={img}
+                        alt={`Gallery ${index + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="overflow-x-auto">
-              <div className="flex gap-[2px]">
-                {state.galleryImages.map((img, index) => (
-                  <div
-                    key={index}
-                    className="w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group"
-                    onClick={() => {
-                      state.setViewerIndex(index);
-                      state.setShowPhotoViewer(true);
-                    }}
-                    data-testid={`gallery-photo-${index}`}
-                  >
-                    <img
-                      src={img}
-                      alt={`Gallery ${index + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
+              ) : (
+                <div className="overflow-x-auto" style={{ borderRadius: "12px" }}>
+                  <div className="flex gap-[3px]">
+                    {state.galleryImages.map((img, index) => (
+                      <div
+                        key={index}
+                        className="w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group"
+                        onClick={() => {
+                          state.setViewerIndex(index);
+                          state.setShowPhotoViewer(true);
+                        }}
+                        data-testid={`gallery-photo-${index}`}
+                      >
+                        <img
+                          src={img}
+                          alt={`Gallery ${index + 1}`}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
-          )}
+          </div>
+
+          <div className="relative px-6">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="h-px flex-1 max-w-[40px]" style={{ backgroundColor: accentSoft }} />
+              <FlowerSmall color="#F4C7AB" size={12} opacity={0.5} />
+              <div className="h-px flex-1 max-w-[40px]" style={{ backgroundColor: accentSoft }} />
+            </div>
+            <div className="relative mx-auto" style={{ maxWidth: "320px" }}>
+              <img
+                src="/assets/bouquet-illustration.jpg"
+                alt="Wedding Bouquet"
+                className="w-full"
+                style={{
+                  borderRadius: "16px",
+                  mixBlendMode: "multiply",
+                }}
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  borderRadius: "16px",
+                  background: `linear-gradient(180deg, transparent 70%, ${sectionBg1} 100%)`,
+                }}
+              />
+            </div>
+          </div>
         </div>
       )}
 

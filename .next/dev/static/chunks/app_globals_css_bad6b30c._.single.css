@@ -1349,6 +1349,10 @@
     bottom: calc(var(--spacing) * -2);
   }
 
+  .-bottom-3 {
+    bottom: calc(var(--spacing) * -3);
+  }
+
   .-bottom-12 {
     bottom: calc(var(--spacing) * -12);
   }
@@ -4221,6 +4225,10 @@
 
   .gap-\[2px\] {
     gap: 2px;
+  }
+
+  .gap-\[3px\] {
+    gap: 3px;
   }
 
   :where(.space-y-0 > :not(:last-child)) {
