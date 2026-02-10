@@ -299,12 +299,39 @@ export function PosterLayout({
   return (
     <>
       {/* ===== HERO SECTION (POSTER STYLE) ===== */}
+      <style>{`
+        @keyframes posterWave1 {
+          0% { transform: translateX(0) translateY(0); }
+          50% { transform: translateX(-12px) translateY(3px); }
+          100% { transform: translateX(0) translateY(0); }
+        }
+        @keyframes posterWave2 {
+          0% { transform: translateX(0) translateY(0); }
+          50% { transform: translateX(10px) translateY(-4px); }
+          100% { transform: translateX(0) translateY(0); }
+        }
+        @keyframes posterWave3 {
+          0% { transform: translateX(0) translateY(0); }
+          50% { transform: translateX(-8px) translateY(5px); }
+          100% { transform: translateX(0) translateY(0); }
+        }
+        @keyframes posterShimmer {
+          0% { opacity: 0.03; }
+          50% { opacity: 0.08; }
+          100% { opacity: 0.03; }
+        }
+        @keyframes posterFloat {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-6px); }
+          100% { transform: translateY(0px); }
+        }
+      `}</style>
       <div
-        className="relative overflow-hidden"
-        style={{ backgroundColor: pageBg }}
+        className="relative overflow-hidden mx-4 mt-4"
+        style={{ backgroundColor: pageBg, borderRadius: "28px" }}
       >
         {photo0 ? (
-          <div className="relative w-full">
+          <div className="relative w-full" style={{ borderRadius: "28px", overflow: "hidden" }}>
             <img
               src={photo0}
               alt="Cover"
@@ -314,29 +341,53 @@ export function PosterLayout({
             <div
               className="absolute inset-0"
               style={{
-                background:
-                  "linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.02) 30%, rgba(0,0,0,0.02) 60%, rgba(0,0,0,0.35) 100%)",
+                borderRadius: "28px",
+                background: "linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.02) 25%, rgba(0,0,0,0.02) 55%, rgba(0,0,0,0.45) 100%)",
               }}
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-8">
+
+            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 80" preserveAspectRatio="none" style={{ height: "80px", width: "100%", animation: "posterWave1 6s ease-in-out infinite" }}>
+              <path d="M0,45 C60,25 120,55 200,40 C280,25 340,50 400,35 L400,80 L0,80 Z" fill="rgba(255,255,255,0.06)" />
+            </svg>
+            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 60" preserveAspectRatio="none" style={{ height: "60px", width: "100%", animation: "posterWave2 8s ease-in-out infinite" }}>
+              <path d="M0,35 C80,20 160,45 240,30 C320,15 360,40 400,28 L400,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
+            </svg>
+            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 50" preserveAspectRatio="none" style={{ height: "50px", width: "100%", animation: "posterWave3 10s ease-in-out infinite" }}>
+              <path d="M0,30 C100,15 200,40 300,22 C350,16 380,30 400,25 L400,50 L0,50 Z" fill="rgba(255,255,255,0.03)" />
+            </svg>
+
+            <div className="absolute inset-0 pointer-events-none" style={{ animation: "posterShimmer 5s ease-in-out infinite", background: "radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.12) 0%, transparent 60%)" }} />
+
+            <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "120px" }}>
+              <svg viewBox="0 0 400 120" className="w-full h-full" preserveAspectRatio="none" style={{ opacity: 0.12 }}>
+                <path d="M0,60 Q30,20 60,55 Q80,75 100,50 Q120,25 140,60 Q160,80 180,45" stroke="rgba(255,255,255,0.8)" strokeWidth="0.8" fill="none" style={{ animation: "posterWave1 7s ease-in-out infinite" }} />
+                <path d="M220,70 Q250,30 280,65 Q310,85 340,50 Q370,25 400,55" stroke="rgba(255,255,255,0.6)" strokeWidth="0.6" fill="none" style={{ animation: "posterWave2 9s ease-in-out infinite" }} />
+                <circle cx="50" cy="35" r="2" fill="rgba(255,255,255,0.5)" style={{ animation: "posterFloat 4s ease-in-out infinite" }} />
+                <circle cx="150" cy="25" r="1.5" fill="rgba(255,255,255,0.4)" style={{ animation: "posterFloat 5s ease-in-out infinite 1s" }} />
+                <circle cx="320" cy="40" r="1.8" fill="rgba(255,255,255,0.45)" style={{ animation: "posterFloat 4.5s ease-in-out infinite 0.5s" }} />
+                <circle cx="380" cy="20" r="1.2" fill="rgba(255,255,255,0.35)" style={{ animation: "posterFloat 6s ease-in-out infinite 2s" }} />
+              </svg>
+            </div>
+
+            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-8" style={{ animation: "posterFloat 6s ease-in-out infinite" }}>
               <img
                 src="/assets/our-wedding-day.png"
                 alt="Our Wedding Day"
                 className="w-full"
                 style={{
                   maxWidth: "100%",
-                  filter: "drop-shadow(0 2px 16px rgba(0,0,0,0.2)) drop-shadow(0 1px 4px rgba(0,0,0,0.12))",
+                  filter: "drop-shadow(0 2px 20px rgba(0,0,0,0.25)) drop-shadow(0 1px 6px rgba(0,0,0,0.15))",
                 }}
               />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 text-center pb-8 px-6">
+            <div className="absolute bottom-0 left-0 right-0 text-center pb-10 px-6" style={{ zIndex: 2 }}>
               <p
                 className="text-[26px] font-medium mb-2"
                 style={{
                   color: "rgba(255,255,255,0.95)",
                   letterSpacing: "0.12em",
                   fontFamily: serifFont,
-                  textShadow: "0 1px 10px rgba(0,0,0,0.3)",
+                  textShadow: "0 1px 12px rgba(0,0,0,0.35)",
                 }}
               >
                 {data.groomName || "신랑"}{" "}
@@ -354,7 +405,7 @@ export function PosterLayout({
                   color: "rgba(255,255,255,0.8)",
                   letterSpacing: "0.1em",
                   fontFamily: sansFont,
-                  textShadow: "0 1px 6px rgba(0,0,0,0.3)",
+                  textShadow: "0 1px 8px rgba(0,0,0,0.3)",
                 }}
               >
                 {helpers.formatWeddingDate()}
@@ -365,7 +416,7 @@ export function PosterLayout({
                 style={{
                   color: "rgba(255,255,255,0.7)",
                   fontFamily: sansFont,
-                  textShadow: "0 1px 6px rgba(0,0,0,0.3)",
+                  textShadow: "0 1px 8px rgba(0,0,0,0.3)",
                 }}
               >
                 {data.venue || ""}
@@ -375,14 +426,21 @@ export function PosterLayout({
         ) : (
           <div
             className="relative w-full"
-            style={{ height: "620px", backgroundColor: "#D4C5B5" }}
+            style={{ height: "620px", backgroundColor: "#D4C5B5", borderRadius: "28px", overflow: "hidden" }}
           >
+            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 80" preserveAspectRatio="none" style={{ height: "80px", width: "100%", animation: "posterWave1 6s ease-in-out infinite" }}>
+              <path d="M0,45 C60,25 120,55 200,40 C280,25 340,50 400,35 L400,80 L0,80 Z" fill="rgba(255,255,255,0.08)" />
+            </svg>
+            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 60" preserveAspectRatio="none" style={{ height: "60px", width: "100%", animation: "posterWave2 8s ease-in-out infinite" }}>
+              <path d="M0,35 C80,20 160,45 240,30 C320,15 360,40 400,28 L400,60 L0,60 Z" fill="rgba(255,255,255,0.05)" />
+            </svg>
+
             <div className="absolute inset-0 flex flex-col items-center justify-center px-8">
               <img
                 src="/assets/our-wedding-day.png"
                 alt="Our Wedding Day"
                 className="w-full mb-6"
-                style={{ maxWidth: "100%", opacity: 0.7 }}
+                style={{ maxWidth: "100%", opacity: 0.7, animation: "posterFloat 6s ease-in-out infinite" }}
               />
               <p
                 className="text-[13px]"
@@ -394,7 +452,7 @@ export function PosterLayout({
                 ADD PHOTOS
               </p>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 text-center pb-8 px-6">
+            <div className="absolute bottom-0 left-0 right-0 text-center pb-10 px-6">
               <p
                 className="text-[26px] font-medium mb-2"
                 style={{
