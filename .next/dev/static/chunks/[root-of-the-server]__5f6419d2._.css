@@ -5275,14 +5275,6 @@
     border-color: #3b82f6;
   }
 
-  .border-\[\#6B4C8A\] {
-    border-color: #6b4c8a;
-  }
-
-  .border-\[\#8E4585\] {
-    border-color: #8e4585;
-  }
-
   .border-\[\#191F28\] {
     border-color: #191f28;
   }
@@ -5595,16 +5587,6 @@
     }
   }
 
-  .border-white\/60 {
-    border-color: #fff9;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .border-white\/60 {
-      border-color: color-mix(in oklab, var(--color-white) 60%, transparent);
-    }
-  }
-
   .border-white\/70 {
     border-color: #ffffffb3;
   }
@@ -5735,20 +5717,12 @@
     background-color: #5b8def;
   }
 
-  .bg-\[\#6B4C8A\] {
-    background-color: #6b4c8a;
-  }
-
   .bg-\[\#6B9DFF\] {
     background-color: #6b9dff;
   }
 
   .bg-\[\#8B95A1\] {
     background-color: #8b95a1;
-  }
-
-  .bg-\[\#8E4585\] {
-    background-color: #8e4585;
   }
 
   .bg-\[\#9B7ED9\] {
@@ -8951,16 +8925,8 @@
     color: #4e5968;
   }
 
-  .text-\[\#5B7FA5\] {
-    color: #5b7fa5;
-  }
-
   .text-\[\#5C7A5C\] {
     color: #5c7a5c;
-  }
-
-  .text-\[\#6B4C8A\] {
-    color: #6b4c8a;
   }
 
   .text-\[\#6B9DFF\] {
@@ -8989,10 +8955,6 @@
 
   .text-\[\#8B95A1\] {
     color: #8b95a1;
-  }
-
-  .text-\[\#8E4585\] {
-    color: #8e4585;
   }
 
   .text-\[\#8b7355\] {
@@ -9055,10 +9017,6 @@
 
   .text-\[\#C8C8C8\] {
     color: #c8c8c8;
-  }
-
-  .text-\[\#C77DEF\] {
-    color: #c77def;
   }
 
   .text-\[\#D0D0D0\] {

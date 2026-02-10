@@ -3,6 +3,7 @@
 import React from "react"
 
 import { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
 import { 
   ArrowLeft, 
@@ -35,6 +36,8 @@ const calculateDday = (date: string) => {
 
 export default function WeddingProfilePage() {
   const { user } = useAuth()
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
   const [weddingDate, setWeddingDate] = useState("")
   const [dday, setDday] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
@@ -48,6 +51,9 @@ export default function WeddingProfilePage() {
   const [showShareModal, setShowShareModal] = useState(false)
   const [copied, setCopied] = useState(false)
   const [isLoadingInvite, setIsLoadingInvite] = useState(false)
+
+  useEffect(() => { setMounted(true) }, [])
+  const isDark = mounted && resolvedTheme === "dark"
 
   const handleLogout = () => {
     setIsLoggingOut(true)
@@ -271,13 +277,26 @@ export default function WeddingProfilePage() {
         
         {/* Couple Profile Card */}
         <div className="bg-white rounded-[24px] overflow-hidden shadow-sm">
-          <div className="relative px-6 pt-10 pb-6" style={{ background: "linear-gradient(135deg, #f8f0ff 0%, #f0e6ff 30%, #e8f4ff 70%, #f0f8ff 100%)" }}>
+          <div
+            className="relative px-6 pt-10 pb-6"
+            style={{
+              background: isDark
+                ? "linear-gradient(135deg, #2A1F3D 0%, #1F2A3D 50%, #1C2333 100%)"
+                : "linear-gradient(135deg, #f8f0ff 0%, #f0e6ff 30%, #e8f4ff 70%, #f0f8ff 100%)"
+            }}
+          >
             <div className="absolute top-3 right-3 flex gap-2">
               {!isCoupled && !isEditing && (
                 <button
                   onClick={handleInviteClick}
                   disabled={isLoadingInvite}
-                  className="px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm text-[#6B4C8A] text-[13px] font-medium flex items-center gap-1 disabled:opacity-50 border border-white/60"
+                  className="px-3 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-1 disabled:opacity-50"
+                  style={{
+                    background: isDark ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.8)",
+                    backdropFilter: "blur(8px)",
+                    color: isDark ? "#D4B8F0" : "#6B4C8A",
+                    border: isDark ? "1px solid rgba(255,255,255,0.12)" : "1px solid rgba(255,255,255,0.6)",
+                  }}
                   data-testid="button-invite-partner-wedding"
                 >
                   <UserPlus className="w-3 h-3" />
@@ -286,11 +305,15 @@ export default function WeddingProfilePage() {
               )}
               <button
                 onClick={() => setIsEditing(!isEditing)}
-                className={`px-3 py-1.5 rounded-full text-[13px] font-medium transition-colors ${
-                  isEditing 
-                    ? "bg-[#6B4C8A] text-white" 
-                    : "bg-white/80 backdrop-blur-sm text-[#6B4C8A] border border-white/60"
-                }`}
+                className="px-3 py-1.5 rounded-full text-[13px] font-medium transition-colors"
+                style={{
+                  background: isEditing
+                    ? (isDark ? "#8B6AAF" : "#6B4C8A")
+                    : (isDark ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.8)"),
+                  backdropFilter: isEditing ? undefined : "blur(8px)",
+                  color: isEditing ? "#fff" : (isDark ? "#D4B8F0" : "#6B4C8A"),
+                  border: isEditing ? "none" : (isDark ? "1px solid rgba(255,255,255,0.12)" : "1px solid rgba(255,255,255,0.6)"),
+                }}
               >
                 {isEditing ? "완료" : "편집"}
               </button>
@@ -299,22 +322,37 @@ export default function WeddingProfilePage() {
             <div className="flex items-center justify-center gap-6 mb-2">
               <div className="flex flex-col items-center">
                 <div className="relative">
-                  <div className="w-[84px] h-[84px] rounded-full flex items-center justify-center overflow-hidden border-[3px] border-white shadow-md" style={{ background: "linear-gradient(135deg, #E8DEF8 0%, #D0BCFF 100%)" }}>
+                  <div
+                    className="w-[84px] h-[84px] rounded-full flex items-center justify-center overflow-hidden shadow-md"
+                    style={{
+                      background: isDark
+                        ? "linear-gradient(135deg, #3D2E5C 0%, #4A3670 100%)"
+                        : "linear-gradient(135deg, #E8DEF8 0%, #D0BCFF 100%)",
+                      border: isDark ? "3px solid rgba(255,255,255,0.15)" : "3px solid white",
+                    }}
+                  >
                     {groomProfile.photo ? (
                       <img src={groomProfile.photo || "/placeholder.svg"} alt="신랑" className="w-full h-full object-cover" />
                     ) : (
-                      <span className="text-[22px] font-bold text-[#6B4C8A]">{groomProfile.name[0]}</span>
+                      <span className="text-[22px] font-bold" style={{ color: isDark ? "#D4B8F0" : "#6B4C8A" }}>{groomProfile.name[0]}</span>
                     )}
                   </div>
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-[#6B4C8A] shadow-sm">
+                  <div
+                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full shadow-sm"
+                    style={{ background: isDark ? "#8B6AAF" : "#6B4C8A" }}
+                  >
                     <span className="text-[10px] font-bold text-white tracking-wide">GROOM</span>
                   </div>
                   {isEditing && (
                     <button
                       onClick={() => setShowPhotoModal("groom")}
-                      className="absolute top-0 right-0 w-7 h-7 rounded-full bg-white border border-[#E5E8EB] flex items-center justify-center shadow-sm"
+                      className="absolute top-0 right-0 w-7 h-7 rounded-full flex items-center justify-center shadow-sm"
+                      style={{
+                        background: isDark ? "#2C2C2E" : "white",
+                        border: isDark ? "1px solid rgba(255,255,255,0.12)" : "1px solid #E5E8EB",
+                      }}
                     >
-                      <Camera className="w-3.5 h-3.5 text-[#6B4C8A]" />
+                      <Camera className="w-3.5 h-3.5" style={{ color: isDark ? "#D4B8F0" : "#6B4C8A" }} />
                     </button>
                   )}
                 </div>
@@ -323,37 +361,59 @@ export default function WeddingProfilePage() {
                     type="text"
                     value={groomProfile.name}
                     onChange={(e) => setGroomProfile({ ...groomProfile, name: e.target.value })}
-                    className="mt-4 w-16 text-center text-[15px] font-bold text-[#191F28] bg-transparent border-b-2 border-[#6B4C8A] focus:outline-none"
+                    className="mt-4 w-16 text-center text-[15px] font-bold bg-transparent focus:outline-none"
+                    style={{ color: isDark ? "#EBEBEB" : "#191F28", borderBottom: isDark ? "2px solid #8B6AAF" : "2px solid #6B4C8A" }}
                   />
                 ) : (
-                  <span className="mt-4 text-[15px] font-bold text-[#191F28]">{groomProfile.name}</span>
+                  <span className="mt-4 text-[15px] font-bold" style={{ color: isDark ? "#EBEBEB" : "#191F28" }}>{groomProfile.name}</span>
                 )}
               </div>
 
               <div className="flex flex-col items-center -mt-4">
-                <div className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm flex items-center justify-center shadow-sm">
-                  <Heart className="w-5 h-5 text-[#C77DEF]" fill="currentColor" />
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center shadow-sm"
+                  style={{
+                    background: isDark ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.6)",
+                    backdropFilter: "blur(8px)",
+                  }}
+                >
+                  <Heart className="w-5 h-5" style={{ color: isDark ? "#D96EF0" : "#C77DEF" }} fill="currentColor" />
                 </div>
               </div>
 
               <div className="flex flex-col items-center">
                 <div className="relative">
-                  <div className="w-[84px] h-[84px] rounded-full flex items-center justify-center overflow-hidden border-[3px] border-white shadow-md" style={{ background: "linear-gradient(135deg, #FFE0F0 0%, #F8BBD0 100%)" }}>
+                  <div
+                    className="w-[84px] h-[84px] rounded-full flex items-center justify-center overflow-hidden shadow-md"
+                    style={{
+                      background: isDark
+                        ? "linear-gradient(135deg, #3D1F3A 0%, #4A2248 100%)"
+                        : "linear-gradient(135deg, #FFE0F0 0%, #F8BBD0 100%)",
+                      border: isDark ? "3px solid rgba(255,255,255,0.15)" : "3px solid white",
+                    }}
+                  >
                     {brideProfile.photo ? (
                       <img src={brideProfile.photo || "/placeholder.svg"} alt="신부" className="w-full h-full object-cover" />
                     ) : (
-                      <span className="text-[22px] font-bold text-[#8E4585]">{brideProfile.name[0]}</span>
+                      <span className="text-[22px] font-bold" style={{ color: isDark ? "#F0A8D8" : "#8E4585" }}>{brideProfile.name[0]}</span>
                     )}
                   </div>
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-[#8E4585] shadow-sm">
+                  <div
+                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full shadow-sm"
+                    style={{ background: isDark ? "#A85C9F" : "#8E4585" }}
+                  >
                     <span className="text-[10px] font-bold text-white tracking-wide">BRIDE</span>
                   </div>
                   {isEditing && (
                     <button
                       onClick={() => setShowPhotoModal("bride")}
-                      className="absolute top-0 right-0 w-7 h-7 rounded-full bg-white border border-[#E5E8EB] flex items-center justify-center shadow-sm"
+                      className="absolute top-0 right-0 w-7 h-7 rounded-full flex items-center justify-center shadow-sm"
+                      style={{
+                        background: isDark ? "#2C2C2E" : "white",
+                        border: isDark ? "1px solid rgba(255,255,255,0.12)" : "1px solid #E5E8EB",
+                      }}
                     >
-                      <Camera className="w-3.5 h-3.5 text-[#8E4585]" />
+                      <Camera className="w-3.5 h-3.5" style={{ color: isDark ? "#F0A8D8" : "#8E4585" }} />
                     </button>
                   )}
                 </div>
@@ -362,27 +422,38 @@ export default function WeddingProfilePage() {
                     type="text"
                     value={brideProfile.name}
                     onChange={(e) => setBrideProfile({ ...brideProfile, name: e.target.value })}
-                    className="mt-4 w-16 text-center text-[15px] font-bold text-[#191F28] bg-transparent border-b-2 border-[#8E4585] focus:outline-none"
+                    className="mt-4 w-16 text-center text-[15px] font-bold bg-transparent focus:outline-none"
+                    style={{ color: isDark ? "#EBEBEB" : "#191F28", borderBottom: isDark ? "2px solid #A85C9F" : "2px solid #8E4585" }}
                   />
                 ) : (
-                  <span className="mt-4 text-[15px] font-bold text-[#191F28]">{brideProfile.name}</span>
+                  <span className="mt-4 text-[15px] font-bold" style={{ color: isDark ? "#EBEBEB" : "#191F28" }}>{brideProfile.name}</span>
                 )}
               </div>
             </div>
           </div>
 
           {weddingDate && (
-            <div className="px-6 py-4 border-t border-[#F2F4F6]">
+            <div
+              className="px-6 py-4"
+              style={{ borderTop: isDark ? "1px solid #2C2C2E" : "1px solid #F2F4F6" }}
+            >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-[#8B95A1]" />
-                  <span className="text-[14px] text-[#4E5968]">결혼식</span>
+                  <Calendar className="w-4 h-4" style={{ color: isDark ? "#888" : "#8B95A1" }} />
+                  <span className="text-[14px]" style={{ color: isDark ? "#A0A0A0" : "#4E5968" }}>결혼식</span>
                 </div>
-                <span className="text-[14px] font-medium text-[#191F28]">{weddingDate}</span>
+                <span className="text-[14px] font-medium" style={{ color: isDark ? "#EBEBEB" : "#191F28" }}>{weddingDate}</span>
               </div>
               <div className="flex items-center justify-center mt-3">
-                <div className="px-5 py-1.5 rounded-full" style={{ background: "linear-gradient(135deg, #f3e8ff 0%, #fce7f3 100%)" }}>
-                  <span className="text-[17px] font-bold text-[#6B4C8A]">
+                <div
+                  className="px-5 py-1.5 rounded-full"
+                  style={{
+                    background: isDark
+                      ? "linear-gradient(135deg, rgba(139,106,175,0.25) 0%, rgba(168,92,159,0.25) 100%)"
+                      : "linear-gradient(135deg, #f3e8ff 0%, #fce7f3 100%)"
+                  }}
+                >
+                  <span className="text-[17px] font-bold" style={{ color: isDark ? "#D4B8F0" : "#6B4C8A" }}>
                     {dday > 0 ? `D-${dday}` : dday === 0 ? "D-Day" : `D+${Math.abs(dday)}`}
                   </span>
                 </div>
@@ -394,22 +465,31 @@ export default function WeddingProfilePage() {
         {/* Quick Stats */}
         <div className="grid grid-cols-3 gap-3">
           <div className="bg-white rounded-[16px] p-4 text-center shadow-sm">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: "linear-gradient(135deg, #f3e8ff, #ede5ff)" }}>
-              <Check className="w-5 h-5 text-[#6B4C8A]" />
+            <div
+              className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2"
+              style={{ background: isDark ? "rgba(139,106,175,0.2)" : "linear-gradient(135deg, #f3e8ff, #ede5ff)" }}
+            >
+              <Check className="w-5 h-5" style={{ color: isDark ? "#C9A8F0" : "#6B4C8A" }} />
             </div>
             <p className="text-[20px] font-bold text-[#191F28]">{stats.completedTodos}</p>
             <p className="text-[12px] text-[#8B95A1]">완료한 할일</p>
           </div>
           <div className="bg-white rounded-[16px] p-4 text-center shadow-sm">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: "linear-gradient(135deg, #fce7f3, #fdf2f8)" }}>
-              <Gift className="w-5 h-5 text-[#8E4585]" />
+            <div
+              className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2"
+              style={{ background: isDark ? "rgba(168,92,159,0.2)" : "linear-gradient(135deg, #fce7f3, #fdf2f8)" }}
+            >
+              <Gift className="w-5 h-5" style={{ color: isDark ? "#F0A8D8" : "#8E4585" }} />
             </div>
             <p className="text-[20px] font-bold text-[#191F28]">{stats.invitations}</p>
             <p className="text-[12px] text-[#8B95A1]">청첩장</p>
           </div>
           <div className="bg-white rounded-[16px] p-4 text-center shadow-sm">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2" style={{ background: "linear-gradient(135deg, #e8f4ff, #f0f8ff)" }}>
-              <Calendar className="w-5 h-5 text-[#5B7FA5]" />
+            <div
+              className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2"
+              style={{ background: isDark ? "rgba(91,127,165,0.2)" : "linear-gradient(135deg, #e8f4ff, #f0f8ff)" }}
+            >
+              <Calendar className="w-5 h-5" style={{ color: isDark ? "#8BBDE0" : "#5B7FA5" }} />
             </div>
             <p className="text-[20px] font-bold text-[#191F28]">{stats.events}</p>
             <p className="text-[12px] text-[#8B95A1]">예약 일정</p>
@@ -438,13 +518,14 @@ export default function WeddingProfilePage() {
           onClick={() => setShowPhotoModal(null)}
         >
           <div 
-            className="w-full max-w-md bg-white rounded-t-[24px] p-6 animate-in slide-in-from-bottom duration-300"
+            className="w-full max-w-md rounded-t-[24px] p-6 animate-in slide-in-from-bottom duration-300"
+            style={{ background: isDark ? "#1C1C1E" : "white" }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-center mb-4">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
+              <div className="w-10 h-1 rounded-full" style={{ background: isDark ? "#3A3A3C" : "#E5E8EB" }} />
             </div>
-            <h3 className="text-[17px] font-bold text-[#191F28] text-center mb-6">
+            <h3 className="text-[17px] font-bold text-center mb-6" style={{ color: isDark ? "#EBEBEB" : "#191F28" }}>
               {showPhotoModal === "groom" ? "신랑" : "신부"} 사진 변경
             </h3>
             <div className="space-y-3">
@@ -460,7 +541,11 @@ export default function WeddingProfilePage() {
               </label>
               <button
                 onClick={() => setShowPhotoModal(null)}
-                className="w-full py-4 bg-[#F2F4F6] text-[#4E5968] rounded-[14px] font-semibold"
+                className="w-full py-4 rounded-[14px] font-semibold"
+                style={{
+                  background: isDark ? "#2C2C2E" : "#F2F4F6",
+                  color: isDark ? "#A0A0A0" : "#4E5968",
+                }}
               >
                 취소
               </button>
