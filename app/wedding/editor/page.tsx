@@ -275,7 +275,7 @@ const MAIN_TEMPLATES = [
   { id: "chat", label: "편지지", premium: true },
   { id: "traditional", label: "전통", premium: true },
   { id: "garden", label: "가든", premium: true },
-  { id: "gallery", label: "갤러리", premium: true },
+  { id: "poster", label: "포스터", premium: true },
   { id: "boardingpass", label: "보딩패스", premium: true },
   { id: "calligraphy", label: "캘리그라피", premium: true },
 ];
@@ -398,14 +398,17 @@ function TemplateThumbnail({ id }: { id: string }) {
           <div className="text-[7px] text-[#8B6F6F] font-medium" style={{ fontFamily: "Georgia, serif" }}>Garden</div>
         </div>
       );
-    case "gallery":
+    case "poster":
       return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#F5F5F5] p-1.5 flex gap-0.5">
-          <div className="flex-1 bg-[#E0E0E0]" />
-          <div className="w-[28%] flex flex-col gap-0.5">
-            <div className="flex-1 bg-[#E0E0E0]" />
-            <div className="flex-1 bg-[#E0E0E0]" />
+        <div className="w-full h-full rounded-[6px] overflow-hidden relative" style={{ backgroundColor: "#FDF8F3" }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <svg width="10" height="10" viewBox="0 0 20 20" fill="none"><path d="M10 2C10 2 8 6 4 8C8 10 10 14 10 14C10 14 12 10 16 8C12 6 10 2 10 2Z" fill="#E8A87C" opacity="0.6"/></svg>
+            <div className="text-[5px] mt-0.5" style={{ color: "#C5956B", fontFamily: "'Caveat', cursive" }}>The Wedding of</div>
+            <div className="text-[6px] font-medium mt-0.5" style={{ color: "#8B6F5C" }}>Poster</div>
+            <svg width="8" height="8" viewBox="0 0 20 20" fill="none" className="mt-0.5"><circle cx="10" cy="10" r="4" fill="#D4A5A5" opacity="0.4"/><path d="M6 10C6 10 8 6 10 6C12 6 14 10 14 10" stroke="#C5956B" strokeWidth="0.8" fill="none"/></svg>
           </div>
+          <svg className="absolute top-1 left-1" width="8" height="8" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="8" r="3" fill="#F4C7AB" opacity="0.5"/><path d="M6 5V3M4 8H2M8 8H10" stroke="#C5956B" strokeWidth="0.5" opacity="0.4"/></svg>
+          <svg className="absolute bottom-1 right-1" width="8" height="8" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3" fill="#B5C7D3" opacity="0.4"/><path d="M8 10C8 10 10 7 12 10" stroke="#8FA7B8" strokeWidth="0.5"/></svg>
         </div>
       );
     case "boardingpass":
@@ -973,7 +976,7 @@ function InvitationEditorContent() {
   const templateParam = searchParams.get("template");
   const invitationId = searchParams.get("id");
   const [data, setData] = useState<InvitationData>(() => {
-    const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "gallery"];
+    const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "poster", "boardingpass", "calligraphy"];
     const template = templateParam && validTemplates.includes(templateParam) ? templateParam : initialData.mainTemplate;
     return { ...initialData, mainTemplate: template };
   });
@@ -1003,7 +1006,7 @@ function InvitationEditorContent() {
           if (res.ok) {
             const result = await res.json();
             if (result && result.invitationData) {
-              const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "gallery"];
+              const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "poster", "boardingpass", "calligraphy"];
               const urlTemplate = templateParam && validTemplates.includes(templateParam) ? templateParam : null;
               setData((prev) => ({
                 ...prev,
@@ -1025,7 +1028,7 @@ function InvitationEditorContent() {
                   ? result : null
               );
               if (savedData) {
-                const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "gallery"];
+                const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "poster", "boardingpass", "calligraphy"];
                 const urlTemplate = templateParam && validTemplates.includes(templateParam) ? templateParam : null;
                 setData((prev) => ({
                   ...prev,

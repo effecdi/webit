@@ -14,7 +14,7 @@ import { PolaroidLayout } from "./invitation-layouts/PolaroidLayout"
 import { ChatLayout } from "./invitation-layouts/ChatLayout"
 import { TraditionalLayout } from "./invitation-layouts/TraditionalLayout"
 import { GardenLayout } from "./invitation-layouts/GardenLayout"
-import { GalleryLayout } from "./invitation-layouts/GalleryLayout"
+import { PosterLayout } from "./invitation-layouts/PosterLayout"
 import { BoardingPassLayout } from "./invitation-layouts/BoardingPassLayout"
 import { CalligraphyLayout } from "./invitation-layouts/CalligraphyLayout"
 
@@ -37,7 +37,7 @@ function getLayoutPageBg(template: string): string {
     case "chat": return "#F7F4EF"
     case "traditional": return "#1e2a3a"
     case "garden": return "#FFFFFF"
-    case "gallery": return "#F5F5F5"
+    case "poster": return "#FDF8F0"
     case "boardingpass": return "#1E2D4A"
     case "calligraphy": return "#FBF8F4"
     case "modern":
@@ -175,7 +175,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
       case "chat": return <ChatLayout {...props} />
       case "traditional": return <TraditionalLayout {...props} />
       case "garden": return <GardenLayout {...props} />
-      case "gallery": return <GalleryLayout {...props} />
+      case "poster": return <PosterLayout {...props} />
       case "boardingpass": return <BoardingPassLayout {...props} />
       case "calligraphy": return <CalligraphyLayout {...props} />
       case "modern":

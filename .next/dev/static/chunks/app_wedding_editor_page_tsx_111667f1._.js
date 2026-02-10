@@ -9,7 +9,7 @@
   "static/chunks/components_invitation-layouts_ChatLayout_tsx_4db17697._.js",
   "static/chunks/components_invitation-layouts_TraditionalLayout_tsx_05c3d893._.js",
   "static/chunks/components_invitation-layouts_GardenLayout_tsx_c95208a5._.js",
-  "static/chunks/components_invitation-layouts_GalleryLayout_tsx_7f81130a._.js",
+  "static/chunks/components_invitation-layouts_PosterLayout_tsx_34056051._.js",
   "static/chunks/components_invitation-layouts_BoardingPassLayout_tsx_78437da6._.js",
   "static/chunks/components_invitation-layouts_CalligraphyLayout_tsx_a4951248._.js",
   "static/chunks/components_invitation-layouts_7ffcd030._.js",
