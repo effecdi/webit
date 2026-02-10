@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { 
   Bell, 
@@ -100,6 +100,7 @@ export function FamilyWeveDashboard() {
   const [showCommentModal, setShowCommentModal] = useState(false)
   const [selectedTodo, setSelectedTodo] = useState<TodoItem | null>(null)
   const [newComment, setNewComment] = useState("")
+  const isComposingRef = useRef(false)
   const [showEditModal, setShowEditModal] = useState(false)
   const [editingTodo, setEditingTodo] = useState<TodoItem | null>(null)
   const [editText, setEditText] = useState("")
@@ -712,9 +713,11 @@ export function FamilyWeveDashboard() {
                 type="text"
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
+                onCompositionStart={() => { isComposingRef.current = true }}
+                onCompositionEnd={(e) => { isComposingRef.current = false; setNewComment((e.target as HTMLInputElement).value) }}
                 placeholder="댓글 입력"
                 className="flex-1 px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[14px] focus:outline-none focus:ring-2 focus:ring-green-300"
-                onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addComment() } }}
+                onKeyDown={(e) => { if (e.key === "Enter" && !isComposingRef.current && !e.nativeEvent.isComposing) { e.preventDefault(); addComment() } }}
                 data-testid="input-comment-family"
               />
               <button
