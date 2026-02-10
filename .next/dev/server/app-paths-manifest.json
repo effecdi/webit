@@ -1,5 +1,4 @@
 {
-  "/api/ai/invitation-text/route": "app/api/ai/invitation-text/route.js",
   "/api/albums/route": "app/api/albums/route.js",
   "/api/auth/user/route": "app/api/auth/user/route.js",
   "/api/checklist/route": "app/api/checklist/route.js",
@@ -14,5 +13,6 @@
   "/family/page": "app/family/page.js",
   "/page": "app/page.js",
   "/splash/page": "app/splash/page.js",
-  "/wedding/editor/page": "app/wedding/editor/page.js"
+  "/wedding/editor/page": "app/wedding/editor/page.js",
+  "/wedding/page": "app/wedding/page.js"
 }
