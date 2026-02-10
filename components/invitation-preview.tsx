@@ -15,6 +15,7 @@ import { ChatLayout } from "./invitation-layouts/ChatLayout"
 import { TraditionalLayout } from "./invitation-layouts/TraditionalLayout"
 import { GardenLayout } from "./invitation-layouts/GardenLayout"
 import { GalleryLayout } from "./invitation-layouts/GalleryLayout"
+import { BoardingPassLayout } from "./invitation-layouts/BoardingPassLayout"
 
 interface InvitationPreviewProps {
   data: InvitationData & { date?: string; time?: string }
@@ -36,6 +37,7 @@ function getLayoutPageBg(template: string): string {
     case "traditional": return "#1e2a3a"
     case "garden": return "#FFFFFF"
     case "gallery": return "#F5F5F5"
+    case "boardingpass": return "#0B1929"
     case "modern":
     default: return "#FFFFFF"
   }
@@ -172,6 +174,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
       case "traditional": return <TraditionalLayout {...props} />
       case "garden": return <GardenLayout {...props} />
       case "gallery": return <GalleryLayout {...props} />
+      case "boardingpass": return <BoardingPassLayout {...props} />
       case "modern":
       default: return <ModernLayout {...props} />
     }

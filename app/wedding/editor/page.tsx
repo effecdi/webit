@@ -272,6 +272,7 @@ const MAIN_TEMPLATES = [
   { id: "traditional", label: "전통", premium: true },
   { id: "garden", label: "가든", premium: true },
   { id: "gallery", label: "갤러리", premium: true },
+  { id: "boardingpass", label: "보딩패스", premium: true },
 ];
 
 function TemplateThumbnail({ id }: { id: string }) {
@@ -379,6 +380,36 @@ function TemplateThumbnail({ id }: { id: string }) {
           <div className="w-[28%] flex flex-col gap-0.5">
             <div className="flex-1 bg-[#E0E0E0]" />
             <div className="flex-1 bg-[#E0E0E0]" />
+          </div>
+        </div>
+      );
+    case "boardingpass":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden relative" style={{ background: "linear-gradient(180deg, #0F2137 0%, #0B1929 100%)" }}>
+          <div className="absolute top-1.5 left-1.5 right-1.5 flex items-center justify-between">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none">
+              <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#5CC8F0" fillOpacity="0.8"/>
+            </svg>
+            <div className="text-[4px] tracking-wider" style={{ color: "#5CC8F080" }}>FIRST CLASS</div>
+          </div>
+          <div className="absolute inset-0 flex flex-col items-center justify-center pt-3">
+            <div className="flex items-center gap-1 mb-0.5">
+              <div className="text-[7px] font-bold" style={{ color: "#E8F0FA" }}>G</div>
+              <div className="w-[10px] h-[0.5px]" style={{ backgroundColor: "#5CC8F060" }} />
+              <svg width="6" height="6" viewBox="0 0 24 24" fill="none">
+                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#5CC8F0" fillOpacity="0.5"/>
+              </svg>
+              <div className="w-[10px] h-[0.5px]" style={{ backgroundColor: "#5CC8F060" }} />
+              <div className="text-[7px] font-bold" style={{ color: "#E8F0FA" }}>B</div>
+            </div>
+            <div className="text-[5px] tracking-wider" style={{ color: "#5CC8F0" }}>BOARDING PASS</div>
+          </div>
+          <div className="absolute bottom-2 left-0 right-0">
+            <div className="mx-1.5 border-t border-dashed" style={{ borderColor: "#1E3A5A" }} />
+            <div className="flex justify-between px-2 mt-1">
+              <div className="text-[3.5px]" style={{ color: "#7EA8CC" }}>DATE</div>
+              <div className="text-[3.5px]" style={{ color: "#7EA8CC" }}>GATE</div>
+            </div>
           </div>
         </div>
       );
