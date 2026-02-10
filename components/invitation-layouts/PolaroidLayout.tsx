@@ -160,7 +160,7 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
 
         {/* Illustration couple image */}
         <div className="flex justify-center my-4">
-          <img src="/illustration-couple.png" alt="Couple illustration" className="w-[200px] h-auto object-contain" style={{ opacity: 0.9 }} />
+          <img src="/illustration-couple.png" alt="Couple illustration" className="w-[200px] h-auto object-contain" style={{ mixBlendMode: 'multiply' }} />
         </div>
 
         {/* Names with heart */}

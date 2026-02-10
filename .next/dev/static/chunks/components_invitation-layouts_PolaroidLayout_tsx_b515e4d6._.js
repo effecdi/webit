@@ -647,7 +647,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             alt: "Couple illustration",
                             className: "w-[200px] h-auto object-contain",
                             style: {
-                                opacity: 0.9
+                                mixBlendMode: 'multiply'
                             }
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
