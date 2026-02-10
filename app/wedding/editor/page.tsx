@@ -1068,12 +1068,12 @@ function InvitationEditorContent() {
       setIsEditorPlaying(false);
     } else {
       const url = getMusicFileUrl(data.musicTrack);
-      if (url && (!audio.src || !audio.src.includes(url.replace(/^\//, "")))) {
+      if (!url) return;
+      if (!audio.src || !audio.src.includes(url.replace(/^\//, ""))) {
         audio.src = url;
+        audio.loop = true;
       }
-      audio.play().then(() => {
-        setIsEditorPlaying(true);
-      }).catch((err) => {
+      audio.play().then(() => setIsEditorPlaying(true)).catch((err) => {
         console.error("Editor music play failed:", err);
         setIsEditorPlaying(false);
       });
@@ -1082,23 +1082,22 @@ function InvitationEditorContent() {
 
   const handleTrackSelect = (trackName: string) => {
     updateField("musicTrack", trackName);
+    const track = MUSIC_TRACKS.find(t => t.name === trackName);
+    if (!track) return;
     const audio = editorAudioRef.current;
-    if (audio) {
-      audio.pause();
-      setEditorCurrentTime(0);
-      setEditorDuration(0);
-      const track = MUSIC_TRACKS.find(t => t.name === trackName);
-      if (track) {
-        audio.src = track.file;
-        audio.loop = true;
-        audio.play().then(() => {
-          setIsEditorPlaying(true);
-        }).catch((err) => {
-          console.error("Track autoplay failed:", err);
-          setIsEditorPlaying(false);
-        });
-      }
-    }
+    if (!audio) return;
+    audio.pause();
+    setEditorCurrentTime(0);
+    setEditorDuration(0);
+    setIsEditorPlaying(false);
+    audio.src = track.file;
+    audio.loop = true;
+    audio.play().then(() => {
+      setIsEditorPlaying(true);
+    }).catch((err) => {
+      console.error("Track autoplay failed:", err);
+      setIsEditorPlaying(false);
+    });
   };
 
   const formatTime = (sec: number) => {
@@ -2798,21 +2797,21 @@ function InvitationEditorContent() {
                       </button>
                     ))}
                   </div>
+                  <audio
+                    ref={editorAudioRef}
+                    preload="auto"
+                    onTimeUpdate={() => {
+                      const audio = editorAudioRef.current;
+                      if (audio) setEditorCurrentTime(audio.currentTime);
+                    }}
+                    onLoadedMetadata={() => {
+                      const audio = editorAudioRef.current;
+                      if (audio) setEditorDuration(audio.duration);
+                    }}
+                    onEnded={() => setIsEditorPlaying(false)}
+                  />
                   {data.musicTrack && (
                     <div className="flex items-center gap-3 bg-[#F8F9FA] rounded-[10px] p-3">
-                      <audio
-                        ref={editorAudioRef}
-                        src={getMusicFileUrl(data.musicTrack)}
-                        onTimeUpdate={() => {
-                          const audio = editorAudioRef.current;
-                          if (audio) setEditorCurrentTime(audio.currentTime);
-                        }}
-                        onLoadedMetadata={() => {
-                          const audio = editorAudioRef.current;
-                          if (audio) setEditorDuration(audio.duration);
-                        }}
-                        onEnded={() => setIsEditorPlaying(false)}
-                      />
                       <button
                         onClick={toggleEditorPlay}
                         className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm flex-shrink-0"
