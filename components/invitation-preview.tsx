@@ -33,7 +33,7 @@ function getLayoutPageBg(template: string): string {
     case "cinematic": return "#1E1B16"
     case "classic": return "#F5F5F0"
     case "magazine": return "#FFFFFF"
-    case "polaroid": return "#F0F0F0"
+    case "polaroid": return "#FDFCF9"
     case "chat": return "#FFF0F3"
     case "traditional": return "#1e2a3a"
     case "garden": return "#FFFFFF"

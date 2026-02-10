@@ -60,7 +60,7 @@ function getLayoutPageBg(template) {
         case "magazine":
             return "#FFFFFF";
         case "polaroid":
-            return "#F0F0F0";
+            return "#FDFCF9";
         case "chat":
             return "#FFF0F3";
         case "traditional":

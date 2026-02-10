@@ -271,7 +271,7 @@ const MAIN_TEMPLATES = [
   { id: "modern", label: "모던", premium: false },
   { id: "classic", label: "클래식", premium: false },
   { id: "magazine", label: "매거진", premium: true },
-  { id: "polaroid", label: "폴라로이드", premium: true },
+  { id: "polaroid", label: "일러스트", premium: true },
   { id: "chat", label: "채팅", premium: true },
   { id: "traditional", label: "전통", premium: true },
   { id: "garden", label: "가든", premium: true },
@@ -334,14 +334,31 @@ function TemplateThumbnail({ id }: { id: string }) {
       );
     case "polaroid":
       return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#FAF6F0] flex flex-col items-center justify-center p-2 relative">
-          <div className="text-[7px] text-[#8B7B4B] font-bold italic mb-1" style={{ fontFamily: "Georgia, serif" }}>결혼합니다</div>
-          <div className="w-[32px] h-[36px] bg-[#E8DFD0] rounded-[3px]" />
-          <div className="absolute top-1 right-1 w-[8px] h-[10px]">
-            <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #7BA45C 0%, #9BB878 100%)", clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }} />
-          </div>
-          <div className="absolute bottom-1 left-1 w-[8px] h-[10px]">
-            <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #7BA45C 0%, #9BB878 100%)", clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }} />
+        <div className="w-full h-full rounded-[6px] overflow-hidden relative flex flex-col items-center justify-center" style={{ backgroundColor: "#FDFCF9" }}>
+          {/* Doodle border */}
+          <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 60 72">
+            <path d="M4,4 Q30,2 56,4 Q58,36 56,68 Q30,70 4,68 Q2,36 4,4" fill="none" stroke="#C5BFB5" strokeWidth="0.5" strokeDasharray="2,1.5" />
+          </svg>
+          {/* Stick figures */}
+          <svg width="28" height="24" viewBox="0 0 50 40" fill="none" stroke="#8B8578" strokeWidth="0.8" className="mb-1">
+            <circle cx="17" cy="8" r="4" />
+            <path d="M17 12v10" />
+            <path d="M17 15l-6 5" />
+            <path d="M17 15l6 5" />
+            <path d="M17 22l-5 9" />
+            <path d="M17 22l5 9" />
+            <circle cx="33" cy="8" r="4" />
+            <path d="M33 12v10" />
+            <path d="M33 15l-6 5" />
+            <path d="M33 15l6 5" />
+            <path d="M28 22q5 9 10 0" />
+            <path d="M23 20l4 0" strokeDasharray="1,1" />
+          </svg>
+          <div className="text-[5px] mb-0.5" style={{ color: "#3D3830", fontFamily: "'Caveat', cursive" }}>G + B</div>
+          <div className="flex items-center gap-0.5">
+            <svg width="6" height="6" viewBox="0 0 12 12" fill="#D4A59A" stroke="none">
+              <path d="M6 10.5l-0.7-0.65C2.7 7.6 1 6.1 1 4.25 1 2.7 2.2 1.5 3.75 1.5c0.87 0 1.7.4 2.25 1.05C6.55 1.9 7.38 1.5 8.25 1.5 9.8 1.5 11 2.7 11 4.25c0 1.85-1.7 3.35-4.3 5.6L6 10.5z" />
+            </svg>
           </div>
         </div>
       );
