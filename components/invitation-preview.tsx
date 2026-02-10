@@ -52,12 +52,27 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
   const [showControls, setShowControls] = useState(true)
   const shouldAutoPlay = isShared || autoPlayMusic
   const shouldShowMusicControls = isShared || showMusicControls
+  const musicStartedRef = useRef(false)
 
   const getMusicUrl = useCallback(() => {
     if (!data.showMusic || !data.musicTrack) return ""
     const track = MUSIC_TRACKS.find(t => t.name === data.musicTrack)
     return track ? track.file : ""
   }, [data.showMusic, data.musicTrack])
+
+  const startMusic = useCallback(() => {
+    const audio = audioRef.current
+    const musicUrl = getMusicUrl()
+    if (!musicUrl || !audio || musicStartedRef.current) return
+    musicStartedRef.current = true
+    audio.src = musicUrl
+    audio.loop = true
+    audio.volume = 0.5
+    audio.play().then(() => setIsMusicPlaying(true)).catch(() => {
+      setIsMusicPlaying(false)
+      musicStartedRef.current = false
+    })
+  }, [getMusicUrl])
 
   useEffect(() => {
     const audio = audioRef.current
@@ -69,6 +84,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
         audio.src = ""
       }
       setIsMusicPlaying(false)
+      musicStartedRef.current = false
       return
     }
 
@@ -83,7 +99,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
     audio.addEventListener("play", handlePlay)
     audio.addEventListener("pause", handlePause)
 
-    if (shouldAutoPlay) {
+    if (shouldAutoPlay && !data.showOpening) {
       audio.play().catch(() => {
         setIsMusicPlaying(false)
       })
@@ -95,7 +111,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
       audio.removeEventListener("pause", handlePause)
       audio.pause()
     }
-  }, [getMusicUrl, shouldAutoPlay])
+  }, [getMusicUrl, shouldAutoPlay, data.showOpening])
 
   useEffect(() => {
     if (!data.showOpening || openingDone) return
@@ -238,12 +254,21 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
     }
   }, [data, currentShareUrl, handleCopyShareUrl])
 
+  const handleFirstInteraction = useCallback(() => {
+    if (shouldAutoPlay && !musicStartedRef.current && getMusicUrl()) {
+      startMusic()
+    }
+  }, [shouldAutoPlay, getMusicUrl, startMusic])
+
   return (
     <div
       className="w-full h-full overflow-y-auto relative"
       style={{ backgroundColor: pageBg }}
       data-testid="invitation-preview"
-      onClick={() => (isShared || shouldShowMusicControls) && setShowControls(true)}
+      onClick={() => {
+        if (isShared || shouldShowMusicControls) setShowControls(true)
+        handleFirstInteraction()
+      }}
     >
       <audio ref={audioRef} preload="auto" />
 
@@ -343,7 +368,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 3.5 }}
-                    onClick={() => setOpeningDone(true)}
+                    onClick={() => { setOpeningDone(true); if (shouldAutoPlay) startMusic(); }}
                     data-testid="button-skip-opening"
                   >
                     초대장 보기
@@ -400,7 +425,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2.8 }}
-                    onClick={() => setOpeningDone(true)}
+                    onClick={() => { setOpeningDone(true); if (shouldAutoPlay) startMusic(); }}
                     data-testid="button-skip-opening"
                   >
                     초대장 보기
@@ -450,7 +475,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.5 }}
-                    onClick={() => setOpeningDone(true)}
+                    onClick={() => { setOpeningDone(true); if (shouldAutoPlay) startMusic(); }}
                     data-testid="button-skip-opening"
                   >
                     초대장 보기

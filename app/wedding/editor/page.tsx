@@ -3125,7 +3125,7 @@ function InvitationEditorContent() {
         {/* Live Preview Panel - desktop only */}
         <div className="hidden lg:flex lg:w-1/2 border-l border-[#E5E8EB] bg-[#F2F4F6] items-start justify-center overflow-y-auto py-6">
           <div className="w-[390px] bg-white rounded-[24px] shadow-lg overflow-hidden">
-            <InvitationPreview data={previewData as any} />
+            <InvitationPreview data={previewData as any} showMusicControls={true} />
           </div>
         </div>
       </div>
@@ -3180,7 +3180,7 @@ function InvitationEditorContent() {
             </div>
 
             <div className="flex-1 overflow-y-auto bg-[#F2F4F6]">
-              <InvitationPreview data={previewData as any} />
+              <InvitationPreview data={previewData as any} showMusicControls={true} />
             </div>
           </div>
 
