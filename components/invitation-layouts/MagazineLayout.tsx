@@ -3,6 +3,7 @@
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
+import { getKoreanFont, getEnglishFont } from "./font-utils"
 
 export function MagazineLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const pageBg = "#FFFFFF"
@@ -16,6 +17,8 @@ export function MagazineLayout({ data, state, helpers, onRsvpClick }: LayoutProp
   const borderColor = "#191F28"
   const dividerColor = "#191F28"
   const cardBg = "#F5F5F5"
+  const fontFamily = getKoreanFont(data, "-apple-system, BlinkMacSystemFont, sans-serif")
+  const englishFont = getEnglishFont(data, "-apple-system, BlinkMacSystemFont, sans-serif")
 
   const DeceasedMark = ({ show }: { show: boolean }) => {
     if (!show) return null
@@ -27,7 +30,7 @@ export function MagazineLayout({ data, state, helpers, onRsvpClick }: LayoutProp
       <div className="w-full h-[2px] mb-6" style={{ backgroundColor: dividerColor }} />
       <h2
         className="text-[13px] font-bold tracking-[0.3em] uppercase"
-        style={{ color: textPrimary }}
+        style={{ color: textPrimary, fontFamily: englishFont }}
       >
         {title}
       </h2>

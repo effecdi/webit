@@ -3,6 +3,7 @@
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
+import { getKoreanFont, getEnglishFont } from "./font-utils"
 
 export function CinematicLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const sectionBg1 = "#252017"
@@ -14,7 +15,8 @@ export function CinematicLayout({ data, state, helpers, onRsvpClick }: LayoutPro
   const buttonText = "#1E1B16"
   const borderColor = "#3D3226"
   const cardBg = "#252017"
-  const fontFamily = "Georgia, serif"
+  const fontFamily = getKoreanFont(data, "Georgia, serif")
+  const englishFont = getEnglishFont(data, "Georgia, serif")
 
   const DeceasedMark = ({ show }: { show: boolean }) => {
     if (!show) return null
@@ -25,7 +27,7 @@ export function CinematicLayout({ data, state, helpers, onRsvpClick }: LayoutPro
     <div className="mb-6">
       <h2
         className="text-[22px] font-bold tracking-tight"
-        style={{ color: accent, fontFamily }}
+        style={{ color: accent, fontFamily: englishFont }}
       >
         {title}
       </h2>

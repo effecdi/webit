@@ -3,6 +3,7 @@
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
+import { getKoreanFont, getEnglishFont } from "./font-utils"
 
 export function TraditionalLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const sectionBg1 = "#1e2a3a"
@@ -14,7 +15,8 @@ export function TraditionalLayout({ data, state, helpers, onRsvpClick }: LayoutP
   const buttonText = "#C5A572"
   const borderColor = "#C5A572"
   const cardBg = "#152033"
-  const fontFamily = "Georgia, serif"
+  const fontFamily = getKoreanFont(data, "Georgia, serif")
+  const englishFont = getEnglishFont(data, "Georgia, serif")
 
   const DeceasedMark = ({ show }: { show: boolean }) => {
     if (!show) return null
@@ -30,7 +32,7 @@ export function TraditionalLayout({ data, state, helpers, onRsvpClick }: LayoutP
         <span className="absolute bottom-0 right-0 text-[18px] leading-none" style={{ color: accent }}>&#9496;</span>
         <h2
           className="text-[20px] tracking-[0.15em]"
-          style={{ color: accent, fontFamily }}
+          style={{ color: accent, fontFamily: englishFont }}
         >
           {title}
         </h2>

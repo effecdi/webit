@@ -153,6 +153,8 @@ export interface InvitationData {
   endingStyle: "card" | "full" | "simple";
   endingTextColor: string;
   nameDisplayStyle: "horizontal" | "vertical";
+  fontKorean: string;
+  fontEnglish: string;
 }
 
 const initialData: InvitationData = {
@@ -257,6 +259,8 @@ const initialData: InvitationData = {
   endingStyle: "card",
   endingTextColor: "#FFFFFF",
   nameDisplayStyle: "horizontal",
+  fontKorean: "",
+  fontEnglish: "",
 };
 
 const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
@@ -273,6 +277,7 @@ const MAIN_TEMPLATES = [
   { id: "garden", label: "가든", premium: true },
   { id: "gallery", label: "갤러리", premium: true },
   { id: "boardingpass", label: "보딩패스", premium: true },
+  { id: "calligraphy", label: "캘리그라피", premium: true },
 ];
 
 function TemplateThumbnail({ id }: { id: string }) {
@@ -410,6 +415,25 @@ function TemplateThumbnail({ id }: { id: string }) {
               <div className="text-[3.5px]" style={{ color: "#7EA8CC" }}>DATE</div>
               <div className="text-[3.5px]" style={{ color: "#7EA8CC" }}>GATE</div>
             </div>
+          </div>
+        </div>
+      );
+    case "calligraphy":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden relative" style={{ background: "linear-gradient(180deg, #FBF8F4 0%, #F0E8DC 100%)" }}>
+          <div className="absolute top-2 left-0 right-0 text-center">
+            <div className="text-[5px] tracking-[0.2em]" style={{ color: "#7A6E62" }}>WEDDING INVITATION</div>
+          </div>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <div className="w-[24px] h-[28px] rounded-[2px] overflow-hidden" style={{ border: "1px solid #D4C5B0" }}>
+              <div className="w-full h-full bg-[#E8DFD2]" />
+            </div>
+            <div className="mt-1.5 text-[7px] font-medium" style={{ color: "#3D3226", fontFamily: "Georgia, serif" }}>G & B</div>
+          </div>
+          <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1">
+            <div className="w-8 h-[1px]" style={{ backgroundColor: "#D4C5B0" }} />
+            <div className="w-1 h-1 rounded-full" style={{ backgroundColor: "#9C7B5C" }} />
+            <div className="w-8 h-[1px]" style={{ backgroundColor: "#D4C5B0" }} />
           </div>
         </div>
       );
@@ -668,6 +692,7 @@ const SECTION_TOOLTIPS: Record<string, string> = {
   "엔딩 메시지": "청첩장 마지막에 표시되는 감사 메시지입니다.",
   "공유 이미지": "카카오톡 등으로 공유할 때 표시되는 미리보기 이미지입니다.",
   "청첩장 링크": "청첩장 링크를 복사하여 공유할 수 있습니다.",
+  "폰트 설정": "청첩장에 사용할 손글씨체를 선택합니다. 한글/영문 각각 설정 가능합니다.",
 };
 
 function SectionHeader({
@@ -1719,6 +1744,71 @@ function InvitationEditorContent() {
                   value={data.coverDisplayStyle}
                   onChange={(v) => updateField("coverDisplayStyle", v as any)}
                 />
+              </div>
+            </div>
+
+            {/* 폰트 설정 (프리미엄) */}
+            <div className="bg-white mx-4 mt-3 rounded-[24px] shadow-sm p-5">
+              <SectionHeader title="폰트 설정" badge="프리미엄" />
+              <div className="flex items-center gap-2 px-3 py-2 bg-[#FFF0EE] rounded-[12px] text-[12px] text-[#FF8A80] mb-4">
+                <Lock className="w-3.5 h-3.5 flex-shrink-0" />
+                <span>프리미엄 기능입니다. 손글씨체로 특별한 청첩장을 만들어보세요.</span>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <label className="text-[14px] text-[#4E5968] mb-2 block">한글 손글씨체</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { id: "", label: "기본 (프리텐다드)", sample: "사랑합니다", family: "'Pretendard', sans-serif" },
+                      { id: "KyoboHandwriting2019", label: "교보손글씨 2019", sample: "사랑합니다", family: "'KyoboHandwriting2019', cursive" },
+                      { id: "KyoboHandwriting2021", label: "교보손글씨 2021", sample: "사랑합니다", family: "'KyoboHandwriting2021', cursive" },
+                      { id: "KyoboHandwriting2022", label: "교보손글씨 2022", sample: "사랑합니다", family: "'KyoboHandwriting2022', cursive" },
+                      { id: "KotraHandwriting", label: "코트라 손글씨", sample: "사랑합니다", family: "'KotraHandwriting', cursive" },
+                      { id: "MaruBuri", label: "마루부리", sample: "사랑합니다", family: "'MaruBuri', serif" },
+                    ].map((font) => (
+                      <button
+                        key={font.id}
+                        data-testid={`font-korean-${font.id || "default"}`}
+                        onClick={() => updateField("fontKorean", font.id)}
+                        className={`px-3 py-3 rounded-[12px] border-2 text-left transition-all ${
+                          data.fontKorean === font.id
+                            ? "border-[#FF8A80] bg-[#FFF0EF]"
+                            : "border-[#E5E8EB] bg-[#F8F9FA]"
+                        }`}
+                      >
+                        <p className="text-[18px] mb-0.5 leading-tight" style={{ fontFamily: font.family }}>{font.sample}</p>
+                        <p className="text-[10px] text-[#8B95A1] truncate">{font.label}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <label className="text-[14px] text-[#4E5968] mb-2 block">영문 손글씨체</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { id: "", label: "기본 (Georgia)", sample: "With Love", family: "Georgia, serif" },
+                      { id: "Caveat", label: "Caveat", sample: "With Love", family: "'Caveat', cursive" },
+                      { id: "Dancing Script", label: "Dancing Script", sample: "With Love", family: "'Dancing Script', cursive" },
+                      { id: "Great Vibes", label: "Great Vibes", sample: "With Love", family: "'Great Vibes', cursive" },
+                      { id: "Satisfy", label: "Satisfy", sample: "With Love", family: "'Satisfy', cursive" },
+                      { id: "Nanum Pen Script", label: "나눔손글씨 펜", sample: "With Love", family: "'Nanum Pen Script', cursive" },
+                    ].map((font) => (
+                      <button
+                        key={font.id}
+                        data-testid={`font-english-${font.id || "default"}`}
+                        onClick={() => updateField("fontEnglish", font.id)}
+                        className={`px-3 py-3 rounded-[12px] border-2 text-left transition-all ${
+                          data.fontEnglish === font.id
+                            ? "border-[#FF8A80] bg-[#FFF0EF]"
+                            : "border-[#E5E8EB] bg-[#F8F9FA]"
+                        }`}
+                      >
+                        <p className="text-[18px] mb-0.5 leading-tight" style={{ fontFamily: font.family }}>{font.sample}</p>
+                        <p className="text-[10px] text-[#8B95A1] truncate">{font.label}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 

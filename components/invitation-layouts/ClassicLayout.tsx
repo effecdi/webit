@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
+import { getKoreanFont, getEnglishFont } from "./font-utils"
 
 export function ClassicLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const pageBg = "#F5F5F0"
@@ -16,8 +17,9 @@ export function ClassicLayout({ data, state, helpers, onRsvpClick }: LayoutProps
   const buttonText = "#FBF8F1"
   const borderColor = "#E8DFD0"
   const cardBg = "#FFFDF8"
-  const handwriting = "'Caveat', cursive"
+  const handwriting = getKoreanFont(data, "'Caveat', cursive")
   const serif = "Georgia, serif"
+  const englishFont = getEnglishFont(data, "'Caveat', cursive")
 
   useEffect(() => {
     const link = document.createElement("link")
@@ -35,7 +37,7 @@ export function ClassicLayout({ data, state, helpers, onRsvpClick }: LayoutProps
     <div className="mb-6 text-center">
       <h2
         className="text-[26px] font-bold"
-        style={{ color: accent, fontFamily: handwriting }}
+        style={{ color: accent, fontFamily: englishFont }}
       >
         {title}
       </h2>

@@ -3,6 +3,7 @@
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
+import { getKoreanFont, getEnglishFont } from "./font-utils"
 
 export function GardenLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const sectionBg1 = "#FFFFFF"
@@ -16,7 +17,8 @@ export function GardenLayout({ data, state, helpers, onRsvpClick }: LayoutProps)
   const borderColor = "#D4DFD4"
   const cardBg = "#FFFFFF"
   const rosyBrown = "#8B6F6F"
-  const serif = "Georgia, serif"
+  const serif = getKoreanFont(data, "Georgia, serif")
+  const englishFont = getEnglishFont(data, "Georgia, serif")
 
   const DeceasedMark = ({ show }: { show: boolean }) => {
     if (!show) return null
@@ -37,7 +39,7 @@ export function GardenLayout({ data, state, helpers, onRsvpClick }: LayoutProps)
         <span className="text-[14px]" style={{ color: accentLight }}>&#10047;</span>
         <h2
           className="text-[20px] tracking-wide"
-          style={{ color: textPrimary, fontFamily: serif }}
+          style={{ color: textPrimary, fontFamily: englishFont }}
         >
           {title}
         </h2>

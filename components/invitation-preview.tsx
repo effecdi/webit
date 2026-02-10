@@ -16,6 +16,7 @@ import { TraditionalLayout } from "./invitation-layouts/TraditionalLayout"
 import { GardenLayout } from "./invitation-layouts/GardenLayout"
 import { GalleryLayout } from "./invitation-layouts/GalleryLayout"
 import { BoardingPassLayout } from "./invitation-layouts/BoardingPassLayout"
+import { CalligraphyLayout } from "./invitation-layouts/CalligraphyLayout"
 
 interface InvitationPreviewProps {
   data: InvitationData & { date?: string; time?: string }
@@ -38,6 +39,7 @@ function getLayoutPageBg(template: string): string {
     case "garden": return "#FFFFFF"
     case "gallery": return "#F5F5F5"
     case "boardingpass": return "#0B1929"
+    case "calligraphy": return "#FBF8F4"
     case "modern":
     default: return "#FFFFFF"
   }
@@ -175,6 +177,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
       case "garden": return <GardenLayout {...props} />
       case "gallery": return <GalleryLayout {...props} />
       case "boardingpass": return <BoardingPassLayout {...props} />
+      case "calligraphy": return <CalligraphyLayout {...props} />
       case "modern":
       default: return <ModernLayout {...props} />
     }
@@ -263,11 +266,23 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
     }
   }, [shouldAutoPlay, getMusicUrl, startMusic])
 
+  const resolvedFontKorean = data.fontKorean
+    ? `'${data.fontKorean}', cursive`
+    : undefined
+  const resolvedFontEnglish = data.fontEnglish
+    ? `'${data.fontEnglish}', cursive`
+    : undefined
+
   return (
     <div
       className="w-full h-full overflow-y-auto relative"
-      style={{ backgroundColor: pageBg }}
+      style={{
+        backgroundColor: pageBg,
+        ...(resolvedFontKorean ? { fontFamily: resolvedFontKorean } : {}),
+      }}
       data-testid="invitation-preview"
+      data-font-korean={data.fontKorean || ""}
+      data-font-english={data.fontEnglish || ""}
       onClick={() => {
         if (isShared || shouldShowMusicControls) setShowControls(true)
         handleFirstInteraction()

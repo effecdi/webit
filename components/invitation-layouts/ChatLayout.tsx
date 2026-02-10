@@ -3,6 +3,7 @@
 import { Phone, Copy, X, ChevronLeft, ChevronRight, Heart } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
+import { getKoreanFont, getEnglishFont } from "./font-utils"
 
 export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const pageBg1 = "#FFF5F7"
@@ -14,6 +15,8 @@ export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const buttonText = "#FFFFFF"
   const borderColor = "#F5D5DE"
   const cardBg = "#FFFFFF"
+  const fontFamily = getKoreanFont(data, "-apple-system, BlinkMacSystemFont, sans-serif")
+  const englishFont = getEnglishFont(data, "-apple-system, BlinkMacSystemFont, sans-serif")
 
   const HeartIcon = ({ size = 16, className = "" }: { size?: number; className?: string }) => (
     <svg viewBox="0 0 24 24" fill={accent} width={size} height={size} className={className}>
@@ -33,7 +36,7 @@ export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
     <div className="mb-6 text-center">
       <div className="flex items-center justify-center gap-2">
         <HeartIcon size={14} />
-        <h2 className="text-[20px] font-bold" style={{ color: textPrimary }}>{title}</h2>
+        <h2 className="text-[20px] font-bold" style={{ color: textPrimary, fontFamily: englishFont }}>{title}</h2>
         <HeartIcon size={14} />
       </div>
       <div className="w-8 h-[2px] mt-3 mx-auto rounded-full" style={{ backgroundColor: accent, opacity: 0.5 }} />

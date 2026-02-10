@@ -3,6 +3,7 @@
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
+import { getKoreanFont, getEnglishFont } from "./font-utils"
 
 export function GalleryLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const pageBg = "#F5F5F5"
@@ -15,7 +16,8 @@ export function GalleryLayout({ data, state, helpers, onRsvpClick }: LayoutProps
   const borderColor = "#E0E0E0"
   const cardBg = "#FFFFFF"
   const dividerColor = "#333333"
-  const sansFont = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+  const sansFont = getKoreanFont(data, "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif")
+  const englishFont = getEnglishFont(data, "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif")
 
   const DeceasedMark = ({ show }: { show: boolean }) => {
     if (!show) return null
@@ -27,7 +29,7 @@ export function GalleryLayout({ data, state, helpers, onRsvpClick }: LayoutProps
       <div className="w-full h-px mb-4" style={{ backgroundColor: dividerColor }} />
       <h2
         className="text-[11px] font-normal uppercase"
-        style={{ color: textPrimary, letterSpacing: "0.15em", fontFamily: sansFont }}
+        style={{ color: textPrimary, letterSpacing: "0.15em", fontFamily: englishFont }}
       >
         {title}
       </h2>

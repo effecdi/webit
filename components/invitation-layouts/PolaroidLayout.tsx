@@ -3,6 +3,7 @@
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
+import { getKoreanFont, getEnglishFont } from "./font-utils"
 
 export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const pageBg = "#F0F0F0"
@@ -11,6 +12,8 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
   const accent = "#8B6F5C"
   const buttonBg = "#8B6F5C"
   const buttonText = "#FFFFFF"
+  const fontFamily = getKoreanFont(data, "-apple-system, BlinkMacSystemFont, sans-serif")
+  const englishFont = getEnglishFont(data, "-apple-system, BlinkMacSystemFont, sans-serif")
 
   const frosted = "backdrop-blur-xl"
   const frostedBg = "rgba(255,255,255,0.7)"
@@ -25,7 +28,7 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
     <div className="mb-6 text-center">
       <h2
         className="text-[20px] tracking-wide font-light"
-        style={{ color: textPrimary }}
+        style={{ color: textPrimary, fontFamily: englishFont }}
       >
         {title}
       </h2>

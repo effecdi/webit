@@ -3,6 +3,7 @@
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
+import { getKoreanFont, getEnglishFont } from "./font-utils"
 
 export function BoardingPassLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
   const mainBg = "#0B1929"
@@ -16,7 +17,8 @@ export function BoardingPassLayout({ data, state, helpers, onRsvpClick }: Layout
   const buttonBg = "#5CC8F0"
   const buttonText = "#0B1929"
   const borderColor = "#1E3A5A"
-  const fontFamily = "'Pretendard', -apple-system, sans-serif"
+  const fontFamily = getKoreanFont(data, "'Pretendard', -apple-system, sans-serif")
+  const englishFont = getEnglishFont(data, "'Pretendard', -apple-system, sans-serif")
 
   const DeceasedMark = ({ show }: { show: boolean }) => {
     if (!show) return null
@@ -25,7 +27,7 @@ export function BoardingPassLayout({ data, state, helpers, onRsvpClick }: Layout
 
   const SectionTitle = ({ title, subtitle }: { title: string; subtitle?: string }) => (
     <div className="mb-8 text-center">
-      <p className="text-[10px] tracking-[0.35em] uppercase mb-1" style={{ color: accent }}>{title}</p>
+      <p className="text-[10px] tracking-[0.35em] uppercase mb-1" style={{ color: accent, fontFamily: englishFont }}>{title}</p>
       {subtitle && <p className="text-[20px] font-bold tracking-tight" style={{ color: textPrimary }}>{subtitle}</p>}
       <div className="w-10 h-[1px] mx-auto mt-3" style={{ background: `linear-gradient(90deg, transparent, ${accent}, transparent)` }} />
     </div>
