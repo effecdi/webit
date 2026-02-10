@@ -272,7 +272,7 @@ const MAIN_TEMPLATES = [
   { id: "classic", label: "클래식", premium: false },
   { id: "magazine", label: "매거진", premium: true },
   { id: "polaroid", label: "일러스트", premium: true },
-  { id: "chat", label: "채팅", premium: true },
+  { id: "chat", label: "편지지", premium: true },
   { id: "traditional", label: "전통", premium: true },
   { id: "garden", label: "가든", premium: true },
   { id: "gallery", label: "갤러리", premium: true },
@@ -361,12 +361,21 @@ function TemplateThumbnail({ id }: { id: string }) {
       );
     case "chat":
       return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#F5F0E8] p-2 flex flex-col items-center justify-center gap-1">
-          <div className="text-[5px] text-[#8B7B6B] text-center leading-tight">우리의 결혼식에<br/>초대합니다</div>
-          <div className="w-[24px] h-[24px] rounded-full bg-[#E8DFD0] flex items-center justify-center">
-            <div className="w-[12px] h-[12px] rounded-full bg-[#D4C8B8]" />
+        <div className="w-full h-full rounded-[6px] overflow-hidden relative flex flex-col" style={{ backgroundColor: "#F7F4EF" }}>
+          {/* Envelope top */}
+          <div style={{ backgroundColor: "#5C6B4E" }}>
+            <svg className="w-full" viewBox="0 0 60 18" preserveAspectRatio="none" style={{ display: "block" }}>
+              <path d="M0,0 L30,16 L60,0 L60,0 L0,0 Z" fill="#4A5940" />
+            </svg>
+            <div className="text-center pb-1.5 -mt-0.5">
+              <div className="text-[5px] text-white/80 leading-tight" style={{ fontFamily: "'Caveat', cursive" }}>G & B</div>
+            </div>
           </div>
-          <div className="w-[20px] h-[1.5px] bg-[#D4C8B8] rounded-full" />
+          {/* Photo placeholder */}
+          <div className="flex-1 flex items-center justify-center px-2 py-1">
+            <div className="w-[28px] h-[32px]" style={{ backgroundColor: "#E8E2D6", border: "1px solid #D4CEBD" }} />
+          </div>
+          <div className="w-[20px] h-[1px] mx-auto mb-1.5" style={{ backgroundColor: "#D4CEBD" }} />
         </div>
       );
     case "traditional":

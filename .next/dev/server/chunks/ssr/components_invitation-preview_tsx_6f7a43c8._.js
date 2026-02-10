@@ -62,7 +62,7 @@ function getLayoutPageBg(template) {
         case "polaroid":
             return "#FDFCF9";
         case "chat":
-            return "#FFF0F3";
+            return "#F7F4EF";
         case "traditional":
             return "#1e2a3a";
         case "garden":

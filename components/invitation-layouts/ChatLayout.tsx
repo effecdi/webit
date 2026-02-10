@@ -1,77 +1,86 @@
 "use client"
 
-import { Phone, Copy, X, ChevronLeft, ChevronRight, Heart } from "lucide-react"
+import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 import { getKoreanFont, getEnglishFont } from "./font-utils"
 
 export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
-  const pageBg1 = "#FFF5F7"
-  const pageBg2 = "#FFFFFF"
-  const textPrimary = "#4A3040"
-  const textSecondary = "#9B7B8E"
-  const accent = "#E88BA7"
-  const buttonBg = "#E88BA7"
-  const buttonText = "#FFFFFF"
-  const borderColor = "#F5D5DE"
+  const pageBg = "#F7F4EF"
+  const envelopeBg = "#5C6B4E"
+  const textPrimary = "#3A3A35"
+  const textSecondary = "#7A7A6E"
+  const textOnGreen = "#F0EDE6"
+  const accent = "#5C6B4E"
+  const accentLight = "#8A9B7A"
+  const buttonBg = "#5C6B4E"
+  const buttonText = "#F7F4EF"
+  const borderColor = "#D4CEBD"
   const cardBg = "#FFFFFF"
-  const fontFamily = getKoreanFont(data, "-apple-system, BlinkMacSystemFont, sans-serif")
-  const englishFont = getEnglishFont(data, "-apple-system, BlinkMacSystemFont, sans-serif")
-
-  const HeartIcon = ({ size = 16, className = "" }: { size?: number; className?: string }) => (
-    <svg viewBox="0 0 24 24" fill={accent} width={size} height={size} className={className}>
-      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-    </svg>
-  )
-
-  const HeartDivider = () => (
-    <div className="flex items-center justify-center gap-3 my-6">
-      <div className="w-10 h-[1px]" style={{ backgroundColor: accent, opacity: 0.3 }} />
-      <HeartIcon size={12} />
-      <div className="w-10 h-[1px]" style={{ backgroundColor: accent, opacity: 0.3 }} />
-    </div>
-  )
-
-  const SectionTitle = ({ title }: { title: string }) => (
-    <div className="mb-6 text-center">
-      <div className="flex items-center justify-center gap-2">
-        <HeartIcon size={14} />
-        <h2 className="text-[20px] font-bold" style={{ color: textPrimary, fontFamily: englishFont }}>{title}</h2>
-        <HeartIcon size={14} />
-      </div>
-      <div className="w-8 h-[2px] mt-3 mx-auto rounded-full" style={{ backgroundColor: accent, opacity: 0.5 }} />
-    </div>
-  )
+  const fontFamily = getKoreanFont(data, "'Pretendard', -apple-system, sans-serif")
+  const englishFont = getEnglishFont(data, "'Caveat', 'Dancing Script', cursive")
+  const scriptFont = "'Caveat', 'Dancing Script', 'Great Vibes', cursive"
 
   const DeceasedMark = ({ show }: { show: boolean }) => {
     if (!show) return null
-    return <span style={{ color: accent }}>{data.deceasedFlower ? " * " : " 故 "}</span>
+    return <span style={{ color: accent }}>{data.deceasedFlower ? " * " : " \u6545 "}</span>
   }
+
+  const SectionTitle = ({ title }: { title: string }) => (
+    <div className="mb-6 text-center">
+      <h2 className="text-[26px] leading-tight" style={{ color: textPrimary, fontFamily: scriptFont }}>
+        {title}
+      </h2>
+    </div>
+  )
+
+  const LeafDivider = () => (
+    <div className="flex items-center justify-center gap-3 my-6">
+      <div className="w-10 h-[1px]" style={{ backgroundColor: borderColor }} />
+      <svg width="16" height="16" viewBox="0 0 24 24" fill={accentLight} stroke="none">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+      </svg>
+      <div className="w-10 h-[1px]" style={{ backgroundColor: borderColor }} />
+    </div>
+  )
 
   const coverStyle = data.coverDisplayStyle || "slide"
 
   return (
     <>
-      {/* ===== HERO SECTION ===== */}
-      <div className="py-14 px-8 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #FFF0F3 0%, #FFE4EC 100%)" }}>
-        <div className="absolute top-6 left-6 opacity-30"><HeartIcon size={20} /></div>
-        <div className="absolute top-16 right-8 opacity-20"><HeartIcon size={14} /></div>
-        <div className="absolute bottom-20 left-10 opacity-15"><HeartIcon size={10} /></div>
-        <div className="absolute top-32 right-4 opacity-25"><HeartIcon size={18} /></div>
-        <div className="absolute bottom-10 right-12 opacity-20"><HeartIcon size={12} /></div>
+      {/* ===== ENVELOPE HERO ===== */}
+      <div className="relative" style={{ backgroundColor: envelopeBg }}>
+        {/* Envelope flap triangle */}
+        <svg className="w-full" viewBox="0 0 400 120" preserveAspectRatio="none" style={{ display: "block" }}>
+          <path d="M0,0 L200,100 L400,0 L400,0 L0,0 Z" fill="#4A5940" />
+          <path d="M0,0 L200,100 L400,0" fill="none" stroke="#6B7D5E" strokeWidth="0.5" />
+        </svg>
 
-        <div className="flex flex-col items-center relative z-[1]">
-          <p className="text-[14px] tracking-[0.15em] mb-4" style={{ color: accent }}>
-            Wedding Invitation
+        <div className="text-center pb-10 px-8 -mt-2">
+          <p className="text-[32px] leading-[1.3] mb-2" style={{ color: textOnGreen, fontFamily: scriptFont }}>
+            {data.groomName || "\uC2E0\uB791"}
+          </p>
+          <p className="text-[18px] mb-1" style={{ color: "rgba(240,237,230,0.6)", fontFamily: scriptFont }}>&</p>
+          <p className="text-[32px] leading-[1.3] mb-5" style={{ color: textOnGreen, fontFamily: scriptFont }}>
+            {data.brideName || "\uC2E0\uBD80"}
           </p>
 
-          <p className="text-[26px] font-bold mb-6" style={{ color: textPrimary }}>
-            결혼합니다
-          </p>
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="w-6 h-[1px]" style={{ backgroundColor: "rgba(240,237,230,0.3)" }} />
+            <p className="text-[13px] tracking-[0.1em]" style={{ color: "rgba(240,237,230,0.7)" }}>
+              {helpers.formatWeddingDate()}
+            </p>
+            <div className="w-6 h-[1px]" style={{ backgroundColor: "rgba(240,237,230,0.3)" }} />
+          </div>
+        </div>
+      </div>
 
-          {state.allPhotos.length > 0 ? (
-            <div className="relative">
-              <div className="w-[260px] h-[260px] rounded-full overflow-hidden relative" style={{ border: `4px solid ${accent}`, boxShadow: `0 8px 30px rgba(232,139,167,0.25)` }}>
+      {/* ===== PHOTO ===== */}
+      <div className="px-8 py-10" style={{ backgroundColor: pageBg }}>
+        {state.allPhotos.length > 0 ? (
+          <div className="relative mx-auto max-w-[340px]">
+            <div className="p-2 bg-white shadow-sm" style={{ border: `1px solid ${borderColor}` }}>
+              <div className="relative overflow-hidden" style={{ aspectRatio: "4/5" }}>
                 {coverStyle === "static" ? (
                   <img src={state.allPhotos[0]} alt="Cover" className="w-full h-full object-cover" />
                 ) : coverStyle === "slide" ? (
@@ -90,188 +99,146 @@ export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
                   ))
                 )}
               </div>
-              <div className="absolute -top-2 -right-2"><HeartIcon size={22} /></div>
-              <div className="absolute -bottom-1 -left-3 opacity-60"><HeartIcon size={16} /></div>
             </div>
-          ) : (
-            <div className="w-[260px] h-[260px] rounded-full flex items-center justify-center" style={{ backgroundColor: cardBg, border: `4px solid ${borderColor}` }}>
-              <p className="text-[14px]" style={{ color: textSecondary }}>사진을 추가해주세요</p>
-            </div>
-          )}
-
-          {state.allPhotos.length > 1 && (
-            <div className="flex justify-center gap-1.5 mt-4">
-              {state.allPhotos.map((_, i) => (
-                <div key={i} className="w-1.5 h-1.5 rounded-full transition-all" style={{ backgroundColor: state.currentSlide === i ? accent : borderColor }} />
-              ))}
-            </div>
-          )}
-
-          <HeartDivider />
-
-          <p className="text-[22px] font-bold" style={{ color: textPrimary }}>
-            {data.groomName || "신랑"} <span className="text-[16px] mx-2" style={{ color: accent }}>&</span> {data.brideName || "신부"}
-          </p>
-
-          <p className="text-[13px] mt-3" style={{ color: textSecondary }}>
-            {helpers.formatWeddingDate()}{data.time ? " | " + data.time : ""}
-          </p>
-          <p className="text-[13px] mt-1" style={{ color: textSecondary }}>
-            {data.venue || ""}
-          </p>
-        </div>
+            {state.allPhotos.length > 1 && (
+              <div className="flex justify-center gap-1.5 mt-3">
+                {state.allPhotos.map((_, i) => (
+                  <div key={i} className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: state.currentSlide === i ? accent : borderColor }} />
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="mx-auto max-w-[340px] aspect-[4/5] flex items-center justify-center" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
+            <p className="text-[14px]" style={{ color: textSecondary }}>\uCEE4\uBC84 \uC0AC\uC9C4\uC744 \uCD94\uAC00\uD574\uC8FC\uC138\uC694</p>
+          </div>
+        )}
       </div>
 
-      {/* ===== INVITATION SECTION ===== */}
-      <div className="px-6 py-14" style={{ backgroundColor: pageBg1 }}>
-        <div className="rounded-[20px] p-8" style={{ backgroundColor: cardBg, boxShadow: "0 4px 20px rgba(232,139,167,0.1)" }}>
-          <SectionTitle title="초대합니다" />
+      {/* ===== INVITATION ===== */}
+      <div className="px-8 py-10" style={{ backgroundColor: pageBg }}>
+        {data.invitationTitle && (
+          <p className="text-[15px] text-center font-medium mb-4" style={{ color: textPrimary }}>
+            {data.invitationTitle}
+          </p>
+        )}
 
-          {data.invitationTitle && (
-            <p className="text-[17px] text-center font-medium mb-5" style={{ color: textPrimary }}>
-              {data.invitationTitle}
+        {data.message && (
+          <p className="text-[13px] leading-[2.2] whitespace-pre-line mb-6" style={{ color: textSecondary, textAlign: data.messageAlign || "center" }}>
+            {data.message}
+          </p>
+        )}
+
+        <LeafDivider />
+
+        {data.showNameAtBottom && (() => {
+          const groomBlock = (
+            <p className="text-[14px] leading-relaxed" style={{ color: textPrimary }}>
+              {data.groomFather?.name && (<><DeceasedMark show={data.groomFather.deceased} />{data.groomFather.name}</>)}
+              {data.groomMother?.name && (<> · <DeceasedMark show={data.groomMother.deceased} />{data.groomMother.name}</>)}
+              {(data.groomFather?.name || data.groomMother?.name) && (
+                <span className="text-[12px]" style={{ color: textSecondary }}> {data.groomRelation || "\uC544\uB4E4"} </span>
+              )}
+              <span className="font-bold">{data.groomName || "\uC2E0\uB791"}</span>
             </p>
-          )}
-
-          {data.message && (
-            <p
-              className="text-[14px] leading-[2.2] whitespace-pre-line mb-6"
-              style={{ color: textSecondary, textAlign: data.messageAlign || "center" }}
-            >
-              {data.message}
+          )
+          const brideBlock = (
+            <p className="text-[14px] leading-relaxed" style={{ color: textPrimary }}>
+              {data.brideFather?.name && (<><DeceasedMark show={data.brideFather.deceased} />{data.brideFather.name}</>)}
+              {data.brideMother?.name && (<> · <DeceasedMark show={data.brideMother.deceased} />{data.brideMother.name}</>)}
+              {(data.brideFather?.name || data.brideMother?.name) && (
+                <span className="text-[12px]" style={{ color: textSecondary }}> {data.brideRelation || "\uB538"} </span>
+              )}
+              <span className="font-bold">{data.brideName || "\uC2E0\uBD80"}</span>
             </p>
-          )}
-
-          <HeartDivider />
-
-          {data.showNameAtBottom && (() => {
-            const groomBlock = (
-              <p className="text-[15px] leading-relaxed" style={{ color: textPrimary }}>
-                {data.groomFather?.name && (
-                  <><DeceasedMark show={data.groomFather.deceased} />{data.groomFather.name}</>
-                )}
-                {data.groomMother?.name && (
-                  <> · <DeceasedMark show={data.groomMother.deceased} />{data.groomMother.name}</>
-                )}
-                {(data.groomFather?.name || data.groomMother?.name) && (
-                  <span className="text-[13px]" style={{ color: textSecondary }}> {data.groomRelation || "아들"} </span>
-                )}
-                <span className="font-bold">{data.groomName || "신랑"}</span>
-              </p>
-            )
-            const brideBlock = (
-              <p className="text-[15px] leading-relaxed" style={{ color: textPrimary }}>
-                {data.brideFather?.name && (
-                  <><DeceasedMark show={data.brideFather.deceased} />{data.brideFather.name}</>
-                )}
-                {data.brideMother?.name && (
-                  <> · <DeceasedMark show={data.brideMother.deceased} />{data.brideMother.name}</>
-                )}
-                {(data.brideFather?.name || data.brideMother?.name) && (
-                  <span className="text-[13px]" style={{ color: textSecondary }}> {data.brideRelation || "딸"} </span>
-                )}
-                <span className="font-bold">{data.brideName || "신부"}</span>
-              </p>
-            )
-            const nameStyle = data.nameDisplayStyle || "horizontal"
-            const first = data.brideFirst ? brideBlock : groomBlock
-            const second = data.brideFirst ? groomBlock : brideBlock
-
-            return nameStyle === "vertical" ? (
-              <div className="text-center mb-6">
-                <div className="flex justify-center gap-12">
-                  <div className="space-y-1">{first}</div>
-                  <div className="space-y-1">{second}</div>
-                </div>
+          )
+          const nameStyle = data.nameDisplayStyle || "horizontal"
+          const first = data.brideFirst ? brideBlock : groomBlock
+          const second = data.brideFirst ? groomBlock : brideBlock
+          return nameStyle === "vertical" ? (
+            <div className="text-center mb-6">
+              <div className="flex justify-center gap-14">
+                <div className="space-y-1">{first}</div>
+                <div className="space-y-1">{second}</div>
               </div>
-            ) : (
-              <div className="text-center space-y-3 mb-6">
-                {first}
-                {second}
-              </div>
-            )
-          })()}
+            </div>
+          ) : (
+            <div className="text-center space-y-2 mb-6">{first}{second}</div>
+          )
+        })()}
 
-          <button
-            data-testid="button-contact"
-            onClick={() => state.setShowContact(true)}
-            className="w-[200px] mx-auto block py-3 rounded-full text-[14px] font-medium"
-            style={{ backgroundColor: buttonBg, color: buttonText }}
-          >
+        <div className="text-center">
+          <button data-testid="button-contact" onClick={() => state.setShowContact(true)}
+            className="px-8 py-2.5 text-[13px]"
+            style={{ border: `1px solid ${accent}`, color: accent, backgroundColor: "transparent" }}>
             연락하기
           </button>
         </div>
       </div>
 
-      {/* ===== GALLERY SECTION ===== */}
-      {data.showGallery && state.galleryImages.length > 0 && (
-        <div className="px-6 py-14" style={{ backgroundColor: pageBg2 }}>
-          <SectionTitle title="갤러리" />
-
-          {data.galleryStyle === "grid" || !data.galleryStyle ? (
-            <div className="grid grid-cols-3 gap-2">
-              {state.galleryImages.map((img, index) => (
-                <div
-                  key={index}
-                  className="aspect-square cursor-pointer overflow-hidden rounded-[16px]"
-                  style={{ border: `2px solid ${borderColor}`, boxShadow: "0 2px 10px rgba(232,139,167,0.1)" }}
-                  onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
-                  data-testid={`gallery-photo-${index}`}
-                >
-                  <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="overflow-x-auto -mx-2">
-              <div className="flex gap-3 px-2">
-                {state.galleryImages.map((img, index) => (
-                  <div
-                    key={index}
-                    className="w-[160px] h-[210px] flex-shrink-0 cursor-pointer overflow-hidden rounded-[16px]"
-                    style={{ border: `2px solid ${borderColor}`, boxShadow: "0 2px 10px rgba(232,139,167,0.1)" }}
-                    onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
-                    data-testid={`gallery-photo-${index}`}
-                  >
-                    <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* ===== CALENDAR & COUNTDOWN SECTION ===== */}
+      {/* ===== CALENDAR & COUNTDOWN ===== */}
       {(data.showCalendar || data.showCountdown) && data.weddingDate && (() => {
         const cal = helpers.getCalendarData()
         if (!cal) return null
         const calStyle = data.calendarStyle || "full"
         return (
-          <div className="px-6 py-14 text-center" style={{ backgroundColor: pageBg1 }}>
-            <SectionTitle title="날짜" />
-            <p className="text-[18px] font-medium mb-2" style={{ color: textPrimary }}>{helpers.formatWeddingDate()}</p>
-            <p className="text-[14px] mb-8" style={{ color: textSecondary }}>
-              {cal.weddingDayName}요일 {helpers.formatWeddingTime()}
-            </p>
+          <div className="px-8 py-10 text-center" style={{ backgroundColor: pageBg }}>
+            {/* Date display block */}
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="text-center">
+                <p className="text-[10px] tracking-[0.2em] mb-1" style={{ color: textSecondary }}>{cal.weddingDayName}요일</p>
+              </div>
+              <div className="text-center px-4 py-3" style={{ borderLeft: `1px solid ${borderColor}`, borderRight: `1px solid ${borderColor}` }}>
+                <p className="text-[36px] font-bold leading-none" style={{ color: accent }}>{cal.weddingDay}</p>
+              </div>
+              <div className="text-center">
+                <p className="text-[10px] tracking-[0.2em] mb-1" style={{ color: textSecondary }}>{cal.year}</p>
+                <p className="text-[10px] tracking-[0.2em]" style={{ color: textSecondary }}>{helpers.formatWeddingTime()}</p>
+              </div>
+            </div>
+
+            {data.showCountdown && (
+              <div className="mb-8">
+                <p className="text-[10px] tracking-[0.3em] mb-3" style={{ color: textSecondary }}>D-DAY</p>
+                <div className="flex items-center justify-center gap-1">
+                  {[
+                    { label: "Days", value: state.countdown.days },
+                    { label: "Hours", value: state.countdown.hours },
+                    { label: "Min", value: state.countdown.minutes },
+                    { label: "Sec", value: state.countdown.seconds },
+                  ].map((item, idx) => (
+                    <div key={item.label} className="flex items-center gap-1">
+                      <div className="text-center w-14">
+                        <p className="text-[28px] font-bold leading-none" style={{ color: textPrimary }}>{String(item.value).padStart(2, "0")}</p>
+                        <p className="text-[8px] mt-1 tracking-wider" style={{ color: textSecondary }}>{item.label}</p>
+                      </div>
+                      {idx < 3 && <span className="text-[20px] font-light -mt-3" style={{ color: borderColor }}>:</span>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {data.showCalendar && calStyle === "full" && (
-              <div className="mb-8 mx-auto max-w-[320px] p-5 rounded-[20px]" style={{ backgroundColor: cardBg, boxShadow: "0 4px 20px rgba(232,139,167,0.1)" }}>
-                <div className="grid grid-cols-7 gap-0 mb-2">
+              <div className="mx-auto max-w-[320px] mb-4">
+                <p className="text-[12px] tracking-[0.15em] font-bold mb-3" style={{ color: accent }}>
+                  {cal.year}년 {cal.month}월
+                </p>
+                <div className="grid grid-cols-7 gap-0 mb-1">
                   {cal.dayNames.map((d) => (
-                    <div key={d} className="text-[12px] py-2 text-center font-medium" style={{ color: textSecondary }}>{d}</div>
+                    <div key={d} className="text-[10px] py-1.5 text-center font-medium" style={{ color: textSecondary }}>{d}</div>
                   ))}
                 </div>
                 <div className="grid grid-cols-7 gap-0">
                   {cal.days.map((day, i) => (
-                    <div key={i} className="py-2.5 text-center">
+                    <div key={i} className="py-2 text-center">
                       {day !== null && (
                         day === cal.weddingDay ? (
-                          <span className="inline-flex items-center justify-center w-9 h-9 rounded-full text-[14px] font-bold" style={{ backgroundColor: accent, color: buttonText }}>
+                          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full text-[13px] font-bold" style={{ backgroundColor: accent, color: buttonText }}>
                             {day}
                           </span>
                         ) : (
-                          <span className="text-[14px]" style={{ color: i % 7 === 0 ? accent : i % 7 === 6 ? "#7BA8D9" : textPrimary }}>
+                          <span className="text-[13px]" style={{ color: i % 7 === 0 ? "#C07070" : i % 7 === 6 ? "#7090B0" : textPrimary }}>
                             {day}
                           </span>
                         )
@@ -283,248 +250,212 @@ export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
             )}
 
             {data.showCalendar && calStyle === "simple" && (
-              <div className="mb-8 py-4 rounded-[20px] mx-4" style={{ backgroundColor: cardBg, boxShadow: "0 4px 20px rgba(232,139,167,0.1)" }}>
-                <p className="text-[18px] font-medium" style={{ color: textPrimary }}>
+              <div className="mb-4 py-3" style={{ borderTop: `1px solid ${borderColor}`, borderBottom: `1px solid ${borderColor}` }}>
+                <p className="text-[15px]" style={{ color: textPrimary }}>
                   {cal.year}년 {cal.month}월 {cal.weddingDay}일 {cal.weddingDayName}요일
                 </p>
-                <p className="text-[14px] mt-1" style={{ color: textSecondary }}>{helpers.formatWeddingTime()}</p>
-              </div>
-            )}
-
-            {data.showCountdown && (
-              <div className="flex items-center justify-center gap-0 mt-4">
-                <div className="text-center w-16">
-                  <p className="text-[10px] tracking-wider mb-1" style={{ color: textSecondary }}>DAYS</p>
-                  <p className="text-[28px] font-bold" style={{ color: accent }}>{state.countdown.days}</p>
-                </div>
-                <HeartIcon size={12} />
-                <div className="text-center w-16">
-                  <p className="text-[10px] tracking-wider mb-1" style={{ color: textSecondary }}>HOUR</p>
-                  <p className="text-[28px] font-bold" style={{ color: accent }}>{state.countdown.hours}</p>
-                </div>
-                <HeartIcon size={12} />
-                <div className="text-center w-16">
-                  <p className="text-[10px] tracking-wider mb-1" style={{ color: textSecondary }}>MIN</p>
-                  <p className="text-[28px] font-bold" style={{ color: accent }}>{state.countdown.minutes}</p>
-                </div>
-                <HeartIcon size={12} />
-                <div className="text-center w-16">
-                  <p className="text-[10px] tracking-wider mb-1" style={{ color: textSecondary }}>SEC</p>
-                  <p className="text-[28px] font-bold" style={{ color: accent }}>{state.countdown.seconds}</p>
-                </div>
+                <p className="text-[13px] mt-1" style={{ color: textSecondary }}>{helpers.formatWeddingTime()}</p>
               </div>
             )}
           </div>
         )
       })()}
 
-      {/* ===== LOCATION SECTION ===== */}
-      <div className="px-6 py-14" style={{ backgroundColor: pageBg2 }}>
-        <SectionTitle title="오시는 길" />
+      {/* ===== LOCATION ===== */}
+      <div className="px-8 py-10" style={{ backgroundColor: pageBg }}>
+        <SectionTitle title={"\uC608\uC2DD \uC7A5\uC18C"} />
 
-        <div className="text-center mb-6">
-          <p className="text-[17px] font-bold mb-2" style={{ color: textPrimary }}>
-            {data.venue || "예식장"}{data.venueHall ? ` ${data.venueHall}` : ""}
-          </p>
-          <p className="text-[14px]" style={{ color: textSecondary }}>{data.address || "주소를 입력해주세요"}</p>
-          {data.venuePhone && (
-            <p className="text-[13px] mt-1" style={{ color: textSecondary }}>Tel. {data.venuePhone}</p>
-          )}
+        <p className="text-[16px] font-bold text-center mb-1" style={{ color: textPrimary }}>
+          {data.venue || "\uC608\uC2DD\uC7A5"}{data.venueHall ? ` ${data.venueHall}` : ""}
+        </p>
+        <p className="text-[13px] text-center mb-1" style={{ color: textSecondary }}>{data.address || "\uC8FC\uC18C\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694"}</p>
+        {data.venuePhone && <p className="text-[12px] text-center mb-4" style={{ color: textSecondary }}>Tel. {data.venuePhone}</p>}
+
+        <div className="my-4 overflow-hidden" style={{ border: `1px solid ${borderColor}` }}>
+          <MapEmbed address={data.address} height={180} borderColor={borderColor} bgColor={pageBg} />
         </div>
 
-        <MapEmbed address={data.address} height={200} borderColor={borderColor} bgColor={pageBg1 || "#F5F5F0"} />
-
-        <button
-          className="w-full py-3.5 rounded-full text-[14px] font-medium mb-6"
-          style={{ backgroundColor: buttonBg, color: buttonText }}
-          data-testid="button-directions"
-          onClick={() => openNaverDirections(data.address)}
-        >
-          길찾기
-        </button>
+        <div className="text-center mb-4">
+          <button className="px-10 py-2.5 text-[13px]"
+            style={{ border: `1px solid ${accent}`, color: accent, backgroundColor: "transparent" }}
+            data-testid="button-directions" onClick={() => openNaverDirections(data.address)}>
+            길찾기
+          </button>
+        </div>
 
         {data.transportItems && data.transportItems.some(t => t.type || t.detail) && (
-          <div className="mt-2 space-y-4">
+          <div className="mt-4 space-y-3">
             {data.transportItems.filter(t => t.type || t.detail).map((item, i) => (
-              <div key={i} className="p-4 rounded-[20px]" style={{ backgroundColor: pageBg1 }}>
-                {item.type && <p className="text-[15px] font-bold mb-2" style={{ color: textPrimary }}>{item.type}</p>}
-                {item.detail && <p className="text-[14px] whitespace-pre-line leading-[1.8]" style={{ color: textSecondary }}>{item.detail}</p>}
+              <div key={i} className="pt-3" style={{ borderTop: `1px solid ${borderColor}` }}>
+                {item.type && <p className="text-[12px] font-bold mb-1" style={{ color: textPrimary }}>{item.type}</p>}
+                {item.detail && <p className="text-[12px] whitespace-pre-line leading-[1.8]" style={{ color: textSecondary }}>{item.detail}</p>}
               </div>
             ))}
           </div>
         )}
         {data.transportInfo && !data.transportItems?.some(t => t.type || t.detail) && (
-          <div className="p-4 rounded-[20px]" style={{ backgroundColor: pageBg1 }}>
-            <p className="text-[14px] whitespace-pre-line leading-[1.8]" style={{ color: textSecondary }}>{data.transportInfo}</p>
+          <div className="mt-4 pt-3" style={{ borderTop: `1px solid ${borderColor}` }}>
+            <p className="text-[12px] whitespace-pre-line leading-[1.8]" style={{ color: textSecondary }}>{data.transportInfo}</p>
           </div>
         )}
         {data.showTransportNotice && (
-          <div className="mt-6 p-4 rounded-[20px]" style={{ backgroundColor: pageBg1, border: `1px solid ${borderColor}` }}>
-            <p className="text-[13px] leading-[1.8]" style={{ color: textSecondary }}>
-              주차 공간이 협소하오니 대중교통을 이용해주시면 감사하겠습니다.
-            </p>
-          </div>
+          <p className="text-[11px] leading-[1.8] mt-3 text-center" style={{ color: textSecondary }}>
+            주차 공간이 협소하오니 대중교통을 이용해주시면 감사하겠습니다.
+          </p>
         )}
       </div>
 
       {/* ===== MID PHOTO ===== */}
       {data.showMidPhoto && data.midPhoto && (
-        <div>
-          <img src={data.midPhoto} alt="Mid section" className="w-full object-cover" />
+        <div className="w-full">
+          <img src={data.midPhoto} alt="Mid section" className="w-full object-cover" style={{ maxHeight: "400px" }} />
         </div>
       )}
 
-      {/* ===== RSVP SECTION ===== */}
-      {data.showRsvp && (
-        <div className="px-6 py-14" style={{ backgroundColor: pageBg2 }}>
-          <SectionTitle title="참석 여부" />
-
-          <div className="rounded-[20px] p-6" style={{ backgroundColor: pageBg1, boxShadow: "0 4px 20px rgba(232,139,167,0.08)" }}>
-            <p className="text-[17px] text-center font-medium mb-4" style={{ color: textPrimary }}>
-              {data.rsvpTitle || "참석 의사"}
-            </p>
-
-            <div className="flex justify-center mb-4">
-              <HeartIcon size={24} />
+      {/* ===== GALLERY ===== */}
+      {data.showGallery && state.galleryImages.length > 0 && (
+        <div className="py-10" style={{ backgroundColor: pageBg }}>
+          <SectionTitle title="Gallery" />
+          {data.galleryStyle === "grid" || !data.galleryStyle ? (
+            <div className="px-6 grid grid-cols-2 gap-2">
+              {state.galleryImages.map((img, index) => (
+                <div key={index} className="aspect-square cursor-pointer overflow-hidden"
+                  style={{ border: `1px solid ${borderColor}` }}
+                  onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
+                  data-testid={`gallery-photo-${index}`}>
+                  <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />
+                </div>
+              ))}
             </div>
+          ) : (
+            <div className="overflow-x-auto pl-6">
+              <div className="flex gap-2 pr-6">
+                {state.galleryImages.map((img, index) => (
+                  <div key={index} className="w-[160px] h-[200px] flex-shrink-0 cursor-pointer overflow-hidden"
+                    style={{ border: `1px solid ${borderColor}` }}
+                    onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
+                    data-testid={`gallery-photo-${index}`}>
+                    <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
-            <p className="text-[13px] text-center mb-6" style={{ color: textSecondary }}>
-              {data.rsvpContent || "신랑신부에게 참석 여부를 미리 알려주세요"}
-            </p>
+      {/* ===== RSVP ===== */}
+      {data.showRsvp && (
+        <div className="px-8 py-10" style={{ backgroundColor: pageBg }}>
+          <SectionTitle title={"\uCC38\uC11D \uC5EC\uBD80"} />
 
-            <button
-              className="w-full py-3.5 rounded-full text-[14px] font-medium"
-              style={{ backgroundColor: buttonBg, color: buttonText }}
-              data-testid="button-rsvp"
-              onClick={() => onRsvpClick?.()}
-            >
-              {data.rsvpButtonName || "참석 의사 전달하기"}
+          {/* Calendar icon */}
+          <div className="flex justify-center mb-4">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke={accent} strokeWidth="1.5">
+              <rect x="6" y="10" width="28" height="24" rx="2" />
+              <path d="M6 16h28" />
+              <path d="M13 6v6" />
+              <path d="M27 6v6" />
+              <path d="M16 22h8" />
+              <path d="M20 22v6" />
+            </svg>
+          </div>
+
+          <p className="text-[13px] text-center mb-6" style={{ color: textSecondary }}>
+            {data.rsvpContent || "\uCC38\uC11D \uC5EC\uBD80\uB97C \uBBF8\uB9AC \uC54C\uB824\uC8FC\uC2DC\uBA74 \uAC10\uC0AC\uD558\uACA0\uC2B5\uB2C8\uB2E4"}
+          </p>
+
+          <div className="text-center">
+            <button className="px-10 py-3 text-[13px]"
+              style={{ border: `1px solid ${accent}`, color: accent, backgroundColor: "transparent" }}
+              data-testid="button-rsvp" onClick={() => onRsvpClick?.()}>
+              {data.rsvpButtonName || "\uCC38\uC11D \uC758\uC0AC \uC804\uB2EC\uD558\uAE30"}
             </button>
           </div>
         </div>
       )}
 
-      {/* ===== GUESTBOOK SECTION ===== */}
+      {/* ===== GUESTBOOK ===== */}
       {data.showGuestbook && (
-        <div className="px-6 py-14" style={{ backgroundColor: pageBg1 }}>
-          <SectionTitle title="방명록" />
+        <div className="px-8 py-10" style={{ backgroundColor: pageBg }}>
+          <SectionTitle title={"\uBC29\uBA85\uB85D"} />
 
-          <div className="space-y-4 mb-6">
+          <div className="space-y-3 mb-6">
             {state.guestbookEntries.length > 0 ? (
               state.guestbookEntries.slice(0, 5).map((entry, i) => (
-                <div
-                  key={i}
-                  className="p-5 relative rounded-[20px]"
-                  style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, boxShadow: "0 2px 10px rgba(232,139,167,0.06)" }}
-                >
-                  <div className="absolute top-3 right-3 opacity-30"><HeartIcon size={10} /></div>
-                  <p className="text-[14px] leading-[1.8] whitespace-pre-line mb-3" style={{ color: textSecondary }}>{entry.message}</p>
-                  <p className="text-[12px]" style={{ color: accent }}>- {entry.name} -</p>
+                <div key={i} className="p-4" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
+                  <p className="text-[13px] leading-[1.8] whitespace-pre-line mb-2" style={{ color: textSecondary }}>{entry.message}</p>
+                  <p className="text-[11px] text-right" style={{ color: textSecondary }}>- {entry.name}</p>
                 </div>
               ))
             ) : (
-              <div className="p-6 text-center rounded-[20px]" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
-                <HeartIcon size={20} />
-                <p className="text-[14px] leading-[1.8] mt-3" style={{ color: textSecondary }}>
-                  아직 방명록이 없습니다.{"\n"}축하 메시지를 남겨주세요.
-                </p>
+              <div className="p-6 text-center" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
+                <p className="text-[13px]" style={{ color: textSecondary }}>축하 메시지를 남겨주세요</p>
               </div>
             )}
           </div>
 
           {state.showGuestbookForm ? (
-            <div className="p-5 rounded-[20px] mb-4" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
-              <input
-                type="text"
-                value={state.guestbookName}
-                onChange={(e) => state.setGuestbookName(e.target.value)}
-                placeholder="이름"
-                className="w-full py-2.5 px-4 rounded-full text-[14px] mb-3 outline-none"
-                style={{ border: `1px solid ${borderColor}`, backgroundColor: pageBg1, color: textPrimary }}
-                data-testid="input-guestbook-name"
-              />
-              <textarea
-                value={state.guestbookMessage}
-                onChange={(e) => state.setGuestbookMessage(e.target.value)}
-                placeholder="축하 메시지를 작성해주세요"
-                rows={4}
-                className="w-full py-2.5 px-4 rounded-[16px] text-[14px] mb-3 outline-none resize-none"
-                style={{ border: `1px solid ${borderColor}`, backgroundColor: pageBg1, color: textPrimary }}
-                data-testid="input-guestbook-message"
-              />
+            <div className="p-4 mb-4" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
+              <input type="text" value={state.guestbookName} onChange={(e) => state.setGuestbookName(e.target.value)}
+                placeholder="이름" className="w-full py-2 px-3 text-[13px] mb-2 outline-none"
+                style={{ border: `1px solid ${borderColor}`, backgroundColor: pageBg, color: textPrimary }}
+                data-testid="input-guestbook-name" />
+              <textarea value={state.guestbookMessage} onChange={(e) => state.setGuestbookMessage(e.target.value)}
+                placeholder="축하 메시지를 작성해주세요" rows={4}
+                className="w-full py-2 px-3 text-[13px] mb-3 outline-none resize-none"
+                style={{ border: `1px solid ${borderColor}`, backgroundColor: pageBg, color: textPrimary }}
+                data-testid="input-guestbook-message" />
               <div className="flex gap-2">
-                <button
-                  onClick={() => state.setShowGuestbookForm(false)}
-                  className="flex-1 py-2.5 rounded-full text-[13px]"
-                  style={{ border: `1px solid ${borderColor}`, color: textSecondary, backgroundColor: cardBg }}
-                  data-testid="button-guestbook-cancel"
-                >
-                  취소
-                </button>
-                <button
-                  onClick={helpers.submitGuestbook}
-                  className="flex-1 py-2.5 rounded-full text-[13px] font-medium"
-                  style={{ backgroundColor: buttonBg, color: buttonText }}
-                  data-testid="button-guestbook-submit"
-                >
-                  등록하기
-                </button>
+                <button onClick={() => state.setShowGuestbookForm(false)} className="flex-1 py-2 text-[12px]"
+                  style={{ border: `1px solid ${borderColor}`, color: textSecondary }} data-testid="button-guestbook-cancel">취소</button>
+                <button onClick={helpers.submitGuestbook} className="flex-1 py-2 text-[12px]"
+                  style={{ backgroundColor: buttonBg, color: buttonText }} data-testid="button-guestbook-submit">등록</button>
               </div>
             </div>
           ) : (
-            <button
-              onClick={() => state.setShowGuestbookForm(true)}
-              className="w-full py-3.5 rounded-full text-[14px] font-medium"
-              style={{ backgroundColor: buttonBg, color: buttonText }}
-              data-testid="button-guestbook-write"
-            >
-              작성하기
+            <button onClick={() => state.setShowGuestbookForm(true)} className="w-full py-2.5 text-[13px]"
+              style={{ border: `1px solid ${accent}`, color: accent, backgroundColor: "transparent" }}
+              data-testid="button-guestbook-write">작성하기</button>
+          )}
+        </div>
+      )}
+
+      {/* ===== FUNDING ===== */}
+      {data.showFunding && (
+        <div className="px-8 py-10" style={{ backgroundColor: pageBg }}>
+          <div className="p-6 text-center" style={{ backgroundColor: accent }}>
+            <SectionTitle title={"\uCD95\uD558 \uD380\uB529"} />
+            {data.fundingMessage && (
+              <p className="text-[12px] leading-[1.8] whitespace-pre-line mb-5" style={{ color: textOnGreen }}>{data.fundingMessage}</p>
+            )}
+            <button className="px-10 py-2.5 text-[12px]"
+              style={{ border: `1px solid ${textOnGreen}`, color: textOnGreen, backgroundColor: "transparent" }}
+              data-testid="button-funding" onClick={() => openKakaoTransfer()}>
+              {data.fundingButtonName || "\uCD95\uC758\uAE08 \uBCF4\uB0B4\uAE30"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ===== GIFT FUNDING ===== */}
+      {data.showGiftFunding && (
+        <div className="px-8 py-10 text-center" style={{ backgroundColor: pageBg }}>
+          <SectionTitle title={"\uAE30\uD504\uD2B8 \uD380\uB529"} />
+          {data.giftFundingMessage && (
+            <p className="text-[13px] leading-[2] whitespace-pre-line mb-6" style={{ color: textSecondary }}>{data.giftFundingMessage}</p>
+          )}
+          {data.giftFundingButtonName && (
+            <button className="px-10 py-2.5 text-[13px]"
+              style={{ border: `1px solid ${accent}`, color: accent, backgroundColor: "transparent" }}
+              data-testid="button-gift-funding" onClick={() => openKakaoGift()}>
+              {data.giftFundingButtonName}
             </button>
           )}
         </div>
       )}
 
-      {/* ===== FUNDING SECTION ===== */}
-      {data.showFunding && (
-        <div className="px-6 py-14" style={{ backgroundColor: pageBg2 }}>
-          <SectionTitle title="축의금" />
-
-          {data.fundingMessage && (
-            <p className="text-[15px] text-center font-medium leading-[1.8] whitespace-pre-line mb-6" style={{ color: textPrimary }}>
-              {data.fundingMessage}
-            </p>
-          )}
-
-          <div className="flex justify-center mb-6">
-            {data.fundingImageType === "custom" && data.fundingImage ? (
-              <div className="w-[200px] h-[200px] rounded-[12px] overflow-hidden">
-                <img src={data.fundingImage} alt="펀딩" className="w-full h-full object-cover" data-testid="img-funding-custom" />
-              </div>
-            ) : (
-              <div className="w-[160px] h-[160px] flex items-center justify-center">
-                <svg viewBox="0 0 160 160" width="140" height="140" fill="none">
-                  <circle cx="55" cy="80" r="25" fill={accent} opacity="0.15"/>
-                  <circle cx="105" cy="80" r="25" fill={accent} opacity="0.15"/>
-                  <circle cx="55" cy="65" r="12" fill={accent} opacity="0.2"/>
-                  <circle cx="105" cy="65" r="12" fill={accent} opacity="0.2"/>
-                  <path d="M80 120l-2-1.8C66 107 58 100 58 92c0-5.5 4-10 9.5-10 2.1 0 4.1.6 5.5 1.6 1.4-1 3.4-1.6 5.5-1.6 5.5 0 9.5 4.5 9.5 10 0 8-8 15-20 26.2L80 120z" fill={accent} opacity="0.5"/>
-                </svg>
-              </div>
-            )}
-          </div>
-
-          <button
-            className="w-full py-3.5 rounded-full text-[14px] font-medium"
-            style={{ backgroundColor: buttonBg, color: buttonText }}
-            data-testid="button-funding"
-            onClick={() => openKakaoTransfer()}
-          >
-            {data.fundingButtonName || "축의금 보내기"}
-          </button>
-        </div>
-      )}
-
-      {/* ===== ACCOUNT SECTION ===== */}
+      {/* ===== ACCOUNT ===== */}
       {data.showAccount && (() => {
         const accStyle = data.accountDisplayStyle || "expand"
         const groomAccList = (data.groomFatherAccount?.account || data.groomMotherAccount?.account)
@@ -533,103 +464,66 @@ export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
         const brideAccList = (data.brideFatherAccount?.account || data.brideMotherAccount?.account)
           ? [data.brideFatherAccount, data.brideMotherAccount].filter(a => a?.account)
           : data.brideAccounts?.filter(a => a?.account) || []
-
         const renderAccList = (list: typeof groomAccList) => (
           <div className="space-y-3">
             {list.map((acc, i) => (
               <div key={i} className="flex justify-between items-center py-1">
                 <div>
-                  <p className="text-[14px]" style={{ color: textPrimary }}>{acc!.bank} {acc!.account}</p>
-                  <p className="text-[12px] mt-0.5" style={{ color: textSecondary }}>{acc!.holder}</p>
+                  <p className="text-[13px]" style={{ color: textPrimary }}>{acc!.bank} {acc!.account}</p>
+                  <p className="text-[11px] mt-0.5" style={{ color: textSecondary }}>{acc!.holder}</p>
                 </div>
-                <button
-                  onClick={() => helpers.copyToClipboard(`${acc!.bank} ${acc!.account}`, "계좌번호가")}
-                  className="px-3 py-1.5 rounded-full text-[11px] font-medium"
-                  style={{ backgroundColor: buttonBg, color: buttonText }}
-                  data-testid={`button-copy-account-${i}`}
-                >
-                  복사
-                </button>
+                <button onClick={() => helpers.copyToClipboard(`${acc!.bank} ${acc!.account}`, "\uACC4\uC88C\uBC88\uD638\uAC00")}
+                  className="px-3 py-1 text-[10px]"
+                  style={{ border: `1px solid ${borderColor}`, color: textSecondary }}
+                  data-testid={`button-copy-account-${i}`}>복사</button>
               </div>
             ))}
           </div>
         )
-
         return (
-          <div className="px-6 py-14" style={{ backgroundColor: pageBg1 }}>
-            <SectionTitle title="마음 전하기" />
-            <p className="text-[13px] text-center mb-6" style={{ color: textSecondary }}>축하의 마음을 전해주세요</p>
-
+          <div className="px-8 py-10" style={{ backgroundColor: pageBg }}>
+            <SectionTitle title={"\uCD95\uC758\uAE08 \uC804\uB2EC"} />
             <div className="space-y-4">
               {groomAccList.length > 0 && (
                 accStyle === "accordion" ? (
-                  <div className="rounded-[20px] overflow-hidden" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
-                    <button
-                      onClick={() => state.setExpandedAccordion(state.expandedAccordion === "groom" ? null : "groom")}
-                      className="w-full flex items-center justify-between p-5"
-                      data-testid="accordion-groom"
-                    >
-                      <div className="flex items-center gap-2">
-                        <HeartIcon size={14} />
-                        <p className="text-[14px] font-medium" style={{ color: textPrimary }}>신랑측 계좌번호</p>
-                      </div>
-                      <svg
-                        className={`w-4 h-4 transition-transform ${state.expandedAccordion === "groom" ? "rotate-180" : ""}`}
-                        style={{ color: accent }}
-                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                      >
+                  <div style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
+                    <button onClick={() => state.setExpandedAccordion(state.expandedAccordion === "groom" ? null : "groom")}
+                      className="w-full flex items-center justify-between p-4" data-testid="accordion-groom">
+                      <p className="text-[13px] font-bold" style={{ color: textPrimary }}>신랑측</p>
+                      <svg className={`w-4 h-4 transition-transform ${state.expandedAccordion === "groom" ? "rotate-180" : ""}`}
+                        style={{ color: textSecondary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
                     {state.expandedAccordion === "groom" && (
-                      <div className="px-5 pb-5" style={{ borderTop: `1px solid ${borderColor}` }}>
-                        {renderAccList(groomAccList)}
-                      </div>
+                      <div className="px-4 pb-4" style={{ borderTop: `1px solid ${borderColor}` }}>{renderAccList(groomAccList)}</div>
                     )}
                   </div>
                 ) : (
-                  <div className="rounded-[20px] p-5" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
-                    <div className="flex items-center gap-2 mb-4">
-                      <HeartIcon size={12} />
-                      <p className="text-[12px] font-medium" style={{ color: accent }}>신랑측</p>
-                    </div>
+                  <div className="p-4" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
+                    <p className="text-[11px] font-bold mb-3" style={{ color: accent }}>신랑측</p>
                     {renderAccList(groomAccList)}
                   </div>
                 )
               )}
-
               {brideAccList.length > 0 && (
                 accStyle === "accordion" ? (
-                  <div className="rounded-[20px] overflow-hidden" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
-                    <button
-                      onClick={() => state.setExpandedAccordion(state.expandedAccordion === "bride" ? null : "bride")}
-                      className="w-full flex items-center justify-between p-5"
-                      data-testid="accordion-bride"
-                    >
-                      <div className="flex items-center gap-2">
-                        <HeartIcon size={14} />
-                        <p className="text-[14px] font-medium" style={{ color: textPrimary }}>신부측 계좌번호</p>
-                      </div>
-                      <svg
-                        className={`w-4 h-4 transition-transform ${state.expandedAccordion === "bride" ? "rotate-180" : ""}`}
-                        style={{ color: accent }}
-                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                      >
+                  <div style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
+                    <button onClick={() => state.setExpandedAccordion(state.expandedAccordion === "bride" ? null : "bride")}
+                      className="w-full flex items-center justify-between p-4" data-testid="accordion-bride">
+                      <p className="text-[13px] font-bold" style={{ color: textPrimary }}>신부측</p>
+                      <svg className={`w-4 h-4 transition-transform ${state.expandedAccordion === "bride" ? "rotate-180" : ""}`}
+                        style={{ color: textSecondary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
                     {state.expandedAccordion === "bride" && (
-                      <div className="px-5 pb-5" style={{ borderTop: `1px solid ${borderColor}` }}>
-                        {renderAccList(brideAccList)}
-                      </div>
+                      <div className="px-4 pb-4" style={{ borderTop: `1px solid ${borderColor}` }}>{renderAccList(brideAccList)}</div>
                     )}
                   </div>
                 ) : (
-                  <div className="rounded-[20px] p-5" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
-                    <div className="flex items-center gap-2 mb-4">
-                      <HeartIcon size={12} />
-                      <p className="text-[12px] font-medium" style={{ color: accent }}>신부측</p>
-                    </div>
+                  <div className="p-4" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
+                    <p className="text-[11px] font-bold mb-3" style={{ color: accent }}>신부측</p>
                     {renderAccList(brideAccList)}
                   </div>
                 )
@@ -641,18 +535,18 @@ export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
 
       {/* ===== BAPTISMAL NAMES ===== */}
       {data.showBaptismalName && (
-        <div className="px-6 py-10 text-center" style={{ backgroundColor: pageBg2 }}>
-          <SectionTitle title="세례명" />
-          <div className="flex justify-center gap-12">
+        <div className="px-8 py-8 text-center" style={{ backgroundColor: pageBg }}>
+          <SectionTitle title={"\uC138\uB840\uBA85"} />
+          <div className="flex justify-center gap-14">
             <div className="space-y-1">
-              {data.baptismalGroom && <p className="text-[14px] font-medium" style={{ color: textPrimary }}>{data.baptismalGroom}</p>}
-              {data.baptismalGroomFather && <p className="text-[13px]" style={{ color: textSecondary }}>{data.baptismalGroomFather}</p>}
-              {data.baptismalGroomMother && <p className="text-[13px]" style={{ color: textSecondary }}>{data.baptismalGroomMother}</p>}
+              {data.baptismalGroom && <p className="text-[13px] font-bold" style={{ color: textPrimary }}>{data.baptismalGroom}</p>}
+              {data.baptismalGroomFather && <p className="text-[12px]" style={{ color: textSecondary }}>{data.baptismalGroomFather}</p>}
+              {data.baptismalGroomMother && <p className="text-[12px]" style={{ color: textSecondary }}>{data.baptismalGroomMother}</p>}
             </div>
             <div className="space-y-1">
-              {data.baptismalBride && <p className="text-[14px] font-medium" style={{ color: textPrimary }}>{data.baptismalBride}</p>}
-              {data.baptismalBrideFather && <p className="text-[13px]" style={{ color: textSecondary }}>{data.baptismalBrideFather}</p>}
-              {data.baptismalBrideMother && <p className="text-[13px]" style={{ color: textSecondary }}>{data.baptismalBrideMother}</p>}
+              {data.baptismalBride && <p className="text-[13px] font-bold" style={{ color: textPrimary }}>{data.baptismalBride}</p>}
+              {data.baptismalBrideFather && <p className="text-[12px]" style={{ color: textSecondary }}>{data.baptismalBrideFather}</p>}
+              {data.baptismalBrideMother && <p className="text-[12px]" style={{ color: textSecondary }}>{data.baptismalBrideMother}</p>}
             </div>
           </div>
         </div>
@@ -660,135 +554,151 @@ export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
 
       {/* ===== GUEST SNAP ===== */}
       {data.showGuestSnap && (
-        <div className="px-6 py-14" style={{ backgroundColor: pageBg1 }}>
-          <SectionTitle title="게스트 스냅" />
+        <div className="px-8 py-10 text-center" style={{ backgroundColor: pageBg }}>
+          <SectionTitle title={"\uAC8C\uC2A4\uD2B8 \uC2A4\uB0C5"} />
           {data.guestSnapContent && (
-            <p className="text-[14px] text-center whitespace-pre-line leading-[1.8] mb-6" style={{ color: textSecondary }}>
-              {data.guestSnapContent}
-            </p>
+            <p className="text-[13px] whitespace-pre-line leading-[1.8] mb-6" style={{ color: textSecondary }}>{data.guestSnapContent}</p>
           )}
-          <button
-            className="w-full py-3.5 rounded-full text-[14px] font-medium"
-            style={{ backgroundColor: buttonBg, color: buttonText }}
-            data-testid="button-guest-snap"
-          >
-            사진 업로드
-          </button>
+          <button className="px-8 py-2.5 text-[13px]"
+            style={{ border: `1px solid ${accent}`, color: accent, backgroundColor: "transparent" }}
+            data-testid="button-guest-snap">사진 업로드</button>
         </div>
       )}
 
-      {/* ===== NOTICE SECTION ===== */}
+      {/* ===== NOTICE ===== */}
       {data.showNotice && data.noticeTitle && (
-        <div className="px-6 py-14" style={{ backgroundColor: pageBg1 }}>
-          <SectionTitle title="안내사항" />
-          <div className="rounded-[20px] p-6" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <HeartIcon size={14} />
-              <p className="text-[17px] font-medium" style={{ color: accent }}>{data.noticeTitle}</p>
-              <HeartIcon size={14} />
-            </div>
+        <div className="px-8 py-10" style={{ backgroundColor: pageBg }}>
+          <LeafDivider />
+          <p className="text-[12px] tracking-[0.15em] font-bold text-center mb-4" style={{ color: accent }}>{data.noticeTitle}</p>
+          <div className="text-center">
             {data.noticeItems?.filter(Boolean).map((item, i) => (
-              <p key={i} className="text-[14px] text-center leading-[1.8] mb-1" style={{ color: textSecondary }}>{item}</p>
+              <p key={i} className="text-[13px] leading-[1.8] mb-1" style={{ color: textSecondary }}>{item}</p>
             ))}
           </div>
         </div>
       )}
 
-      {/* ===== ENDING SECTION ===== */}
+      {/* ===== ENDING ===== */}
       {data.showEndingMessage && (data.endingContent || data.endingPhoto) && (() => {
         const eStyle = data.endingStyle || "card"
-        const endTextColor = data.endingTextColor || textPrimary
+        const endTextColor = data.endingTextColor || "#FFFFFF"
         return (
-          <div className="px-6 py-14" style={{ backgroundColor: pageBg2 }}>
-            <SectionTitle title="감사합니다" />
+          <div className="py-10" style={{ backgroundColor: pageBg }}>
+            <div className="px-8 text-center mb-6">
+              <p className="text-[12px] tracking-[0.3em] mb-4" style={{ color: textSecondary }}>THANK YOU</p>
+            </div>
 
-            {eStyle === "card" && data.endingPhoto && (
-              <div className="mx-auto max-w-[260px] mb-6 rounded-[20px] overflow-hidden" style={{ border: `2px solid ${borderColor}`, boxShadow: "0 4px 20px rgba(232,139,167,0.1)" }}>
-                <img src={data.endingPhoto} alt="Thank you" className="w-full aspect-[4/5] object-cover" />
-              </div>
-            )}
-
-            {eStyle === "card" && data.endingContent && (
-              <p className="text-[14px] leading-[2] text-center whitespace-pre-line" style={{ color: textSecondary }}>
+            {data.endingContent && (
+              <p className="text-[13px] leading-[2] text-center whitespace-pre-line mb-6 px-8" style={{ color: textSecondary }}>
                 {data.endingContent}
               </p>
             )}
 
-            {eStyle === "full" && data.endingPhoto && (
-              <div className="-mx-6 mb-6 relative rounded-[20px] overflow-hidden mx-0">
-                <img src={data.endingPhoto} alt="Thank you" className="w-full object-cover" style={{ maxHeight: "400px" }} />
-                <div className="absolute inset-0 bg-black/30" />
-                {data.endingContent && (
-                  <div className="absolute inset-0 flex items-center justify-center px-8">
-                    <p className="text-[14px] leading-[2] text-center whitespace-pre-line" style={{ color: endTextColor }}>
-                      {data.endingContent}
-                    </p>
-                  </div>
-                )}
+            {data.endingPhoto && (
+              <div className="mx-auto max-w-[300px] px-8 mb-6">
+                <div className="p-2 bg-white shadow-sm" style={{ border: `1px solid ${borderColor}` }}>
+                  <img src={data.endingPhoto} alt="Thank you" className="w-full aspect-[4/5] object-cover" />
+                </div>
               </div>
             )}
 
-            {eStyle === "full" && !data.endingPhoto && data.endingContent && (
-              <p className="text-[14px] leading-[2] text-center whitespace-pre-line" style={{ color: textSecondary }}>
-                {data.endingContent}
+            <div className="px-8 text-center">
+              <p className="text-[26px]" style={{ color: textPrimary, fontFamily: scriptFont }}>
+                {data.groomName || "\uC2E0\uB791"} & {data.brideName || "\uC2E0\uBD80"}
               </p>
-            )}
-
-            {eStyle === "simple" && (
-              <>
-                {data.endingPhoto && (
-                  <div className="mb-0 relative rounded-[20px] overflow-hidden">
-                    <img src={data.endingPhoto} alt="Thank you" className="w-full object-cover" style={{ maxHeight: "360px" }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    {data.endingContent && (
-                      <div className="absolute bottom-0 left-0 right-0 px-8 pb-10">
-                        <div className="flex justify-center mb-4"><HeartIcon size={14} /></div>
-                        <p className="text-[14px] leading-[2] text-center whitespace-pre-line" style={{ color: endTextColor }}>
-                          {data.endingContent}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                )}
-                {!data.endingPhoto && data.endingContent && (
-                  <div className="text-center">
-                    <div className="flex justify-center mb-4"><HeartIcon size={14} /></div>
-                    <p className="text-[14px] leading-[2] text-center whitespace-pre-line" style={{ color: textSecondary }}>
-                      {data.endingContent}
-                    </p>
-                  </div>
-                )}
-              </>
-            )}
+            </div>
           </div>
         )
       })()}
 
-      {/* ===== LINK COPY BUTTON ===== */}
-      <div className="px-6 pb-10 pt-4" style={{ backgroundColor: pageBg1 }}>
-        <button
-          onClick={helpers.copyLink}
-          className="w-full py-4 rounded-full text-[14px] font-medium"
-          style={{ backgroundColor: buttonBg, color: buttonText }}
-          data-testid="button-copy-link"
-        >
+      {/* ===== LINK COPY ===== */}
+      <div className="px-8 pb-8 pt-4 text-center" style={{ backgroundColor: pageBg }}>
+        <button onClick={helpers.copyLink} className="w-full py-3 text-[13px]"
+          style={{ border: `1px solid ${accent}`, color: accent, backgroundColor: "transparent" }}
+          data-testid="button-copy-link">
           청첩장 링크 복사하기
         </button>
       </div>
 
       {/* ===== FOOTER ===== */}
-      <div className="px-8 pb-8 pt-4 text-center" style={{ background: "linear-gradient(180deg, #FFF5F7 0%, #FFE4EC 100%)" }}>
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <div className="w-6 h-[1px]" style={{ backgroundColor: accent, opacity: 0.3 }} />
-          <HeartIcon size={10} />
-          <div className="w-6 h-[1px]" style={{ backgroundColor: accent, opacity: 0.3 }} />
-        </div>
-        <p className="text-[10px] tracking-[0.15em] flex items-center justify-center gap-1" style={{ color: textSecondary }}>
-          MADE WITH
-          <HeartIcon size={8} />
-          WE:BEAT
-        </p>
+      <div className="pb-8 pt-2 text-center" style={{ backgroundColor: pageBg }}>
+        <div className="w-12 h-px mx-auto mb-3" style={{ backgroundColor: borderColor }} />
+        <p className="text-[9px] tracking-[0.3em]" style={{ color: textSecondary }}>WE:BEAT</p>
       </div>
+
+      {/* ===== CONTACT MODAL ===== */}
+      {state.showContact && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ backgroundColor: "rgba(0,0,0,0.4)" }}>
+          <div className="w-[300px] p-6 relative" style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}>
+            <button onClick={() => state.setShowContact(false)} className="absolute top-3 right-3" data-testid="button-close-contact">
+              <X className="w-5 h-5" style={{ color: textSecondary }} />
+            </button>
+            <SectionTitle title="Contact" />
+            <div className="space-y-4">
+              {[
+                { label: "\uC2E0\uB791", phone: data.groomPhone, name: data.groomName || "\uC2E0\uB791" },
+                { label: "\uC2E0\uBD80", phone: data.bridePhone, name: data.brideName || "\uC2E0\uBD80" },
+                ...(data.groomFather?.phone ? [{ label: "\uC2E0\uB791\uCE21 \uC544\uBC84\uC9C0", phone: data.groomFather.phone, name: data.groomFather.name }] : []),
+                ...(data.groomMother?.phone ? [{ label: "\uC2E0\uB791\uCE21 \uC5B4\uBA38\uB2C8", phone: data.groomMother.phone, name: data.groomMother.name }] : []),
+                ...(data.brideFather?.phone ? [{ label: "\uC2E0\uBD80\uCE21 \uC544\uBC84\uC9C0", phone: data.brideFather.phone, name: data.brideFather.name }] : []),
+                ...(data.brideMother?.phone ? [{ label: "\uC2E0\uBD80\uCE21 \uC5B4\uBA38\uB2C8", phone: data.brideMother.phone, name: data.brideMother.name }] : []),
+              ].filter(c => c.phone).map((contact, i) => (
+                <div key={i} className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[10px]" style={{ color: textSecondary }}>{contact.label}</p>
+                    <p className="text-[14px]" style={{ color: textPrimary }}>{contact.name}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <a href={`tel:${contact.phone}`} className="w-8 h-8 flex items-center justify-center"
+                      style={{ border: `1px solid ${borderColor}` }} data-testid={`button-call-${i}`}>
+                      <Phone className="w-3.5 h-3.5" style={{ color: textSecondary }} />
+                    </a>
+                    <button onClick={() => helpers.copyToClipboard(contact.phone!, "\uC804\uD654\uBC88\uD638\uAC00")}
+                      className="w-8 h-8 flex items-center justify-center"
+                      style={{ border: `1px solid ${borderColor}` }} data-testid={`button-copy-phone-${i}`}>
+                      <Copy className="w-3.5 h-3.5" style={{ color: textSecondary }} />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ===== PHOTO VIEWER ===== */}
+      {state.showPhotoViewer && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ backgroundColor: "rgba(0,0,0,0.9)" }}>
+          <button onClick={() => state.setShowPhotoViewer(false)} className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center"
+            style={{ backgroundColor: "rgba(255,255,255,0.1)" }} data-testid="button-close-viewer">
+            <X className="w-5 h-5 text-white" />
+          </button>
+          <img src={state.galleryImages[state.viewerIndex]} alt={`Gallery ${state.viewerIndex + 1}`} className="max-w-full max-h-[80vh] object-contain" />
+          {state.viewerIndex > 0 && (
+            <button onClick={() => state.setViewerIndex(state.viewerIndex - 1)} className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center"
+              style={{ backgroundColor: "rgba(255,255,255,0.1)" }} data-testid="button-viewer-prev">
+              <ChevronLeft className="w-5 h-5 text-white" />
+            </button>
+          )}
+          {state.viewerIndex < state.galleryImages.length - 1 && (
+            <button onClick={() => state.setViewerIndex(state.viewerIndex + 1)} className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center"
+              style={{ backgroundColor: "rgba(255,255,255,0.1)" }} data-testid="button-viewer-next">
+              <ChevronRight className="w-5 h-5 text-white" />
+            </button>
+          )}
+          <div className="absolute bottom-6 left-0 right-0 text-center">
+            <p className="text-[13px] text-white/60">{state.viewerIndex + 1} / {state.galleryImages.length}</p>
+          </div>
+        </div>
+      )}
+
+      {/* ===== COPIED TOAST ===== */}
+      {state.copiedToast && (
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 px-5 py-3 text-[13px] shadow-lg"
+          style={{ backgroundColor: buttonBg, color: buttonText }}>
+          {state.copiedToast}
+        </div>
+      )}
     </>
   )
 }
