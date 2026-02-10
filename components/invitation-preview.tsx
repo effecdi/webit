@@ -69,10 +69,13 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
     const musicUrl = getMusicUrl()
     if (!musicUrl || !audio || musicStartedRef.current) return
     musicStartedRef.current = true
-    audio.src = musicUrl
-    audio.loop = true
-    audio.volume = 0.5
-    audio.play().then(() => setIsMusicPlaying(true)).catch(() => {
+    if (!audio.src || !audio.src.includes(musicUrl.replace(/^\//, ""))) {
+      audio.src = musicUrl
+      audio.loop = true
+      audio.volume = 0.5
+    }
+    audio.play().then(() => setIsMusicPlaying(true)).catch((err) => {
+      console.error("Music autoplay failed:", err)
       setIsMusicPlaying(false)
       musicStartedRef.current = false
     })
@@ -143,7 +146,18 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
       audio.pause()
       setIsMusicPlaying(false)
     } else {
-      audio.play().then(() => setIsMusicPlaying(true)).catch(() => {})
+      const musicUrl = getMusicUrl()
+      if (musicUrl) {
+        if (!audio.src || !audio.src.includes(musicUrl.replace(/^\//, ""))) {
+          audio.src = musicUrl
+          audio.loop = true
+          audio.volume = 0.5
+        }
+        audio.play().then(() => setIsMusicPlaying(true)).catch((err) => {
+          console.error("Music play failed:", err)
+          setIsMusicPlaying(false)
+        })
+      }
     }
   }
 
@@ -301,9 +315,10 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
 
       {(shouldShowMusicControls || isShared) && (
         <div
-          className={`fixed top-4 right-4 z-50 flex flex-col gap-2 transition-opacity duration-300 ${showControls ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-          style={{ fontSize: "16px" }}
+          className={`sticky top-4 z-50 flex flex-col items-end gap-2 pr-4 transition-opacity duration-300 pointer-events-none ${showControls ? "opacity-100" : "opacity-0"}`}
+          style={{ fontSize: "16px", height: 0 }}
         >
+          <div className="pointer-events-auto flex flex-col gap-2">
           {shouldShowMusicControls && data.showMusic && data.musicTrack && (
             <button
               onClick={(e) => { e.stopPropagation(); toggleMusic(); }}
@@ -331,6 +346,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
               </button>
             </>
           )}
+          </div>
         </div>
       )}
 
