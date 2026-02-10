@@ -302,23 +302,23 @@ export function PosterLayout({
       <style>{`
         @keyframes posterWave1 {
           0% { transform: translateX(0) translateY(0); }
-          50% { transform: translateX(-12px) translateY(3px); }
+          50% { transform: translateX(-20px) translateY(4px); }
           100% { transform: translateX(0) translateY(0); }
         }
         @keyframes posterWave2 {
           0% { transform: translateX(0) translateY(0); }
-          50% { transform: translateX(10px) translateY(-4px); }
+          50% { transform: translateX(16px) translateY(-5px); }
           100% { transform: translateX(0) translateY(0); }
         }
         @keyframes posterWave3 {
           0% { transform: translateX(0) translateY(0); }
-          50% { transform: translateX(-8px) translateY(5px); }
+          50% { transform: translateX(-14px) translateY(6px); }
           100% { transform: translateX(0) translateY(0); }
         }
         @keyframes posterShimmer {
-          0% { opacity: 0.03; }
-          50% { opacity: 0.08; }
-          100% { opacity: 0.03; }
+          0% { opacity: 0.05; }
+          50% { opacity: 0.15; }
+          100% { opacity: 0.05; }
         }
         @keyframes posterFloat {
           0% { transform: translateY(0px); }
@@ -326,48 +326,33 @@ export function PosterLayout({
           100% { transform: translateY(0px); }
         }
       `}</style>
-      <div
-        className="relative overflow-hidden mx-4 mt-4"
-        style={{ backgroundColor: pageBg, borderRadius: "28px" }}
-      >
+      <div className="relative w-full overflow-hidden" style={{ backgroundColor: pageBg }}>
         {photo0 ? (
-          <div className="relative w-full" style={{ borderRadius: "28px", overflow: "hidden" }}>
+          <div className="relative w-full">
             <img
               src={photo0}
               alt="Cover"
               className="w-full object-cover"
-              style={{ height: "620px" }}
+              style={{ height: "680px" }}
             />
             <div
               className="absolute inset-0"
               style={{
-                borderRadius: "28px",
-                background: "linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.02) 25%, rgba(0,0,0,0.02) 55%, rgba(0,0,0,0.45) 100%)",
+                background: "linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.02) 25%, rgba(0,0,0,0.02) 50%, rgba(0,0,0,0.50) 100%)",
               }}
             />
 
-            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 80" preserveAspectRatio="none" style={{ height: "80px", width: "100%", animation: "posterWave1 6s ease-in-out infinite" }}>
-              <path d="M0,45 C60,25 120,55 200,40 C280,25 340,50 400,35 L400,80 L0,80 Z" fill="rgba(255,255,255,0.06)" />
+            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 120" preserveAspectRatio="none" style={{ height: "120px", width: "100%", animation: "posterWave1 5s ease-in-out infinite" }}>
+              <path d="M0,60 C50,30 100,70 150,50 C200,30 250,65 300,45 C350,25 375,55 400,40 L400,120 L0,120 Z" fill="rgba(255,255,255,0.18)" />
             </svg>
-            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 60" preserveAspectRatio="none" style={{ height: "60px", width: "100%", animation: "posterWave2 8s ease-in-out infinite" }}>
-              <path d="M0,35 C80,20 160,45 240,30 C320,15 360,40 400,28 L400,60 L0,60 Z" fill="rgba(255,255,255,0.04)" />
+            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 100" preserveAspectRatio="none" style={{ height: "100px", width: "100%", animation: "posterWave2 7s ease-in-out infinite" }}>
+              <path d="M0,55 C70,30 140,65 210,42 C280,20 340,55 400,38 L400,100 L0,100 Z" fill="rgba(255,255,255,0.12)" />
             </svg>
-            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 50" preserveAspectRatio="none" style={{ height: "50px", width: "100%", animation: "posterWave3 10s ease-in-out infinite" }}>
-              <path d="M0,30 C100,15 200,40 300,22 C350,16 380,30 400,25 L400,50 L0,50 Z" fill="rgba(255,255,255,0.03)" />
+            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 80" preserveAspectRatio="none" style={{ height: "80px", width: "100%", animation: "posterWave3 9s ease-in-out infinite" }}>
+              <path d="M0,45 C80,20 160,55 240,32 C300,18 360,42 400,30 L400,80 L0,80 Z" fill="rgba(255,255,255,0.08)" />
             </svg>
 
-            <div className="absolute inset-0 pointer-events-none" style={{ animation: "posterShimmer 5s ease-in-out infinite", background: "radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.12) 0%, transparent 60%)" }} />
-
-            <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{ height: "120px" }}>
-              <svg viewBox="0 0 400 120" className="w-full h-full" preserveAspectRatio="none" style={{ opacity: 0.12 }}>
-                <path d="M0,60 Q30,20 60,55 Q80,75 100,50 Q120,25 140,60 Q160,80 180,45" stroke="rgba(255,255,255,0.8)" strokeWidth="0.8" fill="none" style={{ animation: "posterWave1 7s ease-in-out infinite" }} />
-                <path d="M220,70 Q250,30 280,65 Q310,85 340,50 Q370,25 400,55" stroke="rgba(255,255,255,0.6)" strokeWidth="0.6" fill="none" style={{ animation: "posterWave2 9s ease-in-out infinite" }} />
-                <circle cx="50" cy="35" r="2" fill="rgba(255,255,255,0.5)" style={{ animation: "posterFloat 4s ease-in-out infinite" }} />
-                <circle cx="150" cy="25" r="1.5" fill="rgba(255,255,255,0.4)" style={{ animation: "posterFloat 5s ease-in-out infinite 1s" }} />
-                <circle cx="320" cy="40" r="1.8" fill="rgba(255,255,255,0.45)" style={{ animation: "posterFloat 4.5s ease-in-out infinite 0.5s" }} />
-                <circle cx="380" cy="20" r="1.2" fill="rgba(255,255,255,0.35)" style={{ animation: "posterFloat 6s ease-in-out infinite 2s" }} />
-              </svg>
-            </div>
+            <div className="absolute inset-0 pointer-events-none" style={{ animation: "posterShimmer 4s ease-in-out infinite", background: "radial-gradient(ellipse at 30% 40%, rgba(255,255,255,0.15) 0%, transparent 55%)" }} />
 
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-8" style={{ animation: "posterFloat 6s ease-in-out infinite" }}>
               <img
@@ -380,59 +365,42 @@ export function PosterLayout({
                 }}
               />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 text-center pb-10 px-6" style={{ zIndex: 2 }}>
+
+            <div className="absolute bottom-0 left-0 right-0 text-center pb-16 px-6" style={{ zIndex: 2 }}>
               <p
                 className="text-[26px] font-medium mb-2"
                 style={{
                   color: "rgba(255,255,255,0.95)",
                   letterSpacing: "0.12em",
                   fontFamily: serifFont,
-                  textShadow: "0 1px 12px rgba(0,0,0,0.35)",
+                  textShadow: "0 1px 12px rgba(0,0,0,0.4)",
                 }}
               >
                 {data.groomName || "신랑"}{" "}
-                <span
-                  className="text-[18px] font-normal mx-1.5"
-                  style={{ fontFamily: "'Caveat', cursive", opacity: 0.85 }}
-                >
-                  &
-                </span>{" "}
+                <span className="text-[18px] font-normal mx-1.5" style={{ fontFamily: "'Caveat', cursive", opacity: 0.85 }}>&</span>{" "}
                 {data.brideName || "신부"}
               </p>
-              <p
-                className="text-[12px]"
-                style={{
-                  color: "rgba(255,255,255,0.8)",
-                  letterSpacing: "0.1em",
-                  fontFamily: sansFont,
-                  textShadow: "0 1px 8px rgba(0,0,0,0.3)",
-                }}
-              >
-                {helpers.formatWeddingDate()}
-                {data.time ? ` | ${data.time}` : ""}
+              <p className="text-[12px]" style={{ color: "rgba(255,255,255,0.8)", letterSpacing: "0.1em", fontFamily: sansFont, textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}>
+                {helpers.formatWeddingDate()}{data.time ? ` | ${data.time}` : ""}
               </p>
-              <p
-                className="text-[11px] mt-1"
-                style={{
-                  color: "rgba(255,255,255,0.7)",
-                  fontFamily: sansFont,
-                  textShadow: "0 1px 8px rgba(0,0,0,0.3)",
-                }}
-              >
+              <p className="text-[11px] mt-1" style={{ color: "rgba(255,255,255,0.7)", fontFamily: sansFont, textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}>
                 {data.venue || ""}
               </p>
             </div>
+
+            <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ zIndex: 3 }}>
+              <svg viewBox="0 0 400 80" preserveAspectRatio="none" className="w-full" style={{ height: "80px", display: "block" }}>
+                <ellipse cx="200" cy="80" rx="220" ry="80" fill={pageBg} />
+              </svg>
+            </div>
           </div>
         ) : (
-          <div
-            className="relative w-full"
-            style={{ height: "620px", backgroundColor: "#D4C5B5", borderRadius: "28px", overflow: "hidden" }}
-          >
-            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 80" preserveAspectRatio="none" style={{ height: "80px", width: "100%", animation: "posterWave1 6s ease-in-out infinite" }}>
-              <path d="M0,45 C60,25 120,55 200,40 C280,25 340,50 400,35 L400,80 L0,80 Z" fill="rgba(255,255,255,0.08)" />
+          <div className="relative w-full" style={{ height: "680px", backgroundColor: "#D4C5B5" }}>
+            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 120" preserveAspectRatio="none" style={{ height: "120px", width: "100%", animation: "posterWave1 5s ease-in-out infinite" }}>
+              <path d="M0,60 C50,30 100,70 150,50 C200,30 250,65 300,45 C350,25 375,55 400,40 L400,120 L0,120 Z" fill="rgba(255,255,255,0.15)" />
             </svg>
-            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 60" preserveAspectRatio="none" style={{ height: "60px", width: "100%", animation: "posterWave2 8s ease-in-out infinite" }}>
-              <path d="M0,35 C80,20 160,45 240,30 C320,15 360,40 400,28 L400,60 L0,60 Z" fill="rgba(255,255,255,0.05)" />
+            <svg className="absolute bottom-0 left-0 right-0 pointer-events-none" viewBox="0 0 400 100" preserveAspectRatio="none" style={{ height: "100px", width: "100%", animation: "posterWave2 7s ease-in-out infinite" }}>
+              <path d="M0,55 C70,30 140,65 210,42 C280,20 340,55 400,38 L400,100 L0,100 Z" fill="rgba(255,255,255,0.10)" />
             </svg>
 
             <div className="absolute inset-0 flex flex-col items-center justify-center px-8">
@@ -442,51 +410,25 @@ export function PosterLayout({
                 className="w-full mb-6"
                 style={{ maxWidth: "100%", opacity: 0.7, animation: "posterFloat 6s ease-in-out infinite" }}
               />
-              <p
-                className="text-[13px]"
-                style={{
-                  color: "rgba(255,255,255,0.5)",
-                  letterSpacing: "0.1em",
-                }}
-              >
-                ADD PHOTOS
-              </p>
+              <p className="text-[13px]" style={{ color: "rgba(255,255,255,0.5)", letterSpacing: "0.1em" }}>ADD PHOTOS</p>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 text-center pb-10 px-6">
-              <p
-                className="text-[26px] font-medium mb-2"
-                style={{
-                  color: "rgba(255,255,255,0.85)",
-                  letterSpacing: "0.12em",
-                  fontFamily: serifFont,
-                }}
-              >
+
+            <div className="absolute bottom-0 left-0 right-0 text-center pb-16 px-6" style={{ zIndex: 2 }}>
+              <p className="text-[26px] font-medium mb-2" style={{ color: "rgba(255,255,255,0.85)", letterSpacing: "0.12em", fontFamily: serifFont }}>
                 {data.groomName || "신랑"}{" "}
-                <span
-                  className="text-[18px] font-normal mx-1.5"
-                  style={{ fontFamily: "'Caveat', cursive", opacity: 0.85 }}
-                >
-                  &
-                </span>{" "}
+                <span className="text-[18px] font-normal mx-1.5" style={{ fontFamily: "'Caveat', cursive", opacity: 0.85 }}>&</span>{" "}
                 {data.brideName || "신부"}
               </p>
-              <p
-                className="text-[12px]"
-                style={{
-                  color: "rgba(255,255,255,0.6)",
-                  letterSpacing: "0.1em",
-                  fontFamily: sansFont,
-                }}
-              >
-                {helpers.formatWeddingDate()}
-                {data.time ? ` | ${data.time}` : ""}
+              <p className="text-[12px]" style={{ color: "rgba(255,255,255,0.6)", letterSpacing: "0.1em", fontFamily: sansFont }}>
+                {helpers.formatWeddingDate()}{data.time ? ` | ${data.time}` : ""}
               </p>
-              <p
-                className="text-[11px] mt-1"
-                style={{ color: "rgba(255,255,255,0.5)", fontFamily: sansFont }}
-              >
-                {data.venue || ""}
-              </p>
+              <p className="text-[11px] mt-1" style={{ color: "rgba(255,255,255,0.5)", fontFamily: sansFont }}>{data.venue || ""}</p>
+            </div>
+
+            <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ zIndex: 3 }}>
+              <svg viewBox="0 0 400 80" preserveAspectRatio="none" className="w-full" style={{ height: "80px", display: "block" }}>
+                <ellipse cx="200" cy="80" rx="220" ry="80" fill={pageBg} />
+              </svg>
             </div>
           </div>
         )}
