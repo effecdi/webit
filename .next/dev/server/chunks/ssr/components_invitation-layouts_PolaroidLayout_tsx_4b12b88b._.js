@@ -633,134 +633,14 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex justify-center my-4",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                            width: "120",
-                            height: "80",
-                            viewBox: "0 0 120 80",
-                            fill: "none",
-                            stroke: textSecondary,
-                            strokeWidth: "1.2",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                    cx: "35",
-                                    cy: "12",
-                                    r: "7"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 165,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M35 19v22"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 166,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M35 25l-12 12"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 167,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M35 25l12 12"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 168,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M35 41l-10 18"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 169,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M35 41l10 18"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 170,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M28 6l7-3l7 3"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 171,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                    cx: "85",
-                                    cy: "12",
-                                    r: "7"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 173,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M85 19v22"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 174,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M85 25l-12 12"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 175,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M85 25l12 12"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 176,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M75 41q10 18 20 0"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 177,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M75 41l-3 18"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 178,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M95 41l3 18"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 179,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M79 5q6 4 12 0",
-                                    strokeDasharray: "2,2"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 180,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M47 37l26 0",
-                                    strokeDasharray: "3,3"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 182,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                            src: "/illustration-couple.png",
+                            alt: "Couple illustration",
+                            className: "w-[200px] h-auto object-contain",
+                            style: {
+                                opacity: 0.9
+                            }
+                        }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
                             lineNumber: 163,
                             columnNumber: 11
@@ -782,7 +662,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.groomName || "\uC2E0\uB791"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 188,
+                                lineNumber: 168,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -794,7 +674,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 children: "+"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 191,
+                                lineNumber: 171,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -806,7 +686,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.brideName || "\uC2E0\uBD80"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 192,
+                                lineNumber: 172,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -814,7 +694,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 children: "="
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 195,
+                                lineNumber: 175,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(HeartIcon, {
@@ -822,13 +702,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 color: accent
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 196,
+                                lineNumber: 176,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 187,
+                        lineNumber: 167,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -842,12 +722,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 200,
+                        lineNumber: 180,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopDivider, {}, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 204,
+                        lineNumber: 184,
                         columnNumber: 9
                     }, this)
                 ]
@@ -867,7 +747,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             title: "\uCD08\uB300\uD569\uB2C8\uB2E4"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 210,
+                            lineNumber: 190,
                             columnNumber: 11
                         }, this),
                         data.message && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -879,7 +759,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.message
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 213,
+                            lineNumber: 193,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -888,23 +768,23 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 size: 32
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 220,
+                                lineNumber: 200,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 219,
+                            lineNumber: 199,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                    lineNumber: 209,
+                    lineNumber: 189,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 208,
+                lineNumber: 188,
                 columnNumber: 7
             }, this),
             data.showNameAtBottom && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -926,7 +806,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                             show: data.groomFather.deceased
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                            lineNumber: 231,
+                                            lineNumber: 211,
                                             columnNumber: 47
                                         }, this),
                                         data.groomFather.name
@@ -939,7 +819,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                             show: data.groomMother.deceased
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                            lineNumber: 232,
+                                            lineNumber: 212,
                                             columnNumber: 50
                                         }, this),
                                         data.groomMother.name
@@ -957,7 +837,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 234,
+                                    lineNumber: 214,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -965,13 +845,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                     children: data.groomName || "\uC2E0\uB791"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 236,
+                                    lineNumber: 216,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 230,
+                            lineNumber: 210,
                             columnNumber: 15
                         }, this);
                         const brideBlock = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -986,7 +866,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                             show: data.brideFather.deceased
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                            lineNumber: 241,
+                                            lineNumber: 221,
                                             columnNumber: 47
                                         }, this),
                                         data.brideFather.name
@@ -999,7 +879,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                             show: data.brideMother.deceased
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                            lineNumber: 242,
+                                            lineNumber: 222,
                                             columnNumber: 50
                                         }, this),
                                         data.brideMother.name
@@ -1017,7 +897,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 244,
+                                    lineNumber: 224,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1025,13 +905,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                     children: data.brideName || "\uC2E0\uBD80"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 246,
+                                    lineNumber: 226,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 240,
+                            lineNumber: 220,
                             columnNumber: 15
                         }, this);
                         const nameStyle = data.nameDisplayStyle || "horizontal";
@@ -1045,7 +925,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                     children: first
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 254,
+                                    lineNumber: 234,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1053,13 +933,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                     children: second
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 255,
+                                    lineNumber: 235,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 253,
+                            lineNumber: 233,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "space-y-2",
@@ -1069,7 +949,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 258,
+                            lineNumber: 238,
                             columnNumber: 15
                         }, this);
                     })(),
@@ -1088,18 +968,18 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             children: "연락하기"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 263,
+                            lineNumber: 243,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 262,
+                        lineNumber: 242,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 227,
+                lineNumber: 207,
                 columnNumber: 9
             }, this),
             (data.showCalendar || data.showCountdown) && data.weddingDate && (()=>{
@@ -1117,7 +997,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 title: `${cal.year}\uB144 ${cal.month}\uC6D4`
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 281,
+                                lineNumber: 261,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1132,7 +1012,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 283,
+                                lineNumber: 263,
                                 columnNumber: 15
                             }, this),
                             data.showCalendar && calStyle === "full" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1151,12 +1031,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: d
                                             }, d, false, {
                                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                lineNumber: 291,
+                                                lineNumber: 271,
                                                 columnNumber: 23
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 289,
+                                        lineNumber: 269,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1172,7 +1052,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: day
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                    lineNumber: 299,
+                                                    lineNumber: 279,
                                                     columnNumber: 29
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "text-[13px]",
@@ -1182,23 +1062,23 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: day
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                    lineNumber: 303,
+                                                    lineNumber: 283,
                                                     columnNumber: 29
                                                 }, this))
                                             }, i, false, {
                                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                lineNumber: 296,
+                                                lineNumber: 276,
                                                 columnNumber: 23
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 294,
+                                        lineNumber: 274,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 288,
+                                lineNumber: 268,
                                 columnNumber: 17
                             }, this),
                             data.showCalendar && calStyle === "simple" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1225,7 +1105,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 316,
+                                        lineNumber: 296,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1236,13 +1116,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: helpers.formatWeddingTime()
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 319,
+                                        lineNumber: 299,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 315,
+                                lineNumber: 295,
                                 columnNumber: 17
                             }, this),
                             data.showCountdown && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1283,7 +1163,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                             children: String(item.value).padStart(2, "0")
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                            lineNumber: 334,
+                                                            lineNumber: 314,
                                                             columnNumber: 27
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1294,13 +1174,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                             children: item.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                            lineNumber: 335,
+                                                            lineNumber: 315,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                    lineNumber: 333,
+                                                    lineNumber: 313,
                                                     columnNumber: 25
                                                 }, this),
                                                 idx < 3 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1311,34 +1191,34 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: ":"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                    lineNumber: 337,
+                                                    lineNumber: 317,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, item.label, true, {
                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                            lineNumber: 332,
+                                            lineNumber: 312,
                                             columnNumber: 23
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 325,
+                                    lineNumber: 305,
                                     columnNumber: 19
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 324,
+                                lineNumber: 304,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 280,
+                        lineNumber: 260,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                    lineNumber: 279,
+                    lineNumber: 259,
                     columnNumber: 11
                 }, this);
             })(),
@@ -1353,7 +1233,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             title: "\uC624\uC2DC\uB294 \uAE38"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 351,
+                            lineNumber: 331,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1364,7 +1244,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.address || "\uC8FC\uC18C\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 353,
+                            lineNumber: 333,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1379,7 +1259,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 354,
+                            lineNumber: 334,
                             columnNumber: 11
                         }, this),
                         data.venuePhone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1393,7 +1273,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 357,
+                            lineNumber: 337,
                             columnNumber: 31
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1408,12 +1288,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 bgColor: pageBg
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 360,
+                                lineNumber: 340,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 359,
+                            lineNumber: 339,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1430,12 +1310,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 children: "길찾기"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 364,
+                                lineNumber: 344,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 363,
+                            lineNumber: 343,
                             columnNumber: 11
                         }, this),
                         data.transportItems && data.transportItems.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1454,7 +1334,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                             children: item.type
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                            lineNumber: 375,
+                                            lineNumber: 355,
                                             columnNumber: 33
                                         }, this),
                                         item.detail && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1465,18 +1345,18 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                             children: item.detail
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                            lineNumber: 376,
+                                            lineNumber: 356,
                                             columnNumber: 35
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 374,
+                                    lineNumber: 354,
                                     columnNumber: 17
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 372,
+                            lineNumber: 352,
                             columnNumber: 13
                         }, this),
                         data.transportInfo && !data.transportItems?.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1492,12 +1372,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.transportInfo
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 383,
+                                lineNumber: 363,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 382,
+                            lineNumber: 362,
                             columnNumber: 13
                         }, this),
                         data.showTransportNotice && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1508,18 +1388,18 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             children: "주차 공간이 협소하오니 대중교통을 이용해주시면 감사하겠습니다."
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 387,
+                            lineNumber: 367,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                    lineNumber: 350,
+                    lineNumber: 330,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 349,
+                lineNumber: 329,
                 columnNumber: 7
             }, this),
             data.showMidPhoto && data.midPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1542,17 +1422,17 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 398,
+                        lineNumber: 378,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                    lineNumber: 397,
+                    lineNumber: 377,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 396,
+                lineNumber: 376,
                 columnNumber: 9
             }, this),
             data.showGallery && state.galleryImages.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1565,7 +1445,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Gallery"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 406,
+                        lineNumber: 386,
                         columnNumber: 11
                     }, this),
                     data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1589,22 +1469,22 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         className: "w-full h-full object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 415,
+                                        lineNumber: 395,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 414,
+                                    lineNumber: 394,
                                     columnNumber: 19
                                 }, this)
                             }, index, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 410,
+                                lineNumber: 390,
                                 columnNumber: 17
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 408,
+                        lineNumber: 388,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "overflow-x-auto pl-6",
@@ -1629,33 +1509,33 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                             className: "w-full h-full object-cover"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                            lineNumber: 429,
+                                            lineNumber: 409,
                                             columnNumber: 23
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 428,
+                                        lineNumber: 408,
                                         columnNumber: 21
                                     }, this)
                                 }, index, false, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 424,
+                                    lineNumber: 404,
                                     columnNumber: 19
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 422,
+                            lineNumber: 402,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 421,
+                        lineNumber: 401,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 405,
+                lineNumber: 385,
                 columnNumber: 9
             }, this),
             data.showRsvp && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1669,7 +1549,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             title: "R.S.V.P"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 443,
+                            lineNumber: 423,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1680,7 +1560,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.rsvpContent || "\uCC38\uC11D \uC5EC\uBD80\uB97C \uBBF8\uB9AC \uC54C\uB824\uC8FC\uC2DC\uBA74 \uAC10\uC0AC\uD558\uACA0\uC2B5\uB2C8\uB2E4"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 444,
+                            lineNumber: 424,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1697,23 +1577,23 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.rsvpButtonName || "\uCC38\uC11D \uC758\uC0AC \uC804\uB2EC\uD558\uAE30"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 448,
+                                lineNumber: 428,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 447,
+                            lineNumber: 427,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                    lineNumber: 442,
+                    lineNumber: 422,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 441,
+                lineNumber: 421,
                 columnNumber: 9
             }, this),
             data.showGuestbook && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1726,7 +1606,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         title: "\uBC29\uBA85\uB85D"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 461,
+                        lineNumber: 441,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1745,7 +1625,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: entry.message
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 467,
+                                        lineNumber: 447,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1760,13 +1640,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 468,
+                                        lineNumber: 448,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 466,
+                                lineNumber: 446,
                                 columnNumber: 17
                             }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "p-6 text-center",
@@ -1781,17 +1661,17 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 children: "축하 메시지를 남겨주세요"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 473,
+                                lineNumber: 453,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 472,
+                            lineNumber: 452,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 463,
+                        lineNumber: 443,
                         columnNumber: 11
                     }, this),
                     state.showGuestbookForm ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1814,7 +1694,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "input-guestbook-name"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 480,
+                                lineNumber: 460,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1831,7 +1711,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "input-guestbook-message"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 484,
+                                lineNumber: 464,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1848,7 +1728,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "취소"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 490,
+                                        lineNumber: 470,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1862,19 +1742,19 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "등록"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 494,
+                                        lineNumber: 474,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 489,
+                                lineNumber: 469,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 479,
+                        lineNumber: 459,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: ()=>state.setShowGuestbookForm(true),
@@ -1888,13 +1768,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         children: "작성하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 501,
+                        lineNumber: 481,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 460,
+                lineNumber: 440,
                 columnNumber: 9
             }, this),
             data.showFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1907,7 +1787,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         title: "\uCD95\uD558 \uD380\uB529"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 512,
+                        lineNumber: 492,
                         columnNumber: 11
                     }, this),
                     data.fundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1918,7 +1798,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.fundingMessage
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 514,
+                        lineNumber: 494,
                         columnNumber: 13
                     }, this),
                     data.fundingImageType === "custom" && data.fundingImage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1936,17 +1816,17 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "img-funding-custom"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 519,
+                                lineNumber: 499,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 518,
+                            lineNumber: 498,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 517,
+                        lineNumber: 497,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1960,13 +1840,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.fundingButtonName || "\uC2E0\uD63C\uC5EC\uD589 \uCD95\uD558\uD558\uAE30"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 523,
+                        lineNumber: 503,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 511,
+                lineNumber: 491,
                 columnNumber: 9
             }, this),
             data.showGiftFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1979,7 +1859,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         title: "\uAE30\uD504\uD2B8 \uD380\uB529"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 534,
+                        lineNumber: 514,
                         columnNumber: 11
                     }, this),
                     data.giftFundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1990,7 +1870,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.giftFundingMessage
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 536,
+                        lineNumber: 516,
                         columnNumber: 13
                     }, this),
                     data.giftFundingButtonName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2004,13 +1884,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.giftFundingButtonName
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 539,
+                        lineNumber: 519,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 533,
+                lineNumber: 513,
                 columnNumber: 9
             }, this),
             data.showAccount && (()=>{
@@ -2042,7 +1922,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                lineNumber: 562,
+                                                lineNumber: 542,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2053,13 +1933,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: acc.holder
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                lineNumber: 563,
+                                                lineNumber: 543,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 561,
+                                        lineNumber: 541,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2073,18 +1953,18 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "복사"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 565,
+                                        lineNumber: 545,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 560,
+                                lineNumber: 540,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 558,
+                        lineNumber: 538,
                         columnNumber: 11
                     }, this);
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2098,7 +1978,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 title: "\uCD95\uC758\uAE08 \uC804\uB2EC"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 576,
+                                lineNumber: 556,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2122,7 +2002,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: "신랑측"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                        lineNumber: 583,
+                                                        lineNumber: 563,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -2140,18 +2020,18 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                             d: "M19 9l-7 7-7-7"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                            lineNumber: 586,
+                                                            lineNumber: 566,
                                                             columnNumber: 27
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                        lineNumber: 584,
+                                                        lineNumber: 564,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                lineNumber: 581,
+                                                lineNumber: 561,
                                                 columnNumber: 23
                                             }, this),
                                             state.expandedAccordion === "groom" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2162,13 +2042,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: renderAccList(groomAccList)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                lineNumber: 590,
+                                                lineNumber: 570,
                                                 columnNumber: 25
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 580,
+                                        lineNumber: 560,
                                         columnNumber: 21
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "p-4",
@@ -2184,14 +2064,14 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: "신랑측"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                lineNumber: 595,
+                                                lineNumber: 575,
                                                 columnNumber: 23
                                             }, this),
                                             renderAccList(groomAccList)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 594,
+                                        lineNumber: 574,
                                         columnNumber: 21
                                     }, this)),
                                     brideAccList.length > 0 && (accStyle === "accordion" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2212,7 +2092,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: "신부측"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                        lineNumber: 605,
+                                                        lineNumber: 585,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -2230,18 +2110,18 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                             d: "M19 9l-7 7-7-7"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                            lineNumber: 608,
+                                                            lineNumber: 588,
                                                             columnNumber: 27
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                        lineNumber: 606,
+                                                        lineNumber: 586,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                lineNumber: 603,
+                                                lineNumber: 583,
                                                 columnNumber: 23
                                             }, this),
                                             state.expandedAccordion === "bride" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2252,13 +2132,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: renderAccList(brideAccList)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                lineNumber: 612,
+                                                lineNumber: 592,
                                                 columnNumber: 25
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 602,
+                                        lineNumber: 582,
                                         columnNumber: 21
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "p-4",
@@ -2274,31 +2154,31 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: "신부측"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                lineNumber: 617,
+                                                lineNumber: 597,
                                                 columnNumber: 23
                                             }, this),
                                             renderAccList(brideAccList)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 616,
+                                        lineNumber: 596,
                                         columnNumber: 21
                                     }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 577,
+                                lineNumber: 557,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 575,
+                        lineNumber: 555,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                    lineNumber: 574,
+                    lineNumber: 554,
                     columnNumber: 11
                 }, this);
             })(),
@@ -2312,7 +2192,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         title: "\uC138\uB840\uBA85"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 631,
+                        lineNumber: 611,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2329,7 +2209,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroom
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 634,
+                                        lineNumber: 614,
                                         columnNumber: 39
                                     }, this),
                                     data.baptismalGroomFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2340,7 +2220,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroomFather
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 635,
+                                        lineNumber: 615,
                                         columnNumber: 45
                                     }, this),
                                     data.baptismalGroomMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2351,13 +2231,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroomMother
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 636,
+                                        lineNumber: 616,
                                         columnNumber: 45
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 633,
+                                lineNumber: 613,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2371,7 +2251,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBride
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 639,
+                                        lineNumber: 619,
                                         columnNumber: 39
                                     }, this),
                                     data.baptismalBrideFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2382,7 +2262,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBrideFather
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 640,
+                                        lineNumber: 620,
                                         columnNumber: 45
                                     }, this),
                                     data.baptismalBrideMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2393,25 +2273,25 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBrideMother
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                        lineNumber: 641,
+                                        lineNumber: 621,
                                         columnNumber: 45
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 638,
+                                lineNumber: 618,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 632,
+                        lineNumber: 612,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 630,
+                lineNumber: 610,
                 columnNumber: 9
             }, this),
             data.showGuestSnap && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2424,7 +2304,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         title: "\uAC8C\uC2A4\uD2B8 \uC2A4\uB0C5"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 650,
+                        lineNumber: 630,
                         columnNumber: 11
                     }, this),
                     data.guestSnapContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2435,7 +2315,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.guestSnapContent
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 652,
+                        lineNumber: 632,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2449,13 +2329,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         children: "사진 업로드"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 654,
+                        lineNumber: 634,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 649,
+                lineNumber: 629,
                 columnNumber: 9
             }, this),
             data.showNotice && data.noticeTitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2468,7 +2348,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         title: data.noticeTitle
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 663,
+                        lineNumber: 643,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2481,18 +2361,18 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 children: item
                             }, i, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 666,
+                                lineNumber: 646,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 664,
+                        lineNumber: 644,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 662,
+                lineNumber: 642,
                 columnNumber: 9
             }, this),
             data.showEndingMessage && (data.endingContent || data.endingPhoto) && (()=>{
@@ -2516,12 +2396,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 className: "w-full aspect-[4/5] object-cover"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 680,
+                                lineNumber: 660,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 679,
+                            lineNumber: 659,
                             columnNumber: 15
                         }, this),
                         data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2532,12 +2412,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.endingContent
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 684,
+                            lineNumber: 664,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopDivider, {}, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 687,
+                            lineNumber: 667,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2546,12 +2426,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 size: 70
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 691,
+                                lineNumber: 671,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 690,
+                            lineNumber: 670,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2572,19 +2452,19 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                     children: "♥"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 695,
+                                    lineNumber: 675,
                                     columnNumber: 89
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 694,
+                            lineNumber: 674,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                    lineNumber: 677,
+                    lineNumber: 657,
                     columnNumber: 11
                 }, this);
             })(),
@@ -2605,12 +2485,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                     children: "청첩장 링크 복사하기"
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                    lineNumber: 703,
+                    lineNumber: 683,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 702,
+                lineNumber: 682,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2626,7 +2506,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 713,
+                        lineNumber: 693,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2637,13 +2517,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         children: "WE:BEAT"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 714,
+                        lineNumber: 694,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 712,
+                lineNumber: 692,
                 columnNumber: 7
             }, this),
             state.showContact && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2668,19 +2548,19 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                lineNumber: 722,
+                                lineNumber: 702,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 721,
+                            lineNumber: 701,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SectionTitle, {
                             title: "Contact"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 724,
+                            lineNumber: 704,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2737,7 +2617,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: contact.label
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                    lineNumber: 736,
+                                                    lineNumber: 716,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2748,13 +2628,13 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: contact.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                    lineNumber: 737,
+                                                    lineNumber: 717,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                            lineNumber: 735,
+                                            lineNumber: 715,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2774,12 +2654,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                        lineNumber: 742,
+                                                        lineNumber: 722,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                    lineNumber: 740,
+                                                    lineNumber: 720,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2796,40 +2676,40 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                        lineNumber: 747,
+                                                        lineNumber: 727,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                                    lineNumber: 744,
+                                                    lineNumber: 724,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                            lineNumber: 739,
+                                            lineNumber: 719,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                                    lineNumber: 734,
+                                    lineNumber: 714,
                                     columnNumber: 17
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 725,
+                            lineNumber: 705,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                    lineNumber: 720,
+                    lineNumber: 700,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 719,
+                lineNumber: 699,
                 columnNumber: 9
             }, this),
             state.showPhotoViewer && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2849,12 +2729,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             className: "w-5 h-5 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 762,
+                            lineNumber: 742,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 760,
+                        lineNumber: 740,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -2863,7 +2743,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                         className: "max-w-full max-h-[80vh] object-contain"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 764,
+                        lineNumber: 744,
                         columnNumber: 11
                     }, this),
                     state.viewerIndex > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2877,12 +2757,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             className: "w-5 h-5 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 768,
+                            lineNumber: 748,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 766,
+                        lineNumber: 746,
                         columnNumber: 13
                     }, this),
                     state.viewerIndex < state.galleryImages.length - 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2896,12 +2776,12 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             className: "w-5 h-5 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 774,
+                            lineNumber: 754,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 772,
+                        lineNumber: 752,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2915,18 +2795,18 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                            lineNumber: 778,
+                            lineNumber: 758,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                        lineNumber: 777,
+                        lineNumber: 757,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 759,
+                lineNumber: 739,
                 columnNumber: 9
             }, this),
             state.copiedToast && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2938,7 +2818,7 @@ function PolaroidLayout({ data, state, helpers, onRsvpClick }) {
                 children: state.copiedToast
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/PolaroidLayout.tsx",
-                lineNumber: 785,
+                lineNumber: 765,
                 columnNumber: 9
             }, this)
         ]

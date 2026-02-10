@@ -158,29 +158,9 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
           </div>
         )}
 
-        {/* Hand-drawn couple stick figures */}
+        {/* Illustration couple image */}
         <div className="flex justify-center my-4">
-          <svg width="120" height="80" viewBox="0 0 120 80" fill="none" stroke={textSecondary} strokeWidth="1.2">
-            {/* Groom */}
-            <circle cx="35" cy="12" r="7" />
-            <path d="M35 19v22" />
-            <path d="M35 25l-12 12" />
-            <path d="M35 25l12 12" />
-            <path d="M35 41l-10 18" />
-            <path d="M35 41l10 18" />
-            <path d="M28 6l7-3l7 3" />
-            {/* Bride */}
-            <circle cx="85" cy="12" r="7" />
-            <path d="M85 19v22" />
-            <path d="M85 25l-12 12" />
-            <path d="M85 25l12 12" />
-            <path d="M75 41q10 18 20 0" />
-            <path d="M75 41l-3 18" />
-            <path d="M95 41l3 18" />
-            <path d="M79 5q6 4 12 0" strokeDasharray="2,2" />
-            {/* Holding hands */}
-            <path d="M47 37l26 0" strokeDasharray="3,3" />
-          </svg>
+          <img src="/illustration-couple.png" alt="Couple illustration" className="w-[200px] h-auto object-contain" style={{ opacity: 0.9 }} />
         </div>
 
         {/* Names with heart */}
