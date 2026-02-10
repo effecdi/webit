@@ -72,7 +72,7 @@ function getLayoutPageBg(template) {
         case "gallery":
             return "#F5F5F5";
         case "boardingpass":
-            return "#0B1929";
+            return "#1E2D4A";
         case "calligraphy":
             return "#FBF8F4";
         case "modern":

@@ -390,31 +390,23 @@ function TemplateThumbnail({ id }: { id: string }) {
       );
     case "boardingpass":
       return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden relative" style={{ background: "linear-gradient(180deg, #0F2137 0%, #0B1929 100%)" }}>
-          <div className="absolute top-1.5 left-1.5 right-1.5 flex items-center justify-between">
-            <svg width="8" height="8" viewBox="0 0 24 24" fill="none">
-              <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#5CC8F0" fillOpacity="0.8"/>
+        <div className="w-full h-full rounded-[6px] overflow-hidden relative" style={{ backgroundColor: "#1E2D4A" }}>
+          <div className="absolute inset-x-2 top-2 bottom-2 rounded-[4px] flex flex-col items-center justify-center" style={{ backgroundColor: "#FFFFFF" }}>
+            <svg width="16" height="16" viewBox="0 0 100 100" fill="none" className="mb-1">
+              <circle cx="50" cy="50" r="40" stroke="#1E2D4A" strokeWidth="2.5" fill="none" opacity="0.25"/>
+              <ellipse cx="50" cy="50" rx="16" ry="40" stroke="#1E2D4A" strokeWidth="2" fill="none" opacity="0.25"/>
+              <path d="M10 50h80" stroke="#1E2D4A" strokeWidth="2" opacity="0.25"/>
             </svg>
-            <div className="text-[4px] tracking-wider" style={{ color: "#5CC8F080" }}>FIRST CLASS</div>
-          </div>
-          <div className="absolute inset-0 flex flex-col items-center justify-center pt-3">
             <div className="flex items-center gap-1 mb-0.5">
-              <div className="text-[7px] font-bold" style={{ color: "#E8F0FA" }}>G</div>
-              <div className="w-[10px] h-[0.5px]" style={{ backgroundColor: "#5CC8F060" }} />
-              <svg width="6" height="6" viewBox="0 0 24 24" fill="none">
-                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#5CC8F0" fillOpacity="0.5"/>
+              <div className="w-[8px] h-[0.5px]" style={{ backgroundColor: "#D4DCE6" }} />
+              <svg width="5" height="5" viewBox="0 0 24 24" fill="none">
+                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#1E2D4A" fillOpacity="0.5"/>
               </svg>
-              <div className="w-[10px] h-[0.5px]" style={{ backgroundColor: "#5CC8F060" }} />
-              <div className="text-[7px] font-bold" style={{ color: "#E8F0FA" }}>B</div>
+              <div className="w-[8px] h-[0.5px]" style={{ backgroundColor: "#D4DCE6" }} />
             </div>
-            <div className="text-[5px] tracking-wider" style={{ color: "#5CC8F0" }}>BOARDING PASS</div>
-          </div>
-          <div className="absolute bottom-2 left-0 right-0">
-            <div className="mx-1.5 border-t border-dashed" style={{ borderColor: "#1E3A5A" }} />
-            <div className="flex justify-between px-2 mt-1">
-              <div className="text-[3.5px]" style={{ color: "#7EA8CC" }}>DATE</div>
-              <div className="text-[3.5px]" style={{ color: "#7EA8CC" }}>GATE</div>
-            </div>
+            <div className="text-[5px] font-bold tracking-wider" style={{ color: "#1E2D4A" }}>G & B</div>
+            <div className="text-[3.5px] tracking-[0.2em] mt-0.5" style={{ color: "#6B7B8D" }}>WEDDING TICKET</div>
+            <div className="absolute bottom-2.5 left-2 right-2 border-t border-dashed" style={{ borderColor: "#D4DCE6" }} />
           </div>
         </div>
       );

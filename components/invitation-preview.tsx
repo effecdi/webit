@@ -38,7 +38,7 @@ function getLayoutPageBg(template: string): string {
     case "traditional": return "#1e2a3a"
     case "garden": return "#FFFFFF"
     case "gallery": return "#F5F5F5"
-    case "boardingpass": return "#0B1929"
+    case "boardingpass": return "#1E2D4A"
     case "calligraphy": return "#FBF8F4"
     case "modern":
     default: return "#FFFFFF"
