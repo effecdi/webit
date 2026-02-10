@@ -131,68 +131,111 @@ export function BoardingPassLayout({ data, state, helpers, onRsvpClick }: Layout
 
   return (
     <>
-      {/* ===== HERO TICKET - TOP SECTION ===== */}
+      {/* ===== HERO - FULL PHOTO BACKGROUND ===== */}
       <div style={{ backgroundColor: navyBg, fontFamily }}>
-        <div className="px-4 pt-8 pb-0">
-          {/* Ticket top scallop */}
-          <ScallopTop />
+        <div className="relative w-full overflow-hidden" style={{ minHeight: "620px" }}>
+          {/* Background photo */}
+          {state.allPhotos.length > 0 ? (
+            <>
+              {coverStyle === "static" ? (
+                <div className="absolute inset-0">
+                  <img src={state.allPhotos[0]} alt="Cover" className="w-full h-full object-cover" style={{ minHeight: "620px" }} />
+                </div>
+              ) : coverStyle === "slide" ? (
+                <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${state.currentSlide * 100}%)` }}>
+                  {state.allPhotos.map((photo, i) => (
+                    <div key={i} className="w-full flex-shrink-0" style={{ minHeight: "620px" }}>
+                      <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" style={{ minHeight: "620px" }} />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                state.allPhotos.map((photo, i) => (
+                  <div key={i} className="absolute inset-0 transition-opacity duration-1000" style={{ opacity: state.currentSlide === i ? 1 : 0 }}>
+                    <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" style={{ minHeight: "620px" }} />
+                  </div>
+                ))
+              )}
+              {/* Dark wash gradient for readability */}
+              <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, ${navyBg}CC 0%, ${navyBg}60 35%, ${navyBg}60 65%, ${navyBg}DD 100%)` }} />
+            </>
+          ) : (
+            <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, ${navyDark} 0%, ${navyBg} 100%)` }} />
+          )}
 
-          {/* White ticket card */}
-          <div className="relative overflow-hidden" style={{ backgroundColor: ticketBg }}>
-            {/* Top header */}
-            <div className="px-6 pt-8 pb-4 text-center">
-              <p className="text-[10px] tracking-[0.3em] uppercase mb-4" style={{ color: textMuted }}>
+          {/* Slide dots */}
+          {state.allPhotos.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+              {state.allPhotos.map((_, i) => (
+                <div key={i} className="w-1.5 h-1.5 rounded-full transition-all" style={{ backgroundColor: state.currentSlide === i ? "#FFFFFF" : "rgba(255,255,255,0.35)" }} />
+              ))}
+            </div>
+          )}
+
+          {/* Overlaid ticket content */}
+          <div className="relative z-10 flex flex-col items-center justify-center px-6" style={{ minHeight: "620px" }}>
+            {/* Top label */}
+            <div className="flex items-center gap-2 mb-3">
+              <PlaneIcon size={14} color="rgba(255,255,255,0.6)" rotate={90} />
+              <p className="text-[10px] tracking-[0.3em] uppercase" style={{ color: "rgba(255,255,255,0.6)" }}>
                 Wedding Ticket
-              </p>
-
-              {/* Globe icon */}
-              <div className="flex justify-center mb-4">
-                <GlobeIcon size={70} color={`${accent}30`} />
-              </div>
-
-              {/* Plane path divider */}
-              <div className="flex items-center justify-center gap-2 mb-6">
-                <div className="flex-1 h-px" style={{ background: `linear-gradient(90deg, transparent, ${borderColor})` }} />
-                <PlaneIcon size={18} color={accent} rotate={90} />
-                <div className="flex-1 h-px" style={{ background: `linear-gradient(90deg, ${borderColor}, transparent)` }} />
-              </div>
-
-              {/* Names */}
-              <p className="text-[28px] font-bold tracking-tight" style={{ color: textNavy, fontFamily: englishFont }}>
-                {data.groomName || "\uC2E0\uB791"} <span className="text-[22px] font-normal" style={{ color: accentLight }}>&</span> {data.brideName || "\uC2E0\uBD80"}
               </p>
             </div>
 
-            {/* Info box */}
-            <div className="mx-6 mb-6 rounded-[8px] p-4" style={{ border: `1.5px solid ${borderColor}` }}>
+            {/* Globe icon */}
+            <div className="flex justify-center mb-4">
+              <GlobeIcon size={65} color="rgba(255,255,255,0.2)" />
+            </div>
+
+            {/* Plane path divider */}
+            <div className="flex items-center justify-center gap-2 mb-5 w-full max-w-[260px]">
+              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3))" }} />
+              <PlaneIcon size={16} color="rgba(255,255,255,0.7)" rotate={90} />
+              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.3), transparent)" }} />
+            </div>
+
+            {/* Names */}
+            <p className="text-[28px] font-bold tracking-tight text-center mb-6" style={{ color: "#FFFFFF", fontFamily: englishFont, textShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
+              {data.groomName || "\uC2E0\uB791"} <span className="text-[22px] font-normal" style={{ color: "rgba(255,255,255,0.7)" }}>&</span> {data.brideName || "\uC2E0\uBD80"}
+            </p>
+
+            {/* Info box - glass effect */}
+            <div className="w-full max-w-[300px] rounded-[10px] p-4" style={{ backgroundColor: "rgba(255,255,255,0.12)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.2)" }}>
               <div className="flex">
-                <div className="flex-1 pr-3" style={{ borderRight: `1px solid ${borderColor}` }}>
-                  <p className="text-[9px] tracking-[0.15em] uppercase mb-1" style={{ color: textMuted }}>날짜</p>
-                  <p className="text-[14px] font-medium" style={{ color: textNavy }}>{helpers.formatWeddingDate()}</p>
+                <div className="flex-1 pr-3" style={{ borderRight: "1px solid rgba(255,255,255,0.15)" }}>
+                  <p className="text-[9px] tracking-[0.15em] uppercase mb-1" style={{ color: "rgba(255,255,255,0.55)" }}>날짜</p>
+                  <p className="text-[14px] font-medium" style={{ color: "#FFFFFF" }}>{helpers.formatWeddingDate()}</p>
                 </div>
                 <div className="flex-1 pl-3">
-                  <p className="text-[9px] tracking-[0.15em] uppercase mb-1" style={{ color: textMuted }}>시간</p>
-                  <p className="text-[14px] font-medium" style={{ color: textNavy }}>{data.time || helpers.formatWeddingTime()}</p>
+                  <p className="text-[9px] tracking-[0.15em] uppercase mb-1" style={{ color: "rgba(255,255,255,0.55)" }}>시간</p>
+                  <p className="text-[14px] font-medium" style={{ color: "#FFFFFF" }}>{data.time || helpers.formatWeddingTime()}</p>
                 </div>
               </div>
-              <div className="mt-3 pt-3" style={{ borderTop: `1px dashed ${borderColor}` }}>
-                <p className="text-[9px] tracking-[0.15em] uppercase mb-1" style={{ color: textMuted }}>장소</p>
-                <p className="text-[14px] font-medium" style={{ color: textNavy }}>
+              <div className="mt-3 pt-3" style={{ borderTop: "1px dashed rgba(255,255,255,0.2)" }}>
+                <p className="text-[9px] tracking-[0.15em] uppercase mb-1" style={{ color: "rgba(255,255,255,0.55)" }}>장소</p>
+                <p className="text-[14px] font-medium" style={{ color: "#FFFFFF" }}>
                   {data.venue || "예식장"}{data.venueHall ? ` ${data.venueHall}` : ""}
                 </p>
               </div>
             </div>
 
-            {/* Stamp decorations on sides */}
-            <div className="absolute top-12 right-3 opacity-40">
-              <StampDecoration text={"FIRST\nCLASS"} size={50} />
+            {/* Stamp */}
+            <div className="absolute top-8 right-5 opacity-30">
+              <div className="rounded-full flex items-center justify-center" style={{ width: 50, height: 50, border: "2px solid rgba(255,255,255,0.4)", transform: "rotate(-15deg)" }}>
+                <div className="rounded-full flex items-center justify-center" style={{ width: 42, height: 42, border: "1.5px dashed rgba(255,255,255,0.3)" }}>
+                  <span className="text-[7px] font-bold tracking-[0.1em] text-center leading-tight" style={{ color: "rgba(255,255,255,0.5)" }}>{"FIRST\nCLASS"}</span>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
 
-            {/* Dashed perforation */}
+        {/* Ticket stub below hero */}
+        <div className="px-4 pb-0">
+          <ScallopTop />
+          <div className="relative overflow-hidden" style={{ backgroundColor: ticketBg }}>
             <DashedDivider />
-
-            {/* Bottom ticket stub */}
-            <div className="px-6 py-5 flex justify-between items-center">
+            <div className="px-6 py-4 flex justify-between items-center">
               <div>
                 <p className="text-[9px] tracking-[0.15em] uppercase" style={{ color: textMuted }}>Gate</p>
                 <p className="text-[15px] font-bold" style={{ color: textNavy }}>{data.venueHall || "MAIN"}</p>
@@ -206,16 +249,14 @@ export function BoardingPassLayout({ data, state, helpers, onRsvpClick }: Layout
                 <p className="text-[15px] font-bold" style={{ color: accent }}>CONFIRMED</p>
               </div>
             </div>
-
-            <div className="px-6 pb-5 text-center">
+            <div className="px-6 pb-4 text-center">
               <p className="text-[9px] tracking-[0.2em] uppercase" style={{ color: textMuted }}>Wedding Ticket</p>
             </div>
           </div>
-
           <ScallopBottom />
         </div>
 
-        {/* ===== NAVY SECTION: INVITATION ===== */}
+        {/* ===== INVITATION SECTION ===== */}
         <div className="px-4 pt-6">
           <ScallopTop />
           <div style={{ backgroundColor: ticketBg }} className="px-6 py-10">
@@ -234,42 +275,6 @@ export function BoardingPassLayout({ data, state, helpers, onRsvpClick }: Layout
             )}
 
             <PlaneDivider />
-
-            {/* Photo in ticket */}
-            {state.allPhotos.length > 0 && (
-              <div className="mb-6 relative">
-                <div className="aspect-[4/5] overflow-hidden rounded-[4px]" style={{ border: `1px solid ${borderColor}` }}>
-                  {coverStyle === "static" ? (
-                    <img src={state.allPhotos[0]} alt="Cover" className="w-full h-full object-cover" />
-                  ) : coverStyle === "slide" ? (
-                    <div className="w-full h-full relative overflow-hidden">
-                      <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${state.currentSlide * 100}%)` }}>
-                        {state.allPhotos.map((photo, i) => (
-                          <div key={i} className="w-full h-full flex-shrink-0">
-                            <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="w-full h-full relative">
-                      {state.allPhotos.map((photo, i) => (
-                        <div key={i} className="absolute inset-0 transition-opacity duration-1000" style={{ opacity: state.currentSlide === i ? 1 : 0 }}>
-                          <img src={photo} alt={`Cover ${i + 1}`} className="w-full h-full object-cover" />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                {state.allPhotos.length > 1 && (
-                  <div className="flex justify-center gap-1.5 mt-3">
-                    {state.allPhotos.map((_, i) => (
-                      <div key={i} className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: state.currentSlide === i ? accent : borderColor }} />
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
 
             {/* Parents info */}
             {data.showNameAtBottom && (() => {
