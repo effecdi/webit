@@ -273,12 +273,21 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
     ? `'${data.fontEnglish}', cursive`
     : undefined
 
+  const combinedFontFamily = (() => {
+    if (resolvedFontEnglish && resolvedFontKorean) {
+      return `${resolvedFontEnglish}, ${resolvedFontKorean}`
+    }
+    if (resolvedFontEnglish) return resolvedFontEnglish
+    if (resolvedFontKorean) return resolvedFontKorean
+    return undefined
+  })()
+
   return (
     <div
       className="w-full h-full overflow-y-auto relative"
       style={{
         backgroundColor: pageBg,
-        ...(resolvedFontKorean ? { fontFamily: resolvedFontKorean } : {}),
+        ...(combinedFontFamily ? { fontFamily: combinedFontFamily } : {}),
       }}
       data-testid="invitation-preview"
       data-font-korean={data.fontKorean || ""}

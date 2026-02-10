@@ -1469,10 +1469,6 @@
     left: calc(var(--spacing) * 1);
   }
 
-  .left-1\.5 {
-    left: calc(var(--spacing) * 1.5);
-  }
-
   .left-1\/2 {
     left: 50%;
   }
@@ -1853,10 +1849,6 @@
 
   .mx-1 {
     margin-inline: calc(var(--spacing) * 1);
-  }
-
-  .mx-1\.5 {
-    margin-inline: calc(var(--spacing) * 1.5);
   }
 
   .mx-2 {
@@ -8339,10 +8331,6 @@
 
   .text-\[3\.5px\] {
     font-size: 3.5px;
-  }
-
-  .text-\[4px\] {
-    font-size: 4px;
   }
 
   .text-\[5px\] {
