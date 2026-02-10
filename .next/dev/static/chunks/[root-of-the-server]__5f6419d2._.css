@@ -1602,10 +1602,6 @@
     bottom: calc(var(--spacing) * 2.5);
   }
 
-  .bottom-3 {
-    bottom: calc(var(--spacing) * 3);
-  }
-
   .bottom-4 {
     bottom: calc(var(--spacing) * 4);
   }
@@ -2803,10 +2799,6 @@
     height: 240px;
   }
 
-  .h-\[260px\] {
-    height: 260px;
-  }
-
   .h-\[270px\] {
     height: 270px;
   }
@@ -3301,6 +3293,10 @@
 
   .max-w-\[40px\] {
     max-width: 40px;
+  }
+
+  .max-w-\[50px\] {
+    max-width: 50px;
   }
 
   .max-w-\[60px\] {
@@ -4461,6 +4457,10 @@
 
   .gap-\[2px\] {
     gap: 2px;
+  }
+
+  .gap-\[3px\] {
+    gap: 3px;
   }
 
   .gap-px {
@@ -8086,6 +8086,10 @@
     padding-inline: calc(var(--spacing) * 12);
   }
 
+  .px-14 {
+    padding-inline: calc(var(--spacing) * 14);
+  }
+
   .\!py-1 {
     padding-block: calc(var(--spacing) * 1) !important;
   }
@@ -8308,6 +8312,10 @@
 
   .pb-12 {
     padding-bottom: calc(var(--spacing) * 12);
+  }
+
+  .pb-14 {
+    padding-bottom: calc(var(--spacing) * 14);
   }
 
   .pb-20 {
@@ -8610,10 +8618,6 @@
     font-size: 32px;
   }
 
-  .text-\[36px\] {
-    font-size: 36px;
-  }
-
   .text-\[38px\] {
     font-size: 38px;
   }
@@ -8634,12 +8638,12 @@
     font-size: 48px;
   }
 
-  .text-\[56px\] {
-    font-size: 56px;
+  .text-\[52px\] {
+    font-size: 52px;
   }
 
-  .text-\[60px\] {
-    font-size: 60px;
+  .text-\[56px\] {
+    font-size: 56px;
   }
 
   .text-\[80px\] {
@@ -8786,11 +8790,6 @@
     letter-spacing: .4em;
   }
 
-  .tracking-\[0\.05em\] {
-    --tw-tracking: .05em;
-    letter-spacing: .05em;
-  }
-
   .tracking-\[0\.5em\] {
     --tw-tracking: .5em;
     letter-spacing: .5em;
@@ -8811,9 +8810,9 @@
     letter-spacing: .08em;
   }
 
-  .tracking-\[0\.12em\] {
-    --tw-tracking: .12em;
-    letter-spacing: .12em;
+  .tracking-\[0\.8em\] {
+    --tw-tracking: .8em;
+    letter-spacing: .8em;
   }
 
   .tracking-\[0\.15em\] {
@@ -9440,16 +9439,6 @@
 
   .text-white {
     color: var(--color-white);
-  }
-
-  .text-white\/20 {
-    color: #fff3;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .text-white\/20 {
-      color: color-mix(in oklab, var(--color-white) 20%, transparent);
-    }
   }
 
   .text-white\/30 {
