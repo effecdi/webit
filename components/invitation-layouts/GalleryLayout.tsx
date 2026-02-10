@@ -240,36 +240,36 @@ export function GalleryLayout({ data, state, helpers, onRsvpClick }: LayoutProps
           </div>
 
           {data.galleryStyle === "grid" || !data.galleryStyle ? (
-            <div className="grid grid-cols-3 gap-px px-6">
+            <div className="grid grid-cols-2 gap-[2px]">
               {state.galleryImages.map((img, index) => (
                 <div
                   key={index}
-                  className="aspect-square cursor-pointer overflow-hidden rounded-none"
+                  className="aspect-square cursor-pointer overflow-hidden group"
                   onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
                   data-testid={`gallery-photo-${index}`}
                 >
                   <img
                     src={img}
                     alt={`Gallery ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
               ))}
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <div className="flex gap-px px-6">
+              <div className="flex gap-[2px]">
                 {state.galleryImages.map((img, index) => (
                   <div
                     key={index}
-                    className="w-[180px] h-[240px] flex-shrink-0 cursor-pointer overflow-hidden rounded-none"
+                    className="w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group"
                     onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
                     data-testid={`gallery-photo-${index}`}
                   >
                     <img
                       src={img}
                       alt={`Gallery ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
                 ))}

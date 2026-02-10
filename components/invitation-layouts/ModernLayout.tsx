@@ -185,44 +185,42 @@ export function ModernLayout({ data, state, helpers, onRsvpClick }: LayoutProps)
 
       {/* ===== GALLERY SECTION ===== */}
       {data.showGallery && state.galleryImages.length > 0 && (
-        <div className="px-6 py-14" style={{ backgroundColor: sectionBg2 }}>
-          <div className="px-2">
+        <div className="py-14" style={{ backgroundColor: sectionBg2 }}>
+          <div className="px-6">
             <SectionTitle title="Gallery" />
           </div>
 
           {data.galleryStyle === "grid" || !data.galleryStyle ? (
-            <div className="grid grid-cols-3 gap-[1px]">
+            <div className="grid grid-cols-2 gap-[2px]">
               {state.galleryImages.map((img, index) => (
                 <div
                   key={index}
-                  className="aspect-square cursor-pointer overflow-hidden"
-                  style={{ border: `1px solid ${borderColor}` }}
+                  className="aspect-square cursor-pointer overflow-hidden group"
                   onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
                   data-testid={`gallery-photo-${index}`}
                 >
                   <img
                     src={img}
                     alt={`Gallery ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
               ))}
             </div>
           ) : (
-            <div className="overflow-x-auto -mx-2">
-              <div className="flex gap-2 px-2">
+            <div className="overflow-x-auto">
+              <div className="flex gap-[2px]">
                 {state.galleryImages.map((img, index) => (
                   <div
                     key={index}
-                    className="w-[160px] h-[210px] flex-shrink-0 cursor-pointer overflow-hidden"
-                    style={{ border: `1px solid ${borderColor}` }}
+                    className="w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group"
                     onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
                     data-testid={`gallery-photo-${index}`}
                   >
                     <img
                       src={img}
                       alt={`Gallery ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
                 ))}

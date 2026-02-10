@@ -348,31 +348,27 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
       {/* ===== GALLERY ===== */}
       {data.showGallery && state.galleryImages.length > 0 && (
         <div className="py-12" style={{ backgroundColor: pageBg }}>
-          <SectionTitle title="Gallery" subtitle="OUR MOMENTS" />
+          <div className="px-8">
+            <SectionTitle title="Gallery" subtitle="OUR MOMENTS" />
+          </div>
           {data.galleryStyle === "grid" || !data.galleryStyle ? (
-            <div className="px-8 grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-[2px]">
               {state.galleryImages.map((img, index) => (
-                <div key={index} className="bg-white p-2 shadow-sm cursor-pointer transition-transform"
-                  style={{ border: `1px solid ${borderColor}` }}
+                <div key={index} className="aspect-square cursor-pointer overflow-hidden group"
                   onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
                   data-testid={`gallery-photo-${index}`}>
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />
-                  </div>
+                  <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                 </div>
               ))}
             </div>
           ) : (
-            <div className="overflow-x-auto pl-8">
-              <div className="flex gap-4 pr-8">
+            <div className="overflow-x-auto">
+              <div className="flex gap-[2px]">
                 {state.galleryImages.map((img, index) => (
-                  <div key={index} className="bg-white p-2 shadow-sm flex-shrink-0 cursor-pointer"
-                    style={{ border: `1px solid ${borderColor}` }}
+                  <div key={index} className="w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group"
                     onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
                     data-testid={`gallery-photo-${index}`}>
-                    <div className="w-[160px] h-[210px] overflow-hidden">
-                      <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />
-                    </div>
+                    <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                   </div>
                 ))}
               </div>

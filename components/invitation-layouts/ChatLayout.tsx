@@ -357,29 +357,30 @@ export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
         <div className="py-12" style={{ backgroundColor: pageBg }}>
           <SectionTitle title="Gallery" subtitle="OUR MOMENTS" />
           {data.galleryStyle === "grid" || !data.galleryStyle ? (
-            <div className="px-8 grid grid-cols-2 gap-3">
-              {state.galleryImages.map((img, index) => (
-                <div key={index} className="cursor-pointer overflow-hidden shadow-sm"
-                  style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}
-                  onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
-                  data-testid={`gallery-photo-${index}`}>
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="overflow-x-auto pl-8">
-              <div className="flex gap-3 pr-8">
+            <>
+              <div className="grid grid-cols-2 gap-[2px]">
                 {state.galleryImages.map((img, index) => (
-                  <div key={index} className="w-[160px] flex-shrink-0 cursor-pointer overflow-hidden shadow-sm"
-                    style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}` }}
+                  <div key={index} className="aspect-square cursor-pointer overflow-hidden relative group"
                     onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
                     data-testid={`gallery-photo-${index}`}>
-                    <div className="w-full h-[210px] overflow-hidden">
-                      <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />
-                    </div>
+                    <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+                  </div>
+                ))}
+              </div>
+              <div className="flex items-center justify-center gap-3 mt-5">
+                <div className="h-px flex-1 max-w-[25px]" style={{ backgroundColor: borderColor }} />
+                <p className="text-[9px] tracking-[0.3em]" style={{ color: textTertiary }}>{state.galleryImages.length} PHOTOS</p>
+                <div className="h-px flex-1 max-w-[25px]" style={{ backgroundColor: borderColor }} />
+              </div>
+            </>
+          ) : (
+            <div className="overflow-x-auto">
+              <div className="flex gap-[2px]">
+                {state.galleryImages.map((img, index) => (
+                  <div key={index} className="w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden relative group"
+                    onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
+                    data-testid={`gallery-photo-${index}`}>
+                    <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                   </div>
                 ))}
               </div>

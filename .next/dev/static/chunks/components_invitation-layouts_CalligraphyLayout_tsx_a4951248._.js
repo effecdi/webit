@@ -1000,27 +1000,31 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                 }, this);
             })(),
             data.showGallery && state.galleryImages.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "px-8 py-14",
+                className: "py-14",
                 style: {
                     backgroundColor: bg,
                     fontFamily
                 },
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SectionTitle, {
-                        title: "Gallery",
-                        subtitle: "우리의 아름다운 순간들"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "px-8",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SectionTitle, {
+                            title: "Gallery",
+                            subtitle: "우리의 아름다운 순간들"
+                        }, void 0, false, {
+                            fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
+                            lineNumber: 288,
+                            columnNumber: 13
+                        }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
                         lineNumber: 287,
                         columnNumber: 11
                     }, this),
                     data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-2 gap-2",
+                        className: "grid grid-cols-2 gap-[2px]",
                         children: state.galleryImages.map((img, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "aspect-square overflow-hidden rounded-[4px] cursor-pointer",
-                                style: {
-                                    border: `1px solid ${borderColor}`
-                                },
+                                className: "aspect-square overflow-hidden cursor-pointer group",
                                 onClick: ()=>{
                                     state.setViewerIndex(i);
                                     state.setShowPhotoViewer(true);
@@ -1029,30 +1033,27 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                     src: img,
                                     alt: `Gallery ${i + 1}`,
-                                    className: "w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                    className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 299,
+                                    lineNumber: 300,
                                     columnNumber: 19
                                 }, this)
                             }, i, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 292,
+                                lineNumber: 294,
                                 columnNumber: 17
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 290,
+                        lineNumber: 292,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "overflow-x-auto -mx-2",
+                        className: "overflow-x-auto",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex gap-2 px-2",
+                            className: "flex gap-[2px]",
                             children: state.galleryImages.map((img, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-[160px] h-[210px] flex-shrink-0 cursor-pointer overflow-hidden rounded-[4px]",
-                                    style: {
-                                        border: `1px solid ${borderColor}`
-                                    },
+                                    className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
                                     onClick: ()=>{
                                         state.setViewerIndex(i);
                                         state.setShowPhotoViewer(true);
@@ -1061,7 +1062,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                         src: img,
                                         alt: `Gallery ${i + 1}`,
-                                        className: "w-full h-full object-cover"
+                                        className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
                                         lineNumber: 314,
@@ -1069,17 +1070,17 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                     }, this)
                                 }, i, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 307,
+                                    lineNumber: 308,
                                     columnNumber: 19
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 305,
+                            lineNumber: 306,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 304,
+                        lineNumber: 305,
                         columnNumber: 13
                     }, this)
                 ]
