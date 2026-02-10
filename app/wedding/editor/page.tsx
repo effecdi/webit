@@ -323,9 +323,6 @@ function TemplateThumbnail({ id }: { id: string }) {
       return (
         <div className="w-full h-full rounded-[6px] overflow-hidden relative" style={{ backgroundColor: "#0A0A0A" }}>
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(30,30,30,0.3) 40%, rgba(0,0,0,0.55) 100%)", backgroundColor: "#2A2A2A" }} />
-          <div className="absolute top-1.5 left-0 right-0 z-10 text-center">
-            <div className="text-[4px] text-white/40 tracking-[0.2em] leading-none" style={{ fontFamily: "Georgia, serif" }}>lxne</div>
-          </div>
           <div className="absolute bottom-1.5 left-1.5 z-10">
             <div className="text-[5px] text-white/40 leading-none mb-0.5" style={{ fontFamily: "Georgia, serif" }}>2025.10</div>
             <div className="text-[6px] text-white font-light italic leading-tight" style={{ fontFamily: "'Great Vibes', cursive" }}>G & B</div>

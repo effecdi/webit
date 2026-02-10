@@ -76,13 +76,6 @@ export function MagazineLayout({ data, state, helpers, onRsvpClick }: LayoutProp
           </div>
         )}
 
-        {/* Brand at top center */}
-        <div className="absolute top-5 left-0 right-0 z-10 text-center">
-          <p className="text-[11px] tracking-[0.5em] uppercase text-white/50 font-light" style={{ fontFamily: englishFont }}>
-            lxne
-          </p>
-        </div>
-
         {/* Date + names at bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10 text-center pb-10 px-6">
           <p className="text-[13px] tracking-[0.15em] text-white/70 mb-3" style={{ fontFamily: englishFont }}>
