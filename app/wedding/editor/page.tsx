@@ -1067,8 +1067,16 @@ function InvitationEditorContent() {
       audio.pause();
       setIsEditorPlaying(false);
     } else {
-      audio.play().catch(() => {});
-      setIsEditorPlaying(true);
+      const url = getMusicFileUrl(data.musicTrack);
+      if (url && (!audio.src || !audio.src.includes(url.replace(/^\//, "")))) {
+        audio.src = url;
+      }
+      audio.play().then(() => {
+        setIsEditorPlaying(true);
+      }).catch((err) => {
+        console.error("Editor music play failed:", err);
+        setIsEditorPlaying(false);
+      });
     }
   };
 

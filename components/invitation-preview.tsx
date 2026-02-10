@@ -315,10 +315,9 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
 
       {(shouldShowMusicControls || isShared) && (
         <div
-          className={`sticky top-4 z-50 flex flex-col items-end gap-2 pr-4 transition-opacity duration-300 pointer-events-none ${showControls ? "opacity-100" : "opacity-0"}`}
-          style={{ fontSize: "16px", height: 0 }}
+          className={`${isShared ? "fixed" : "absolute"} top-4 right-4 z-50 flex flex-col gap-2 transition-opacity duration-300 ${showControls ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          style={{ fontSize: "16px" }}
         >
-          <div className="pointer-events-auto flex flex-col gap-2">
           {shouldShowMusicControls && data.showMusic && data.musicTrack && (
             <button
               onClick={(e) => { e.stopPropagation(); toggleMusic(); }}
@@ -346,7 +345,6 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
               </button>
             </>
           )}
-          </div>
         </div>
       )}
 
