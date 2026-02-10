@@ -321,15 +321,21 @@ function TemplateThumbnail({ id }: { id: string }) {
       );
     case "magazine":
       return (
-        <div className="w-full h-full rounded-[6px] overflow-hidden bg-[#1a1a1a] relative">
-          <div className="absolute top-2 left-0 right-0 text-center">
-            <div className="text-[6px] text-white font-black tracking-wider leading-none">WEVE</div>
-            <div className="text-[5px] text-white font-bold tracking-wider leading-none">WEDDING</div>
+        <div className="w-full h-full rounded-[6px] overflow-hidden relative" style={{ backgroundColor: "#1A1A1A" }}>
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 100%)", backgroundColor: "#333D4B" }} />
+          <div className="absolute top-1.5 left-1.5 z-10">
+            <div className="text-[7px] text-white font-black leading-none" style={{ fontFamily: "Georgia, serif" }}>W</div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-[#333D4B]" />
-          <div className="absolute bottom-2 left-2">
-            <div className="w-[20px] h-[1.5px] bg-white/50 rounded-full mb-1" />
-            <div className="w-[14px] h-[1px] bg-white/30 rounded-full" />
+          <div className="absolute top-1.5 right-1.5 z-10 text-right">
+            <div className="text-[3px] text-white/40 tracking-wider leading-none">ISSUE</div>
+          </div>
+          <div className="absolute bottom-1.5 left-1.5 z-10">
+            <div className="text-[5px] text-white font-black leading-tight tracking-tight">G</div>
+            <div className="text-[4px] text-white/50 font-light italic leading-tight">&</div>
+            <div className="text-[5px] text-white font-black leading-tight tracking-tight">B</div>
+          </div>
+          <div className="absolute bottom-1.5 right-1.5 z-10">
+            <div className="w-4 h-[1px]" style={{ backgroundColor: "#C8102E" }} />
           </div>
         </div>
       );
