@@ -107,8 +107,12 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
     audio.addEventListener("pause", handlePause)
 
     if (shouldAutoPlay && !data.showOpening) {
-      audio.play().catch(() => {
+      audio.play().then(() => {
+        setIsMusicPlaying(true)
+        musicStartedRef.current = true
+      }).catch(() => {
         setIsMusicPlaying(false)
+        musicStartedRef.current = false
       })
     }
 

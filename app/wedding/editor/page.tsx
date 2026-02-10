@@ -1085,9 +1085,19 @@ function InvitationEditorContent() {
     const audio = editorAudioRef.current;
     if (audio) {
       audio.pause();
-      setIsEditorPlaying(false);
       setEditorCurrentTime(0);
       setEditorDuration(0);
+      const track = MUSIC_TRACKS.find(t => t.name === trackName);
+      if (track) {
+        audio.src = track.file;
+        audio.loop = true;
+        audio.play().then(() => {
+          setIsEditorPlaying(true);
+        }).catch((err) => {
+          console.error("Track autoplay failed:", err);
+          setIsEditorPlaying(false);
+        });
+      }
     }
   };
 
@@ -2753,7 +2763,21 @@ function InvitationEditorContent() {
                 title="배경음악"
                 showSwitch
                 checked={data.showMusic}
-                onChange={(v) => updateField("showMusic", v)}
+                onChange={(v) => {
+                  updateField("showMusic", v);
+                  if (v && data.musicTrack) {
+                    const audio = editorAudioRef.current;
+                    const track = MUSIC_TRACKS.find(t => t.name === data.musicTrack);
+                    if (audio && track) {
+                      audio.src = track.file;
+                      audio.loop = true;
+                      audio.play().then(() => setIsEditorPlaying(true)).catch(() => setIsEditorPlaying(false));
+                    }
+                  } else if (!v) {
+                    const audio = editorAudioRef.current;
+                    if (audio) { audio.pause(); setIsEditorPlaying(false); }
+                  }
+                }}
                 badge="NEW"
               />
               {data.showMusic && (
@@ -3269,7 +3293,7 @@ function InvitationEditorContent() {
         {/* Live Preview Panel - desktop only */}
         <div className="hidden lg:flex lg:w-1/2 border-l border-[#E5E8EB] bg-[#F2F4F6] items-start justify-center overflow-y-auto py-6">
           <div className="w-[390px] bg-white rounded-[24px] shadow-lg overflow-hidden">
-            <InvitationPreview data={previewData as any} showMusicControls={true} />
+            <InvitationPreview data={previewData as any} autoPlayMusic={true} showMusicControls={true} />
           </div>
         </div>
       </div>
@@ -3324,7 +3348,7 @@ function InvitationEditorContent() {
             </div>
 
             <div className="flex-1 overflow-y-auto bg-[#F2F4F6]">
-              <InvitationPreview data={previewData as any} showMusicControls={true} />
+              <InvitationPreview data={previewData as any} autoPlayMusic={true} showMusicControls={true} />
             </div>
           </div>
 
