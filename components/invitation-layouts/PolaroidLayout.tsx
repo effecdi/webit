@@ -95,7 +95,7 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
                 src="/illustration-couple.png"
                 alt="Couple illustration"
                 className="w-full h-auto object-contain"
-                style={{ maxWidth: "280px", mixBlendMode: 'multiply' }}
+                style={{ maxWidth: "340px", mixBlendMode: 'multiply' }}
               />
             </div>
 
@@ -630,8 +630,8 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
               <img
                 src="/illustration-couple.png"
                 alt="Couple illustration"
-                className="w-[140px] h-auto object-contain"
-                style={{ mixBlendMode: 'multiply', opacity: 0.6 }}
+                className="w-[180px] h-auto object-contain"
+                style={{ mixBlendMode: 'multiply', opacity: 0.5 }}
               />
             </div>
 
