@@ -719,29 +719,43 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                 columnNumber: 7
             }, this),
             data.showGallery && state.galleryImages.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "py-14",
+                className: "py-10",
                 style: {
                     backgroundColor: sectionBg2
                 },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "px-6",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SectionTitle, {
-                            title: "Gallery"
-                        }, void 0, false, {
+                children: data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "grid grid-cols-2 gap-[2px]",
+                    children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "aspect-square cursor-pointer overflow-hidden group",
+                            onClick: ()=>{
+                                state.setViewerIndex(index);
+                                state.setShowPhotoViewer(true);
+                            },
+                            "data-testid": `gallery-photo-${index}`,
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                src: img,
+                                alt: `Gallery ${index + 1}`,
+                                className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                            }, void 0, false, {
+                                fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
+                                lineNumber: 258,
+                                columnNumber: 19
+                            }, this)
+                        }, index, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 253,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 252,
-                        columnNumber: 11
-                    }, this),
-                    data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-2 gap-[2px]",
+                            lineNumber: 255,
+                            columnNumber: 17
+                        }, this))
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
+                    lineNumber: 253,
+                    columnNumber: 13
+                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "overflow-x-auto",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex gap-[2px]",
                         children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "aspect-square cursor-pointer overflow-hidden group",
+                                className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
                                 onClick: ()=>{
                                     state.setViewerIndex(index);
                                     state.setShowPhotoViewer(true);
@@ -753,55 +767,25 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                     className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 265,
-                                    columnNumber: 19
+                                    lineNumber: 269,
+                                    columnNumber: 21
                                 }, this)
                             }, index, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 259,
-                                columnNumber: 17
+                                lineNumber: 266,
+                                columnNumber: 19
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 257,
-                        columnNumber: 13
-                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "overflow-x-auto",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex gap-[2px]",
-                            children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
-                                    onClick: ()=>{
-                                        state.setViewerIndex(index);
-                                        state.setShowPhotoViewer(true);
-                                    },
-                                    "data-testid": `gallery-photo-${index}`,
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                        src: img,
-                                        alt: `Gallery ${index + 1}`,
-                                        className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 283,
-                                        columnNumber: 21
-                                    }, this)
-                                }, index, false, {
-                                    fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 277,
-                                    columnNumber: 19
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 275,
-                            columnNumber: 15
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 274,
-                        columnNumber: 13
+                        lineNumber: 264,
+                        columnNumber: 15
                     }, this)
-                ]
-            }, void 0, true, {
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
+                    lineNumber: 263,
+                    columnNumber: 13
+                }, this)
+            }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
                 lineNumber: 251,
                 columnNumber: 9
@@ -820,7 +804,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                             title: "Calendar"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 303,
+                            lineNumber: 285,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -832,7 +816,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                             children: helpers.formatWeddingDate()
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 304,
+                            lineNumber: 286,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -847,7 +831,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 305,
+                            lineNumber: 287,
                             columnNumber: 13
                         }, this),
                         data.showCalendar && calStyle === "full" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -867,12 +851,12 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: d
                                         }, d, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 313,
+                                            lineNumber: 295,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 311,
+                                    lineNumber: 293,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -888,7 +872,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: day
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                lineNumber: 321,
+                                                lineNumber: 303,
                                                 columnNumber: 27
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "text-[14px]",
@@ -898,23 +882,23 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: day
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                lineNumber: 325,
+                                                lineNumber: 307,
                                                 columnNumber: 27
                                             }, this))
                                         }, i, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 318,
+                                            lineNumber: 300,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 316,
+                                    lineNumber: 298,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 310,
+                            lineNumber: 292,
                             columnNumber: 15
                         }, this),
                         data.showCalendar && calStyle === "simple" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -942,7 +926,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 338,
+                                    lineNumber: 320,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -953,13 +937,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                     children: helpers.formatWeddingTime()
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 341,
+                                    lineNumber: 323,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 337,
+                            lineNumber: 319,
                             columnNumber: 15
                         }, this),
                         data.showCountdown && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -976,7 +960,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "DAYS"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 348,
+                                            lineNumber: 330,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -987,13 +971,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.days
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 349,
+                                            lineNumber: 331,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 347,
+                                    lineNumber: 329,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1004,7 +988,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                     children: ":"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 351,
+                                    lineNumber: 333,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1018,7 +1002,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "HOUR"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 353,
+                                            lineNumber: 335,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1029,13 +1013,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.hours
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 354,
+                                            lineNumber: 336,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 352,
+                                    lineNumber: 334,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1046,7 +1030,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                     children: ":"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 356,
+                                    lineNumber: 338,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1060,7 +1044,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "MIN"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 358,
+                                            lineNumber: 340,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1071,13 +1055,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.minutes
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 359,
+                                            lineNumber: 341,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 357,
+                                    lineNumber: 339,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1088,7 +1072,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                     children: ":"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 361,
+                                    lineNumber: 343,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1102,7 +1086,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "SEC"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 363,
+                                            lineNumber: 345,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1113,25 +1097,25 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.seconds
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 364,
+                                            lineNumber: 346,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 362,
+                                    lineNumber: 344,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 346,
+                            lineNumber: 328,
                             columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                    lineNumber: 302,
+                    lineNumber: 284,
                     columnNumber: 11
                 }, this);
             })(),
@@ -1145,7 +1129,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Location"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 374,
+                        lineNumber: 356,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1163,7 +1147,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 377,
+                                lineNumber: 359,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1174,7 +1158,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.address || "주소를 입력해주세요"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 380,
+                                lineNumber: 362,
                                 columnNumber: 11
                             }, this),
                             data.venuePhone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1188,13 +1172,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 382,
+                                lineNumber: 364,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 376,
+                        lineNumber: 358,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$MapEmbed$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MapEmbed"], {
@@ -1204,7 +1188,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         bgColor: sectionBg2 || sectionBg1 || "#F5F5F0"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 386,
+                        lineNumber: 368,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1218,7 +1202,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         children: "길찾기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 388,
+                        lineNumber: 370,
                         columnNumber: 9
                     }, this),
                     data.transportItems && data.transportItems.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1237,7 +1221,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: item.type
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 401,
+                                        lineNumber: 383,
                                         columnNumber: 31
                                     }, this),
                                     item.detail && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1248,18 +1232,18 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: item.detail
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 402,
+                                        lineNumber: 384,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 400,
+                                lineNumber: 382,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 398,
+                        lineNumber: 380,
                         columnNumber: 11
                     }, this),
                     data.transportInfo && !data.transportItems?.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1275,12 +1259,12 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.transportInfo
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 409,
+                            lineNumber: 391,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 408,
+                        lineNumber: 390,
                         columnNumber: 11
                     }, this),
                     data.showTransportNotice && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1297,18 +1281,18 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                             children: "주차 공간이 협소하오니 대중교통을 이용해주시면 감사하겠습니다."
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 414,
+                            lineNumber: 396,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 413,
+                        lineNumber: 395,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 373,
+                lineNumber: 355,
                 columnNumber: 7
             }, this),
             data.showMidPhoto && data.midPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1318,12 +1302,12 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                     className: "w-full object-cover"
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                    lineNumber: 424,
+                    lineNumber: 406,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 423,
+                lineNumber: 405,
                 columnNumber: 9
             }, this),
             data.showRsvp && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1334,7 +1318,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(WatercolorCornerBR, {}, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 431,
+                        lineNumber: 413,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1347,7 +1331,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 title: "R.S.V.P"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 433,
+                                lineNumber: 415,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1359,7 +1343,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.rsvpTitle || "참석 의사"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 434,
+                                lineNumber: 416,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1378,17 +1362,17 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "R.S.V.P"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 438,
+                                        lineNumber: 420,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 437,
+                                    lineNumber: 419,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 436,
+                                lineNumber: 418,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1399,7 +1383,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.rsvpContent || "신랑신부에게 참석 여부를 미리 알려주세요"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 444,
+                                lineNumber: 426,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1413,19 +1397,19 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.rsvpButtonName || "참석 의사 전달하기"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 448,
+                                lineNumber: 430,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 432,
+                        lineNumber: 414,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 430,
+                lineNumber: 412,
                 columnNumber: 9
             }, this),
             data.showGuestbook && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1438,7 +1422,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Guest Book"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 463,
+                        lineNumber: 445,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1458,7 +1442,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: entry.message
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 473,
+                                        lineNumber: 455,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1473,13 +1457,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 474,
+                                        lineNumber: 456,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 468,
+                                lineNumber: 450,
                                 columnNumber: 17
                             }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "p-6 text-center rounded-2xl",
@@ -1499,17 +1483,17 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 482,
+                                lineNumber: 464,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 478,
+                            lineNumber: 460,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 465,
+                        lineNumber: 447,
                         columnNumber: 11
                     }, this),
                     state.showGuestbookForm ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1533,7 +1517,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "input-guestbook-name"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 491,
+                                lineNumber: 473,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1550,7 +1534,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "input-guestbook-message"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 500,
+                                lineNumber: 482,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1567,7 +1551,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "취소"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 510,
+                                        lineNumber: 492,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1581,19 +1565,19 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "등록하기"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 518,
+                                        lineNumber: 500,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 509,
+                                lineNumber: 491,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 490,
+                        lineNumber: 472,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: ()=>state.setShowGuestbookForm(true),
@@ -1607,13 +1591,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         children: "작성하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 529,
+                        lineNumber: 511,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 462,
+                lineNumber: 444,
                 columnNumber: 9
             }, this),
             data.showFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1626,7 +1610,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Funding"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 544,
+                        lineNumber: 526,
                         columnNumber: 11
                     }, this),
                     data.fundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1637,7 +1621,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.fundingMessage
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 547,
+                        lineNumber: 529,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1651,12 +1635,12 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "img-funding-custom"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 555,
+                                lineNumber: 537,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 554,
+                            lineNumber: 536,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "w-[200px] h-[200px] flex items-center justify-center",
@@ -1673,7 +1657,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 560,
+                                        lineNumber: 542,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1683,7 +1667,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 561,
+                                        lineNumber: 543,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1697,7 +1681,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 562,
+                                        lineNumber: 544,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -1709,7 +1693,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 563,
+                                        lineNumber: 545,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1719,7 +1703,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 564,
+                                        lineNumber: 546,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1729,7 +1713,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 565,
+                                        lineNumber: 547,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1739,7 +1723,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 566,
+                                        lineNumber: 548,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -1751,23 +1735,23 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 567,
+                                        lineNumber: 549,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 559,
+                                lineNumber: 541,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 558,
+                            lineNumber: 540,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 552,
+                        lineNumber: 534,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1781,7 +1765,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.fundingButtonName || "신혼여행 축하하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 573,
+                        lineNumber: 555,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1792,13 +1776,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         children: "축하의 마음을 전하는 방법에는 여러 가지가 있습니다. 신랑·신부에게 직접 마음을 전하고 싶으신 분들을 위해 현금 펀딩을 준비했습니다."
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 582,
+                        lineNumber: 564,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 543,
+                lineNumber: 525,
                 columnNumber: 9
             }, this),
             data.showGiftFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1811,7 +1795,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Gift Funding"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 591,
+                        lineNumber: 573,
                         columnNumber: 11
                     }, this),
                     data.giftFundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1822,7 +1806,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.giftFundingMessage
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 593,
+                        lineNumber: 575,
                         columnNumber: 13
                     }, this),
                     data.giftFundingButtonName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1836,13 +1820,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.giftFundingButtonName
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 598,
+                        lineNumber: 580,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 590,
+                lineNumber: 572,
                 columnNumber: 9
             }, this),
             data.showAccount && (()=>{
@@ -1874,7 +1858,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                lineNumber: 625,
+                                                lineNumber: 607,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1885,13 +1869,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: acc.holder
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                lineNumber: 626,
+                                                lineNumber: 608,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 624,
+                                        lineNumber: 606,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1906,18 +1890,18 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "복사"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 628,
+                                        lineNumber: 610,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 623,
+                                lineNumber: 605,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 621,
+                        lineNumber: 603,
                         columnNumber: 11
                     }, this);
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1930,7 +1914,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                             title: "Account"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 643,
+                            lineNumber: 625,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1941,7 +1925,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                             children: "축하의 마음을 전해주세요"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 644,
+                            lineNumber: 626,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1967,7 +1951,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: "신랑측 계좌번호"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                    lineNumber: 655,
+                                                    lineNumber: 637,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1985,18 +1969,18 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                         d: "M19 9l-7 7-7-7"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                        lineNumber: 661,
+                                                        lineNumber: 643,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                    lineNumber: 656,
+                                                    lineNumber: 638,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 650,
+                                            lineNumber: 632,
                                             columnNumber: 21
                                         }, this),
                                         state.expandedAccordion === "groom" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2007,13 +1991,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: renderAccList(groomAccList)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 665,
+                                            lineNumber: 647,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 649,
+                                    lineNumber: 631,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "rounded-2xl p-5",
@@ -2030,14 +2014,14 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "신랑측"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 672,
+                                            lineNumber: 654,
                                             columnNumber: 21
                                         }, this),
                                         renderAccList(groomAccList)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 671,
+                                    lineNumber: 653,
                                     columnNumber: 19
                                 }, this)),
                                 brideAccList.length > 0 && (accStyle === "accordion" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2060,7 +2044,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: "신부측 계좌번호"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                    lineNumber: 686,
+                                                    lineNumber: 668,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -2078,18 +2062,18 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                         d: "M19 9l-7 7-7-7"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                        lineNumber: 692,
+                                                        lineNumber: 674,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                    lineNumber: 687,
+                                                    lineNumber: 669,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 681,
+                                            lineNumber: 663,
                                             columnNumber: 21
                                         }, this),
                                         state.expandedAccordion === "bride" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2100,13 +2084,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: renderAccList(brideAccList)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 696,
+                                            lineNumber: 678,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 680,
+                                    lineNumber: 662,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "rounded-2xl p-5",
@@ -2123,26 +2107,26 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "신부측"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 703,
+                                            lineNumber: 685,
                                             columnNumber: 21
                                         }, this),
                                         renderAccList(brideAccList)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 702,
+                                    lineNumber: 684,
                                     columnNumber: 19
                                 }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 646,
+                            lineNumber: 628,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                    lineNumber: 642,
+                    lineNumber: 624,
                     columnNumber: 11
                 }, this);
             })(),
@@ -2156,7 +2140,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Baptismal Name"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 716,
+                        lineNumber: 698,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2173,7 +2157,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroom
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 719,
+                                        lineNumber: 701,
                                         columnNumber: 39
                                     }, this),
                                     data.baptismalGroomFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2184,7 +2168,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroomFather
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 720,
+                                        lineNumber: 702,
                                         columnNumber: 45
                                     }, this),
                                     data.baptismalGroomMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2195,13 +2179,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroomMother
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 721,
+                                        lineNumber: 703,
                                         columnNumber: 45
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 718,
+                                lineNumber: 700,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2215,7 +2199,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBride
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 724,
+                                        lineNumber: 706,
                                         columnNumber: 39
                                     }, this),
                                     data.baptismalBrideFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2226,7 +2210,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBrideFather
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 725,
+                                        lineNumber: 707,
                                         columnNumber: 45
                                     }, this),
                                     data.baptismalBrideMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2237,25 +2221,25 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBrideMother
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 726,
+                                        lineNumber: 708,
                                         columnNumber: 45
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 723,
+                                lineNumber: 705,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 717,
+                        lineNumber: 699,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 715,
+                lineNumber: 697,
                 columnNumber: 9
             }, this),
             data.showGuestSnap && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2268,7 +2252,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Guest Snap"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 735,
+                        lineNumber: 717,
                         columnNumber: 11
                     }, this),
                     data.guestSnapContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2279,7 +2263,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.guestSnapContent
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 737,
+                        lineNumber: 719,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2292,13 +2276,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         children: "사진 업로드"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 741,
+                        lineNumber: 723,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 734,
+                lineNumber: 716,
                 columnNumber: 9
             }, this),
             data.showNotice && data.noticeTitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2309,7 +2293,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(WatercolorCornerTL, {}, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 754,
+                        lineNumber: 736,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2322,7 +2306,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 title: "Notice"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 756,
+                                lineNumber: 738,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2334,7 +2318,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.noticeTitle
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                lineNumber: 757,
+                                lineNumber: 739,
                                 columnNumber: 13
                             }, this),
                             data.noticeItems?.filter(Boolean).map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2345,19 +2329,19 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                     children: item
                                 }, i, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 759,
+                                    lineNumber: 741,
                                     columnNumber: 15
                                 }, this))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 755,
+                        lineNumber: 737,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 753,
+                lineNumber: 735,
                 columnNumber: 9
             }, this),
             data.showEndingMessage && (data.endingContent || data.endingPhoto) && (()=>{
@@ -2371,7 +2355,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(WatercolorCornerBR, {}, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 771,
+                            lineNumber: 753,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2384,7 +2368,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                     title: "Thank you"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 773,
+                                    lineNumber: 755,
                                     columnNumber: 15
                                 }, this),
                                 eStyle === "card" && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2399,12 +2383,12 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                         className: "w-full aspect-square object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                        lineNumber: 777,
+                                        lineNumber: 759,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 776,
+                                    lineNumber: 758,
                                     columnNumber: 17
                                 }, this),
                                 eStyle === "card" && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2415,7 +2399,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                     children: data.endingContent
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 786,
+                                    lineNumber: 768,
                                     columnNumber: 17
                                 }, this),
                                 eStyle === "full" && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2430,14 +2414,14 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 793,
+                                            lineNumber: 775,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute inset-0 bg-black/30"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 799,
+                                            lineNumber: 781,
                                             columnNumber: 19
                                         }, this),
                                         data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2450,18 +2434,18 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: data.endingContent
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                lineNumber: 802,
+                                                lineNumber: 784,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 801,
+                                            lineNumber: 783,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 792,
+                                    lineNumber: 774,
                                     columnNumber: 17
                                 }, this),
                                 eStyle === "full" && !data.endingPhoto && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2472,7 +2456,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                     children: data.endingContent
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                    lineNumber: 811,
+                                    lineNumber: 793,
                                     columnNumber: 17
                                 }, this),
                                 eStyle === "simple" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2489,14 +2473,14 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                    lineNumber: 820,
+                                                    lineNumber: 802,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                    lineNumber: 826,
+                                                    lineNumber: 808,
                                                     columnNumber: 23
                                                 }, this),
                                                 data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2509,7 +2493,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                            lineNumber: 829,
+                                                            lineNumber: 811,
                                                             columnNumber: 27
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2520,19 +2504,19 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                             children: data.endingContent
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                            lineNumber: 830,
+                                                            lineNumber: 812,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                    lineNumber: 828,
+                                                    lineNumber: 810,
                                                     columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 819,
+                                            lineNumber: 801,
                                             columnNumber: 21
                                         }, this),
                                         !data.endingPhoto && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2545,7 +2529,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                    lineNumber: 839,
+                                                    lineNumber: 821,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2556,13 +2540,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: data.endingContent
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                                    lineNumber: 840,
+                                                    lineNumber: 822,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                                            lineNumber: 838,
+                                            lineNumber: 820,
                                             columnNumber: 21
                                         }, this)
                                     ]
@@ -2570,13 +2554,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                            lineNumber: 772,
+                            lineNumber: 754,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                    lineNumber: 770,
+                    lineNumber: 752,
                     columnNumber: 11
                 }, this);
             })(),
@@ -2597,12 +2581,12 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                     children: "청첩장 링크 복사하기"
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                    lineNumber: 854,
+                    lineNumber: 836,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 853,
+                lineNumber: 835,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2613,7 +2597,7 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(FloralDivider, {}, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 866,
+                        lineNumber: 848,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2624,13 +2608,13 @@ function GardenLayout({ data, state, helpers, onRsvpClick }) {
                         children: "MADE WITH WE:BEAT"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                        lineNumber: 867,
+                        lineNumber: 849,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GardenLayout.tsx",
-                lineNumber: 865,
+                lineNumber: 847,
                 columnNumber: 7
             }, this)
         ]

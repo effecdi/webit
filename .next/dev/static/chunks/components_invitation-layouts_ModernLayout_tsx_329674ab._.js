@@ -539,29 +539,43 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                 columnNumber: 7
             }, this),
             data.showGallery && state.galleryImages.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "py-14",
+                className: "py-10",
                 style: {
                     backgroundColor: sectionBg2
                 },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "px-6",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SectionTitle, {
-                            title: "Gallery"
-                        }, void 0, false, {
+                children: data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "grid grid-cols-2 gap-[2px]",
+                    children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "aspect-square cursor-pointer overflow-hidden group",
+                            onClick: ()=>{
+                                state.setViewerIndex(index);
+                                state.setShowPhotoViewer(true);
+                            },
+                            "data-testid": `gallery-photo-${index}`,
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                src: img,
+                                alt: `Gallery ${index + 1}`,
+                                className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                            }, void 0, false, {
+                                fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
+                                lineNumber: 195,
+                                columnNumber: 19
+                            }, this)
+                        }, index, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 190,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 189,
-                        columnNumber: 11
-                    }, this),
-                    data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-2 gap-[2px]",
+                            lineNumber: 192,
+                            columnNumber: 17
+                        }, this))
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
+                    lineNumber: 190,
+                    columnNumber: 13
+                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "overflow-x-auto",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex gap-[2px]",
                         children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "aspect-square cursor-pointer overflow-hidden group",
+                                className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
                                 onClick: ()=>{
                                     state.setViewerIndex(index);
                                     state.setShowPhotoViewer(true);
@@ -573,55 +587,25 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                     className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 202,
-                                    columnNumber: 19
+                                    lineNumber: 206,
+                                    columnNumber: 21
                                 }, this)
                             }, index, false, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 196,
-                                columnNumber: 17
+                                lineNumber: 203,
+                                columnNumber: 19
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 194,
-                        columnNumber: 13
-                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "overflow-x-auto",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex gap-[2px]",
-                            children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
-                                    onClick: ()=>{
-                                        state.setViewerIndex(index);
-                                        state.setShowPhotoViewer(true);
-                                    },
-                                    "data-testid": `gallery-photo-${index}`,
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                        src: img,
-                                        alt: `Gallery ${index + 1}`,
-                                        className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 220,
-                                        columnNumber: 21
-                                    }, this)
-                                }, index, false, {
-                                    fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 214,
-                                    columnNumber: 19
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 212,
-                            columnNumber: 15
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 211,
-                        columnNumber: 13
+                        lineNumber: 201,
+                        columnNumber: 15
                     }, this)
-                ]
-            }, void 0, true, {
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
+                    lineNumber: 200,
+                    columnNumber: 13
+                }, this)
+            }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
                 lineNumber: 188,
                 columnNumber: 9
@@ -640,7 +624,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             title: "Calendar"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 240,
+                            lineNumber: 222,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -651,7 +635,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             children: helpers.formatWeddingDate()
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 241,
+                            lineNumber: 223,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -666,7 +650,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 242,
+                            lineNumber: 224,
                             columnNumber: 13
                         }, this),
                         data.showCalendar && calStyle === "full" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -682,12 +666,12 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: d
                                         }, d, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 250,
+                                            lineNumber: 232,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 248,
+                                    lineNumber: 230,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -703,7 +687,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: day
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                lineNumber: 258,
+                                                lineNumber: 240,
                                                 columnNumber: 27
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "text-[14px]",
@@ -713,23 +697,23 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: day
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                lineNumber: 262,
+                                                lineNumber: 244,
                                                 columnNumber: 27
                                             }, this))
                                         }, i, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 255,
+                                            lineNumber: 237,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 253,
+                                    lineNumber: 235,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 247,
+                            lineNumber: 229,
                             columnNumber: 15
                         }, this),
                         data.showCalendar && calStyle === "simple" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -756,7 +740,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 275,
+                                    lineNumber: 257,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -767,13 +751,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                     children: helpers.formatWeddingTime()
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 278,
+                                    lineNumber: 260,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 274,
+                            lineNumber: 256,
                             columnNumber: 15
                         }, this),
                         data.showCountdown && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -790,7 +774,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "DAYS"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 285,
+                                            lineNumber: 267,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -801,13 +785,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.days
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 286,
+                                            lineNumber: 268,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 284,
+                                    lineNumber: 266,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -818,7 +802,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                     children: ":"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 288,
+                                    lineNumber: 270,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -832,7 +816,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "HOUR"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 290,
+                                            lineNumber: 272,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -843,13 +827,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.hours
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 291,
+                                            lineNumber: 273,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 289,
+                                    lineNumber: 271,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -860,7 +844,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                     children: ":"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 293,
+                                    lineNumber: 275,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -874,7 +858,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "MIN"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 295,
+                                            lineNumber: 277,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -885,13 +869,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.minutes
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 296,
+                                            lineNumber: 278,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 294,
+                                    lineNumber: 276,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -902,7 +886,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                     children: ":"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 298,
+                                    lineNumber: 280,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -916,7 +900,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "SEC"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 300,
+                                            lineNumber: 282,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -927,25 +911,25 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.seconds
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 301,
+                                            lineNumber: 283,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 299,
+                                    lineNumber: 281,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 283,
+                            lineNumber: 265,
                             columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                    lineNumber: 239,
+                    lineNumber: 221,
                     columnNumber: 11
                 }, this);
             })(),
@@ -959,7 +943,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Location"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 311,
+                        lineNumber: 293,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -977,7 +961,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 314,
+                                lineNumber: 296,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -988,7 +972,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.address || "주소를 입력해주세요"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 317,
+                                lineNumber: 299,
                                 columnNumber: 11
                             }, this),
                             data.venuePhone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1002,13 +986,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 319,
+                                lineNumber: 301,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 313,
+                        lineNumber: 295,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$MapEmbed$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MapEmbed"], {
@@ -1018,7 +1002,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         bgColor: sectionBg2 || sectionBg1 || "#F5F5F0"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 323,
+                        lineNumber: 305,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1033,7 +1017,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: "길찾기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 325,
+                        lineNumber: 307,
                         columnNumber: 9
                     }, this),
                     data.transportItems && data.transportItems.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1052,7 +1036,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: item.type
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 338,
+                                        lineNumber: 320,
                                         columnNumber: 31
                                     }, this),
                                     item.detail && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1063,18 +1047,18 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: item.detail
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 339,
+                                        lineNumber: 321,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 337,
+                                lineNumber: 319,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 335,
+                        lineNumber: 317,
                         columnNumber: 11
                     }, this),
                     data.transportInfo && !data.transportItems?.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1090,12 +1074,12 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.transportInfo
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 346,
+                            lineNumber: 328,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 345,
+                        lineNumber: 327,
                         columnNumber: 11
                     }, this),
                     data.showTransportNotice && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1112,18 +1096,18 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             children: "주차 공간이 협소하오니 대중교통을 이용해주시면 감사하겠습니다."
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 351,
+                            lineNumber: 333,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 350,
+                        lineNumber: 332,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 310,
+                lineNumber: 292,
                 columnNumber: 7
             }, this),
             data.showMidPhoto && data.midPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1133,12 +1117,12 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                     className: "w-full object-cover"
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                    lineNumber: 361,
+                    lineNumber: 343,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 360,
+                lineNumber: 342,
                 columnNumber: 9
             }, this),
             data.showRsvp && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1151,7 +1135,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         title: "R.S.V.P"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 368,
+                        lineNumber: 350,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1163,7 +1147,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.rsvpTitle || "참석 의사"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 369,
+                        lineNumber: 351,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1181,17 +1165,17 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                 children: "R.S.V.P"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 373,
+                                lineNumber: 355,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 372,
+                            lineNumber: 354,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 371,
+                        lineNumber: 353,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1202,7 +1186,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.rsvpContent || "신랑신부에게 참석 여부를 미리 알려주세요"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 379,
+                        lineNumber: 361,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1216,13 +1200,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.rsvpButtonName || "참석 의사 전달하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 383,
+                        lineNumber: 365,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 367,
+                lineNumber: 349,
                 columnNumber: 9
             }, this),
             data.showGuestbook && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1235,7 +1219,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Guest Book"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 397,
+                        lineNumber: 379,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1255,7 +1239,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: entry.message
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 407,
+                                        lineNumber: 389,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1270,13 +1254,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 408,
+                                        lineNumber: 390,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 402,
+                                lineNumber: 384,
                                 columnNumber: 17
                             }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "p-6 text-center",
@@ -1296,17 +1280,17 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 416,
+                                lineNumber: 398,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 412,
+                            lineNumber: 394,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 399,
+                        lineNumber: 381,
                         columnNumber: 11
                     }, this),
                     state.showGuestbookForm ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1330,7 +1314,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "input-guestbook-name"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 425,
+                                lineNumber: 407,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1347,7 +1331,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "input-guestbook-message"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 434,
+                                lineNumber: 416,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1364,7 +1348,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "취소"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 444,
+                                        lineNumber: 426,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1378,19 +1362,19 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "등록하기"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 452,
+                                        lineNumber: 434,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 443,
+                                lineNumber: 425,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 424,
+                        lineNumber: 406,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: ()=>state.setShowGuestbookForm(true),
@@ -1404,13 +1388,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: "작성하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 463,
+                        lineNumber: 445,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 396,
+                lineNumber: 378,
                 columnNumber: 9
             }, this),
             data.showFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1423,7 +1407,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Funding"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 478,
+                        lineNumber: 460,
                         columnNumber: 11
                     }, this),
                     data.fundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1434,7 +1418,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.fundingMessage
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 481,
+                        lineNumber: 463,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1448,12 +1432,12 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "img-funding-custom"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 489,
+                                lineNumber: 471,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 488,
+                            lineNumber: 470,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "w-[200px] h-[200px] flex items-center justify-center",
@@ -1470,7 +1454,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 494,
+                                        lineNumber: 476,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1480,7 +1464,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 495,
+                                        lineNumber: 477,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1494,7 +1478,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 496,
+                                        lineNumber: 478,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -1506,7 +1490,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 497,
+                                        lineNumber: 479,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1516,7 +1500,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 498,
+                                        lineNumber: 480,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1526,7 +1510,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 499,
+                                        lineNumber: 481,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1536,7 +1520,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 500,
+                                        lineNumber: 482,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -1548,23 +1532,23 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 501,
+                                        lineNumber: 483,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 493,
+                                lineNumber: 475,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 492,
+                            lineNumber: 474,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 486,
+                        lineNumber: 468,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1578,7 +1562,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.fundingButtonName || "신혼여행 축하하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 507,
+                        lineNumber: 489,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1589,13 +1573,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: "축하의 마음을 전하는 방법에는 여러 가지가 있습니다. 신랑·신부에게 직접 마음을 전하고 싶으신 분들을 위해 현금 펀딩을 준비했습니다."
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 516,
+                        lineNumber: 498,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 477,
+                lineNumber: 459,
                 columnNumber: 9
             }, this),
             data.showGiftFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1608,7 +1592,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Gift Funding"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 525,
+                        lineNumber: 507,
                         columnNumber: 11
                     }, this),
                     data.giftFundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1619,7 +1603,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.giftFundingMessage
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 527,
+                        lineNumber: 509,
                         columnNumber: 13
                     }, this),
                     data.giftFundingButtonName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1633,13 +1617,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.giftFundingButtonName
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 532,
+                        lineNumber: 514,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 524,
+                lineNumber: 506,
                 columnNumber: 9
             }, this),
             data.showAccount && (()=>{
@@ -1671,7 +1655,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                lineNumber: 559,
+                                                lineNumber: 541,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1682,13 +1666,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: acc.holder
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                lineNumber: 560,
+                                                lineNumber: 542,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 558,
+                                        lineNumber: 540,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1703,18 +1687,18 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "복사"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 562,
+                                        lineNumber: 544,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 557,
+                                lineNumber: 539,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 555,
+                        lineNumber: 537,
                         columnNumber: 11
                     }, this);
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1727,7 +1711,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             title: "Account"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 577,
+                            lineNumber: 559,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1738,7 +1722,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             children: "축하의 마음을 전해주세요"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 578,
+                            lineNumber: 560,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1764,7 +1748,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: "신랑측 계좌번호"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                    lineNumber: 589,
+                                                    lineNumber: 571,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1782,18 +1766,18 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                                         d: "M19 9l-7 7-7-7"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                        lineNumber: 595,
+                                                        lineNumber: 577,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                    lineNumber: 590,
+                                                    lineNumber: 572,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 584,
+                                            lineNumber: 566,
                                             columnNumber: 21
                                         }, this),
                                         state.expandedAccordion === "groom" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1804,13 +1788,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: renderAccList(groomAccList)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 599,
+                                            lineNumber: 581,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 583,
+                                    lineNumber: 565,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "p-5",
@@ -1827,14 +1811,14 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "신랑측"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 606,
+                                            lineNumber: 588,
                                             columnNumber: 21
                                         }, this),
                                         renderAccList(groomAccList)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 605,
+                                    lineNumber: 587,
                                     columnNumber: 19
                                 }, this)),
                                 brideAccList.length > 0 && (accStyle === "accordion" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1857,7 +1841,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: "신부측 계좌번호"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                    lineNumber: 620,
+                                                    lineNumber: 602,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1875,18 +1859,18 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                                         d: "M19 9l-7 7-7-7"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                        lineNumber: 626,
+                                                        lineNumber: 608,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                    lineNumber: 621,
+                                                    lineNumber: 603,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 615,
+                                            lineNumber: 597,
                                             columnNumber: 21
                                         }, this),
                                         state.expandedAccordion === "bride" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1897,13 +1881,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: renderAccList(brideAccList)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 630,
+                                            lineNumber: 612,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 614,
+                                    lineNumber: 596,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "p-5",
@@ -1920,26 +1904,26 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "신부측"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 637,
+                                            lineNumber: 619,
                                             columnNumber: 21
                                         }, this),
                                         renderAccList(brideAccList)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 636,
+                                    lineNumber: 618,
                                     columnNumber: 19
                                 }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 580,
+                            lineNumber: 562,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                    lineNumber: 576,
+                    lineNumber: 558,
                     columnNumber: 11
                 }, this);
             })(),
@@ -1953,7 +1937,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Baptismal Name"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 650,
+                        lineNumber: 632,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1970,7 +1954,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroom
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 653,
+                                        lineNumber: 635,
                                         columnNumber: 39
                                     }, this),
                                     data.baptismalGroomFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1981,7 +1965,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroomFather
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 654,
+                                        lineNumber: 636,
                                         columnNumber: 45
                                     }, this),
                                     data.baptismalGroomMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1992,13 +1976,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroomMother
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 655,
+                                        lineNumber: 637,
                                         columnNumber: 45
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 652,
+                                lineNumber: 634,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2012,7 +1996,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBride
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 658,
+                                        lineNumber: 640,
                                         columnNumber: 39
                                     }, this),
                                     data.baptismalBrideFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2023,7 +2007,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBrideFather
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 659,
+                                        lineNumber: 641,
                                         columnNumber: 45
                                     }, this),
                                     data.baptismalBrideMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2034,25 +2018,25 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBrideMother
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 660,
+                                        lineNumber: 642,
                                         columnNumber: 45
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 657,
+                                lineNumber: 639,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 651,
+                        lineNumber: 633,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 649,
+                lineNumber: 631,
                 columnNumber: 9
             }, this),
             data.showGuestSnap && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2065,7 +2049,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Guest Snap"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 669,
+                        lineNumber: 651,
                         columnNumber: 11
                     }, this),
                     data.guestSnapContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2076,7 +2060,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.guestSnapContent
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 671,
+                        lineNumber: 653,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2090,13 +2074,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: "사진 업로드"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 675,
+                        lineNumber: 657,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 668,
+                lineNumber: 650,
                 columnNumber: 9
             }, this),
             data.showNotice && data.noticeTitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2109,7 +2093,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Notice"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 688,
+                        lineNumber: 670,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2121,7 +2105,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.noticeTitle
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 689,
+                        lineNumber: 671,
                         columnNumber: 11
                     }, this),
                     data.noticeItems?.filter(Boolean).map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2132,13 +2116,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             children: item
                         }, i, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 691,
+                            lineNumber: 673,
                             columnNumber: 13
                         }, this))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 687,
+                lineNumber: 669,
                 columnNumber: 9
             }, this),
             data.showEndingMessage && (data.endingContent || data.endingPhoto) && (()=>{
@@ -2154,7 +2138,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             title: "Thank you"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 702,
+                            lineNumber: 684,
                             columnNumber: 13
                         }, this),
                         eStyle === "card" && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2168,12 +2152,12 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                 className: "w-full aspect-[4/5] object-cover"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                lineNumber: 706,
+                                lineNumber: 688,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 705,
+                            lineNumber: 687,
                             columnNumber: 15
                         }, this),
                         eStyle === "card" && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2184,7 +2168,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.endingContent
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 715,
+                            lineNumber: 697,
                             columnNumber: 15
                         }, this),
                         eStyle === "full" && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2199,14 +2183,14 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 722,
+                                    lineNumber: 704,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute inset-0 bg-black/30"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 728,
+                                    lineNumber: 710,
                                     columnNumber: 17
                                 }, this),
                                 data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2219,18 +2203,18 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.endingContent
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                        lineNumber: 731,
+                                        lineNumber: 713,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 730,
+                                    lineNumber: 712,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 721,
+                            lineNumber: 703,
                             columnNumber: 15
                         }, this),
                         eStyle === "full" && !data.endingPhoto && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2241,7 +2225,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.endingContent
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                            lineNumber: 740,
+                            lineNumber: 722,
                             columnNumber: 15
                         }, this),
                         eStyle === "simple" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2258,14 +2242,14 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 749,
+                                            lineNumber: 731,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 755,
+                                            lineNumber: 737,
                                             columnNumber: 21
                                         }, this),
                                         data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2278,7 +2262,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                    lineNumber: 758,
+                                                    lineNumber: 740,
                                                     columnNumber: 25
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2289,19 +2273,19 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: data.endingContent
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                                    lineNumber: 759,
+                                                    lineNumber: 741,
                                                     columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 757,
+                                            lineNumber: 739,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 748,
+                                    lineNumber: 730,
                                     columnNumber: 19
                                 }, this),
                                 !data.endingPhoto && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2314,7 +2298,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 768,
+                                            lineNumber: 750,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2325,13 +2309,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                                             children: data.endingContent
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                            lineNumber: 769,
+                                            lineNumber: 751,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                                    lineNumber: 767,
+                                    lineNumber: 749,
                                     columnNumber: 19
                                 }, this)
                             ]
@@ -2339,7 +2323,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                    lineNumber: 701,
+                    lineNumber: 683,
                     columnNumber: 11
                 }, this);
             })(),
@@ -2360,12 +2344,12 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                     children: "청첩장 링크 복사하기"
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                    lineNumber: 782,
+                    lineNumber: 764,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 781,
+                lineNumber: 763,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2381,7 +2365,7 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 794,
+                        lineNumber: 776,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2392,13 +2376,13 @@ function ModernLayout({ data, state, helpers, onRsvpClick }) {
                         children: "MADE WITH WE:BEAT"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                        lineNumber: 795,
+                        lineNumber: 777,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/ModernLayout.tsx",
-                lineNumber: 793,
+                lineNumber: 775,
                 columnNumber: 7
             }, this)
         ]

@@ -643,29 +643,43 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                 columnNumber: 7
             }, this),
             data.showGallery && state.galleryImages.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "py-14",
+                className: "py-10",
                 style: {
                     backgroundColor: sectionBg1
                 },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "px-6",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SectionTitle, {
-                            title: "Gallery"
-                        }, void 0, false, {
+                children: data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "grid grid-cols-2 gap-[2px]",
+                    children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "aspect-square cursor-pointer overflow-hidden group",
+                            onClick: ()=>{
+                                state.setViewerIndex(index);
+                                state.setShowPhotoViewer(true);
+                            },
+                            "data-testid": `gallery-photo-${index}`,
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                src: img,
+                                alt: `Gallery ${index + 1}`,
+                                className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                            }, void 0, false, {
+                                fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
+                                lineNumber: 244,
+                                columnNumber: 19
+                            }, this)
+                        }, index, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 239,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 238,
-                        columnNumber: 11
-                    }, this),
-                    data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-2 gap-[2px]",
+                            lineNumber: 241,
+                            columnNumber: 17
+                        }, this))
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
+                    lineNumber: 239,
+                    columnNumber: 13
+                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "overflow-x-auto",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex gap-[2px]",
                         children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "aspect-square cursor-pointer overflow-hidden group",
+                                className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
                                 onClick: ()=>{
                                     state.setViewerIndex(index);
                                     state.setShowPhotoViewer(true);
@@ -677,78 +691,25 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                     className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 251,
-                                    columnNumber: 19
+                                    lineNumber: 255,
+                                    columnNumber: 21
                                 }, this)
                             }, index, false, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 245,
-                                columnNumber: 17
+                                lineNumber: 252,
+                                columnNumber: 19
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 243,
-                        columnNumber: 13
-                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "overflow-x-auto",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex gap-[2px]",
-                            children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
-                                    onClick: ()=>{
-                                        state.setViewerIndex(index);
-                                        state.setShowPhotoViewer(true);
-                                    },
-                                    "data-testid": `gallery-photo-${index}`,
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                        src: img,
-                                        alt: `Gallery ${index + 1}`,
-                                        className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 269,
-                                        columnNumber: 21
-                                    }, this)
-                                }, index, false, {
-                                    fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 263,
-                                    columnNumber: 19
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 261,
-                            columnNumber: 15
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 260,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "px-6 mt-4",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-[10px] uppercase",
-                            style: {
-                                color: textSecondary,
-                                letterSpacing: "0.15em",
-                                fontFamily: sansFont
-                            },
-                            children: [
-                                state.galleryImages.length,
-                                " works"
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 281,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 280,
-                        columnNumber: 11
+                        lineNumber: 250,
+                        columnNumber: 15
                     }, this)
-                ]
-            }, void 0, true, {
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
+                    lineNumber: 249,
+                    columnNumber: 13
+                }, this)
+            }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
                 lineNumber: 237,
                 columnNumber: 9
@@ -767,7 +728,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             title: "Calendar"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 295,
+                            lineNumber: 271,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -779,7 +740,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             children: helpers.formatWeddingDate()
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 296,
+                            lineNumber: 272,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -796,7 +757,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 297,
+                            lineNumber: 273,
                             columnNumber: 13
                         }, this),
                         data.showCalendar && calStyle === "full" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -814,12 +775,12 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: d
                                         }, d, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 305,
+                                            lineNumber: 281,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 303,
+                                    lineNumber: 279,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -829,7 +790,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 314,
+                                    lineNumber: 290,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -845,7 +806,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: day
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                lineNumber: 320,
+                                                lineNumber: 296,
                                                 columnNumber: 27
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "text-[13px]",
@@ -856,23 +817,23 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: day
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                lineNumber: 327,
+                                                lineNumber: 303,
                                                 columnNumber: 27
                                             }, this))
                                         }, i, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 317,
+                                            lineNumber: 293,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 315,
+                                    lineNumber: 291,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 302,
+                            lineNumber: 278,
                             columnNumber: 15
                         }, this),
                         data.showCalendar && calStyle === "simple" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -900,7 +861,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 346,
+                                    lineNumber: 322,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -912,13 +873,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                     children: helpers.formatWeddingTime()
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 349,
+                                    lineNumber: 325,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 345,
+                            lineNumber: 321,
                             columnNumber: 15
                         }, this),
                         data.showCountdown && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -936,7 +897,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "Days"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 356,
+                                            lineNumber: 332,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -947,13 +908,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.days
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 357,
+                                            lineNumber: 333,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 355,
+                                    lineNumber: 331,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -964,7 +925,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                     children: ":"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 359,
+                                    lineNumber: 335,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -979,7 +940,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "Hour"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 361,
+                                            lineNumber: 337,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -990,13 +951,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.hours
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 362,
+                                            lineNumber: 338,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 360,
+                                    lineNumber: 336,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1007,7 +968,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                     children: ":"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 364,
+                                    lineNumber: 340,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1022,7 +983,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "Min"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 366,
+                                            lineNumber: 342,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1033,13 +994,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.minutes
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 367,
+                                            lineNumber: 343,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 365,
+                                    lineNumber: 341,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1050,7 +1011,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                     children: ":"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 369,
+                                    lineNumber: 345,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1065,7 +1026,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "Sec"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 371,
+                                            lineNumber: 347,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1076,25 +1037,25 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: state.countdown.seconds
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 372,
+                                            lineNumber: 348,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 370,
+                                    lineNumber: 346,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 354,
+                            lineNumber: 330,
                             columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                    lineNumber: 294,
+                    lineNumber: 270,
                     columnNumber: 11
                 }, this);
             })(),
@@ -1108,7 +1069,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Location"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 382,
+                        lineNumber: 358,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1126,7 +1087,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 385,
+                                lineNumber: 361,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1139,7 +1100,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.address || "주소를 입력해주세요"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 388,
+                                lineNumber: 364,
                                 columnNumber: 11
                             }, this),
                             data.venuePhone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1154,13 +1115,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 392,
+                                lineNumber: 368,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 384,
+                        lineNumber: 360,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$MapEmbed$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MapEmbed"], {
@@ -1170,7 +1131,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         bgColor: sectionBg2 || sectionBg1 || "#F5F5F0"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 396,
+                        lineNumber: 372,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1187,7 +1148,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: "길찾기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 398,
+                        lineNumber: 374,
                         columnNumber: 9
                     }, this),
                     data.transportItems && data.transportItems.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1208,7 +1169,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: item.type
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 418,
+                                        lineNumber: 394,
                                         columnNumber: 19
                                     }, this),
                                     item.detail && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1220,18 +1181,18 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: item.detail
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 423,
+                                        lineNumber: 399,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 416,
+                                lineNumber: 392,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 414,
+                        lineNumber: 390,
                         columnNumber: 11
                     }, this),
                     data.transportInfo && !data.transportItems?.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1248,12 +1209,12 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.transportInfo
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 433,
+                            lineNumber: 409,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 432,
+                        lineNumber: 408,
                         columnNumber: 11
                     }, this),
                     data.showTransportNotice && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1271,18 +1232,18 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             children: "주차 공간이 협소하오니 대중교통을 이용해주시면 감사하겠습니다."
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 440,
+                            lineNumber: 416,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 439,
+                        lineNumber: 415,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 381,
+                lineNumber: 357,
                 columnNumber: 7
             }, this),
             data.showMidPhoto && data.midPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1292,12 +1253,12 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                     className: "w-full object-cover"
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                    lineNumber: 450,
+                    lineNumber: 426,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 449,
+                lineNumber: 425,
                 columnNumber: 9
             }, this),
             data.showRsvp && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1310,7 +1271,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         title: "R.S.V.P"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 457,
+                        lineNumber: 433,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1322,7 +1283,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.rsvpTitle || "참석 의사"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 459,
+                        lineNumber: 435,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1341,12 +1302,12 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             children: "R.S.V.P"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 464,
+                            lineNumber: 440,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 463,
+                        lineNumber: 439,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1358,7 +1319,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.rsvpContent || "신랑신부에게 참석 여부를 미리 알려주세요"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 469,
+                        lineNumber: 445,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1374,13 +1335,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.rsvpButtonName || "참석 의사 전달하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 473,
+                        lineNumber: 449,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 456,
+                lineNumber: 432,
                 columnNumber: 9
             }, this),
             data.showGuestbook && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1393,7 +1354,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Guest Book"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 492,
+                        lineNumber: 468,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1414,7 +1375,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: entry.message
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 502,
+                                        lineNumber: 478,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1424,7 +1385,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 505,
+                                        lineNumber: 481,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1437,13 +1398,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: entry.name
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 506,
+                                        lineNumber: 482,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 497,
+                                lineNumber: 473,
                                 columnNumber: 17
                             }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "p-6 rounded-none",
@@ -1464,17 +1425,17 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 516,
+                                lineNumber: 492,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 512,
+                            lineNumber: 488,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 494,
+                        lineNumber: 470,
                         columnNumber: 11
                     }, this),
                     state.showGuestbookForm ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1499,7 +1460,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "input-guestbook-name"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 525,
+                                lineNumber: 501,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1517,7 +1478,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "input-guestbook-message"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 534,
+                                lineNumber: 510,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1536,7 +1497,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "취소"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 544,
+                                        lineNumber: 520,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1552,19 +1513,19 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "등록하기"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 552,
+                                        lineNumber: 528,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 543,
+                                lineNumber: 519,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 524,
+                        lineNumber: 500,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: ()=>state.setShowGuestbookForm(true),
@@ -1580,13 +1541,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: "작성하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 563,
+                        lineNumber: 539,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 491,
+                lineNumber: 467,
                 columnNumber: 9
             }, this),
             data.showFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1599,7 +1560,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Funding"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 584,
+                        lineNumber: 560,
                         columnNumber: 11
                     }, this),
                     data.fundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1611,7 +1572,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.fundingMessage
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 587,
+                        lineNumber: 563,
                         columnNumber: 13
                     }, this),
                     data.fundingImageType === "custom" && data.fundingImage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1625,17 +1586,17 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "img-funding-custom"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 595,
+                                lineNumber: 571,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 594,
+                            lineNumber: 570,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 593,
+                        lineNumber: 569,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1651,7 +1612,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.fundingButtonName || "신혼여행 축하하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 600,
+                        lineNumber: 576,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1663,13 +1624,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: "축하의 마음을 전하는 방법에는 여러 가지가 있습니다. 신랑·신부에게 직접 마음을 전하고 싶으신 분들을 위해 현금 펀딩을 준비했습니다."
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 614,
+                        lineNumber: 590,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 583,
+                lineNumber: 559,
                 columnNumber: 9
             }, this),
             data.showGiftFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1682,7 +1643,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Gift Funding"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 623,
+                        lineNumber: 599,
                         columnNumber: 11
                     }, this),
                     data.giftFundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1694,7 +1655,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.giftFundingMessage
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 625,
+                        lineNumber: 601,
                         columnNumber: 13
                     }, this),
                     data.giftFundingButtonName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1710,13 +1671,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.giftFundingButtonName
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 630,
+                        lineNumber: 606,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 622,
+                lineNumber: 598,
                 columnNumber: 9
             }, this),
             data.showAccount && (()=>{
@@ -1752,7 +1713,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                lineNumber: 662,
+                                                lineNumber: 638,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1764,13 +1725,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: acc.holder
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                lineNumber: 663,
+                                                lineNumber: 639,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 661,
+                                        lineNumber: 637,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1787,18 +1748,18 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "복사"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 665,
+                                        lineNumber: 641,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 660,
+                                lineNumber: 636,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 658,
+                        lineNumber: 634,
                         columnNumber: 11
                     }, this);
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1811,7 +1772,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             title: "Account"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 686,
+                            lineNumber: 662,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1824,7 +1785,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             children: "축하의 마음을 전해주세요"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 687,
+                            lineNumber: 663,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1852,7 +1813,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: "신랑측 계좌번호"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                    lineNumber: 700,
+                                                    lineNumber: 676,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1870,18 +1831,18 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                                         d: "M19 9l-7 7-7-7"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                        lineNumber: 708,
+                                                        lineNumber: 684,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                    lineNumber: 703,
+                                                    lineNumber: 679,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 695,
+                                            lineNumber: 671,
                                             columnNumber: 21
                                         }, this),
                                         state.expandedAccordion === "groom" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1892,13 +1853,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: renderAccList(groomAccList)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 712,
+                                            lineNumber: 688,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 694,
+                                    lineNumber: 670,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "p-4 rounded-none",
@@ -1917,14 +1878,14 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "신랑측"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 719,
+                                            lineNumber: 695,
                                             columnNumber: 21
                                         }, this),
                                         renderAccList(groomAccList)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 718,
+                                    lineNumber: 694,
                                     columnNumber: 19
                                 }, this)),
                                 brideAccList.length > 0 && (accStyle === "accordion" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1949,7 +1910,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: "신부측 계좌번호"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                    lineNumber: 735,
+                                                    lineNumber: 711,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1967,18 +1928,18 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                                         d: "M19 9l-7 7-7-7"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                        lineNumber: 743,
+                                                        lineNumber: 719,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                    lineNumber: 738,
+                                                    lineNumber: 714,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 730,
+                                            lineNumber: 706,
                                             columnNumber: 21
                                         }, this),
                                         state.expandedAccordion === "bride" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1989,13 +1950,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: renderAccList(brideAccList)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 747,
+                                            lineNumber: 723,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 729,
+                                    lineNumber: 705,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "p-4 rounded-none",
@@ -2014,26 +1975,26 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "신부측"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 754,
+                                            lineNumber: 730,
                                             columnNumber: 21
                                         }, this),
                                         renderAccList(brideAccList)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 753,
+                                    lineNumber: 729,
                                     columnNumber: 19
                                 }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 691,
+                            lineNumber: 667,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                    lineNumber: 685,
+                    lineNumber: 661,
                     columnNumber: 11
                 }, this);
             })(),
@@ -2047,7 +2008,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Baptismal Name"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 769,
+                        lineNumber: 745,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2065,7 +2026,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroom
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 773,
+                                        lineNumber: 749,
                                         columnNumber: 17
                                     }, this),
                                     data.baptismalGroomFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2077,7 +2038,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroomFather
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 776,
+                                        lineNumber: 752,
                                         columnNumber: 17
                                     }, this),
                                     data.baptismalGroomMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2089,13 +2050,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroomMother
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 779,
+                                        lineNumber: 755,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 771,
+                                lineNumber: 747,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2110,7 +2071,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBride
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 784,
+                                        lineNumber: 760,
                                         columnNumber: 17
                                     }, this),
                                     data.baptismalBrideFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2122,7 +2083,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBrideFather
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 787,
+                                        lineNumber: 763,
                                         columnNumber: 17
                                     }, this),
                                     data.baptismalBrideMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2134,25 +2095,25 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBrideMother
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 790,
+                                        lineNumber: 766,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 782,
+                                lineNumber: 758,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 770,
+                        lineNumber: 746,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 768,
+                lineNumber: 744,
                 columnNumber: 9
             }, this),
             data.showGuestSnap && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2165,7 +2126,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Guest Snap"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 800,
+                        lineNumber: 776,
                         columnNumber: 11
                     }, this),
                     data.guestSnapContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2177,7 +2138,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.guestSnapContent
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 802,
+                        lineNumber: 778,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2193,13 +2154,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: "사진 업로드"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 806,
+                        lineNumber: 782,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 799,
+                lineNumber: 775,
                 columnNumber: 9
             }, this),
             data.showNotice && data.noticeTitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2212,7 +2173,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Notice"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 825,
+                        lineNumber: 801,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2224,7 +2185,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.noticeTitle
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 826,
+                        lineNumber: 802,
                         columnNumber: 11
                     }, this),
                     data.noticeItems?.filter(Boolean).map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2236,13 +2197,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             children: item
                         }, i, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 830,
+                            lineNumber: 806,
                             columnNumber: 13
                         }, this))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 824,
+                lineNumber: 800,
                 columnNumber: 9
             }, this),
             data.showEndingMessage && (data.endingContent || data.endingPhoto) && (()=>{
@@ -2258,7 +2219,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             title: "Thank You"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 843,
+                            lineNumber: 819,
                             columnNumber: 13
                         }, this),
                         eStyle === "card" && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2272,12 +2233,12 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                 className: "w-full aspect-[4/5] object-cover"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                lineNumber: 847,
+                                lineNumber: 823,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 846,
+                            lineNumber: 822,
                             columnNumber: 15
                         }, this),
                         eStyle === "card" && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2289,7 +2250,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.endingContent
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 856,
+                            lineNumber: 832,
                             columnNumber: 15
                         }, this),
                         eStyle === "full" && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2304,14 +2265,14 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 863,
+                                    lineNumber: 839,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute inset-0 bg-black/30"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 869,
+                                    lineNumber: 845,
                                     columnNumber: 17
                                 }, this),
                                 data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2325,18 +2286,18 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.endingContent
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                        lineNumber: 872,
+                                        lineNumber: 848,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 871,
+                                    lineNumber: 847,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 862,
+                            lineNumber: 838,
                             columnNumber: 15
                         }, this),
                         eStyle === "full" && !data.endingPhoto && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2348,7 +2309,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.endingContent
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                            lineNumber: 881,
+                            lineNumber: 857,
                             columnNumber: 15
                         }, this),
                         eStyle === "simple" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2365,14 +2326,14 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 890,
+                                            lineNumber: 866,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 896,
+                                            lineNumber: 872,
                                             columnNumber: 21
                                         }, this),
                                         data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2385,7 +2346,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                    lineNumber: 899,
+                                                    lineNumber: 875,
                                                     columnNumber: 25
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2397,19 +2358,19 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: data.endingContent
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                                    lineNumber: 900,
+                                                    lineNumber: 876,
                                                     columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 898,
+                                            lineNumber: 874,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 889,
+                                    lineNumber: 865,
                                     columnNumber: 19
                                 }, this),
                                 !data.endingPhoto && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2421,7 +2382,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 909,
+                                            lineNumber: 885,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2433,13 +2394,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                                             children: data.endingContent
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                            lineNumber: 910,
+                                            lineNumber: 886,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                                    lineNumber: 908,
+                                    lineNumber: 884,
                                     columnNumber: 19
                                 }, this)
                             ]
@@ -2447,7 +2408,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                    lineNumber: 842,
+                    lineNumber: 818,
                     columnNumber: 11
                 }, this);
             })(),
@@ -2470,12 +2431,12 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                     children: "청첩장 링크 복사하기"
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                    lineNumber: 923,
+                    lineNumber: 899,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 922,
+                lineNumber: 898,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2491,7 +2452,7 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         }
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 941,
+                        lineNumber: 917,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2504,13 +2465,13 @@ function GalleryLayout({ data, state, helpers, onRsvpClick }) {
                         children: "MADE WITH WE:BEAT"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                        lineNumber: 942,
+                        lineNumber: 918,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/GalleryLayout.tsx",
-                lineNumber: 940,
+                lineNumber: 916,
                 columnNumber: 7
             }, this)
         ]

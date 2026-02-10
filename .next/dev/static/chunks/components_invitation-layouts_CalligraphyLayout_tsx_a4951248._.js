@@ -1000,31 +1000,44 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                 }, this);
             })(),
             data.showGallery && state.galleryImages.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "py-14",
+                className: "py-10",
                 style: {
                     backgroundColor: bg,
                     fontFamily
                 },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "px-8",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SectionTitle, {
-                            title: "Gallery",
-                            subtitle: "우리의 아름다운 순간들"
-                        }, void 0, false, {
+                children: data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "grid grid-cols-2 gap-[2px]",
+                    children: state.galleryImages.map((img, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "aspect-square overflow-hidden cursor-pointer group",
+                            onClick: ()=>{
+                                state.setViewerIndex(i);
+                                state.setShowPhotoViewer(true);
+                            },
+                            "data-testid": `gallery-image-${i}`,
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                src: img,
+                                alt: `Gallery ${i + 1}`,
+                                className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                            }, void 0, false, {
+                                fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
+                                lineNumber: 293,
+                                columnNumber: 19
+                            }, this)
+                        }, i, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 288,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 287,
-                        columnNumber: 11
-                    }, this),
-                    data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-2 gap-[2px]",
+                            lineNumber: 290,
+                            columnNumber: 17
+                        }, this))
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
+                    lineNumber: 288,
+                    columnNumber: 13
+                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "overflow-x-auto",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex gap-[2px]",
                         children: state.galleryImages.map((img, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "aspect-square overflow-hidden cursor-pointer group",
+                                className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
                                 onClick: ()=>{
                                     state.setViewerIndex(i);
                                     state.setShowPhotoViewer(true);
@@ -1036,55 +1049,25 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                     className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 300,
-                                    columnNumber: 19
+                                    lineNumber: 304,
+                                    columnNumber: 21
                                 }, this)
                             }, i, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 294,
-                                columnNumber: 17
+                                lineNumber: 301,
+                                columnNumber: 19
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 292,
-                        columnNumber: 13
-                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "overflow-x-auto",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex gap-[2px]",
-                            children: state.galleryImages.map((img, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
-                                    onClick: ()=>{
-                                        state.setViewerIndex(i);
-                                        state.setShowPhotoViewer(true);
-                                    },
-                                    "data-testid": `gallery-image-${i}`,
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                        src: img,
-                                        alt: `Gallery ${i + 1}`,
-                                        className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 314,
-                                        columnNumber: 21
-                                    }, this)
-                                }, i, false, {
-                                    fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 308,
-                                    columnNumber: 19
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 306,
-                            columnNumber: 15
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 305,
-                        columnNumber: 13
+                        lineNumber: 299,
+                        columnNumber: 15
                     }, this)
-                ]
-            }, void 0, true, {
+                }, void 0, false, {
+                    fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
+                    lineNumber: 298,
+                    columnNumber: 13
+                }, this)
+            }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
                 lineNumber: 286,
                 columnNumber: 9
@@ -1101,7 +1084,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         subtitle: "오시는 길"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 325,
+                        lineNumber: 315,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1118,7 +1101,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 328,
+                                lineNumber: 318,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1129,7 +1112,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 children: data.address || "주소를 입력해주세요"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 331,
+                                lineNumber: 321,
                                 columnNumber: 11
                             }, this),
                             data.venuePhone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1143,13 +1126,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 333,
+                                lineNumber: 323,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 327,
+                        lineNumber: 317,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$invitation$2d$layouts$2f$MapEmbed$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MapEmbed"], {
@@ -1159,7 +1142,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         bgColor: cardBg
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 337,
+                        lineNumber: 327,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1174,7 +1157,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: "길찾기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 339,
+                        lineNumber: 329,
                         columnNumber: 9
                     }, this),
                     data.transportItems && data.transportItems.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1194,7 +1177,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: item.type
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 352,
+                                        lineNumber: 342,
                                         columnNumber: 31
                                     }, this),
                                     item.detail && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1205,18 +1188,18 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: item.detail
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 353,
+                                        lineNumber: 343,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 351,
+                                lineNumber: 341,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 349,
+                        lineNumber: 339,
                         columnNumber: 11
                     }, this),
                     data.transportInfo && !data.transportItems?.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1233,12 +1216,12 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.transportInfo
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 360,
+                            lineNumber: 350,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 359,
+                        lineNumber: 349,
                         columnNumber: 11
                     }, this),
                     data.showTransportNotice && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1255,18 +1238,18 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             children: "주차 공간이 협소하오니 대중교통을 이용해주시면 감사하겠습니다."
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 365,
+                            lineNumber: 355,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 364,
+                        lineNumber: 354,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 324,
+                lineNumber: 314,
                 columnNumber: 7
             }, this),
             data.showMidPhoto && data.midPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1276,12 +1259,12 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                     className: "w-full object-cover"
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                    lineNumber: 375,
+                    lineNumber: 365,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 374,
+                lineNumber: 364,
                 columnNumber: 9
             }, this),
             data.showRsvp && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1296,7 +1279,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         subtitle: "참석 의사를 전해주세요"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 382,
+                        lineNumber: 372,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1307,7 +1290,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.rsvpContent || "신랑신부에게 참석 여부를 미리 알려주세요"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 383,
+                        lineNumber: 373,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1321,13 +1304,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.rsvpButtonName || "참석 의사 전달하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 386,
+                        lineNumber: 376,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 381,
+                lineNumber: 371,
                 columnNumber: 9
             }, this),
             data.showGuestbook && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1342,7 +1325,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         subtitle: "축하 메시지를 남겨주세요"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 400,
+                        lineNumber: 390,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1365,7 +1348,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: entry.name
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                lineNumber: 406,
+                                                lineNumber: 396,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1376,13 +1359,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: entry.date
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                lineNumber: 407,
+                                                lineNumber: 397,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 405,
+                                        lineNumber: 395,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1393,13 +1376,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: entry.message
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 409,
+                                        lineNumber: 399,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 404,
+                                lineNumber: 394,
                                 columnNumber: 17
                             }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "rounded-[16px] p-6 text-center",
@@ -1419,17 +1402,17 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 414,
+                                lineNumber: 404,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 413,
+                            lineNumber: 403,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 401,
+                        lineNumber: 391,
                         columnNumber: 11
                     }, this),
                     !state.showGuestbookForm ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1444,7 +1427,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: "축하 메시지 작성하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 421,
+                        lineNumber: 411,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "mt-4 rounded-[16px] p-5",
@@ -1467,7 +1450,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "input-guestbook-name"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 431,
+                                lineNumber: 421,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1484,7 +1467,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "input-guestbook-message"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 440,
+                                lineNumber: 430,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1501,7 +1484,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "취소"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 449,
+                                        lineNumber: 439,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1515,25 +1498,25 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "등록"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 457,
+                                        lineNumber: 447,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 448,
+                                lineNumber: 438,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 430,
+                        lineNumber: 420,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 399,
+                lineNumber: 389,
                 columnNumber: 9
             }, this),
             data.showFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1548,7 +1531,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         subtitle: "마음을 전해주세요"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 474,
+                        lineNumber: 464,
                         columnNumber: 11
                     }, this),
                     data.fundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1559,7 +1542,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.fundingMessage
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 477,
+                        lineNumber: 467,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1573,12 +1556,12 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 "data-testid": "img-funding-custom"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 485,
+                                lineNumber: 475,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 484,
+                            lineNumber: 474,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "w-[200px] h-[240px] flex items-center justify-center",
@@ -1595,7 +1578,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 490,
+                                        lineNumber: 480,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1605,7 +1588,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 491,
+                                        lineNumber: 481,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1619,7 +1602,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 492,
+                                        lineNumber: 482,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -1631,7 +1614,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 493,
+                                        lineNumber: 483,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1641,7 +1624,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 494,
+                                        lineNumber: 484,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1651,7 +1634,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 495,
+                                        lineNumber: 485,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1661,7 +1644,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 496,
+                                        lineNumber: 486,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -1673,23 +1656,23 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         fill: "none"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 497,
+                                        lineNumber: 487,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 489,
+                                lineNumber: 479,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 488,
+                            lineNumber: 478,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 482,
+                        lineNumber: 472,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1703,7 +1686,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.fundingButtonName || "신혼여행 축하하기"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 503,
+                        lineNumber: 493,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1714,13 +1697,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: "축하의 마음을 전하는 방법에는 여러 가지가 있습니다. 신랑·신부에게 직접 마음을 전하고 싶으신 분들을 위해 현금 펀딩을 준비했습니다."
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 512,
+                        lineNumber: 502,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 473,
+                lineNumber: 463,
                 columnNumber: 9
             }, this),
             data.showGiftFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1734,7 +1717,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Gift Funding"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 521,
+                        lineNumber: 511,
                         columnNumber: 11
                     }, this),
                     data.giftFundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1745,7 +1728,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.giftFundingMessage
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 523,
+                        lineNumber: 513,
                         columnNumber: 13
                     }, this),
                     data.giftFundingButtonName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1759,13 +1742,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.giftFundingButtonName
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 528,
+                        lineNumber: 518,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 520,
+                lineNumber: 510,
                 columnNumber: 9
             }, this),
             data.showAccount && (()=>{
@@ -1797,7 +1780,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                lineNumber: 555,
+                                                lineNumber: 545,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1808,13 +1791,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: acc.holder
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                lineNumber: 556,
+                                                lineNumber: 546,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 554,
+                                        lineNumber: 544,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1828,18 +1811,18 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "복사"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 558,
+                                        lineNumber: 548,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 553,
+                                lineNumber: 543,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 551,
+                        lineNumber: 541,
                         columnNumber: 11
                     }, this);
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1854,7 +1837,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             subtitle: "축하의 마음을 전해주세요"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 573,
+                            lineNumber: 563,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1880,7 +1863,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: "신랑측 계좌번호"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                    lineNumber: 584,
+                                                    lineNumber: 574,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1898,18 +1881,18 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                                         d: "M19 9l-7 7-7-7"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                        lineNumber: 590,
+                                                        lineNumber: 580,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                    lineNumber: 585,
+                                                    lineNumber: 575,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 579,
+                                            lineNumber: 569,
                                             columnNumber: 21
                                         }, this),
                                         state.expandedAccordion === "groom" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1920,13 +1903,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             children: renderAccList(groomAccList)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 594,
+                                            lineNumber: 584,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 578,
+                                    lineNumber: 568,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "rounded-[16px] p-5",
@@ -1943,14 +1926,14 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "신랑측"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 601,
+                                            lineNumber: 591,
                                             columnNumber: 21
                                         }, this),
                                         renderAccList(groomAccList)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 600,
+                                    lineNumber: 590,
                                     columnNumber: 19
                                 }, this)),
                                 brideAccList.length > 0 && (accStyle === "accordion" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1973,7 +1956,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: "신부측 계좌번호"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                    lineNumber: 615,
+                                                    lineNumber: 605,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1991,18 +1974,18 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                                         d: "M19 9l-7 7-7-7"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                        lineNumber: 621,
+                                                        lineNumber: 611,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                    lineNumber: 616,
+                                                    lineNumber: 606,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 610,
+                                            lineNumber: 600,
                                             columnNumber: 21
                                         }, this),
                                         state.expandedAccordion === "bride" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2013,13 +1996,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             children: renderAccList(brideAccList)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 625,
+                                            lineNumber: 615,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 609,
+                                    lineNumber: 599,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "rounded-[16px] p-5",
@@ -2036,26 +2019,26 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "신부측"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 632,
+                                            lineNumber: 622,
                                             columnNumber: 21
                                         }, this),
                                         renderAccList(brideAccList)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 631,
+                                    lineNumber: 621,
                                     columnNumber: 19
                                 }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 575,
+                            lineNumber: 565,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                    lineNumber: 572,
+                    lineNumber: 562,
                     columnNumber: 11
                 }, this);
             })(),
@@ -2070,7 +2053,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Baptismal Name"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 645,
+                        lineNumber: 635,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2087,7 +2070,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroom
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 648,
+                                        lineNumber: 638,
                                         columnNumber: 39
                                     }, this),
                                     data.baptismalGroomFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2098,7 +2081,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroomFather
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 649,
+                                        lineNumber: 639,
                                         columnNumber: 45
                                     }, this),
                                     data.baptismalGroomMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2109,13 +2092,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalGroomMother
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 650,
+                                        lineNumber: 640,
                                         columnNumber: 45
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 647,
+                                lineNumber: 637,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2129,7 +2112,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBride
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 653,
+                                        lineNumber: 643,
                                         columnNumber: 39
                                     }, this),
                                     data.baptismalBrideFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2140,7 +2123,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBrideFather
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 654,
+                                        lineNumber: 644,
                                         columnNumber: 45
                                     }, this),
                                     data.baptismalBrideMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2151,25 +2134,25 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.baptismalBrideMother
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 655,
+                                        lineNumber: 645,
                                         columnNumber: 45
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 652,
+                                lineNumber: 642,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 646,
+                        lineNumber: 636,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 644,
+                lineNumber: 634,
                 columnNumber: 9
             }, this),
             data.showGuestSnap && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2183,7 +2166,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         title: "Guest Snap"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 664,
+                        lineNumber: 654,
                         columnNumber: 11
                     }, this),
                     data.guestSnapContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2194,7 +2177,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.guestSnapContent
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 666,
+                        lineNumber: 656,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2208,13 +2191,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: "사진 업로드"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 670,
+                        lineNumber: 660,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 663,
+                lineNumber: 653,
                 columnNumber: 9
             }, this),
             data.showNotice && data.noticeTitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2229,7 +2212,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         subtitle: "알려드립니다"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 683,
+                        lineNumber: 673,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2240,7 +2223,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: data.noticeTitle
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 684,
+                        lineNumber: 674,
                         columnNumber: 11
                     }, this),
                     data.noticeItems?.filter(Boolean).map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2251,13 +2234,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             children: item
                         }, i, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 686,
+                            lineNumber: 676,
                             columnNumber: 13
                         }, this))
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 682,
+                lineNumber: 672,
                 columnNumber: 9
             }, this),
             data.showEndingMessage && (data.endingContent || data.endingPhoto) && (()=>{
@@ -2280,7 +2263,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 698,
+                                    lineNumber: 688,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2290,7 +2273,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 699,
+                                    lineNumber: 689,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2300,13 +2283,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 700,
+                                    lineNumber: 690,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 697,
+                            lineNumber: 687,
                             columnNumber: 13
                         }, this),
                         eStyle === "card" && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2317,12 +2300,12 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 className: "w-full aspect-[4/5] object-cover rounded-[16px]"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 705,
+                                lineNumber: 695,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 704,
+                            lineNumber: 694,
                             columnNumber: 15
                         }, this),
                         eStyle === "card" && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2333,7 +2316,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.endingContent
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 714,
+                            lineNumber: 704,
                             columnNumber: 15
                         }, this),
                         eStyle === "full" && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2348,14 +2331,14 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 721,
+                                    lineNumber: 711,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute inset-0 bg-black/30"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 727,
+                                    lineNumber: 717,
                                     columnNumber: 17
                                 }, this),
                                 data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2368,18 +2351,18 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.endingContent
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                        lineNumber: 730,
+                                        lineNumber: 720,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 729,
+                                    lineNumber: 719,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 720,
+                            lineNumber: 710,
                             columnNumber: 15
                         }, this),
                         eStyle === "full" && !data.endingPhoto && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2390,7 +2373,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             children: data.endingContent
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 739,
+                            lineNumber: 729,
                             columnNumber: 15
                         }, this),
                         eStyle === "simple" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2407,14 +2390,14 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 748,
+                                            lineNumber: 738,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 754,
+                                            lineNumber: 744,
                                             columnNumber: 21
                                         }, this),
                                         data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2427,7 +2410,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                    lineNumber: 757,
+                                                    lineNumber: 747,
                                                     columnNumber: 25
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2438,19 +2421,19 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: data.endingContent
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                                    lineNumber: 758,
+                                                    lineNumber: 748,
                                                     columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 756,
+                                            lineNumber: 746,
                                             columnNumber: 23
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 747,
+                                    lineNumber: 737,
                                     columnNumber: 19
                                 }, this),
                                 !data.endingPhoto && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2463,7 +2446,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 767,
+                                            lineNumber: 757,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2474,13 +2457,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             children: data.endingContent
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 768,
+                                            lineNumber: 758,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 766,
+                                    lineNumber: 756,
                                     columnNumber: 19
                                 }, this)
                             ]
@@ -2494,13 +2477,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             children: "Thank You"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 776,
+                            lineNumber: 766,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                    lineNumber: 696,
+                    lineNumber: 686,
                     columnNumber: 11
                 }, this);
             })(),
@@ -2520,12 +2503,12 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                     children: "청첩장 링크 복사하기"
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                    lineNumber: 785,
+                    lineNumber: 775,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 784,
+                lineNumber: 774,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2544,7 +2527,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 798,
+                                lineNumber: 788,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2554,7 +2537,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 799,
+                                lineNumber: 789,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2564,13 +2547,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 800,
+                                lineNumber: 790,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 797,
+                        lineNumber: 787,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2581,13 +2564,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                         children: "MADE WITH WE:BEAT"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 802,
+                        lineNumber: 792,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 796,
+                lineNumber: 786,
                 columnNumber: 7
             }, this),
             state.showPhotoViewer && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2605,12 +2588,12 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             className: "w-5 h-5"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 815,
+                            lineNumber: 805,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 810,
+                        lineNumber: 800,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2622,12 +2605,12 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             className: "max-w-full max-h-full object-contain"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 818,
+                            lineNumber: 808,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                        lineNumber: 817,
+                        lineNumber: 807,
                         columnNumber: 11
                     }, this),
                     state.galleryImages.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2643,12 +2626,12 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 831,
+                                    lineNumber: 821,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 826,
+                                lineNumber: 816,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2662,12 +2645,12 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 838,
+                                    lineNumber: 828,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                lineNumber: 833,
+                                lineNumber: 823,
                                 columnNumber: 15
                             }, this)
                         ]
@@ -2675,7 +2658,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 809,
+                lineNumber: 799,
                 columnNumber: 9
             }, this),
             state.showContact && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2695,7 +2678,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 853,
+                            lineNumber: 843,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2706,7 +2689,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                             children: "연락하기"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 854,
+                            lineNumber: 844,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2727,7 +2710,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 858,
+                                            lineNumber: 848,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2741,13 +2724,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 859,
+                                            lineNumber: 849,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 857,
+                                    lineNumber: 847,
                                     columnNumber: 17
                                 }, this),
                                 data.bridePhone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2765,7 +2748,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 864,
+                                            lineNumber: 854,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2779,13 +2762,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 865,
+                                            lineNumber: 855,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 863,
+                                    lineNumber: 853,
                                     columnNumber: 17
                                 }, this),
                                 data.groomFather?.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2802,7 +2785,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 870,
+                                            lineNumber: 860,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2816,13 +2799,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 871,
+                                            lineNumber: 861,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 869,
+                                    lineNumber: 859,
                                     columnNumber: 17
                                 }, this),
                                 data.groomMother?.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2839,7 +2822,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 876,
+                                            lineNumber: 866,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2853,13 +2836,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 877,
+                                            lineNumber: 867,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 875,
+                                    lineNumber: 865,
                                     columnNumber: 17
                                 }, this),
                                 data.brideFather?.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2876,7 +2859,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 882,
+                                            lineNumber: 872,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2890,13 +2873,13 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 883,
+                                            lineNumber: 873,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 881,
+                                    lineNumber: 871,
                                     columnNumber: 17
                                 }, this),
                                 data.brideMother?.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2913,7 +2896,7 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 888,
+                                            lineNumber: 878,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2927,30 +2910,30 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                            lineNumber: 889,
+                                            lineNumber: 879,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                                    lineNumber: 887,
+                                    lineNumber: 877,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                            lineNumber: 855,
+                            lineNumber: 845,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                    lineNumber: 848,
+                    lineNumber: 838,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 847,
+                lineNumber: 837,
                 columnNumber: 9
             }, this),
             state.copiedToast && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2966,12 +2949,12 @@ function CalligraphyLayout({ data, state, helpers, onRsvpClick }) {
                     children: "복사되었습니다"
                 }, void 0, false, {
                     fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                    lineNumber: 899,
+                    lineNumber: 889,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/CalligraphyLayout.tsx",
-                lineNumber: 898,
+                lineNumber: 888,
                 columnNumber: 9
             }, this)
         ]

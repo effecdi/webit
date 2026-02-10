@@ -283,20 +283,13 @@ export function CalligraphyLayout({ data, state, helpers, onRsvpClick }: LayoutP
 
       {/* ===== GALLERY ===== */}
       {data.showGallery && state.galleryImages.length > 0 && (
-        <div className="py-14" style={{ backgroundColor: bg, fontFamily }}>
-          <div className="px-8">
-            <SectionTitle title="Gallery" subtitle="우리의 아름다운 순간들" />
-          </div>
-
+        <div className="py-10" style={{ backgroundColor: bg, fontFamily }}>
           {data.galleryStyle === "grid" || !data.galleryStyle ? (
             <div className="grid grid-cols-2 gap-[2px]">
               {state.galleryImages.map((img, i) => (
-                <div
-                  key={i}
-                  className="aspect-square overflow-hidden cursor-pointer group"
+                <div key={i} className="aspect-square overflow-hidden cursor-pointer group"
                   onClick={() => { state.setViewerIndex(i); state.setShowPhotoViewer(true) }}
-                  data-testid={`gallery-image-${i}`}
-                >
+                  data-testid={`gallery-image-${i}`}>
                   <img src={img} alt={`Gallery ${i + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                 </div>
               ))}
@@ -305,12 +298,9 @@ export function CalligraphyLayout({ data, state, helpers, onRsvpClick }: LayoutP
             <div className="overflow-x-auto">
               <div className="flex gap-[2px]">
                 {state.galleryImages.map((img, i) => (
-                  <div
-                    key={i}
-                    className="w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group"
+                  <div key={i} className="w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group"
                     onClick={() => { state.setViewerIndex(i); state.setShowPhotoViewer(true) }}
-                    data-testid={`gallery-image-${i}`}
-                  >
+                    data-testid={`gallery-image-${i}`}>
                     <img src={img} alt={`Gallery ${i + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                   </div>
                 ))}

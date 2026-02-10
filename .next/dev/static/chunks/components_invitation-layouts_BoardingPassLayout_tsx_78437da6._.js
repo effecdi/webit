@@ -1558,20 +1558,40 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                 style: {
                                     backgroundColor: ticketBg
                                 },
-                                className: "px-6 py-10",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SectionTitle, {
-                                        subtitle: "Gallery",
-                                        title: "우리의 순간들"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 424,
-                                        columnNumber: 15
-                                    }, this),
-                                    data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "grid grid-cols-2 gap-[2px]",
+                                className: "py-10",
+                                children: data.galleryStyle === "grid" || !data.galleryStyle ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "grid grid-cols-2 gap-[2px]",
+                                    children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "aspect-square cursor-pointer overflow-hidden group",
+                                            onClick: ()=>{
+                                                state.setViewerIndex(index);
+                                                state.setShowPhotoViewer(true);
+                                            },
+                                            "data-testid": `gallery-photo-${index}`,
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                src: img,
+                                                alt: `Gallery ${index + 1}`,
+                                                className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
+                                                lineNumber: 430,
+                                                columnNumber: 23
+                                            }, this)
+                                        }, index, false, {
+                                            fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
+                                            lineNumber: 427,
+                                            columnNumber: 21
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
+                                    lineNumber: 425,
+                                    columnNumber: 17
+                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "overflow-x-auto",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex gap-[2px]",
                                         children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "aspect-square cursor-pointer overflow-hidden group",
+                                                className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
                                                 onClick: ()=>{
                                                     state.setViewerIndex(index);
                                                     state.setShowPhotoViewer(true);
@@ -1583,62 +1603,32 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                     className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 435,
-                                                    columnNumber: 23
+                                                    lineNumber: 441,
+                                                    columnNumber: 25
                                                 }, this)
                                             }, index, false, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 429,
-                                                columnNumber: 21
+                                                lineNumber: 438,
+                                                columnNumber: 23
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 427,
-                                        columnNumber: 17
-                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "overflow-x-auto -mx-2",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex gap-[2px] px-2",
-                                            children: state.galleryImages.map((img, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group",
-                                                    onClick: ()=>{
-                                                        state.setViewerIndex(index);
-                                                        state.setShowPhotoViewer(true);
-                                                    },
-                                                    "data-testid": `gallery-photo-${index}`,
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                        src: img,
-                                                        alt: `Gallery ${index + 1}`,
-                                                        className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 449,
-                                                        columnNumber: 25
-                                                    }, this)
-                                                }, index, false, {
-                                                    fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 443,
-                                                    columnNumber: 23
-                                                }, this))
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 441,
-                                            columnNumber: 19
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 440,
-                                        columnNumber: 17
+                                        lineNumber: 436,
+                                        columnNumber: 19
                                     }, this)
-                                ]
-                            }, void 0, true, {
+                                }, void 0, false, {
+                                    fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
+                                    lineNumber: 435,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
                                 lineNumber: 423,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 456,
+                                lineNumber: 448,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -1652,7 +1642,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 462,
+                                lineNumber: 454,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1666,7 +1656,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         title: "오시는 길"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 464,
+                                        lineNumber: 456,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1683,7 +1673,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 467,
+                                                lineNumber: 459,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1694,7 +1684,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: data.address || "주소를 입력해주세요"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 470,
+                                                lineNumber: 462,
                                                 columnNumber: 15
                                             }, this),
                                             data.venuePhone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1708,13 +1698,13 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 472,
+                                                lineNumber: 464,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 466,
+                                        lineNumber: 458,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1729,12 +1719,12 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                             bgColor: ticketBgAlt
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 477,
+                                            lineNumber: 469,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 476,
+                                        lineNumber: 468,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1748,7 +1738,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "길찾기"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 480,
+                                        lineNumber: 472,
                                         columnNumber: 13
                                     }, this),
                                     data.transportItems && data.transportItems.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1767,7 +1757,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: item.type
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 493,
+                                                        lineNumber: 485,
                                                         columnNumber: 35
                                                     }, this),
                                                     item.detail && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1778,18 +1768,18 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: item.detail
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 494,
+                                                        lineNumber: 486,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, i, true, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 492,
+                                                lineNumber: 484,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 490,
+                                        lineNumber: 482,
                                         columnNumber: 15
                                     }, this),
                                     data.transportInfo && !data.transportItems?.some((t)=>t.type || t.detail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1805,12 +1795,12 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                             children: data.transportInfo
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 501,
+                                            lineNumber: 493,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 500,
+                                        lineNumber: 492,
                                         columnNumber: 15
                                     }, this),
                                     data.showTransportNotice && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1826,29 +1816,29 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                             children: "주차 공간이 협소하오니 대중교통을 이용해주시면 감사하겠습니다."
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 506,
+                                            lineNumber: 498,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 505,
+                                        lineNumber: 497,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 463,
+                                lineNumber: 455,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 512,
+                                lineNumber: 504,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 461,
+                        lineNumber: 453,
                         columnNumber: 9
                     }, this),
                     data.showMidPhoto && data.midPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1856,7 +1846,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 518,
+                                lineNumber: 510,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1870,23 +1860,23 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                     className: "w-full object-cover"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                    lineNumber: 520,
+                                    lineNumber: 512,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 519,
+                                lineNumber: 511,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 522,
+                                lineNumber: 514,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 517,
+                        lineNumber: 509,
                         columnNumber: 11
                     }, this),
                     data.showRsvp && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1894,7 +1884,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 529,
+                                lineNumber: 521,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1908,7 +1898,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         title: "참석 의사 전달"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 531,
+                                        lineNumber: 523,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1919,7 +1909,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.rsvpContent || "참석 여부를 미리 알려주시면 감사하겠습니다"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 533,
+                                        lineNumber: 525,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1933,24 +1923,24 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.rsvpButtonName || "참석 의사 전달하기"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 537,
+                                        lineNumber: 529,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 530,
+                                lineNumber: 522,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 546,
+                                lineNumber: 538,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 528,
+                        lineNumber: 520,
                         columnNumber: 11
                     }, this),
                     data.showGuestbook && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1958,7 +1948,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 553,
+                                lineNumber: 545,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1972,7 +1962,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         title: "방명록"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 555,
+                                        lineNumber: 547,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1992,7 +1982,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: entry.message
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 561,
+                                                        lineNumber: 553,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2006,13 +1996,13 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 562,
+                                                        lineNumber: 554,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, i, true, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 560,
+                                                lineNumber: 552,
                                                 columnNumber: 21
                                             }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "p-6 text-center rounded-[8px]",
@@ -2028,17 +2018,17 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: "축하 메시지를 남겨주세요"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 567,
+                                                lineNumber: 559,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 566,
+                                            lineNumber: 558,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 557,
+                                        lineNumber: 549,
                                         columnNumber: 15
                                     }, this),
                                     state.showGuestbookForm ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2062,7 +2052,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                 "data-testid": "input-guestbook-name"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 576,
+                                                lineNumber: 568,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -2079,7 +2069,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                 "data-testid": "input-guestbook-message"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 585,
+                                                lineNumber: 577,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2096,7 +2086,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: "취소"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 595,
+                                                        lineNumber: 587,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2110,19 +2100,19 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: "등록하기"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 603,
+                                                        lineNumber: 595,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 594,
+                                                lineNumber: 586,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 575,
+                                        lineNumber: 567,
                                         columnNumber: 17
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         onClick: ()=>state.setShowGuestbookForm(true),
@@ -2135,24 +2125,24 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "작성하기"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 614,
+                                        lineNumber: 606,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 554,
+                                lineNumber: 546,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 624,
+                                lineNumber: 616,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 552,
+                        lineNumber: 544,
                         columnNumber: 11
                     }, this),
                     data.showFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2160,7 +2150,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 631,
+                                lineNumber: 623,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2174,7 +2164,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         title: "축하 펀딩"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 633,
+                                        lineNumber: 625,
                                         columnNumber: 15
                                     }, this),
                                     data.fundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2185,7 +2175,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.fundingMessage
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 636,
+                                        lineNumber: 628,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2202,12 +2192,12 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                 "data-testid": "img-funding-custom"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 644,
+                                                lineNumber: 636,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 643,
+                                            lineNumber: 635,
                                             columnNumber: 19
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "w-[120px] h-[120px] flex items-center justify-center",
@@ -2217,17 +2207,17 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                 rotate: 45
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 648,
+                                                lineNumber: 640,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 647,
+                                            lineNumber: 639,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 641,
+                                        lineNumber: 633,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2241,24 +2231,24 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.fundingButtonName || "신혼여행 축하하기"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 653,
+                                        lineNumber: 645,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 632,
+                                lineNumber: 624,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 662,
+                                lineNumber: 654,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 630,
+                        lineNumber: 622,
                         columnNumber: 11
                     }, this),
                     data.showGiftFunding && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2266,7 +2256,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 669,
+                                lineNumber: 661,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2280,7 +2270,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         title: "기프트 펀딩"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 671,
+                                        lineNumber: 663,
                                         columnNumber: 15
                                     }, this),
                                     data.giftFundingMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2291,7 +2281,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.giftFundingMessage
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 673,
+                                        lineNumber: 665,
                                         columnNumber: 17
                                     }, this),
                                     data.giftFundingButtonName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2305,24 +2295,24 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.giftFundingButtonName
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 678,
+                                        lineNumber: 670,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 670,
+                                lineNumber: 662,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 688,
+                                lineNumber: 680,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 668,
+                        lineNumber: 660,
                         columnNumber: 11
                     }, this),
                     data.showAccount && (()=>{
@@ -2354,7 +2344,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 707,
+                                                        lineNumber: 699,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2365,13 +2355,13 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: acc.holder
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 708,
+                                                        lineNumber: 700,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 706,
+                                                lineNumber: 698,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2386,18 +2376,18 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                 children: "복사"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 710,
+                                                lineNumber: 702,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, i, true, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 705,
+                                        lineNumber: 697,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 703,
+                                lineNumber: 695,
                                 columnNumber: 13
                             }, this);
                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2405,7 +2395,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                    lineNumber: 725,
+                                    lineNumber: 717,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2419,7 +2409,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                             title: "축의금 전달"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 727,
+                                            lineNumber: 719,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2447,7 +2437,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                                     children: "신랑측 계좌번호"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                                    lineNumber: 739,
+                                                                    lineNumber: 731,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -2465,18 +2455,18 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                                         d: "M19 9l-7 7-7-7"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                                        lineNumber: 741,
+                                                                        lineNumber: 733,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                                    lineNumber: 740,
+                                                                    lineNumber: 732,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                            lineNumber: 733,
+                                                            lineNumber: 725,
                                                             columnNumber: 25
                                                         }, this),
                                                         state.expandedAccordion === "groom" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2487,13 +2477,13 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                             children: renderAccList(groomAccList)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                            lineNumber: 745,
+                                                            lineNumber: 737,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 732,
+                                                    lineNumber: 724,
                                                     columnNumber: 23
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "rounded-[8px] p-4",
@@ -2510,14 +2500,14 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                             children: "신랑측"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                            lineNumber: 752,
+                                                            lineNumber: 744,
                                                             columnNumber: 25
                                                         }, this),
                                                         renderAccList(groomAccList)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 751,
+                                                    lineNumber: 743,
                                                     columnNumber: 23
                                                 }, this)),
                                                 brideAccList.length > 0 && (accStyle === "accordion" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2542,7 +2532,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                                     children: "신부측 계좌번호"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                                    lineNumber: 767,
+                                                                    lineNumber: 759,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -2560,18 +2550,18 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                                         d: "M19 9l-7 7-7-7"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                                        lineNumber: 769,
+                                                                        lineNumber: 761,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                                    lineNumber: 768,
+                                                                    lineNumber: 760,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                            lineNumber: 761,
+                                                            lineNumber: 753,
                                                             columnNumber: 25
                                                         }, this),
                                                         state.expandedAccordion === "bride" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2582,13 +2572,13 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                             children: renderAccList(brideAccList)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                            lineNumber: 773,
+                                                            lineNumber: 765,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 760,
+                                                    lineNumber: 752,
                                                     columnNumber: 23
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "rounded-[8px] p-4",
@@ -2605,37 +2595,37 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                             children: "신부측"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                            lineNumber: 780,
+                                                            lineNumber: 772,
                                                             columnNumber: 25
                                                         }, this),
                                                         renderAccList(brideAccList)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 779,
+                                                    lineNumber: 771,
                                                     columnNumber: 23
                                                 }, this))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 729,
+                                            lineNumber: 721,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                    lineNumber: 726,
+                                    lineNumber: 718,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                    lineNumber: 787,
+                                    lineNumber: 779,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                            lineNumber: 724,
+                            lineNumber: 716,
                             columnNumber: 13
                         }, this);
                     })(),
@@ -2644,7 +2634,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 795,
+                                lineNumber: 787,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2658,7 +2648,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         title: ""
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 797,
+                                        lineNumber: 789,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2675,7 +2665,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: data.baptismalGroom
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 800,
+                                                        lineNumber: 792,
                                                         columnNumber: 43
                                                     }, this),
                                                     data.baptismalGroomFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2686,7 +2676,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: data.baptismalGroomFather
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 801,
+                                                        lineNumber: 793,
                                                         columnNumber: 49
                                                     }, this),
                                                     data.baptismalGroomMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2697,13 +2687,13 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: data.baptismalGroomMother
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 802,
+                                                        lineNumber: 794,
                                                         columnNumber: 49
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 799,
+                                                lineNumber: 791,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2717,7 +2707,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: data.baptismalBride
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 805,
+                                                        lineNumber: 797,
                                                         columnNumber: 43
                                                     }, this),
                                                     data.baptismalBrideFather && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2728,7 +2718,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: data.baptismalBrideFather
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 806,
+                                                        lineNumber: 798,
                                                         columnNumber: 49
                                                     }, this),
                                                     data.baptismalBrideMother && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2739,36 +2729,36 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: data.baptismalBrideMother
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 807,
+                                                        lineNumber: 799,
                                                         columnNumber: 49
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 804,
+                                                lineNumber: 796,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 798,
+                                        lineNumber: 790,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 796,
+                                lineNumber: 788,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 811,
+                                lineNumber: 803,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 794,
+                        lineNumber: 786,
                         columnNumber: 11
                     }, this),
                     data.showGuestSnap && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2776,7 +2766,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 818,
+                                lineNumber: 810,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2790,7 +2780,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         title: "게스트 스냅"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 820,
+                                        lineNumber: 812,
                                         columnNumber: 15
                                     }, this),
                                     data.guestSnapContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2801,7 +2791,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.guestSnapContent
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 822,
+                                        lineNumber: 814,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2814,24 +2804,24 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: "사진 업로드"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 826,
+                                        lineNumber: 818,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 819,
+                                lineNumber: 811,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 834,
+                                lineNumber: 826,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 817,
+                        lineNumber: 809,
                         columnNumber: 11
                     }, this),
                     data.showNotice && data.noticeTitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2839,7 +2829,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 841,
+                                lineNumber: 833,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2853,7 +2843,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         title: "안내사항"
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 843,
+                                        lineNumber: 835,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2864,7 +2854,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         children: data.noticeTitle
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 844,
+                                        lineNumber: 836,
                                         columnNumber: 15
                                     }, this),
                                     data.noticeItems?.filter(Boolean).map((item, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2875,24 +2865,24 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                             children: item
                                         }, i, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 846,
+                                            lineNumber: 838,
                                             columnNumber: 17
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 842,
+                                lineNumber: 834,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 849,
+                                lineNumber: 841,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 840,
+                        lineNumber: 832,
                         columnNumber: 11
                     }, this),
                     data.showEndingMessage && (data.endingContent || data.endingPhoto) && (()=>{
@@ -2903,7 +2893,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopTop, {}, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                    lineNumber: 859,
+                                    lineNumber: 851,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2917,7 +2907,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                             title: "감사의 말씀"
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 861,
+                                            lineNumber: 853,
                                             columnNumber: 17
                                         }, this),
                                         eStyle === "card" && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2931,12 +2921,12 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                lineNumber: 865,
+                                                lineNumber: 857,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 864,
+                                            lineNumber: 856,
                                             columnNumber: 19
                                         }, this),
                                         eStyle === "card" && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2947,7 +2937,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                             children: data.endingContent
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 869,
+                                            lineNumber: 861,
                                             columnNumber: 19
                                         }, this),
                                         eStyle === "full" && data.endingPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2962,14 +2952,14 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 876,
+                                                    lineNumber: 868,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "absolute inset-0 bg-black/40"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 877,
+                                                    lineNumber: 869,
                                                     columnNumber: 21
                                                 }, this),
                                                 data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2982,18 +2972,18 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         children: data.endingContent
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 880,
+                                                        lineNumber: 872,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 879,
+                                                    lineNumber: 871,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 875,
+                                            lineNumber: 867,
                                             columnNumber: 19
                                         }, this),
                                         eStyle === "full" && !data.endingPhoto && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3004,7 +2994,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                             children: data.endingContent
                                         }, void 0, false, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 888,
+                                            lineNumber: 880,
                                             columnNumber: 19
                                         }, this),
                                         eStyle === "simple" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -3021,14 +3011,14 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                            lineNumber: 897,
+                                                            lineNumber: 889,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                            lineNumber: 898,
+                                                            lineNumber: 890,
                                                             columnNumber: 25
                                                         }, this),
                                                         data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3041,7 +3031,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                                     }
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                                    lineNumber: 901,
+                                                                    lineNumber: 893,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3052,19 +3042,19 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                                     children: data.endingContent
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                                    lineNumber: 902,
+                                                                    lineNumber: 894,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                            lineNumber: 900,
+                                                            lineNumber: 892,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 896,
+                                                    lineNumber: 888,
                                                     columnNumber: 23
                                                 }, this),
                                                 !data.endingPhoto && data.endingContent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3075,7 +3065,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: data.endingContent
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 910,
+                                                    lineNumber: 902,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
@@ -3083,18 +3073,18 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                    lineNumber: 860,
+                                    lineNumber: 852,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ScallopBottom, {}, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                    lineNumber: 917,
+                                    lineNumber: 909,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                            lineNumber: 858,
+                            lineNumber: 850,
                             columnNumber: 13
                         }, this);
                     })(),
@@ -3111,7 +3101,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 925,
+                                        lineNumber: 917,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(PlaneIcon, {
@@ -3120,7 +3110,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         rotate: 90
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 926,
+                                        lineNumber: 918,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3130,13 +3120,13 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                        lineNumber: 927,
+                                        lineNumber: 919,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 924,
+                                lineNumber: 916,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3151,7 +3141,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 929,
+                                lineNumber: 921,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3162,13 +3152,13 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                 children: "Powered by WE:BEAT"
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 932,
+                                lineNumber: 924,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 923,
+                        lineNumber: 915,
                         columnNumber: 9
                     }, this)
                 ]
@@ -3199,12 +3189,12 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                lineNumber: 945,
+                                lineNumber: 937,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                            lineNumber: 940,
+                            lineNumber: 932,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3215,7 +3205,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                             children: "연락처"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                            lineNumber: 947,
+                            lineNumber: 939,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3272,7 +3262,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: contact.label
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 959,
+                                                    lineNumber: 951,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3283,13 +3273,13 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                     children: contact.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 960,
+                                                    lineNumber: 952,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 958,
+                                            lineNumber: 950,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3310,12 +3300,12 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 969,
+                                                        lineNumber: 961,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 963,
+                                                    lineNumber: 955,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3333,40 +3323,40 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                        lineNumber: 977,
+                                                        lineNumber: 969,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                                    lineNumber: 971,
+                                                    lineNumber: 963,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                            lineNumber: 962,
+                                            lineNumber: 954,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                                    lineNumber: 957,
+                                    lineNumber: 949,
                                     columnNumber: 17
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                            lineNumber: 948,
+                            lineNumber: 940,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                    lineNumber: 939,
+                    lineNumber: 931,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                lineNumber: 938,
+                lineNumber: 930,
                 columnNumber: 9
             }, this),
             state.showPhotoViewer && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3386,12 +3376,12 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                             className: "w-5 h-5 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                            lineNumber: 996,
+                            lineNumber: 988,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 990,
+                        lineNumber: 982,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -3400,7 +3390,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                         className: "max-w-full max-h-[80vh] object-contain"
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 998,
+                        lineNumber: 990,
                         columnNumber: 11
                     }, this),
                     state.viewerIndex > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3414,12 +3404,12 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                             className: "w-5 h-5 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                            lineNumber: 1010,
+                            lineNumber: 1002,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 1004,
+                        lineNumber: 996,
                         columnNumber: 13
                     }, this),
                     state.viewerIndex < state.galleryImages.length - 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3433,12 +3423,12 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                             className: "w-5 h-5 text-white"
                         }, void 0, false, {
                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                            lineNumber: 1020,
+                            lineNumber: 1012,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 1014,
+                        lineNumber: 1006,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3452,18 +3442,18 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                            lineNumber: 1024,
+                            lineNumber: 1016,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                        lineNumber: 1023,
+                        lineNumber: 1015,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                lineNumber: 989,
+                lineNumber: 981,
                 columnNumber: 9
             }, this),
             state.copiedToast && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3475,7 +3465,7 @@ function BoardingPassLayout({ data, state, helpers, onRsvpClick }) {
                 children: state.copiedToast
             }, void 0, false, {
                 fileName: "[project]/components/invitation-layouts/BoardingPassLayout.tsx",
-                lineNumber: 1031,
+                lineNumber: 1023,
                 columnNumber: 9
             }, this)
         ]

@@ -347,10 +347,7 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
 
       {/* ===== GALLERY ===== */}
       {data.showGallery && state.galleryImages.length > 0 && (
-        <div className="py-12" style={{ backgroundColor: pageBg }}>
-          <div className="px-8">
-            <SectionTitle title="Gallery" subtitle="OUR MOMENTS" />
-          </div>
+        <div className="py-10" style={{ backgroundColor: pageBg }}>
           {data.galleryStyle === "grid" || !data.galleryStyle ? (
             <div className="grid grid-cols-2 gap-[2px]">
               {state.galleryImages.map((img, index) => (

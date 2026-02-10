@@ -354,25 +354,17 @@ export function ChatLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
 
       {/* ===== GALLERY ===== */}
       {data.showGallery && state.galleryImages.length > 0 && (
-        <div className="py-12" style={{ backgroundColor: pageBg }}>
-          <SectionTitle title="Gallery" subtitle="OUR MOMENTS" />
+        <div className="py-10" style={{ backgroundColor: pageBg }}>
           {data.galleryStyle === "grid" || !data.galleryStyle ? (
-            <>
-              <div className="grid grid-cols-2 gap-[2px]">
-                {state.galleryImages.map((img, index) => (
-                  <div key={index} className="aspect-square cursor-pointer overflow-hidden relative group"
-                    onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
-                    data-testid={`gallery-photo-${index}`}>
-                    <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center justify-center gap-3 mt-5">
-                <div className="h-px flex-1 max-w-[25px]" style={{ backgroundColor: borderColor }} />
-                <p className="text-[9px] tracking-[0.3em]" style={{ color: textTertiary }}>{state.galleryImages.length} PHOTOS</p>
-                <div className="h-px flex-1 max-w-[25px]" style={{ backgroundColor: borderColor }} />
-              </div>
-            </>
+            <div className="grid grid-cols-2 gap-[2px]">
+              {state.galleryImages.map((img, index) => (
+                <div key={index} className="aspect-square cursor-pointer overflow-hidden relative group"
+                  onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
+                  data-testid={`gallery-photo-${index}`}>
+                  <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+                </div>
+              ))}
+            </div>
           ) : (
             <div className="overflow-x-auto">
               <div className="flex gap-[2px]">

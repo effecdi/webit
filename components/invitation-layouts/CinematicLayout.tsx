@@ -301,29 +301,18 @@ export function CinematicLayout({ data, state, helpers, onRsvpClick }: LayoutPro
 
       {/* ===== GALLERY ===== */}
       {data.showGallery && state.galleryImages.length > 0 && (
-        <div className="py-16" style={{ backgroundColor: darkSurface }}>
-          <SectionHeading title="Gallery" subtitle="Our Moments" />
-
+        <div className="py-10" style={{ backgroundColor: darkSurface }}>
           {data.galleryStyle === "grid" || !data.galleryStyle ? (
-            <>
-              {/* Photo booth 2x2 tight grid */}
-              <div className="grid grid-cols-2 gap-[2px]">
-                {state.galleryImages.map((img, index) => (
-                  <div key={index} className="aspect-square cursor-pointer overflow-hidden relative group"
-                    onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
-                    data-testid={`gallery-photo-${index}`}>
-                    <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-                    <div className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100" style={{ backgroundColor: "rgba(212,184,150,0.08)" }} />
-                  </div>
-                ))}
-              </div>
-              {/* Subtle index bar */}
-              <div className="flex items-center justify-center gap-3 mt-5">
-                <div className="h-px flex-1 max-w-[30px]" style={{ backgroundColor: borderDark }} />
-                <p className="text-[9px] tracking-[0.3em]" style={{ color: textDim }}>{state.galleryImages.length} PHOTOS</p>
-                <div className="h-px flex-1 max-w-[30px]" style={{ backgroundColor: borderDark }} />
-              </div>
-            </>
+            <div className="grid grid-cols-2 gap-[2px]">
+              {state.galleryImages.map((img, index) => (
+                <div key={index} className="aspect-square cursor-pointer overflow-hidden relative group"
+                  onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
+                  data-testid={`gallery-photo-${index}`}>
+                  <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+                  <div className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100" style={{ backgroundColor: "rgba(212,184,150,0.08)" }} />
+                </div>
+              ))}
+            </div>
           ) : (
             <div className="overflow-x-auto">
               <div className="flex gap-[2px]">

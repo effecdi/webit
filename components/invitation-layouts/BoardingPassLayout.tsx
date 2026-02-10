@@ -420,32 +420,24 @@ export function BoardingPassLayout({ data, state, helpers, onRsvpClick }: Layout
         {data.showGallery && state.galleryImages.length > 0 && (
           <div className="px-4 pt-6">
             <ScallopTop />
-            <div style={{ backgroundColor: ticketBg }} className="px-6 py-10">
-              <SectionTitle subtitle="Gallery" title="우리의 순간들" />
-
+            <div style={{ backgroundColor: ticketBg }} className="py-10">
               {data.galleryStyle === "grid" || !data.galleryStyle ? (
                 <div className="grid grid-cols-2 gap-[2px]">
                   {state.galleryImages.map((img, index) => (
-                    <div
-                      key={index}
-                      className="aspect-square cursor-pointer overflow-hidden group"
+                    <div key={index} className="aspect-square cursor-pointer overflow-hidden group"
                       onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
-                      data-testid={`gallery-photo-${index}`}
-                    >
+                      data-testid={`gallery-photo-${index}`}>
                       <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="overflow-x-auto -mx-2">
-                  <div className="flex gap-[2px] px-2">
+                <div className="overflow-x-auto">
+                  <div className="flex gap-[2px]">
                     {state.galleryImages.map((img, index) => (
-                      <div
-                        key={index}
-                        className="w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group"
+                      <div key={index} className="w-[200px] h-[260px] flex-shrink-0 cursor-pointer overflow-hidden group"
                         onClick={() => { state.setViewerIndex(index); state.setShowPhotoViewer(true) }}
-                        data-testid={`gallery-photo-${index}`}
-                      >
+                        data-testid={`gallery-photo-${index}`}>
                         <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                       </div>
                     ))}
