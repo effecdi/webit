@@ -2100,6 +2100,10 @@
     margin-inline: calc(var(--spacing) * 1);
   }
 
+  .mx-1\.5 {
+    margin-inline: calc(var(--spacing) * 1.5);
+  }
+
   .mx-2 {
     margin-inline: calc(var(--spacing) * 2);
   }

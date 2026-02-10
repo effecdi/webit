@@ -93,78 +93,108 @@ export function PosterLayout({ data, state, helpers, onRsvpClick }: LayoutProps)
 
   return (
     <>
-      {/* ===== HERO SECTION ===== */}
+      {/* ===== HERO SECTION (POSTER STYLE) ===== */}
       <div className="relative overflow-hidden" style={{ backgroundColor: pageBg }}>
-        <div className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none">
-          <FlowerDaisy color="#FFFFFF" size={32} opacity={0.6} className="absolute top-6 left-4" />
-          <FlowerTulip color="#F4C7AB" size={30} opacity={0.5} className="absolute top-10 right-6" />
-          <FlowerSmall color="#B5C7D3" size={18} opacity={0.5} className="absolute top-20 left-8" />
-          <FlowerLeaf size={22} opacity={0.4} className="absolute top-4 right-16" />
-          <FlowerStar color="#F5D88E" size={12} opacity={0.4} className="absolute top-16 left-20" />
-          <FlowerDaisy color="#F4C7AB" size={20} opacity={0.4} className="absolute top-24 right-4" />
-          <FlowerSmall color="#E8A87C" size={14} opacity={0.4} className="absolute bottom-32 left-6" />
-          <FlowerTulip color="#D4A5A5" size={24} opacity={0.4} className="absolute bottom-20 right-8" />
-          <FlowerLeaf size={18} opacity={0.35} className="absolute bottom-16 left-14" />
-          <FlowerStar color="#C5956B" size={10} opacity={0.35} className="absolute bottom-28 right-16" />
-        </div>
-
-        <div className="relative z-10 px-8 pt-20 pb-6 text-center">
-          <p
-            className="text-[28px] leading-[1.3] mb-2"
-            style={{ color: accent, fontFamily: "'Caveat', cursive", fontWeight: 400 }}
-          >
-            The Wedding of
-          </p>
-        </div>
-
         {photo0 ? (
-          <div className="relative z-10 mx-8 mb-6">
-            <div className="relative">
-              <img
-                src={photo0}
-                alt="Cover"
-                className="w-full object-cover"
-                style={{ height: "460px", borderRadius: "0" }}
-              />
-              <div className="absolute inset-0 pointer-events-none">
-                <FlowerDaisy color="#FFFFFF" size={28} opacity={0.7} className="absolute -top-3 -right-3" />
-                <FlowerTulip color="#E8A87C" size={22} opacity={0.6} className="absolute -bottom-2 -left-2" />
-                <FlowerSmall color="#B5C7D3" size={16} opacity={0.5} className="absolute top-8 -left-2" />
-                <FlowerLeaf size={16} opacity={0.45} className="absolute -bottom-2 right-8" />
-                <FlowerStar color="#F5D88E" size={10} opacity={0.5} className="absolute top-4 right-12" />
-              </div>
+          <div className="relative w-full">
+            <img
+              src={photo0}
+              alt="Cover"
+              className="w-full object-cover"
+              style={{ height: "620px" }}
+            />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.02) 30%, rgba(0,0,0,0.02) 60%, rgba(0,0,0,0.35) 100%)" }} />
+            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+              <p
+                className="text-[42px] leading-[1.15]"
+                style={{
+                  color: "rgba(255,255,255,0.95)",
+                  fontFamily: "'Caveat', cursive",
+                  fontWeight: 400,
+                  textShadow: "0 2px 20px rgba(0,0,0,0.25), 0 1px 6px rgba(0,0,0,0.15)",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Our Wedding Day
+              </p>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 text-center pb-8 px-6">
+              <p
+                className="text-[26px] font-medium mb-2"
+                style={{
+                  color: "rgba(255,255,255,0.95)",
+                  letterSpacing: "0.12em",
+                  fontFamily: serifFont,
+                  textShadow: "0 1px 10px rgba(0,0,0,0.3)",
+                }}
+              >
+                {data.groomName || "신랑"}{" "}
+                <span
+                  className="text-[18px] font-normal mx-1.5"
+                  style={{ fontFamily: "'Caveat', cursive", opacity: 0.85 }}
+                >
+                  &
+                </span>{" "}
+                {data.brideName || "신부"}
+              </p>
+              <p
+                className="text-[12px]"
+                style={{
+                  color: "rgba(255,255,255,0.8)",
+                  letterSpacing: "0.1em",
+                  fontFamily: sansFont,
+                  textShadow: "0 1px 6px rgba(0,0,0,0.3)",
+                }}
+              >
+                {helpers.formatWeddingDate()}{data.time ? ` | ${data.time}` : ""}
+              </p>
+              <p
+                className="text-[11px] mt-1"
+                style={{
+                  color: "rgba(255,255,255,0.7)",
+                  fontFamily: sansFont,
+                  textShadow: "0 1px 6px rgba(0,0,0,0.3)",
+                }}
+              >
+                {data.venue || ""}
+              </p>
             </div>
           </div>
         ) : (
-          <div className="relative z-10 mx-8 mb-6">
-            <div
-              className="w-full flex items-center justify-center"
-              style={{ height: "460px", backgroundColor: accentSoft }}
-            >
-              <p className="text-[13px]" style={{ color: textSecondary, letterSpacing: "0.1em" }}>ADD PHOTOS</p>
+          <div className="relative w-full" style={{ height: "620px", backgroundColor: "#D4C5B5" }}>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <p
+                className="text-[42px] leading-[1.15] mb-6"
+                style={{
+                  color: "rgba(255,255,255,0.7)",
+                  fontFamily: "'Caveat', cursive",
+                  fontWeight: 400,
+                }}
+              >
+                Our Wedding Day
+              </p>
+              <p className="text-[13px]" style={{ color: "rgba(255,255,255,0.5)", letterSpacing: "0.1em" }}>
+                ADD PHOTOS
+              </p>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 text-center pb-8 px-6">
+              <p
+                className="text-[26px] font-medium mb-2"
+                style={{ color: "rgba(255,255,255,0.85)", letterSpacing: "0.12em", fontFamily: serifFont }}
+              >
+                {data.groomName || "신랑"}{" "}
+                <span className="text-[18px] font-normal mx-1.5" style={{ fontFamily: "'Caveat', cursive", opacity: 0.85 }}>&</span>{" "}
+                {data.brideName || "신부"}
+              </p>
+              <p className="text-[12px]" style={{ color: "rgba(255,255,255,0.6)", letterSpacing: "0.1em", fontFamily: sansFont }}>
+                {helpers.formatWeddingDate()}{data.time ? ` | ${data.time}` : ""}
+              </p>
+              <p className="text-[11px] mt-1" style={{ color: "rgba(255,255,255,0.5)", fontFamily: sansFont }}>
+                {data.venue || ""}
+              </p>
             </div>
           </div>
         )}
-
-        <div className="relative z-10 text-center pb-14 px-8">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-px flex-1 max-w-[50px]" style={{ backgroundColor: accent, opacity: 0.3 }} />
-            <FlowerSmall color="#F4C7AB" size={16} opacity={0.5} />
-            <div className="h-px flex-1 max-w-[50px]" style={{ backgroundColor: accent, opacity: 0.3 }} />
-          </div>
-          <p
-            className="text-[24px] font-medium mb-2"
-            style={{ color: textPrimary, letterSpacing: "0.1em", fontFamily: serifFont }}
-          >
-            {data.groomName || "신랑"} <span className="text-[16px] font-normal mx-1" style={{ color: accent, fontFamily: "'Caveat', cursive" }}>&</span> {data.brideName || "신부"}
-          </p>
-          <p className="text-[12px]" style={{ color: textSecondary, letterSpacing: "0.08em", fontFamily: sansFont }}>
-            {helpers.formatWeddingDate()}{data.time ? ` | ${data.time}` : ""}
-          </p>
-          <p className="text-[11px] mt-1" style={{ color: textSecondary, fontFamily: sansFont }}>
-            {data.venue || ""}
-          </p>
-        </div>
       </div>
 
       {/* ===== INVITATION SECTION ===== */}
