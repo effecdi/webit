@@ -676,7 +676,7 @@ function PosterLayout({ data, state, helpers, onRsvpClick }) {
                                     cy: "80",
                                     rx: "220",
                                     ry: "80",
-                                    fill: pageBg
+                                    fill: "#FFFFFF"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/PosterLayout.tsx",
                                     lineNumber: 393,
@@ -871,7 +871,7 @@ function PosterLayout({ data, state, helpers, onRsvpClick }) {
                                     cy: "80",
                                     rx: "220",
                                     ry: "80",
-                                    fill: pageBg
+                                    fill: "#FFFFFF"
                                 }, void 0, false, {
                                     fileName: "[project]/components/invitation-layouts/PosterLayout.tsx",
                                     lineNumber: 430,

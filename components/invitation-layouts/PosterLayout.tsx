@@ -390,7 +390,7 @@ export function PosterLayout({
 
             <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ zIndex: 3 }}>
               <svg viewBox="0 0 400 80" preserveAspectRatio="none" className="w-full" style={{ height: "80px", display: "block" }}>
-                <ellipse cx="200" cy="80" rx="220" ry="80" fill={pageBg} />
+                <ellipse cx="200" cy="80" rx="220" ry="80" fill="#FFFFFF" />
               </svg>
             </div>
           </div>
@@ -427,7 +427,7 @@ export function PosterLayout({
 
             <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ zIndex: 3 }}>
               <svg viewBox="0 0 400 80" preserveAspectRatio="none" className="w-full" style={{ height: "80px", display: "block" }}>
-                <ellipse cx="200" cy="80" rx="220" ry="80" fill={pageBg} />
+                <ellipse cx="200" cy="80" rx="220" ry="80" fill="#FFFFFF" />
               </svg>
             </div>
           </div>
