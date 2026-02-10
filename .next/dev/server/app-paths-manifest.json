@@ -13,6 +13,5 @@
   "/family/page": "app/family/page.js",
   "/page": "app/page.js",
   "/splash/page": "app/splash/page.js",
-  "/wedding/editor/page": "app/wedding/editor/page.js",
-  "/wedding/page": "app/wedding/page.js"
+  "/wedding/editor/page": "app/wedding/editor/page.js"
 }
