@@ -8231,6 +8231,10 @@
     padding-top: calc(var(--spacing) * 32);
   }
 
+  .pt-\[env\(safe-area-inset-top\)\] {
+    padding-top: env(safe-area-inset-top);
+  }
+
   .pr-1 {
     padding-right: calc(var(--spacing) * 1);
   }

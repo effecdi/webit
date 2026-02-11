@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect, useRef } from "react"
-import Link from "next/link"
-import { 
-  Plus, 
+import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import {
+  Plus,
   X,
   Heart,
   ShoppingBag,
@@ -34,33 +34,33 @@ import {
   ImageIcon,
   Award,
   Tag,
-} from "lucide-react"
-import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
+} from "lucide-react";
+import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav";
 
 interface Product {
-  id: string
-  category: 'favors' | 'appliances' | 'interior' | 'accessories'
-  title: string
-  brand: string
-  thumbnailUrl: string
-  linkUrl: string
-  platform: 'COUPANG' | 'NAVER'
-  benefit?: string
-  isRecommended?: boolean
-  originalPrice?: number
-  salePrice?: number
+  id: string;
+  category: "favors" | "appliances" | "interior" | "accessories";
+  title: string;
+  brand: string;
+  thumbnailUrl: string;
+  linkUrl: string;
+  platform: "COUPANG" | "NAVER";
+  benefit?: string;
+  isRecommended?: boolean;
+  originalPrice?: number;
+  salePrice?: number;
 }
 
 interface GoodsItem {
-  id: string
-  name: string
-  category: string
-  price: number
-  link?: string
-  image?: string
-  status: "wishlist" | "purchased" | "received"
-  notes?: string
-  forWhom?: "bride" | "groom" | "both" | "guest"
+  id: string;
+  name: string;
+  category: string;
+  price: number;
+  link?: string;
+  image?: string;
+  status: "wishlist" | "purchased" | "received";
+  notes?: string;
+  forWhom?: "bride" | "groom" | "both" | "guest";
 }
 
 const shopCategories = [
@@ -69,7 +69,7 @@ const shopCategories = [
   { id: "interior", label: "인테리어" },
   { id: "favors", label: "답례품" },
   { id: "accessories", label: "액세서리" },
-]
+];
 
 const categories = [
   { id: "ring", label: "예물", icon: Diamond },
@@ -77,7 +77,7 @@ const categories = [
   { id: "honeymoon", label: "허니문", icon: Sparkles },
   { id: "decor", label: "웨딩데코", icon: Gem },
   { id: "etc", label: "기타", icon: ShoppingBag },
-]
+];
 
 const initialGoods: GoodsItem[] = [
   {
@@ -122,29 +122,29 @@ const initialGoods: GoodsItem[] = [
     forWhom: "both",
     notes: "친구 선물",
   },
-]
+];
 
 interface GuideItem {
-  id: string
-  title: string
-  icon: React.ElementType
-  gradient: string
-  description: string
+  id: string;
+  title: string;
+  icon: React.ElementType;
+  gradient: string;
+  description: string;
   proInfo: {
-    title: string
-    options: { name: string; detail: string; price: string }[]
-    tips: string[]
-  }
+    title: string;
+    options: { name: string; detail: string; price: string }[];
+    tips: string[];
+  };
   diyInfo: {
-    title: string
-    difficulty: string
-    difficultyColor: string
-    materials: string[]
-    steps: string[]
-    tips: string[]
-    estimatedCost: string
-    estimatedTime: string
-  }
+    title: string;
+    difficulty: string;
+    difficultyColor: string;
+    materials: string[];
+    steps: string[];
+    tips: string[];
+    estimatedCost: string;
+    estimatedTime: string;
+  };
 }
 
 const guideItems: GuideItem[] = [
@@ -153,13 +153,27 @@ const guideItems: GuideItem[] = [
     title: "웨딩 포스터",
     icon: Frame,
     gradient: "from-rose-400 to-pink-500",
-    description: "웨딩 촬영 사진으로 만드는 감성 웨딩 포스터. 식장 입구나 포토테이블에 세워두면 분위기가 확 달라져요.",
+    description:
+      "웨딩 촬영 사진으로 만드는 감성 웨딩 포스터. 식장 입구나 포토테이블에 세워두면 분위기가 확 달라져요.",
     proInfo: {
       title: "전문 업체 제작",
       options: [
-        { name: "온라인 인쇄 업체", detail: "레드프린팅, 비스타프린트, 프린트시티 등에서 고해상도 포스터 인쇄 가능", price: "1만~3만원" },
-        { name: "웨딩 전문 디자인샵", detail: "크몽, 숨고에서 웨딩 포스터 디자인 + 인쇄까지 의뢰", price: "3만~8만원" },
-        { name: "스냅 스튜디오 추가 옵션", detail: "웨딩 스냅 촬영 시 포스터 제작 옵션 추가 가능", price: "5만~15만원" },
+        {
+          name: "온라인 인쇄 업체",
+          detail:
+            "레드프린팅, 비스타프린트, 프린트시티 등에서 고해상도 포스터 인쇄 가능",
+          price: "1만~3만원",
+        },
+        {
+          name: "웨딩 전문 디자인샵",
+          detail: "크몽, 숨고에서 웨딩 포스터 디자인 + 인쇄까지 의뢰",
+          price: "3만~8만원",
+        },
+        {
+          name: "스냅 스튜디오 추가 옵션",
+          detail: "웨딩 스냅 촬영 시 포스터 제작 옵션 추가 가능",
+          price: "5만~15만원",
+        },
       ],
       tips: [
         "A2(420x594mm) 또는 A1(594x841mm) 사이즈가 가장 인기가 많아요",
@@ -171,7 +185,12 @@ const guideItems: GuideItem[] = [
       title: "셀프 제작 가이드",
       difficulty: "쉬움",
       difficultyColor: "text-green-500",
-      materials: ["고해상도 웨딩 사진 (300dpi 이상)", "Canva 또는 미리캔버스 (무료 디자인 툴)", "인쇄용 PDF 파일", "온라인 인쇄 서비스"],
+      materials: [
+        "고해상도 웨딩 사진 (300dpi 이상)",
+        "Canva 또는 미리캔버스 (무료 디자인 툴)",
+        "인쇄용 PDF 파일",
+        "온라인 인쇄 서비스",
+      ],
       steps: [
         "웨딩 사진 중 가장 마음에 드는 사진을 고해상도로 준비하세요",
         "Canva에서 '포스터' 템플릿을 선택하고 사이즈를 설정하세요",
@@ -192,13 +211,27 @@ const guideItems: GuideItem[] = [
     title: "웨딩 거울",
     icon: Diamond,
     gradient: "from-blue-400 to-indigo-500",
-    description: "아크릴 거울에 웨딩 문구를 새긴 웰컴 사이니지. 식장 입구에서 하객들을 맞이하는 특별한 아이템이에요.",
+    description:
+      "아크릴 거울에 웨딩 문구를 새긴 웰컴 사이니지. 식장 입구에서 하객들을 맞이하는 특별한 아이템이에요.",
     proInfo: {
       title: "전문 업체 제작",
       options: [
-        { name: "아크릴 전문 업체", detail: "네이버 스마트스토어에서 '웨딩 아크릴 거울' 검색. 레터링 맞춤 제작", price: "3만~8만원" },
-        { name: "캘리그라피 작가", detail: "크몽, 숨고에서 캘리그라피 작가에게 직접 의뢰. 손글씨 감성", price: "5만~15만원" },
-        { name: "웨딩 소품 렌탈샵", detail: "일회용이라 부담될 때, 렌탈로 저렴하게 이용 가능", price: "2만~5만원 (렌탈)" },
+        {
+          name: "아크릴 전문 업체",
+          detail:
+            "네이버 스마트스토어에서 '웨딩 아크릴 거울' 검색. 레터링 맞춤 제작",
+          price: "3만~8만원",
+        },
+        {
+          name: "캘리그라피 작가",
+          detail: "크몽, 숨고에서 캘리그라피 작가에게 직접 의뢰. 손글씨 감성",
+          price: "5만~15만원",
+        },
+        {
+          name: "웨딩 소품 렌탈샵",
+          detail: "일회용이라 부담될 때, 렌탈로 저렴하게 이용 가능",
+          price: "2만~5만원 (렌탈)",
+        },
       ],
       tips: [
         "아크릴 거울은 깨질 위험이 없어 안전해요",
@@ -211,7 +244,13 @@ const guideItems: GuideItem[] = [
       title: "셀프 제작 가이드",
       difficulty: "보통",
       difficultyColor: "text-amber-500",
-      materials: ["아크릴 거울판 (인터넷 주문, 1~3만원)", "유성 마카/페인트 마커 (골드, 실버 추천)", "마스킹 테이프", "프린트한 글씨 시안 (밑그림용)", "먹지 또는 카본지"],
+      materials: [
+        "아크릴 거울판 (인터넷 주문, 1~3만원)",
+        "유성 마카/페인트 마커 (골드, 실버 추천)",
+        "마스킹 테이프",
+        "프린트한 글씨 시안 (밑그림용)",
+        "먹지 또는 카본지",
+      ],
       steps: [
         "원하는 문구를 정하고 예쁜 폰트로 프린트하세요",
         "프린트한 시안을 아크릴 거울 위에 먹지와 함께 고정하세요",
@@ -234,14 +273,32 @@ const guideItems: GuideItem[] = [
     title: "웨딩 액자",
     icon: Palette,
     gradient: "from-amber-400 to-orange-500",
-    description: "웨딩 사진을 담은 고급 액자. 포토테이블 연출부터 신혼집 인테리어까지 두고두고 활용할 수 있어요.",
+    description:
+      "웨딩 사진을 담은 고급 액자. 포토테이블 연출부터 신혼집 인테리어까지 두고두고 활용할 수 있어요.",
     proInfo: {
       title: "전문 업체 제작",
       options: [
-        { name: "사진 인화/액자 전문점", detail: "오프라인 사진관 또는 온라인(스냅스, 포토몬 등)에서 액자 제작", price: "2만~10만원" },
-        { name: "캔버스 액자", detail: "사진을 캔버스에 출력. 갤러리 느낌의 고급스러운 연출 가능", price: "3만~8만원" },
-        { name: "메탈 액자", detail: "알루미늄 프레임에 고화질 인쇄. 모던하고 세련된 느낌", price: "4만~12만원" },
-        { name: "아크릴 액자", detail: "투명 아크릴에 사진 인쇄. 깔끔하고 현대적인 느낌", price: "3만~7만원" },
+        {
+          name: "사진 인화/액자 전문점",
+          detail:
+            "오프라인 사진관 또는 온라인(스냅스, 포토몬 등)에서 액자 제작",
+          price: "2만~10만원",
+        },
+        {
+          name: "캔버스 액자",
+          detail: "사진을 캔버스에 출력. 갤러리 느낌의 고급스러운 연출 가능",
+          price: "3만~8만원",
+        },
+        {
+          name: "메탈 액자",
+          detail: "알루미늄 프레임에 고화질 인쇄. 모던하고 세련된 느낌",
+          price: "4만~12만원",
+        },
+        {
+          name: "아크릴 액자",
+          detail: "투명 아크릴에 사진 인쇄. 깔끔하고 현대적인 느낌",
+          price: "3만~7만원",
+        },
       ],
       tips: [
         "5x7인치, 8x10인치, 11x14인치가 가장 많이 사용돼요",
@@ -254,7 +311,12 @@ const guideItems: GuideItem[] = [
       title: "셀프 제작 가이드",
       difficulty: "쉬움",
       difficultyColor: "text-green-500",
-      materials: ["고해상도 웨딩 사진", "원하는 사이즈 액자 프레임 (다이소, 이케아 등)", "사진 인화 (온라인 인화 서비스 이용)", "매트지 (선택사항, 고급스러운 연출)"],
+      materials: [
+        "고해상도 웨딩 사진",
+        "원하는 사이즈 액자 프레임 (다이소, 이케아 등)",
+        "사진 인화 (온라인 인화 서비스 이용)",
+        "매트지 (선택사항, 고급스러운 연출)",
+      ],
       steps: [
         "액자 사이즈에 맞는 사진을 선택하세요",
         "온라인 인화 서비스(스냅스, 포토몬 등)에서 사진을 주문하세요",
@@ -272,114 +334,121 @@ const guideItems: GuideItem[] = [
       estimatedTime: "약 30분 (조립) + 인화 배송 2~3일",
     },
   },
-]
+];
 
 export default function GoodsPage() {
-  const [activeTab, setActiveTab] = useState<"manage" | "guide">("manage")
-  const [goods, setGoods] = useState<GoodsItem[]>(initialGoods)
-  const [activeCategory, setActiveCategory] = useState("전체")
-  const [activeStatus, setActiveStatus] = useState<"all" | "wishlist" | "purchased" | "received">("all")
-  const [showAddModal, setShowAddModal] = useState(false)
-  const [expandedGuide, setExpandedGuide] = useState<string | null>(null)
-  const [expandedSection, setExpandedSection] = useState<Record<string, "pro" | "diy" | null>>({})
+  const [activeTab, setActiveTab] = useState<"manage" | "guide">("manage");
+  const [goods, setGoods] = useState<GoodsItem[]>(initialGoods);
+  const [activeCategory, setActiveCategory] = useState("전체");
+  const [activeStatus, setActiveStatus] = useState<
+    "all" | "wishlist" | "purchased" | "received"
+  >("all");
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [expandedGuide, setExpandedGuide] = useState<string | null>(null);
+  const [expandedSection, setExpandedSection] = useState<
+    Record<string, "pro" | "diy" | null>
+  >({});
 
-  const [products, setProducts] = useState<Product[]>([])
-  const [shopLoading, setShopLoading] = useState(true)
-  const [shopCategory, setShopCategory] = useState("all")
-  const [showVerifyModal, setShowVerifyModal] = useState(false)
-  const [verifying, setVerifying] = useState(false)
-  const [orderNumber, setOrderNumber] = useState("")
-  const [receiptFile, setReceiptFile] = useState<File | null>(null)
-  const [receiptPreview, setReceiptPreview] = useState<string | null>(null)
-  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false)
-  const [toastMessage, setToastMessage] = useState<string | null>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [products, setProducts] = useState<Product[]>([]);
+  const [shopLoading, setShopLoading] = useState(true);
+  const [shopCategory, setShopCategory] = useState("all");
+  const [showVerifyModal, setShowVerifyModal] = useState(false);
+  const [verifying, setVerifying] = useState(false);
+  const [orderNumber, setOrderNumber] = useState("");
+  const [receiptFile, setReceiptFile] = useState<File | null>(null);
+  const [receiptPreview, setReceiptPreview] = useState<string | null>(null);
+  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const stored = typeof window !== "undefined" && localStorage.getItem("weve_premium_unlocked")
-    if (stored === "true") setIsPremiumUnlocked(true)
-  }, [])
+    const stored =
+      typeof window !== "undefined" &&
+      localStorage.getItem("weve_premium_unlocked");
+    if (stored === "true") setIsPremiumUnlocked(true);
+  }, []);
 
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await fetch("/api/shop/goods")
+        const res = await fetch("/api/shop/goods");
         if (res.ok) {
-          const data = await res.json()
-          setProducts(data)
+          const data = await res.json();
+          setProducts(data);
         }
       } catch (error) {
-        console.error("Error fetching products:", error)
+        console.error("Error fetching products:", error);
       } finally {
-        setShopLoading(false)
+        setShopLoading(false);
       }
     }
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
   const showToast = (msg: string) => {
-    setToastMessage(msg)
-    setTimeout(() => setToastMessage(null), 3000)
-  }
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
 
   const handleProductClick = (product: Product) => {
-    window.open(product.linkUrl, "_blank")
-    showToast("구매 후 [인증하기]를 눌러 혜택을 꼭 챙기세요!")
-  }
+    window.open(product.linkUrl, "_blank");
+    showToast("구매 후 [인증하기]를 눌러 혜택을 꼭 챙기세요!");
+  };
 
   const handleReceiptUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0];
     if (file) {
-      setReceiptFile(file)
-      const reader = new FileReader()
-      reader.onloadend = () => setReceiptPreview(reader.result as string)
-      reader.readAsDataURL(file)
+      setReceiptFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => setReceiptPreview(reader.result as string);
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   const handleVerify = async () => {
     if (!orderNumber.trim()) {
-      showToast("주문번호를 입력해주세요")
-      return
+      showToast("주문번호를 입력해주세요");
+      return;
     }
-    setVerifying(true)
+    setVerifying(true);
     try {
-      const formData = new FormData()
-      formData.append("orderNumber", orderNumber)
-      if (receiptFile) formData.append("receipt", receiptFile)
+      const formData = new FormData();
+      formData.append("orderNumber", orderNumber);
+      if (receiptFile) formData.append("receipt", receiptFile);
 
       const res = await fetch("/api/shop/verify", {
         method: "POST",
         body: formData,
-      })
+      });
       if (res.ok) {
-        setIsPremiumUnlocked(true)
-        localStorage.setItem("weve_premium_unlocked", "true")
-        setShowVerifyModal(false)
-        setOrderNumber("")
-        setReceiptFile(null)
-        setReceiptPreview(null)
-        showToast("인증 완료! 프리미엄 템플릿이 잠금 해제되었습니다.")
+        setIsPremiumUnlocked(true);
+        localStorage.setItem("weve_premium_unlocked", "true");
+        setShowVerifyModal(false);
+        setOrderNumber("");
+        setReceiptFile(null);
+        setReceiptPreview(null);
+        showToast("인증 완료! 프리미엄 템플릿이 잠금 해제되었습니다.");
       }
     } catch (error) {
-      console.error("Error verifying:", error)
-      showToast("인증에 실패했습니다. 다시 시도해주세요.")
+      console.error("Error verifying:", error);
+      showToast("인증에 실패했습니다. 다시 시도해주세요.");
     } finally {
-      setVerifying(false)
+      setVerifying(false);
     }
-  }
+  };
 
-  const filteredProducts = shopCategory === "all"
-    ? products
-    : products.filter(p => p.category === shopCategory)
+  const filteredProducts =
+    shopCategory === "all"
+      ? products
+      : products.filter((p) => p.category === shopCategory);
 
   const [newItem, setNewItem] = useState<{
-    name: string
-    category: string
-    price: string
-    link: string
-    notes: string
-    forWhom: "bride" | "groom" | "both" | "guest"
+    name: string;
+    category: string;
+    price: string;
+    link: string;
+    notes: string;
+    forWhom: "bride" | "groom" | "both" | "guest";
   }>({
     name: "",
     category: "예물",
@@ -387,25 +456,30 @@ export default function GoodsPage() {
     link: "",
     notes: "",
     forWhom: "both",
-  })
+  });
 
-  const filteredGoods = goods.filter(item => {
-    const categoryMatch = activeCategory === "전체" || item.category === activeCategory
-    const statusMatch = activeStatus === "all" || item.status === activeStatus
-    return categoryMatch && statusMatch
-  })
+  const filteredGoods = goods.filter((item) => {
+    const categoryMatch =
+      activeCategory === "전체" || item.category === activeCategory;
+    const statusMatch = activeStatus === "all" || item.status === activeStatus;
+    return categoryMatch && statusMatch;
+  });
 
-  const totalWishlist = goods.filter(g => g.status === "wishlist").reduce((sum, g) => sum + g.price, 0)
-  const totalPurchased = goods.filter(g => g.status === "purchased").reduce((sum, g) => sum + g.price, 0)
+  const totalWishlist = goods
+    .filter((g) => g.status === "wishlist")
+    .reduce((sum, g) => sum + g.price, 0);
+  const totalPurchased = goods
+    .filter((g) => g.status === "purchased")
+    .reduce((sum, g) => sum + g.price, 0);
 
   const formatPrice = (value: string) => {
-    const num = value.replace(/[^0-9]/g, "")
-    return num ? Number(num).toLocaleString() : ""
-  }
+    const num = value.replace(/[^0-9]/g, "");
+    return num ? Number(num).toLocaleString() : "";
+  };
 
   const handleAddItem = () => {
-    if (!newItem.name || !newItem.price) return
-    
+    if (!newItem.name || !newItem.price) return;
+
     const item: GoodsItem = {
       id: Date.now().toString(),
       name: newItem.name,
@@ -415,48 +489,70 @@ export default function GoodsPage() {
       notes: newItem.notes || undefined,
       status: "wishlist",
       forWhom: newItem.forWhom,
-    }
-    setGoods([item, ...goods])
-    setShowAddModal(false)
-    setNewItem({ name: "", category: "예물", price: "", link: "", notes: "", forWhom: "both" })
-  }
+    };
+    setGoods([item, ...goods]);
+    setShowAddModal(false);
+    setNewItem({
+      name: "",
+      category: "예물",
+      price: "",
+      link: "",
+      notes: "",
+      forWhom: "both",
+    });
+  };
 
   const updateStatus = (id: string, status: GoodsItem["status"]) => {
-    setGoods(goods.map(g => g.id === id ? { ...g, status } : g))
-  }
+    setGoods(goods.map((g) => (g.id === id ? { ...g, status } : g)));
+  };
 
   const deleteItem = (id: string) => {
-    setGoods(goods.filter(g => g.id !== id))
-  }
+    setGoods(goods.filter((g) => g.id !== id));
+  };
 
   const toggleGuide = (id: string) => {
-    setExpandedGuide(expandedGuide === id ? null : id)
-  }
+    setExpandedGuide(expandedGuide === id ? null : id);
+  };
 
   const toggleSection = (guideId: string, section: "pro" | "diy") => {
-    setExpandedSection(prev => ({
+    setExpandedSection((prev) => ({
       ...prev,
       [guideId]: prev[guideId] === section ? null : section,
-    }))
-  }
+    }));
+  };
 
   const statusConfig = {
-    wishlist: { label: "위시리스트", bg: "bg-pink-50", text: "text-pink-500", icon: Heart },
-    purchased: { label: "구매완료", bg: "bg-blue-50", text: "text-blue-600", icon: Check },
-    received: { label: "선물받음", bg: "bg-amber-50", text: "text-amber-600", icon: Gift },
-  }
+    wishlist: {
+      label: "위시리스트",
+      bg: "bg-pink-50",
+      text: "text-pink-500",
+      icon: Heart,
+    },
+    purchased: {
+      label: "구매완료",
+      bg: "bg-blue-50",
+      text: "text-blue-600",
+      icon: Check,
+    },
+    received: {
+      label: "선물받음",
+      bg: "bg-amber-50",
+      text: "text-amber-600",
+      icon: Gift,
+    },
+  };
 
   const forWhomLabels: Record<string, string> = {
     bride: "신부용",
     groom: "신랑용",
     both: "공동",
     guest: "하객선물",
-  }
+  };
 
   return (
     <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe">
-      <header className="bg-white px-5 py-4 sticky top-0 sticky-header-safe z-40">
-        <div className="flex items-center justify-between max-w-md mx-auto">
+      <header className="bg-white px-5 pt-[env(safe-area-inset-top)] sticky top-0 sticky-header-safe z-40">
+        <div className="flex items-center justify-between max-w-md mx-auto py-4">
           <h1 className="text-[20px] font-bold text-[#191F28]">웨딩 굿즈</h1>
           <div className="w-10" />
         </div>
@@ -501,11 +597,15 @@ export default function GoodsPage() {
               <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-1.5">
                   <Crown className="w-5 h-5 text-white" />
-                  <span className="text-[12px] font-semibold text-white/90 tracking-wide">PREMIUM BENEFIT</span>
+                  <span className="text-[12px] font-semibold text-white/90 tracking-wide">
+                    PREMIUM BENEFIT
+                  </span>
                 </div>
                 <p className="text-[15px] font-bold text-white leading-snug mb-2">
                   혼수/답례품 구매 인증하면{"\n"}
-                  <span className="text-[18px]">7,900원 프리미엄 청첩장 무료!</span>
+                  <span className="text-[18px]">
+                    7,900원 프리미엄 청첩장 무료!
+                  </span>
                 </p>
                 <span className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white rounded-full text-[13px] font-bold text-orange-500">
                   <Award className="w-4 h-4" />
@@ -516,13 +616,20 @@ export default function GoodsPage() {
           )}
 
           {isPremiumUnlocked && (
-            <div className="bg-green-50 border border-green-200 rounded-[16px] p-4 flex items-center gap-3" data-testid="premium-unlocked-badge">
+            <div
+              className="bg-green-50 border border-green-200 rounded-[16px] p-4 flex items-center gap-3"
+              data-testid="premium-unlocked-badge"
+            >
               <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
                 <Check className="w-5 h-5 text-green-600" />
               </div>
               <div>
-                <p className="text-[14px] font-bold text-green-700">프리미엄 혜택 적용 중</p>
-                <p className="text-[12px] text-green-600">프리미엄 청첩장 템플릿이 잠금 해제되었어요</p>
+                <p className="text-[14px] font-bold text-green-700">
+                  프리미엄 혜택 적용 중
+                </p>
+                <p className="text-[12px] text-green-600">
+                  프리미엄 청첩장 템플릿이 잠금 해제되었어요
+                </p>
               </div>
             </div>
           )}
@@ -546,8 +653,11 @@ export default function GoodsPage() {
 
           {shopLoading ? (
             <div className="grid grid-cols-2 gap-3">
-              {[1, 2, 3, 4].map(i => (
-                <div key={i} className="bg-white rounded-[16px] overflow-hidden animate-pulse">
+              {[1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className="bg-white rounded-[16px] overflow-hidden animate-pulse"
+                >
                   <div className="aspect-square bg-[#F2F4F6]" />
                   <div className="p-3 space-y-2">
                     <div className="h-3 bg-[#F2F4F6] rounded w-1/3" />
@@ -560,9 +670,12 @@ export default function GoodsPage() {
           ) : (
             <div className="grid grid-cols-2 gap-3">
               {filteredProducts.map((product) => {
-                const discount = product.originalPrice && product.salePrice
-                  ? Math.round((1 - product.salePrice / product.originalPrice) * 100)
-                  : null
+                const discount =
+                  product.originalPrice && product.salePrice
+                    ? Math.round(
+                        (1 - product.salePrice / product.originalPrice) * 100,
+                      )
+                    : null;
 
                 return (
                   <button
@@ -591,40 +704,57 @@ export default function GoodsPage() {
                     </div>
                     <div className="p-3">
                       <div className="flex items-center gap-1.5 mb-1">
-                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
-                          product.platform === "COUPANG"
-                            ? "bg-[#FFF0F0] text-[#E4280E]"
-                            : "bg-[#F0FFF4] text-[#03C75A]"
-                        }`}>
+                        <span
+                          className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                            product.platform === "COUPANG"
+                              ? "bg-[#FFF0F0] text-[#E4280E]"
+                              : "bg-[#F0FFF4] text-[#03C75A]"
+                          }`}
+                        >
                           {product.platform === "COUPANG" ? "쿠팡" : "네이버"}
                         </span>
-                        <span className="text-[11px] text-[#8B95A1] truncate">{product.brand}</span>
+                        <span className="text-[11px] text-[#8B95A1] truncate">
+                          {product.brand}
+                        </span>
                       </div>
-                      <h3 className="text-[13px] font-medium text-[#191F28] line-clamp-2 leading-tight mb-1.5">{product.title}</h3>
+                      <h3 className="text-[13px] font-medium text-[#191F28] line-clamp-2 leading-tight mb-1.5">
+                        {product.title}
+                      </h3>
                       <div className="flex items-baseline gap-1.5 flex-wrap">
                         {discount && (
-                          <span className="text-[14px] font-bold text-[#FF5252]">{discount}%</span>
+                          <span className="text-[14px] font-bold text-[#FF5252]">
+                            {discount}%
+                          </span>
                         )}
                         <span className="text-[15px] font-bold text-[#191F28]">
-                          {(product.salePrice || product.originalPrice || 0).toLocaleString()}원
+                          {(
+                            product.salePrice ||
+                            product.originalPrice ||
+                            0
+                          ).toLocaleString()}
+                          원
                         </span>
                       </div>
-                      {product.originalPrice && product.salePrice && product.originalPrice !== product.salePrice && (
-                        <span className="text-[11px] text-[#B0B8C1] line-through">
-                          {product.originalPrice.toLocaleString()}원
-                        </span>
-                      )}
+                      {product.originalPrice &&
+                        product.salePrice &&
+                        product.originalPrice !== product.salePrice && (
+                          <span className="text-[11px] text-[#B0B8C1] line-through">
+                            {product.originalPrice.toLocaleString()}원
+                          </span>
+                        )}
                     </div>
                   </button>
-                )
+                );
               })}
             </div>
           )}
 
           <div className="border-t border-[#E5E8EB] pt-5">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-[17px] font-bold text-[#191F28]">내 굿즈 관리</h2>
-              <button 
+              <h2 className="text-[17px] font-bold text-[#191F28]">
+                내 굿즈 관리
+              </h2>
+              <button
                 onClick={() => setShowAddModal(true)}
                 className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#FF8A80] text-white text-[12px] font-semibold"
                 data-testid="button-add-goods"
@@ -663,31 +793,39 @@ export default function GoodsPage() {
             </div>
 
             <div className="flex gap-2 flex-wrap mb-3">
-              {(["all", "wishlist", "purchased", "received"] as const).map((status) => (
-                <button
-                  key={status}
-                  onClick={() => setActiveStatus(status)}
-                  className={`px-3 py-1.5 rounded-full text-[11px] font-medium transition-colors ${
-                    activeStatus === status
-                      ? "bg-[#191F28] text-white"
-                      : "bg-[#F2F4F6] text-[#8B95A1]"
-                  }`}
-                  data-testid={`filter-status-${status}`}
-                >
-                  {status === "all" ? "전체" : statusConfig[status].label}
-                </button>
-              ))}
+              {(["all", "wishlist", "purchased", "received"] as const).map(
+                (status) => (
+                  <button
+                    key={status}
+                    onClick={() => setActiveStatus(status)}
+                    className={`px-3 py-1.5 rounded-full text-[11px] font-medium transition-colors ${
+                      activeStatus === status
+                        ? "bg-[#191F28] text-white"
+                        : "bg-[#F2F4F6] text-[#8B95A1]"
+                    }`}
+                    data-testid={`filter-status-${status}`}
+                  >
+                    {status === "all" ? "전체" : statusConfig[status].label}
+                  </button>
+                ),
+              )}
             </div>
 
             <div className="space-y-3">
               {filteredGoods.length > 0 ? (
                 filteredGoods.map((item) => {
-                  const StatusIcon = statusConfig[item.status].icon
+                  const StatusIcon = statusConfig[item.status].icon;
                   return (
-                    <div key={item.id} className="bg-white rounded-[16px] p-4 shadow-sm" data-testid={`goods-item-${item.id}`}>
+                    <div
+                      key={item.id}
+                      className="bg-white rounded-[16px] p-4 shadow-sm"
+                      data-testid={`goods-item-${item.id}`}
+                    >
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex-1">
-                          <h3 className="text-[14px] font-bold text-[#191F28] line-clamp-1 mb-1">{item.name}</h3>
+                          <h3 className="text-[14px] font-bold text-[#191F28] line-clamp-1 mb-1">
+                            {item.name}
+                          </h3>
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-[11px] px-2 py-0.5 bg-[#F2F4F6] text-[#8B95A1] rounded">
                               {item.category}
@@ -699,7 +837,9 @@ export default function GoodsPage() {
                             )}
                           </div>
                         </div>
-                        <span className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium ${statusConfig[item.status].bg} ${statusConfig[item.status].text}`}>
+                        <span
+                          className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium ${statusConfig[item.status].bg} ${statusConfig[item.status].text}`}
+                        >
                           <StatusIcon className="w-3 h-3" />
                           {statusConfig[item.status].label}
                         </span>
@@ -733,12 +873,14 @@ export default function GoodsPage() {
                         </p>
                       )}
                     </div>
-                  )
+                  );
                 })
               ) : (
                 <div className="bg-white rounded-[16px] p-6 text-center">
                   <ShoppingBag className="w-10 h-10 text-[#E5E8EB] mx-auto mb-2" />
-                  <p className="text-[13px] text-[#8B95A1]">등록된 굿즈가 없습니다</p>
+                  <p className="text-[13px] text-[#8B95A1]">
+                    등록된 굿즈가 없습니다
+                  </p>
                 </div>
               )}
             </div>
@@ -751,37 +893,51 @@ export default function GoodsPage() {
               <Lightbulb className="w-5 h-5" />
               <p className="text-[13px] text-white/80">웨딩 굿즈 제작 가이드</p>
             </div>
-            <p className="text-[20px] font-bold mb-1">나만의 웨딩 아이템 만들기</p>
-            <p className="text-[13px] text-white/80">전문 업체 의뢰부터 셀프 제작까지, 필요한 정보를 한눈에 확인하세요</p>
+            <p className="text-[20px] font-bold mb-1">
+              나만의 웨딩 아이템 만들기
+            </p>
+            <p className="text-[13px] text-white/80">
+              전문 업체 의뢰부터 셀프 제작까지, 필요한 정보를 한눈에 확인하세요
+            </p>
           </div>
 
           <div className="space-y-4">
             {guideItems.map((guide) => {
-              const GuideIcon = guide.icon
-              const isExpanded = expandedGuide === guide.id
-              const activeSection = expandedSection[guide.id]
+              const GuideIcon = guide.icon;
+              const isExpanded = expandedGuide === guide.id;
+              const activeSection = expandedSection[guide.id];
 
               return (
-                <div key={guide.id} className="bg-white rounded-[16px] overflow-hidden shadow-sm" data-testid={`guide-card-${guide.id}`}>
+                <div
+                  key={guide.id}
+                  className="bg-white rounded-[16px] overflow-hidden shadow-sm"
+                  data-testid={`guide-card-${guide.id}`}
+                >
                   <button
                     onClick={() => toggleGuide(guide.id)}
                     className="w-full p-5 text-left"
                     data-testid={`button-guide-toggle-${guide.id}`}
                   >
                     <div className="flex items-start gap-4">
-                      <div className={`w-12 h-12 rounded-[14px] bg-gradient-to-br ${guide.gradient} flex items-center justify-center flex-shrink-0`}>
+                      <div
+                        className={`w-12 h-12 rounded-[14px] bg-gradient-to-br ${guide.gradient} flex items-center justify-center flex-shrink-0`}
+                      >
                         <GuideIcon className="w-6 h-6 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
-                          <h3 className="text-[17px] font-bold text-[#191F28]">{guide.title}</h3>
+                          <h3 className="text-[17px] font-bold text-[#191F28]">
+                            {guide.title}
+                          </h3>
                           {isExpanded ? (
                             <ChevronUp className="w-5 h-5 text-[#B0B8C1] flex-shrink-0" />
                           ) : (
                             <ChevronDown className="w-5 h-5 text-[#B0B8C1] flex-shrink-0" />
                           )}
                         </div>
-                        <p className="text-[13px] text-[#8B95A1] mt-1 leading-relaxed">{guide.description}</p>
+                        <p className="text-[13px] text-[#8B95A1] mt-1 leading-relaxed">
+                          {guide.description}
+                        </p>
                       </div>
                     </div>
                   </button>
@@ -823,15 +979,22 @@ export default function GoodsPage() {
                           </h4>
                           <div className="space-y-2.5">
                             {guide.proInfo.options.map((option, i) => (
-                              <div key={i} className="bg-[#F8F9FA] rounded-[12px] p-4">
+                              <div
+                                key={i}
+                                className="bg-[#F8F9FA] rounded-[12px] p-4"
+                              >
                                 <div className="flex items-start justify-between gap-2 mb-1.5">
-                                  <h5 className="text-[14px] font-bold text-[#191F28]">{option.name}</h5>
+                                  <h5 className="text-[14px] font-bold text-[#191F28]">
+                                    {option.name}
+                                  </h5>
                                   <span className="text-[13px] font-semibold text-[#3182F6] whitespace-nowrap flex items-center gap-1">
                                     <CircleDollarSign className="w-3.5 h-3.5" />
                                     {option.price}
                                   </span>
                                 </div>
-                                <p className="text-[12px] text-[#8B95A1] leading-relaxed">{option.detail}</p>
+                                <p className="text-[12px] text-[#8B95A1] leading-relaxed">
+                                  {option.detail}
+                                </p>
                               </div>
                             ))}
                           </div>
@@ -842,8 +1005,13 @@ export default function GoodsPage() {
                             </p>
                             <ul className="space-y-1.5">
                               {guide.proInfo.tips.map((tip, i) => (
-                                <li key={i} className="text-[12px] text-[#4E5968] leading-relaxed flex gap-2">
-                                  <span className="text-[#3182F6] mt-0.5 flex-shrink-0">&#8226;</span>
+                                <li
+                                  key={i}
+                                  className="text-[12px] text-[#4E5968] leading-relaxed flex gap-2"
+                                >
+                                  <span className="text-[#3182F6] mt-0.5 flex-shrink-0">
+                                    &#8226;
+                                  </span>
                                   {tip}
                                 </li>
                               ))}
@@ -859,7 +1027,9 @@ export default function GoodsPage() {
                               <Scissors className="w-4 h-4 text-[#FF8A80]" />
                               {guide.diyInfo.title}
                             </h4>
-                            <span className={`text-[12px] font-semibold ${guide.diyInfo.difficultyColor} bg-white px-2.5 py-1 rounded-full`}>
+                            <span
+                              className={`text-[12px] font-semibold ${guide.diyInfo.difficultyColor} bg-white px-2.5 py-1 rounded-full`}
+                            >
                               난이도: {guide.diyInfo.difficulty}
                             </span>
                           </div>
@@ -867,13 +1037,21 @@ export default function GoodsPage() {
                           <div className="flex gap-2">
                             <div className="flex-1 bg-[#F8F9FA] rounded-[12px] p-3 text-center">
                               <CircleDollarSign className="w-4 h-4 text-[#8B95A1] mx-auto mb-1" />
-                              <p className="text-[11px] text-[#8B95A1] mb-0.5">예상 비용</p>
-                              <p className="text-[13px] font-bold text-[#191F28]">{guide.diyInfo.estimatedCost}</p>
+                              <p className="text-[11px] text-[#8B95A1] mb-0.5">
+                                예상 비용
+                              </p>
+                              <p className="text-[13px] font-bold text-[#191F28]">
+                                {guide.diyInfo.estimatedCost}
+                              </p>
                             </div>
                             <div className="flex-1 bg-[#F8F9FA] rounded-[12px] p-3 text-center">
                               <Ruler className="w-4 h-4 text-[#8B95A1] mx-auto mb-1" />
-                              <p className="text-[11px] text-[#8B95A1] mb-0.5">소요 시간</p>
-                              <p className="text-[13px] font-bold text-[#191F28]">{guide.diyInfo.estimatedTime}</p>
+                              <p className="text-[11px] text-[#8B95A1] mb-0.5">
+                                소요 시간
+                              </p>
+                              <p className="text-[13px] font-bold text-[#191F28]">
+                                {guide.diyInfo.estimatedTime}
+                              </p>
                             </div>
                           </div>
 
@@ -884,7 +1062,10 @@ export default function GoodsPage() {
                             </p>
                             <ul className="space-y-1.5">
                               {guide.diyInfo.materials.map((mat, i) => (
-                                <li key={i} className="text-[12px] text-[#4E5968] flex items-start gap-2">
+                                <li
+                                  key={i}
+                                  className="text-[12px] text-[#4E5968] flex items-start gap-2"
+                                >
                                   <Check className="w-3.5 h-3.5 text-green-500 mt-0.5 flex-shrink-0" />
                                   {mat}
                                 </li>
@@ -893,10 +1074,15 @@ export default function GoodsPage() {
                           </div>
 
                           <div className="bg-[#F8F9FA] rounded-[12px] p-4">
-                            <p className="text-[13px] font-semibold text-[#191F28] mb-2">제작 순서</p>
+                            <p className="text-[13px] font-semibold text-[#191F28] mb-2">
+                              제작 순서
+                            </p>
                             <ol className="space-y-2">
                               {guide.diyInfo.steps.map((step, i) => (
-                                <li key={i} className="text-[12px] text-[#4E5968] flex items-start gap-3 leading-relaxed">
+                                <li
+                                  key={i}
+                                  className="text-[12px] text-[#4E5968] flex items-start gap-3 leading-relaxed"
+                                >
                                   <span className="w-5 h-5 rounded-full bg-[#FF8A80] text-white text-[11px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
                                     {i + 1}
                                   </span>
@@ -913,8 +1099,13 @@ export default function GoodsPage() {
                             </p>
                             <ul className="space-y-1.5">
                               {guide.diyInfo.tips.map((tip, i) => (
-                                <li key={i} className="text-[12px] text-[#4E5968] leading-relaxed flex gap-2">
-                                  <span className="text-amber-500 mt-0.5 flex-shrink-0">&#8226;</span>
+                                <li
+                                  key={i}
+                                  className="text-[12px] text-[#4E5968] leading-relaxed flex gap-2"
+                                >
+                                  <span className="text-amber-500 mt-0.5 flex-shrink-0">
+                                    &#8226;
+                                  </span>
                                   {tip}
                                 </li>
                               ))}
@@ -925,13 +1116,17 @@ export default function GoodsPage() {
                     </div>
                   )}
                 </div>
-              )
+              );
             })}
           </div>
 
           <div className="bg-white rounded-[16px] p-5 text-center">
-            <p className="text-[13px] text-[#8B95A1] mb-1">더 많은 웨딩 굿즈 정보가 궁금하다면</p>
-            <p className="text-[14px] font-semibold text-[#191F28]">커뮤니티에서 다른 예비부부들의 후기를 확인해 보세요</p>
+            <p className="text-[13px] text-[#8B95A1] mb-1">
+              더 많은 웨딩 굿즈 정보가 궁금하다면
+            </p>
+            <p className="text-[14px] font-semibold text-[#191F28]">
+              커뮤니티에서 다른 예비부부들의 후기를 확인해 보세요
+            </p>
           </div>
         </main>
       )}
@@ -942,17 +1137,24 @@ export default function GoodsPage() {
             <div className="flex justify-center pt-3 pb-2">
               <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
             </div>
-            
+
             <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
-              <button onClick={() => setShowAddModal(false)} data-testid="button-close-modal">
+              <button
+                onClick={() => setShowAddModal(false)}
+                data-testid="button-close-modal"
+              >
                 <X className="w-6 h-6 text-[#8B95A1]" />
               </button>
-              <h3 className="text-[17px] font-bold text-[#191F28]">굿즈 추가</h3>
-              <button 
+              <h3 className="text-[17px] font-bold text-[#191F28]">
+                굿즈 추가
+              </h3>
+              <button
                 onClick={handleAddItem}
                 disabled={!newItem.name || !newItem.price}
                 className={`text-[15px] font-semibold ${
-                  newItem.name && newItem.price ? "text-[#FF8A80]" : "text-[#B0B8C1]"
+                  newItem.name && newItem.price
+                    ? "text-[#FF8A80]"
+                    : "text-[#B0B8C1]"
                 }`}
                 data-testid="button-save-goods"
               >
@@ -962,11 +1164,15 @@ export default function GoodsPage() {
 
             <div className="px-5 py-5 space-y-4 max-h-[70vh] overflow-y-auto">
               <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">상품명 *</label>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">
+                  상품명 *
+                </label>
                 <input
                   type="text"
                   value={newItem.name}
-                  onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+                  onChange={(e) =>
+                    setNewItem({ ...newItem, name: e.target.value })
+                  }
                   placeholder="상품 이름"
                   className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                   data-testid="input-goods-name"
@@ -974,12 +1180,16 @@ export default function GoodsPage() {
               </div>
 
               <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">카테고리</label>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">
+                  카테고리
+                </label>
                 <div className="flex gap-2 flex-wrap">
                   {categories.map((cat) => (
                     <button
                       key={cat.id}
-                      onClick={() => setNewItem({ ...newItem, category: cat.label })}
+                      onClick={() =>
+                        setNewItem({ ...newItem, category: cat.label })
+                      }
                       className={`px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${
                         newItem.category === cat.label
                           ? "bg-[#191F28] text-white"
@@ -993,13 +1203,20 @@ export default function GoodsPage() {
               </div>
 
               <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">가격 *</label>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">
+                  가격 *
+                </label>
                 <div className="flex items-center gap-2">
                   <input
                     type="text"
                     inputMode="numeric"
                     value={newItem.price}
-                    onChange={(e) => setNewItem({ ...newItem, price: formatPrice(e.target.value) })}
+                    onChange={(e) =>
+                      setNewItem({
+                        ...newItem,
+                        price: formatPrice(e.target.value),
+                      })
+                    }
                     placeholder="0"
                     className="flex-1 px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[18px] font-bold text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] text-right"
                     data-testid="input-goods-price"
@@ -1009,30 +1226,40 @@ export default function GoodsPage() {
               </div>
 
               <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">대상</label>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">
+                  대상
+                </label>
                 <div className="grid grid-cols-4 gap-2">
-                  {(["bride", "groom", "both", "guest"] as const).map((whom) => (
-                    <button
-                      key={whom}
-                      onClick={() => setNewItem({ ...newItem, forWhom: whom })}
-                      className={`py-2.5 rounded-[10px] text-[13px] font-medium transition-colors ${
-                        newItem.forWhom === whom
-                          ? "bg-[#191F28] text-white"
-                          : "bg-[#F2F4F6] text-[#4E5968]"
-                      }`}
-                    >
-                      {forWhomLabels[whom]}
-                    </button>
-                  ))}
+                  {(["bride", "groom", "both", "guest"] as const).map(
+                    (whom) => (
+                      <button
+                        key={whom}
+                        onClick={() =>
+                          setNewItem({ ...newItem, forWhom: whom })
+                        }
+                        className={`py-2.5 rounded-[10px] text-[13px] font-medium transition-colors ${
+                          newItem.forWhom === whom
+                            ? "bg-[#191F28] text-white"
+                            : "bg-[#F2F4F6] text-[#4E5968]"
+                        }`}
+                      >
+                        {forWhomLabels[whom]}
+                      </button>
+                    ),
+                  )}
                 </div>
               </div>
 
               <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">링크 (선택)</label>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">
+                  링크 (선택)
+                </label>
                 <input
                   type="url"
                   value={newItem.link}
-                  onChange={(e) => setNewItem({ ...newItem, link: e.target.value })}
+                  onChange={(e) =>
+                    setNewItem({ ...newItem, link: e.target.value })
+                  }
                   placeholder="https://"
                   className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80]"
                   data-testid="input-goods-link"
@@ -1040,10 +1267,14 @@ export default function GoodsPage() {
               </div>
 
               <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">메모 (선택)</label>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">
+                  메모 (선택)
+                </label>
                 <textarea
                   value={newItem.notes}
-                  onChange={(e) => setNewItem({ ...newItem, notes: e.target.value })}
+                  onChange={(e) =>
+                    setNewItem({ ...newItem, notes: e.target.value })
+                  }
                   placeholder="추가 메모"
                   rows={2}
                   className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#FF8A80] resize-none"
@@ -1065,22 +1296,35 @@ export default function GoodsPage() {
             </div>
 
             <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
-              <button onClick={() => setShowVerifyModal(false)} data-testid="button-close-verify">
+              <button
+                onClick={() => setShowVerifyModal(false)}
+                data-testid="button-close-verify"
+              >
                 <X className="w-6 h-6 text-[#8B95A1]" />
               </button>
-              <h3 className="text-[17px] font-bold text-[#191F28]">구매 인증</h3>
+              <h3 className="text-[17px] font-bold text-[#191F28]">
+                구매 인증
+              </h3>
               <div className="w-6" />
             </div>
 
             <div className="px-5 py-5 space-y-5 max-h-[70vh] overflow-y-auto">
               <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-[16px] p-4 text-center">
                 <Crown className="w-8 h-8 text-orange-400 mx-auto mb-2" />
-                <p className="text-[15px] font-bold text-[#191F28] mb-1">구매 인증으로 프리미엄 혜택 받기</p>
-                <p className="text-[12px] text-[#8B95A1]">혼수/답례품 구매 영수증을 인증하면<br />7,900원 프리미엄 청첩장이 무료!</p>
+                <p className="text-[15px] font-bold text-[#191F28] mb-1">
+                  구매 인증으로 프리미엄 혜택 받기
+                </p>
+                <p className="text-[12px] text-[#8B95A1]">
+                  혼수/답례품 구매 영수증을 인증하면
+                  <br />
+                  7,900원 프리미엄 청첩장이 무료!
+                </p>
               </div>
 
               <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">영수증 / 주문 캡처 (선택)</label>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">
+                  영수증 / 주문 캡처 (선택)
+                </label>
                 <input
                   type="file"
                   ref={fileInputRef}
@@ -1091,9 +1335,16 @@ export default function GoodsPage() {
                 />
                 {receiptPreview ? (
                   <div className="relative">
-                    <img src={receiptPreview} alt="영수증" className="w-full h-48 object-cover rounded-[12px]" />
+                    <img
+                      src={receiptPreview}
+                      alt="영수증"
+                      className="w-full h-48 object-cover rounded-[12px]"
+                    />
                     <button
-                      onClick={() => { setReceiptFile(null); setReceiptPreview(null) }}
+                      onClick={() => {
+                        setReceiptFile(null);
+                        setReceiptPreview(null);
+                      }}
                       className="absolute top-2 right-2 w-7 h-7 bg-black/60 rounded-full flex items-center justify-center"
                     >
                       <X className="w-4 h-4 text-white" />
@@ -1106,13 +1357,17 @@ export default function GoodsPage() {
                     data-testid="button-upload-receipt"
                   >
                     <Upload className="w-8 h-8 text-[#B0B8C1]" />
-                    <span className="text-[13px] text-[#8B95A1]">이미지를 업로드하세요</span>
+                    <span className="text-[13px] text-[#8B95A1]">
+                      이미지를 업로드하세요
+                    </span>
                   </button>
                 )}
               </div>
 
               <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">주문번호 / 메모 *</label>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">
+                  주문번호 / 메모 *
+                </label>
                 <input
                   type="text"
                   value={orderNumber}
@@ -1154,7 +1409,10 @@ export default function GoodsPage() {
 
       {toastMessage && (
         <div className="fixed top-20 left-1/2 -translate-x-1/2 z-[70] max-w-sm w-[calc(100%-2.5rem)] animate-in fade-in slide-in-from-top-2 duration-300">
-          <div className="bg-[#191F28] text-white px-5 py-3.5 rounded-[14px] text-[14px] font-medium text-center shadow-xl" data-testid="toast-message">
+          <div
+            className="bg-[#191F28] text-white px-5 py-3.5 rounded-[14px] text-[14px] font-medium text-center shadow-xl"
+            data-testid="toast-message"
+          >
             {toastMessage}
           </div>
         </div>
@@ -1162,5 +1420,5 @@ export default function GoodsPage() {
 
       <WeddingBottomNav />
     </div>
-  )
+  );
 }

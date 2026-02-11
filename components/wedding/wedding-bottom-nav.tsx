@@ -4,10 +4,9 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
-import { Home, CheckSquare, MessageSquare, Wallet, User, ArrowLeft } from "lucide-react"
+import { CheckSquare, MessageSquare, Wallet, User, ArrowLeft } from "lucide-react"
 
 const navItems = [
-  { icon: Home, label: "홈", href: "/wedding" },
   { icon: CheckSquare, label: "체크", href: "/wedding/checklist" },
   { icon: MessageSquare, label: "커뮤니티", href: "/wedding/community" },
   { icon: Wallet, label: "예산", href: "/wedding/budget" },
@@ -54,7 +53,7 @@ export function WeddingBottomNav() {
         <div className="flex items-end justify-around h-16 px-1">
           {navItems.map((item) => {
             const Icon = item.icon
-            const isActive = pathname === item.href || (item.href !== "/wedding" && pathname?.startsWith(item.href))
+            const isActive = pathname === item.href || pathname?.startsWith(item.href)
 
             return (
               <Link
