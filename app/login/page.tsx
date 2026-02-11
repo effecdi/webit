@@ -109,10 +109,12 @@ export default function LoginPage() {
       if (res.ok) {
         const inviteCode = getInviteCode()
         if (inviteCode) {
-          router.push(`/invite-welcome?code=${inviteCode}`)
+          window.location.href = `/invite-welcome?code=${inviteCode}`
         } else {
-          router.push("/splash")
+          window.location.href = "/splash"
         }
+      } else {
+        setLoadingProvider(null)
       }
     } catch {
       setLoadingProvider(null)
