@@ -2799,7 +2799,7 @@ function InvitationEditorContent() {
                   </div>
                   <audio
                     ref={editorAudioRef}
-                    preload="auto"
+                    preload="none"
                     onTimeUpdate={() => {
                       const audio = editorAudioRef.current;
                       if (audio) setEditorCurrentTime(audio.currentTime);

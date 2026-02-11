@@ -315,7 +315,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
         handleFirstInteraction()
       }}
     >
-      <audio ref={audioRef} preload="auto" />
+      <audio ref={audioRef} preload="none" />
 
       {(shouldShowMusicControls || isShared) && (
         <div
