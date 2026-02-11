@@ -14187,6 +14187,10 @@
     }
   }
 
+  .dark\:bg-gray-600:is(.dark *) {
+    background-color: var(--color-gray-600);
+  }
+
   .dark\:bg-gray-700:is(.dark *) {
     background-color: var(--color-gray-700);
   }
