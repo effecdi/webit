@@ -1289,120 +1289,120 @@ export default function GoodsPage() {
       )}
 
       {showVerifyModal && (
-        <div className="fixed inset-0 z-[60] bg-black/50 flex items-end">
-          <div className="w-full bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300">
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-
-            <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
+        <div className="fixed inset-0 z-[60] bg-[#0A0A0A] flex flex-col animate-in fade-in duration-300">
+          <header className="sticky top-0 z-50 bg-[#0A0A0A]/90 backdrop-blur-md">
+            <div className="flex items-center justify-between px-4 h-14 max-w-md mx-auto">
               <button
                 onClick={() => setShowVerifyModal(false)}
+                className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
                 data-testid="button-close-verify"
               >
-                <X className="w-6 h-6 text-[#8B95A1]" />
+                <X className="w-5 h-5 text-white" />
               </button>
-              <h3 className="text-[17px] font-bold text-[#191F28]">
-                구매 인증
-              </h3>
-              <div className="w-6" />
+              <h3 className="text-[17px] font-bold text-white">구매 인증</h3>
+              <div className="w-10" />
+            </div>
+          </header>
+
+          <div className="flex-1 overflow-y-auto max-w-md mx-auto w-full">
+            <div className="px-5 pt-2 pb-4">
+              <span className="text-[15px] text-white/80 font-medium">멤버십 인증하기</span>
             </div>
 
-            <div className="px-5 py-5 space-y-5 max-h-[70vh] overflow-y-auto">
-              <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-[16px] p-4 text-center">
-                <Crown className="w-8 h-8 text-orange-400 mx-auto mb-2" />
-                <p className="text-[15px] font-bold text-[#191F28] mb-1">
-                  구매 인증으로 프리미엄 혜택 받기
-                </p>
-                <p className="text-[12px] text-[#8B95A1]">
-                  혼수/답례품 구매 영수증을 인증하면
-                  <br />
-                  7,900원 프리미엄 청첩장이 무료!
-                </p>
+            <div className="px-5 mb-6 text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Crown className="w-8 h-8 text-white" />
               </div>
+              <div className="flex items-baseline justify-center gap-1">
+                <span className="text-[42px] font-bold text-white">7,900</span>
+                <span className="text-[18px] text-white/50">원 무료</span>
+              </div>
+              <p className="text-[13px] text-white/40 mt-1">혼수/답례품 구매 인증 시 프리미엄 청첩장 무료 제공</p>
+            </div>
 
-              <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">
-                  영수증 / 주문 캡처 (선택)
-                </label>
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  onChange={handleReceiptUpload}
-                  accept="image/*"
-                  className="hidden"
-                  data-testid="input-receipt-file"
-                />
-                {receiptPreview ? (
-                  <div className="relative">
-                    <img
-                      src={receiptPreview}
-                      alt="영수증"
-                      className="w-full h-48 object-cover rounded-[12px]"
+            <div className="px-5 space-y-5 pb-8">
+              <div className="rounded-[20px] overflow-hidden bg-gradient-to-br from-amber-400 to-orange-500">
+                <div className="p-6">
+                  <div className="bg-white/15 backdrop-blur-sm rounded-[16px] p-5 mb-5">
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      onChange={handleReceiptUpload}
+                      accept="image/*"
+                      className="hidden"
+                      data-testid="input-receipt-file"
                     />
-                    <button
-                      onClick={() => {
-                        setReceiptFile(null);
-                        setReceiptPreview(null);
-                      }}
-                      className="absolute top-2 right-2 w-7 h-7 bg-black/60 rounded-full flex items-center justify-center"
-                    >
-                      <X className="w-4 h-4 text-white" />
-                    </button>
+                    {receiptPreview ? (
+                      <div className="relative">
+                        <img
+                          src={receiptPreview}
+                          alt="영수증"
+                          className="w-full h-40 object-cover rounded-[12px]"
+                        />
+                        <button
+                          onClick={() => { setReceiptFile(null); setReceiptPreview(null); }}
+                          className="absolute top-2 right-2 w-7 h-7 bg-black/40 rounded-full flex items-center justify-center"
+                        >
+                          <X className="w-4 h-4 text-white" />
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => fileInputRef.current?.click()}
+                        className="w-full h-32 border-2 border-dashed border-white/30 rounded-[12px] flex flex-col items-center justify-center gap-2 hover:border-white/50 transition-colors"
+                        data-testid="button-upload-receipt"
+                      >
+                        <Upload className="w-8 h-8 text-white/60" />
+                        <span className="text-[13px] text-white/70">영수증 / 주문 캡처 (선택)</span>
+                      </button>
+                    )}
                   </div>
-                ) : (
-                  <button
-                    onClick={() => fileInputRef.current?.click()}
-                    className="w-full h-36 border-2 border-dashed border-[#E5E8EB] rounded-[12px] flex flex-col items-center justify-center gap-2 hover:border-[#B0B8C1] transition-colors"
-                    data-testid="button-upload-receipt"
-                  >
-                    <Upload className="w-8 h-8 text-[#B0B8C1]" />
-                    <span className="text-[13px] text-[#8B95A1]">
-                      이미지를 업로드하세요
-                    </span>
-                  </button>
-                )}
+                  <h3 className="text-[20px] font-bold text-white mb-2">영수증 업로드</h3>
+                  <p className="text-[14px] text-white/80 leading-relaxed">구매 영수증이나 주문 확인 스크린샷을 업로드해주세요</p>
+                </div>
               </div>
 
-              <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">
-                  주문번호 / 메모 *
-                </label>
-                <input
-                  type="text"
-                  value={orderNumber}
-                  onChange={(e) => setOrderNumber(e.target.value)}
-                  placeholder="주문번호 또는 구매 관련 메모"
-                  className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-orange-300"
-                  data-testid="input-order-number"
-                />
+              <div className="rounded-[20px] overflow-hidden bg-gradient-to-br from-[#3182F6] to-[#5BA8F7]">
+                <div className="p-6">
+                  <div className="bg-white/15 backdrop-blur-sm rounded-[16px] p-5 mb-5 flex items-center justify-center min-h-[80px]">
+                    <input
+                      type="text"
+                      value={orderNumber}
+                      onChange={(e) => setOrderNumber(e.target.value)}
+                      placeholder="주문번호 또는 구매 관련 메모"
+                      className="w-full px-4 py-3.5 bg-white/20 rounded-[12px] text-[15px] text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 border-0"
+                      data-testid="input-order-number"
+                    />
+                  </div>
+                  <h3 className="text-[20px] font-bold text-white mb-2">주문 정보</h3>
+                  <p className="text-[14px] text-white/80 leading-relaxed">주문번호 또는 구매 관련 메모를 입력해주세요</p>
+                </div>
               </div>
-
-              <button
-                onClick={handleVerify}
-                disabled={verifying || !orderNumber.trim()}
-                className={`w-full py-4 rounded-[14px] text-[16px] font-bold transition-all flex items-center justify-center gap-2 ${
-                  orderNumber.trim() && !verifying
-                    ? "bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg"
-                    : "bg-[#E5E8EB] text-[#B0B8C1]"
-                }`}
-                data-testid="button-submit-verify"
-              >
-                {verifying ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    인증 중...
-                  </>
-                ) : (
-                  <>
-                    <Award className="w-5 h-5" />
-                    인증하기
-                  </>
-                )}
-              </button>
             </div>
 
-            <div className="h-8" />
+            <div className="sticky bottom-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A] to-[#0A0A0A]/0 pt-8 px-5">
+              <div className="pb-8">
+                <button
+                  onClick={handleVerify}
+                  disabled={verifying || !orderNumber.trim()}
+                  className={`w-full py-4 font-bold rounded-[14px] transition-all flex items-center justify-center gap-2 text-[15px] ${
+                    orderNumber.trim() && !verifying
+                      ? "bg-gradient-to-r from-amber-400 to-orange-500 text-white"
+                      : "bg-white/10 text-white/40 cursor-not-allowed"
+                  }`}
+                  data-testid="button-submit-verify"
+                >
+                  {verifying ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      인증 중...
+                    </>
+                  ) : (
+                    "인증하기"
+                  )}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
