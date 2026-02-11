@@ -3,6 +3,7 @@
 import React, { Suspense } from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { BottomSheet } from '@/components/ui/bottom-sheet'
 import WheelDatePicker from "@/components/ui/wheel-date-picker"
 import { useSearchParams } from "next/navigation"
 import { 
@@ -798,24 +799,8 @@ function BudgetPageContent() {
       )}
 
       {/* Payment Detail Modal - Bottom Sheet */}
-      {showDetailModal && selectedExpense && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => {
-            setShowDetailModal(false)
-            setSelectedExpense(null)
-            setPartialPayment("")
-          }}
-        >
-          <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Handle */}
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-
+      <BottomSheet open={!!(showDetailModal && selectedExpense)} onOpenChange={(open) => { if (!open) { setShowDetailModal(false); setSelectedExpense(null); setPartialPayment("") }}} className="bg-white z-[60]" overlayClassName="z-[60]">
+            {selectedExpense && (<>
             {/* Header */}
             <div className="px-6 pb-4 border-b border-[#F2F4F6]">
               <h3 className="text-[19px] font-bold text-[#191F28]">{selectedExpense.title}</h3>
@@ -898,9 +883,8 @@ function BudgetPageContent() {
 
             {/* Safe Area */}
             <div className="h-8" />
-          </div>
-        </div>
-      )}
+            </>)}
+      </BottomSheet>
 
       {/* Edit Budget Modal */}
       {showBudgetModal && (

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { X, Play, Eye, Pencil, QrCode, Share2, Plus, Crown, Check, Trash2, Settings, List, Loader2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { BottomSheet } from '@/components/ui/bottom-sheet'
 
 interface Template {
   id: string
@@ -630,27 +631,8 @@ export default function InvitationGalleryPage() {
       </AnimatePresence>
 
       {/* Payment Bottom Sheet */}
-      <AnimatePresence>
-        {showPaymentModal && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black/60"
-              onClick={() => !isProcessing && setShowPaymentModal(false)}
-            />
-            <motion.div
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-[24px] max-h-[80vh] overflow-y-auto"
-            >
+      <BottomSheet open={showPaymentModal} onOpenChange={(open) => !isProcessing && setShowPaymentModal(open)} className="bg-white max-h-[80vh] overflow-y-auto">
               <div className="p-6">
-                {/* Handle bar */}
-                <div className="w-10 h-1 bg-[#E5E8EB] rounded-full mx-auto mb-6" />
-
                 {paymentSuccess ? (
                   <div className="text-center py-8">
                     <div className="w-16 h-16 rounded-full bg-[#E8F5E9] flex items-center justify-center mx-auto mb-4">
@@ -726,32 +708,11 @@ export default function InvitationGalleryPage() {
                   </>
                 )}
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      </BottomSheet>
 
       {/* Invitation Management Modal */}
-      <AnimatePresence>
-        {showManageModal && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black/60"
-              onClick={() => setShowManageModal(false)}
-            />
-            <motion.div
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-[24px] max-h-[80vh] overflow-hidden flex flex-col"
-              data-testid="modal-manage-invitations"
-            >
+      <BottomSheet open={showManageModal} onOpenChange={setShowManageModal} className="bg-white max-h-[80vh] overflow-hidden flex flex-col" data-testid="modal-manage-invitations">
               <div className="p-6 pb-0">
-                <div className="w-10 h-1 bg-[#E5E8EB] rounded-full mx-auto mb-4" />
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-[20px] font-bold text-[#191F28]" data-testid="text-manage-title">
                     청첩장 관리
@@ -861,32 +822,11 @@ export default function InvitationGalleryPage() {
                   </div>
                 )}
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      </BottomSheet>
 
       {/* Limit Reached Payment Modal */}
-      <AnimatePresence>
-        {showLimitPayment && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black/60"
-              onClick={() => setShowLimitPayment(false)}
-            />
-            <motion.div
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-[24px] max-h-[80vh] overflow-y-auto"
-              data-testid="modal-limit-payment"
-            >
+      <BottomSheet open={showLimitPayment} onOpenChange={setShowLimitPayment} className="bg-white max-h-[80vh] overflow-y-auto" data-testid="modal-limit-payment">
               <div className="p-6">
-                <div className="w-10 h-1 bg-[#E5E8EB] rounded-full mx-auto mb-6" />
                 <div className="flex justify-center mb-4">
                   <div className="w-14 h-14 rounded-full bg-[#FFF0F0] flex items-center justify-center">
                     <Crown className="w-7 h-7 text-[#FF6B6B]" />
@@ -938,10 +878,7 @@ export default function InvitationGalleryPage() {
                   </button>
                 </div>
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      </BottomSheet>
 
       {/* Toast */}
       <AnimatePresence>

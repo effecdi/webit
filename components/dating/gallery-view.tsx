@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { ImageIcon } from "lucide-react";
 import Link from "next/link";
+import { BottomSheet } from "@/components/ui/bottom-sheet";
 
 interface Album {
   id: number;
@@ -576,16 +577,7 @@ export function GalleryView() {
       )}
 
       {/* More Menu Modal */}
-      {showMoreMenu && (
-        <div
-          className="fixed inset-0 z-50 bg-black/50 flex items-end justify-center"
-          onClick={() => setShowMoreMenu(false)}
-        >
-          <div
-            className="bg-white w-full max-w-md rounded-t-[24px] overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="w-10 h-1 bg-[#D1D6DB] rounded-full mx-auto mt-3" />
+      <BottomSheet open={showMoreMenu} onOpenChange={setShowMoreMenu} className="bg-white overflow-hidden">
             <div className="py-4">
               <button
                 onClick={() => {
@@ -633,20 +625,10 @@ export function GalleryView() {
             >
               취소
             </button>
-          </div>
-        </div>
-      )}
+      </BottomSheet>
 
       {/* Album Selection Bottom Sheet */}
-      {showAlbumSheet && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/50 flex items-end justify-center"
-          onClick={() => setShowAlbumSheet(false)}
-        >
-          <div
-            className="bg-[#1C1C1E] w-full max-w-md rounded-t-[24px] overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
+      <BottomSheet open={showAlbumSheet} onOpenChange={setShowAlbumSheet} className="bg-[#1C1C1E] overflow-hidden z-[60]" overlayClassName="z-[60]" showHandle={false}>
             <div className="flex items-center justify-between px-5 py-4 border-b border-[#38383A]">
               <button
                 onClick={() => setShowAlbumSheet(false)}
@@ -715,9 +697,7 @@ export function GalleryView() {
                 </div>
               )}
             </div>
-          </div>
-        </div>
-      )}
+      </BottomSheet>
 
       {/* Add Album Modal */}
       {showAddAlbumModal && (

@@ -24,6 +24,7 @@ import {
   Calendar,
 } from "lucide-react";
 import Link from "next/link";
+import { BottomSheet } from '@/components/ui/bottom-sheet';
 import { useSearchParams } from "next/navigation";
 import { MUSIC_TRACKS } from "@/lib/music-tracks";
 
@@ -1365,16 +1366,7 @@ function InvitationEditorContent() {
           <InvitationPreview data={previewData as any} autoPlayMusic={true} showMusicControls={true} />
         </div>
 
-        {showShareOptions && (
-          <div
-            className="fixed inset-0 z-[65] flex items-end justify-center"
-            onClick={() => setShowShareOptions(false)}
-          >
-            <div
-              className="w-full max-w-md bg-white rounded-t-[24px] p-6 pb-10 animate-in slide-in-from-bottom duration-300"
-              onClick={(e) => e.stopPropagation()}
-              data-testid="modal-share"
-            >
+        <BottomSheet open={showShareOptions} onOpenChange={setShowShareOptions} className="bg-white z-[65] w-full max-w-md mx-auto p-6 pb-10" overlayClassName="z-[65]" showHandle={false} data-testid="modal-share">
               <div className="flex items-center justify-between mb-6">
                 <div className="w-8" />
                 <div className="w-12 h-1 bg-[#E5E8EB] rounded-full" />
@@ -1440,9 +1432,7 @@ function InvitationEditorContent() {
               >
                 닫기
               </button>
-            </div>
-          </div>
-        )}
+        </BottomSheet>
 
         {showShareCountInput && (
           <div
@@ -3351,16 +3341,7 @@ function InvitationEditorContent() {
             </div>
           </div>
 
-          {showShareOptions && (
-            <div
-              className="fixed inset-0 z-[65] flex items-end justify-center"
-              onClick={() => setShowShareOptions(false)}
-            >
-              <div
-                className="w-full max-w-md bg-white rounded-t-[24px] p-6 pb-10 animate-in slide-in-from-bottom duration-300"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="w-12 h-1 bg-[#E5E8EB] rounded-full mx-auto mb-6" />
+          <BottomSheet open={showShareOptions} onOpenChange={setShowShareOptions} className="bg-white z-[65] w-full max-w-md mx-auto p-6 pb-10" overlayClassName="z-[65]">
                 <h3 className="text-[18px] font-bold text-[#191F28] text-center mb-6">
                   청첩장 공유하기
                 </h3>
@@ -3410,9 +3391,7 @@ function InvitationEditorContent() {
                 >
                   닫기
                 </button>
-              </div>
-            </div>
-          )}
+          </BottomSheet>
         </div>
       )}
     </main>

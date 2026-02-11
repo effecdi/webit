@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 import { 
   Bell, 
   Shield, 
@@ -257,288 +258,248 @@ export function ProfileSettingsSection({ mode }: ProfileSettingsSectionProps) {
       </div>
 
       {/* Notification Settings Modal */}
-      {showNotificationSettings && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowNotificationSettings(false)}
-        >
-          <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300 max-h-[85vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 bg-white z-10">
-              <div className="flex justify-center pt-3 pb-2">
-                <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-              </div>
-              
-              <div className="flex items-center gap-3 px-5 pb-4 border-b border-[#F2F4F6]">
-                <Bell className="w-6 h-6 text-[#191F28]" />
-                <h3 className="text-[19px] font-bold text-[#191F28]">알림 설정</h3>
-              </div>
-            </div>
-            
-            <div className="px-5 py-4 space-y-1">
-              {[
-                { key: "message", icon: MessageCircle, label: "메시지 알림", desc: "상대방이 메시지를 보냈을 때" },
-                { key: "schedule", icon: Calendar, label: "일정 알림", desc: "예정된 데이트 1일 전, 1시간 전" },
-                { key: "anniversary", icon: Heart, label: "기념일 알림", desc: "D-Day 및 특별한 날 리마인드" },
-                { key: "gift", icon: Gift, label: "선물 추천", desc: "기념일 맞춤 선물 추천" },
-                { key: "daily", icon: Clock, label: "데일리 알림", desc: "매일 사랑 표현 리마인드" },
-              ].map((item) => (
-                <div key={item.key} className="flex items-center justify-between py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#F2F4F6] flex items-center justify-center">
-                      <item.icon className="w-5 h-5 text-[#4E5968]" />
-                    </div>
-                    <div>
-                      <p className="text-[15px] font-semibold text-[#191F28]">{item.label}</p>
-                      <p className="text-[13px] text-[#8B95A1]">{item.desc}</p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    role="switch"
-                    aria-checked={notifications[item.key as keyof typeof notifications]}
-                    onClick={() => updateSetting(notifKeyMap[item.key], !notifications[item.key as keyof typeof notifications])}
-                    data-testid={`switch-notification-${item.key}`}
-                    className={`relative w-14 h-8 rounded-full transition-colors ${
-                      notifications[item.key as keyof typeof notifications] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
-                    }`}
-                  >
-                    <div 
-                      className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${
-                        notifications[item.key as keyof typeof notifications] ? "translate-x-7" : "translate-x-1"
-                      }`}
-                    />
-                  </button>
-                </div>
-              ))}
-            </div>
-            
-            <div className="h-8" />
+      <BottomSheet open={showNotificationSettings} onOpenChange={setShowNotificationSettings} className="bg-white max-h-[85vh] overflow-y-auto z-[60]" overlayClassName="z-[60]" showHandle={false}>
+        <div className="sticky top-0 bg-white z-10">
+          <div className="flex justify-center pt-3 pb-2">
+            <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
+          </div>
+          
+          <div className="flex items-center gap-3 px-5 pb-4 border-b border-[#F2F4F6]">
+            <Bell className="w-6 h-6 text-[#191F28]" />
+            <h3 className="text-[19px] font-bold text-[#191F28]">알림 설정</h3>
           </div>
         </div>
-      )}
+        
+        <div className="px-5 py-4 space-y-1">
+          {[
+            { key: "message", icon: MessageCircle, label: "메시지 알림", desc: "상대방이 메시지를 보냈을 때" },
+            { key: "schedule", icon: Calendar, label: "일정 알림", desc: "예정된 데이트 1일 전, 1시간 전" },
+            { key: "anniversary", icon: Heart, label: "기념일 알림", desc: "D-Day 및 특별한 날 리마인드" },
+            { key: "gift", icon: Gift, label: "선물 추천", desc: "기념일 맞춤 선물 추천" },
+            { key: "daily", icon: Clock, label: "데일리 알림", desc: "매일 사랑 표현 리마인드" },
+          ].map((item) => (
+            <div key={item.key} className="flex items-center justify-between py-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#F2F4F6] flex items-center justify-center">
+                  <item.icon className="w-5 h-5 text-[#4E5968]" />
+                </div>
+                <div>
+                  <p className="text-[15px] font-semibold text-[#191F28]">{item.label}</p>
+                  <p className="text-[13px] text-[#8B95A1]">{item.desc}</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                role="switch"
+                aria-checked={notifications[item.key as keyof typeof notifications]}
+                onClick={() => updateSetting(notifKeyMap[item.key], !notifications[item.key as keyof typeof notifications])}
+                data-testid={`switch-notification-${item.key}`}
+                className={`relative w-14 h-8 rounded-full transition-colors ${
+                  notifications[item.key as keyof typeof notifications] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
+                }`}
+              >
+                <div 
+                  className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${
+                    notifications[item.key as keyof typeof notifications] ? "translate-x-7" : "translate-x-1"
+                  }`}
+                />
+              </button>
+            </div>
+          ))}
+        </div>
+        
+        <div className="h-8" />
+      </BottomSheet>
 
       {/* Privacy Settings Modal */}
-      {showPrivacySettings && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowPrivacySettings(false)}
-        >
-          <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300 max-h-[85vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 bg-white z-10">
-              <div className="flex justify-center pt-3 pb-2">
-                <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-              </div>
-              
-              <div className="flex items-center gap-3 px-5 pb-4 border-b border-[#F2F4F6]">
-                <Shield className="w-6 h-6 text-[#191F28]" />
-                <h3 className="text-[19px] font-bold text-[#191F28]">개인정보 보호</h3>
-              </div>
-            </div>
-            
-            <div className="px-5 py-4 space-y-1">
-              {[
-                { key: "profileVisible", label: "프로필 공개", desc: "다른 사용자에게 프로필 공개" },
-                { key: "activityNotify", label: "활동 알림", desc: "상대방의 새 활동 시 알림 받기" },
-                { key: "readReceipt", label: "읽음 표시", desc: "메시지 읽음 표시 보내기" },
-                { key: "onlineStatus", label: "온라인 상태", desc: "접속 상태 표시하기" },
-                { key: "activityShare", label: "활동 공유", desc: "앱 활동 내역 공유" },
-              ].map((item) => (
-                <div key={item.key} className="flex items-center justify-between py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#F2F4F6] flex items-center justify-center">
-                      <Lock className="w-5 h-5 text-[#4E5968]" />
-                    </div>
-                    <div>
-                      <p className="text-[15px] font-semibold text-[#191F28]">{item.label}</p>
-                      <p className="text-[13px] text-[#8B95A1]">{item.desc}</p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    role="switch"
-                    aria-checked={privacy[item.key as keyof typeof privacy]}
-                    onClick={() => updateSetting(privacyKeyMap[item.key], !privacy[item.key as keyof typeof privacy])}
-                    data-testid={`switch-privacy-${item.key}`}
-                    className={`relative w-14 h-8 rounded-full transition-colors ${
-                      privacy[item.key as keyof typeof privacy] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
-                    }`}
-                  >
-                    <div 
-                      className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${
-                        privacy[item.key as keyof typeof privacy] ? "translate-x-7" : "translate-x-1"
-                      }`}
-                    />
-                  </button>
-                </div>
-              ))}
-            </div>
-            
-            <div className="h-8" />
+      <BottomSheet open={showPrivacySettings} onOpenChange={setShowPrivacySettings} className="bg-white max-h-[85vh] overflow-y-auto z-[60]" overlayClassName="z-[60]" showHandle={false}>
+        <div className="sticky top-0 bg-white z-10">
+          <div className="flex justify-center pt-3 pb-2">
+            <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
+          </div>
+          
+          <div className="flex items-center gap-3 px-5 pb-4 border-b border-[#F2F4F6]">
+            <Shield className="w-6 h-6 text-[#191F28]" />
+            <h3 className="text-[19px] font-bold text-[#191F28]">개인정보 보호</h3>
           </div>
         </div>
-      )}
+        
+        <div className="px-5 py-4 space-y-1">
+          {[
+            { key: "profileVisible", label: "프로필 공개", desc: "다른 사용자에게 프로필 공개" },
+            { key: "activityNotify", label: "활동 알림", desc: "상대방의 새 활동 시 알림 받기" },
+            { key: "readReceipt", label: "읽음 표시", desc: "메시지 읽음 표시 보내기" },
+            { key: "onlineStatus", label: "온라인 상태", desc: "접속 상태 표시하기" },
+            { key: "activityShare", label: "활동 공유", desc: "앱 활동 내역 공유" },
+          ].map((item) => (
+            <div key={item.key} className="flex items-center justify-between py-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#F2F4F6] flex items-center justify-center">
+                  <Lock className="w-5 h-5 text-[#4E5968]" />
+                </div>
+                <div>
+                  <p className="text-[15px] font-semibold text-[#191F28]">{item.label}</p>
+                  <p className="text-[13px] text-[#8B95A1]">{item.desc}</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                role="switch"
+                aria-checked={privacy[item.key as keyof typeof privacy]}
+                onClick={() => updateSetting(privacyKeyMap[item.key], !privacy[item.key as keyof typeof privacy])}
+                data-testid={`switch-privacy-${item.key}`}
+                className={`relative w-14 h-8 rounded-full transition-colors ${
+                  privacy[item.key as keyof typeof privacy] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
+                }`}
+              >
+                <div 
+                  className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${
+                    privacy[item.key as keyof typeof privacy] ? "translate-x-7" : "translate-x-1"
+                  }`}
+                />
+              </button>
+            </div>
+          ))}
+        </div>
+        
+        <div className="h-8" />
+      </BottomSheet>
 
       {/* Support/Customer Service Modal */}
-      {showSupportSettings && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowSupportSettings(false)}
-        >
-          <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300 max-h-[85vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 bg-white z-10">
-              <div className="flex justify-center pt-3 pb-2">
-                <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-              </div>
-              
-              <div className="flex items-center gap-3 px-5 pb-4 border-b border-[#F2F4F6]">
-                <HelpCircle className="w-6 h-6 text-[#191F28]" />
-                <h3 className="text-[19px] font-bold text-[#191F28]">고객센터</h3>
-              </div>
-            </div>
-            
-            <div className="px-5 py-4 space-y-1">
-              {[
-                { key: "newsletter", label: "뉴스레터 수신", desc: "새로운 기능 및 업데이트 소식" },
-                { key: "eventNotify", label: "이벤트 알림", desc: "프로모션 및 이벤트 알림" },
-                { key: "feedback", label: "피드백 요청", desc: "앱 개선을 위한 설문 참여" },
-                { key: "survey", label: "만족도 조사", desc: "서비스 만족도 조사 참여" },
-              ].map((item) => (
-                <div key={item.key} className="flex items-center justify-between py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#F2F4F6] flex items-center justify-center">
-                      <MessageCircle className="w-5 h-5 text-[#4E5968]" />
-                    </div>
-                    <div>
-                      <p className="text-[15px] font-semibold text-[#191F28]">{item.label}</p>
-                      <p className="text-[13px] text-[#8B95A1]">{item.desc}</p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    role="switch"
-                    aria-checked={support[item.key as keyof typeof support]}
-                    onClick={() => updateSetting(supportKeyMap[item.key], !support[item.key as keyof typeof support])}
-                    data-testid={`switch-support-${item.key}`}
-                    className={`relative w-14 h-8 rounded-full transition-colors ${
-                      support[item.key as keyof typeof support] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
-                    }`}
-                  >
-                    <div 
-                      className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${
-                        support[item.key as keyof typeof support] ? "translate-x-7" : "translate-x-1"
-                      }`}
-                    />
-                  </button>
-                </div>
-              ))}
-              
-              {/* Quick Links */}
-              <div className="pt-4 mt-4 border-t border-[#F2F4F6] space-y-2">
-                <button 
-                  data-testid="button-faq" 
-                  onClick={() => { setShowSupportSettings(false); setShowFaq(true); }}
-                  className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors"
-                >
-                  <span className="text-[14px] font-medium text-[#191F28]">자주 묻는 질문 (FAQ)</span>
-                  <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
-                </button>
-                <button 
-                  data-testid="button-contact" 
-                  onClick={() => router.push("/chatbot")}
-                  className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors"
-                >
-                  <span className="text-[14px] font-medium text-[#191F28]">1:1 문의하기 (AI 상담)</span>
-                  <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
-                </button>
-                <button 
-                  data-testid="button-terms" 
-                  onClick={() => router.push("/terms")}
-                  className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] dark:bg-gray-800 rounded-[12px] hover:bg-[#F2F4F6] dark:hover:bg-gray-700 transition-colors"
-                >
-                  <span className="text-[14px] font-medium text-[#191F28] dark:text-white">이용약관</span>
-                  <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
-                </button>
-                <button 
-                  data-testid="button-privacy-policy" 
-                  onClick={() => router.push("/privacy")}
-                  className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] dark:bg-gray-800 rounded-[12px] hover:bg-[#F2F4F6] dark:hover:bg-gray-700 transition-colors"
-                >
-                  <span className="text-[14px] font-medium text-[#191F28] dark:text-white">개인정보 처리방침</span>
-                  <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
-                </button>
-              </div>
-            </div>
-            
-            <div className="h-8" />
+      <BottomSheet open={showSupportSettings} onOpenChange={setShowSupportSettings} className="bg-white max-h-[85vh] overflow-y-auto z-[60]" overlayClassName="z-[60]" showHandle={false}>
+        <div className="sticky top-0 bg-white z-10">
+          <div className="flex justify-center pt-3 pb-2">
+            <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
+          </div>
+          
+          <div className="flex items-center gap-3 px-5 pb-4 border-b border-[#F2F4F6]">
+            <HelpCircle className="w-6 h-6 text-[#191F28]" />
+            <h3 className="text-[19px] font-bold text-[#191F28]">고객센터</h3>
           </div>
         </div>
-      )}
+        
+        <div className="px-5 py-4 space-y-1">
+          {[
+            { key: "newsletter", label: "뉴스레터 수신", desc: "새로운 기능 및 업데이트 소식" },
+            { key: "eventNotify", label: "이벤트 알림", desc: "프로모션 및 이벤트 알림" },
+            { key: "feedback", label: "피드백 요청", desc: "앱 개선을 위한 설문 참여" },
+            { key: "survey", label: "만족도 조사", desc: "서비스 만족도 조사 참여" },
+          ].map((item) => (
+            <div key={item.key} className="flex items-center justify-between py-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#F2F4F6] flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-[#4E5968]" />
+                </div>
+                <div>
+                  <p className="text-[15px] font-semibold text-[#191F28]">{item.label}</p>
+                  <p className="text-[13px] text-[#8B95A1]">{item.desc}</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                role="switch"
+                aria-checked={support[item.key as keyof typeof support]}
+                onClick={() => updateSetting(supportKeyMap[item.key], !support[item.key as keyof typeof support])}
+                data-testid={`switch-support-${item.key}`}
+                className={`relative w-14 h-8 rounded-full transition-colors ${
+                  support[item.key as keyof typeof support] ? "bg-[#d63bf2]" : "bg-[#E5E8EB]"
+                }`}
+              >
+                <div 
+                  className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-sm transition-transform pointer-events-none ${
+                    support[item.key as keyof typeof support] ? "translate-x-7" : "translate-x-1"
+                  }`}
+                />
+              </button>
+            </div>
+          ))}
+          
+          {/* Quick Links */}
+          <div className="pt-4 mt-4 border-t border-[#F2F4F6] space-y-2">
+            <button 
+              data-testid="button-faq" 
+              onClick={() => { setShowSupportSettings(false); setShowFaq(true); }}
+              className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors"
+            >
+              <span className="text-[14px] font-medium text-[#191F28]">자주 묻는 질문 (FAQ)</span>
+              <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
+            </button>
+            <button 
+              data-testid="button-contact" 
+              onClick={() => router.push("/chatbot")}
+              className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] rounded-[12px] hover:bg-[#F2F4F6] transition-colors"
+            >
+              <span className="text-[14px] font-medium text-[#191F28]">1:1 문의하기 (AI 상담)</span>
+              <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
+            </button>
+            <button 
+              data-testid="button-terms" 
+              onClick={() => router.push("/terms")}
+              className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] dark:bg-gray-800 rounded-[12px] hover:bg-[#F2F4F6] dark:hover:bg-gray-700 transition-colors"
+            >
+              <span className="text-[14px] font-medium text-[#191F28] dark:text-white">이용약관</span>
+              <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
+            </button>
+            <button 
+              data-testid="button-privacy-policy" 
+              onClick={() => router.push("/privacy")}
+              className="w-full flex items-center justify-between py-3 px-4 bg-[#F8F9FA] dark:bg-gray-800 rounded-[12px] hover:bg-[#F2F4F6] dark:hover:bg-gray-700 transition-colors"
+            >
+              <span className="text-[14px] font-medium text-[#191F28] dark:text-white">개인정보 처리방침</span>
+              <ChevronRight className="w-5 h-5 text-[#B0B8C1]" />
+            </button>
+          </div>
+        </div>
+        
+        <div className="h-8" />
+      </BottomSheet>
 
       {/* FAQ Modal */}
-      {showFaq && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowFaq(false)}
-        >
-          <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300 max-h-[90vh] flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 bg-white z-10 rounded-t-[24px]">
-              <div className="flex justify-center pt-3 pb-2">
-                <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-              </div>
-              
-              <div className="flex items-center gap-3 px-5 pb-4 border-b border-[#F2F4F6]">
-                <button
-                  onClick={() => { setShowFaq(false); setShowSupportSettings(true); }}
-                  data-testid="button-faq-back"
-                  className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
-                >
-                  <ChevronLeft className="w-5 h-5 text-[#4E5968]" />
-                </button>
-                <HelpCircle className="w-6 h-6 text-[#191F28]" />
-                <h3 className="text-[19px] font-bold text-[#191F28]">자주 묻는 질문</h3>
-              </div>
-            </div>
-            
-            <div className="overflow-y-auto flex-1 px-5 py-4">
-              <Accordion type="single" collapsible className="w-full">
-                {FAQ_ITEMS.map((item, idx) => (
-                  <AccordionItem key={idx} value={`faq-${idx}`} className="border-b border-[#F2F4F6]">
-                    <AccordionTrigger 
-                      className="text-[15px] font-semibold text-[#191F28] hover:no-underline py-4"
-                      data-testid={`faq-question-${idx}`}
-                    >
-                      <span className="flex items-start gap-2 text-left">
-                        <span className="text-[#d63bf2] font-bold shrink-0">Q.</span>
-                        {item.q}
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent 
-                      className="text-[14px] text-[#4E5968] leading-relaxed pl-6"
-                      data-testid={`faq-answer-${idx}`}
-                    >
-                      {item.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-            
-            <div className="h-8" />
+      <BottomSheet open={showFaq} onOpenChange={setShowFaq} className="bg-white max-h-[90vh] flex flex-col z-[60]" overlayClassName="z-[60]" showHandle={false}>
+        <div className="sticky top-0 bg-white z-10 rounded-t-[24px]">
+          <div className="flex justify-center pt-3 pb-2">
+            <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
+          </div>
+          
+          <div className="flex items-center gap-3 px-5 pb-4 border-b border-[#F2F4F6]">
+            <button
+              onClick={() => { setShowFaq(false); setShowSupportSettings(true); }}
+              data-testid="button-faq-back"
+              className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5 text-[#4E5968]" />
+            </button>
+            <HelpCircle className="w-6 h-6 text-[#191F28]" />
+            <h3 className="text-[19px] font-bold text-[#191F28]">자주 묻는 질문</h3>
           </div>
         </div>
-      )}
+        
+        <div className="overflow-y-auto flex-1 px-5 py-4">
+          <Accordion type="single" collapsible className="w-full">
+            {FAQ_ITEMS.map((item, idx) => (
+              <AccordionItem key={idx} value={`faq-${idx}`} className="border-b border-[#F2F4F6]">
+                <AccordionTrigger 
+                  className="text-[15px] font-semibold text-[#191F28] hover:no-underline py-4"
+                  data-testid={`faq-question-${idx}`}
+                >
+                  <span className="flex items-start gap-2 text-left">
+                    <span className="text-[#d63bf2] font-bold shrink-0">Q.</span>
+                    {item.q}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent 
+                  className="text-[14px] text-[#4E5968] leading-relaxed pl-6"
+                  data-testid={`faq-answer-${idx}`}
+                >
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+        
+        <div className="h-8" />
+      </BottomSheet>
 
     </>
   )

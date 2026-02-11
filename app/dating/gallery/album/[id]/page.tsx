@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import { ChevronLeft, MoreHorizontal, X, Share2, Trash2, Check } from "lucide-react"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 interface Photo {
   id: number
@@ -322,16 +323,12 @@ export default function AlbumDetailPage() {
       )}
 
       {/* More Menu Modal */}
-      {showMoreMenu && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50 flex items-end justify-center"
-          onClick={() => setShowMoreMenu(false)}
-        >
-          <div 
-            className="bg-[#2C2C2E] w-full max-w-md rounded-t-[20px] overflow-hidden"
-            onClick={e => e.stopPropagation()}
-          >
-            <div className="w-10 h-1 bg-[#48484A] rounded-full mx-auto mt-3" />
+      <BottomSheet
+        open={showMoreMenu}
+        onOpenChange={setShowMoreMenu}
+        className="bg-[#2C2C2E] z-[60] overflow-hidden"
+        overlayClassName="z-[60]"
+      >
             <div className="py-2">
               {isSelectMode && selectedPhotos.size > 0 && (
                 <button
@@ -360,9 +357,7 @@ export default function AlbumDetailPage() {
             >
               취소
             </button>
-          </div>
-        </div>
-      )}
+      </BottomSheet>
     </div>
   )
 }

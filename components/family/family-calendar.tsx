@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Plus, X, Check, Edit2, Trash2, Clock, MapPin } from "lucide-react"
 import WheelTimePicker from "@/components/ui/wheel-time-picker"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 interface Event {
   id: string
@@ -365,98 +366,83 @@ export function FamilyCalendar() {
       </button>
 
       {/* Add/Edit Event Modal */}
-      {showModal && (
-        <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/50">
-          <div 
-            className="absolute inset-0"
-            onClick={resetAndCloseModal}
-          />
-          <div 
-            className="relative w-full max-w-md bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
+      <BottomSheet open={showModal} onOpenChange={(open) => { if (!open) resetAndCloseModal() }} className="bg-white max-w-md mx-auto z-[60]" overlayClassName="z-[60]" showHandle={false}>
+        <div className="flex justify-center pt-3 pb-2">
+          <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
+        </div>
+
+        <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
+          <button onClick={resetAndCloseModal}>
+            <X className="w-6 h-6 text-[#8B95A1]" />
+          </button>
+          <h3 className="text-[17px] font-bold text-[#191F28]">
+            {editingEvent ? "일정 수정" : "일정 추가"}
+          </h3>
+          <button 
+            onClick={handleSaveEvent}
+            disabled={!newEvent.title}
+            className={`text-[15px] font-semibold ${newEvent.title ? "text-green-500" : "text-[#B0B8C1]"}`}
           >
-            {/* Handle */}
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
+            {editingEvent ? "수정" : "저장"}
+          </button>
+        </div>
+
+        <div className="px-5 py-5 space-y-5">
+          <div>
+            <label className="block text-[13px] font-medium text-[#4E5968] mb-2">일정 제목</label>
+            <input
+              type="text"
+              value={newEvent.title}
+              onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+              className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="일정을 입력하세요"
+            />
+          </div>
+
+          <div>
+            <label className="block text-[13px] font-medium text-[#4E5968] mb-2">카테고리</label>
+            <div className="grid grid-cols-2 gap-2">
+              {Object.entries(CATEGORY_STYLES).map(([key, style]) => (
+                <button
+                  key={key}
+                  onClick={() => setNewEvent({ ...newEvent, category: key as Event["category"] })}
+                  className={`flex items-center justify-center gap-2 py-3 rounded-[12px] text-[14px] font-medium transition-all ${
+                    newEvent.category === key
+                      ? `${style.bg} text-white`
+                      : "bg-[#F2F4F6] text-[#4E5968]"
+                  }`}
+                >
+                  {newEvent.category === key && <Check className="w-4 h-4" />}
+                  {style.label}
+                </button>
+              ))}
             </div>
+          </div>
 
-            {/* Header */}
-            <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
-              <button onClick={resetAndCloseModal}>
-                <X className="w-6 h-6 text-[#8B95A1]" />
-              </button>
-              <h3 className="text-[17px] font-bold text-[#191F28]">
-                {editingEvent ? "일정 수정" : "일정 추가"}
-              </h3>
-              <button 
-                onClick={handleSaveEvent}
-                disabled={!newEvent.title}
-                className={`text-[15px] font-semibold ${newEvent.title ? "text-green-500" : "text-[#B0B8C1]"}`}
-              >
-                {editingEvent ? "수정" : "저장"}
-              </button>
-            </div>
+          <div>
+            <label className="block text-[13px] font-medium text-[#4E5968] mb-2">시간 (선택)</label>
+            <WheelTimePicker
+              value={newEvent.time}
+              onChange={(val) => setNewEvent({ ...newEvent, time: val })}
+              placeholder="시간 선택"
+              className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px] !border-0"
+            />
+          </div>
 
-            {/* Content */}
-            <div className="px-5 py-5 space-y-5">
-              <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">일정 제목</label>
-                <input
-                  type="text"
-                  value={newEvent.title}
-                  onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
-                  className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="일정을 입력하세요"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">카테고리</label>
-                <div className="grid grid-cols-2 gap-2">
-                  {Object.entries(CATEGORY_STYLES).map(([key, style]) => (
-                    <button
-                      key={key}
-                      onClick={() => setNewEvent({ ...newEvent, category: key as Event["category"] })}
-                      className={`flex items-center justify-center gap-2 py-3 rounded-[12px] text-[14px] font-medium transition-all ${
-                        newEvent.category === key
-                          ? `${style.bg} text-white`
-                          : "bg-[#F2F4F6] text-[#4E5968]"
-                      }`}
-                    >
-                      {newEvent.category === key && <Check className="w-4 h-4" />}
-                      {style.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">시간 (선택)</label>
-                <WheelTimePicker
-                  value={newEvent.time}
-                  onChange={(val) => setNewEvent({ ...newEvent, time: val })}
-                  placeholder="시간 선택"
-                  className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px] !border-0"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">장소 (선택)</label>
-                <input
-                  type="text"
-                  value={newEvent.location}
-                  onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })}
-                  className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="장소를 입력하세요"
-                />
-              </div>
-            </div>
-
-            {/* Safe Area */}
-            <div className="h-8" />
+          <div>
+            <label className="block text-[13px] font-medium text-[#4E5968] mb-2">장소 (선택)</label>
+            <input
+              type="text"
+              value={newEvent.location}
+              onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })}
+              className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="장소를 입력하세요"
+            />
           </div>
         </div>
-      )}
+
+        <div className="h-8" />
+      </BottomSheet>
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && eventToDelete && (

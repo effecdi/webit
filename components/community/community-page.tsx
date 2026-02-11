@@ -18,6 +18,7 @@ import {
   Eye,
 } from "lucide-react"
 import { PostListSkeleton } from "@/components/shared/skeleton-ui"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 interface CommunityPost {
   id: number
@@ -328,80 +329,76 @@ export function CommunityPage({ config }: { config: ModeConfig }) {
         <Plus className="w-6 h-6" />
       </button>
 
-      {showWriteModal && (
-        <div className="fixed inset-0 z-[60] bg-black/50 flex items-end">
-          <div className="w-full bg-white dark:bg-[#1a1a1a] rounded-t-[24px] animate-in slide-in-from-bottom duration-300">
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] dark:bg-[#333] rounded-full" />
+      <BottomSheet open={showWriteModal} onOpenChange={setShowWriteModal} className="bg-white dark:bg-[#1a1a1a] z-[60]" overlayClassName="z-[60]" showHandle={false}>
+        <div className="flex justify-center pt-3 pb-2">
+          <div className="w-10 h-1 bg-[#E5E8EB] dark:bg-[#333] rounded-full" />
+        </div>
+
+        <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6] dark:border-[#2a2a2a]">
+          <button onClick={() => setShowWriteModal(false)} data-testid="button-close-write">
+            <X className="w-6 h-6 text-[#8B95A1]" />
+          </button>
+          <h3 className="text-[17px] font-bold text-[#191F28] dark:text-[#e5e5e5]">글 작성</h3>
+          <button
+            onClick={handleCreatePost}
+            disabled={!newPost.title.trim() || !newPost.content.trim() || submitting}
+            className={`text-[15px] font-semibold ${
+              newPost.title.trim() && newPost.content.trim() ? config.accentColor : "text-[#B0B8C1]"
+            }`}
+            data-testid="button-submit-post"
+          >
+            {submitting ? "저장중..." : "완료"}
+          </button>
+        </div>
+
+        <div className="px-5 py-5 space-y-4 max-h-[70vh] overflow-y-auto">
+          <div>
+            <label className="block text-[13px] font-medium text-[#4E5968] dark:text-[#999] mb-2">카테고리</label>
+            <div className="flex gap-2 flex-wrap">
+              {config.categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setNewPost({ ...newPost, category: cat })}
+                  className={`px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${
+                    newPost.category === cat
+                      ? "bg-[#191F28] dark:bg-white text-white dark:text-[#191F28]"
+                      : "bg-[#F2F4F6] dark:bg-[#2a2a2a] text-[#4E5968] dark:text-[#999]"
+                  }`}
+                  data-testid={`select-category-${cat}`}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
+          </div>
 
-            <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6] dark:border-[#2a2a2a]">
-              <button onClick={() => setShowWriteModal(false)} data-testid="button-close-write">
-                <X className="w-6 h-6 text-[#8B95A1]" />
-              </button>
-              <h3 className="text-[17px] font-bold text-[#191F28] dark:text-[#e5e5e5]">글 작성</h3>
-              <button
-                onClick={handleCreatePost}
-                disabled={!newPost.title.trim() || !newPost.content.trim() || submitting}
-                className={`text-[15px] font-semibold ${
-                  newPost.title.trim() && newPost.content.trim() ? config.accentColor : "text-[#B0B8C1]"
-                }`}
-                data-testid="button-submit-post"
-              >
-                {submitting ? "저장중..." : "완료"}
-              </button>
-            </div>
+          <div>
+            <label className="block text-[13px] font-medium text-[#4E5968] dark:text-[#999] mb-2">제목</label>
+            <input
+              type="text"
+              value={newPost.title}
+              onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
+              placeholder="제목을 입력하세요"
+              className="w-full px-4 py-3.5 bg-[#F2F4F6] dark:bg-[#2a2a2a] rounded-[12px] text-[15px] text-[#191F28] dark:text-[#e5e5e5] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#E5E8EB] dark:focus:ring-[#333]"
+              data-testid="input-post-title"
+            />
+          </div>
 
-            <div className="px-5 py-5 space-y-4 max-h-[70vh] overflow-y-auto">
-              <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] dark:text-[#999] mb-2">카테고리</label>
-                <div className="flex gap-2 flex-wrap">
-                  {config.categories.map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setNewPost({ ...newPost, category: cat })}
-                      className={`px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${
-                        newPost.category === cat
-                          ? "bg-[#191F28] dark:bg-white text-white dark:text-[#191F28]"
-                          : "bg-[#F2F4F6] dark:bg-[#2a2a2a] text-[#4E5968] dark:text-[#999]"
-                      }`}
-                      data-testid={`select-category-${cat}`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] dark:text-[#999] mb-2">제목</label>
-                <input
-                  type="text"
-                  value={newPost.title}
-                  onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-                  placeholder="제목을 입력하세요"
-                  className="w-full px-4 py-3.5 bg-[#F2F4F6] dark:bg-[#2a2a2a] rounded-[12px] text-[15px] text-[#191F28] dark:text-[#e5e5e5] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#E5E8EB] dark:focus:ring-[#333]"
-                  data-testid="input-post-title"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] dark:text-[#999] mb-2">내용</label>
-                <textarea
-                  value={newPost.content}
-                  onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
-                  placeholder="자유롭게 이야기를 나눠보세요"
-                  rows={6}
-                  className="w-full px-4 py-3.5 bg-[#F2F4F6] dark:bg-[#2a2a2a] rounded-[12px] text-[15px] text-[#191F28] dark:text-[#e5e5e5] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#E5E8EB] dark:focus:ring-[#333] resize-none"
-                  data-testid="input-post-content"
-                />
-              </div>
-            </div>
-
-            <div className="h-8" />
+          <div>
+            <label className="block text-[13px] font-medium text-[#4E5968] dark:text-[#999] mb-2">내용</label>
+            <textarea
+              value={newPost.content}
+              onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
+              placeholder="자유롭게 이야기를 나눠보세요"
+              rows={6}
+              className="w-full px-4 py-3.5 bg-[#F2F4F6] dark:bg-[#2a2a2a] rounded-[12px] text-[15px] text-[#191F28] dark:text-[#e5e5e5] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#E5E8EB] dark:focus:ring-[#333] resize-none"
+              data-testid="input-post-content"
+            />
           </div>
         </div>
-      )}
+
+        <div className="h-8" />
+      </BottomSheet>
 
       {config.bottomNav}
     </div>

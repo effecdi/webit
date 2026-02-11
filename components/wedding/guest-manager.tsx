@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { createPortal } from "react-dom"
+import { BottomSheet } from '@/components/ui/bottom-sheet'
 import {
   Users, Utensils, Mail, UserPlus, X, Search, Pencil, Trash2,
   ChevronDown, Phone, Check, Filter, Settings, Contact, Upload
@@ -788,12 +789,7 @@ export function GuestManager() {
         <UserPlus className="w-6 h-6" />
       </button>
 
-      {showAddModal && mounted && createPortal(
-        <div className="fixed inset-0 z-[100] bg-black/50 flex items-end justify-center" onClick={() => setShowAddModal(false)}>
-          <div
-            className="bg-white rounded-t-[24px] w-full max-w-md max-h-[85vh] overflow-y-auto animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
+      <BottomSheet open={showAddModal} onOpenChange={setShowAddModal} className="bg-white z-[100] w-full max-w-md mx-auto max-h-[85vh] overflow-y-auto" overlayClassName="z-[100]" showHandle={false}>
             <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-[#F2F4F6] sticky top-0 bg-white z-10">
               <h3 className="text-[17px] font-bold text-[#191F28]">
                 {editingGuest ? "하객 수정" : "하객 추가"}
@@ -950,10 +946,7 @@ export function GuestManager() {
                 {editingGuest ? "수정하기" : "추가하기"}
               </button>
             </div>
-          </div>
-        </div>,
-        document.body
-      )}
+      </BottomSheet>
 
       {showDeleteModal && mounted && createPortal(
         <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center px-5">
@@ -981,12 +974,7 @@ export function GuestManager() {
         document.body
       )}
 
-      {showSettingsModal && mounted && createPortal(
-        <div className="fixed inset-0 z-[100] bg-black/50 flex items-end justify-center" onClick={() => setShowSettingsModal(false)}>
-          <div
-            className="bg-white rounded-t-[24px] w-full max-w-md animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
+      <BottomSheet open={showSettingsModal} onOpenChange={setShowSettingsModal} className="bg-white z-[100] w-full max-w-md mx-auto" overlayClassName="z-[100]" showHandle={false}>
             <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-[#F2F4F6]">
               <h3 className="text-[17px] font-bold text-[#191F28]">예식 정보 설정</h3>
               <button
@@ -1064,10 +1052,7 @@ export function GuestManager() {
                 저장하기
               </button>
             </div>
-          </div>
-        </div>,
-        document.body
-      )}
+      </BottomSheet>
     </>
   )
 }

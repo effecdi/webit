@@ -1,7 +1,8 @@
 "use client"
 
-import { useState, useCallback, useEffect, useRef } from "react"
+import { useState, useCallback, useEffect } from "react"
 import Picker from "react-mobile-picker"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 interface WheelTimePickerProps {
   value: string
@@ -40,7 +41,7 @@ export default function WheelTimePicker({
   label,
 }: WheelTimePickerProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const overlayRef = useRef<HTMLDivElement>(null)
+
 
   const parsed = value ? value.split(":") : null
   const initialHour = parsed ? parsed[0] : "12"
@@ -109,18 +110,13 @@ export default function WheelTimePicker({
         {displayValue || placeholder}
       </button>
 
-      {isOpen && (
-        <div
-          ref={overlayRef}
-          className="fixed inset-0 z-[9999] flex items-end justify-center bg-black/40"
-          onClick={(e) => {
-            if (e.target === overlayRef.current) handleCancel()
-          }}
-        >
-          <div
-            className="w-full max-w-md bg-white rounded-t-2xl overflow-hidden animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
+      <BottomSheet
+        open={isOpen}
+        onOpenChange={(open) => { if (!open) handleCancel() }}
+        className="bg-white z-[9999] overflow-hidden"
+        overlayClassName="z-[9999]"
+        showHandle={false}
+      >
             <div className="flex items-center justify-between px-5 py-4 border-b border-[#F2F3F5]">
               <button
                 type="button"
@@ -188,9 +184,7 @@ export default function WheelTimePicker({
 
               <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-[42px] border-y border-[#E5E8EB] pointer-events-none rounded-lg bg-[#F7F8FA]/50" />
             </div>
-          </div>
-        </div>
-      )}
+      </BottomSheet>
     </>
   )
 }

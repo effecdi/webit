@@ -5,6 +5,7 @@ import React from "react"
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
+import { BottomSheet } from '@/components/ui/bottom-sheet'
 import { 
   ArrowLeft, 
   Bell, 
@@ -512,19 +513,7 @@ export default function WeddingProfilePage() {
       </div>
 
       {/* Photo Upload Modal */}
-      {showPhotoModal && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50 flex items-end justify-center"
-          onClick={() => setShowPhotoModal(null)}
-        >
-          <div 
-            className="w-full max-w-md rounded-t-[24px] p-6 animate-in slide-in-from-bottom duration-300"
-            style={{ background: isDark ? "#1C1C1E" : "white" }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center mb-4">
-              <div className="w-10 h-1 rounded-full" style={{ background: isDark ? "#3A3A3C" : "#E5E8EB" }} />
-            </div>
+      <BottomSheet open={!!showPhotoModal} onOpenChange={(open) => { if (!open) setShowPhotoModal(null) }} className={`z-[60] w-full max-w-md mx-auto p-6 ${isDark ? "bg-[#1C1C1E]" : "bg-white"}`} overlayClassName="z-[60]">
             <h3 className="text-[17px] font-bold text-center mb-6" style={{ color: isDark ? "#EBEBEB" : "#191F28" }}>
               {showPhotoModal === "groom" ? "신랑" : "신부"} 사진 변경
             </h3>
@@ -551,23 +540,10 @@ export default function WeddingProfilePage() {
               </button>
             </div>
             <div className="h-8" />
-          </div>
-        </div>
-      )}
+      </BottomSheet>
 
-      {showShareModal && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowShareModal(false)}
-        >
-          <div
-            className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-900 rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] dark:bg-gray-700 rounded-full" />
-            </div>
-            <div className="px-5 pb-2">
+      <BottomSheet open={showShareModal} onOpenChange={setShowShareModal} className="bg-white dark:bg-gray-900 z-[60]" overlayClassName="z-[60]" showHandle={false}>
+            <div className="px-5 pt-3 pb-2">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[17px] font-bold text-[#191F28] dark:text-gray-100">상대방 초대하기</h3>
                 <button
@@ -608,9 +584,7 @@ export default function WeddingProfilePage() {
               </div>
             </div>
             <div className="h-10" />
-          </div>
-        </div>
-      )}
+      </BottomSheet>
 
       <WeddingBottomNav />
     </main>

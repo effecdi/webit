@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Heart, Book, ChevronRight, ImageIcon, Plus, X, Camera } from "lucide-react"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -182,48 +183,34 @@ export function FamilyGallery() {
       </button>
 
       {/* Add Photo Modal */}
-      {showAddModal && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowAddModal(false)}
-        >
-          <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-            
-            <div className="px-5 pb-8">
-              <h3 className="text-[19px] font-bold text-[#191F28] mb-5">사진 추가</h3>
-              
-              <div className="grid grid-cols-2 gap-3">
-                <button className="flex flex-col items-center gap-3 p-6 bg-[#F2F4F6] rounded-[16px] hover:bg-[#E5E8EB] transition-colors">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <ImageIcon className="w-6 h-6 text-green-500" />
-                  </div>
-                  <span className="text-[14px] font-medium text-[#333D4B]">갤러리에서 선택</span>
-                </button>
-                
-                <button className="flex flex-col items-center gap-3 p-6 bg-[#F2F4F6] rounded-[16px] hover:bg-[#E5E8EB] transition-colors">
-                  <div className="w-12 h-12 bg-[#F3E8FF] rounded-full flex items-center justify-center">
-                    <Camera className="w-6 h-6 text-[#d63bf2]" />
-                  </div>
-                  <span className="text-[14px] font-medium text-[#333D4B]">카메라로 촬영</span>
-                </button>
+      <BottomSheet open={showAddModal} onOpenChange={setShowAddModal} className="bg-white z-[60]" overlayClassName="z-[60]">
+        <div className="px-5 pb-8">
+          <h3 className="text-[19px] font-bold text-[#191F28] mb-5">사진 추가</h3>
+          
+          <div className="grid grid-cols-2 gap-3">
+            <button className="flex flex-col items-center gap-3 p-6 bg-[#F2F4F6] rounded-[16px] hover:bg-[#E5E8EB] transition-colors">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <ImageIcon className="w-6 h-6 text-green-500" />
               </div>
-              
-              <button 
-                onClick={() => setShowAddModal(false)}
-                className="w-full mt-4 py-3.5 text-[#8B95A1] text-[15px] font-medium"
-              >
-                취소
-              </button>
-            </div>
+              <span className="text-[14px] font-medium text-[#333D4B]">갤러리에서 선택</span>
+            </button>
+            
+            <button className="flex flex-col items-center gap-3 p-6 bg-[#F2F4F6] rounded-[16px] hover:bg-[#E5E8EB] transition-colors">
+              <div className="w-12 h-12 bg-[#F3E8FF] rounded-full flex items-center justify-center">
+                <Camera className="w-6 h-6 text-[#d63bf2]" />
+              </div>
+              <span className="text-[14px] font-medium text-[#333D4B]">카메라로 촬영</span>
+            </button>
           </div>
+          
+          <button 
+            onClick={() => setShowAddModal(false)}
+            className="w-full mt-4 py-3.5 text-[#8B95A1] text-[15px] font-medium"
+          >
+            취소
+          </button>
         </div>
-      )}
+      </BottomSheet>
     </>
   )
 }

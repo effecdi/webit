@@ -15,6 +15,7 @@ import {
   Check,
 } from "lucide-react"
 import { CommunityDetailSkeleton } from "@/components/shared/skeleton-ui"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 interface CommunityPost {
   id: number
@@ -408,42 +409,34 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
         </div>
       </div>
 
-      {showShareMenu && (
-        <div className="fixed inset-0 z-[60] bg-black/40" onClick={() => setShowShareMenu(false)}>
-          <div
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] p-5 animate-in slide-in-from-bottom duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center mb-4">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-            <h3 className="text-[17px] font-bold text-[#191F28] mb-4 text-center">공유하기</h3>
-            <div className="space-y-2">
-              <button
-                onClick={handleCopyLink}
-                className="w-full flex items-center gap-3 px-4 py-3.5 rounded-[12px] bg-[#F2F4F6] hover:bg-[#E5E8EB] transition-colors"
-                data-testid="button-copy-link"
-              >
-                {copied ? (
-                  <Check className="w-5 h-5 text-green-500" />
-                ) : (
-                  <Copy className="w-5 h-5 text-[#4E5968]" />
-                )}
-                <span className="text-[14px] font-medium text-[#191F28]">
-                  {copied ? "링크가 복사되었어요!" : "링크 복사"}
-                </span>
-              </button>
-            </div>
+      <BottomSheet open={showShareMenu} onOpenChange={setShowShareMenu} className="bg-white z-[60]" overlayClassName="z-[60]">
+        <div className="p-5">
+          <h3 className="text-[17px] font-bold text-[#191F28] mb-4 text-center">공유하기</h3>
+          <div className="space-y-2">
             <button
-              onClick={() => setShowShareMenu(false)}
-              className="w-full mt-3 py-3.5 rounded-[12px] text-[14px] font-medium text-[#8B95A1] hover:bg-[#F2F4F6] transition-colors"
-              data-testid="button-close-share"
+              onClick={handleCopyLink}
+              className="w-full flex items-center gap-3 px-4 py-3.5 rounded-[12px] bg-[#F2F4F6] hover:bg-[#E5E8EB] transition-colors"
+              data-testid="button-copy-link"
             >
-              닫기
+              {copied ? (
+                <Check className="w-5 h-5 text-green-500" />
+              ) : (
+                <Copy className="w-5 h-5 text-[#4E5968]" />
+              )}
+              <span className="text-[14px] font-medium text-[#191F28]">
+                {copied ? "링크가 복사되었어요!" : "링크 복사"}
+              </span>
             </button>
           </div>
+          <button
+            onClick={() => setShowShareMenu(false)}
+            className="w-full mt-3 py-3.5 rounded-[12px] text-[14px] font-medium text-[#8B95A1] hover:bg-[#F2F4F6] transition-colors"
+            data-testid="button-close-share"
+          >
+            닫기
+          </button>
         </div>
-      )}
+      </BottomSheet>
 
       {config.bottomNav}
     </div>

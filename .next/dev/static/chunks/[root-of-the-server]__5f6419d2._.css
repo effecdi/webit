@@ -5021,29 +5021,14 @@
     border-top-right-radius: .25rem;
   }
 
-  .rounded-t-2xl {
-    border-top-left-radius: var(--radius-2xl);
-    border-top-right-radius: var(--radius-2xl);
-  }
-
   .rounded-t-3xl {
     border-top-left-radius: var(--radius-3xl);
     border-top-right-radius: var(--radius-3xl);
   }
 
-  .rounded-t-\[20px\] {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
-
   .rounded-t-\[24px\] {
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
-  }
-
-  .rounded-t-\[28px\] {
-    border-top-left-radius: 28px;
-    border-top-right-radius: 28px;
   }
 
   .rounded-t-\[100px\] {
@@ -5838,10 +5823,6 @@
 
   .bg-\[\#38383A\] {
     background-color: #38383a;
-  }
-
-  .bg-\[\#48484A\] {
-    background-color: #48484a;
   }
 
   .bg-\[\#333333\] {

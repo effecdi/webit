@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { UserPlus, Copy, Check, Share2, MessageCircle, Link2, X } from "lucide-react"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 interface PartnerInviteSectionProps {
   mode: "dating" | "wedding" | "family"
@@ -263,85 +264,71 @@ export function PartnerInviteSection({ mode, myName }: PartnerInviteSectionProps
         </button>
       </section>
 
-      {showShareModal && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowShareModal(false)}
-        >
-          <div
-            className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-900 rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] dark:bg-gray-700 rounded-full" />
-            </div>
+      <BottomSheet open={showShareModal} onOpenChange={setShowShareModal} className="bg-white dark:bg-gray-900 z-[60]" overlayClassName="z-[60]">
+        <div className="px-5 pb-2">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-[17px] font-bold text-[#191F28] dark:text-gray-100">공유 방법 선택</h3>
+            <button
+              onClick={() => setShowShareModal(false)}
+              className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] dark:hover:bg-gray-800 flex items-center justify-center transition-colors"
+              data-testid="button-close-share-modal"
+            >
+              <X className="w-5 h-5 text-[#8B95A1]" />
+            </button>
+          </div>
 
-            <div className="px-5 pb-2">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-[17px] font-bold text-[#191F28] dark:text-gray-100">공유 방법 선택</h3>
-                <button
-                  onClick={() => setShowShareModal(false)}
-                  className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] dark:hover:bg-gray-800 flex items-center justify-center transition-colors"
-                  data-testid="button-close-share-modal"
-                >
-                  <X className="w-5 h-5 text-[#8B95A1]" />
-                </button>
+          <div className="space-y-2">
+            <button
+              onClick={handleKakaoShare}
+              className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#FEE500] hover:bg-[#FDD800] transition-colors"
+              data-testid="button-share-kakao"
+            >
+              <div className="w-12 h-12 rounded-full bg-[#3C1E1E] flex items-center justify-center">
+                <MessageCircle className="w-6 h-6 text-[#FEE500]" />
               </div>
-
-              <div className="space-y-2">
-                <button
-                  onClick={handleKakaoShare}
-                  className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#FEE500] hover:bg-[#FDD800] transition-colors"
-                  data-testid="button-share-kakao"
-                >
-                  <div className="w-12 h-12 rounded-full bg-[#3C1E1E] flex items-center justify-center">
-                    <MessageCircle className="w-6 h-6 text-[#FEE500]" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-[15px] font-bold text-[#3C1E1E]">카카오톡으로 공유</p>
-                    <p className="text-[12px] text-[#3C1E1E]/60">카카오톡 채팅으로 초대 링크를 보냅니다</p>
-                  </div>
-                </button>
-
-                <button
-                  onClick={() => {
-                    handleCopyLink()
-                    setShowShareModal(false)
-                  }}
-                  className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#F2F4F6] dark:bg-gray-800 hover:bg-[#E5E8EB] dark:hover:bg-gray-700 transition-colors"
-                  data-testid="button-share-copy-link"
-                >
-                  <div className="w-12 h-12 rounded-full bg-white dark:bg-gray-700 flex items-center justify-center">
-                    <Link2 className="w-6 h-6 text-[#4E5968] dark:text-gray-300" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-[15px] font-bold text-[#191F28] dark:text-gray-100">링크 복사</p>
-                    <p className="text-[12px] text-[#8B95A1] dark:text-gray-400">초대 링크를 클립보드에 복사합니다</p>
-                  </div>
-                </button>
-
-                {typeof window !== "undefined" && "share" in navigator && (
-                  <button
-                    onClick={handleNativeShare}
-                    className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#F2F4F6] dark:bg-gray-800 hover:bg-[#E5E8EB] dark:hover:bg-gray-700 transition-colors"
-                    data-testid="button-share-native"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-white dark:bg-gray-700 flex items-center justify-center">
-                      <Share2 className="w-6 h-6 text-[#4E5968] dark:text-gray-300" />
-                    </div>
-                    <div className="text-left">
-                      <p className="text-[15px] font-bold text-[#191F28] dark:text-gray-100">다른 앱으로 공유</p>
-                      <p className="text-[12px] text-[#8B95A1] dark:text-gray-400">기기의 공유 기능을 사용합니다</p>
-                    </div>
-                  </button>
-                )}
+              <div className="text-left">
+                <p className="text-[15px] font-bold text-[#3C1E1E]">카카오톡으로 공유</p>
+                <p className="text-[12px] text-[#3C1E1E]/60">카카오톡 채팅으로 초대 링크를 보냅니다</p>
               </div>
-            </div>
+            </button>
 
-            <div className="h-10" />
+            <button
+              onClick={() => {
+                handleCopyLink()
+                setShowShareModal(false)
+              }}
+              className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#F2F4F6] dark:bg-gray-800 hover:bg-[#E5E8EB] dark:hover:bg-gray-700 transition-colors"
+              data-testid="button-share-copy-link"
+            >
+              <div className="w-12 h-12 rounded-full bg-white dark:bg-gray-700 flex items-center justify-center">
+                <Link2 className="w-6 h-6 text-[#4E5968] dark:text-gray-300" />
+              </div>
+              <div className="text-left">
+                <p className="text-[15px] font-bold text-[#191F28] dark:text-gray-100">링크 복사</p>
+                <p className="text-[12px] text-[#8B95A1] dark:text-gray-400">초대 링크를 클립보드에 복사합니다</p>
+              </div>
+            </button>
+
+            {typeof window !== "undefined" && "share" in navigator && (
+              <button
+                onClick={handleNativeShare}
+                className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#F2F4F6] dark:bg-gray-800 hover:bg-[#E5E8EB] dark:hover:bg-gray-700 transition-colors"
+                data-testid="button-share-native"
+              >
+                <div className="w-12 h-12 rounded-full bg-white dark:bg-gray-700 flex items-center justify-center">
+                  <Share2 className="w-6 h-6 text-[#4E5968] dark:text-gray-300" />
+                </div>
+                <div className="text-left">
+                  <p className="text-[15px] font-bold text-[#191F28] dark:text-gray-100">다른 앱으로 공유</p>
+                  <p className="text-[12px] text-[#8B95A1] dark:text-gray-400">기기의 공유 기능을 사용합니다</p>
+                </div>
+              </button>
+            )}
           </div>
         </div>
-      )}
+
+        <div className="h-10" />
+      </BottomSheet>
     </>
   )
 }

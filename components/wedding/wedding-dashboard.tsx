@@ -5,6 +5,7 @@ import React from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import WheelDatePicker from "@/components/ui/wheel-date-picker"
+import { BottomSheet } from '@/components/ui/bottom-sheet'
 import { 
   Bell, 
   ChevronRight, 
@@ -649,20 +650,8 @@ export function WeddingDashboard() {
       </main>
 
       {/* Expense Add Modal */}
-      {showExpenseModal && (
-        <div 
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowExpenseModal(false)}
-        >
-          <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-            
-            <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
+      <BottomSheet open={showExpenseModal} onOpenChange={setShowExpenseModal} className="bg-white z-[60]" overlayClassName="z-[60]" showHandle={false}>
+            <div className="flex items-center justify-between px-5 pt-3 pb-4 border-b border-[#F2F4F6]">
               <h3 className="text-[19px] font-bold text-[#191F28]">지출 기록</h3>
               <button 
                 onClick={() => setShowExpenseModal(false)}
@@ -786,9 +775,7 @@ export function WeddingDashboard() {
             </div>
             
             <div className="h-8" />
-          </div>
-        </div>
-      )}
+      </BottomSheet>
 
       {/* Budget Setup Modal */}
       {showBudgetSetupModal && (

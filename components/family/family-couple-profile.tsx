@@ -13,6 +13,7 @@ import {
   Check,
 } from "lucide-react";
 import Image from "next/image";
+import { BottomSheet } from "@/components/ui/bottom-sheet";
 
 export function FamilyCoupleProfile() {
   const [isEditing, setIsEditing] = useState(false);
@@ -382,81 +383,68 @@ export function FamilyCoupleProfile() {
         </div>
       )}
 
-      {showShareModal && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowShareModal(false)}
-        >
-          <div
-            className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-900 rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] dark:bg-gray-700 rounded-full" />
-            </div>
-            <div className="px-5 pb-2">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-[17px] font-bold text-[#191F28] dark:text-gray-100">
-                  상대방 초대하기
-                </h3>
-                <button
-                  onClick={() => setShowShareModal(false)}
-                  className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] dark:hover:bg-gray-800 flex items-center justify-center transition-colors"
-                  data-testid="button-close-share-modal"
-                >
-                  <X className="w-5 h-5 text-[#8B95A1]" />
-                </button>
+      <BottomSheet open={showShareModal} onOpenChange={setShowShareModal} className="bg-white dark:bg-gray-900 z-[60]" overlayClassName="z-[60]">
+        <div className="px-5 pb-2">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-[17px] font-bold text-[#191F28] dark:text-gray-100">
+              상대방 초대하기
+            </h3>
+            <button
+              onClick={() => setShowShareModal(false)}
+              className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] dark:hover:bg-gray-800 flex items-center justify-center transition-colors"
+              data-testid="button-close-share-modal"
+            >
+              <X className="w-5 h-5 text-[#8B95A1]" />
+            </button>
+          </div>
+          <div className="space-y-2">
+            <button
+              onClick={handleKakaoShare}
+              className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#FEE500] hover:bg-[#FDD800] transition-colors"
+              data-testid="button-share-kakao"
+            >
+              <div className="w-12 h-12 rounded-full bg-[#3C1E1E] flex items-center justify-center">
+                <MessageCircle className="w-6 h-6 text-[#FEE500]" />
               </div>
-              <div className="space-y-2">
-                <button
-                  onClick={handleKakaoShare}
-                  className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#FEE500] hover:bg-[#FDD800] transition-colors"
-                  data-testid="button-share-kakao"
-                >
-                  <div className="w-12 h-12 rounded-full bg-[#3C1E1E] flex items-center justify-center">
-                    <MessageCircle className="w-6 h-6 text-[#FEE500]" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-[15px] font-bold text-[#3C1E1E]">
-                      카카오톡으로 공유
-                    </p>
-                    <p className="text-[12px] text-[#3C1E1E]/60">
-                      카카오톡 채팅으로 초대 링크를 보냅니다
-                    </p>
-                  </div>
-                </button>
-                <button
-                  onClick={() => {
-                    handleCopyLink();
-                    setTimeout(() => setShowShareModal(false), 800);
-                  }}
-                  className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#F2F4F6] dark:bg-gray-800 hover:bg-[#E5E8EB] dark:hover:bg-gray-700 transition-colors"
-                  data-testid="button-share-copy-link"
-                >
-                  <div className="w-12 h-12 rounded-full bg-white dark:bg-gray-700 flex items-center justify-center">
-                    {copied ? (
-                      <Check className="w-6 h-6 text-green-500" />
-                    ) : (
-                      <Link2 className="w-6 h-6 text-[#4E5968] dark:text-gray-300" />
-                    )}
-                  </div>
-                  <div className="text-left">
-                    <p className="text-[15px] font-bold text-[#191F28] dark:text-gray-100">
-                      {copied ? "복사됨!" : "링크 복사"}
-                    </p>
-                    <p className="text-[12px] text-[#8B95A1] dark:text-gray-400">
-                      {copied
-                        ? "클립보드에 복사되었습니다"
-                        : "초대 링크를 클립보드에 복사합니다"}
-                    </p>
-                  </div>
-                </button>
+              <div className="text-left">
+                <p className="text-[15px] font-bold text-[#3C1E1E]">
+                  카카오톡으로 공유
+                </p>
+                <p className="text-[12px] text-[#3C1E1E]/60">
+                  카카오톡 채팅으로 초대 링크를 보냅니다
+                </p>
               </div>
-            </div>
-            <div className="h-10" />
+            </button>
+            <button
+              onClick={() => {
+                handleCopyLink();
+                setTimeout(() => setShowShareModal(false), 800);
+              }}
+              className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#F2F4F6] dark:bg-gray-800 hover:bg-[#E5E8EB] dark:hover:bg-gray-700 transition-colors"
+              data-testid="button-share-copy-link"
+            >
+              <div className="w-12 h-12 rounded-full bg-white dark:bg-gray-700 flex items-center justify-center">
+                {copied ? (
+                  <Check className="w-6 h-6 text-green-500" />
+                ) : (
+                  <Link2 className="w-6 h-6 text-[#4E5968] dark:text-gray-300" />
+                )}
+              </div>
+              <div className="text-left">
+                <p className="text-[15px] font-bold text-[#191F28] dark:text-gray-100">
+                  {copied ? "복사됨!" : "링크 복사"}
+                </p>
+                <p className="text-[12px] text-[#8B95A1] dark:text-gray-400">
+                  {copied
+                    ? "클립보드에 복사되었습니다"
+                    : "초대 링크를 클립보드에 복사합니다"}
+                </p>
+              </div>
+            </button>
           </div>
         </div>
-      )}
+        <div className="h-10" />
+      </BottomSheet>
     </section>
   );
 }

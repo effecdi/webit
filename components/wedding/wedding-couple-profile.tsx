@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Heart, Camera, Edit2, Sparkles, UserPlus, Link2, X, MessageCircle, Check } from "lucide-react";
+import { BottomSheet } from '@/components/ui/bottom-sheet'
 
 interface ProfileData {
   name: string;
@@ -263,19 +264,8 @@ export function WeddingCoupleProfile() {
         </button>
       )}
 
-      {showShareModal && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => setShowShareModal(false)}
-        >
-          <div
-            className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-900 rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] dark:bg-gray-700 rounded-full" />
-            </div>
-            <div className="px-5 pb-2">
+      <BottomSheet open={showShareModal} onOpenChange={setShowShareModal} className="bg-white dark:bg-gray-900 z-[60]" overlayClassName="z-[60]" showHandle={false}>
+            <div className="px-5 pt-3 pb-2">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[17px] font-bold text-[#191F28] dark:text-gray-100">상대방 초대하기</h3>
                 <button
@@ -316,9 +306,7 @@ export function WeddingCoupleProfile() {
               </div>
             </div>
             <div className="h-10" />
-          </div>
-        </div>
-      )}
+      </BottomSheet>
     </section>
   );
 }

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
+import { BottomSheet } from '@/components/ui/bottom-sheet'
 import WheelDatePicker from "@/components/ui/wheel-date-picker"
 import WheelTimePicker from "@/components/ui/wheel-time-picker"
 import { 
@@ -249,14 +250,8 @@ export default function DressTourPage() {
       </main>
 
       {/* Add Modal */}
-      {showAddModal && (
-        <div className="fixed inset-0 z-[60] bg-black/50 flex items-end">
-          <div className="w-full bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300">
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-            
-            <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
+      <BottomSheet open={showAddModal} onOpenChange={setShowAddModal} className="bg-white z-[60]" overlayClassName="z-[60]" showHandle={false}>
+            <div className="flex items-center justify-between px-5 pt-3 pb-4 border-b border-[#F2F4F6]">
               <button onClick={() => setShowAddModal(false)}>
                 <X className="w-6 h-6 text-[#8B95A1]" />
               </button>
@@ -330,9 +325,7 @@ export default function DressTourPage() {
             </div>
 
             <div className="h-8" />
-          </div>
-        </div>
-      )}
+      </BottomSheet>
 
       {/* Detail Modal */}
       {showDetailModal && selectedShop && (

@@ -24,6 +24,7 @@ import { TravelEntryCard } from "@/components/travel/travel-entry-card"
 import { NotificationModal, type Notification } from "@/components/shared/notification-modal"
 import { ModeSwitch } from "@/components/mode-switch"
 import { TodoListSkeleton, EventListSkeleton, AlbumGridSkeleton } from "@/components/shared/skeleton-ui"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 const QUICK_ACTIONS = [
   { icon: Calendar, label: "일정 추가", color: "bg-green-50 text-green-600", href: "/family/calendar" },
@@ -679,9 +680,9 @@ export function FamilyWeveDashboard() {
         </div>
       </main>
 
-      {showCommentModal && selectedTodo && (
-        <div className="fixed inset-0 z-[100] bg-black/50 flex items-end justify-center" onClick={() => setShowCommentModal(false)}>
-          <div className="bg-white rounded-t-[28px] w-full max-w-md p-5 pb-8 animate-in slide-in-from-bottom duration-300" onClick={(e) => e.stopPropagation()}>
+      <BottomSheet open={showCommentModal && !!selectedTodo} onOpenChange={(open) => { if (!open) setShowCommentModal(false) }} className="bg-white z-[100]" overlayClassName="z-[100]" showHandle={false}>
+        {selectedTodo && (
+          <div className="p-5 pb-8">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-bold text-[17px] text-[#191F28]">댓글</h3>
               <button onClick={() => setShowCommentModal(false)} className="w-8 h-8 rounded-full bg-[#F2F4F6] flex items-center justify-center" data-testid="button-close-comment-modal">
@@ -732,8 +733,8 @@ export function FamilyWeveDashboard() {
               </button>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </BottomSheet>
 
       {showEditModal && editingTodo && (
         <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-5" onClick={() => setShowEditModal(false)}>

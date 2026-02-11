@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 import { FloatingBackButton } from "@/components/shared/floating-back-button"
 import { 
   ArrowLeft, Heart, Calendar, Sparkles, CheckSquare, 
@@ -555,25 +556,13 @@ export default function WidgetStorePage() {
 
       <div className="h-20" />
 
-      <AnimatePresence>
+      <BottomSheet
+        open={!!selectedWidget}
+        onOpenChange={(open) => { if (!open) setSelectedWidget(null) }}
+        className="bg-white dark:bg-gray-900 max-h-[90vh] overflow-hidden"
+      >
         {selectedWidget && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-end justify-center"
-            onClick={() => setSelectedWidget(null)}
-          >
-            <motion.div
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="w-full max-w-md bg-white dark:bg-gray-900 rounded-t-[28px] overflow-hidden max-h-[90vh]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="w-10 h-1 bg-[#E5E8EB] dark:bg-gray-700 rounded-full mx-auto mt-3" />
-              
+          <>
               <div className="px-5 pt-4 pb-2 flex items-center justify-between">
                 <h3 className="text-[19px] font-bold text-[#191F28] dark:text-white">{selectedWidget.name}</h3>
                 <button
@@ -622,10 +611,9 @@ export default function WidgetStorePage() {
                   </button>
                 )}
               </div>
-            </motion.div>
-          </motion.div>
+          </>
         )}
-      </AnimatePresence>
+      </BottomSheet>
       <FloatingBackButton />
     </div>
   )

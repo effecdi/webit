@@ -17,6 +17,7 @@ import { GardenLayout } from "./invitation-layouts/GardenLayout"
 import { PosterLayout } from "./invitation-layouts/PosterLayout"
 import { BoardingPassLayout } from "./invitation-layouts/BoardingPassLayout"
 import { CalligraphyLayout } from "./invitation-layouts/CalligraphyLayout"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 interface InvitationPreviewProps {
   data: InvitationData & { date?: string; time?: string }
@@ -573,26 +574,16 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
         )}
       </div>
 
-      {state.showContact && (
-        <div
-          className="fixed inset-0 z-50 flex items-end justify-center"
-          onClick={() => state.setShowContact(false)}
-        >
-          <div className="absolute inset-0 bg-black/60" />
-          <div
-            className="relative w-full max-w-[420px] bg-[#191F28] rounded-t-2xl overflow-y-auto"
-            style={{ maxHeight: "80vh" }}
-            onClick={(e) => e.stopPropagation()}
+      <BottomSheet open={state.showContact} onOpenChange={state.setShowContact} className="bg-[#191F28] max-h-[80vh] overflow-y-auto max-w-[420px] mx-auto" showHandle={false}>
+        <div className="flex justify-end p-4">
+          <button
+            onClick={() => state.setShowContact(false)}
+            className="text-white/60"
+            data-testid="button-close-contact"
           >
-            <div className="flex justify-end p-4">
-              <button
-                onClick={() => state.setShowContact(false)}
-                className="text-white/60"
-                data-testid="button-close-contact"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+            <X className="w-5 h-5" />
+          </button>
+        </div>
 
             <div className="px-8 pb-2">
               <div className="mb-8">
@@ -670,9 +661,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
                 )}
               </div>
             </div>
-          </div>
-        </div>
-      )}
+      </BottomSheet>
 
       {state.showPhotoViewer && state.galleryImages.length > 0 && (
         <div className="fixed inset-0 z-50 bg-black flex flex-col">

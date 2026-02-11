@@ -1,6 +1,7 @@
 "use client"
 
 import { Phone, Copy, X, ChevronLeft, ChevronRight } from "lucide-react"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 import { getKoreanFont, getEnglishFont } from "./font-utils"
@@ -833,14 +834,11 @@ export function CalligraphyLayout({ data, state, helpers, onRsvpClick }: LayoutP
       )}
 
       {/* ===== CONTACT MODAL ===== */}
-      {state.showContact && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-end justify-center" onClick={() => state.setShowContact(false)}>
-          <div
-            className="w-full max-w-[420px] rounded-t-[24px] p-6 pb-8"
-            style={{ backgroundColor: cardBg }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="w-10 h-1 rounded-full mx-auto mb-6" style={{ backgroundColor: borderColor }} />
+      <BottomSheet
+        open={state.showContact}
+        onOpenChange={(open) => state.setShowContact(open)}
+        className="bg-white p-6 pb-8"
+      >
             <p className="text-[16px] font-medium mb-4 text-center" style={{ color: textPrimary }}>연락하기</p>
             <div className="space-y-3">
               {data.groomPhone && (
@@ -880,9 +878,7 @@ export function CalligraphyLayout({ data, state, helpers, onRsvpClick }: LayoutP
                 </a>
               )}
             </div>
-          </div>
-        </div>
-      )}
+      </BottomSheet>
 
       {state.copiedToast && (
         <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full shadow-lg" style={{ backgroundColor: textPrimary }}>

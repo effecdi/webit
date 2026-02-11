@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { BottomSheet } from '@/components/ui/bottom-sheet';
 import {
   Plus,
   X,
@@ -1131,14 +1132,8 @@ export default function GoodsPage() {
         </main>
       )}
 
-      {showAddModal && (
-        <div className="fixed inset-0 z-[60] bg-black/50 flex items-end">
-          <div className="w-full bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300">
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-
-            <div className="flex items-center justify-between px-5 pb-4 border-b border-[#F2F4F6]">
+      <BottomSheet open={showAddModal} onOpenChange={setShowAddModal} className="bg-white z-[60]" overlayClassName="z-[60]" showHandle={false}>
+            <div className="flex items-center justify-between px-5 pt-3 pb-4 border-b border-[#F2F4F6]">
               <button
                 onClick={() => setShowAddModal(false)}
                 data-testid="button-close-modal"
@@ -1284,9 +1279,7 @@ export default function GoodsPage() {
             </div>
 
             <div className="h-8" />
-          </div>
-        </div>
-      )}
+      </BottomSheet>
 
       {showVerifyModal && (
         <div className="fixed inset-0 z-[60] bg-[#0A0A0A] flex flex-col animate-in fade-in duration-300">

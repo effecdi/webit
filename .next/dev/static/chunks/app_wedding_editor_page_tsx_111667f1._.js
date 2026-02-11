@@ -14,9 +14,13 @@
   "static/chunks/components_invitation-layouts_CalligraphyLayout_tsx_a4951248._.js",
   "static/chunks/components_invitation-layouts_7ffcd030._.js",
   "static/chunks/components_invitation-preview_tsx_d107dfeb._.js",
+  "static/chunks/components_ui_bottom-sheet_tsx_a446f06e._.js",
   "static/chunks/app_wedding_editor_page_tsx_13d7ba9a._.js",
-  "static/chunks/lib_music-tracks_ts_bfd2d3e2._.js",
-  "static/chunks/node_modules__pnpm_b77e0449._.js"
+  "static/chunks/lib_afaa69f8._.js",
+  "static/chunks/164fe_motion-dom_dist_es_b91876c3._.js",
+  "static/chunks/1b3c2_framer-motion_dist_es_8132a1c3._.js",
+  "static/chunks/a94f9_tailwind-merge_dist_bundle-mjs_mjs_f110c13e._.js",
+  "static/chunks/node_modules__pnpm_09adb9f5._.js"
 ],
     source: "dynamic"
 });

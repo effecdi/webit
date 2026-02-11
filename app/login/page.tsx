@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Heart, Check, ChevronRight, ChevronDown } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 const CONSENT_ITEMS = [
   {
@@ -205,19 +206,12 @@ export default function LoginPage() {
         시작하면 서비스 이용약관 및 개인정보처리방침에 동의하게 됩니다
       </p>
 
-      {showConsent && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/50"
-          onClick={() => { setShowConsent(false); setPendingProvider(null) }}
-        >
-          <div
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] animate-in slide-in-from-bottom duration-300"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 bg-[#E5E8EB] rounded-full" />
-            </div>
-
+      <BottomSheet
+        open={showConsent}
+        onOpenChange={(open) => { if (!open) { setShowConsent(false); setPendingProvider(null) } }}
+        className="bg-white z-[60]"
+        overlayClassName="z-[60]"
+      >
             <div className="px-6 pb-2">
               <h3 className="text-[20px] font-bold text-[#191F28] mb-1">
                 서비스 이용 동의
@@ -316,9 +310,7 @@ export default function LoginPage() {
                 동의하고 계속하기
               </button>
             </div>
-          </div>
-        </div>
-      )}
+      </BottomSheet>
     </main>
   )
 }
