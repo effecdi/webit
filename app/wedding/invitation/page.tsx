@@ -9,7 +9,6 @@ interface Template {
   id: string
   name: string
   type: "basic" | "premium"
-  image: string
   badge?: "NEW" | "PREMIUM" | "FREE"
   description: string
 }
@@ -26,55 +25,210 @@ interface SavedInvitation {
 const FREE_LIMIT = 2
 
 const TEMPLATES: Template[] = [
-  {
-    id: "cinematic",
-    name: "시네마틱",
-    type: "premium",
-    image: "/images/template-cinematic.png",
-    badge: "PREMIUM",
-    description: "감성적인 시네마틱 무드",
-  },
-  {
-    id: "modern",
-    name: "모던",
-    type: "basic",
-    image: "/images/template-modern.png",
-    badge: "FREE",
-    description: "깔끔한 모던 디자인",
-  },
-  {
-    id: "classic",
-    name: "클래식",
-    type: "basic",
-    image: "/images/template-classic.png",
-    badge: "FREE",
-    description: "격식있는 클래식 스타일",
-  },
-  {
-    id: "magazine",
-    name: "매거진",
-    type: "premium",
-    image: "/images/template-magazine.png",
-    badge: "NEW",
-    description: "트렌디한 매거진 레이아웃",
-  },
-  {
-    id: "polaroid",
-    name: "폴라로이드",
-    type: "premium",
-    image: "/images/template-polaroid.png",
-    badge: "PREMIUM",
-    description: "빈티지 폴라로이드 감성",
-  },
-  {
-    id: "chat",
-    name: "채팅",
-    type: "premium",
-    image: "/images/template-chat.png",
-    badge: "PREMIUM",
-    description: "재미있는 채팅 스타일",
-  },
+  { id: "cinematic", name: "시네마틱", type: "premium", badge: "PREMIUM", description: "감성적인 시네마틱 무드" },
+  { id: "modern", name: "모던", type: "basic", badge: "FREE", description: "깔끔한 모던 디자인" },
+  { id: "classic", name: "클래식", type: "basic", badge: "FREE", description: "격식있는 클래식 스타일" },
+  { id: "magazine", name: "매거진", type: "premium", badge: "NEW", description: "트렌디한 매거진 레이아웃" },
+  { id: "polaroid", name: "일러스트", type: "premium", badge: "PREMIUM", description: "빈티지 일러스트 감성" },
+  { id: "chat", name: "편지지", type: "premium", badge: "PREMIUM", description: "클래식 편지지 스타일" },
+  { id: "traditional", name: "전통", type: "premium", badge: "PREMIUM", description: "격조높은 전통 혼례" },
+  { id: "garden", name: "가든", type: "premium", badge: "PREMIUM", description: "로맨틱 가든 웨딩" },
+  { id: "poster", name: "포스터", type: "premium", badge: "NEW", description: "아트 포스터 스타일" },
+  { id: "boardingpass", name: "보딩패스", type: "premium", badge: "NEW", description: "여행 컨셉 보딩패스" },
+  { id: "calligraphy", name: "캘리그라피", type: "premium", badge: "PREMIUM", description: "우아한 캘리그라피" },
 ]
+
+function GalleryPreview({ id }: { id: string }) {
+  switch (id) {
+    case "cinematic":
+      return (
+        <div className="w-full h-full relative" style={{ background: "linear-gradient(180deg, #2a2520 0%, #1a1510 100%)" }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <div className="text-[22px] text-[#C5A572]/70 italic" style={{ fontFamily: "Georgia, serif" }}>Save</div>
+            <div className="text-[32px] text-[#C5A572] italic font-bold leading-tight" style={{ fontFamily: "Georgia, serif" }}>the Date</div>
+            <div className="w-[80px] h-[100px] bg-[#3D3529] rounded-[4px] mt-5 mb-4 border border-[#C5A572]/20" />
+            <div className="w-[60px] h-[2px] bg-[#C5A572]/30 rounded-full mb-2" />
+            <div className="text-[11px] text-[#C5A572]/50 tracking-[0.3em]">2025.10.14</div>
+          </div>
+          <div className="absolute bottom-6 left-0 right-0 flex flex-col items-center">
+            <div className="w-[100px] h-[2px] bg-[#C5A572]/30 rounded-full mb-2" />
+            <div className="text-[10px] text-white/30 tracking-wider">WEDDING INVITATION</div>
+          </div>
+        </div>
+      )
+    case "modern":
+      return (
+        <div className="w-full h-full bg-white flex flex-col items-center justify-center gap-3 p-6">
+          <div className="text-[14px] text-[#8B95A1] italic" style={{ fontFamily: "Georgia, serif" }}>Wedding</div>
+          <div className="text-[11px] text-[#B0B8C1] tracking-[0.3em]">INVITATION</div>
+          <div className="w-[120px] h-[150px] bg-[#F2F4F6] rounded-[8px] my-3" />
+          <div className="text-[13px] text-[#4E5968] tracking-wide">Our New Beginning</div>
+          <div className="w-[80px] h-[1.5px] bg-[#D1D6DB] rounded-full" />
+          <div className="text-[11px] text-[#B0B8C1] mt-2">2025. 10. 14</div>
+        </div>
+      )
+    case "classic":
+      return (
+        <div className="w-full h-full bg-white flex flex-col items-center justify-center p-6">
+          <div className="w-[80px] h-[1px] bg-[#D1D6DB] mb-4" />
+          <div className="text-[28px] text-[#191F28] font-bold leading-none">DEC</div>
+          <div className="text-[52px] text-[#191F28] font-bold leading-none">14</div>
+          <div className="text-[12px] text-[#8B95A1] tracking-[0.2em] mt-1">SATURDAY</div>
+          <div className="w-[80px] h-[1px] bg-[#D1D6DB] mt-4 mb-5" />
+          <div className="w-[100px] h-[80px] bg-[#F2F4F6] rounded-[4px]" />
+          <div className="text-[11px] text-[#B0B8C1] mt-3 tracking-wider">G & B</div>
+        </div>
+      )
+    case "magazine":
+      return (
+        <div className="w-full h-full relative" style={{ background: "linear-gradient(180deg, #1A1A1A 0%, #2A2A2A 40%, #1A1A1A 100%)" }}>
+          <div className="absolute top-5 left-5 z-10">
+            <div className="text-[10px] text-white/30 tracking-[0.3em] font-light">VOL. 01</div>
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-[140px] h-[180px] bg-[#333333] rounded-[4px]" />
+          </div>
+          <div className="absolute bottom-6 left-5 z-10">
+            <div className="text-[10px] text-white/40 leading-none mb-1" style={{ fontFamily: "Georgia, serif" }}>2025.10</div>
+            <div className="text-[18px] text-white font-light italic leading-tight" style={{ fontFamily: "'Great Vibes', cursive" }}>G & B</div>
+            <div className="text-[9px] text-white/30 tracking-[0.2em] mt-1">WEDDING MAGAZINE</div>
+          </div>
+        </div>
+      )
+    case "polaroid":
+      return (
+        <div className="w-full h-full relative flex flex-col items-center justify-center" style={{ backgroundColor: "#FAF8F5" }}>
+          <svg className="absolute top-4 left-4 w-8 h-8" viewBox="0 0 16 16" fill="none" stroke="#C9A88C" strokeWidth="0.5">
+            <path d="M1,8 L1,2 Q1,1 2,1 L8,1" />
+          </svg>
+          <svg className="absolute top-4 right-4 w-8 h-8" viewBox="0 0 16 16" fill="none" stroke="#C9A88C" strokeWidth="0.5">
+            <path d="M8,1 L14,1 Q15,1 15,2 L15,8" />
+          </svg>
+          <svg className="absolute bottom-4 left-4 w-8 h-8" viewBox="0 0 16 16" fill="none" stroke="#C9A88C" strokeWidth="0.5">
+            <path d="M1,8 L1,14 Q1,15 2,15 L8,15" />
+          </svg>
+          <svg className="absolute bottom-4 right-4 w-8 h-8" viewBox="0 0 16 16" fill="none" stroke="#C9A88C" strokeWidth="0.5">
+            <path d="M8,15 L14,15 Q15,15 15,14 L15,8" />
+          </svg>
+          <div className="w-[100px] h-[120px] bg-[#EDE8DF] rounded-[4px] mb-3 border border-[#D4C5B0]" />
+          <div className="text-[14px] tracking-[0.3em]" style={{ color: "#2C2720", fontFamily: "'Playfair Display', Georgia, serif" }}>G & B</div>
+          <svg width="60" height="10" viewBox="0 0 60 10" fill="none" className="mt-2">
+            <line x1="5" y1="5" x2="24" y2="5" stroke="#E8DDD3" strokeWidth="0.5" />
+            <path d="M30 2L32 5L30 8L28 5L30 2Z" fill="#C9A88C" />
+            <line x1="36" y1="5" x2="55" y2="5" stroke="#E8DDD3" strokeWidth="0.5" />
+          </svg>
+          <div className="text-[9px] text-[#A69882] mt-2 tracking-[0.2em]">WEDDING INVITATION</div>
+        </div>
+      )
+    case "chat":
+      return (
+        <div className="w-full h-full flex flex-col" style={{ backgroundColor: "#F7F4EF" }}>
+          <div style={{ backgroundColor: "#5C6B4E" }}>
+            <svg className="w-full" viewBox="0 0 280 60" preserveAspectRatio="none" style={{ display: "block" }}>
+              <path d="M0,0 L140,55 L280,0 L280,0 L0,0 Z" fill="#4A5940" />
+            </svg>
+            <div className="text-center pb-4 -mt-1">
+              <div className="text-[14px] text-white/90 leading-tight" style={{ fontFamily: "'Caveat', cursive" }}>G & B</div>
+              <div className="text-[8px] text-white/50 tracking-[0.2em] mt-1">WEDDING</div>
+            </div>
+          </div>
+          <div className="flex-1 flex flex-col items-center justify-center px-6 py-4">
+            <div className="w-[100px] h-[120px] border border-[#D4CEBD] bg-[#E8E2D6]" />
+            <div className="w-[60px] h-[1px] mx-auto mt-4" style={{ backgroundColor: "#D4CEBD" }} />
+            <div className="text-[9px] text-[#8B8070] mt-2 tracking-wider">2025. 10. 14</div>
+          </div>
+        </div>
+      )
+    case "traditional":
+      return (
+        <div className="w-full h-full relative" style={{ background: "#1e2a3a" }}>
+          <div className="absolute inset-[8px] border-double border-2 border-[#C5A572]/50" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+            <div className="text-[10px] text-[#C5A572]/50 tracking-[0.3em]">WEDDING</div>
+            <div className="text-[28px] text-[#C5A572] font-bold" style={{ fontFamily: "Georgia, serif", writingMode: "vertical-rl" as any }}>결혼합니다</div>
+            <div className="w-[60px] h-[1px] bg-[#C5A572]/30 mt-2" />
+            <div className="text-[10px] text-[#C5A572]/40 tracking-wider mt-1">2025. 10. 14</div>
+          </div>
+        </div>
+      )
+    case "garden":
+      return (
+        <div className="w-full h-full bg-white relative flex flex-col items-center justify-center p-6">
+          <div className="absolute top-3 left-3 w-[28px] h-[28px] rounded-full" style={{ background: "radial-gradient(circle, #F5B7C5 0%, #E8A5B8 40%, transparent 70%)" }} />
+          <div className="absolute top-3 right-3 w-[20px] h-[20px] rounded-full" style={{ background: "radial-gradient(circle, #D4E4D4 0%, #B8D4B8 40%, transparent 70%)" }} />
+          <div className="absolute bottom-3 left-3 w-[20px] h-[20px] rounded-full" style={{ background: "radial-gradient(circle, #D4E4D4 0%, #B8D4B8 40%, transparent 70%)" }} />
+          <div className="absolute bottom-3 right-3 w-[28px] h-[28px] rounded-full" style={{ background: "radial-gradient(circle, #F5B7C5 0%, #E8A5B8 40%, transparent 70%)" }} />
+          <div className="w-[80px] h-[80px] rounded-full bg-[#F0F4F0] border border-[#D4DFD4] mb-3" />
+          <div className="text-[12px] text-[#5C7A5C]" style={{ fontFamily: "Georgia, serif" }}>Blooming</div>
+          <div className="text-[20px] text-[#8B6F6F] font-medium" style={{ fontFamily: "Georgia, serif" }}>Garden</div>
+          <div className="w-[60px] h-[1px] bg-[#D4DFD4] mt-3 mb-2" />
+          <div className="text-[9px] text-[#A5B5A5] tracking-wider">2025. 10. 14</div>
+        </div>
+      )
+    case "poster":
+      return (
+        <div className="w-full h-full relative" style={{ backgroundColor: "#FDF8F3" }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <svg width="30" height="30" viewBox="0 0 20 20" fill="none"><path d="M10 2C10 2 8 6 4 8C8 10 10 14 10 14C10 14 12 10 16 8C12 6 10 2 10 2Z" fill="#E8A87C" opacity="0.5"/></svg>
+            <div className="text-[12px] mt-2" style={{ color: "#C5956B", fontFamily: "'Caveat', cursive" }}>The Wedding of</div>
+            <div className="text-[22px] font-medium mt-1" style={{ color: "#8B6F5C" }}>G & B</div>
+            <div className="w-[80px] h-[100px] bg-[#F0E8DC] rounded-[4px] mt-3 border border-[#E0D4C2]" />
+            <svg width="24" height="14" viewBox="0 0 20 20" fill="none" className="mt-3"><circle cx="10" cy="10" r="4" fill="#D4A5A5" opacity="0.3"/><path d="M6 10C6 10 8 6 10 6C12 6 14 10 14 10" stroke="#C5956B" strokeWidth="0.8" fill="none"/></svg>
+            <div className="text-[9px] text-[#B0A090] mt-2 tracking-wider">2025. 10. 14</div>
+          </div>
+          <svg className="absolute top-3 left-3" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="8" r="4" fill="#F4C7AB" opacity="0.4"/></svg>
+          <svg className="absolute bottom-3 right-3" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="4" fill="#B5C7D3" opacity="0.3"/></svg>
+        </div>
+      )
+    case "boardingpass":
+      return (
+        <div className="w-full h-full relative" style={{ backgroundColor: "#1E2D4A" }}>
+          <div className="absolute inset-x-4 top-4 bottom-4 rounded-[8px] flex flex-col items-center justify-center" style={{ backgroundColor: "#FFFFFF" }}>
+            <svg width="36" height="36" viewBox="0 0 100 100" fill="none" className="mb-2">
+              <circle cx="50" cy="50" r="40" stroke="#1E2D4A" strokeWidth="2" fill="none" opacity="0.2"/>
+              <ellipse cx="50" cy="50" rx="16" ry="40" stroke="#1E2D4A" strokeWidth="1.5" fill="none" opacity="0.2"/>
+              <path d="M10 50h80" stroke="#1E2D4A" strokeWidth="1.5" opacity="0.2"/>
+            </svg>
+            <div className="flex items-center gap-2 mb-1">
+              <div className="w-[24px] h-[0.5px]" style={{ backgroundColor: "#D4DCE6" }} />
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#1E2D4A" fillOpacity="0.4"/>
+              </svg>
+              <div className="w-[24px] h-[0.5px]" style={{ backgroundColor: "#D4DCE6" }} />
+            </div>
+            <div className="text-[14px] font-bold tracking-[0.15em]" style={{ color: "#1E2D4A" }}>G & B</div>
+            <div className="text-[8px] tracking-[0.3em] mt-1" style={{ color: "#6B7B8D" }}>WEDDING TICKET</div>
+            <div className="absolute bottom-8 left-4 right-4 border-t border-dashed" style={{ borderColor: "#D4DCE6" }} />
+            <div className="absolute bottom-4 left-0 right-0 text-center">
+              <div className="text-[7px] tracking-wider" style={{ color: "#9CAAB8" }}>2025. 10. 14</div>
+            </div>
+          </div>
+        </div>
+      )
+    case "calligraphy":
+      return (
+        <div className="w-full h-full relative" style={{ background: "linear-gradient(180deg, #FBF8F4 0%, #F0E8DC 100%)" }}>
+          <div className="absolute top-5 left-0 right-0 text-center">
+            <div className="text-[9px] tracking-[0.3em]" style={{ color: "#7A6E62" }}>WEDDING INVITATION</div>
+          </div>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <div className="w-[90px] h-[110px] rounded-[4px] overflow-hidden border border-[#D4C5B0]">
+              <div className="w-full h-full bg-[#E8DFD2]" />
+            </div>
+            <div className="mt-3 text-[22px] font-medium" style={{ color: "#3D3226", fontFamily: "Georgia, serif" }}>G & B</div>
+            <div className="text-[9px] text-[#9C8B7A] mt-1 tracking-wider">2025. 10. 14</div>
+          </div>
+          <div className="absolute bottom-5 left-0 right-0 flex justify-center items-center gap-2">
+            <div className="w-[30px] h-[1px]" style={{ backgroundColor: "#D4C5B0" }} />
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#9C7B5C" }} />
+            <div className="w-[30px] h-[1px]" style={{ backgroundColor: "#D4C5B0" }} />
+          </div>
+        </div>
+      )
+    default:
+      return <div className="w-full h-full bg-[#333D4B]" />
+  }
+}
 
 export default function InvitationGalleryPage() {
   const router = useRouter()
@@ -317,15 +471,8 @@ export default function InvitationGalleryPage() {
                         </div>
                       )}
 
-                      {/* Template Image */}
                       <div className="relative aspect-[9/16] bg-[#333D4B]">
-                        <img
-                          src={template.image}
-                          alt={template.name}
-                          className="w-full h-full object-cover"
-                        />
-
-                        {/* Overlay for focused card */}
+                        <GalleryPreview id={template.id} />
                         {offset === 0 && (
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                         )}
@@ -456,12 +603,9 @@ export default function InvitationGalleryPage() {
               className="relative w-full max-w-[360px] rounded-[24px] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={currentTemplate.image}
-                alt={currentTemplate.name}
-                className="w-full"
-                data-testid="img-preview"
-              />
+              <div className="aspect-[9/16]" data-testid="img-preview">
+                <GalleryPreview id={currentTemplate.id} />
+              </div>
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                 <p className="text-white text-[18px] font-bold mb-1">{currentTemplate.name}</p>
                 <p className="text-white/70 text-[14px] mb-4">{currentTemplate.description}</p>
@@ -673,8 +817,8 @@ export default function InvitationGalleryPage() {
                               router.push(`/wedding/editor?id=${inv.id}&template=${inv.templateId}`)
                             }}
                           >
-                            {templateInfo?.image ? (
-                              <img src={templateInfo.image} alt={templateInfo.name} className="w-full h-full object-cover" />
+                            {templateInfo ? (
+                              <GalleryPreview id={templateInfo.id} />
                             ) : (
                               <div className="w-full h-full flex items-center justify-center">
                                 <Pencil className="w-4 h-4 text-[#B0B8C1]" />

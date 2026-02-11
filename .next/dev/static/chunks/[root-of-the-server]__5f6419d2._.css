@@ -1366,12 +1366,20 @@
     inset: 3px;
   }
 
+  .inset-\[8px\] {
+    inset: 8px;
+  }
+
   .inset-x-0 {
     inset-inline: calc(var(--spacing) * 0);
   }
 
   .inset-x-2 {
     inset-inline: calc(var(--spacing) * 2);
+  }
+
+  .inset-x-4 {
+    inset-inline: calc(var(--spacing) * 4);
   }
 
   .inset-y-0 {
@@ -1436,6 +1444,10 @@
 
   .top-4 {
     top: calc(var(--spacing) * 4);
+  }
+
+  .top-5 {
+    top: calc(var(--spacing) * 5);
   }
 
   .top-6 {
@@ -1608,6 +1620,10 @@
 
   .bottom-2\.5 {
     bottom: calc(var(--spacing) * 2.5);
+  }
+
+  .bottom-3 {
+    bottom: calc(var(--spacing) * 3);
   }
 
   .bottom-4 {
@@ -2142,6 +2158,10 @@
 
   .-mt-0\.5 {
     margin-top: calc(var(--spacing) * -.5);
+  }
+
+  .-mt-1 {
+    margin-top: calc(var(--spacing) * -1);
   }
 
   .-mt-2 {
@@ -2727,6 +2747,10 @@
     height: 18px;
   }
 
+  .h-\[20px\] {
+    height: 20px;
+  }
+
   .h-\[22px\] {
     height: 22px;
   }
@@ -2793,6 +2817,10 @@
 
   .h-\[140px\] {
     height: 140px;
+  }
+
+  .h-\[150px\] {
+    height: 150px;
   }
 
   .h-\[160px\] {
@@ -3209,6 +3237,10 @@
 
   .w-\[90\%\] {
     width: 90%;
+  }
+
+  .w-\[90px\] {
+    width: 90px;
   }
 
   .w-\[100px\] {
@@ -5332,6 +5364,16 @@
     border-color: #b0b8c1;
   }
 
+  .border-\[\#C5A572\]\/20 {
+    border-color: #c5a57233;
+    border-color: lab(69.7652% 7.05209 31.0421 / .2);
+  }
+
+  .border-\[\#C5A572\]\/50 {
+    border-color: #c5a57280;
+    border-color: lab(69.7652% 7.05206 31.0421 / .5);
+  }
+
   .border-\[\#C5A572\]\/60 {
     border-color: #c5a57299;
     border-color: lab(69.7652% 7.05206 31.0421 / .6);
@@ -5353,6 +5395,14 @@
     border-color: #d4af37;
   }
 
+  .border-\[\#D4C5B0\] {
+    border-color: #d4c5b0;
+  }
+
+  .border-\[\#D4CEBD\] {
+    border-color: #d4cebd;
+  }
+
   .border-\[\#D4DFD4\] {
     border-color: #d4dfd4;
   }
@@ -5363,6 +5413,10 @@
 
   .border-\[\#E0C4F5\] {
     border-color: #e0c4f5;
+  }
+
+  .border-\[\#E0D4C2\] {
+    border-color: #e0d4c2;
   }
 
   .border-\[\#E5E8EB\] {
@@ -5725,6 +5779,10 @@
     background-color: #3c1e1e;
   }
 
+  .bg-\[\#3D3529\] {
+    background-color: #3d3529;
+  }
+
   .bg-\[\#3d3d3d\] {
     background-color: #3d3d3d;
   }
@@ -5786,12 +5844,21 @@
     background-color: #48484a;
   }
 
+  .bg-\[\#333333\] {
+    background-color: #333;
+  }
+
   .bg-\[\#B0B8C1\] {
     background-color: #b0b8c1;
   }
 
   .bg-\[\#B91C1C\] {
     background-color: #b91c1c;
+  }
+
+  .bg-\[\#C5A572\]\/30 {
+    background-color: #c5a5724d;
+    background-color: lab(69.7652% 7.05206 31.0421 / .3);
   }
 
   .bg-\[\#C5A572\]\/40 {
@@ -5815,6 +5882,10 @@
   .bg-\[\#D4AF37\]\/20 {
     background-color: #d4af3733;
     background-color: lab(73.2932% 5.13339 62.8195 / .2);
+  }
+
+  .bg-\[\#D4DFD4\] {
+    background-color: #d4dfd4;
   }
 
   .bg-\[\#D4836B\] {
@@ -5842,6 +5913,10 @@
     background-color: #e8dfd2;
   }
 
+  .bg-\[\#E8E2D6\] {
+    background-color: #e8e2d6;
+  }
+
   .bg-\[\#E8F3FF\] {
     background-color: #e8f3ff;
   }
@@ -5850,12 +5925,20 @@
     background-color: #e8f5e9;
   }
 
+  .bg-\[\#EDE8DF\] {
+    background-color: #ede8df;
+  }
+
   .bg-\[\#EEF4FF\] {
     background-color: #eef4ff;
   }
 
   .bg-\[\#F0E4FF\] {
     background-color: #f0e4ff;
+  }
+
+  .bg-\[\#F0E8DC\] {
+    background-color: #f0e8dc;
   }
 
   .bg-\[\#F0F4F0\] {
@@ -9047,8 +9130,16 @@
     color: #8b95a1;
   }
 
+  .text-\[\#8B8070\] {
+    color: #8b8070;
+  }
+
   .text-\[\#8b7355\] {
     color: #8b7355;
+  }
+
+  .text-\[\#9C8B7A\] {
+    color: #9c8b7a;
   }
 
   .text-\[\#9D6BFF\] {
@@ -9084,6 +9175,18 @@
     color: #505050;
   }
 
+  .text-\[\#A5B5A5\] {
+    color: #a5b5a5;
+  }
+
+  .text-\[\#A69882\] {
+    color: #a69882;
+  }
+
+  .text-\[\#B0A090\] {
+    color: #b0a090;
+  }
+
   .text-\[\#B0B0B0\] {
     color: #b0b0b0;
   }
@@ -9098,6 +9201,21 @@
 
   .text-\[\#C5A572\] {
     color: #c5a572;
+  }
+
+  .text-\[\#C5A572\]\/40 {
+    color: #c5a57266;
+    color: lab(69.7652% 7.05209 31.0421 / .4);
+  }
+
+  .text-\[\#C5A572\]\/50 {
+    color: #c5a57280;
+    color: lab(69.7652% 7.05206 31.0421 / .5);
+  }
+
+  .text-\[\#C5A572\]\/70 {
+    color: #c5a572b3;
+    color: lab(69.7652% 7.05206 31.0421 / .7);
   }
 
   .text-\[\#C5A572\]\/80 {
