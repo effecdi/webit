@@ -550,17 +550,17 @@ export default function GoodsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe">
-      <header className="bg-white px-5 pt-[env(safe-area-inset-top)] sticky top-0 sticky-header-safe z-40">
+    <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe overflow-x-hidden">
+      <header className="bg-white px-5 pt-[env(safe-area-inset-top)] pb-3 sticky top-0 sticky-header-safe z-40">
         <div className="flex items-center justify-between max-w-md mx-auto py-4">
           <h1 className="text-[20px] font-bold text-[#191F28]">웨딩 굿즈</h1>
           <div className="w-10" />
         </div>
 
-        <div className="flex gap-1 mt-3 max-w-md mx-auto bg-[#F2F4F6] rounded-[12px] p-1">
+        <div className="flex gap-1 max-w-md mx-auto bg-[#F2F4F6] rounded-[12px] p-1">
           <button
-            onClick={() => setActiveTab("manage")}
-            className={`flex-1 py-2.5 rounded-[10px] text-[14px] font-semibold transition-all ${
+            onClick={() => { setActiveTab("manage"); window.scrollTo(0, 0); }}
+            className={`flex-1 py-2.5 rounded-[10px] text-[14px] font-semibold transition-none ${
               activeTab === "manage"
                 ? "bg-white text-[#191F28] shadow-sm"
                 : "text-[#8B95A1]"
@@ -571,8 +571,8 @@ export default function GoodsPage() {
             굿즈 관리
           </button>
           <button
-            onClick={() => setActiveTab("guide")}
-            className={`flex-1 py-2.5 rounded-[10px] text-[14px] font-semibold transition-all ${
+            onClick={() => { setActiveTab("guide"); window.scrollTo(0, 0); }}
+            className={`flex-1 py-2.5 rounded-[10px] text-[14px] font-semibold transition-none ${
               activeTab === "guide"
                 ? "bg-white text-[#191F28] shadow-sm"
                 : "text-[#8B95A1]"
