@@ -12,8 +12,6 @@ import {
   User,
   FileText,
   Loader2,
-  Truck,
-  PackageCheck,
 } from "lucide-react";
 
 interface Verification {
@@ -30,22 +28,12 @@ interface Verification {
   userLastName: string | null;
 }
 
-type FilterType = "all" | "pending" | "approved" | "shipping" | "delivered" | "rejected";
-
-const statusConfig: Record<string, { label: string; bg: string; text: string; icon: typeof Check }> = {
-  pending: { label: "대기중", bg: "bg-amber-500/20", text: "text-amber-400", icon: Clock },
-  approved: { label: "승인", bg: "bg-green-500/20", text: "text-green-400", icon: Check },
-  shipping: { label: "배송 중", bg: "bg-blue-500/20", text: "text-blue-400", icon: Truck },
-  delivered: { label: "배송완료", bg: "bg-emerald-500/20", text: "text-emerald-400", icon: PackageCheck },
-  rejected: { label: "반려", bg: "bg-red-500/20", text: "text-red-400", icon: AlertCircle },
-};
-
 export default function AdminVerificationsPage() {
   const router = useRouter();
   const [verifications, setVerifications] = useState<Verification[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState<FilterType>("pending");
+  const [filter, setFilter] = useState<"all" | "pending" | "approved" | "rejected">("pending");
   const [processingId, setProcessingId] = useState<number | null>(null);
   const [rejectNoteId, setRejectNoteId] = useState<number | null>(null);
   const [rejectNote, setRejectNote] = useState("");
@@ -75,29 +63,50 @@ export default function AdminVerificationsPage() {
     fetchVerifications();
   }, []);
 
-  const handleStatusUpdate = async (id: number, status: string, adminNote?: string) => {
+  const handleApprove = async (id: number) => {
     setProcessingId(id);
     try {
       const res = await fetch("/api/admin/verifications", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, status, adminNote }),
+        body: JSON.stringify({ id, status: "approved" }),
+      });
+      if (res.ok) {
+        setVerifications((prev) =>
+          prev.map((v) =>
+            v.id === id ? { ...v, status: "approved", reviewedAt: new Date().toISOString() } : v
+          )
+        );
+      }
+    } catch (e) {
+      console.error("Approve error:", e);
+    } finally {
+      setProcessingId(null);
+    }
+  };
+
+  const handleReject = async (id: number) => {
+    if (!rejectNote.trim()) return;
+    setProcessingId(id);
+    try {
+      const res = await fetch("/api/admin/verifications", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status: "rejected", adminNote: rejectNote.trim() }),
       });
       if (res.ok) {
         setVerifications((prev) =>
           prev.map((v) =>
             v.id === id
-              ? { ...v, status, adminNote: adminNote || v.adminNote, reviewedAt: new Date().toISOString() }
+              ? { ...v, status: "rejected", adminNote: rejectNote.trim(), reviewedAt: new Date().toISOString() }
               : v
           )
         );
-        if (status === "rejected") {
-          setRejectNoteId(null);
-          setRejectNote("");
-        }
+        setRejectNoteId(null);
+        setRejectNote("");
       }
     } catch (e) {
-      console.error("Status update error:", e);
+      console.error("Reject error:", e);
     } finally {
       setProcessingId(null);
     }
@@ -111,8 +120,6 @@ export default function AdminVerificationsPage() {
     all: verifications.length,
     pending: verifications.filter((v) => v.status === "pending").length,
     approved: verifications.filter((v) => v.status === "approved").length,
-    shipping: verifications.filter((v) => v.status === "shipping").length,
-    delivered: verifications.filter((v) => v.status === "delivered").length,
     rejected: verifications.filter((v) => v.status === "rejected").length,
   };
 
@@ -142,17 +149,6 @@ export default function AdminVerificationsPage() {
     );
   }
 
-  const getNextAction = (status: string) => {
-    switch (status) {
-      case "approved":
-        return { label: "배송 시작", nextStatus: "shipping", icon: Truck, color: "bg-blue-500/20 text-blue-400" };
-      case "shipping":
-        return { label: "배송 완료", nextStatus: "delivered", icon: PackageCheck, color: "bg-emerald-500/20 text-emerald-400" };
-      default:
-        return null;
-    }
-  };
-
   return (
     <div className="min-h-dvh bg-[#0A0A0A]">
       <header className="sticky top-0 z-50 bg-[#0A0A0A]/90 backdrop-blur-md border-b border-white/5">
@@ -173,7 +169,7 @@ export default function AdminVerificationsPage() {
 
       <div className="max-w-2xl mx-auto px-4 py-4">
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-          {(["pending", "all", "approved", "shipping", "delivered", "rejected"] as const).map((f) => (
+          {(["pending", "all", "approved", "rejected"] as const).map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
@@ -187,8 +183,6 @@ export default function AdminVerificationsPage() {
               {f === "all" && `전체 (${statusCounts.all})`}
               {f === "pending" && `대기중 (${statusCounts.pending})`}
               {f === "approved" && `승인 (${statusCounts.approved})`}
-              {f === "shipping" && `배송 중 (${statusCounts.shipping})`}
-              {f === "delivered" && `배송완료 (${statusCounts.delivered})`}
               {f === "rejected" && `반려 (${statusCounts.rejected})`}
             </button>
           ))}
@@ -204,144 +198,129 @@ export default function AdminVerificationsPage() {
             </p>
           </div>
         ) : (
-          filtered.map((v) => {
-            const cfg = statusConfig[v.status] || statusConfig.pending;
-            const nextAction = getNextAction(v.status);
-
-            return (
-              <div
-                key={v.id}
-                className="bg-white/5 rounded-[16px] p-4 border border-white/5"
-                data-testid={`verification-card-${v.id}`}
-              >
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                      <User className="w-4 h-4 text-white/60" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-[14px] font-semibold text-white truncate">
-                        {v.userFirstName || ""} {v.userLastName || ""}
-                      </p>
-                      <p className="text-[11px] text-white/40 truncate">{v.userEmail || v.userId}</p>
-                    </div>
+          filtered.map((v) => (
+            <div
+              key={v.id}
+              className="bg-white/5 rounded-[16px] p-4 border border-white/5"
+              data-testid={`verification-card-${v.id}`}
+            >
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <User className="w-4 h-4 text-white/60" />
                   </div>
-                  <span
-                    className={`flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold ${cfg.bg} ${cfg.text}`}
-                  >
-                    <cfg.icon className="w-3 h-3" />
-                    {cfg.label}
-                  </span>
-                </div>
-
-                <div className="bg-white/5 rounded-[12px] p-3 mb-3 space-y-1.5">
-                  <div className="flex items-center gap-2">
-                    <FileText className="w-3.5 h-3.5 text-white/30" />
-                    <span className="text-[12px] text-white/50">주문번호</span>
+                  <div className="min-w-0">
+                    <p className="text-[14px] font-semibold text-white truncate">
+                      {v.userFirstName || ""} {v.userLastName || ""}
+                    </p>
+                    <p className="text-[11px] text-white/40 truncate">{v.userEmail || v.userId}</p>
                   </div>
-                  <p className="text-[14px] text-white font-medium pl-5.5">{v.orderNumber}</p>
                 </div>
+                <span
+                  className={`flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold ${
+                    v.status === "pending"
+                      ? "bg-amber-500/20 text-amber-400"
+                      : v.status === "approved"
+                      ? "bg-green-500/20 text-green-400"
+                      : "bg-red-500/20 text-red-400"
+                  }`}
+                >
+                  {v.status === "pending" && <Clock className="w-3 h-3" />}
+                  {v.status === "approved" && <Check className="w-3 h-3" />}
+                  {v.status === "rejected" && <AlertCircle className="w-3 h-3" />}
+                  {v.status === "pending" ? "대기중" : v.status === "approved" ? "승인" : "반려"}
+                </span>
+              </div>
 
-                {v.adminNote && (
-                  <div className="bg-red-500/10 rounded-[12px] p-3 mb-3">
-                    <p className="text-[12px] text-red-400">반려 사유: {v.adminNote}</p>
+              <div className="bg-white/5 rounded-[12px] p-3 mb-3 space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <FileText className="w-3.5 h-3.5 text-white/30" />
+                  <span className="text-[12px] text-white/50">주문번호</span>
+                </div>
+                <p className="text-[14px] text-white font-medium pl-5.5">{v.orderNumber}</p>
+              </div>
+
+              {v.adminNote && (
+                <div className="bg-red-500/10 rounded-[12px] p-3 mb-3">
+                  <p className="text-[12px] text-red-400">반려 사유: {v.adminNote}</p>
+                </div>
+              )}
+
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] text-white/30">
+                  {new Date(v.createdAt).toLocaleDateString("ko-KR", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </span>
+
+                {v.status === "pending" && (
+                  <div className="flex gap-2">
+                    {rejectNoteId === v.id ? (
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="text"
+                          value={rejectNote}
+                          onChange={(e) => setRejectNote(e.target.value)}
+                          placeholder="반려 사유 입력"
+                          className="w-40 px-3 py-1.5 bg-white/10 rounded-lg text-[12px] text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-red-400/50 border-0"
+                          data-testid={`input-reject-note-${v.id}`}
+                          autoFocus
+                        />
+                        <button
+                          onClick={() => handleReject(v.id)}
+                          disabled={!rejectNote.trim() || processingId === v.id}
+                          className="px-3 py-1.5 bg-red-500/20 text-red-400 rounded-lg text-[12px] font-semibold disabled:opacity-40"
+                          data-testid={`button-confirm-reject-${v.id}`}
+                        >
+                          {processingId === v.id ? (
+                            <Loader2 className="w-3 h-3 animate-spin" />
+                          ) : (
+                            "확인"
+                          )}
+                        </button>
+                        <button
+                          onClick={() => { setRejectNoteId(null); setRejectNote(""); }}
+                          className="px-2 py-1.5 text-white/40 text-[12px]"
+                        >
+                          취소
+                        </button>
+                      </div>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => setRejectNoteId(v.id)}
+                          disabled={processingId === v.id}
+                          className="px-4 py-2 bg-white/8 text-white/60 rounded-full text-[12px] font-semibold hover:bg-white/12 transition-colors"
+                          data-testid={`button-reject-${v.id}`}
+                        >
+                          반려
+                        </button>
+                        <button
+                          onClick={() => handleApprove(v.id)}
+                          disabled={processingId === v.id}
+                          className="px-4 py-2 bg-[#d63bf2] text-white rounded-full text-[12px] font-semibold hover:bg-[#c030d8] transition-colors flex items-center gap-1"
+                          data-testid={`button-approve-${v.id}`}
+                        >
+                          {processingId === v.id ? (
+                            <Loader2 className="w-3 h-3 animate-spin" />
+                          ) : (
+                            <>
+                              <Check className="w-3.5 h-3.5" />
+                              승인
+                            </>
+                          )}
+                        </button>
+                      </>
+                    )}
                   </div>
                 )}
-
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] text-white/30">
-                    {new Date(v.createdAt).toLocaleDateString("ko-KR", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </span>
-
-                  {v.status === "pending" && (
-                    <div className="flex gap-2">
-                      {rejectNoteId === v.id ? (
-                        <div className="flex items-center gap-2">
-                          <input
-                            type="text"
-                            value={rejectNote}
-                            onChange={(e) => setRejectNote(e.target.value)}
-                            placeholder="반려 사유 입력"
-                            className="w-40 px-3 py-1.5 bg-white/10 rounded-lg text-[12px] text-white placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-red-400/50 border-0"
-                            data-testid={`input-reject-note-${v.id}`}
-                            autoFocus
-                          />
-                          <button
-                            onClick={() => handleStatusUpdate(v.id, "rejected", rejectNote.trim())}
-                            disabled={!rejectNote.trim() || processingId === v.id}
-                            className="px-3 py-1.5 bg-red-500/20 text-red-400 rounded-lg text-[12px] font-semibold disabled:opacity-40"
-                            data-testid={`button-confirm-reject-${v.id}`}
-                          >
-                            {processingId === v.id ? (
-                              <Loader2 className="w-3 h-3 animate-spin" />
-                            ) : (
-                              "확인"
-                            )}
-                          </button>
-                          <button
-                            onClick={() => { setRejectNoteId(null); setRejectNote(""); }}
-                            className="px-2 py-1.5 text-white/40 text-[12px]"
-                          >
-                            취소
-                          </button>
-                        </div>
-                      ) : (
-                        <>
-                          <button
-                            onClick={() => setRejectNoteId(v.id)}
-                            disabled={processingId === v.id}
-                            className="px-4 py-2 bg-white/8 text-white/60 rounded-full text-[12px] font-semibold hover:bg-white/12 transition-colors"
-                            data-testid={`button-reject-${v.id}`}
-                          >
-                            반려
-                          </button>
-                          <button
-                            onClick={() => handleStatusUpdate(v.id, "approved")}
-                            disabled={processingId === v.id}
-                            className="px-4 py-2 bg-[#d63bf2] text-white rounded-full text-[12px] font-semibold hover:bg-[#c030d8] transition-colors flex items-center gap-1"
-                            data-testid={`button-approve-${v.id}`}
-                          >
-                            {processingId === v.id ? (
-                              <Loader2 className="w-3 h-3 animate-spin" />
-                            ) : (
-                              <>
-                                <Check className="w-3.5 h-3.5" />
-                                승인
-                              </>
-                            )}
-                          </button>
-                        </>
-                      )}
-                    </div>
-                  )}
-
-                  {nextAction && (
-                    <button
-                      onClick={() => handleStatusUpdate(v.id, nextAction.nextStatus)}
-                      disabled={processingId === v.id}
-                      className={`px-4 py-2 rounded-full text-[12px] font-semibold flex items-center gap-1.5 transition-colors ${nextAction.color}`}
-                      data-testid={`button-${nextAction.nextStatus}-${v.id}`}
-                    >
-                      {processingId === v.id ? (
-                        <Loader2 className="w-3 h-3 animate-spin" />
-                      ) : (
-                        <>
-                          <nextAction.icon className="w-3.5 h-3.5" />
-                          {nextAction.label}
-                        </>
-                      )}
-                    </button>
-                  )}
-                </div>
               </div>
-            );
-          })
+            </div>
+          ))
         )}
       </div>
     </div>

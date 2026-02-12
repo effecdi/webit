@@ -21,18 +21,12 @@ export async function POST(request: NextRequest) {
       .from(purchaseVerifications)
       .where(and(
         eq(purchaseVerifications.userId, auth.userId),
-        inArray(purchaseVerifications.status, ['pending', 'approved', 'shipping', 'delivered'])
+        inArray(purchaseVerifications.status, ['pending', 'approved'])
       ))
       .limit(1);
 
     if (existing.length > 0) {
       const status = existing[0].status;
-      if (status === 'delivered') {
-        return NextResponse.json({ error: '이미 배송 완료된 주문이 있습니다.' }, { status: 400 });
-      }
-      if (status === 'shipping') {
-        return NextResponse.json({ error: '배송 중인 주문이 있습니다.' }, { status: 400 });
-      }
       if (status === 'approved') {
         return NextResponse.json({ error: '이미 인증이 완료되었습니다.' }, { status: 400 });
       }
@@ -67,17 +61,13 @@ export async function GET() {
       .where(eq(purchaseVerifications.userId, auth.userId))
       .orderBy(desc(purchaseVerifications.createdAt));
 
-    const latestActive = records.find(r => ['approved', 'shipping', 'delivered'].includes(r.status || ''));
+    const approved = records.some(r => r.status === 'approved');
     const pending = records.some(r => r.status === 'pending');
     const rejected = records.filter(r => r.status === 'rejected');
 
-    const deliveryStatus = latestActive?.status || null;
-    const premiumUnlocked = !!latestActive;
-
     return NextResponse.json({
-      premiumUnlocked,
+      premiumUnlocked: approved,
       hasPending: pending,
-      deliveryStatus,
       rejectedNote: rejected.length > 0 ? rejected[rejected.length - 1].adminNote : null,
     });
   } catch (error) {
