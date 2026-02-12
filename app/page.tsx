@@ -7,7 +7,7 @@ export default function RootPage() {
   const router = useRouter()
 
   useEffect(() => {
-    router.push("/splash")
+    router.replace("/splash")
   }, [router])
 
   return (

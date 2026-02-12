@@ -57,9 +57,17 @@ export default function LoginPage() {
     if (!isLoading && isAuthenticated) {
       const inviteCode = getInviteCode()
       if (inviteCode) {
-        router.push(`/invite-welcome?code=${inviteCode}`)
+        router.replace(`/invite-welcome?code=${inviteCode}`)
       } else {
-        router.push("/splash")
+        const selectedMode = localStorage.getItem("selected_mode")
+        const hasCompletedSurvey = localStorage.getItem("survey_myName")
+        if (hasCompletedSurvey && selectedMode) {
+          router.replace(`/${selectedMode}`)
+        } else if (hasCompletedSurvey) {
+          router.replace("/dating")
+        } else {
+          router.replace("/splash")
+        }
       }
     }
   }, [isLoading, isAuthenticated, router])

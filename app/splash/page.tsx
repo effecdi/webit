@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/hooks/use-auth"
 import { motion, AnimatePresence } from "framer-motion"
@@ -11,22 +11,25 @@ export default function SplashPage() {
   const router = useRouter()
   const { isAuthenticated, isLoading, user } = useAuth()
   const [fadeOut, setFadeOut] = useState(false)
+  const hasNavigated = useRef(false)
+  const mountTime = useRef(Date.now())
 
   useEffect(() => {
-    if (isLoading) return
+    if (isLoading || hasNavigated.current) return
 
-    const fadeTimer = setTimeout(() => setFadeOut(true), 2200)
-    
-    const navigateTimer = setTimeout(() => {
+    const navigate = () => {
+      if (hasNavigated.current) return
+      hasNavigated.current = true
+
       if (!isAuthenticated) {
-        router.push("/login")
+        router.replace("/login")
         return
       }
 
       const inviteCookieMatch = document.cookie.match(/(?:^|;\s*)pending_invite_code=([^;]*)/)
       if (inviteCookieMatch) {
         const inviteCode = decodeURIComponent(inviteCookieMatch[1])
-        router.push(`/invite-welcome?code=${inviteCode}`)
+        router.replace(`/invite-welcome?code=${inviteCode}`)
         return
       }
 
@@ -49,24 +52,31 @@ export default function SplashPage() {
             if (diff < 0) {
               localStorage.setItem("selected_mode", "family")
               localStorage.setItem("family_transition_pending", "true")
-              router.push("/family")
+              router.replace("/family")
               return
             }
           }
-          router.push("/wedding")
+          router.replace("/wedding")
         } else if (selectedMode === "dating") {
-          router.push("/dating")
+          router.replace("/dating")
         } else if (selectedMode === "family") {
-          router.push("/family")
+          router.replace("/family")
         } else {
-          router.push("/dating")
+          router.replace("/dating")
         }
       } else if (hasCompletedSurvey) {
-        router.push("/dating")
+        router.replace("/dating")
       } else {
-        router.push("/survey/step1")
+        router.replace("/survey/step1")
       }
-    }, 2700)
+    }
+
+    const elapsed = Date.now() - mountTime.current
+    const minSplashTime = 2200
+    const remaining = Math.max(0, minSplashTime - elapsed)
+
+    const fadeTimer = setTimeout(() => setFadeOut(true), Math.max(0, remaining - 500))
+    const navigateTimer = setTimeout(navigate, remaining)
 
     return () => {
       clearTimeout(fadeTimer)

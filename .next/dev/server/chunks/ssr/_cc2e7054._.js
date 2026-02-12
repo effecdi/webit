@@ -47,18 +47,21 @@ function SplashPage() {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const { isAuthenticated, isLoading, user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hooks$2f$use$2d$auth$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAuth"])();
     const [fadeOut, setFadeOut] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const hasNavigated = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(false);
+    const mountTime = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(Date.now());
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$10_react$2d$dom$40$19$2e$2$2e$0_react$40$19$2e$2$2e$0_$5f$react$40$19$2e$2$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        if (isLoading) return;
-        const fadeTimer = setTimeout(()=>setFadeOut(true), 2200);
-        const navigateTimer = setTimeout(()=>{
+        if (isLoading || hasNavigated.current) return;
+        const navigate = ()=>{
+            if (hasNavigated.current) return;
+            hasNavigated.current = true;
             if (!isAuthenticated) {
-                router.push("/login");
+                router.replace("/login");
                 return;
             }
             const inviteCookieMatch = document.cookie.match(/(?:^|;\s*)pending_invite_code=([^;]*)/);
             if (inviteCookieMatch) {
                 const inviteCode = decodeURIComponent(inviteCookieMatch[1]);
-                router.push(`/invite-welcome?code=${inviteCode}`);
+                router.replace(`/invite-welcome?code=${inviteCode}`);
                 return;
             }
             const hasCompletedSurvey = localStorage.getItem("survey_myName");
@@ -78,24 +81,29 @@ function SplashPage() {
                         if (diff < 0) {
                             localStorage.setItem("selected_mode", "family");
                             localStorage.setItem("family_transition_pending", "true");
-                            router.push("/family");
+                            router.replace("/family");
                             return;
                         }
                     }
-                    router.push("/wedding");
+                    router.replace("/wedding");
                 } else if (selectedMode === "dating") {
-                    router.push("/dating");
+                    router.replace("/dating");
                 } else if (selectedMode === "family") {
-                    router.push("/family");
+                    router.replace("/family");
                 } else {
-                    router.push("/dating");
+                    router.replace("/dating");
                 }
             } else if (hasCompletedSurvey) {
-                router.push("/dating");
+                router.replace("/dating");
             } else {
-                router.push("/survey/step1");
+                router.replace("/survey/step1");
             }
-        }, 2700);
+        };
+        const elapsed = Date.now() - mountTime.current;
+        const minSplashTime = 2200;
+        const remaining = Math.max(0, minSplashTime - elapsed);
+        const fadeTimer = setTimeout(()=>setFadeOut(true), Math.max(0, remaining - 500));
+        const navigateTimer = setTimeout(navigate, remaining);
         return ()=>{
             clearTimeout(fadeTimer);
             clearTimeout(navigateTimer);
@@ -157,32 +165,32 @@ function SplashPage() {
                             "data-testid": "img-splash-logo"
                         }, void 0, false, {
                             fileName: "[project]/app/splash/page.tsx",
-                            lineNumber: 94,
+                            lineNumber: 104,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/splash/page.tsx",
-                        lineNumber: 90,
+                        lineNumber: 100,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/splash/page.tsx",
-                    lineNumber: 85,
+                    lineNumber: 95,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/splash/page.tsx",
-                lineNumber: 84,
+                lineNumber: 94,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/splash/page.tsx",
-            lineNumber: 79,
+            lineNumber: 89,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/splash/page.tsx",
-        lineNumber: 78,
+        lineNumber: 88,
         columnNumber: 5
     }, this);
 }
