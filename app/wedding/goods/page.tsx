@@ -37,6 +37,8 @@ import {
   Tag,
   Clock,
   AlertCircle,
+  Truck,
+  PackageCheck,
 } from "lucide-react";
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav";
 
@@ -362,6 +364,7 @@ export default function GoodsPage() {
   const [receiptPreview, setReceiptPreview] = useState<string | null>(null);
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [hasPending, setHasPending] = useState(false);
+  const [deliveryStatus, setDeliveryStatus] = useState<string | null>(null);
   const [rejectedNote, setRejectedNote] = useState<string | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -374,6 +377,7 @@ export default function GoodsPage() {
           const data = await res.json();
           setIsPremiumUnlocked(data.premiumUnlocked);
           setHasPending(data.hasPending);
+          setDeliveryStatus(data.deliveryStatus);
           setRejectedNote(data.rejectedNote);
         }
       } catch (e) {
@@ -607,34 +611,63 @@ export default function GoodsPage() {
         <main className="px-5 py-5 max-w-md mx-auto space-y-5">
           {isPremiumUnlocked ? (
             <div
-              className="bg-green-50 border border-green-200 rounded-[16px] p-4 flex items-center gap-3 dark:bg-green-950/30 dark:border-green-800"
+              className="bg-white/[0.03] rounded-[16px] p-4 border border-white/5"
               data-testid="premium-unlocked-badge"
             >
-              <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center flex-shrink-0">
-                <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="w-9 h-9 rounded-full bg-[#d63bf2]/15 flex items-center justify-center flex-shrink-0">
+                  <Crown className="w-4.5 h-4.5 text-[#d63bf2]" />
+                </div>
+                <div>
+                  <p className="text-[14px] font-bold text-white">
+                    프리미엄 혜택 적용 중
+                  </p>
+                  <p className="text-[11px] text-white/40">
+                    프리미엄 청첩장 템플릿이 잠금 해제되었어요
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-[14px] font-bold text-green-700 dark:text-green-300">
-                  프리미엄 혜택 적용 중
-                </p>
-                <p className="text-[12px] text-green-600 dark:text-green-400">
-                  프리미엄 청첩장 템플릿이 잠금 해제되었어요
-                </p>
+              <div className="flex items-center gap-0 relative">
+                {[
+                  { key: "approved", label: "주문확인", icon: Check, done: ['approved', 'shipping', 'delivered'].includes(deliveryStatus || '') },
+                  { key: "shipping", label: "배송 중", icon: Truck, done: ['shipping', 'delivered'].includes(deliveryStatus || '') },
+                  { key: "delivered", label: "배송완료", icon: PackageCheck, done: deliveryStatus === 'delivered' },
+                ].map((step, i) => (
+                  <div key={step.key} className="flex-1 flex flex-col items-center relative">
+                    {i > 0 && (
+                      <div className={`absolute top-[14px] right-1/2 w-full h-[2px] ${
+                        step.done ? 'bg-[#d63bf2]' : 'bg-white/10'
+                      }`} />
+                    )}
+                    <div className={`relative z-10 w-7 h-7 rounded-full flex items-center justify-center ${
+                      step.done
+                        ? 'bg-[#d63bf2] text-white'
+                        : 'bg-white/10 text-white/30'
+                    }`}>
+                      <step.icon className="w-3.5 h-3.5" />
+                    </div>
+                    <span className={`text-[11px] mt-1.5 font-medium ${
+                      step.done ? 'text-[#d63bf2]' : 'text-white/30'
+                    }`}>
+                      {step.label}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           ) : hasPending ? (
             <div
-              className="bg-blue-50 border border-blue-200 rounded-[16px] p-4 flex items-center gap-3 dark:bg-blue-950/30 dark:border-blue-800"
+              className="bg-blue-950/30 border border-blue-800/40 rounded-[16px] p-4 flex items-center gap-3"
               data-testid="pending-verify-badge"
             >
-              <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center flex-shrink-0">
-                <Clock className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <div className="w-10 h-10 rounded-full bg-blue-900/50 flex items-center justify-center flex-shrink-0">
+                <Clock className="w-5 h-5 text-blue-400" />
               </div>
               <div>
-                <p className="text-[14px] font-bold text-blue-700 dark:text-blue-300">
+                <p className="text-[14px] font-bold text-blue-300">
                   인증 심사 중
                 </p>
-                <p className="text-[12px] text-blue-600 dark:text-blue-400">
+                <p className="text-[12px] text-blue-400">
                   관리자가 확인 중이에요. 승인되면 자동으로 적용됩니다.
                 </p>
               </div>
@@ -643,20 +676,20 @@ export default function GoodsPage() {
             <>
               {rejectedNote && (
                 <div
-                  className="bg-red-50 border border-red-200 rounded-[16px] p-4 flex items-start gap-3 dark:bg-red-950/30 dark:border-red-800"
+                  className="bg-red-950/30 border border-red-800/40 rounded-[16px] p-4 flex items-start gap-3"
                   data-testid="rejected-verify-badge"
                 >
-                  <div className="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center flex-shrink-0">
-                    <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
+                  <div className="w-10 h-10 rounded-full bg-red-900/50 flex items-center justify-center flex-shrink-0">
+                    <AlertCircle className="w-5 h-5 text-red-400" />
                   </div>
                   <div>
-                    <p className="text-[14px] font-bold text-red-700 dark:text-red-300">
+                    <p className="text-[14px] font-bold text-red-300">
                       인증이 반려되었어요
                     </p>
-                    <p className="text-[12px] text-red-600 dark:text-red-400">
+                    <p className="text-[12px] text-red-400">
                       사유: {rejectedNote}
                     </p>
-                    <p className="text-[11px] text-red-500 dark:text-red-500 mt-1">
+                    <p className="text-[11px] text-red-500 mt-1">
                       아래에서 다시 인증할 수 있어요
                     </p>
                   </div>

@@ -57,7 +57,7 @@ export async function PATCH(request: NextRequest) {
     const body = await request.json();
     const { id, status, adminNote } = body;
 
-    if (!id || !['approved', 'rejected'].includes(status)) {
+    if (!id || !['approved', 'rejected', 'shipping', 'delivered'].includes(status)) {
       return NextResponse.json({ error: '잘못된 요청입니다.' }, { status: 400 });
     }
 
@@ -71,8 +71,15 @@ export async function PATCH(request: NextRequest) {
       return NextResponse.json({ error: '해당 인증 요청을 찾을 수 없습니다.' }, { status: 404 });
     }
 
-    if (existing.status !== 'pending') {
-      return NextResponse.json({ error: '이미 처리된 요청입니다.' }, { status: 400 });
+    const validTransitions: Record<string, string[]> = {
+      pending: ['approved', 'rejected'],
+      approved: ['shipping'],
+      shipping: ['delivered'],
+    };
+
+    const allowed = validTransitions[existing.status || 'pending'] || [];
+    if (!allowed.includes(status)) {
+      return NextResponse.json({ error: `현재 상태(${existing.status})에서 ${status}로 변경할 수 없습니다.` }, { status: 400 });
     }
 
     await db
