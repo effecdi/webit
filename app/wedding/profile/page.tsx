@@ -19,8 +19,7 @@ import {
   ImageIcon,
   UserPlus,
   Link2,
-  MessageCircle,
-  Shield
+  MessageCircle
 } from "lucide-react"
 import Link from "next/link"
 import { ProfileSettingsSection } from "@/components/shared/profile-settings-section"
@@ -47,7 +46,6 @@ export default function WeddingProfilePage() {
   const [showNotifications, setShowNotifications] = useState(false)
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [isLoggingOut, setIsLoggingOut] = useState(false)
-  const [isAdmin, setIsAdmin] = useState(false)
   const [stats, setStats] = useState({ completedTodos: 0, invitations: 0, events: 0 })
   const [isCoupled, setIsCoupled] = useState(false)
   const [inviteCode, setInviteCode] = useState("")
