@@ -108,7 +108,7 @@ function SplashPage() {
                 }
             }["SplashPage.useEffect.navigate"];
             const elapsed = Date.now() - mountTime.current;
-            const minSplashTime = 2200;
+            const minSplashTime = 1800;
             const remaining = Math.max(0, minSplashTime - elapsed);
             const fadeTimer = setTimeout({
                 "SplashPage.useEffect.fadeTimer": ()=>setFadeOut(true)

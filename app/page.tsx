@@ -1,18 +1,5 @@
-"use client"
-
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { redirect } from "next/navigation"
 
 export default function RootPage() {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.replace("/splash")
-  }, [router])
-
-  return (
-    <main className="min-h-dvh bg-white flex items-center justify-center">
-      <div className="w-8 h-8 border-3 border-[#d63bf2] border-t-transparent rounded-full animate-spin" />
-    </main>
-  )
+  redirect("/splash")
 }
