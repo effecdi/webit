@@ -1523,10 +1523,6 @@
     top: 10px;
   }
 
-  .top-\[14px\] {
-    top: 14px;
-  }
-
   .top-\[50\%\] {
     top: 50%;
   }
@@ -1573,10 +1569,6 @@
 
   .right-1\.5 {
     right: calc(var(--spacing) * 1.5);
-  }
-
-  .right-1\/2 {
-    right: 50%;
   }
 
   .right-1\/4 {
@@ -6328,16 +6320,6 @@
     background-color: var(--color-blue-500);
   }
 
-  .bg-blue-500\/20 {
-    background-color: #3080ff33;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-blue-500\/20 {
-      background-color: color-mix(in oklab, var(--color-blue-500) 20%, transparent);
-    }
-  }
-
   .bg-blue-800 {
     background-color: var(--color-blue-800);
   }
@@ -6400,16 +6382,6 @@
 
   .bg-destructive {
     background-color: var(--destructive);
-  }
-
-  .bg-emerald-500\/20 {
-    background-color: #00bb7f33;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-emerald-500\/20 {
-      background-color: color-mix(in oklab, var(--color-emerald-500) 20%, transparent);
-    }
   }
 
   .bg-foreground {
@@ -9582,10 +9554,6 @@
 
   .text-destructive-foreground {
     color: var(--destructive-foreground);
-  }
-
-  .text-emerald-400 {
-    color: var(--color-emerald-400);
   }
 
   .text-foreground {
