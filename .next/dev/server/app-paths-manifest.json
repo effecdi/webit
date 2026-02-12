@@ -1,4 +1,5 @@
 {
+  "/admin/verifications/page": "app/admin/verifications/page.js",
   "/api/albums/route": "app/api/albums/route.js",
   "/api/auth/user/route": "app/api/auth/user/route.js",
   "/api/checklist/route": "app/api/checklist/route.js",
