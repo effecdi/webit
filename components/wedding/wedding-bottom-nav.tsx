@@ -4,23 +4,25 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
-import { CheckSquare, MessageSquare, Wallet, User, ArrowLeft } from "lucide-react"
+import { Home, CheckSquare, MessageSquare, Wallet, User, ArrowLeft } from "lucide-react"
 
 const navItems = [
+  { icon: Home, label: "홈", href: "/wedding" },
   { icon: CheckSquare, label: "체크", href: "/wedding/checklist" },
   { icon: MessageSquare, label: "커뮤니티", href: "/wedding/community" },
   { icon: Wallet, label: "예산", href: "/wedding/budget" },
   { icon: User, label: "마이", href: "/wedding/profile" },
 ]
 
-export function WeddingBottomNav() {
+export function WeddingBottomNav({ hideHome = false }: { hideHome?: boolean }) {
   const pathname = usePathname()
   const router = useRouter()
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   useEffect(() => { setMounted(true) }, [])
   const isDark = mounted && resolvedTheme === "dark"
-  const isSubPage = !navItems.some(item => pathname === item.href)
+  const items = hideHome ? navItems.filter(item => item.href !== "/wedding") : navItems
+  const isSubPage = !items.some(item => pathname === item.href)
 
   return (
     <div className="fixed fixed-bottom-nav left-3 right-3 z-50 max-w-md mx-auto flex items-end gap-2">
@@ -51,9 +53,11 @@ export function WeddingBottomNav() {
         }}
       >
         <div className="flex items-end justify-around h-16 px-1">
-          {navItems.map((item) => {
+          {items.map((item) => {
             const Icon = item.icon
-            const isActive = pathname === item.href || pathname?.startsWith(item.href)
+            const isActive = item.href === "/wedding"
+              ? pathname === "/wedding"
+              : pathname === item.href || pathname?.startsWith(item.href + "/")
 
             return (
               <Link

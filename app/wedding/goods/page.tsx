@@ -1411,7 +1411,7 @@ export default function GoodsPage() {
         </div>
       )}
 
-      <WeddingBottomNav />
+      <WeddingBottomNav hideHome />
     </div>
   );
 }

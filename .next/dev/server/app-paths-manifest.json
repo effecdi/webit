@@ -6,11 +6,14 @@
   "/api/expenses/route": "app/api/expenses/route.js",
   "/api/notifications/route": "app/api/notifications/route.js",
   "/api/photos/route": "app/api/photos/route.js",
+  "/api/shop/goods/route": "app/api/shop/goods/route.js",
   "/api/todos/route": "app/api/todos/route.js",
   "/api/travels/route": "app/api/travels/route.js",
-  "/dating/page": "app/dating/page.js",
+  "/api/wedding-info/route": "app/api/wedding-info/route.js",
   "/family/page": "app/family/page.js",
   "/page": "app/page.js",
   "/splash/page": "app/splash/page.js",
-  "/wedding/invitation/page": "app/wedding/invitation/page.js"
+  "/wedding/goods/page": "app/wedding/goods/page.js",
+  "/wedding/invitation/page": "app/wedding/invitation/page.js",
+  "/wedding/page": "app/wedding/page.js"
 }
