@@ -250,6 +250,17 @@ export const sessions = pgTable('sessions', {
   expire: timestamp('expire').notNull(),
 });
 
+export const purchaseVerifications = pgTable('purchase_verifications', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  orderNumber: text('order_number').notNull(),
+  receiptUrl: text('receipt_url'),
+  status: text('status').default('pending'),
+  adminNote: text('admin_note'),
+  reviewedAt: timestamp('reviewed_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
 export const userSettings = pgTable('user_settings', {
   id: serial('id').primaryKey(),
   userId: text('user_id').notNull().unique(),
@@ -291,4 +302,5 @@ export type CommunityComment = typeof communityComments.$inferSelect;
 export type CommunityLike = typeof communityLikes.$inferSelect;
 export type Couple = typeof couples.$inferSelect;
 export type CoupleInvite = typeof coupleInvites.$inferSelect;
+export type PurchaseVerification = typeof purchaseVerifications.$inferSelect;
 export type UserSettings = typeof userSettings.$inferSelect;

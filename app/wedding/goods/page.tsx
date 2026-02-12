@@ -35,6 +35,8 @@ import {
   ImageIcon,
   Award,
   Tag,
+  Clock,
+  AlertCircle,
 } from "lucide-react";
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav";
 
@@ -359,14 +361,26 @@ export default function GoodsPage() {
   const [receiptFile, setReceiptFile] = useState<File | null>(null);
   const [receiptPreview, setReceiptPreview] = useState<string | null>(null);
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
+  const [hasPending, setHasPending] = useState(false);
+  const [rejectedNote, setRejectedNote] = useState<string | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const stored =
-      typeof window !== "undefined" &&
-      localStorage.getItem("weve_premium_unlocked");
-    if (stored === "true") setIsPremiumUnlocked(true);
+    async function fetchVerifyStatus() {
+      try {
+        const res = await fetch("/api/shop/verify");
+        if (res.ok) {
+          const data = await res.json();
+          setIsPremiumUnlocked(data.premiumUnlocked);
+          setHasPending(data.hasPending);
+          setRejectedNote(data.rejectedNote);
+        }
+      } catch (e) {
+        console.error("Error fetching verify status:", e);
+      }
+    }
+    fetchVerifyStatus();
   }, []);
 
   useEffect(() => {
@@ -421,14 +435,17 @@ export default function GoodsPage() {
         method: "POST",
         body: formData,
       });
+      const data = await res.json();
       if (res.ok) {
-        setIsPremiumUnlocked(true);
-        localStorage.setItem("weve_premium_unlocked", "true");
+        setHasPending(true);
+        setRejectedNote(null);
         setShowVerifyModal(false);
         setOrderNumber("");
         setReceiptFile(null);
         setReceiptPreview(null);
-        showToast("인증 완료! 프리미엄 템플릿이 잠금 해제되었습니다.");
+        showToast("인증 요청이 접수되었습니다. 관리자 확인 후 승인됩니다.");
+      } else {
+        showToast(data.error || "인증에 실패했습니다.");
       }
     } catch (error) {
       console.error("Error verifying:", error);
@@ -588,51 +605,89 @@ export default function GoodsPage() {
 
       {activeTab === "manage" ? (
         <main className="px-5 py-5 max-w-md mx-auto space-y-5">
-          {!isPremiumUnlocked && (
-            <button
-              onClick={() => setShowVerifyModal(true)}
-              className="w-full bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 rounded-[16px] p-4 text-left relative overflow-hidden"
-              data-testid="button-benefit-banner"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <Crown className="w-5 h-5 text-white" />
-                  <span className="text-[12px] font-semibold text-white/90 tracking-wide">
-                    PREMIUM BENEFIT
-                  </span>
-                </div>
-                <p className="text-[15px] font-bold text-white leading-snug mb-2">
-                  혼수/답례품 구매 인증하면{"\n"}
-                  <span className="text-[18px]">
-                    7,900원 프리미엄 청첩장 무료!
-                  </span>
-                </p>
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white rounded-full text-[13px] font-bold text-orange-500">
-                  <Award className="w-4 h-4" />
-                  인증하고 혜택 받기
-                </span>
-              </div>
-            </button>
-          )}
-
-          {isPremiumUnlocked && (
+          {isPremiumUnlocked ? (
             <div
-              className="bg-green-50 border border-green-200 rounded-[16px] p-4 flex items-center gap-3"
+              className="bg-green-50 border border-green-200 rounded-[16px] p-4 flex items-center gap-3 dark:bg-green-950/30 dark:border-green-800"
               data-testid="premium-unlocked-badge"
             >
-              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                <Check className="w-5 h-5 text-green-600" />
+              <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center flex-shrink-0">
+                <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
               </div>
               <div>
-                <p className="text-[14px] font-bold text-green-700">
+                <p className="text-[14px] font-bold text-green-700 dark:text-green-300">
                   프리미엄 혜택 적용 중
                 </p>
-                <p className="text-[12px] text-green-600">
+                <p className="text-[12px] text-green-600 dark:text-green-400">
                   프리미엄 청첩장 템플릿이 잠금 해제되었어요
                 </p>
               </div>
             </div>
+          ) : hasPending ? (
+            <div
+              className="bg-blue-50 border border-blue-200 rounded-[16px] p-4 flex items-center gap-3 dark:bg-blue-950/30 dark:border-blue-800"
+              data-testid="pending-verify-badge"
+            >
+              <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center flex-shrink-0">
+                <Clock className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              </div>
+              <div>
+                <p className="text-[14px] font-bold text-blue-700 dark:text-blue-300">
+                  인증 심사 중
+                </p>
+                <p className="text-[12px] text-blue-600 dark:text-blue-400">
+                  관리자가 확인 중이에요. 승인되면 자동으로 적용됩니다.
+                </p>
+              </div>
+            </div>
+          ) : (
+            <>
+              {rejectedNote && (
+                <div
+                  className="bg-red-50 border border-red-200 rounded-[16px] p-4 flex items-start gap-3 dark:bg-red-950/30 dark:border-red-800"
+                  data-testid="rejected-verify-badge"
+                >
+                  <div className="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center flex-shrink-0">
+                    <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-bold text-red-700 dark:text-red-300">
+                      인증이 반려되었어요
+                    </p>
+                    <p className="text-[12px] text-red-600 dark:text-red-400">
+                      사유: {rejectedNote}
+                    </p>
+                    <p className="text-[11px] text-red-500 dark:text-red-500 mt-1">
+                      아래에서 다시 인증할 수 있어요
+                    </p>
+                  </div>
+                </div>
+              )}
+              <button
+                onClick={() => setShowVerifyModal(true)}
+                className="w-full bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 rounded-[16px] p-4 text-left relative overflow-hidden"
+                data-testid="button-benefit-banner"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <Crown className="w-5 h-5 text-white" />
+                    <span className="text-[12px] font-semibold text-white/90 tracking-wide">
+                      PREMIUM BENEFIT
+                    </span>
+                  </div>
+                  <p className="text-[15px] font-bold text-white leading-snug mb-2">
+                    혼수/답례품 구매 인증하면{"\n"}
+                    <span className="text-[18px]">
+                      7,900원 프리미엄 청첩장 무료!
+                    </span>
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white rounded-full text-[13px] font-bold text-orange-500">
+                    <Award className="w-4 h-4" />
+                    인증하고 혜택 받기
+                  </span>
+                </div>
+              </button>
+            </>
           )}
 
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">

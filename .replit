@@ -46,3 +46,4 @@ integrations = ["javascript_log_in_with_replit:2.0.0", "javascript_openai_ai_int
 
 [userenv.shared]
 ISSUER_URL = "https://replit.com/oidc"
+ADMIN_USER_IDS = "cc7bb185-4ebd-40c6-b9fb-0e1bc88bac02"
