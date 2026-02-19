@@ -1161,54 +1161,9 @@ function InvitationEditorContent() {
   };
 
   const handleKakaoShare = () => {
-    const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
-    if (!kakaoKey) {
-      alert("카카오 JavaScript 키가 설정되지 않았습니다.");
-      return;
-    }
-
-    const w = window as any;
-    if (!w.Kakao) {
-      alert("카카오 SDK를 로딩 중입니다. 잠시 후 다시 시도해주세요.");
-      return;
-    }
-
-    if (!w.Kakao.isInitialized()) {
-      w.Kakao.init(kakaoKey);
-    }
-
-    const groomName = data.groomName || "신랑";
-    const brideName = data.brideName || "신부";
-    const weddingDate = data.weddingDate || "";
-
-    w.Kakao.Share.sendDefault({
-      objectType: "feed",
-      content: {
-        title: `${groomName} ♥ ${brideName} 결혼합니다`,
-        description: weddingDate
-          ? `${weddingDate}에 열리는 저희 결혼식에 초대합니다.`
-          : "저희 결혼식에 초대합니다.",
-        imageUrl: data.sharePhoto || data.mainPhotos?.[0] || `${window.location.origin}/invitation-og.png`,
-        link: {
-          mobileWebUrl: shareUrl,
-          webUrl: shareUrl,
-        },
-      },
-      buttons: [
-        {
-          title: "청첩장 보기",
-          link: {
-            mobileWebUrl: shareUrl,
-            webUrl: shareUrl,
-          },
-        },
-      ],
-    });
-
-    setTimeout(() => {
-      setShowShareOptions(false);
-      setShowShareCountInput(true);
-    }, 1500);
+    copyToClipboard();
+    setShowShareOptions(false);
+    setShowShareCountInput(true);
   }
 
   const handleShareCountSubmit = async () => {
@@ -1384,18 +1339,22 @@ function InvitationEditorContent() {
               <div className="space-y-3">
                 <button
                   onClick={handleKakaoShare}
-                  className="w-full flex items-center gap-4 px-4 py-4 bg-[#FEE500] rounded-[16px] hover:bg-[#F5DC00] transition-colors"
+                  className="w-full flex items-center gap-4 px-4 py-4 bg-[#F2F4F6] rounded-[16px] hover:bg-[#E5E8EB] transition-colors"
                   data-testid="button-share-kakao"
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#3C1E1E] flex items-center justify-center">
-                    <MessageCircle className="w-6 h-6 text-[#FEE500]" />
+                  <div className="w-12 h-12 rounded-full bg-[#3182F6] flex items-center justify-center">
+                    {copied ? (
+                      <Check className="w-6 h-6 text-white" />
+                    ) : (
+                      <Link2 className="w-6 h-6 text-white" />
+                    )}
                   </div>
                   <div className="text-left">
-                    <p className="text-[15px] font-semibold text-[#3C1E1E]">
-                      카카오톡으로 공유
+                    <p className="text-[15px] font-semibold text-[#191F28]">
+                      링크 복사 후 공유하기
                     </p>
-                    <p className="text-[13px] text-[#3C1E1E]/70">
-                      친구에게 청첩장을 보내세요
+                    <p className="text-[13px] text-[#4E5968]">
+                      복사된 링크를 원하는 채널로 보내세요
                     </p>
                   </div>
                 </button>

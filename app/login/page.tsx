@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Heart, Check, ChevronRight, ChevronDown } from "lucide-react"
-import { useAuth } from "@/hooks/use-auth"
+import { useAuth, supabase } from "@/hooks/use-auth"
 import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 const CONSENT_ITEMS = [
@@ -106,8 +106,20 @@ export default function LoginPage() {
     }
   }
 
-  const handleSocialLogin = (provider: string) => {
+  const handleSocialLogin = async (provider: string) => {
     setLoadingProvider(provider)
+    if (provider === "kakao") {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "kakao",
+        options: {
+          redirectTo: `${window.location.origin}/login`,
+        },
+      })
+      if (error) {
+        setLoadingProvider(null)
+      }
+      return
+    }
     window.location.href = `/api/auth/${provider}`
   }
 

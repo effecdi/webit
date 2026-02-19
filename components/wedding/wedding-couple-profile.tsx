@@ -113,30 +113,6 @@ export function WeddingCoupleProfile() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleKakaoShare = () => {
-    const w = window as any;
-    if (!w.Kakao) {
-      alert("카카오 SDK를 로딩 중입니다. 잠시 후 다시 시도해주세요.");
-      return;
-    }
-    const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
-    if (kakaoKey && !w.Kakao.isInitialized()) {
-      w.Kakao.init(kakaoKey);
-    }
-    const senderName = groomProfile.name || "상대방";
-    w.Kakao.Share.sendDefault({
-      objectType: "feed",
-      content: {
-        title: "WE:BEAT - 커플 초대",
-        description: `${senderName}님이 WE:BEAT에서 함께하자고 초대했어요!`,
-        imageUrl: `${window.location.origin}/og-image.png`,
-        link: { mobileWebUrl: inviteUrl, webUrl: inviteUrl },
-      },
-      buttons: [{ title: "초대 수락하기", link: { mobileWebUrl: inviteUrl, webUrl: inviteUrl } }],
-    });
-    setShowShareModal(false);
-  };
-
   return (
     <section className="bg-card border-3 border-secondary p-6 shadow-brutalist">
       <div className="flex items-center justify-between mb-6">
@@ -277,19 +253,6 @@ export function WeddingCoupleProfile() {
                 </button>
               </div>
               <div className="space-y-2">
-                <button
-                  onClick={handleKakaoShare}
-                  className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#FEE500] hover:bg-[#FDD800] transition-colors"
-                  data-testid="button-share-kakao"
-                >
-                  <div className="w-12 h-12 rounded-full bg-[#3C1E1E] flex items-center justify-center">
-                    <MessageCircle className="w-6 h-6 text-[#FEE500]" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-[15px] font-bold text-[#3C1E1E]">카카오톡으로 공유</p>
-                    <p className="text-[12px] text-[#3C1E1E]/60">카카오톡 채팅으로 초대 링크를 보냅니다</p>
-                  </div>
-                </button>
                 <button
                   onClick={() => { handleCopyLink(); setTimeout(() => setShowShareModal(false), 800); }}
                   className="w-full flex items-center gap-4 p-4 rounded-[14px] bg-[#F2F4F6] dark:bg-gray-800 hover:bg-[#E5E8EB] dark:hover:bg-gray-700 transition-colors"

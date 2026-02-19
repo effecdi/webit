@@ -16,6 +16,7 @@ import {
 } from "lucide-react"
 import { CommunityDetailSkeleton } from "@/components/shared/skeleton-ui"
 import { BottomSheet } from "@/components/ui/bottom-sheet"
+import { useAuth } from "@/hooks/use-auth"
 
 interface CommunityPost {
   id: number
@@ -68,6 +69,7 @@ function timeAgo(dateStr: string): string {
 
 export function CommunityDetailPage({ config }: { config: DetailConfig }) {
   const router = useRouter()
+  const { user } = useAuth()
   const [post, setPost] = useState<CommunityPost | null>(null)
   const [comments, setComments] = useState<CommunityComment[]>([])
   const [newComment, setNewComment] = useState("")
@@ -110,13 +112,8 @@ export function CommunityDetailPage({ config }: { config: DetailConfig }) {
   }, [fetchPost, fetchComments])
 
   useEffect(() => {
-    fetch("/api/auth/user")
-      .then(res => res.ok ? res.json() : null)
-      .then(data => {
-        if (data?.id) setCurrentUserId(data.id)
-      })
-      .catch(() => {})
-  }, [])
+    setCurrentUserId(user?.id ?? null)
+  }, [user])
 
   const handleDeleteComment = async (commentId: number) => {
     setDeletingCommentId(commentId)

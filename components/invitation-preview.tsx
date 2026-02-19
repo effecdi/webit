@@ -210,51 +210,6 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
     ? window.location.href
     : ""
 
-  const handleKakaoShare = useCallback(() => {
-    const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY
-    if (!kakaoKey) return
-
-    const w = window as any
-    if (!w.Kakao) {
-      alert("카카오 SDK를 로딩 중입니다. 잠시 후 다시 시도해주세요.")
-      return
-    }
-
-    if (!w.Kakao.isInitialized()) {
-      w.Kakao.init(kakaoKey)
-    }
-
-    const groomName = data.groomName || "신랑"
-    const brideName = data.brideName || "신부"
-    const weddingDate = data.weddingDate || ""
-
-    const shareLink = currentShareUrl
-
-    w.Kakao.Share.sendDefault({
-      objectType: "feed",
-      content: {
-        title: `${groomName} ♥ ${brideName} 결혼합니다`,
-        description: weddingDate
-          ? `${weddingDate}에 열리는 저희 결혼식에 초대합니다.`
-          : "저희 결혼식에 초대합니다.",
-        imageUrl: data.sharePhoto || data.mainPhotos?.[0] || `${window.location.origin}/invitation-og.png`,
-        link: {
-          mobileWebUrl: shareLink,
-          webUrl: shareLink,
-        },
-      },
-      buttons: [
-        {
-          title: "청첩장 보기",
-          link: {
-            mobileWebUrl: shareLink,
-            webUrl: shareLink,
-          },
-        },
-      ],
-    })
-  }, [data, currentShareUrl])
-
   const handleCopyShareUrl = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(currentShareUrl)
@@ -537,16 +492,6 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
         {isShared && (openingDone || !data.showOpening) && (
           <div className="max-w-[420px] mx-auto px-6 py-10">
             <div className="flex items-center justify-center gap-6">
-              <button
-                onClick={handleKakaoShare}
-                className="flex flex-col items-center gap-2"
-                data-testid="button-shared-kakao"
-              >
-                <div className="w-14 h-14 rounded-full bg-[#FEE500] flex items-center justify-center">
-                  <MessageCircle className="w-7 h-7 text-[#3C1E1E]" />
-                </div>
-                <span className="text-[12px] text-[#8B95A1]">카카오톡</span>
-              </button>
               <button
                 onClick={handleCopyShareUrl}
                 className="flex flex-col items-center gap-2"
