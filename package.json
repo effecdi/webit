@@ -63,6 +63,7 @@
     "react-mobile-picker": "^1.2.0",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.4",
+    "pg": "8.18.0",
     "sonner": "^1.7.4",
     "stripe": "20.0.0",
     "stripe-replit-sync": "1.0.0",
