@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/runner/workspace/app/splash/loading.tsx"],"sourcesContent":["export default function SplashLoading() {\n  return (\n    <main className=\"min-h-dvh bg-[#d63bf2] flex items-center justify-center\">\n      <div className=\"flex flex-col items-center gap-5\">\n        <div className=\"w-20 h-20 rounded-[20px] bg-white/20 animate-pulse\" />\n      </div>\n    </main>\n  )\n}\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,8WAAC;QAAK,WAAU;kBACd,cAAA,8WAAC;YAAI,WAAU;sBACb,cAAA,8WAAC;gBAAI,WAAU;;;;;;;;;;;;;;;;AAIvB"}}]
-}

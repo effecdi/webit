@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///home/runner/workspace/app/api/login/route.ts"],"sourcesContent":["import { NextResponse } from \"next/server\";\n\nexport async function GET() {\n  const baseUrl = process.env.REPLIT_DOMAINS\n    ? `https://${process.env.REPLIT_DOMAINS.split(\",\")[0]}`\n    : \"http://localhost:5000\";\n  return NextResponse.redirect(new URL(\"/login\", baseUrl));\n}\n"],"names":[],"mappings":";;;;AAAA;;AAEO,eAAe;IACpB,MAAM,UAAU,QAAQ,GAAG,CAAC,cAAc,GACtC,CAAC,QAAQ,EAAE,QAAQ,GAAG,CAAC,cAAc,CAAC,KAAK,CAAC,IAAI,CAAC,EAAE,EAAE,GACrD;IACJ,OAAO,gRAAY,CAAC,QAAQ,CAAC,IAAI,IAAI,UAAU;AACjD"}}]
-}
