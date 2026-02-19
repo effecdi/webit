@@ -5,11 +5,6 @@ import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
-const openai = new OpenAI({
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-});
-
 const SYSTEM_PROMPT = `당신은 한국의 가족 활동 전문가입니다.
 가족 구성과 상황에 맞는 활동과 나들이 코스를 추천합니다.
 
@@ -69,6 +64,19 @@ ${activityType ? `- 활동 유형: ${activityType}` : ""}
 - 계절: ${season}
 
 JSON 형식으로만 응답해주세요.`;
+
+    const apiKey = process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "AI 설정이 되어 있지 않습니다." },
+        { status: 500 }
+      );
+    }
+
+    const openai = new OpenAI({
+      apiKey,
+      baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+    });
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",

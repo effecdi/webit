@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-});
-
 type TextType = "title" | "message" | "fundingMessage" | "fundingThanks" | "noticeTitle" | "endingContent";
 
 const SYSTEM_PROMPT = `당신은 한국 결혼식 청첩장 문구 전문 카피라이터입니다.
@@ -50,6 +45,19 @@ function getPrompt(type: TextType, context: { groomName?: string; brideName?: st
 
 export async function POST(request: NextRequest) {
   try {
+    const apiKey = process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "AI 설정이 되어 있지 않습니다." },
+        { status: 500 }
+      );
+    }
+
+    const openai = new OpenAI({
+      apiKey,
+      baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+    });
+
     const body = await request.json();
     const { type, context = {} } = body as { type: TextType; context?: { groomName?: string; brideName?: string; date?: string; venue?: string } };
 

@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-});
-
 const SYSTEM_PROMPT = `당신은 WE:BEAT(위브) 앱의 AI 고객지원 상담사입니다.
 WE:BEAT는 커플의 연애, 결혼, 가정 생활을 지원하는 한국어 모바일 앱입니다.
 
@@ -28,6 +23,19 @@ WE:BEAT는 커플의 연애, 결혼, 가정 생활을 지원하는 한국어 모
 
 export async function POST(request: NextRequest) {
   try {
+    const apiKey = process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "AI 설정이 되어 있지 않습니다." },
+        { status: 500 }
+      );
+    }
+
+    const openai = new OpenAI({
+      apiKey,
+      baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+    });
+
     const { messages } = await request.json();
 
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
