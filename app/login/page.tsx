@@ -109,6 +109,11 @@ export default function LoginPage() {
   const handleSocialLogin = async (provider: string) => {
     setLoadingProvider(provider)
     if (provider === "kakao") {
+      if (!supabase) {
+        alert("Supabase 설정이 필요해 카카오 로그인을 사용할 수 없습니다.")
+        setLoadingProvider(null)
+        return
+      }
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "kakao",
         options: {
@@ -159,7 +164,7 @@ export default function LoginPage() {
 
         <div className="w-full max-w-sm space-y-3">
           <button
-            onClick={() => handleLoginClick("kakao")}
+            onClick={() => handleLoginClick("dev")}
             disabled={loadingProvider !== null}
             className="w-full h-14 bg-[#d63bf2] rounded-[16px] flex items-center justify-center gap-3 font-semibold text-white transition-all hover:bg-[#a82cbf] active:scale-[0.98] disabled:opacity-70"
             data-testid="button-login-dev"
