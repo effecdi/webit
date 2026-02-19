@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, createContext, useContext } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 interface AuthUser {
   id: string;
@@ -25,10 +25,18 @@ const AuthContext = createContext<AuthState>({
   refetch: async () => {},
 });
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
-);
+let supabase: SupabaseClient | null = null;
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+if (supabaseUrl && supabaseAnonKey) {
+  supabase = createClient(supabaseUrl, supabaseAnonKey);
+} else {
+  if (typeof window !== "undefined") {
+    console.warn("Supabase env vars are not set; auth features will be disabled.");
+  }
+}
 
 export function useAuth(): AuthState {
   return useContext(AuthContext);

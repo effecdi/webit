@@ -20,6 +20,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const refetch = useCallback(async () => {
+    if (!supabase) {
+      setUser(null);
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const { data, error } = await supabase.auth.getUser();
       if (error) {
@@ -34,6 +40,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     refetch();
+    if (!supabase) return;
     const { data } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(mapUser(session?.user ?? null));
     });
