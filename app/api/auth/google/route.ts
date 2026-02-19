@@ -7,9 +7,6 @@ export async function GET() {
     return NextResponse.redirect(authUrl);
   } catch (error) {
     console.error("Google login error:", error);
-    const baseUrl = process.env.REPLIT_DOMAINS
-      ? `https://${process.env.REPLIT_DOMAINS.split(",")[0]}`
-      : "http://localhost:5000";
-    return NextResponse.redirect(new URL("/login?error=google_failed", baseUrl));
+    return NextResponse.redirect("/login?error=google_failed");
   }
 }

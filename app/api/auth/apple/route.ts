@@ -7,9 +7,6 @@ export async function GET() {
     return NextResponse.redirect(authUrl);
   } catch (error) {
     console.error("Apple login error:", error);
-    const baseUrl = process.env.REPLIT_DOMAINS
-      ? `https://${process.env.REPLIT_DOMAINS.split(",")[0]}`
-      : "http://localhost:5000";
-    return NextResponse.redirect(new URL("/login?error=apple_failed", baseUrl));
+    return NextResponse.redirect("/login?error=apple_failed");
   }
 }

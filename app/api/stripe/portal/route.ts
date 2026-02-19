@@ -18,14 +18,13 @@ export async function POST(request: NextRequest) {
     }
 
     const stripe = await getUncachableStripeClient();
-    const domain = process.env.REPLIT_DOMAINS?.split(',')[0] || process.env.REPLIT_DEV_DOMAIN;
 
     const body = await request.json().catch(() => ({}));
     const returnMode = body.mode || 'dating';
 
     const session = await stripe.billingPortal.sessions.create({
       customer: user.stripeCustomerId,
-      return_url: `https://${domain}/${returnMode}/profile`,
+      return_url: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/${returnMode}/profile`,
     });
 
     return NextResponse.json({ url: session.url });

@@ -3,10 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
 export async function GET(request: NextRequest) {
-  const baseUrl = process.env.REPLIT_DOMAINS
-    ? `https://${process.env.REPLIT_DOMAINS.split(",")[0]}`
-    : "http://localhost:5000";
-
   try {
     const result = await handleCallback(new URL(request.url));
 
@@ -16,16 +12,16 @@ export async function GET(request: NextRequest) {
 
       if (inviteCode) {
         cookieStore.delete("pending_invite_code");
-        return NextResponse.redirect(new URL(`/invite-welcome?code=${inviteCode}`, baseUrl));
+        return NextResponse.redirect(`/invite-welcome?code=${inviteCode}`);
       }
 
-      return NextResponse.redirect(new URL("/splash", baseUrl));
+      return NextResponse.redirect("/splash");
     } else {
       console.error("Auth callback failed:", result.error);
-      return NextResponse.redirect(new URL("/login?error=callback_failed", baseUrl));
+      return NextResponse.redirect("/login?error=callback_failed");
     }
   } catch (error) {
     console.error("Auth callback error:", error);
-    return NextResponse.redirect(new URL("/login?error=callback_error", baseUrl));
+    return NextResponse.redirect("/login?error=callback_error");
   }
 }

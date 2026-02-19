@@ -7,9 +7,6 @@ export async function GET() {
     return NextResponse.redirect(authUrl);
   } catch (error) {
     console.error("Kakao login error:", error);
-    const baseUrl = process.env.REPLIT_DOMAINS
-      ? `https://${process.env.REPLIT_DOMAINS.split(",")[0]}`
-      : "http://localhost:5000";
-    return NextResponse.redirect(new URL("/login?error=kakao_failed", baseUrl));
+    return NextResponse.redirect("/login?error=kakao_failed");
   }
 }

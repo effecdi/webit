@@ -39,9 +39,6 @@ export async function POST(request: NextRequest) {
       await db.update(users).set({ stripeCustomerId: customerId }).where(eq(users.id, userId));
     }
 
-    const domain = process.env.REPLIT_DOMAINS?.split(',')[0] || process.env.REPLIT_DEV_DOMAIN;
-    const baseUrl = `https://${domain}`;
-
     const appMode = body.mode || 'dating';
     const profilePath = `/${appMode}/profile`;
 
@@ -50,8 +47,8 @@ export async function POST(request: NextRequest) {
       payment_method_types: ['card'],
       line_items: [{ price: priceId, quantity: 1 }],
       mode: 'subscription',
-      success_url: `${baseUrl}${profilePath}?payment=success`,
-      cancel_url: `${baseUrl}${profilePath}?payment=cancelled`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}${profilePath}?payment=success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}${profilePath}?payment=cancelled`,
     });
 
     return NextResponse.json({ url: session.url });

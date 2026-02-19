@@ -3,10 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
 export async function POST(request: NextRequest) {
-  const baseUrl = process.env.REPLIT_DOMAINS
-    ? `https://${process.env.REPLIT_DOMAINS.split(",")[0]}`
-    : "http://localhost:5000";
-
   try {
     const formData = await request.formData();
     const result = await handleAppleCallback(formData);
@@ -17,16 +13,16 @@ export async function POST(request: NextRequest) {
 
       if (inviteCode) {
         cookieStore.delete("pending_invite_code");
-        return NextResponse.redirect(new URL(`/invite-welcome?code=${inviteCode}`, baseUrl), { status: 303 });
+        return NextResponse.redirect("/invite-welcome", { status: 303 });
       }
 
-      return NextResponse.redirect(new URL("/splash", baseUrl), { status: 303 });
+      return NextResponse.redirect("/splash", { status: 303 });
     } else {
       console.error("Apple callback failed:", result.error);
-      return NextResponse.redirect(new URL("/login?error=apple_callback_failed", baseUrl), { status: 303 });
+      return NextResponse.redirect("/login?error=apple_callback_failed", { status: 303 });
     }
   } catch (error) {
     console.error("Apple callback error:", error);
-    return NextResponse.redirect(new URL("/login?error=apple_error", baseUrl), { status: 303 });
+    return NextResponse.redirect("/login?error=apple_error", { status: 303 });
   }
 }

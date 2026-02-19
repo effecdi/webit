@@ -12,8 +12,10 @@ let oidcConfig: client.Configuration | null = null;
 async function getOIDCConfig(): Promise<client.Configuration> {
   if (oidcConfig) return oidcConfig;
 
-  const issuerUrl = process.env.ISSUER_URL || "https://replit.com/oidc";
-  const callbackUrl = getCallbackUrl();
+  const issuerUrl = process.env.ISSUER_URL;
+  if (!issuerUrl) {
+    throw new Error("ISSUER_URL is not configured");
+  }
 
   oidcConfig = await client.discovery(
     new URL(issuerUrl),
@@ -29,8 +31,9 @@ async function getOIDCConfig(): Promise<client.Configuration> {
 }
 
 function getCallbackUrl(): string {
-  const domain = process.env.REPLIT_DOMAINS?.split(",")[0] || process.env.REPLIT_DEV_DOMAIN;
-  return `https://${domain}/api/auth/callback`;
+  const envUrl = process.env.NEXT_PUBLIC_APP_URL;
+  if (envUrl) return `${envUrl.replace(/\/+$/, "")}/api/auth/callback`;
+  return "http://localhost:3000/api/auth/callback";
 }
 
 export async function startLogin(): Promise<string> {

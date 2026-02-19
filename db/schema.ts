@@ -7,7 +7,7 @@ export const users = pgTable('users', {
   firstName: varchar('first_name'),
   lastName: varchar('last_name'),
   profileImageUrl: varchar('profile_image_url'),
-  provider: varchar('provider').default('replit'),
+  provider: varchar('provider'),
   providerId: varchar('provider_id'),
   stripeCustomerId: varchar('stripe_customer_id'),
   stripeSubscriptionId: varchar('stripe_subscription_id'),

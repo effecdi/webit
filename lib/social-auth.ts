@@ -7,9 +7,9 @@ import crypto from "crypto";
 const SESSION_COOKIE_NAME = "weve_session";
 
 function getBaseUrl(): string {
-  const domain = process.env.REPLIT_DOMAINS?.split(",")[0] || process.env.REPLIT_DEV_DOMAIN;
-  if (domain) return `https://${domain}`;
-  return "http://localhost:5000";
+  const envUrl = process.env.NEXT_PUBLIC_APP_URL;
+  if (envUrl) return envUrl;
+  return "http://localhost:3000";
 }
 
 export function getKakaoConfig() {
