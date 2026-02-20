@@ -108,14 +108,14 @@ export default function LoginPage() {
 
   const handleSocialLogin = async (provider: string) => {
     setLoadingProvider(provider)
-    if (provider === "kakao") {
+    if (provider === "kakao" || provider === "google") {
       if (!supabase) {
-        alert("Supabase 설정이 필요해 카카오 로그인을 사용할 수 없습니다.")
+        alert("Supabase 설정이 필요해 소셜 로그인을 사용할 수 없습니다.")
         setLoadingProvider(null)
         return
       }
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: "kakao",
+        provider: provider as "kakao" | "google",
         options: {
           redirectTo: `${window.location.origin}/login`,
         },
@@ -196,7 +196,7 @@ export default function LoginPage() {
             ) : (
               <>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 3C6.48 3 2 6.36 2 10.44c0 2.62 1.74 4.93 4.36 6.24-.14.52-.9 3.36-.93 3.58 0 0-.02.16.08.22.1.06.22.02.22.02.29-.04 3.36-2.2 3.9-2.58.76.1 1.56.16 2.37.16 5.52 0 10-3.36 10-7.64C22 6.36 17.52 3 12 3Z" fill="#191919"/>
+                  <path d="M12 3C6.48 3 2 6.36 2 10.44c0 2.62 1.74 4.93 4.36 6.24-.14.52-.9 3.36-.93 3.58 0 0-.02.16 .08.22.1.06.22.02.22.02.29-.04 3.36-2.2 3.9-2.58.76.1 1.56.16 2.37.16 5.52 0 10-3.36 10-7.64C22 6.36 17.52 3 12 3Z" fill="#191919"/>
                 </svg>
                 카카오로 시작하기
               </>

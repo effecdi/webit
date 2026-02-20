@@ -23,17 +23,6 @@ export function getKakaoConfig() {
   };
 }
 
-export function getGoogleConfig() {
-  return {
-    clientId: process.env.GOOGLE_CLIENT_ID || "",
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
-    authUrl: "https://accounts.google.com/o/oauth2/v2/auth",
-    tokenUrl: "https://oauth2.googleapis.com/token",
-    userInfoUrl: "https://www.googleapis.com/oauth2/v2/userinfo",
-    redirectUri: `${getBaseUrl()}/api/auth/google/callback`,
-  };
-}
-
 export function getAppleConfig() {
   return {
     clientId: process.env.APPLE_CLIENT_ID || "",
@@ -134,113 +123,6 @@ export async function handleKakaoCallback(code: string, state: string): Promise<
     });
   } catch (error) {
     console.error("Kakao callback error:", error);
-    return { success: false, error: String(error) };
-  }
-}
-
-function generateCodeVerifier(): string {
-  return crypto.randomBytes(32).toString("base64url");
-}
-
-async function generateCodeChallenge(verifier: string): Promise<string> {
-  const hash = crypto.createHash("sha256").update(verifier).digest();
-  return hash.toString("base64url");
-}
-
-export async function startGoogleLogin(): Promise<string> {
-  const config = getGoogleConfig();
-  const state = crypto.randomBytes(16).toString("hex");
-  const codeVerifier = generateCodeVerifier();
-  const codeChallenge = await generateCodeChallenge(codeVerifier);
-
-  const cookieStore = await cookies();
-  cookieStore.set("oauth_state", state, {
-    httpOnly: true,
-    secure: true,
-    maxAge: 600,
-    path: "/",
-    sameSite: "lax",
-  });
-  cookieStore.set("google_code_verifier", codeVerifier, {
-    httpOnly: true,
-    secure: true,
-    maxAge: 600,
-    path: "/",
-    sameSite: "lax",
-  });
-
-  const params = new URLSearchParams({
-    client_id: config.clientId,
-    redirect_uri: config.redirectUri,
-    response_type: "code",
-    state,
-    scope: "openid email profile",
-    access_type: "offline",
-    prompt: "consent",
-    code_challenge: codeChallenge,
-    code_challenge_method: "S256",
-  });
-
-  return `${config.authUrl}?${params.toString()}`;
-}
-
-export async function handleGoogleCallback(code: string, state: string): Promise<{ success: boolean; error?: string }> {
-  try {
-    const cookieStore = await cookies();
-    const savedState = cookieStore.get("oauth_state")?.value;
-    const codeVerifier = cookieStore.get("google_code_verifier")?.value;
-    if (!savedState || savedState !== state) {
-      return { success: false, error: "Invalid state" };
-    }
-    if (!codeVerifier) {
-      return { success: false, error: "Missing PKCE code verifier" };
-    }
-
-    const config = getGoogleConfig();
-
-    const tokenParams: Record<string, string> = {
-      grant_type: "authorization_code",
-      client_id: config.clientId,
-      client_secret: config.clientSecret,
-      redirect_uri: config.redirectUri,
-      code,
-      code_verifier: codeVerifier,
-    };
-
-    const tokenRes = await fetch(config.tokenUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(tokenParams),
-    });
-
-    if (!tokenRes.ok) {
-      const err = await tokenRes.text();
-      console.error("Google token error:", err);
-      return { success: false, error: "Failed to get Google token" };
-    }
-
-    const tokenData = await tokenRes.json();
-
-    const userRes = await fetch(config.userInfoUrl, {
-      headers: { Authorization: `Bearer ${tokenData.access_token}` },
-    });
-
-    if (!userRes.ok) {
-      return { success: false, error: "Failed to get Google user info" };
-    }
-
-    const googleUser = await userRes.json();
-
-    return await createOrUpdateUser({
-      provider: "google",
-      providerId: googleUser.id,
-      email: googleUser.email || null,
-      firstName: googleUser.given_name || googleUser.name || null,
-      lastName: googleUser.family_name || null,
-      profileImageUrl: googleUser.picture || null,
-    });
-  } catch (error) {
-    console.error("Google callback error:", error);
     return { success: false, error: String(error) };
   }
 }
