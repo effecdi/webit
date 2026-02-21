@@ -17,6 +17,7 @@ import { GardenLayout } from "./invitation-layouts/GardenLayout"
 import { PosterLayout } from "./invitation-layouts/PosterLayout"
 import { BoardingPassLayout } from "./invitation-layouts/BoardingPassLayout"
 import { CalligraphyLayout } from "./invitation-layouts/CalligraphyLayout"
+import { GalleryLayout } from "./invitation-layouts/GalleryLayout"
 import { BottomSheet } from "@/components/ui/bottom-sheet"
 
 interface InvitationPreviewProps {
@@ -41,6 +42,7 @@ function getLayoutPageBg(template: string): string {
     case "poster": return "#FDF8F0"
     case "boardingpass": return "#1E2D4A"
     case "calligraphy": return "#FBF8F4"
+    case "gallery": return "#F5F5F5"
     case "modern":
     default: return "#FFFFFF"
   }
@@ -197,6 +199,7 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
       case "poster": return <PosterLayout {...props} />
       case "boardingpass": return <BoardingPassLayout {...props} />
       case "calligraphy": return <CalligraphyLayout {...props} />
+      case "gallery": return <GalleryLayout {...props} />
       case "modern":
       default: return <ModernLayout {...props} />
     }

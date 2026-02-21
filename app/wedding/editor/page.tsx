@@ -279,6 +279,7 @@ const MAIN_TEMPLATES = [
   { id: "poster", label: "포스터", premium: true },
   { id: "boardingpass", label: "보딩패스", premium: true },
   { id: "calligraphy", label: "캘리그라피", premium: true },
+  { id: "gallery", label: "갤러리", premium: true },
 ];
 
 function TemplateThumbnail({ id }: { id: string }) {
@@ -450,6 +451,16 @@ function TemplateThumbnail({ id }: { id: string }) {
             <div className="w-8 h-[1px]" style={{ backgroundColor: "#D4C5B0" }} />
             <div className="w-1 h-1 rounded-full" style={{ backgroundColor: "#9C7B5C" }} />
             <div className="w-8 h-[1px]" style={{ backgroundColor: "#D4C5B0" }} />
+          </div>
+        </div>
+      );
+    case "gallery":
+      return (
+        <div className="w-full h-full rounded-[6px] overflow-hidden" style={{ backgroundColor: "#F5F5F5" }}>
+          <div className="grid grid-cols-2 gap-[1px] h-full p-1">
+            <div className="row-span-2 bg-[#E0E0E0] rounded-[3px]" />
+            <div className="bg-[#EBEBEB] rounded-[3px]" />
+            <div className="bg-[#EBEBEB] rounded-[3px]" />
           </div>
         </div>
       );
@@ -977,7 +988,7 @@ function InvitationEditorContent() {
   const templateParam = searchParams.get("template");
   const invitationId = searchParams.get("id");
   const [data, setData] = useState<InvitationData>(() => {
-    const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "poster", "boardingpass", "calligraphy"];
+    const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "poster", "boardingpass", "calligraphy", "gallery"];
     const template = templateParam && validTemplates.includes(templateParam) ? templateParam : initialData.mainTemplate;
     return { ...initialData, mainTemplate: template };
   });
@@ -987,6 +998,7 @@ function InvitationEditorContent() {
   const [aiLoading, setAiLoading] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isUploading, setIsUploading] = useState(false);
   const [viewMode, setViewMode] = useState(false);
   const [showShareCountInput, setShowShareCountInput] = useState(false);
   const [shareCount, setShareCount] = useState("");
@@ -1007,7 +1019,7 @@ function InvitationEditorContent() {
           if (res.ok) {
             const result = await res.json();
             if (result && result.invitationData) {
-              const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "poster", "boardingpass", "calligraphy"];
+              const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "poster", "boardingpass", "calligraphy", "gallery"];
               const urlTemplate = templateParam && validTemplates.includes(templateParam) ? templateParam : null;
               setData((prev) => ({
                 ...prev,
@@ -1029,7 +1041,7 @@ function InvitationEditorContent() {
                   ? result : null
               );
               if (savedData) {
-                const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "poster", "boardingpass", "calligraphy"];
+                const validTemplates = ["cinematic", "modern", "classic", "magazine", "polaroid", "chat", "traditional", "garden", "poster", "boardingpass", "calligraphy", "gallery"];
                 const urlTemplate = templateParam && validTemplates.includes(templateParam) ? templateParam : null;
                 setData((prev) => ({
                   ...prev,
@@ -1235,33 +1247,56 @@ function InvitationEditorContent() {
   const generateNoticeTitle = () => generateAIText("noticeTitle", "noticeTitle");
   const generateEndingContent = () => generateAIText("endingContent", "endingContent");
 
-  const handleGalleryUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const uploadImageToServer = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append("file", file);
+    const res = await fetch("/api/upload", { method: "POST", body: formData });
+    if (!res.ok) throw new Error("Upload failed");
+    const { url } = await res.json();
+    return url as string;
+  };
+
+  const handleGalleryUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files) {
-      const newImages = Array.from(files).map((file) =>
-        URL.createObjectURL(file),
-      );
-      const totalImages = [...data.galleryImages, ...newImages].slice(0, 20);
+    if (!files) return;
+    setIsUploading(true);
+    try {
+      const uploaded = await Promise.all(Array.from(files).map(uploadImageToServer));
+      const totalImages = [...data.galleryImages, ...uploaded].slice(0, 20);
       updateField("galleryImages", totalImages);
+    } catch {
+      alert("이미지 업로드에 실패했습니다. 다시 시도해주세요.");
+    } finally {
+      setIsUploading(false);
     }
   };
 
-  const handleMainPhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleMainPhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files) {
-      const newImages = Array.from(files).map((file) =>
-        URL.createObjectURL(file),
-      );
-      const totalImages = [...data.mainPhotos, ...newImages].slice(0, 5);
+    if (!files) return;
+    setIsUploading(true);
+    try {
+      const uploaded = await Promise.all(Array.from(files).map(uploadImageToServer));
+      const totalImages = [...data.mainPhotos, ...uploaded].slice(0, 5);
       updateField("mainPhotos", totalImages);
+    } catch {
+      alert("이미지 업로드에 실패했습니다. 다시 시도해주세요.");
+    } finally {
+      setIsUploading(false);
     }
   };
 
-  const handleFundingImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFundingImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files && files[0]) {
-      const imageUrl = URL.createObjectURL(files[0]);
-      updateField("fundingImage", imageUrl);
+    if (!files || !files[0]) return;
+    setIsUploading(true);
+    try {
+      const url = await uploadImageToServer(files[0]);
+      updateField("fundingImage", url);
+    } catch {
+      alert("이미지 업로드에 실패했습니다. 다시 시도해주세요.");
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -1544,13 +1579,20 @@ function InvitationEditorContent() {
                         </label>
                         <ImageUploadBox
                           value={data.openingScenes[num - 1]}
-                          onUpload={(e) => {
+                          onUpload={async (e) => {
                             const file = e.target.files?.[0];
                             if (file) {
-                              const url = URL.createObjectURL(file);
-                              const newScenes = [...data.openingScenes];
-                              newScenes[num - 1] = url;
-                              updateField("openingScenes", newScenes);
+                              setIsUploading(true);
+                              try {
+                                const url = await uploadImageToServer(file);
+                                const newScenes = [...data.openingScenes];
+                                newScenes[num - 1] = url;
+                                updateField("openingScenes", newScenes);
+                              } catch {
+                                alert("이미지 업로드에 실패했습니다. 다시 시도해주세요.");
+                              } finally {
+                                setIsUploading(false);
+                              }
                             }
                           }}
                           onRemove={() => {
@@ -2689,10 +2731,19 @@ function InvitationEditorContent() {
                     <label className="text-[14px] text-[#4E5968]">사진</label>
                     <ImageUploadBox
                       value={data.midPhoto}
-                      onUpload={(e) => {
+                      onUpload={async (e) => {
                         const file = e.target.files?.[0];
-                        if (file)
-                          updateField("midPhoto", URL.createObjectURL(file));
+                        if (file) {
+                          setIsUploading(true);
+                          try {
+                            const url = await uploadImageToServer(file);
+                            updateField("midPhoto", url);
+                          } catch {
+                            alert("이미지 업로드에 실패했습니다. 다시 시도해주세요.");
+                          } finally {
+                            setIsUploading(false);
+                          }
+                        }
                       }}
                       onRemove={() => updateField("midPhoto", "")}
                     />
@@ -3061,10 +3112,19 @@ function InvitationEditorContent() {
                     <label className="text-[14px] text-[#4E5968]">사진</label>
                     <ImageUploadBox
                       value={data.endingPhoto}
-                      onUpload={(e) => {
+                      onUpload={async (e) => {
                         const file = e.target.files?.[0];
-                        if (file)
-                          updateField("endingPhoto", URL.createObjectURL(file));
+                        if (file) {
+                          setIsUploading(true);
+                          try {
+                            const url = await uploadImageToServer(file);
+                            updateField("endingPhoto", url);
+                          } catch {
+                            alert("이미지 업로드에 실패했습니다. 다시 시도해주세요.");
+                          } finally {
+                            setIsUploading(false);
+                          }
+                        }
                       }}
                       onRemove={() => updateField("endingPhoto", "")}
                     />
@@ -3189,10 +3249,19 @@ function InvitationEditorContent() {
                     <label className="text-[14px] text-[#4E5968]">사진</label>
                     <ImageUploadBox
                       value={data.sharePhoto}
-                      onUpload={(e) => {
+                      onUpload={async (e) => {
                         const file = e.target.files?.[0];
-                        if (file)
-                          updateField("sharePhoto", URL.createObjectURL(file));
+                        if (file) {
+                          setIsUploading(true);
+                          try {
+                            const url = await uploadImageToServer(file);
+                            updateField("sharePhoto", url);
+                          } catch {
+                            alert("이미지 업로드에 실패했습니다. 다시 시도해주세요.");
+                          } finally {
+                            setIsUploading(false);
+                          }
+                        }
                       }}
                       onRemove={() => updateField("sharePhoto", "")}
                     />
@@ -3260,11 +3329,11 @@ function InvitationEditorContent() {
         <div className="max-w-md mx-auto lg:max-w-none">
           <button
             onClick={handleSave}
-            disabled={isSaving}
+            disabled={isSaving || isUploading}
             data-testid="button-save"
             className="w-full py-4 rounded-[14px] bg-[#191F28] text-white font-semibold text-[15px] hover:bg-[#333D4B] transition-colors disabled:opacity-50"
           >
-            {isSaving ? "저장 중..." : "저장하기"}
+            {isUploading ? "이미지 업로드 중..." : isSaving ? "저장 중..." : "저장하기"}
           </button>
         </div>
       </div>
