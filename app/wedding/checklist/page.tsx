@@ -168,6 +168,44 @@ export default function ChecklistPage() {
           </div>
         </div>
 
+        {/* 업체 관리 진입 카드 */}
+        <section className="bg-white rounded-[20px] p-4 shadow-sm">
+          <div className="flex items-center justify-between mb-3">
+            <div>
+              <p className="text-[13px] text-[#8B95A1]">업체 관리</p>
+              <p className="text-[15px] font-semibold text-[#191F28]">
+                비교 항목과 진행상태를 한 곳에서 확인해요
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <Link
+              href="/wedding/vendors"
+              className="flex items-center gap-2 px-3 py-3 rounded-[14px] border border-[#E5E8EB] bg-[#F9FAFB] active:scale-[0.98] transition-transform"
+            >
+              <div className="w-8 h-8 rounded-full bg-[#E5F0FF] flex items-center justify-center">
+                <Building2 className="w-4 h-4 text-[#3182F6]" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[13px] font-semibold text-[#191F28]">업체 비교</span>
+                <span className="text-[11px] text-[#8B95A1]">웨딩홀·스튜디오 등 후보 비교</span>
+              </div>
+            </Link>
+            <Link
+              href="/wedding/vendors/progress"
+              className="flex items-center gap-2 px-3 py-3 rounded-[14px] border border-[#E5E8EB] bg-[#F9FAFB] active:scale-[0.98] transition-transform"
+            >
+              <div className="w-8 h-8 rounded-full bg-[#E7F5FF] flex items-center justify-center">
+                <CheckCircle2 className="w-4 h-4 text-[#0CA678]" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[13px] font-semibold text-[#191F28]">진행상태</span>
+                <span className="text-[11px] text-[#8B95A1]">계약금·잔금·완납 현황 관리</span>
+              </div>
+            </Link>
+          </div>
+        </section>
+
         <div className="flex bg-[#F2F4F6] rounded-[12px] p-1">
           {[
             { key: "tasks", label: "체크리스트" },
