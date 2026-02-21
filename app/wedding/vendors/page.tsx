@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { useTheme } from "next-themes"
+import { useRouter } from "next/navigation"
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
 import { 
   Plus,
@@ -67,6 +68,7 @@ const categoryIcons: Record<string, { icon: React.ReactNode; bg: string }> = {
 
 export default function WeddingVendorsPage() {
   const { resolvedTheme } = useTheme()
+  const router = useRouter()
   const [mounted, setMounted] = useState(false)
   const [vendors, setVendors] = useState<WeddingVendor[]>([])
   const [activeCategory, setActiveCategory] = useState<string>("웨딩홀")
@@ -81,6 +83,7 @@ export default function WeddingVendorsPage() {
     pros: "",
     cons: "",
     notes: "",
+    contractStatus: "미계약" as "미계약" | "가계약" | "계약" | "고민중",
   })
 
   useEffect(() => {
@@ -121,6 +124,13 @@ export default function WeddingVendorsPage() {
     setIsSaving(true)
     setError(null)
     try {
+      const statusMap: Record<string, string> = {
+        "미계약": "candidate",
+        "가계약": "pre_contract",
+        "계약": "contracted",
+        "고민중": "considering",
+      }
+
       const res = await fetch("/api/wedding/vendors", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -132,7 +142,7 @@ export default function WeddingVendorsPage() {
           pros: newVendor.pros || undefined,
           cons: newVendor.cons || undefined,
           notes: newVendor.notes || undefined,
-          status: "candidate",
+          status: statusMap[newVendor.contractStatus] || "candidate",
           mode: "wedding",
         }),
       })
@@ -149,10 +159,65 @@ export default function WeddingVendorsPage() {
         pros: "",
         cons: "",
         notes: "",
+        contractStatus: "미계약",
       })
+
+      if (newVendor.contractStatus === "계약" || newVendor.contractStatus === "가계약") {
+        router.push("/wedding/vendors/progress")
+      }
     } catch (e) {
       console.error("Failed to add wedding vendor:", e)
       setError("업체를 추가하는 중 오류가 발생했어요.")
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  const statusToKorean = (status: string | null) => {
+    if (status === "contracted") return "계약"
+    if (status === "pre_contract") return "가계약"
+    if (status === "done") return "완료"
+    if (status === "considering") return "고민중"
+    return "미계약"
+  }
+
+  const koreanToStatus = (value: string) => {
+    if (value === "계약") return "contracted"
+    if (value === "가계약") return "pre_contract"
+    if (value === "완료") return "done"
+    if (value === "고민중") return "considering"
+    return "candidate"
+  }
+
+  const handleStatusChange = async (vendor: WeddingVendor, koreanStatus: string) => {
+    const newStatus = koreanToStatus(koreanStatus)
+    setIsSaving(true)
+    setError(null)
+    try {
+      const res = await fetch("/api/wedding/vendors", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: vendor.id,
+          status: newStatus,
+        }),
+      })
+      if (!res.ok) {
+        throw new Error("계약 상태를 변경하지 못했어요.")
+      }
+      const updated = await res.json()
+      setVendors((prev) =>
+        prev.map((v) =>
+          v.id === updated.id ? updated : v
+        )
+      )
+
+      if (koreanStatus === "계약" || koreanStatus === "가계약") {
+        router.push("/wedding/vendors/progress")
+      }
+    } catch (e) {
+      console.error("Failed to update contract status:", e)
+      setError("계약 상태를 변경하는 중 오류가 발생했어요.")
     } finally {
       setIsSaving(false)
     }
@@ -396,6 +461,15 @@ export default function WeddingVendorsPage() {
               />
             </div>
             <div className="space-y-2">
+              <label className="text-[12px] text-[#8B95A1]">가격 메모</label>
+              <textarea
+                value={newVendor.notes}
+                onChange={(e) => setNewVendor({ ...newVendor, notes: e.target.value })}
+                className="w-full rounded-[12px] border border-[#E5E8EB] px-3 py-2 text-[13px] min-h-[60px] focus:outline-none focus:border-[#3182F6]"
+                placeholder="상세 견적, 옵션, 조건 등을 자유롭게 적어두세요."
+              />
+            </div>
+            <div className="space-y-2">
               <label className="text-[12px] text-[#8B95A1]">선호도</label>
               <div className="flex items-center gap-2">
                 {[1, 2, 3, 4, 5].map((i) => (
@@ -412,6 +486,24 @@ export default function WeddingVendorsPage() {
                   </button>
                 ))}
               </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-[12px] text-[#8B95A1]">계약 상태</label>
+              <select
+                value={newVendor.contractStatus}
+                onChange={(e) =>
+                  setNewVendor({
+                    ...newVendor,
+                    contractStatus: e.target.value as "미계약" | "가계약" | "계약" | "고민중",
+                  })
+                }
+                className="w-full rounded-[12px] border border-[#E5E8EB] px-3 py-2 text-[14px] bg-white focus:outline-none focus:border-[#3182F6]"
+              >
+                <option value="미계약">미계약</option>
+                <option value="가계약">가계약</option>
+                <option value="계약">계약</option>
+                <option value="고민중">고민중</option>
+              </select>
             </div>
             <div className="space-y-2">
               <label className="text-[12px] text-[#8B95A1]">장점 / 단점 / 특이사항</label>
@@ -467,16 +559,17 @@ export default function WeddingVendorsPage() {
                           <span className="text-[14px] font-semibold text-[#191F28]">{vendor.name}</span>
                           <span className="text-[12px] text-[#8B95A1]">{formatPrice(vendor.price)}</span>
                         </div>
-                        <button
-                          onClick={() => handleSelectContract(vendor)}
-                          className={`px-2.5 py-1 rounded-full text-[11px] font-semibold border ${
-                            isContracted
-                              ? "bg-[#3182F6] text-white border-[#3182F6]"
-                              : "bg-white text-[#4E5968] border-[#E5E8EB]"
-                          }`}
-                        >
-                          {isContracted ? "계약완료" : "후보"}
-                        </button>
+                <select
+                  value={statusToKorean(vendor.status)}
+                  onChange={(e) => handleStatusChange(vendor, e.target.value)}
+                  className="px-2.5 py-1 rounded-full text-[11px] font-semibold border bg-white text-[#4E5968] border-[#E5E8EB]"
+                >
+                  <option value="미계약">미계약</option>
+                  <option value="가계약">가계약</option>
+                  <option value="계약">계약</option>
+                  <option value="고민중">고민중</option>
+                  <option value="완료">완료</option>
+                </select>
                       </div>
                       {vendor.pros && (
                         <p className="text-[12px] text-[#4E5968] whitespace-pre-line">
@@ -488,6 +581,11 @@ export default function WeddingVendorsPage() {
                           {vendor.cons}
                         </p>
                       )}
+              {vendor.notes && (
+                <p className="text-[12px] text-[#B0B8C1] whitespace-pre-line">
+                  {vendor.notes}
+                </p>
+              )}
                       <div className="flex items-center justify-between mt-1">
                         {renderStars(vendor)}
                         <button

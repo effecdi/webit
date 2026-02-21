@@ -13,6 +13,16 @@ type WeddingVendor = {
   status: string | null
 }
 
+type Expense = {
+  id: number
+  vendorId: number | null
+  vendorName: string | null
+  amount: string
+  memo: string | null
+  isPaid: boolean
+  category: string
+}
+
 const categories = [
   "웨딩홀",
   "스튜디오",
@@ -51,6 +61,8 @@ export default function WeddingVendorsProgressPage() {
   const [vendors, setVendors] = useState<WeddingVendor[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [expensesList, setExpensesList] = useState<Expense[]>([])
+  const [isSaving, setIsSaving] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -60,6 +72,7 @@ export default function WeddingVendorsProgressPage() {
 
   useEffect(() => {
     fetchVendors()
+    fetchExpenses()
   }, [])
 
   const fetchVendors = async () => {
@@ -77,6 +90,165 @@ export default function WeddingVendorsProgressPage() {
       setError("진행상태를 불러오는 중 오류가 발생했어요.")
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  const fetchExpenses = async () => {
+    try {
+      const res = await fetch("/api/expenses?mode=wedding")
+      if (!res.ok) return
+      const data = await res.json()
+      setExpensesList(
+        data.map(
+          (e: {
+            id: number
+            vendorId: number | null
+            vendorName: string | null
+            amount: string
+            memo: string | null
+            isPaid: boolean
+            category: string
+          }) => ({
+            id: e.id,
+            vendorId: e.vendorId,
+            vendorName: e.vendorName,
+            amount: e.amount,
+            memo: e.memo,
+            isPaid: e.isPaid,
+            category: e.category,
+          }),
+        ),
+      )
+    } catch (e) {
+      console.error("Failed to fetch expenses:", e)
+    }
+  }
+
+  const parsePaymentMemo = (memo: string | null) => {
+    if (!memo) {
+      return { deposit: "", balance: "", note: "" }
+    }
+    try {
+      const parsed = JSON.parse(memo) as { deposit?: string; balance?: string; note?: string }
+      return {
+        deposit: parsed.deposit || "",
+        balance: parsed.balance || "",
+        note: parsed.note || "",
+      }
+    } catch {
+      return { deposit: "", balance: "", note: memo }
+    }
+  }
+
+  const buildPaymentMemo = (info: { deposit?: string; balance?: string; note?: string }) => {
+    return JSON.stringify({
+      deposit: info.deposit || "",
+      balance: info.balance || "",
+      note: info.note || "",
+    })
+  }
+
+  const getVendorExpense = (vendorId: number) => {
+    return expensesList.find((e) => e.vendorId === vendorId) || null
+  }
+
+  const getProgressStatus = (vendor: WeddingVendor, expense: Expense | null) => {
+    if (vendor.status === "done") return "완료"
+    if (vendor.status === "contracted") {
+      if (expense?.isPaid) return "완료"
+      return "계약완료"
+    }
+    if (vendor.status === "pre_contract") return "가계약"
+    if (vendor.status === "considering") return "고민중"
+    return "미정"
+  }
+
+  const handlePaymentUpdate = async (
+    vendor: WeddingVendor,
+    updates: { field: "deposit" | "balance" | "note"; value: string },
+  ) => {
+    const currentExpense = getVendorExpense(vendor.id)
+    const baseInfo = currentExpense ? parsePaymentMemo(currentExpense.memo) : { deposit: "", balance: "", note: "" }
+    const nextInfo = { ...baseInfo, [updates.field]: updates.value }
+    const memo = buildPaymentMemo(nextInfo)
+
+    setIsSaving(true)
+    try {
+      if (!currentExpense) {
+        const res = await fetch("/api/expenses", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: `${vendor.category} - ${vendor.name}`,
+            amount: "0",
+            category: vendor.category,
+            vendorId: vendor.id,
+            vendorName: vendor.name,
+            date: new Date().toISOString(),
+            isPaid: false,
+            memo,
+            mode: "wedding",
+          }),
+        })
+        if (!res.ok) return
+        const created = await res.json()
+        setExpensesList((prev) => [...prev, created])
+      } else {
+        const res = await fetch("/api/expenses", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: currentExpense.id,
+            memo,
+          }),
+        })
+        if (!res.ok) return
+        const updated = await res.json()
+        setExpensesList((prev) => prev.map((e) => (e.id === updated.id ? updated : e)))
+      }
+    } catch (e) {
+      console.error("Failed to update payments:", e)
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  const handleTogglePaid = async (vendor: WeddingVendor) => {
+    const currentExpense = getVendorExpense(vendor.id)
+    if (!currentExpense) return
+    const nextPaid = !currentExpense.isPaid
+    setIsSaving(true)
+    try {
+      const res = await fetch("/api/expenses", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: currentExpense.id,
+          isPaid: nextPaid,
+        }),
+      })
+      if (res.ok) {
+        const updated = await res.json()
+        setExpensesList((prev) => prev.map((e) => (e.id === updated.id ? updated : e)))
+      }
+
+      const vendorStatus = nextPaid ? "done" : "contracted"
+      const resVendor = await fetch("/api/wedding/vendors", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: vendor.id,
+          status: vendorStatus,
+        }),
+      })
+      if (resVendor.ok) {
+        const updatedVendor = await resVendor.json()
+        setVendors((prev) => prev.map((v) => (v.id === updatedVendor.id ? updatedVendor : v)))
+      }
+    } catch (e) {
+      console.error("Failed to toggle paid status:", e)
+    } finally {
+      setIsSaving(false)
     }
   }
 
@@ -182,6 +354,9 @@ export default function WeddingVendorsProgressPage() {
           {error && (
             <p className="text-[12px] text-red-500">{error}</p>
           )}
+          {isSaving && !isLoading && (
+            <p className="text-[12px] text-[#B0B8C1] mt-1">저장 중...</p>
+          )}
         </section>
 
         <section className="bg-white rounded-[20px] shadow-sm overflow-hidden">
@@ -220,6 +395,106 @@ export default function WeddingVendorsProgressPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="bg-white rounded-[20px] shadow-sm overflow-hidden">
+          <div className="px-4 py-3 border-b border-[#F2F4F6] bg-[#F9FAFB] text-[13px] font-semibold text-[#191F28]">
+            계약 상세
+          </div>
+          <div className="divide-y divide-[#F2F4F6]">
+            {vendors
+              .filter((v) => v.status === "contracted" || v.status === "pre_contract" || v.status === "done")
+              .map((vendor) => {
+                const expense = getVendorExpense(vendor.id)
+                const payments = parsePaymentMemo(expense?.memo ?? null)
+                const statusLabel = getProgressStatus(vendor, expense)
+                return (
+                  <div key={vendor.id} className="px-4 py-3 space-y-2 text-[13px]">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="font-semibold text-[#191F28]">{vendor.name}</p>
+                        <p className="text-[12px] text-[#8B95A1]">{vendor.category}</p>
+                      </div>
+                      <span
+                        className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] ${
+                          statusLabel === "완료"
+                            ? "bg-[#E5FFF4] text-[#12B886]"
+                            : statusLabel === "계약완료"
+                            ? "bg-[#E5F0FF] text-[#3182F6]"
+                            : statusLabel === "가계약"
+                            ? "bg-[#FFF4E6] text-[#F59F00]"
+                            : "bg-[#F2F4F6] text-[#8B95A1]"
+                        }`}
+                      >
+                        {statusLabel}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <p className="text-[11px] text-[#8B95A1] mb-1">비용</p>
+                        <p className="text-[13px] text-[#191F28]">
+                          {expense?.amount ? `${Number(expense.amount).toLocaleString()}원` : "-"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-[#8B95A1] mb-1">완납</p>
+                        <button
+                          onClick={() => handleTogglePaid(vendor)}
+                          className={`px-2 py-1 rounded-full text-[11px] font-medium ${
+                            expense?.isPaid
+                              ? "bg-[#E5FFF4] text-[#12B886]"
+                              : "bg-[#F2F4F6] text-[#8B95A1]"
+                          }`}
+                        >
+                          {expense?.isPaid ? "완납" : "미완"}
+                        </button>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <p className="text-[11px] text-[#8B95A1] mb-1">계약금</p>
+                        <input
+                          defaultValue={payments.deposit}
+                          onBlur={(e) =>
+                            handlePaymentUpdate(vendor, { field: "deposit", value: e.target.value })
+                          }
+                          className="w-full px-2 py-1 rounded-[8px] border border-[#E5E8EB] text-[12px]"
+                          placeholder="예: 300,000"
+                        />
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-[#8B95A1] mb-1">잔금</p>
+                        <input
+                          defaultValue={payments.balance}
+                          onBlur={(e) =>
+                            handlePaymentUpdate(vendor, { field: "balance", value: e.target.value })
+                          }
+                          className="w-full px-2 py-1 rounded-[8px] border border-[#E5E8EB] text-[12px]"
+                          placeholder="예: 700,000"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-[11px] text-[#8B95A1] mb-1">비고</p>
+                      <textarea
+                        defaultValue={payments.note}
+                        onBlur={(e) =>
+                          handlePaymentUpdate(vendor, { field: "note", value: e.target.value })
+                        }
+                        className="w-full px-2 py-1 rounded-[8px] border border-[#E5E8EB] text-[12px] min-h-[40px]"
+                        placeholder="추가 메모를 입력하세요"
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            {vendors.filter((v) => v.status === "contracted" || v.status === "pre_contract" || v.status === "done").length ===
+              0 && (
+              <div className="px-4 py-6 text-center text-[13px] text-[#8B95A1]">
+                아직 계약 또는 가계약한 업체가 없어요.
+              </div>
+            )}
           </div>
         </section>
       </main>
