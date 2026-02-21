@@ -61,8 +61,7 @@ export default function ChecklistPage() {
     totalCount, 
     progressPercent 
   } = useChecklist()
-  
-  const [activeTab, setActiveTab] = useState<"tasks" | "categories">("tasks")
+
   const [activeCategory, setActiveCategory] = useState("전체")
   const [activeFilter, setActiveFilter] = useState<"all" | "todo" | "done">("all")
   const [showAddModal, setShowAddModal] = useState(false)
@@ -206,27 +205,7 @@ export default function ChecklistPage() {
           </div>
         </section>
 
-        <div className="flex bg-[#F2F4F6] rounded-[12px] p-1">
-          {[
-            { key: "tasks", label: "체크리스트" },
-            { key: "categories", label: "구분 목록" },
-          ].map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key as "tasks" | "categories")}
-              className={`flex-1 py-2.5 rounded-[10px] text-[14px] font-semibold transition-all ${
-                activeTab === tab.key
-                  ? "bg-white text-[#191F28] shadow-sm"
-                  : "text-[#8B95A1]"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        {activeTab === "tasks" && (
-          <>
+        <>
             <div className="flex gap-2 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide">
               {categories.map((cat) => (
                 <button
@@ -338,36 +317,7 @@ export default function ChecklistPage() {
                 </div>
               )}
             </div>
-          </>
-        )}
-
-        {activeTab === "categories" && (
-          <div className="bg-white rounded-[20px] shadow-sm overflow-hidden">
-            <div className="px-5 py-4 border-b border-[#F2F4F6]">
-              <p className="text-[13px] text-[#8B95A1]">웨딩 준비 구분 목록</p>
-            </div>
-            <div className="divide-y divide-[#F2F4F6]">
-              {categories.slice(1).map((cat) => {
-                const catInfo = categoryIcons[cat] || categoryIcons["기타"]
-                return (
-                  <div
-                    key={cat}
-                    className="flex items-center px-5 py-4"
-                  >
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center mr-3">
-                      <div className={`w-8 h-8 rounded-full ${catInfo.bg} flex items-center justify-center`}>
-                        {catInfo.icon}
-                      </div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[15px] font-medium text-[#191F28]">{cat}</p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        )}
+        </>
       </main>
 
       {/* FAB */}
