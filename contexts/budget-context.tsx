@@ -89,20 +89,44 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
     setIsLoading(true)
     try {
       const res = await fetch('/api/expenses?mode=wedding')
+      if (!res.ok) {
+        console.error("Failed to fetch expenses:", res.status)
+        setExpenses([])
+        return
+      }
       const data = await res.json()
-      setExpenses(data.map((e: { id: number; title: string; amount: string; category: string; date: string; isPaid: boolean; memo: string; vendorId?: number | null; vendorName?: string | null }) => ({
-        id: String(e.id),
-        title: e.title,
-        amount: Number(e.amount),
-        category: e.category,
-        vendorId: e.vendorId ?? undefined,
-        vendorName: e.vendorName ?? undefined,
-        date: e.date.split('T')[0],
-        payer: 'shared' as const,
-        status: e.isPaid ? 'paid' as const : 'scheduled' as const,
-        method: 'card' as const,
-        memo: e.memo
-      })))
+      if (!Array.isArray(data)) {
+        console.error("Invalid expenses response:", data)
+        setExpenses([])
+        return
+      }
+      setExpenses(
+        data.map(
+          (e: {
+            id: number
+            title: string
+            amount: string
+            category: string
+            date: string
+            isPaid: boolean
+            memo: string
+            vendorId?: number | null
+            vendorName?: string | null
+          }) => ({
+            id: String(e.id),
+            title: e.title,
+            amount: Number(e.amount),
+            category: e.category,
+            vendorId: e.vendorId ?? undefined,
+            vendorName: e.vendorName ?? undefined,
+            date: e.date.split("T")[0],
+            payer: "shared",
+            status: e.isPaid ? "paid" : "scheduled",
+            method: "card",
+            memo: e.memo,
+          })
+        )
+      )
     } catch (error) {
       console.error('Error fetching expenses:', error)
     } finally {
