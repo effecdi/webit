@@ -138,7 +138,8 @@ export default function WeddingProfilePage() {
     try {
       const res = await fetch('/api/notifications?mode=wedding')
       const data = await res.json()
-      const formatted = data.map((n: { id: number; type: string; title: string; message: string; createdAt: string }) => ({
+      const notifArr = Array.isArray(data) ? data : []
+      const formatted = notifArr.map((n: { id: number; type: string; title: string; message: string; createdAt: string }) => ({
         id: String(n.id),
         type: n.type as "schedule" | "photo" | "travel" | "todo" | "general",
         title: n.title,

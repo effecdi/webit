@@ -62,6 +62,7 @@ export default function ChecklistPage() {
     progressPercent 
   } = useChecklist()
   
+  const [activeTab, setActiveTab] = useState<"tasks" | "categories">("tasks")
   const [activeCategory, setActiveCategory] = useState("전체")
   const [activeFilter, setActiveFilter] = useState<"all" | "todo" | "done">("all")
   const [showAddModal, setShowAddModal] = useState(false)
@@ -167,123 +168,168 @@ export default function ChecklistPage() {
           </div>
         </div>
 
-        {/* Category Pills */}
-        <div className="flex gap-2 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-[14px] font-medium whitespace-nowrap transition-all ${
-                activeCategory === cat
-                  ? "bg-[#3182F6] text-white"
-                  : "bg-white text-[#4E5968] border border-[#E5E8EB]"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Filter Tabs */}
         <div className="flex bg-[#F2F4F6] rounded-[12px] p-1">
           {[
-            { key: "all", label: "전체", count: items.length },
-            { key: "todo", label: "준비중", count: items.filter(i => !i.completed).length },
-            { key: "done", label: "완료", count: items.filter(i => i.completed).length },
-          ].map((filter) => (
+            { key: "tasks", label: "체크리스트" },
+            { key: "categories", label: "구분 목록" },
+          ].map((tab) => (
             <button
-              key={filter.key}
-              onClick={() => setActiveFilter(filter.key as "all" | "todo" | "done")}
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key as "tasks" | "categories")}
               className={`flex-1 py-2.5 rounded-[10px] text-[14px] font-semibold transition-all ${
-                activeFilter === filter.key
+                activeTab === tab.key
                   ? "bg-white text-[#191F28] shadow-sm"
                   : "text-[#8B95A1]"
               }`}
             >
-              {filter.label}
-              <span className={`ml-1 text-[12px] ${
-                activeFilter === filter.key ? "text-[#3182F6]" : "text-[#B0B8C1]"
-              }`}>
-                {filter.count}
-              </span>
+              {tab.label}
             </button>
           ))}
         </div>
 
-        {/* Checklist Items */}
-        <div className="bg-white rounded-[20px] shadow-sm overflow-hidden">
-          {sortedItems.length > 0 ? (
-            <div className="divide-y divide-[#F2F4F6]">
-              {sortedItems.map((item) => {
-                const catInfo = categoryIcons[item.category] || categoryIcons["기타"]
-                const overdue = isOverdue(item.dueDate, item.completed)
-                
-                return (
-                  <div 
-                    key={item.id} 
-                    className={`flex items-center px-5 py-4 ${item.completed ? "bg-[#FAFBFC]" : ""}`}
-                  >
-                    {/* Checkbox */}
-                    <button
-                      onClick={() => toggleComplete(item.id)}
-                      className="mr-4 flex-shrink-0"
-                    >
-                      {item.completed ? (
-                        <CheckCircle2 className="w-6 h-6 text-[#3182F6]" />
-                      ) : (
-                        <Circle className="w-6 h-6 text-[#D1D6DB]" />
-                      )}
-                    </button>
+        {activeTab === "tasks" && (
+          <>
+            <div className="flex gap-2 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-2 rounded-full text-[14px] font-medium whitespace-nowrap transition-all ${
+                    activeCategory === cat
+                      ? "bg-[#3182F6] text-white"
+                      : "bg-white text-[#4E5968] border border-[#E5E8EB]"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
 
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`text-[15px] font-medium ${
-                          item.completed ? "text-[#B0B8C1] line-through" : "text-[#191F28]"
-                        }`}>
-                          {item.title}
-                        </span>
-                        {!item.completed && (
-                          <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold border ${priorityColors[item.priority]}`}>
-                            {priorityLabels[item.priority]}
-                          </span>
-                        )}
+            <div className="flex bg-[#F2F4F6] rounded-[12px] p-1">
+              {[
+                { key: "all", label: "전체", count: items.length },
+                { key: "todo", label: "준비중", count: items.filter(i => !i.completed).length },
+                { key: "done", label: "완료", count: items.filter(i => i.completed).length },
+              ].map((filter) => (
+                <button
+                  key={filter.key}
+                  onClick={() => setActiveFilter(filter.key as "all" | "todo" | "done")}
+                  className={`flex-1 py-2.5 rounded-[10px] text-[14px] font-semibold transition-all ${
+                    activeFilter === filter.key
+                      ? "bg-white text-[#191F28] shadow-sm"
+                      : "text-[#8B95A1]"
+                  }`}
+                >
+                  {filter.label}
+                  <span className={`ml-1 text-[12px] ${
+                    activeFilter === filter.key ? "text-[#3182F6]" : "text-[#B0B8C1]"
+                  }`}>
+                    {filter.count}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            <div className="bg-white rounded-[20px] shadow-sm overflow-hidden">
+              {sortedItems.length > 0 ? (
+                <div className="divide-y divide-[#F2F4F6]">
+                  {sortedItems.map((item) => {
+                    const catInfo = categoryIcons[item.category] || categoryIcons["기타"]
+                    const overdue = isOverdue(item.dueDate, item.completed)
+                    
+                    return (
+                      <div 
+                        key={item.id} 
+                        className={`flex items-center px-5 py-4 ${item.completed ? "bg-[#FAFBFC]" : ""}`}
+                      >
+                        <button
+                          onClick={() => toggleComplete(item.id)}
+                          className="mr-4 flex-shrink-0"
+                        >
+                          {item.completed ? (
+                            <CheckCircle2 className="w-6 h-6 text-[#3182F6]" />
+                          ) : (
+                            <Circle className="w-6 h-6 text-[#D1D6DB]" />
+                          )}
+                        </button>
+
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className={`text-[15px] font-medium ${
+                              item.completed ? "text-[#B0B8C1] line-through" : "text-[#191F28]"
+                            }`}>
+                              {item.title}
+                            </span>
+                            {!item.completed && (
+                              <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold border ${priorityColors[item.priority]}`}>
+                                {priorityLabels[item.priority]}
+                              </span>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium ${catInfo.bg}`}>
+                              {catInfo.icon}
+                              {item.category}
+                            </span>
+                            <span className={`text-[12px] ${
+                              overdue ? "text-red-500 font-medium" : "text-[#8B95A1]"
+                            }`}>
+                              {formatDate(item.dueDate)}
+                            </span>
+                          </div>
+                        </div>
+
+                        <button
+                          onClick={() => deleteItem(item.id)}
+                          className="ml-2 p-2 text-[#B0B8C1] hover:text-red-500 transition-colors"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium ${catInfo.bg}`}>
-                          {catInfo.icon}
-                          {item.category}
-                        </span>
-                        <span className={`text-[12px] ${
-                          overdue ? "text-red-500 font-medium" : "text-[#8B95A1]"
-                        }`}>
-                          {formatDate(item.dueDate)}
-                        </span>
+                    )
+                  })}
+                </div>
+              ) : (
+                <div className="py-16 text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#F2F4F6] flex items-center justify-center">
+                    <Check className="w-8 h-8 text-[#B0B8C1]" />
+                  </div>
+                  <p className="text-[15px] text-[#8B95A1]">
+                    {activeFilter === "done" ? "완료된 항목이 없습니다" : "등록된 항목이 없습니다"}
+                  </p>
+                </div>
+              )}
+            </div>
+          </>
+        )}
+
+        {activeTab === "categories" && (
+          <div className="bg-white rounded-[20px] shadow-sm overflow-hidden">
+            <div className="px-5 py-4 border-b border-[#F2F4F6]">
+              <p className="text-[13px] text-[#8B95A1]">웨딩 준비 구분 목록</p>
+            </div>
+            <div className="divide-y divide-[#F2F4F6]">
+              {categories.slice(1).map((cat) => {
+                const catInfo = categoryIcons[cat] || categoryIcons["기타"]
+                return (
+                  <div
+                    key={cat}
+                    className="flex items-center px-5 py-4"
+                  >
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                      <div className={`w-8 h-8 rounded-full ${catInfo.bg} flex items-center justify-center`}>
+                        {catInfo.icon}
                       </div>
                     </div>
-
-                    {/* Delete */}
-                    <button
-                      onClick={() => deleteItem(item.id)}
-                      className="ml-2 p-2 text-[#B0B8C1] hover:text-red-500 transition-colors"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[15px] font-medium text-[#191F28]">{cat}</p>
+                    </div>
                   </div>
                 )
               })}
             </div>
-          ) : (
-            <div className="py-16 text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#F2F4F6] flex items-center justify-center">
-                <Check className="w-8 h-8 text-[#B0B8C1]" />
-              </div>
-              <p className="text-[15px] text-[#8B95A1]">
-                {activeFilter === "done" ? "완료된 항목이 없습니다" : "등록된 항목이 없습니다"}
-              </p>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
       </main>
 
       {/* FAB */}
