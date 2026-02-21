@@ -37,10 +37,17 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const auth = await requireAuth();
-    if (isUnauthorized(auth)) return auth;
-    const userId = auth.userId;
     const { category, title, dueDate, priority = 'medium', mode = 'wedding' } = body;
+
+    const auth = await requireAuth();
+    let userId: string;
+
+    if (isUnauthorized(auth)) {
+      if (mode !== 'wedding') return auth;
+      userId = 'guest-wedding';
+    } else {
+      userId = auth.userId;
+    }
 
     const [newItem] = await db.insert(checklistItems).values({
       userId,
