@@ -96,8 +96,17 @@ export default function WeddingVendorsProgressPage() {
   const fetchExpenses = async () => {
     try {
       const res = await fetch("/api/expenses?mode=wedding")
-      if (!res.ok) return
+      if (!res.ok) {
+        console.error("Failed to fetch expenses:", res.status)
+        setExpensesList([])
+        return
+      }
       const data = await res.json()
+      if (!Array.isArray(data)) {
+        console.error("Invalid expenses response:", data)
+        setExpensesList([])
+        return
+      }
       setExpensesList(
         data.map(
           (e: {
