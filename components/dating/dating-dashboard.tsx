@@ -341,50 +341,54 @@ export function DatingDashboard() {
         fetch("/api/mood"),
       ]);
 
-      const todosData = await todosRes.json();
-      const notificationsData = await notificationsRes.json();
-      const travelsData = await travelsRes.json();
-      const photosData = await photosRes.json();
-      const eventsData = await eventsRes.json();
-      const moodData = await moodRes.json();
+      const todosData = todosRes.ok ? await todosRes.json() : [];
+      const notificationsData = notificationsRes.ok ? await notificationsRes.json() : [];
+      const travelsData = travelsRes.ok ? await travelsRes.json() : [];
+      const photosData = photosRes.ok ? await photosRes.json() : [];
+      const eventsData = eventsRes.ok ? await eventsRes.json() : [];
+      const moodData = moodRes.ok ? await moodRes.json() : {};
       if (moodData.myMood) setMyMood(moodData.myMood);
       if (moodData.partnerMood) setPartnerMood(moodData.partnerMood);
 
-      setTodos(
-        todosData.map(
-          (t: {
-            id: number;
-            text: string;
-            completed: boolean;
-            assignee: string;
-            comments: Comment[];
-          }) => ({
-            ...t,
-            assignee: t.assignee as "me" | "you" | "we",
-            comments: t.comments || [],
-          }),
-        ),
-      );
-      setNotifications(
-        notificationsData.map(
-          (n: {
-            id: number;
-            type: string;
-            title: string;
-            message: string;
-            createdAt: string;
-          }) => ({
-            id: String(n.id),
-            type: n.type,
-            title: n.title,
-            message: n.message,
-            time: formatTimeAgo(n.createdAt),
-          }),
-        ),
-      );
-      setTravels(travelsData);
-      setPhotoCount(photosData.length);
-      setEventCount(eventsData.length);
+      if (Array.isArray(todosData)) {
+        setTodos(
+          todosData.map(
+            (t: {
+              id: number;
+              text: string;
+              completed: boolean;
+              assignee: string;
+              comments: Comment[];
+            }) => ({
+              ...t,
+              assignee: t.assignee as "me" | "you" | "we",
+              comments: t.comments || [],
+            }),
+          ),
+        );
+      }
+      if (Array.isArray(notificationsData)) {
+        setNotifications(
+          notificationsData.map(
+            (n: {
+              id: number;
+              type: string;
+              title: string;
+              message: string;
+              createdAt: string;
+            }) => ({
+              id: String(n.id),
+              type: n.type,
+              title: n.title,
+              message: n.message,
+              time: formatTimeAgo(n.createdAt),
+            }),
+          ),
+        );
+      }
+      if (Array.isArray(travelsData)) setTravels(travelsData);
+      setPhotoCount(Array.isArray(photosData) ? photosData.length : 0);
+      setEventCount(Array.isArray(eventsData) ? eventsData.length : 0);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {

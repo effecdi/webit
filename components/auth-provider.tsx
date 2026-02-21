@@ -41,8 +41,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     refetch();
     if (!supabase) return;
-    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(mapUser(session?.user ?? null));
+      if (session?.access_token && (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED')) {
+        fetch('/api/auth/session-sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ access_token: session.access_token }),
+        }).catch(() => {});
+      }
     });
     return () => {
       data.subscription.unsubscribe();

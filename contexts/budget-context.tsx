@@ -87,7 +87,9 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
     setIsLoading(true)
     try {
       const res = await fetch('/api/expenses?mode=wedding')
+      if (!res.ok) return
       const data = await res.json()
+      if (!Array.isArray(data)) return
       setExpenses(data.map((e: { id: number; title: string; amount: string; category: string; date: string; isPaid: boolean; memo: string }) => ({
         id: String(e.id),
         title: e.title,

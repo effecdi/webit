@@ -39,7 +39,9 @@ export function ChecklistProvider({ children }: { children: ReactNode }) {
     setIsLoading(true)
     try {
       const res = await fetch('/api/checklist?mode=wedding')
+      if (!res.ok) return
       const data = await res.json()
+      if (!Array.isArray(data)) return
       setItems(data.map((item: { id: number; title: string; category: string; dueDate: string; completed: boolean; priority: string }) => ({
         id: String(item.id),
         title: item.title,

@@ -84,10 +84,14 @@ export function GuestManager() {
         fetch("/api/guests"),
         fetch("/api/wedding-info"),
       ])
-      const guestsData = await guestsRes.json()
-      const infoData = await infoRes.json()
-      setGuests(guestsData || [])
-      setWeddingInfo(infoData)
+      if (guestsRes.ok) {
+        const guestsData = await guestsRes.json()
+        setGuests(Array.isArray(guestsData) ? guestsData : [])
+      }
+      if (infoRes.ok) {
+        const infoData = await infoRes.json()
+        setWeddingInfo(infoData)
+      }
     } catch (error) {
       console.error("Error fetching data:", error)
     } finally {
