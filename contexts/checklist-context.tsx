@@ -12,6 +12,24 @@ export interface ChecklistItem {
   priority: "high" | "medium" | "low"
 }
 
+const today = new Date().toISOString().split("T")[0]
+
+const defaultWeddingChecklist: ChecklistItem[] = [
+  { id: "w1", title: "예식장 투어 일정 잡기", category: "예식장", dueDate: today, completed: false, priority: "high" },
+  { id: "w2", title: "예식장 계약 확정", category: "예식장", dueDate: today, completed: false, priority: "high" },
+  { id: "w3", title: "드레스 투어 및 피팅 예약", category: "드레스", dueDate: today, completed: false, priority: "medium" },
+  { id: "w4", title: "본식 드레스 선택", category: "드레스", dueDate: today, completed: false, priority: "medium" },
+  { id: "w5", title: "스튜디오 촬영 예약", category: "스튜디오", dueDate: today, completed: false, priority: "medium" },
+  { id: "w6", title: "웨딩 스냅 촬영 업체 선택", category: "스냅", dueDate: today, completed: false, priority: "medium" },
+  { id: "w7", title: "청첩장 디자인 선택", category: "청첩장", dueDate: today, completed: false, priority: "medium" },
+  { id: "w8", title: "청첩장 주문 및 수령", category: "청첩장", dueDate: today, completed: false, priority: "low" },
+  { id: "w9", title: "신혼여행 일정 및 항공권 예약", category: "허니문", dueDate: today, completed: false, priority: "high" },
+  { id: "w10", title: "예물 커플링 선택", category: "예물", dueDate: today, completed: false, priority: "medium" },
+  { id: "w11", title: "혼수 가전 리스트 정리", category: "혼수", dueDate: today, completed: false, priority: "low" },
+  { id: "w12", title: "사회자·주례·축가 섭외", category: "기타", dueDate: today, completed: false, priority: "medium" },
+  { id: "w13", title: "본식 메이크업 샵 예약", category: "기타", dueDate: today, completed: false, priority: "medium" },
+]
+
 interface ChecklistContextType {
   items: ChecklistItem[]
   setItems: (items: ChecklistItem[]) => void
@@ -39,17 +57,39 @@ export function ChecklistProvider({ children }: { children: ReactNode }) {
     setIsLoading(true)
     try {
       const res = await fetch('/api/checklist?mode=wedding')
+      if (!res.ok) {
+        console.error('Failed to fetch checklist:', res.status)
+        setItems(defaultWeddingChecklist)
+        return
+      }
       const data = await res.json()
-      setItems(data.map((item: { id: number; title: string; category: string; dueDate: string; completed: boolean; priority: string }) => ({
-        id: String(item.id),
-        title: item.title,
-        category: item.category,
-        dueDate: item.dueDate ? item.dueDate.split('T')[0] : new Date().toISOString().split('T')[0],
-        completed: item.completed,
-        priority: (item.priority || 'medium') as "high" | "medium" | "low"
-      })))
+      if (!Array.isArray(data)) {
+        console.error('Invalid checklist response:', data)
+        setItems(defaultWeddingChecklist)
+        return
+      }
+      setItems(
+        data.map(
+          (item: {
+            id: number
+            title: string
+            category: string
+            dueDate: string
+            completed: boolean
+            priority: string
+          }) => ({
+            id: String(item.id),
+            title: item.title,
+            category: item.category,
+            dueDate: item.dueDate ? item.dueDate.split("T")[0] : today,
+            completed: item.completed,
+            priority: (item.priority || "medium") as "high" | "medium" | "low",
+          })
+        )
+      )
     } catch (error) {
       console.error('Error fetching checklist:', error)
+      setItems(defaultWeddingChecklist)
     } finally {
       setIsLoading(false)
     }
