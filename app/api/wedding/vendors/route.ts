@@ -6,13 +6,22 @@ import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET(request: NextRequest) {
-  const auth = await requireAuth();
-  if (isUnauthorized(auth)) return auth;
-  const userId = auth.userId;
-  const coupleUserIds = await getCoupleUserIds(userId);
   const searchParams = request.nextUrl.searchParams;
   const mode = searchParams.get('mode') || 'wedding';
   const category = searchParams.get('category');
+
+  const auth = await requireAuth();
+  let userId: string;
+  let coupleUserIds: string[];
+
+  if (isUnauthorized(auth)) {
+    if (mode !== 'wedding') return auth;
+    userId = 'guest-wedding';
+    coupleUserIds = [userId];
+  } else {
+    userId = auth.userId;
+    coupleUserIds = await getCoupleUserIds(userId);
+  }
 
   try {
     const conditions = [
@@ -37,9 +46,6 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const auth = await requireAuth();
-    if (isUnauthorized(auth)) return auth;
-    const userId = auth.userId;
     const body = await request.json();
 
     const {
@@ -54,6 +60,16 @@ export async function POST(request: NextRequest) {
       mode = 'wedding',
       contractDate,
     } = body;
+
+    const auth = await requireAuth();
+    let userId: string;
+
+    if (isUnauthorized(auth)) {
+      if (mode !== 'wedding') return auth;
+      userId = 'guest-wedding';
+    } else {
+      userId = auth.userId;
+    }
 
     if (!category || !name) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -82,15 +98,23 @@ export async function POST(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   try {
-    const auth = await requireAuth();
-    if (isUnauthorized(auth)) return auth;
-    const userId = auth.userId;
-    const coupleUserIds = await getCoupleUserIds(userId);
     const body = await request.json();
     const { id, ...rest } = body;
 
     if (!id) {
       return NextResponse.json({ error: 'ID required' }, { status: 400 });
+    }
+
+    const auth = await requireAuth();
+    let userId: string;
+    let coupleUserIds: string[];
+
+    if (isUnauthorized(auth)) {
+      userId = 'guest-wedding';
+      coupleUserIds = [userId];
+    } else {
+      userId = auth.userId;
+      coupleUserIds = await getCoupleUserIds(userId);
     }
 
     const updates: Record<string, unknown> = {};
