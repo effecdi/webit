@@ -6,12 +6,21 @@ import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET(request: NextRequest) {
-  const auth = await requireAuth();
-  if (isUnauthorized(auth)) return auth;
-  const userId = auth.userId;
-  const coupleUserIds = await getCoupleUserIds(userId);
   const searchParams = request.nextUrl.searchParams;
   const mode = searchParams.get('mode') || 'wedding';
+
+  const auth = await requireAuth();
+  let userId: string;
+  let coupleUserIds: string[];
+
+  if (isUnauthorized(auth)) {
+    if (mode !== 'wedding') return auth;
+    userId = 'guest-wedding';
+    coupleUserIds = [userId];
+  } else {
+    userId = auth.userId;
+    coupleUserIds = await getCoupleUserIds(userId);
+  }
 
   try {
     const result = await db.select().from(checklistItems)
