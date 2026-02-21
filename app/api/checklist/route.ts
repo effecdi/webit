@@ -55,12 +55,20 @@ export async function PATCH(request: NextRequest) {
     const body = await request.json();
     const { id, completed, title, category, priority, dueDate } = body;
 
+    if (!id) {
+      return NextResponse.json({ error: 'ID required' }, { status: 400 });
+    }
+
     const updates: Record<string, unknown> = {};
     if (completed !== undefined) updates.completed = completed;
     if (title !== undefined) updates.title = title;
     if (category !== undefined) updates.category = category;
     if (priority !== undefined) updates.priority = priority;
     if (dueDate !== undefined) updates.dueDate = dueDate ? new Date(dueDate) : null;
+
+    if (Object.keys(updates).length === 0) {
+      return NextResponse.json({ error: 'No fields to update' }, { status: 400 });
+    }
 
     const [updated] = await db.update(checklistItems)
       .set(updates)
