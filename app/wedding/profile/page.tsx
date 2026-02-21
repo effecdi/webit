@@ -255,7 +255,7 @@ export default function WeddingProfilePage() {
         {/* Couple Profile Card */}
         <div className="bg-white rounded-[24px] overflow-hidden shadow-sm">
           <div
-            className="relative px-6 pt-10 pb-6"
+            className="relative px-6 pt-16 pb-6"
             style={{
               background: isDark
                 ? "linear-gradient(135deg, #2A1F3D 0%, #1F2A3D 50%, #1C2333 100%)"
@@ -500,7 +500,7 @@ export default function WeddingProfilePage() {
                 <input
                   type="file"
                   accept="image/*"
-                  onChange={(e) => handlePhotoUpload(showPhotoModal, e)}
+                  onChange={(e) => showPhotoModal && handlePhotoUpload(showPhotoModal, e)}
                   className="hidden"
                 />
               </label>
