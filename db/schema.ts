@@ -105,6 +105,8 @@ export const expenses = pgTable('expenses', {
   title: text('title').notNull(),
   amount: numeric('amount').notNull(),
   category: text('category').notNull(),
+  vendorId: integer('vendor_id'),
+  vendorName: text('vendor_name'),
   isPaid: boolean('is_paid').default(false),
   memo: text('memo'),
   date: timestamp('date').notNull(),
@@ -195,6 +197,22 @@ export const invitations = pgTable('invitations', {
   invitationData: jsonb('invitation_data'),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const weddingVendors = pgTable('wedding_vendors', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  mode: text('mode').notNull(),
+  category: text('category').notNull(),
+  name: text('name').notNull(),
+  price: integer('price').default(0),
+  pros: text('pros'),
+  cons: text('cons'),
+  notes: text('notes'),
+  preference: integer('preference').default(0),
+  status: text('status').default('candidate'),
+  contractDate: timestamp('contract_date'),
+  createdAt: timestamp('created_at').defaultNow(),
 });
 
 export const communityPosts = pgTable('community_posts', {

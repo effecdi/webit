@@ -7,6 +7,8 @@ export interface Expense {
   title: string
   amount: number
   category: string
+  vendorId?: number
+  vendorName?: string
   date: string
   payer: "groom" | "bride" | "shared" | "parents"
   status: "paid" | "scheduled"
@@ -88,11 +90,13 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
     try {
       const res = await fetch('/api/expenses?mode=wedding')
       const data = await res.json()
-      setExpenses(data.map((e: { id: number; title: string; amount: string; category: string; date: string; isPaid: boolean; memo: string }) => ({
+      setExpenses(data.map((e: { id: number; title: string; amount: string; category: string; date: string; isPaid: boolean; memo: string; vendorId?: number | null; vendorName?: string | null }) => ({
         id: String(e.id),
         title: e.title,
         amount: Number(e.amount),
         category: e.category,
+        vendorId: e.vendorId ?? undefined,
+        vendorName: e.vendorName ?? undefined,
         date: e.date.split('T')[0],
         payer: 'shared' as const,
         status: e.isPaid ? 'paid' as const : 'scheduled' as const,
@@ -120,6 +124,8 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
           title: expense.title,
           amount: expense.amount,
           category: expense.category,
+          vendorId: expense.vendorId,
+          vendorName: expense.vendorName,
           date: expense.date,
           isPaid: expense.status === 'paid',
           memo: expense.memo,
@@ -132,6 +138,8 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
         title: newExpense.title,
         amount: Number(newExpense.amount),
         category: newExpense.category,
+        vendorId: newExpense.vendorId ?? expense.vendorId,
+        vendorName: newExpense.vendorName ?? expense.vendorName,
         date: newExpense.date.split('T')[0],
         payer: expense.payer,
         status: newExpense.isPaid ? 'paid' : 'scheduled',

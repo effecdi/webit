@@ -31,13 +31,15 @@ export async function POST(request: NextRequest) {
     const auth = await requireAuth();
     if (isUnauthorized(auth)) return auth;
     const userId = auth.userId;
-    const { title, amount, category, date, isPaid = false, memo, mode = 'wedding' } = body;
+    const { title, amount, category, date, isPaid = false, memo, mode = 'wedding', vendorId, vendorName } = body;
 
     const [newExpense] = await db.insert(expenses).values({
       userId,
       title,
       amount: amount.toString(),
       category,
+      vendorId,
+      vendorName,
       date: new Date(date),
       isPaid,
       memo,

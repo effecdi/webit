@@ -221,7 +221,6 @@ function BudgetPageContent() {
     setSwipedId(null)
   }
 
-  // Export to Excel (CSV format)
   const exportToExcel = () => {
     const methodLabels: Record<string, string> = {
       cash: "현금",
@@ -234,11 +233,11 @@ function BudgetPageContent() {
       scheduled: "예정",
     }
 
-    // CSV Header
-    const headers = ["날짜", "카테고리", "내용", "금액", "상태", "결제자", "결제수단", "계약금", "잔금", "결제예정일", "메모"]
+    const headers = ["업체ID", "업체명", "날짜", "카테고리", "내용", "금액", "상태", "결제자", "결제수단", "계약금", "잔금", "결제예정일", "메모"]
     
-    // CSV Rows
     const rows = expenses.map(e => [
+      e.vendorId ?? "",
+      e.vendorName ?? "",
       e.date,
       e.category,
       e.title,
@@ -286,18 +285,31 @@ function BudgetPageContent() {
     URL.revokeObjectURL(url)
   }
 
+  const exportToPdf = () => {
+    if (typeof window === "undefined") return
+    window.print()
+  }
+
   return (
     <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe">
       {/* Header */}
       <header className="sticky top-0 sticky-header-safe z-50 bg-white border-b border-[#E5E8EB]">
         <div className="flex items-center justify-between h-14 px-5 max-w-md mx-auto">
           <h1 className="text-[17px] font-bold text-[#191F28]">예산 관리</h1>
-          <button 
-            onClick={exportToExcel}
-            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
-          >
-            <Download className="w-5 h-5 text-[#4E5968]" />
-          </button>
+          <div className="flex items-center gap-2">
+            <button 
+              onClick={exportToExcel}
+              className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-[#F2F4F6] transition-colors"
+            >
+              <Download className="w-4 h-4 text-[#4E5968]" />
+            </button>
+            <button
+              onClick={exportToPdf}
+              className="px-3 py-1.5 rounded-full border border-[#E5E8EB] text-[11px] text-[#4E5968]"
+            >
+              PDF
+            </button>
+          </div>
         </div>
       </header>
 
