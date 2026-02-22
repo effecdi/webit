@@ -86,7 +86,7 @@ export function GuestManager() {
       ])
       const guestsData = await guestsRes.json()
       const infoData = await infoRes.json()
-      setGuests(guestsData || [])
+      setGuests(Array.isArray(guestsData) ? guestsData : [])
       setWeddingInfo(infoData)
     } catch (error) {
       console.error("Error fetching data:", error)
