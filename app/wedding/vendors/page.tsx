@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation"
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 import { 
   Plus,
   Star,
