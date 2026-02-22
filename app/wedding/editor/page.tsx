@@ -1237,6 +1237,19 @@ function InvitationEditorContent() {
   const generateNoticeTitle = () => generateAIText("noticeTitle", "noticeTitle");
   const generateEndingContent = () => generateAIText("endingContent", "endingContent");
 
+  const [illustrationRef, setIllustrationRef] = useState<string>("");
+  const illustrationRefInputRef = useRef<HTMLInputElement>(null);
+
+  const handleIllustrationRefUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setIllustrationRef(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
   const generateIllustration = async () => {
     if (aiLoading) return;
     setAiLoading("illustration");
@@ -1244,6 +1257,9 @@ function InvitationEditorContent() {
       const res = await fetch("/api/ai/illustration", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          referenceImage: illustrationRef || undefined,
+        }),
       });
       const result = await res.json();
       if (res.ok && result.url) {
