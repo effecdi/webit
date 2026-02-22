@@ -47,7 +47,7 @@ export function FamilyHeader() {
           </div>
           <p className="text-xs tracking-[0.2em] text-[#2D8B57] uppercase mb-1">Family Mode</p>
           <h1 className="font-serif text-2xl font-bold text-foreground mb-2">
-            현정 & 주호의 가족
+            우리 가족
           </h1>
         </div>
 
