@@ -65,11 +65,12 @@ function BudgetPageContent() {
     setExpenses, 
     addExpense,
     deleteExpense,
-    totalSpent, 
-    totalScheduled, 
-    remaining, 
-    spentPercent, 
-    scheduledPercent 
+    totalSpent,
+    totalScheduled,
+    remaining,
+    spentPercent,
+    scheduledPercent,
+    updateExpense,
   } = useBudget()
   
   const [activeCategory, setActiveCategory] = useState("전체")
