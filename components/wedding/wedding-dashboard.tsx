@@ -6,12 +6,12 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import WheelDatePicker from "@/components/ui/wheel-date-picker"
 import { BottomSheet } from '@/components/ui/bottom-sheet'
-import { 
-  Bell, 
-  ChevronRight, 
-  Heart, 
-  Diamond, 
-  Camera, 
+import {
+  Bell,
+  ChevronRight,
+  Heart,
+  Diamond,
+  Camera,
   Shirt,
   Building2,
   TrendingDown,
@@ -25,7 +25,12 @@ import {
   ArrowRightLeft,
   Plane,
   Pencil,
-  Users
+  Users,
+  Gift,
+  Film,
+  Video,
+  Mic,
+  MoreHorizontal
 } from "lucide-react"
 import { ModeSwitch } from "@/components/mode-switch"
 import { TravelEntryCard } from "@/components/travel/travel-entry-card"
