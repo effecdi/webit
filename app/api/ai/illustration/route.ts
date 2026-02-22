@@ -42,7 +42,7 @@ async function generateWithImagen(
   baseUrl: string,
   prompt: string
 ): Promise<string | null> {
-  const url = `${baseUrl}/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+  const url = `${baseUrl}/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
