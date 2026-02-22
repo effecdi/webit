@@ -49,6 +49,21 @@ const BudgetContext = createContext<BudgetContextType | undefined>(undefined)
 
 const STORAGE_KEY = "wedding_budget_data"
 
+const payerToDb: Record<string, string> = { groom: 'groom', bride: 'bride', shared: 'both', parents: 'parents' }
+
+function buildMemoJson(expense: Partial<Expense>): string | null {
+  const data: Record<string, unknown> = {}
+  if (expense.deposit != null) data.deposit = String(expense.deposit)
+  if (expense.balance != null) data.balance = String(expense.balance)
+  if (expense.method) data.method = expense.method
+  if (expense.payer) data.paidBy = payerToDb[expense.payer] || expense.payer
+  if (expense.memo) data.note = expense.memo
+  if (expense.payments && expense.payments.length > 0) data.payments = expense.payments
+  if (expense.dueDate) data.dueDate = expense.dueDate
+  if (expense.reminder !== undefined) data.reminder = expense.reminder
+  return Object.keys(data).length > 0 ? JSON.stringify(data) : null
+}
+
 export function BudgetProvider({ children }: { children: ReactNode }) {
   const [totalBudget, setTotalBudget] = useState(0)
   const [expenses, setExpenses] = useState<Expense[]>([])
