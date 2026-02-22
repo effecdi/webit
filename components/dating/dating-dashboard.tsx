@@ -169,8 +169,8 @@ export function DatingDashboard() {
   const [myMood, setMyMood] = useState("love");
   const [partnerMood, setPartnerMood] = useState("love");
   const [coupleNames, setCoupleNames] = useState({
-    my: "민지",
-    partner: "준호",
+    my: "",
+    partner: "",
   });
   const [diffDays, setDiffDays] = useState(0);
   const [todayBirthdays, setTodayBirthdays] = useState<string[]>([]);
