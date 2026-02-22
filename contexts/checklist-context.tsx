@@ -15,19 +15,24 @@ export interface ChecklistItem {
 const today = new Date().toISOString().split("T")[0]
 
 const defaultWeddingChecklist: ChecklistItem[] = [
-  { id: "w1", title: "예식장 투어 일정 잡기", category: "예식장", dueDate: today, completed: false, priority: "high" },
-  { id: "w2", title: "예식장 계약 확정", category: "예식장", dueDate: today, completed: false, priority: "high" },
-  { id: "w3", title: "드레스 투어 및 피팅 예약", category: "드레스", dueDate: today, completed: false, priority: "medium" },
-  { id: "w4", title: "본식 드레스 선택", category: "드레스", dueDate: today, completed: false, priority: "medium" },
-  { id: "w5", title: "스튜디오 촬영 예약", category: "스튜디오", dueDate: today, completed: false, priority: "medium" },
-  { id: "w6", title: "웨딩 스냅 촬영 업체 선택", category: "스냅", dueDate: today, completed: false, priority: "medium" },
-  { id: "w7", title: "청첩장 디자인 선택", category: "청첩장", dueDate: today, completed: false, priority: "medium" },
-  { id: "w8", title: "청첩장 주문 및 수령", category: "청첩장", dueDate: today, completed: false, priority: "low" },
-  { id: "w9", title: "신혼여행 일정 및 항공권 예약", category: "허니문", dueDate: today, completed: false, priority: "high" },
+  { id: "w1", title: "예식장 투어 일정 잡기", category: "웨딩홀", dueDate: today, completed: false, priority: "high" },
+  { id: "w2", title: "예식장 계약 확정", category: "웨딩홀", dueDate: today, completed: false, priority: "high" },
+  { id: "w3", title: "스튜디오 업체 선택", category: "스튜디오", dueDate: today, completed: false, priority: "medium" },
+  { id: "w4", title: "스튜디오 촬영 예약", category: "스튜디오", dueDate: today, completed: false, priority: "medium" },
+  { id: "w5", title: "드레스 투어 및 피팅 예약", category: "드레스", dueDate: today, completed: false, priority: "medium" },
+  { id: "w6", title: "본식 드레스 선택", category: "드레스", dueDate: today, completed: false, priority: "medium" },
+  { id: "w7", title: "2부 드레스 선택", category: "2부드레스", dueDate: today, completed: false, priority: "low" },
+  { id: "w8", title: "본식 메이크업 샵 예약", category: "메이크업", dueDate: today, completed: false, priority: "medium" },
+  { id: "w9", title: "신랑 예복 맞춤/대여", category: "예복", dueDate: today, completed: false, priority: "medium" },
   { id: "w10", title: "예물 커플링 선택", category: "예물", dueDate: today, completed: false, priority: "medium" },
-  { id: "w11", title: "혼수 가전 리스트 정리", category: "혼수", dueDate: today, completed: false, priority: "low" },
-  { id: "w12", title: "사회자·주례·축가 섭외", category: "기타", dueDate: today, completed: false, priority: "medium" },
-  { id: "w13", title: "본식 메이크업 샵 예약", category: "기타", dueDate: today, completed: false, priority: "medium" },
+  { id: "w11", title: "본식 스냅 업체 선택", category: "본식스냅", dueDate: today, completed: false, priority: "medium" },
+  { id: "w12", title: "DVD 업체 선택", category: "DVD", dueDate: today, completed: false, priority: "low" },
+  { id: "w13", title: "식전 영상 제작 업체 선택", category: "식전영상", dueDate: today, completed: false, priority: "low" },
+  { id: "w14", title: "식중 영상 업체 선택", category: "식중영상", dueDate: today, completed: false, priority: "low" },
+  { id: "w15", title: "청첩장 디자인 선택", category: "청첩장", dueDate: today, completed: false, priority: "medium" },
+  { id: "w16", title: "청첩장 주문 및 수령", category: "청첩장", dueDate: today, completed: false, priority: "low" },
+  { id: "w17", title: "사회자 섭외", category: "사회자", dueDate: today, completed: false, priority: "medium" },
+  { id: "w18", title: "축가 섭외", category: "기타", dueDate: today, completed: false, priority: "low" },
 ]
 
 interface ChecklistContextType {
