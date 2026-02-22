@@ -854,13 +854,15 @@ function BudgetPageContent() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-[14px] text-[#8B95A1]">납부 완료</span>
-                  <span className="text-[16px] font-semibold text-[#3182F6]">{(selectedExpense.deposit || 0).toLocaleString()}원</span>
+                  <span className="text-[16px] font-semibold text-[#3182F6]">{(selectedExpense.deposit || (selectedExpense.status === "paid" ? selectedExpense.amount : 0)).toLocaleString()}원</span>
                 </div>
-                <div className="h-px bg-[#E5E8EB]" />
-                <div className="flex justify-between items-center">
-                  <span className="text-[14px] font-medium text-[#FF6B6B]">남은 잔금</span>
-                  <span className="text-[18px] font-bold text-[#FF6B6B]">{(selectedExpense.balance || 0).toLocaleString()}원</span>
-                </div>
+                {selectedExpense.status === "scheduled" && (<>
+                  <div className="h-px bg-[#E5E8EB]" />
+                  <div className="flex justify-between items-center">
+                    <span className="text-[14px] font-medium text-[#FF6B6B]">남은 잔금</span>
+                    <span className="text-[18px] font-bold text-[#FF6B6B]">{(selectedExpense.balance || 0).toLocaleString()}원</span>
+                  </div>
+                </>)}
                 {selectedExpense.dueDate && (
                   <p className="text-[12px] text-[#8B95A1] pt-1">
                     결제 예정일: {new Date(selectedExpense.dueDate).toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" })}
@@ -868,54 +870,75 @@ function BudgetPageContent() {
                 )}
               </div>
 
-              {/* Partial Payment Input */}
-              <div>
-                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">중간 결제 금액</label>
-                <div className="flex items-center gap-2">
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    value={partialPayment}
-                    onChange={(e) => setPartialPayment(formatAmountInput(e.target.value))}
-                    placeholder="0"
-                    className="flex-1 px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[18px] font-bold text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] text-right"
-                  />
-                  <span className="text-[15px] text-[#8B95A1]">원</span>
+              {/* Payment History */}
+              {selectedExpense.payments && selectedExpense.payments.length > 0 && (
+                <div className="space-y-2">
+                  <p className="text-[13px] font-semibold text-[#4E5968]">결제 내역</p>
+                  <div className="bg-[#F8F9FA] rounded-[12px] divide-y divide-[#E5E8EB]">
+                    {selectedExpense.payments.map((p, i) => (
+                      <div key={i} className="flex justify-between items-center px-4 py-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#3182F6] flex-shrink-0" />
+                          <span className="text-[13px] text-[#4E5968]">{formatDate(p.date)}</span>
+                          {p.memo && <span className="text-[12px] text-[#8B95A1]">{p.memo}</span>}
+                        </div>
+                        <span className="text-[14px] font-semibold text-[#191F28]">{p.amount.toLocaleString()}원</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              {/* Action Buttons */}
-              <div className="space-y-3">
-                <button
-                  onClick={handlePartialPayment}
-                  disabled={!partialPayment}
-                  className={`w-full py-4 rounded-[14px] font-semibold text-[16px] transition-all ${
-                    partialPayment
-                      ? "bg-[#3182F6] text-white hover:bg-[#1B64DA]"
-                      : "bg-[#E5E8EB] text-[#B0B8C1] cursor-not-allowed"
-                  }`}
-                >
-                  중간 결제 완료
-                </button>
+              {/* Partial Payment Input - only for scheduled */}
+              {selectedExpense.status === "scheduled" && (<>
+                <div>
+                  <label className="block text-[13px] font-medium text-[#4E5968] mb-2">중간 결제 금액</label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      value={partialPayment}
+                      onChange={(e) => setPartialPayment(formatAmountInput(e.target.value))}
+                      placeholder="0"
+                      className="flex-1 px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[18px] font-bold text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] text-right"
+                    />
+                    <span className="text-[15px] text-[#8B95A1]">원</span>
+                  </div>
+                </div>
 
-                <button
-                  onClick={handleFullPayment}
-                  className="w-full py-4 rounded-[14px] bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold text-[16px] transition-all"
-                >
-                  전체 잔금 결제 완료
-                </button>
+                {/* Action Buttons */}
+                <div className="space-y-3">
+                  <button
+                    onClick={handlePartialPayment}
+                    disabled={!partialPayment}
+                    className={`w-full py-4 rounded-[14px] font-semibold text-[16px] transition-all ${
+                      partialPayment
+                        ? "bg-[#3182F6] text-white hover:bg-[#1B64DA]"
+                        : "bg-[#E5E8EB] text-[#B0B8C1] cursor-not-allowed"
+                    }`}
+                  >
+                    중간 결제 완료
+                  </button>
 
-                <button
-                  onClick={() => {
-                    setShowDetailModal(false)
-                    setSelectedExpense(null)
-                    setPartialPayment("")
-                  }}
-                  className="w-full py-3.5 rounded-[14px] bg-[#F2F4F6] text-[#4E5968] font-semibold text-[15px] hover:bg-[#E5E8EB] transition-all"
-                >
-                  취소
-                </button>
-              </div>
+                  <button
+                    onClick={handleFullPayment}
+                    className="w-full py-4 rounded-[14px] bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold text-[16px] transition-all"
+                  >
+                    전체 잔금 결제 완료
+                  </button>
+                </div>
+              </>)}
+
+              <button
+                onClick={() => {
+                  setShowDetailModal(false)
+                  setSelectedExpense(null)
+                  setPartialPayment("")
+                }}
+                className="w-full py-3.5 rounded-[14px] bg-[#F2F4F6] text-[#4E5968] font-semibold text-[15px] hover:bg-[#E5E8EB] transition-all"
+              >
+                닫기
+              </button>
             </div>
 
             {/* Safe Area */}
