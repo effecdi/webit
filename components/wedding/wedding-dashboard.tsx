@@ -131,23 +131,27 @@ export function WeddingDashboard() {
         fetch('/api/travels'),
         fetch('/api/wedding-info')
       ])
-      const notificationsData = await notificationsRes.json()
-      const travelsData = await travelsRes.json()
-      const weddingInfoData = await weddingInfoRes.json()
-      
+      const notificationsData = notificationsRes.ok ? await notificationsRes.json() : []
+      const travelsData = travelsRes.ok ? await travelsRes.json() : []
+      const weddingInfoData = weddingInfoRes.ok ? await weddingInfoRes.json() : null
+
       if (weddingInfoData) {
         if (weddingInfoData.weddingDate) setWeddingDate(weddingInfoData.weddingDate)
         if (weddingInfoData.venue) setVenueName(weddingInfoData.venue)
       }
-      
-      setNotifications(notificationsData.map((n: { id: number; type: string; title: string; message: string; createdAt: string }) => ({
-        id: String(n.id),
-        type: n.type,
-        title: n.title,
-        message: n.message,
-        time: formatTimeAgo(n.createdAt)
-      })))
-      setTravels(travelsData)
+
+      if (Array.isArray(notificationsData)) {
+        setNotifications(notificationsData.map((n: { id: number; type: string; title: string; message: string; createdAt: string }) => ({
+          id: String(n.id),
+          type: n.type,
+          title: n.title,
+          message: n.message,
+          time: formatTimeAgo(n.createdAt)
+        })))
+      }
+      if (Array.isArray(travelsData)) {
+        setTravels(travelsData)
+      }
     } catch (error) {
       console.error('Error fetching data:', error)
     }
