@@ -16,7 +16,17 @@
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && node -e \"\nrequire\\('dotenv'\\).config\\({ path: '.env.local' }\\);\n// Try with manually decoded password\nconst url = 'postgresql://postgres.gfjmizbpvvsnlwglvjbi:ACLQCm3DbV%25%23Q-%25@aws-1-ap-northeast-2.pooler.supabase.com:6543/postgres';\nconst pg = require\\('pg'\\);\nconst pool = new pg.Pool\\({ connectionString: url, ssl: { rejectUnauthorized: false } }\\);\npool.query\\('SELECT current_database\\(\\)'\\).then\\(r => { console.log\\('Connected:', r.rows[0]\\); pool.end\\(\\); }\\).catch\\(e => { console.error\\('Error:', e.message\\); pool.end\\(\\); }\\);\n\" 2>&1)",
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && git commit --allow-empty -m \"$\\(cat <<'EOF'\nTrigger redeploy after DB tables created\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push origin main)",
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npx next build 2>&1 | tail -5)",
-      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && git add app/wedding/checklist/page.tsx && git commit -m \"$\\(cat <<'EOF'\nAdd edit bottom sheet to checklist items\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push origin main)"
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && git add app/wedding/checklist/page.tsx && git commit -m \"$\\(cat <<'EOF'\nAdd edit bottom sheet to checklist items\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push origin main)",
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npm install react-datepicker @types/react-datepicker 2>&1 | tail -5)",
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npx next build 2>&1 | tail -10)",
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npx next build 2>&1 | tail -30)",
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && git add app/wedding/checklist/page.tsx && git commit -m \"$\\(cat <<'EOF'\n체크리스트 수정 BottomSheet에 WheelDatePicker 적용 및 라벨 변경\n\n- 날짜 선택: input[type=date] → WheelDatePicker\n- 라벨: 할 일 수정 → 체크리스트 수정, 마감일 → 날짜\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push origin main)",
+      "Bash(find /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow -maxdepth 2 -name \"next.config.*\" -type f 2>/dev/null | grep -v node_modules)",
+      "Bash(grep -r \"useTheme\\\\|ThemeProvider\\\\|setTheme\\\\|dark\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/components --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | head -30)",
+      "Bash(grep -r \"moon\\\\|sun\\\\|toggle.*theme\\\\|theme.*toggle\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/components --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | head -20)",
+      "Bash(grep -r \"setTheme\\\\|useTheme\\\\|dark\\\\|theme\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/app --include=\"*.tsx\" 2>/dev/null | grep -i \"dark\\\\|setTheme\" | head -20)",
+      "Bash(grep -r \"Moon\\\\|Sun\\\\|darkMode\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | grep -v node_modules | head -20)",
+      "Bash(grep -r \"ThemeProvider\\\\|useTheme\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/app --include=\"*.tsx\" 2>/dev/null | head -10)"
     ]
   }
 }
