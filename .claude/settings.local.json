@@ -42,7 +42,9 @@
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && git add components/family/family-bottom-nav.tsx components/dating/dating-bottom-nav.tsx components/shared/floating-back-button.tsx components/wedding-nav.tsx && git commit -m \"$\\(cat <<'EOF'\n전체 back-nav 버튼/메뉴 디자인을 wedding-bottom-nav 스타일로 통일\n\n- 백버튼: 52px/w-14 → 66x66px 글래스모피즘 원형\n- family-bottom-nav: rounded-[25px] → rounded-[50px], nav item flex-1\n- dating-bottom-nav: nav item w-16 pb-2 → flex-1 h-full\n- floating-back-button: 52px → 66px\n- wedding-nav: bg-card/border 전통 디자인 → 글래스모피즘 pill 디자인\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push origin main)",
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npx next build 2>&1 | grep -E \"error|Error|✓|✗\" | head -20)",
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && git push origin main 2>&1)",
-      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npx next build 2>&1)"
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npx next build 2>&1)",
+      "Bash(grep -r \"ISSUER_URL\\\\|REPL_ID\\\\|NEXT_PUBLIC_APP_URL\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow --include=\"*.ts\" --include=\"*.js\" --include=\"*.env*\" 2>/dev/null | head -20)",
+      "Bash(grep -r \"ISSUER_URL\\\\|REPL_ID\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow --include=\"*.ts\" --include=\"*.js\" 2>/dev/null | grep -v node_modules)"
     ]
   }
 }
