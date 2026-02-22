@@ -98,26 +98,38 @@ export function ModeSwitch({ currentMode }: ModeSwitchProps) {
               <Gem className="w-4 h-4" />
               <span>결혼</span>
             </button>
+            {showFamilyButton && (
+              <button
+                onClick={handleFamilyClick}
+                className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all text-[#8B95A1] hover:text-[#4E5968]"
+                data-testid="button-mode-family"
+              >
+                <Home className="w-4 h-4" />
+                <span>가족</span>
+              </button>
+            )}
+          </>
+        )}
+
+        {currentMode === "family" && (
+          <>
+            <button
+              onClick={handleWeddingClick}
+              className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all text-[#8B95A1] hover:text-[#4E5968]"
+              data-testid="button-mode-wedding"
+            >
+              <Gem className="w-4 h-4" />
+              <span>결혼</span>
+            </button>
             <button
               onClick={handleFamilyClick}
-              className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all text-[#8B95A1] hover:text-[#4E5968]"
+              className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all bg-white text-green-600 shadow-sm"
               data-testid="button-mode-family"
             >
               <Home className="w-4 h-4" />
               <span>가족</span>
             </button>
           </>
-        )}
-
-        {currentMode === "family" && (
-          <button
-            onClick={handleFamilyClick}
-            className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all bg-white text-green-600 shadow-sm"
-            data-testid="button-mode-family"
-          >
-            <Home className="w-4 h-4" />
-            <span>가족</span>
-          </button>
         )}
       </div>
 
