@@ -562,7 +562,7 @@ export default function ChecklistPage() {
                 value={newItem.dueDate}
                 onChange={(val) => setNewItem({ ...newItem, dueDate: val })}
                 placeholder="마감일 선택"
-                className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                className="!px-4 !py-3.5 !rounded-[12px] !text-[15px]"
                 label="마감일"
               />
             </div>
