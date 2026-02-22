@@ -188,6 +188,12 @@ export default function WeddingVendorsProgressPage() {
     return parseAmount(deposit) + parseAmount(balance)
   }
 
+  const formatAmountInput = (value: string) => {
+    const nums = value.replace(/[^0-9]/g, "")
+    if (!nums) return ""
+    return Number(nums).toLocaleString()
+  }
+
   const getVendorExpense = (vendorId: number) => {
     return expensesList.find((e) => e.vendorId === vendorId) || null
   }
