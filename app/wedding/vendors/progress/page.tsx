@@ -360,101 +360,128 @@ export default function WeddingVendorsProgressPage() {
           })}
         </section>
 
-        {/* Contract Detail */}
-        {contractVendors.length > 0 && (
-          <section className="space-y-2">
-            <h2 className="text-[15px] font-bold text-[#191F28] px-1 pt-2">계약 상세</h2>
-            {contractVendors.map((vendor) => {
-              const expense = getVendorExpense(vendor.id)
-              const payments = parsePaymentMemo(expense?.memo ?? null)
-              const info = getStatusInfo(vendor.status)
-              const iconInfo = categoryIcons[vendor.category] || { icon: <MoreHorizontal className="w-4 h-4" />, bg: "bg-gray-100 text-gray-500" }
-              return (
-                <div key={vendor.id} className="bg-white rounded-[16px] p-4 shadow-sm space-y-3">
-                  {/* Vendor Header */}
-                  <div className="flex items-center gap-3">
-                    <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${iconInfo.bg}`}>
-                      {iconInfo.icon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[14px] font-semibold text-[#191F28]">{vendor.name}</p>
-                      <p className="text-[12px] text-[#8B95A1]">{vendor.category}</p>
-                    </div>
-                    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold flex-shrink-0 ${info.bg} ${info.text}`}>
-                      {info.label}
-                    </span>
-                  </div>
+      </main>
 
-                  {/* Payment Info */}
-                  <div className="flex items-center gap-3 bg-[#F9FAFB] rounded-[12px] p-3">
-                    <div className="flex-1">
-                      <p className="text-[11px] text-[#8B95A1] mb-0.5">총 비용</p>
-                      <p className="text-[15px] font-bold text-[#191F28]">
-                        {expense?.amount && Number(expense.amount) > 0
-                          ? `${Number(expense.amount).toLocaleString()}원`
-                          : "-"}
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => handleTogglePaid(vendor)}
-                      className={`px-3 py-1.5 rounded-full text-[12px] font-semibold transition-colors ${
-                        expense?.isPaid
-                          ? "bg-green-500 text-white"
-                          : "bg-[#E5E8EB] text-[#8B95A1]"
-                      }`}
-                    >
-                      {expense?.isPaid ? "완납" : "미완납"}
-                    </button>
+      {/* Category Detail BottomSheet */}
+      <BottomSheet
+        open={!!selectedCategory}
+        onOpenChange={(open) => { if (!open) setSelectedCategory(null) }}
+        className="bg-white dark:bg-[#1C1C1E] z-[9999]"
+        overlayClassName="z-[9999]"
+      >
+        {selectedCategory && (() => {
+          const categoryVendors = vendors.filter((v) => v.category === selectedCategory)
+          const iconInfo = categoryIcons[selectedCategory] || { icon: <MoreHorizontal className="w-4 h-4" />, bg: "bg-gray-100 text-gray-500" }
+          return (
+            <div className="px-5 pt-2 pb-8 max-h-[80vh] overflow-y-auto">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${iconInfo.bg}`}>
+                    {iconInfo.icon}
                   </div>
-
-                  {/* Deposit / Balance */}
-                  <div className="grid grid-cols-2 gap-2">
-                    <div>
-                      <p className="text-[11px] text-[#8B95A1] mb-1">계약금</p>
-                      <input
-                        defaultValue={payments.deposit}
-                        onBlur={(e) => handlePaymentUpdate(vendor, { field: "deposit", value: e.target.value })}
-                        className="w-full px-3 py-2 rounded-[10px] bg-[#F2F4F6] border-0 text-[13px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
-                        placeholder="예: 300,000"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-[11px] text-[#8B95A1] mb-1">잔금</p>
-                      <input
-                        defaultValue={payments.balance}
-                        onBlur={(e) => handlePaymentUpdate(vendor, { field: "balance", value: e.target.value })}
-                        className="w-full px-3 py-2 rounded-[10px] bg-[#F2F4F6] border-0 text-[13px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
-                        placeholder="예: 700,000"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Note */}
                   <div>
-                    <p className="text-[11px] text-[#8B95A1] mb-1">비고</p>
-                    <textarea
-                      defaultValue={payments.note}
-                      onBlur={(e) => handlePaymentUpdate(vendor, { field: "note", value: e.target.value })}
-                      className="w-full px-3 py-2 rounded-[10px] bg-[#F2F4F6] border-0 text-[13px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] resize-none min-h-[40px]"
-                      placeholder="메모를 입력하세요"
-                    />
+                    <h2 className="text-[17px] font-bold text-[#191F28]">{selectedCategory}</h2>
+                    <p className="text-[12px] text-[#8B95A1]">후보 {categoryVendors.length}개</p>
                   </div>
                 </div>
-              )
-            })}
-          </section>
-        )}
+                <button onClick={() => setSelectedCategory(null)}>
+                  <X className="w-5 h-5 text-[#8B95A1]" />
+                </button>
+              </div>
 
-        {contractVendors.length === 0 && !isLoading && (
-          <section className="bg-white rounded-[20px] p-8 shadow-sm text-center">
-            <div className="w-12 h-12 rounded-full bg-[#F2F4F6] flex items-center justify-center mx-auto mb-3">
-              <CheckCircle2 className="w-6 h-6 text-[#B0B8C1]" />
+              {categoryVendors.length === 0 ? (
+                <div className="py-10 text-center">
+                  <div className="w-12 h-12 rounded-full bg-[#F2F4F6] flex items-center justify-center mx-auto mb-3">
+                    <CheckCircle2 className="w-6 h-6 text-[#B0B8C1]" />
+                  </div>
+                  <p className="text-[14px] text-[#8B95A1]">아직 등록된 업체가 없어요</p>
+                  <p className="text-[12px] text-[#B0B8C1] mt-1">업체 비교에서 추가해 주세요</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {categoryVendors.map((vendor) => {
+                    const expense = getVendorExpense(vendor.id)
+                    const payments = parsePaymentMemo(expense?.memo ?? null)
+                    const info = getStatusInfo(vendor.status)
+                    const isContract = vendor.status === "contracted" || vendor.status === "pre_contract" || vendor.status === "done"
+                    return (
+                      <div key={vendor.id} className="bg-[#F9FAFB] rounded-[16px] p-4 space-y-3">
+                        {/* Vendor Row */}
+                        <div className="flex items-center justify-between">
+                          <p className="text-[15px] font-semibold text-[#191F28]">{vendor.name}</p>
+                          <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold ${info.bg} ${info.text}`}>
+                            {info.label}
+                          </span>
+                        </div>
+
+                        {isContract && (
+                          <>
+                            {/* Payment */}
+                            <div className="flex items-center justify-between bg-white rounded-[12px] p-3">
+                              <div>
+                                <p className="text-[11px] text-[#8B95A1]">총 비용</p>
+                                <p className="text-[15px] font-bold text-[#191F28]">
+                                  {expense?.amount && Number(expense.amount) > 0
+                                    ? `${Number(expense.amount).toLocaleString()}원`
+                                    : "-"}
+                                </p>
+                              </div>
+                              <button
+                                onClick={() => handleTogglePaid(vendor)}
+                                className={`px-3 py-1.5 rounded-full text-[12px] font-semibold transition-colors ${
+                                  expense?.isPaid
+                                    ? "bg-green-500 text-white"
+                                    : "bg-[#E5E8EB] text-[#8B95A1]"
+                                }`}
+                              >
+                                {expense?.isPaid ? "완납" : "미완납"}
+                              </button>
+                            </div>
+
+                            {/* Deposit / Balance */}
+                            <div className="grid grid-cols-2 gap-2">
+                              <div>
+                                <p className="text-[11px] text-[#8B95A1] mb-1">계약금</p>
+                                <input
+                                  defaultValue={payments.deposit}
+                                  onBlur={(e) => handlePaymentUpdate(vendor, { field: "deposit", value: e.target.value })}
+                                  className="w-full px-3 py-2 rounded-[10px] bg-white border-0 text-[13px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
+                                  placeholder="예: 300,000"
+                                />
+                              </div>
+                              <div>
+                                <p className="text-[11px] text-[#8B95A1] mb-1">잔금</p>
+                                <input
+                                  defaultValue={payments.balance}
+                                  onBlur={(e) => handlePaymentUpdate(vendor, { field: "balance", value: e.target.value })}
+                                  className="w-full px-3 py-2 rounded-[10px] bg-white border-0 text-[13px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
+                                  placeholder="예: 700,000"
+                                />
+                              </div>
+                            </div>
+
+                            {/* Note */}
+                            <div>
+                              <p className="text-[11px] text-[#8B95A1] mb-1">비고</p>
+                              <textarea
+                                defaultValue={payments.note}
+                                onBlur={(e) => handlePaymentUpdate(vendor, { field: "note", value: e.target.value })}
+                                className="w-full px-3 py-2 rounded-[10px] bg-white border-0 text-[13px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] resize-none min-h-[40px]"
+                                placeholder="메모를 입력하세요"
+                              />
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
             </div>
-            <p className="text-[14px] text-[#8B95A1]">아직 계약한 업체가 없어요</p>
-            <p className="text-[12px] text-[#B0B8C1] mt-1">업체 비교에서 계약 상태를 변경해 주세요</p>
-          </section>
-        )}
-      </main>
+          )
+        })()}
+      </BottomSheet>
 
       <WeddingBottomNav />
     </div>
