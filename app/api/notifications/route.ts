@@ -5,11 +5,18 @@ import { eq, and, desc } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 
 export async function GET(request: NextRequest) {
-  const auth = await requireAuth();
-  if (isUnauthorized(auth)) return auth;
-  const userId = auth.userId;
   const searchParams = request.nextUrl.searchParams;
   const mode = searchParams.get('mode') || 'dating';
+
+  const auth = await requireAuth();
+  let userId: string;
+
+  if (isUnauthorized(auth)) {
+    if (mode !== 'wedding') return auth;
+    userId = 'guest-wedding';
+  } else {
+    userId = auth.userId;
+  }
 
   try {
     const result = await db.select().from(notifications)
