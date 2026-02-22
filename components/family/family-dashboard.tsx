@@ -28,7 +28,7 @@ export function FamilyDashboard() {
       <section>
         <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-1">Today</p>
         <h2 className="font-serif text-xl font-bold text-foreground">
-          {greeting}, 현정 님
+          {greeting}
         </h2>
       </section>
 
