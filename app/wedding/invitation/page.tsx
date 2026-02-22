@@ -281,6 +281,11 @@ export default function InvitationGalleryPage() {
     setDeletingId(id)
     try {
       const res = await fetch(`/api/invitations/${id}`, { method: "DELETE" })
+      if (res.status === 401) {
+        showToastMessage("로그인이 필요합니다")
+        setTimeout(() => router.push("/login"), 1200)
+        return
+      }
       if (res.ok) {
         setSavedInvitations((prev) => prev.filter((inv) => inv.id !== id))
         showToastMessage("청첩장이 삭제되었습니다")
