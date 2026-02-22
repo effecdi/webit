@@ -194,12 +194,13 @@ export default function WeddingVendorsProgressPage() {
 
   const handlePaymentUpdate = async (
     vendor: WeddingVendor,
-    updates: { field: "deposit" | "balance" | "note"; value: string },
+    updates: { field: keyof PaymentInfo; value: string },
   ) => {
     const currentExpense = getVendorExpense(vendor.id)
-    const baseInfo = currentExpense ? parsePaymentMemo(currentExpense.memo) : { deposit: "", balance: "", note: "" }
+    const baseInfo = currentExpense ? parsePaymentMemo(currentExpense.memo) : { ...emptyPayment }
     const nextInfo = { ...baseInfo, [updates.field]: updates.value }
     const memo = buildPaymentMemo(nextInfo)
+    const totalAmount = String(calcTotal(nextInfo.deposit, nextInfo.balance))
 
     setIsSaving(true)
     try {
@@ -209,7 +210,7 @@ export default function WeddingVendorsProgressPage() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             title: `${vendor.category} - ${vendor.name}`,
-            amount: "0",
+            amount: totalAmount,
             category: vendor.category,
             vendorId: vendor.id,
             vendorName: vendor.name,
@@ -226,7 +227,7 @@ export default function WeddingVendorsProgressPage() {
         const res = await fetch("/api/expenses", {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id: currentExpense.id, memo }),
+          body: JSON.stringify({ id: currentExpense.id, memo, amount: totalAmount }),
         })
         if (!res.ok) return
         const updated = await res.json()
