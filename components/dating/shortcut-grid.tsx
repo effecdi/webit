@@ -10,7 +10,7 @@ const SHORTCUTS = [
     icon: Calendar,
     href: "/dating/calendar",
     color: "bg-[#FFE4EC]",
-    badge: "3",
+    badge: "",
     badgeColor: "bg-primary",
   },
   {
