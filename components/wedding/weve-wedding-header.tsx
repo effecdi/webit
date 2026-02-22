@@ -5,9 +5,9 @@ import { Bell, Settings, Heart, ChevronRight } from "lucide-react"
 import Link from "next/link"
 
 const coupleData = {
-  userName: "현정",
-  partnerName: "민준",
-  weddingDate: "2025-06-15",
+  userName: "",
+  partnerName: "",
+  weddingDate: "",
 }
 
 function calculateDday(targetDate: string) {
