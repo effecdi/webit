@@ -58,13 +58,7 @@ export default function WeddingProfilePage() {
 
   const handleLogout = () => {
     setIsLoggingOut(true)
-    localStorage.removeItem("survey_myName")
-    localStorage.removeItem("survey_partnerName")
-    localStorage.removeItem("survey_firstMeetDate")
-    localStorage.removeItem("survey_myBirthday")
-    localStorage.removeItem("survey_partnerBirthday")
-    localStorage.removeItem("selected_mode")
-    localStorage.removeItem("wedding_onboarding_complete")
+    localStorage.clear()
     window.location.href = "/api/logout"
   }
   
