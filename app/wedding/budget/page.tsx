@@ -569,10 +569,8 @@ function BudgetPageContent() {
                       )}
                     </div>
 
-                    {/* Chevron for scheduled items */}
-                    {expense.status === "scheduled" && (
-                      <ChevronRight className="w-5 h-5 text-[#B0B8C1] ml-1 flex-shrink-0" />
-                    )}
+                    {/* Chevron */}
+                    <ChevronRight className="w-5 h-5 text-[#B0B8C1] ml-1 flex-shrink-0" />
                   </div>
                 </div>
               )
