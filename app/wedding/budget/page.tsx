@@ -674,7 +674,7 @@ function BudgetPageContent() {
                     value={newExpense.date}
                     onChange={(val) => setNewExpense({ ...newExpense, date: val })}
                     placeholder="결제일 선택"
-                    className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                    className="!px-4 !py-3.5 !rounded-[12px] !text-[15px]"
                     label="결제일"
                   />
                 </div>
