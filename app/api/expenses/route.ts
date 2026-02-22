@@ -39,6 +39,10 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { title, amount, category, date, isPaid = false, memo, mode = 'wedding', vendorId, vendorName } = body;
 
+    if (!title || amount === undefined || amount === null || !category || !date) {
+      return NextResponse.json({ error: 'Missing required fields: title, amount, category, date' }, { status: 400 });
+    }
+
     const auth = await requireAuth();
     let userId: string;
 
@@ -49,16 +53,21 @@ export async function POST(request: NextRequest) {
       userId = auth.userId;
     }
 
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate.getTime())) {
+      return NextResponse.json({ error: 'Invalid date format' }, { status: 400 });
+    }
+
     const [newExpense] = await db.insert(expenses).values({
       userId,
       title,
-      amount: amount.toString(),
+      amount: String(amount),
       category,
-      vendorId,
-      vendorName,
-      date: new Date(date),
+      vendorId: vendorId || null,
+      vendorName: vendorName || null,
+      date: parsedDate,
       isPaid,
-      memo,
+      memo: memo || null,
       mode,
     }).returning();
 
