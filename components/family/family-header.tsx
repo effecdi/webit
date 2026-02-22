@@ -8,7 +8,8 @@ export function FamilyHeader() {
   const [dDay, setDDay] = useState(0)
 
   useEffect(() => {
-    const weddingDate = new Date("2025-12-20")
+    const storedDate = localStorage.getItem("wedding_date")
+    const weddingDate = storedDate ? new Date(storedDate) : new Date()
     const today = new Date()
     const diffTime = today.getTime() - weddingDate.getTime()
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
