@@ -61,7 +61,7 @@ export function FamilyBottomNav() {
                 key={item.href}
                 href={item.href}
                 data-testid={`nav-family-${item.label}`}
-                className="flex flex-col items-center justify-end pb-2 w-16 relative transition-transform duration-150 ease-out active:scale-[0.85]"
+                className="flex flex-col items-center justify-center h-full flex-1 w-auto relative transition-transform duration-150 ease-out active:scale-[0.85]"
               >
                 {isActive ? (
                   <div className="flex flex-col items-center -mt-4">
