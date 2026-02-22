@@ -331,6 +331,11 @@ export default function InvitationGalleryPage() {
   const handleCreate = async () => {
     try {
       const countRes = await fetch("/api/invitations")
+      if (countRes.status === 401) {
+        showToastMessage("로그인이 필요합니다")
+        setTimeout(() => router.push("/login"), 1200)
+        return
+      }
       if (countRes.ok) {
         const existing = await countRes.json()
         if (existing.length >= FREE_LIMIT) {
@@ -349,6 +354,12 @@ export default function InvitationGalleryPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ templateId: currentTemplate.id }),
       })
+
+      if (res.status === 401) {
+        showToastMessage("로그인이 필요합니다")
+        setTimeout(() => router.push("/login"), 1200)
+        return
+      }
 
       if (res.status === 403) {
         setShowLimitPayment(true)
