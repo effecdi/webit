@@ -109,8 +109,8 @@ export function WeddingDashboard() {
   const dday = calculateDday(weddingDate)
   
   useEffect(() => {
-    const myName = localStorage.getItem("survey_myName") || "현정"
-    const partnerName = localStorage.getItem("survey_partnerName") || "주호"
+    const myName = localStorage.getItem("survey_myName") || ""
+    const partnerName = localStorage.getItem("survey_partnerName") || ""
     const savedDate = localStorage.getItem("survey_firstMeetDate")
     const savedWeddingDate = localStorage.getItem("wedding_date")
     const savedVenue = localStorage.getItem("wedding_venue")
