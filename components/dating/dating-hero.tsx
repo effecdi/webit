@@ -58,7 +58,7 @@ export function DatingHero() {
             <div>
               <p className="text-xs font-sans text-muted-foreground uppercase tracking-widest">Our Love Story</p>
               <p className="font-serif text-4xl font-black text-secondary">D+{diffDays}</p>
-              <p className="text-sm font-sans text-muted-foreground mt-1">2023.03.15 ~</p>
+              <p className="text-sm font-sans text-muted-foreground mt-1">{startDate.toISOString().split("T")[0].replace(/-/g, ".")} ~</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <div className="flex -space-x-3">
