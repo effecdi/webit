@@ -1681,6 +1681,45 @@ function InvitationEditorContent() {
                     <label className="text-[14px] text-[#4E5968] mb-2 block">
                       커플 일러스트
                     </label>
+
+                    {/* Reference photo upload */}
+                    <div className="mb-3">
+                      <p className="text-[12px] text-[#6B7684] mb-2">
+                        참고 사진 (선택)
+                      </p>
+                      <input
+                        ref={illustrationRefInputRef}
+                        type="file"
+                        accept="image/*"
+                        onChange={handleIllustrationRefUpload}
+                        className="hidden"
+                      />
+                      {illustrationRef ? (
+                        <div className="relative w-[80px] h-[80px] inline-block">
+                          <img
+                            src={illustrationRef}
+                            alt="참고 사진"
+                            className="w-full h-full object-cover rounded-[8px] border border-[#E5E8EB]"
+                          />
+                          <button
+                            onClick={() => setIllustrationRef("")}
+                            className="absolute -top-1 -right-1 w-5 h-5 bg-black/60 rounded-full flex items-center justify-center"
+                          >
+                            <X className="w-3 h-3 text-white" />
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => illustrationRefInputRef.current?.click()}
+                          className="w-[80px] h-[80px] bg-white border-2 border-dashed border-[#D1D6DB] rounded-[8px] flex flex-col items-center justify-center gap-1"
+                        >
+                          <Plus className="w-4 h-4 text-[#B0B8C1]" />
+                          <span className="text-[10px] text-[#B0B8C1]">사진</span>
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Generate button */}
                     <div className="flex items-center gap-2 mb-3">
                       <button
                         onClick={generateIllustration}
@@ -1692,9 +1731,11 @@ function InvitationEditorContent() {
                         ) : (
                           <Sparkles className="w-3 h-3" />
                         )}
-                        AI 일러스트 생성
+                        {illustrationRef ? "사진 기반 AI 일러스트 생성" : "AI 일러스트 생성"}
                       </button>
                     </div>
+
+                    {/* Generated result */}
                     {data.illustrationImage && (
                       <div className="relative w-[120px] h-[120px]">
                         <img
@@ -1711,7 +1752,9 @@ function InvitationEditorContent() {
                       </div>
                     )}
                     <p className="text-[12px] text-[#8B95A1] mt-2">
-                      AI로 수채화 스타일의 커플 일러스트를 생성합니다. 기본 일러스트를 대체할 수 있어요.
+                      {illustrationRef
+                        ? "업로드한 사진을 기반으로 수채화 스타일 일러스트를 생성합니다."
+                        : "AI로 수채화 스타일의 커플 일러스트를 생성합니다. 사진을 업로드하면 사진 기반으로 생성할 수 있어요."}
                     </p>
                   </div>
                 )}
