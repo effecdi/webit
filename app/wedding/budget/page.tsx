@@ -506,7 +506,7 @@ function BudgetPageContent() {
                     onClick={() => {
                       if (isSwiped) {
                         setSwipedId(null)
-                      } else if (expense.status === "scheduled") {
+                      } else {
                         openDetailModal(expense)
                       }
                     }}
