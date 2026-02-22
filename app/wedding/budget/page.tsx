@@ -117,10 +117,15 @@ function BudgetPageContent() {
 
   const handleAddExpense = () => {
     if (!newExpense.title || !newExpense.amount || !newExpense.category) return
-    
+
     const amount = Number(newExpense.amount.replace(/,/g, ""))
     const deposit = newExpense.deposit ? Number(newExpense.deposit.replace(/,/g, "")) : 0
-    
+
+    const initialPayments: PaymentRecord[] = []
+    if (newExpense.status === "scheduled" && deposit > 0) {
+      initialPayments.push({ amount: deposit, date: newExpense.date, memo: "계약금" })
+    }
+
     const expense: Expense = {
       id: Date.now().toString(),
       title: newExpense.title,
@@ -135,9 +140,10 @@ function BudgetPageContent() {
       dueDate: newExpense.status === "scheduled" ? newExpense.dueDate : undefined,
       reminder: newExpense.status === "scheduled" ? newExpense.reminder : undefined,
       memo: newExpense.memo || undefined,
+      payments: initialPayments.length > 0 ? initialPayments : undefined,
     }
-    
-    setExpenses([expense, ...expenses])
+
+    addExpense(expense)
     setShowAddModal(false)
     setNewExpense({
       title: "",
