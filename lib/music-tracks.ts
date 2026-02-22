@@ -7,7 +7,6 @@ export const MUSIC_TRACKS = [
   { name: "Snowfall at Ease", file: "/music/Snowfall_at_Ease.mp3" },
   { name: "Soft Winter Motion", file: "/music/Soft_Winter_Motion.mp3" },
   { name: "The Toy Soldier's Secret Dance", file: "/music/The_Toy_Soldiers_Secret_Dance.mp3" },
-  { name: "The Toy Soldier's Secret Dance 2", file: "/music/The_Toy_Soldiers_Secret_Dance_2.mp3" },
   { name: "Under the Fairy Lights", file: "/music/Under_the_Fairy_Lights.mp3" },
   { name: "Vibrant Day", file: "/music/Vibrant_Day.mp3" },
   { name: "Vibrant Day 2", file: "/music/Vibrant_Day_2.mp3" },
