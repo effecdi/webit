@@ -1,96 +1,76 @@
 import { NextRequest, NextResponse } from "next/server";
-import OpenAI from "openai";
 
 type TextType = "title" | "message" | "fundingMessage" | "fundingThanks" | "noticeTitle" | "endingContent";
 
-const SYSTEM_PROMPT = `당신은 한국 결혼식 청첩장 문구 전문 카피라이터입니다.
-아름답고 정제된 한국어로 청첩장에 어울리는 문구를 작성합니다.
-- 격식 있으면서도 따뜻한 톤
-- 간결하고 우아한 표현
-- 줄바꿈(\\n)으로 적절히 문단 구분
-- 이모지 절대 사용 금지
-- JSON 형식으로 응답: { "text": "생성된 문구" }`;
+const TEMPLATES: Record<TextType, string[]> = {
+  message: [
+    "서로 다른 두 사람이\n하나의 사랑으로 만나\n평생을 함께하고자 합니다.\n\n소중한 분들을 모시고\n사랑의 서약을 하려 합니다.\n귀한 걸음으로 축복해 주세요.",
+    "사랑이 꽃피는 계절,\n저희 두 사람이\n영원한 사랑을 약속합니다.\n\n함께해 주시면\n더없는 기쁨이겠습니다.",
+    "오래도록 간직할\n소중한 날을 맞이합니다.\n\n두 사람의 작은 시작을\n따뜻한 마음으로\n축복해 주시면 감사하겠습니다.",
+    "좋은 인연으로 만나\n사랑을 키워온 저희가\n이제 하나의 가정을 이루려 합니다.\n\n바쁘시더라도 오셔서\n축하해 주시면 감사하겠습니다.",
+    "하늘이 맺어준 인연으로\n한 길을 걸어가려 합니다.\n\n저희의 새 출발을\n가까이에서 지켜봐 주시고\n축복해 주세요.",
+    "서로가 마주보며 다져온 사랑을\n이제 함께 한 곳을 바라보며\n걸어가고자 합니다.\n\n저희의 앞날을 축복해 주세요.",
+  ],
+  title: [
+    "우리의 시작",
+    "사랑의 약속",
+    "함께하는 영원",
+    "두 사람의 이야기",
+    "새로운 시작",
+    "소중한 만남",
+    "우리, 결혼합니다",
+    "사랑으로 하나 되는 날",
+    "소중한 날에 초대합니다",
+    "평생의 약속",
+  ],
+  fundingMessage: [
+    "축하의 마음을 전해주세요.\n여러분의 따뜻한 마음이\n저희의 새 출발에 큰 힘이 됩니다.",
+    "직접 오시기 어려운 분들을 위해\n마음을 전할 수 있는 공간을 마련했습니다.\n감사한 마음으로 잘 쓰겠습니다.",
+    "소중한 축하의 마음,\n감사히 받겠습니다.\n행복한 가정을 만들어 가는 데\n소중히 사용하겠습니다.",
+  ],
+  fundingThanks: [
+    "따뜻한 마음 감사합니다.\n행복하게 잘 살겠습니다.",
+    "보내주신 축하에 진심으로 감사드립니다.\n예쁘게 살겠습니다.",
+    "감사합니다.\n좋은 모습으로 보답하겠습니다.",
+    "소중한 마음 잘 받았습니다.\n늘 감사하며 살겠습니다.",
+  ],
+  noticeTitle: [
+    "오시는 길 안내",
+    "알려드립니다",
+    "참석 안내",
+    "안내사항",
+    "식사 안내",
+    "식장 안내",
+  ],
+  endingContent: [
+    "오늘 이 자리에 함께해 주셔서\n진심으로 감사합니다.\n\n앞으로도 예쁜 사랑 나누며\n행복하게 살겠습니다.",
+    "저희의 새 출발을\n축복해 주셔서 감사합니다.\n\n늘 감사하는 마음으로\n함께 살아가겠습니다.",
+    "소중한 분들의 축하 속에\n아름다운 시작을 하게 되었습니다.\n\n감사의 마음을 잊지 않고\n행복한 가정을 만들겠습니다.",
+  ],
+};
 
-function getPrompt(type: TextType, context: { groomName?: string; brideName?: string; date?: string; venue?: string }): string {
-  const names = context.groomName && context.brideName
-    ? `신랑: ${context.groomName}, 신부: ${context.brideName}`
-    : "";
-  const dateInfo = context.date ? `날짜: ${context.date}` : "";
-  const venueInfo = context.venue ? `장소: ${context.venue}` : "";
-  const contextStr = [names, dateInfo, venueInfo].filter(Boolean).join(", ");
-
-  switch (type) {
-    case "title":
-      return `청첩장의 제목(타이틀)을 하나만 생성해주세요. 10자 이내의 짧고 인상적인 문구여야 합니다. 예시: "소중한 날에 초대합니다", "사랑으로 하나 되는 날"${contextStr ? `\n참고 정보: ${contextStr}` : ""}`;
-
-    case "message":
-      return `청첩장의 초대 인사말을 하나만 작성해주세요. 3~5문장 정도의 따뜻한 초대 메시지입니다. 줄바꿈(\\n)으로 적절히 구분해주세요.${contextStr ? `\n참고 정보: ${contextStr}` : ""}`;
-
-    case "fundingMessage":
-      return `축의금/펀딩 안내 문구를 하나만 작성해주세요. 하객분들께 축의금 대신 마음을 모아달라는 정중한 안내입니다. 2~3문장, 줄바꿈(\\n)으로 구분.${contextStr ? `\n참고 정보: ${contextStr}` : ""}`;
-
-    case "fundingThanks":
-      return `축의금/펀딩 감사 인사 문구를 하나만 작성해주세요. 축의금을 보내준 분께 감사하는 짧은 메시지입니다. 2~3문장, 줄바꿈(\\n)으로 구분.`;
-
-    case "noticeTitle":
-      return `청첩장의 공지사항/안내사항 섹션 제목을 하나만 생성해주세요. 5~10자 이내의 짧은 제목입니다. 예시: "안내사항", "참석 안내", "식장 안내"`;
-
-    case "endingContent":
-      return `청첩장의 엔딩(마무리) 메시지를 하나만 작성해주세요. 감사의 마음을 담은 따뜻한 마무리 인사입니다. 2~4문장, 줄바꿈(\\n)으로 구분.${contextStr ? `\n참고 정보: ${contextStr}` : ""}`;
-
-    default:
-      return "청첩장에 어울리는 문구를 하나 작성해주세요.";
-  }
+function pick(arr: string[]): string {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const apiKey = process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { error: "AI 설정이 되어 있지 않습니다." },
-        { status: 500 }
-      );
+    const { type, context = {} } = await request.json() as {
+      type: TextType;
+      context?: { groomName?: string; brideName?: string; date?: string; venue?: string };
+    };
+
+    const templates = TEMPLATES[type] || TEMPLATES.message;
+    let text = pick(templates);
+
+    // 이름이 있으면 메시지에 반영
+    if (type === "message" && context.groomName && context.brideName) {
+      text = `${context.groomName} 그리고 ${context.brideName}\n\n${text}`;
     }
 
-    const openai = new OpenAI({
-      apiKey,
-      baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-    });
-
-    const body = await request.json();
-    const { type, context = {} } = body as { type: TextType; context?: { groomName?: string; brideName?: string; date?: string; venue?: string } };
-
-    if (!type) {
-      return NextResponse.json({ error: "type is required" }, { status: 400 });
-    }
-
-    const prompt = getPrompt(type, context);
-
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        { role: "system", content: SYSTEM_PROMPT },
-        { role: "user", content: prompt },
-      ],
-      response_format: { type: "json_object" },
-      max_tokens: 500,
-    });
-
-    const content = response.choices[0]?.message?.content || "{}";
-    let parsed: { text?: string };
-    try {
-      parsed = JSON.parse(content);
-    } catch {
-      parsed = { text: content };
-    }
-
-    return NextResponse.json({ text: parsed.text || "" });
-  } catch (error: any) {
-    console.error("AI invitation text generation error:", error);
-    return NextResponse.json(
-      { error: "AI 문구 생성에 실패했습니다. 잠시 후 다시 시도해주세요." },
-      { status: 500 }
-    );
+    return NextResponse.json({ text });
+  } catch (error) {
+    console.error("Invitation text generation error:", error);
+    return NextResponse.json({ error: "문구 생성에 실패했습니다." }, { status: 500 });
   }
 }
