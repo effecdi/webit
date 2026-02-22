@@ -17,7 +17,7 @@ export function HeroSection() {
               <h2 className="font-serif text-4xl md:text-5xl font-bold text-secondary tracking-tight text-balance">
                 우리의 사랑
               </h2>
-              <p className="text-secondary text-sm mt-2 font-sans uppercase tracking-widest">Since 2024.02.14</p>
+              <p className="text-secondary text-sm mt-2 font-sans uppercase tracking-widest">Our Love Story</p>
             </div>
           </div>
           
