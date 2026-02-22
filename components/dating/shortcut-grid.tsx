@@ -19,7 +19,7 @@ const SHORTCUTS = [
     icon: ImageIcon,
     href: "/dating/gallery",
     color: "bg-[#E4F0FF]",
-    badge: "128",
+    badge: "",
     badgeColor: "bg-[#6B9DFF]",
   },
   {
