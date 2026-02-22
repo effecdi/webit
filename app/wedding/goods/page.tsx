@@ -82,50 +82,7 @@ const categories = [
   { id: "etc", label: "기타", icon: ShoppingBag },
 ];
 
-const initialGoods: GoodsItem[] = [
-  {
-    id: "1",
-    name: "까르띠에 러브링 옐로우골드",
-    category: "예물",
-    price: 3500000,
-    status: "purchased",
-    forWhom: "bride",
-  },
-  {
-    id: "2",
-    name: "까르띠에 러브링 화이트골드",
-    category: "예물",
-    price: 3200000,
-    status: "purchased",
-    forWhom: "groom",
-  },
-  {
-    id: "3",
-    name: "몽블랑 만년필 세트",
-    category: "예단",
-    price: 850000,
-    status: "wishlist",
-    forWhom: "groom",
-    notes: "시아버지 선물",
-  },
-  {
-    id: "4",
-    name: "발리 허니문 패키지",
-    category: "허니문",
-    price: 4500000,
-    status: "wishlist",
-    forWhom: "both",
-  },
-  {
-    id: "5",
-    name: "웨딩 포토테이블 세트",
-    category: "웨딩데코",
-    price: 150000,
-    status: "received",
-    forWhom: "both",
-    notes: "친구 선물",
-  },
-];
+const initialGoods: GoodsItem[] = [];
 
 interface GuideItem {
   id: string;
