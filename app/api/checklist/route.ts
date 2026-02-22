@@ -5,6 +5,27 @@ import { eq, and, desc, inArray } from 'drizzle-orm';
 import { requireAuth, isUnauthorized } from '@/lib/api-auth';
 import { getCoupleUserIds } from '@/lib/couple-utils';
 
+const defaultWeddingItems = [
+  { category: "웨딩홀", title: "예식장 투어 일정 잡기", priority: "high" },
+  { category: "웨딩홀", title: "예식장 계약 확정", priority: "high" },
+  { category: "스튜디오", title: "스튜디오 업체 선택", priority: "medium" },
+  { category: "스튜디오", title: "스튜디오 촬영 예약", priority: "medium" },
+  { category: "드레스", title: "드레스 투어 및 피팅 예약", priority: "medium" },
+  { category: "드레스", title: "본식 드레스 선택", priority: "medium" },
+  { category: "2부드레스", title: "2부 드레스 선택", priority: "low" },
+  { category: "메이크업", title: "본식 메이크업 샵 예약", priority: "medium" },
+  { category: "예복", title: "신랑 예복 맞춤/대여", priority: "medium" },
+  { category: "예물", title: "예물 커플링 선택", priority: "medium" },
+  { category: "본식스냅", title: "본식 스냅 업체 선택", priority: "medium" },
+  { category: "DVD", title: "DVD 업체 선택", priority: "low" },
+  { category: "식전영상", title: "식전 영상 제작 업체 선택", priority: "low" },
+  { category: "식중영상", title: "식중 영상 업체 선택", priority: "low" },
+  { category: "청첩장", title: "청첩장 디자인 선택", priority: "medium" },
+  { category: "청첩장", title: "청첩장 주문 및 수령", priority: "low" },
+  { category: "사회자", title: "사회자 섭외", priority: "medium" },
+  { category: "기타", title: "축가 섭외", priority: "low" },
+];
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const mode = searchParams.get('mode') || 'wedding';
@@ -26,6 +47,21 @@ export async function GET(request: NextRequest) {
     const result = await db.select().from(checklistItems)
       .where(and(inArray(checklistItems.userId, coupleUserIds), eq(checklistItems.mode, mode)))
       .orderBy(desc(checklistItems.createdAt));
+
+    if (result.length === 0 && mode === 'wedding') {
+      const seeded = await db.insert(checklistItems).values(
+        defaultWeddingItems.map(item => ({
+          userId,
+          category: item.category,
+          title: item.title,
+          priority: item.priority,
+          mode: 'wedding' as const,
+          completed: false,
+        }))
+      ).returning();
+
+      return NextResponse.json(seeded);
+    }
 
     return NextResponse.json(result);
   } catch (error) {

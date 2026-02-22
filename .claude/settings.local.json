@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep -r \"api/wedding-info\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | head -522)"
+      "Bash(grep -r \"api/wedding-info\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | head -522)",
+      "Bash(find /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow -type f -name \"*checklist*\" 2>/dev/null | head -202)"
     ]
   }
 }
