@@ -51,7 +51,7 @@ export function HeroSection() {
           </div>
           <div className="flex-1">
             <p className="font-serif text-lg font-bold text-foreground">We:Beat</p>
-            <p className="text-xs text-muted-foreground uppercase tracking-wider">D+365 함께한 날</p>
+            <p className="text-xs text-muted-foreground uppercase tracking-wider">함께한 날</p>
           </div>
           <button className="px-4 py-2 bg-primary border-2 border-secondary text-secondary font-bold text-sm uppercase tracking-wider hover:bg-accent transition-colors">
             Edit
