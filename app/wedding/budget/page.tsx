@@ -236,7 +236,7 @@ function BudgetPageContent() {
 
   // Handle delete expense
   const handleDeleteExpense = (id: string) => {
-    setExpenses(expenses.filter(e => e.id !== id))
+    deleteExpense(id)
     setSwipedId(null)
   }
 
