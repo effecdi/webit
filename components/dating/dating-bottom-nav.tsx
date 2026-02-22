@@ -29,7 +29,7 @@ export function DatingBottomNav() {
         <button
           onClick={() => router.back()}
           data-testid="button-back-nav"
-          className="w-[52px] h-[52px] rounded-full shadow-lg flex items-center justify-center flex-shrink-0 transition-transform duration-150 ease-out active:scale-[0.9]"
+          className="w-[66px] h-[66px] rounded-full shadow-lg flex items-center justify-center flex-shrink-0 transition-transform duration-150 ease-out active:scale-[0.9]"
           style={{
             background: isDark ? "rgba(28, 28, 30, 0.88)" : "rgba(249, 250, 251, 0.82)",
             backdropFilter: "blur(20px) saturate(180%)",
