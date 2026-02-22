@@ -12,27 +12,7 @@ interface TodoItem {
   tag?: string
 }
 
-const initialTodos: TodoItem[] = [
-  {
-    id: "1",
-    title: "드레스 투어 예약하기",
-    description: "강남/청담 지역 3곳",
-    completed: false,
-    tag: "D-120",
-  },
-  {
-    id: "2",
-    title: "스냅 촬영 업체 미팅",
-    description: "오후 3시 더스튜디오",
-    completed: false,
-  },
-  {
-    id: "3",
-    title: "식사 메뉴 논의하기",
-    description: "민준님과 함께",
-    completed: true,
-  },
-]
+const initialTodos: TodoItem[] = []
 
 export function WeveTodayTodo() {
   const [todos, setTodos] = useState(initialTodos)
