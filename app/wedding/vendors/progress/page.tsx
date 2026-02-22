@@ -92,6 +92,7 @@ export default function WeddingVendorsProgressPage() {
   const [error, setError] = useState<string | null>(null)
   const [expensesList, setExpensesList] = useState<Expense[]>([])
   const [isSaving, setIsSaving] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
   useEffect(() => {
     setMounted(true)
