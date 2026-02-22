@@ -217,14 +217,29 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
 
   const updateExpense = async (id: string, updates: Partial<Expense>) => {
     try {
+      const current = expenses.find(e => e.id === id)
+      if (!current) return
+
+      const merged = { ...current, ...updates }
+      const memoStr = buildMemoJson(merged)
+
       const patchBody: Record<string, unknown> = {
         id: parseInt(id),
-        ...updates
+        memo: memoStr,
       }
-      // Only include isPaid if status is explicitly provided
       if (updates.status !== undefined) {
         patchBody.isPaid = updates.status === 'paid'
       }
+      if (updates.amount !== undefined) {
+        patchBody.amount = updates.amount
+      }
+      if (updates.title !== undefined) {
+        patchBody.title = updates.title
+      }
+      if (updates.category !== undefined) {
+        patchBody.category = updates.category
+      }
+
       const res = await fetch('/api/expenses', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
