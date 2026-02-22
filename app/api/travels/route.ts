@@ -7,9 +7,16 @@ import { getCoupleUserIds } from '@/lib/couple-utils';
 
 export async function GET() {
   const auth = await requireAuth();
-  if (isUnauthorized(auth)) return auth;
-  const userId = auth.userId;
-  const coupleUserIds = await getCoupleUserIds(userId);
+  let userId: string;
+  let coupleUserIds: string[];
+
+  if (isUnauthorized(auth)) {
+    userId = 'guest-wedding';
+    coupleUserIds = [userId];
+  } else {
+    userId = auth.userId;
+    coupleUserIds = await getCoupleUserIds(userId);
+  }
 
   try {
     const result = await db.select().from(travels)
