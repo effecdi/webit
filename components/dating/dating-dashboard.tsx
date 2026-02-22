@@ -350,8 +350,14 @@ export function DatingDashboard() {
       if (moodData.myMood) setMyMood(moodData.myMood);
       if (moodData.partnerMood) setPartnerMood(moodData.partnerMood);
 
+      const todosArr = Array.isArray(todosData) ? todosData : [];
+      const notifArr = Array.isArray(notificationsData) ? notificationsData : [];
+      const travelsArr = Array.isArray(travelsData) ? travelsData : [];
+      const photosArr = Array.isArray(photosData) ? photosData : [];
+      const eventsArr = Array.isArray(eventsData) ? eventsData : [];
+
       setTodos(
-        todosData.map(
+        todosArr.map(
           (t: {
             id: number;
             text: string;
@@ -366,7 +372,7 @@ export function DatingDashboard() {
         ),
       );
       setNotifications(
-        notificationsData.map(
+        notifArr.map(
           (n: {
             id: number;
             type: string;
@@ -382,9 +388,9 @@ export function DatingDashboard() {
           }),
         ),
       );
-      setTravels(travelsData);
-      setPhotoCount(photosData.length);
-      setEventCount(eventsData.length);
+      setTravels(travelsArr);
+      setPhotoCount(photosArr.length);
+      setEventCount(eventsArr.length);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
