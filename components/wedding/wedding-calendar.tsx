@@ -12,13 +12,7 @@ interface Event {
   time?: string
 }
 
-const DUMMY_EVENTS: Event[] = [
-  { id: "1", title: "웨딩홀 계약", date: "2025-02-08", type: "both", time: "14:00" },
-  { id: "2", title: "드레스 피팅", date: "2025-02-12", type: "bride", time: "11:00" },
-  { id: "3", title: "예복 맞춤", date: "2025-02-15", type: "groom", time: "15:00" },
-  { id: "4", title: "스드메 촬영", date: "2025-02-20", type: "both", time: "09:00" },
-  { id: "5", title: "본식", date: "2025-06-15", type: "wedding", time: "14:00" },
-]
+const DUMMY_EVENTS: Event[] = []
 
 const EVENT_COLORS = {
   wedding: "bg-[#D4AF37]",
