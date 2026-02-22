@@ -42,7 +42,7 @@ export function FamilyBottomNav() {
         </button>
       )}
       <nav
-        className="relative rounded-[25px] shadow-lg flex-1"
+        className="relative rounded-[50px] shadow-lg flex-1"
         style={{
           background: isDark ? "rgba(28, 28, 30, 0.88)" : "rgba(249, 250, 251, 0.82)",
           backdropFilter: "blur(20px) saturate(180%)",
