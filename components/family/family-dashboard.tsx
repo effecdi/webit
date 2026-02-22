@@ -10,15 +10,9 @@ const QUICK_ACTIONS = [
   { icon: Book, label: "추억 보기", color: "bg-amber-500", href: "/family/archive" },
 ]
 
-const TODAY_EVENTS = [
-  { time: "09:00", title: "부동산 계약 상담", category: "함께" },
-  { time: "18:30", title: "저녁 외식 - 이탈리안", category: "데이트" },
-]
+const TODAY_EVENTS: { time: string; title: string; category: string }[] = []
 
-const RECENT_MEMORIES = [
-  { id: 1, title: "신혼여행", date: "2025.12.25", count: 48 },
-  { id: 2, title: "결혼식", date: "2025.12.20", count: 156 },
-]
+const RECENT_MEMORIES: { id: number; title: string; date: string; count: number }[] = []
 
 export function FamilyDashboard() {
   const [greeting] = useState(() => {
