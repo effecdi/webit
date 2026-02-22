@@ -15,6 +15,7 @@ import {
   MoreHorizontal,
   Download,
   Sparkles,
+  X,
   Mail,
   Mic,
   Video,
