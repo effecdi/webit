@@ -4,46 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { Play } from "lucide-react"
 import Link from "next/link"
 
-const MEMORY_CARDS = [
-  {
-    id: "dating-2024",
-    title: "연애 시절",
-    subtitle: "우리의 시작",
-    date: "2024년 3월",
-    photos: [
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80",
-      "https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=80",
-      "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80",
-      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800&q=80",
-      "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=800&q=80",
-    ],
-  },
-  {
-    id: "wedding-prep-2025",
-    title: "결혼 준비",
-    subtitle: "함께 준비한 날들",
-    date: "2025년 1월",
-    photos: [
-      "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80",
-      "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80",
-      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80",
-      "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=80",
-      "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80",
-    ],
-  },
-  {
-    id: "honeymoon-2025",
-    title: "신혼여행",
-    subtitle: "몰디브에서",
-    date: "2025년 12월 10일",
-    photos: [
-      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
-      "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80",
-      "https://images.unsplash.com/photo-1540202404-a2f29016b523?w=800&q=80",
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
-    ],
-  },
-]
+const MEMORY_CARDS: { id: string; title: string; subtitle: string; date: string; photos: string[] }[] = []
 
 function MemoryCard({ card }: { card: typeof MEMORY_CARDS[0] }) {
   const [currentIndex, setCurrentIndex] = useState(0)
