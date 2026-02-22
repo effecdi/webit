@@ -27,7 +27,7 @@ import {
   Settings
 } from "lucide-react"
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
-import { useBudget, type Expense } from "@/contexts/budget-context"
+import { useBudget, type Expense, type PaymentRecord } from "@/contexts/budget-context"
 
 const categoryIcons: Record<string, { icon: React.ReactNode; bg: string }> = {
   "예식장": { icon: <Building2 className="w-5 h-5" />, bg: "bg-pink-100 text-pink-500" },
