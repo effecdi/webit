@@ -97,7 +97,7 @@ export function MagazineGrid() {
             
             {feature.size === "large" && (
               <div className="mt-4 flex items-center gap-2">
-                <span className="bg-secondary text-secondary-foreground px-2 py-1 text-[10px] font-bold uppercase">248 Photos</span>
+                <span className="bg-secondary text-secondary-foreground px-2 py-1 text-[10px] font-bold uppercase">Photos</span>
                 <span className="bg-secondary/20 text-foreground px-2 py-1 text-[10px] font-bold uppercase border border-secondary">View All</span>
               </div>
             )}
