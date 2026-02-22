@@ -26,7 +26,7 @@ export function DatingHero() {
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80')`,
+          background: `linear-gradient(135deg, #FFE4EC 0%, #E4F0FF 100%)`,
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
