@@ -33,9 +33,9 @@ export function WeddingHeader() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"
+          src="/placeholder.svg"
           alt="Wedding"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover bg-gradient-to-br from-pink-100 to-purple-100"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-background" />
       </div>
