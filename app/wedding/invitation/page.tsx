@@ -261,6 +261,11 @@ export default function InvitationGalleryPage() {
     setIsLoadingInvitations(true)
     try {
       const res = await fetch("/api/invitations")
+      if (res.status === 401) {
+        showToastMessage("로그인이 필요합니다")
+        setTimeout(() => router.push("/login"), 1200)
+        return
+      }
       if (res.ok) {
         const data = await res.json()
         setSavedInvitations(data)
