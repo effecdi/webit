@@ -3,8 +3,8 @@
 import React, { useState } from "react"
 import Link from "next/link"
 import WheelDatePicker from "@/components/ui/wheel-date-picker"
-import { 
-  Plus, 
+import {
+  Plus,
   X,
   Check,
   Circle,
@@ -17,25 +17,33 @@ import {
   Shirt,
   Camera,
   Mail,
-  Plane,
   Gift,
-  Home,
+  Users,
+  Mic,
+  Video,
+  Film,
+  Sparkles,
   MoreHorizontal
 } from "lucide-react"
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
 import { useChecklist, type ChecklistItem } from "@/contexts/checklist-context"
 
-const categories = ["전체", "예식장", "드레스", "스튜디오", "스냅", "청첩장", "허니문", "예물", "혼수", "기타"]
+const categories = ["전체", "웨딩홀", "스튜디오", "드레스", "2부드레스", "메이크업", "예복", "예물", "본식스냅", "DVD", "식전영상", "식중영상", "청첩장", "사회자", "기타"]
 
 const categoryIcons: Record<string, { icon: React.ReactNode; bg: string }> = {
-  "예식장": { icon: <Building2 className="w-4 h-4" />, bg: "bg-pink-100 text-pink-500" },
-  "드레스": { icon: <Shirt className="w-4 h-4" />, bg: "bg-purple-100 text-purple-500" },
+  "웨딩홀": { icon: <Building2 className="w-4 h-4" />, bg: "bg-pink-100 text-pink-500" },
   "스튜디오": { icon: <Camera className="w-4 h-4" />, bg: "bg-indigo-100 text-indigo-500" },
-  "스냅": { icon: <Camera className="w-4 h-4" />, bg: "bg-cyan-100 text-cyan-500" },
-  "청첩장": { icon: <Mail className="w-4 h-4" />, bg: "bg-rose-100 text-rose-500" },
-  "허니문": { icon: <Plane className="w-4 h-4" />, bg: "bg-blue-100 text-blue-500" },
+  "드레스": { icon: <Shirt className="w-4 h-4" />, bg: "bg-purple-100 text-purple-500" },
+  "2부드레스": { icon: <Shirt className="w-4 h-4" />, bg: "bg-fuchsia-100 text-fuchsia-500" },
+  "메이크업": { icon: <Sparkles className="w-4 h-4" />, bg: "bg-rose-100 text-rose-500" },
+  "예복": { icon: <Shirt className="w-4 h-4" />, bg: "bg-slate-100 text-slate-500" },
   "예물": { icon: <Gift className="w-4 h-4" />, bg: "bg-amber-100 text-amber-500" },
-  "혼수": { icon: <Home className="w-4 h-4" />, bg: "bg-green-100 text-green-500" },
+  "본식스냅": { icon: <Camera className="w-4 h-4" />, bg: "bg-cyan-100 text-cyan-500" },
+  "DVD": { icon: <Film className="w-4 h-4" />, bg: "bg-violet-100 text-violet-500" },
+  "식전영상": { icon: <Video className="w-4 h-4" />, bg: "bg-teal-100 text-teal-500" },
+  "식중영상": { icon: <Video className="w-4 h-4" />, bg: "bg-emerald-100 text-emerald-500" },
+  "청첩장": { icon: <Mail className="w-4 h-4" />, bg: "bg-blue-100 text-blue-500" },
+  "사회자": { icon: <Mic className="w-4 h-4" />, bg: "bg-orange-100 text-orange-500" },
   "기타": { icon: <MoreHorizontal className="w-4 h-4" />, bg: "bg-gray-100 text-gray-500" },
 }
 
