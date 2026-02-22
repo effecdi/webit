@@ -43,7 +43,7 @@ export function HeroSection() {
         <div className="p-4 flex items-center gap-4 border-t-3 border-secondary">
           <div className="flex -space-x-4">
             <div className="w-14 h-14 rounded-full bg-primary border-3 border-secondary flex items-center justify-center text-secondary font-serif font-bold text-lg z-10">
-              민지
+              -
             </div>
             <div className="w-14 h-14 rounded-full bg-accent border-3 border-secondary flex items-center justify-center text-secondary font-serif font-bold text-lg">
               준호
