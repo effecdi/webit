@@ -254,8 +254,8 @@ export function DatingDashboard() {
   };
 
   useEffect(() => {
-    const myName = localStorage.getItem("survey_myName") || "민지";
-    const partnerName = localStorage.getItem("survey_partnerName") || "준호";
+    const myName = localStorage.getItem("survey_myName") || "";
+    const partnerName = localStorage.getItem("survey_partnerName") || "";
     const savedDate = localStorage.getItem("survey_firstMeetDate");
     const myBirthday = localStorage.getItem("survey_myBirthday");
     const partnerBirthday = localStorage.getItem("survey_partnerBirthday");
