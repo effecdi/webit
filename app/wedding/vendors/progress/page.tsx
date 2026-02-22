@@ -310,10 +310,10 @@ export default function WeddingVendorsProgressPage() {
               <p className="text-[13px] text-[#8B95A1]">전체 진행률</p>
               <p className="text-[22px] font-bold text-[#191F28]">{decidedCount}<span className="text-[15px] font-normal text-[#8B95A1]"> / {totalCategories}</span></p>
             </div>
-            <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{
-              background: `conic-gradient(#3182F6 ${progressPercent}%, #F2F4F6 ${progressPercent}%)`,
+            <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{
+              background: `conic-gradient(rgb(49, 130, 246) ${progressPercent}%, rgb(75, 75, 75) ${progressPercent}%)`,
             }}>
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[13px] font-bold text-[#3182F6]">
+              <div className="w-[52px] h-[52px] rounded-full bg-white flex items-center justify-center text-[14px] font-bold text-[#3182F6]">
                 {progressPercent}%
               </div>
             </div>
