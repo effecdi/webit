@@ -175,22 +175,38 @@ function BudgetPageContent() {
   const handlePartialPayment = () => {
     if (!selectedExpense || !partialPayment) return
     const paymentAmount = Number(partialPayment.replace(/,/g, ""))
+    if (paymentAmount <= 0) return
+
     const newBalance = (selectedExpense.balance || 0) - paymentAmount
     const newDeposit = (selectedExpense.deposit || 0) + paymentAmount
 
+    const newRecord: PaymentRecord = {
+      amount: paymentAmount,
+      date: new Date().toISOString().split("T")[0],
+      memo: "중간결제",
+    }
+    const updatedPayments = [...(selectedExpense.payments || []), newRecord]
+
     if (newBalance <= 0) {
       // Fully paid
-      handleFullPayment()
+      updateExpense(selectedExpense.id, {
+        status: "paid",
+        deposit: selectedExpense.amount,
+        balance: 0,
+        date: new Date().toISOString().split("T")[0],
+        method: "card",
+        payments: updatedPayments,
+      })
     } else {
-      setExpenses(expenses.map(e => 
-        e.id === selectedExpense.id 
-          ? { ...e, deposit: newDeposit, balance: newBalance }
-          : e
-      ))
-      setShowDetailModal(false)
-      setPartialPayment("")
-      setSelectedExpense(null)
+      updateExpense(selectedExpense.id, {
+        deposit: newDeposit,
+        balance: newBalance,
+        payments: updatedPayments,
+      })
     }
+    setShowDetailModal(false)
+    setPartialPayment("")
+    setSelectedExpense(null)
   }
 
   // Handle full payment (전체 결제 완료)
