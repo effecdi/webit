@@ -44,7 +44,8 @@
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && git push origin main 2>&1)",
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npx next build 2>&1)",
       "Bash(grep -r \"ISSUER_URL\\\\|REPL_ID\\\\|NEXT_PUBLIC_APP_URL\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow --include=\"*.ts\" --include=\"*.js\" --include=\"*.env*\" 2>/dev/null | head -20)",
-      "Bash(grep -r \"ISSUER_URL\\\\|REPL_ID\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow --include=\"*.ts\" --include=\"*.js\" 2>/dev/null | grep -v node_modules)"
+      "Bash(grep -r \"ISSUER_URL\\\\|REPL_ID\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow --include=\"*.ts\" --include=\"*.js\" 2>/dev/null | grep -v node_modules)",
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && git add -A && git commit -m \"$\\(cat <<'EOF'\nFix logout 500 error with bulletproof route handler\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git push)"
     ]
   }
 }
