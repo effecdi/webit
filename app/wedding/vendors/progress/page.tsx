@@ -427,6 +427,7 @@ export default function WeddingVendorsProgressPage() {
                     const payments = parsePaymentMemo(expense?.memo ?? null)
                     const info = getStatusInfo(vendor.status)
                     const isContract = vendor.status === "contracted" || vendor.status === "pre_contract" || vendor.status === "done"
+                    const total = calcTotal(payments.deposit, payments.balance)
                     return (
                       <div key={vendor.id} className="bg-[#F9FAFB] rounded-[16px] p-4 space-y-3">
                         {/* Vendor Row */}
@@ -439,14 +440,12 @@ export default function WeddingVendorsProgressPage() {
 
                         {isContract && (
                           <>
-                            {/* Payment */}
+                            {/* Total + Paid */}
                             <div className="flex items-center justify-between bg-white rounded-[12px] p-3">
                               <div>
-                                <p className="text-[11px] text-[#8B95A1]">총 비용</p>
-                                <p className="text-[15px] font-bold text-[#191F28]">
-                                  {expense?.amount && Number(expense.amount) > 0
-                                    ? `${Number(expense.amount).toLocaleString()}원`
-                                    : "-"}
+                                <p className="text-[11px] text-[#8B95A1]">총 비용 (자동 계산)</p>
+                                <p className="text-[17px] font-bold text-[#191F28]">
+                                  {total > 0 ? `${total.toLocaleString()}원` : "-"}
                                 </p>
                               </div>
                               <button
@@ -480,6 +479,54 @@ export default function WeddingVendorsProgressPage() {
                                   className="w-full px-3 py-2 rounded-[10px] bg-white border-0 text-[13px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
                                   placeholder="예: 700,000"
                                 />
+                              </div>
+                            </div>
+
+                            {/* Payment Method */}
+                            <div>
+                              <p className="text-[11px] text-[#8B95A1] mb-1.5">결제 수단</p>
+                              <div className="flex gap-2">
+                                {[
+                                  { key: "card", label: "카드" },
+                                  { key: "cash", label: "현금" },
+                                  { key: "transfer", label: "이체" },
+                                ].map((m) => (
+                                  <button
+                                    key={m.key}
+                                    onClick={() => handlePaymentUpdate(vendor, { field: "method", value: payments.method === m.key ? "" : m.key })}
+                                    className={`flex-1 py-2 rounded-[10px] text-[12px] font-medium transition-colors ${
+                                      payments.method === m.key
+                                        ? "bg-[#3182F6] text-white"
+                                        : "bg-white text-[#4E5968]"
+                                    }`}
+                                  >
+                                    {m.label}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Paid By */}
+                            <div>
+                              <p className="text-[11px] text-[#8B95A1] mb-1.5">비용 부담</p>
+                              <div className="flex gap-2">
+                                {[
+                                  { key: "groom", label: "신랑쪽" },
+                                  { key: "bride", label: "신부쪽" },
+                                  { key: "both", label: "공동" },
+                                ].map((p) => (
+                                  <button
+                                    key={p.key}
+                                    onClick={() => handlePaymentUpdate(vendor, { field: "paidBy", value: payments.paidBy === p.key ? "" : p.key })}
+                                    className={`flex-1 py-2 rounded-[10px] text-[12px] font-medium transition-colors ${
+                                      payments.paidBy === p.key
+                                        ? "bg-[#3182F6] text-white"
+                                        : "bg-white text-[#4E5968]"
+                                    }`}
+                                  >
+                                    {p.label}
+                                  </button>
+                                ))}
                               </div>
                             </div>
 
