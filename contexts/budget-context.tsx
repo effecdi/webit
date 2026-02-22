@@ -189,11 +189,15 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
       if (updates.status !== undefined) {
         patchBody.isPaid = updates.status === 'paid'
       }
-      await fetch('/api/expenses', {
+      const res = await fetch('/api/expenses', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(patchBody)
       })
+      if (!res.ok) {
+        console.error('Failed to update expense:', res.status)
+        return
+      }
       setExpenses(prev => prev.map(e => e.id === id ? { ...e, ...updates } : e))
     } catch (error) {
       console.error('Error updating expense:', error)
