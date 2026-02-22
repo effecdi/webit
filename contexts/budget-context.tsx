@@ -156,6 +156,10 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
           mode: 'wedding'
         })
       })
+      if (!res.ok) {
+        console.error('Failed to add expense:', res.status)
+        return
+      }
       const newExpense = await res.json()
       setExpenses(prev => [{
         id: String(newExpense.id),
