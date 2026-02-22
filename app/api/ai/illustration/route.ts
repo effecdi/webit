@@ -12,7 +12,7 @@ async function generateWithGeminiFlash(
   baseUrl: string,
   parts: Array<Record<string, unknown>>
 ): Promise<string | null> {
-  const url = `${baseUrl}/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`;
+  const url = `${baseUrl}/models/gemini-2.0-flash-exp-image-generation:generateContent?key=${apiKey}`;
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
