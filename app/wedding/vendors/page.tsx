@@ -8,6 +8,7 @@ import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
 import { BottomSheet } from "@/components/ui/bottom-sheet"
 import { 
   Plus,
+  X,
   Star,
   StarOff,
   Building2,
