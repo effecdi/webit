@@ -365,7 +365,7 @@ export function FamilyWeveDashboard() {
         <div className="bg-white rounded-[24px] p-5 shadow-weve">
           <div className="flex items-center gap-4">
             <div className="flex -space-x-2">
-              <div className="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center border-2 border-white">
+              <div className="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center border-2">
                 <Heart className="w-6 h-6 text-pink-400" />
               </div>
               <div className="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center border-2">
