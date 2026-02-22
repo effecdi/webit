@@ -91,7 +91,7 @@ export function WeddingDashboard() {
   const [showNotifications, setShowNotifications] = useState(false)
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [travels, setTravels] = useState<Travel[]>([])
-  const [coupleNames, setCoupleNames] = useState({ my: "현정", partner: "주호" })
+  const [coupleNames, setCoupleNames] = useState({ my: "", partner: "" })
   const [daysTogether, setDaysTogether] = useState(0)
   const [weddingDate, setWeddingDate] = useState(WEDDING_DATE)
   const [venueName, setVenueName] = useState("예식장 미정")
