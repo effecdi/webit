@@ -247,7 +247,7 @@ export default function TravelListPage() {
                     value={newTrip.endDate}
                     onChange={(val) => setNewTrip({ ...newTrip, endDate: val })}
                     placeholder="도착일 선택"
-                    className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                    className="!px-4 !py-3.5 !rounded-[12px] !text-[15px]"
                     label="도착일"
                   />
                 </div>
