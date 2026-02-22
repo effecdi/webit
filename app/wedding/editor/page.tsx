@@ -1020,6 +1020,9 @@ function InvitationEditorContent() {
                 setCurrentShareId(result.shareId);
               }
             }
+          } else if (res.status === 404) {
+            console.warn(`Invitation ${currentInvitationId} not found, starting fresh`);
+            setCurrentInvitationId(null);
           }
         } else {
           const res = await fetch("/api/invitation");
