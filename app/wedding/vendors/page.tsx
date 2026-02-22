@@ -504,11 +504,154 @@ export default function WeddingVendorsPage() {
             <div className="px-4 py-8 text-center text-[13px] text-[#8B95A1]">
               아직 {activeCategory} 후보가 없어요.
               <br />
-              위에서 업체 정보를 추가해 주세요.
+              아래 + 버튼으로 업체를 추가해 주세요.
             </div>
           )}
         </section>
       </main>
+
+      {/* FAB + Button */}
+      <button
+        onClick={() => setShowAddSheet(true)}
+        className="fixed bottom-24 right-5 w-14 h-14 bg-[#3182F6] hover:bg-[#1B64DA] rounded-full shadow-lg flex items-center justify-center z-40 transition-colors"
+      >
+        <Plus className="w-6 h-6 text-white" />
+      </button>
+
+      {/* Add Vendor BottomSheet */}
+      <BottomSheet
+        open={showAddSheet}
+        onOpenChange={setShowAddSheet}
+        className="bg-white dark:bg-[#1C1C1E] z-[9999]"
+        overlayClassName="z-[9999]"
+      >
+        <div className="px-5 pt-2 pb-8 space-y-4 max-h-[80vh] overflow-y-auto">
+          <div className="flex items-center justify-between">
+            <h2 className="text-[17px] font-bold text-[#191F28]">업체 후보 추가</h2>
+            <button onClick={() => setShowAddSheet(false)}>
+              <X className="w-5 h-5 text-[#8B95A1]" />
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            <div className="space-y-2">
+              <label className="text-[12px] text-[#8B95A1]">카테고리</label>
+              <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setNewVendor((prev) => ({ ...prev, category: cat }))}
+                    className={`px-3 py-1.5 rounded-full text-[12px] font-medium whitespace-nowrap transition-all ${
+                      newVendor.category === cat
+                        ? "bg-[#3182F6] text-white"
+                        : "bg-[#F2F4F6] text-[#4E5968]"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-[12px] text-[#8B95A1]">업체명</label>
+              <input
+                type="text"
+                value={newVendor.name}
+                onChange={(e) => setNewVendor({ ...newVendor, name: e.target.value })}
+                className="w-full rounded-[12px] border border-[#E5E8EB] px-3 py-2 text-[14px] focus:outline-none focus:border-[#3182F6]"
+                placeholder="예) 에스톤웨딩홀"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[12px] text-[#8B95A1]">예상 비용</label>
+              <input
+                type="text"
+                value={newVendor.price}
+                onChange={(e) => {
+                  const v = e.target.value.replace(/[^0-9]/g, "")
+                  setNewVendor({ ...newVendor, price: v ? Number(v).toLocaleString() : "" })
+                }}
+                className="w-full rounded-[12px] border border-[#E5E8EB] px-3 py-2 text-[14px] focus:outline-none focus:border-[#3182F6]"
+                placeholder="숫자만 입력 (선택)"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[12px] text-[#8B95A1]">가격 메모</label>
+              <textarea
+                value={newVendor.notes}
+                onChange={(e) => setNewVendor({ ...newVendor, notes: e.target.value })}
+                className="w-full rounded-[12px] border border-[#E5E8EB] px-3 py-2 text-[13px] min-h-[60px] focus:outline-none focus:border-[#3182F6]"
+                placeholder="상세 견적, 옵션, 조건 등을 자유롭게 적어두세요."
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[12px] text-[#8B95A1]">선호도</label>
+              <div className="flex items-center gap-2">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <button
+                    key={i}
+                    onClick={() => setNewVendor({ ...newVendor, preference: i })}
+                    className="w-7 h-7 flex items-center justify-center"
+                  >
+                    <Star
+                      className={`w-5 h-5 ${
+                        i <= newVendor.preference ? "text-[#FFB020]" : "text-[#E5E8EB]"
+                      }`}
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-[12px] text-[#8B95A1]">계약 상태</label>
+              <select
+                value={newVendor.contractStatus}
+                onChange={(e) =>
+                  setNewVendor({
+                    ...newVendor,
+                    contractStatus: e.target.value as "미계약" | "가계약" | "계약" | "고민중",
+                  })
+                }
+                className="w-full rounded-[12px] border border-[#E5E8EB] px-3 py-2 text-[14px] bg-white focus:outline-none focus:border-[#3182F6]"
+              >
+                <option value="미계약">미계약</option>
+                <option value="가계약">가계약</option>
+                <option value="계약">계약</option>
+                <option value="고민중">고민중</option>
+              </select>
+            </div>
+            <div className="space-y-2">
+              <label className="text-[12px] text-[#8B95A1]">장점 / 단점 / 특이사항</label>
+              <textarea
+                value={newVendor.pros}
+                onChange={(e) => setNewVendor({ ...newVendor, pros: e.target.value })}
+                className="w-full rounded-[12px] border border-[#E5E8EB] px-3 py-2 text-[13px] min-h-[60px] focus:outline-none focus:border-[#3182F6]"
+                placeholder="- 강점, 혜택, 느낌 등 자유롭게 적기"
+              />
+              <textarea
+                value={newVendor.cons}
+                onChange={(e) => setNewVendor({ ...newVendor, cons: e.target.value })}
+                className="w-full rounded-[12px] border border-[#E5E8EB] px-3 py-2 text-[13px] min-h-[60px] focus:outline-none focus:border-[#3182F6]"
+                placeholder="- 아쉬운 점, 고민 포인트 등"
+              />
+            </div>
+            <button
+              onClick={() => {
+                handleAddVendor()
+                setShowAddSheet(false)
+              }}
+              disabled={!newVendor.name || isSaving}
+              className="w-full flex items-center justify-center gap-2 py-3.5 rounded-[14px] bg-[#3182F6] text-white text-[15px] font-semibold disabled:opacity-50"
+            >
+              <Plus className="w-4 h-4" />
+              업체 후보 추가
+            </button>
+            {error && (
+              <p className="text-[12px] text-red-500 text-center">{error}</p>
+            )}
+          </div>
+        </div>
+      </BottomSheet>
 
       <WeddingBottomNav />
     </div>
