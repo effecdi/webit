@@ -426,12 +426,11 @@ export default function ChecklistPage() {
           {/* Due Date */}
           <div>
             <label className="block text-[13px] font-medium text-[#4E5968] mb-2">마감일</label>
-            <WheelDatePicker
+            <input
+              type="date"
               value={editForm.dueDate}
-              onChange={(val) => setEditForm({ ...editForm, dueDate: val })}
-              placeholder="마감일 선택"
-              className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
-              label="마감일"
+              onChange={(e) => setEditForm({ ...editForm, dueDate: e.target.value })}
+              className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#3182F6] appearance-none"
             />
           </div>
 
