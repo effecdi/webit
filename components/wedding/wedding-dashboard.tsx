@@ -76,7 +76,7 @@ const quickActions = [
   { id: "4", icon: Sparkles, label: "웨딩 굿즈", href: "/wedding/goods", color: "bg-amber-100 text-amber-500" },
 ]
 
-const categories = ["예식장", "드레스", "스튜디오", "스냅", "청첩장", "허니문", "예물", "혼수", "기타"]
+const categories = ["웨딩홀", "스튜디오", "드레스", "2부드레스", "메이크업", "예복", "예물", "본식스냅", "DVD", "식전영상", "식중영상", "청첩장", "사회자", "기타"]
 
 interface Travel {
   id: number
