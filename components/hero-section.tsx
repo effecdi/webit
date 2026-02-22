@@ -46,7 +46,7 @@ export function HeroSection() {
               -
             </div>
             <div className="w-14 h-14 rounded-full bg-accent border-3 border-secondary flex items-center justify-center text-secondary font-serif font-bold text-lg">
-              준호
+              -
             </div>
           </div>
           <div className="flex-1">
