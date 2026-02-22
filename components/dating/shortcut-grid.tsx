@@ -28,7 +28,7 @@ const SHORTCUTS = [
     icon: Plane,
     href: "/dating/gallery",
     color: "bg-[#F0E4FF]",
-    badge: "D-12",
+    badge: "",
     badgeColor: "bg-[#9D6BFF]",
   },
 ];
