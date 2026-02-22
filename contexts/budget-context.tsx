@@ -146,7 +146,7 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
             vendorId?: number | null
             vendorName?: string | null
           }) => {
-            let parsed: { deposit?: string; balance?: string; note?: string; method?: string; paidBy?: string } = {}
+            let parsed: { deposit?: string; balance?: string; note?: string; method?: string; paidBy?: string; payments?: PaymentRecord[]; dueDate?: string; reminder?: boolean } = {}
             try { if (e.memo) parsed = JSON.parse(e.memo) } catch { /* not JSON, ignore */ }
             return {
               id: String(e.id),
@@ -162,6 +162,9 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
               deposit: parseNum(parsed.deposit),
               balance: parseNum(parsed.balance),
               memo: parsed.note || (typeof parsed.deposit === "undefined" ? e.memo : ""),
+              payments: Array.isArray(parsed.payments) ? parsed.payments : [],
+              dueDate: parsed.dueDate || undefined,
+              reminder: parsed.reminder !== undefined ? parsed.reminder : undefined,
             }
           }
         )
