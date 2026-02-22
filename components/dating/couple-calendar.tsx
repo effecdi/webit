@@ -496,7 +496,7 @@ export function CoupleCalendar() {
                       setNewSchedule({ ...newSchedule, time: val })
                     }
                     placeholder="시간 선택"
-                    className="!px-4 !py-3 !bg-[#F2F4F6] !rounded-[12px] !text-[15px] !border-0"
+                    className="!px-4 !py-3 !rounded-[12px] !text-[15px] !border-0"
                   />
                 </div>
                 <div>
