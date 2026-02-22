@@ -255,16 +255,6 @@ export default function WeddingVendorsProgressPage() {
         const updated = await res.json()
         setExpensesList((prev) => prev.map((e) => (e.id === updated.id ? updated : e)))
       }
-      const vendorStatus = nextPaid ? "done" : "contracted"
-      const resVendor = await fetch("/api/wedding/vendors", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: vendor.id, status: vendorStatus }),
-      })
-      if (resVendor.ok) {
-        const updatedVendor = await resVendor.json()
-        setVendors((prev) => prev.map((v) => (v.id === updatedVendor.id ? updatedVendor : v)))
-      }
     } catch (e) {
       console.error("Failed to toggle paid status:", e)
     } finally {
