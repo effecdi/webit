@@ -86,6 +86,7 @@ export default function WeddingVendorsPage() {
     notes: "",
     contractStatus: "미계약" as "미계약" | "가계약" | "계약" | "고민중",
   })
+  const [showAddSheet, setShowAddSheet] = useState(false)
 
   useEffect(() => {
     setMounted(true)
