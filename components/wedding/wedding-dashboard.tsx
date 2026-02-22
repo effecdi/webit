@@ -101,7 +101,7 @@ export function WeddingDashboard() {
   const [newExpense, setNewExpense] = useState({
     title: "",
     amount: "",
-    category: "예식장",
+    category: "웨딩홀",
     payer: "shared" as "groom" | "bride" | "shared" | "parents",
     method: "card" as "cash" | "card" | "transfer",
   })
@@ -241,7 +241,7 @@ export function WeddingDashboard() {
     setNewExpense({
       title: "",
       amount: "",
-      category: "예식장",
+      category: "웨딩홀",
       payer: "shared",
       method: "card",
     })
