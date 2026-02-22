@@ -67,7 +67,7 @@ export function WeveTodayTodo() {
         <div className="h-1.5 bg-[#F5F5F5] rounded-full overflow-hidden">
           <div 
             className="h-full bg-[#D4836B] rounded-full transition-all duration-500"
-            style={{ width: `${(completedCount / totalCount) * 100}%` }}
+            style={{ width: `${totalCount > 0 ? (completedCount / totalCount) * 100 : 0}%` }}
           />
         </div>
       </div>
