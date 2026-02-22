@@ -184,18 +184,6 @@ export default function ChecklistPage() {
 
   return (
     <div className="min-h-screen bg-[#F2F4F6] pb-nav-safe">
-      {/* Header */}
-      <header className="sticky top-0 sticky-header-safe z-50 bg-white border-b border-[#E5E8EB]">
-        <div className="flex items-center justify-between px-5 h-14">
-          <h1 className="text-[17px] font-bold text-[#191F28]">체크리스트</h1>
-          <button
-            onClick={() => setShowAddModal(true)}
-            className="w-10 h-10 flex items-center justify-center"
-          >
-            <Plus className="w-6 h-6 text-[#191F28]" />
-          </button>
-        </div>
-      </header>
 
       <main className="px-5 py-5 max-w-md mx-auto space-y-5">
         {/* Progress Card */}
