@@ -81,15 +81,6 @@ function BudgetPageContent() {
   const [swipedId, setSwipedId] = useState<string | null>(null)
   const [partialPayment, setPartialPayment] = useState("")
   const [budgetInput, setBudgetInput] = useState("")
-  const [editForm, setEditForm] = useState<{
-    title: string
-    amount: string
-    category: string
-    date: string
-    payer: string
-    method: string
-    memo: string
-  } | null>(null)
   
   const searchParams = useSearchParams()
   
