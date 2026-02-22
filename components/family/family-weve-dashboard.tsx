@@ -368,7 +368,7 @@ export function FamilyWeveDashboard() {
               <div className="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center border-2 border-white">
                 <Heart className="w-6 h-6 text-pink-400" />
               </div>
-              <div className="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center border-2 border-white">
+              <div className="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center border-2">
                 <Home className="w-6 h-6 text-[#d63bf2]" />
               </div>
             </div>

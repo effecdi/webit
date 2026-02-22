@@ -36,7 +36,8 @@
       "Bash(find \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow/app/api\" -type f -name \"*.ts\" 2>/dev/null | head -20)",
       "Bash(grep -r \"중간결제\\\\|intermediate\\\\|partial.?payment\\\\|deposit\\\\|balance\" \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | head -30)",
       "Bash(grep -r \"결제\\\\|payment\\\\|deposit\\\\|balance\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/lib --include=\"*.ts\" --include=\"*.tsx\" 2>/dev/null | head -20)",
-      "Bash(grep -rl \"expense\\\\|budget\\\\|예산\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/components --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | sort | uniq)"
+      "Bash(grep -rl \"expense\\\\|budget\\\\|예산\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/components --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | sort | uniq)",
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && git add contexts/budget-context.tsx app/wedding/budget/page.tsx && git commit -m \"$\\(cat <<'EOF'\n중간결제 데이터 DB 저장 및 총금액 반영\n\n- 중간결제/전체결제 시 updateExpense로 DB에 영구 저장\n- PaymentRecord로 결제 이력\\(계약금, 중간결제, 잔금완납\\) 추적\n- memo JSON에 payments/dueDate/reminder 직렬화/역직렬화\n- addExpense도 context 메서드 사용하여 DB 저장\n- 상세 모달에 결제 내역 히스토리 표시\n- paid/scheduled 상태별 모달 UI 분기\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
