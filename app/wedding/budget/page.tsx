@@ -212,19 +212,23 @@ function BudgetPageContent() {
   // Handle full payment (전체 결제 완료)
   const handleFullPayment = () => {
     if (!selectedExpense) return
-    setExpenses(expenses.map(e => 
-      e.id === selectedExpense.id 
-        ? { 
-            ...e, 
-            status: "paid", 
-            deposit: undefined, 
-            balance: undefined, 
-            dueDate: undefined,
-            date: new Date().toISOString().split("T")[0],
-            method: "card"
-          }
-        : e
-    ))
+
+    const remainingBalance = selectedExpense.balance || selectedExpense.amount
+    const newRecord: PaymentRecord = {
+      amount: remainingBalance,
+      date: new Date().toISOString().split("T")[0],
+      memo: "잔금 완납",
+    }
+    const updatedPayments = [...(selectedExpense.payments || []), newRecord]
+
+    updateExpense(selectedExpense.id, {
+      status: "paid",
+      deposit: selectedExpense.amount,
+      balance: 0,
+      date: new Date().toISOString().split("T")[0],
+      method: "card",
+      payments: updatedPayments,
+    })
     setShowDetailModal(false)
     setSelectedExpense(null)
     setSwipedId(null)
