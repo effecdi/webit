@@ -183,6 +183,8 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
 
   const addExpense = async (expense: Expense) => {
     try {
+      const memoStr = buildMemoJson(expense)
+
       const res = await fetch('/api/expenses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -194,7 +196,7 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
           vendorName: expense.vendorName,
           date: expense.date,
           isPaid: expense.status === 'paid',
-          memo: expense.memo,
+          memo: memoStr,
           mode: 'wedding'
         })
       })
@@ -202,19 +204,11 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
         console.error('Failed to add expense:', res.status)
         return
       }
-      const newExpense = await res.json()
+      const newExp = await res.json()
       setExpenses(prev => [{
-        id: String(newExpense.id),
-        title: newExpense.title,
-        amount: Number(newExpense.amount),
-        category: newExpense.category,
-        vendorId: newExpense.vendorId ?? expense.vendorId,
-        vendorName: newExpense.vendorName ?? expense.vendorName,
-        date: newExpense.date.split('T')[0],
-        payer: expense.payer,
-        status: newExpense.isPaid ? 'paid' : 'scheduled',
-        method: expense.method,
-        memo: newExpense.memo
+        ...expense,
+        id: String(newExp.id),
+        date: newExp.date.split('T')[0],
       }, ...prev])
     } catch (error) {
       console.error('Error adding expense:', error)
