@@ -3,10 +3,10 @@
 import { Camera, Calendar, MapPin, Heart } from "lucide-react"
 
 const stats = [
-  { icon: Camera, label: "사진", value: "248" },
-  { icon: Calendar, label: "기념일", value: "12" },
-  { icon: MapPin, label: "데이트", value: "89" },
-  { icon: Heart, label: "편지", value: "36" },
+  { icon: Camera, label: "사진", value: "0" },
+  { icon: Calendar, label: "기념일", value: "0" },
+  { icon: MapPin, label: "데이트", value: "0" },
+  { icon: Heart, label: "편지", value: "0" },
 ]
 
 export function StatsBar() {
