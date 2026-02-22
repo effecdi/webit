@@ -14,7 +14,8 @@ const MOODS = [
 
 export function DatingHero() {
   const [currentMood, setCurrentMood] = useState(MOODS[0]);
-  const startDate = new Date("2023-03-15");
+  const stored = typeof window !== "undefined" ? localStorage.getItem("survey_startDate") : null;
+  const startDate = stored ? new Date(stored) : new Date();
   const today = new Date();
   const diffTime = Math.abs(today.getTime() - startDate.getTime());
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
