@@ -15,7 +15,7 @@ const accountItems: AccountItem[] = [
   {
     icon: "pink",
     label: "예산 관리",
-    sublabel: "12,500,000원",
+    sublabel: "예산 관리하기",
     href: "/wedding/budget",
     badge: "송금",
   },
