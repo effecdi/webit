@@ -850,240 +850,91 @@ function BudgetPageContent() {
       )}
 
       {/* Payment Detail Modal - Bottom Sheet */}
-      <BottomSheet open={!!(showDetailModal && selectedExpense)} onOpenChange={(open) => { if (!open) { setShowDetailModal(false); setSelectedExpense(null); setPartialPayment(""); setEditForm(null) }}} className="bg-white z-[60]" overlayClassName="z-[60]">
-            {selectedExpense && selectedExpense.status === "paid" && editForm ? (
-              <>
-                {/* Edit Paid Expense */}
-                <div className="px-6 pb-4 border-b border-[#F2F4F6]">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-[19px] font-bold text-[#191F28]">지출 수정</h3>
-                    <button onClick={() => { setShowDetailModal(false); setSelectedExpense(null); setEditForm(null) }}>
-                      <X className="w-5 h-5 text-[#8B95A1]" />
-                    </button>
-                  </div>
+      <BottomSheet open={!!(showDetailModal && selectedExpense)} onOpenChange={(open) => { if (!open) { setShowDetailModal(false); setSelectedExpense(null); setPartialPayment("") }}} className="bg-white z-[60]" overlayClassName="z-[60]">
+            {selectedExpense && (<>
+            {/* Header */}
+            <div className="px-6 pb-4 border-b border-[#F2F4F6]">
+              <h3 className="text-[19px] font-bold text-[#191F28]">{selectedExpense.title}</h3>
+              <p className="text-[13px] text-[#8B95A1] mt-1">{selectedExpense.category} • {payerLabels[selectedExpense.payer]}</p>
+            </div>
+
+            {/* Content */}
+            <div className="px-6 py-5 space-y-5">
+              {/* Amount Summary */}
+              <div className="bg-[#F8F9FA] rounded-[16px] p-4 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-[14px] text-[#8B95A1]">총 금액</span>
+                  <span className="text-[16px] font-bold text-[#191F28]">{selectedExpense.amount.toLocaleString()}원</span>
                 </div>
-
-                <div className="px-6 py-5 space-y-5 max-h-[70vh] overflow-y-auto">
-                  {/* Title */}
-                  <div>
-                    <label className="block text-[13px] font-medium text-[#4E5968] mb-2">항목명</label>
-                    <input
-                      type="text"
-                      value={editForm.title}
-                      onChange={(e) => setEditForm(prev => prev ? { ...prev, title: e.target.value } : prev)}
-                      className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
-                    />
-                  </div>
-
-                  {/* Amount */}
-                  <div>
-                    <label className="block text-[13px] font-medium text-[#4E5968] mb-2">금액</label>
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="text"
-                        inputMode="numeric"
-                        value={editForm.amount}
-                        onChange={(e) => setEditForm(prev => prev ? { ...prev, amount: formatAmountInput(e.target.value) } : prev)}
-                        placeholder="0"
-                        className="flex-1 px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[18px] font-bold text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] text-right"
-                      />
-                      <span className="text-[15px] text-[#8B95A1]">원</span>
-                    </div>
-                  </div>
-
-                  {/* Category */}
-                  <div>
-                    <label className="block text-[13px] font-medium text-[#4E5968] mb-2">카테고리</label>
-                    <div className="flex flex-wrap gap-2">
-                      {categories.slice(1).map((cat) => (
-                        <button
-                          key={cat}
-                          onClick={() => setEditForm(prev => prev ? { ...prev, category: cat } : prev)}
-                          className={`px-3.5 py-2 rounded-full text-[13px] font-medium transition-all ${
-                            editForm.category === cat
-                              ? "bg-[#3182F6] text-white"
-                              : "bg-[#F2F4F6] text-[#4E5968]"
-                          }`}
-                        >
-                          {cat}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Date */}
-                  <div>
-                    <label className="block text-[13px] font-medium text-[#4E5968] mb-2">결제일</label>
-                    <WheelDatePicker
-                      value={editForm.date}
-                      onChange={(val) => setEditForm(prev => prev ? { ...prev, date: val } : prev)}
-                      placeholder="결제일 선택"
-                      className="!px-4 !py-3.5 !rounded-[12px] !text-[15px]"
-                      label="결제일"
-                    />
-                  </div>
-
-                  {/* Method */}
-                  <div>
-                    <label className="block text-[13px] font-medium text-[#4E5968] mb-2">결제 수단</label>
-                    <div className="flex gap-2">
-                      {([
-                        { key: "card", label: "카드", icon: <CreditCard className="w-4 h-4" /> },
-                        { key: "transfer", label: "이체", icon: <ArrowRightLeft className="w-4 h-4" /> },
-                        { key: "cash", label: "현금", icon: <Banknote className="w-4 h-4" /> },
-                      ] as const).map((method) => (
-                        <button
-                          key={method.key}
-                          onClick={() => setEditForm(prev => prev ? { ...prev, method: method.key } : prev)}
-                          className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-[12px] text-[14px] font-medium transition-all ${
-                            editForm.method === method.key
-                              ? "bg-[#3182F6] text-white"
-                              : "bg-[#F2F4F6] text-[#4E5968]"
-                          }`}
-                        >
-                          {method.icon}
-                          {method.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Payer */}
-                  <div>
-                    <label className="block text-[13px] font-medium text-[#4E5968] mb-2">결제자</label>
-                    <div className="grid grid-cols-2 gap-2">
-                      {(["groom", "bride", "shared", "parents"] as const).map((payer) => (
-                        <button
-                          key={payer}
-                          onClick={() => setEditForm(prev => prev ? { ...prev, payer } : prev)}
-                          className={`flex items-center justify-center gap-2 py-3 rounded-[12px] text-[14px] font-medium transition-all ${
-                            editForm.payer === payer
-                              ? "bg-[#3182F6] text-white"
-                              : "bg-[#F2F4F6] text-[#4E5968]"
-                          }`}
-                        >
-                          {editForm.payer === payer && <Check className="w-4 h-4" />}
-                          {payerLabels[payer]}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Memo */}
-                  <div>
-                    <label className="block text-[13px] font-medium text-[#4E5968] mb-2">메모</label>
-                    <textarea
-                      value={editForm.memo}
-                      onChange={(e) => setEditForm(prev => prev ? { ...prev, memo: e.target.value } : prev)}
-                      placeholder="메모를 입력하세요"
-                      rows={2}
-                      className="w-full px-4 py-3 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] resize-none"
-                    />
-                  </div>
-
-                  {/* Buttons */}
-                  <div className="space-y-3 pt-2">
-                    <button
-                      onClick={handleSaveEdit}
-                      className="w-full py-4 rounded-[14px] bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold text-[16px] transition-all"
-                    >
-                      저장
-                    </button>
-                    <button
-                      onClick={() => { setShowDetailModal(false); setSelectedExpense(null); setEditForm(null) }}
-                      className="w-full py-3.5 rounded-[14px] bg-[#F2F4F6] text-[#4E5968] font-semibold text-[15px] hover:bg-[#E5E8EB] transition-all"
-                    >
-                      취소
-                    </button>
-                  </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[14px] text-[#8B95A1]">납부 완료</span>
+                  <span className="text-[16px] font-semibold text-[#3182F6]">{(selectedExpense.deposit || 0).toLocaleString()}원</span>
                 </div>
-
-                <div className="h-8" />
-              </>
-            ) : selectedExpense ? (
-              <>
-                {/* Scheduled Payment Detail */}
-                <div className="px-6 pb-4 border-b border-[#F2F4F6]">
-                  <h3 className="text-[19px] font-bold text-[#191F28]">{selectedExpense.title}</h3>
-                  <p className="text-[13px] text-[#8B95A1] mt-1">{selectedExpense.category} • {payerLabels[selectedExpense.payer]}</p>
+                <div className="h-px bg-[#E5E8EB]" />
+                <div className="flex justify-between items-center">
+                  <span className="text-[14px] font-medium text-[#FF6B6B]">남은 잔금</span>
+                  <span className="text-[18px] font-bold text-[#FF6B6B]">{(selectedExpense.balance || 0).toLocaleString()}원</span>
                 </div>
+                {selectedExpense.dueDate && (
+                  <p className="text-[12px] text-[#8B95A1] pt-1">
+                    결제 예정일: {new Date(selectedExpense.dueDate).toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" })}
+                  </p>
+                )}
+              </div>
 
-                <div className="px-6 py-5 space-y-5">
-                  {/* Amount Summary */}
-                  <div className="bg-[#F8F9FA] rounded-[16px] p-4 space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-[14px] text-[#8B95A1]">총 금액</span>
-                      <span className="text-[16px] font-bold text-[#191F28]">{selectedExpense.amount.toLocaleString()}원</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-[14px] text-[#8B95A1]">납부 완료</span>
-                      <span className="text-[16px] font-semibold text-[#3182F6]">{(selectedExpense.deposit || 0).toLocaleString()}원</span>
-                    </div>
-                    <div className="h-px bg-[#E5E8EB]" />
-                    <div className="flex justify-between items-center">
-                      <span className="text-[14px] font-medium text-[#FF6B6B]">남은 잔금</span>
-                      <span className="text-[18px] font-bold text-[#FF6B6B]">{(selectedExpense.balance || 0).toLocaleString()}원</span>
-                    </div>
-                    {selectedExpense.dueDate && (
-                      <p className="text-[12px] text-[#8B95A1] pt-1">
-                        결제 예정일: {new Date(selectedExpense.dueDate).toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" })}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Partial Payment Input */}
-                  <div>
-                    <label className="block text-[13px] font-medium text-[#4E5968] mb-2">중간 결제 금액</label>
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="text"
-                        inputMode="numeric"
-                        value={partialPayment}
-                        onChange={(e) => setPartialPayment(formatAmountInput(e.target.value))}
-                        placeholder="0"
-                        className="flex-1 px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[18px] font-bold text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] text-right"
-                      />
-                      <span className="text-[15px] text-[#8B95A1]">원</span>
-                    </div>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="space-y-3">
-                    <button
-                      onClick={handlePartialPayment}
-                      disabled={!partialPayment}
-                      className={`w-full py-4 rounded-[14px] font-semibold text-[16px] transition-all ${
-                        partialPayment
-                          ? "bg-[#3182F6] text-white hover:bg-[#1B64DA]"
-                          : "bg-[#E5E8EB] text-[#B0B8C1] cursor-not-allowed"
-                      }`}
-                    >
-                      중간 결제 완료
-                    </button>
-
-                    <button
-                      onClick={handleFullPayment}
-                      className="w-full py-4 rounded-[14px] bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold text-[16px] transition-all"
-                    >
-                      전체 잔금 결제 완료
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        setShowDetailModal(false)
-                        setSelectedExpense(null)
-                        setPartialPayment("")
-                      }}
-                      className="w-full py-3.5 rounded-[14px] bg-[#F2F4F6] text-[#4E5968] font-semibold text-[15px] hover:bg-[#E5E8EB] transition-all"
-                    >
-                      취소
-                    </button>
-                  </div>
+              {/* Partial Payment Input */}
+              <div>
+                <label className="block text-[13px] font-medium text-[#4E5968] mb-2">중간 결제 금액</label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={partialPayment}
+                    onChange={(e) => setPartialPayment(formatAmountInput(e.target.value))}
+                    placeholder="0"
+                    className="flex-1 px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[18px] font-bold text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6] text-right"
+                  />
+                  <span className="text-[15px] text-[#8B95A1]">원</span>
                 </div>
+              </div>
 
-                <div className="h-8" />
-              </>
-            ) : null}
+              {/* Action Buttons */}
+              <div className="space-y-3">
+                <button
+                  onClick={handlePartialPayment}
+                  disabled={!partialPayment}
+                  className={`w-full py-4 rounded-[14px] font-semibold text-[16px] transition-all ${
+                    partialPayment
+                      ? "bg-[#3182F6] text-white hover:bg-[#1B64DA]"
+                      : "bg-[#E5E8EB] text-[#B0B8C1] cursor-not-allowed"
+                  }`}
+                >
+                  중간 결제 완료
+                </button>
+
+                <button
+                  onClick={handleFullPayment}
+                  className="w-full py-4 rounded-[14px] bg-[#3182F6] hover:bg-[#1B64DA] text-white font-semibold text-[16px] transition-all"
+                >
+                  전체 잔금 결제 완료
+                </button>
+
+                <button
+                  onClick={() => {
+                    setShowDetailModal(false)
+                    setSelectedExpense(null)
+                    setPartialPayment("")
+                  }}
+                  className="w-full py-3.5 rounded-[14px] bg-[#F2F4F6] text-[#4E5968] font-semibold text-[15px] hover:bg-[#E5E8EB] transition-all"
+                >
+                  취소
+                </button>
+              </div>
+            </div>
+
+            {/* Safe Area */}
+            <div className="h-8" />
+            </>)}
       </BottomSheet>
 
       {/* Edit Budget Modal */}
