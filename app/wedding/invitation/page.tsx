@@ -401,19 +401,8 @@ export default function InvitationGalleryPage() {
 
   return (
     <div className="min-h-screen bg-[#191F28] flex flex-col">
-      {/* Header */}
-      <div className="flex items-center justify-end p-4">
-        <button
-          onClick={() => router.back()}
-          className="w-10 h-10 rounded-full bg-[#333D4B] flex items-center justify-center"
-          data-testid="button-close-gallery"
-        >
-          <X className="w-5 h-5 text-white" />
-        </button>
-      </div>
-
       {/* Title */}
-      <div className="text-center px-6 pt-2 pb-8">
+      <div className="text-center px-6 pt-6 pb-8">
         <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-[#3182F6] mb-4">
           <span className="text-[12px] font-bold text-white tracking-wider">NEW</span>
         </div>
