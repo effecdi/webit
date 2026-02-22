@@ -237,7 +237,7 @@ export default function TravelListPage() {
                     value={newTrip.startDate}
                     onChange={(val) => setNewTrip({ ...newTrip, startDate: val })}
                     placeholder="출발일 선택"
-                    className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+                    className="!px-4 !py-3.5 !rounded-[12px] !text-[15px]"
                     label="출발일"
                   />
                 </div>
