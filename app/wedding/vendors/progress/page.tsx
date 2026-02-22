@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import Link from "next/link"
 import { WeddingBottomNav } from "@/components/wedding/wedding-bottom-nav"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 import {
   CheckCircle2,
   Building2,
