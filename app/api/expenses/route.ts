@@ -83,17 +83,34 @@ export async function PATCH(request: NextRequest) {
     const body = await request.json();
     const { id, isPaid, amount, title, category, memo } = body;
 
+    if (id === undefined || id === null) {
+      return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+    }
+
+    const numericId = typeof id === 'string' ? parseInt(id, 10) : id;
+    if (isNaN(numericId)) {
+      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
+    }
+
     const updates: Record<string, unknown> = {};
     if (isPaid !== undefined) updates.isPaid = isPaid;
-    if (amount !== undefined) updates.amount = amount.toString();
+    if (amount !== undefined) updates.amount = String(amount);
     if (title !== undefined) updates.title = title;
     if (category !== undefined) updates.category = category;
     if (memo !== undefined) updates.memo = memo;
 
+    if (Object.keys(updates).length === 0) {
+      return NextResponse.json({ error: 'No fields to update' }, { status: 400 });
+    }
+
     const [updated] = await db.update(expenses)
       .set(updates)
-      .where(eq(expenses.id, id))
+      .where(eq(expenses.id, numericId))
       .returning();
+
+    if (!updated) {
+      return NextResponse.json({ error: 'Expense not found' }, { status: 404 });
+    }
 
     return NextResponse.json(updated);
   } catch (error) {
