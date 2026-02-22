@@ -229,6 +229,37 @@ function BudgetPageContent() {
     setShowDetailModal(true)
     setPartialPayment("")
     setSwipedId(null)
+    if (expense.status === "paid") {
+      setEditForm({
+        title: expense.title,
+        amount: expense.amount.toLocaleString(),
+        category: expense.category,
+        date: expense.date,
+        payer: expense.payer,
+        method: expense.method || "card",
+        memo: expense.memo || "",
+      })
+    } else {
+      setEditForm(null)
+    }
+  }
+
+  // Save edited expense
+  const handleSaveEdit = () => {
+    if (!selectedExpense || !editForm) return
+    const amount = Number(editForm.amount.replace(/,/g, ""))
+    updateExpense(selectedExpense.id, {
+      title: editForm.title,
+      amount,
+      category: editForm.category,
+      date: editForm.date,
+      payer: editForm.payer as "groom" | "bride" | "shared" | "parents",
+      method: editForm.method as "cash" | "card" | "transfer",
+      memo: editForm.memo || undefined,
+    })
+    setShowDetailModal(false)
+    setSelectedExpense(null)
+    setEditForm(null)
   }
 
   const exportToExcel = () => {
