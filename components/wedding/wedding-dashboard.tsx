@@ -41,7 +41,7 @@ import { Circle, CheckCircle2 } from "lucide-react"
 
 
 
-const WEDDING_DATE = "2025-06-15"
+const WEDDING_DATE = ""
 
 function calculateDday(targetDate: string) {
   const target = new Date(targetDate)
