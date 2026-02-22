@@ -58,12 +58,13 @@ export default function BudgetPage() {
 }
 
 function BudgetPageContent() {
-  const { 
-    totalBudget, 
+  const {
+    totalBudget,
     setTotalBudget,
-    expenses, 
-    setExpenses, 
+    expenses,
+    setExpenses,
     addExpense,
+    updateExpense,
     deleteExpense,
     totalSpent,
     totalScheduled,
