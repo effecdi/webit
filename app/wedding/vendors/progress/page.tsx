@@ -336,9 +336,10 @@ export default function WeddingVendorsProgressPage() {
           {rows.map((row) => {
             const iconInfo = categoryIcons[row.category] || { icon: <MoreHorizontal className="w-4 h-4" />, bg: "bg-gray-100 text-gray-500" }
             return (
-              <div
+              <button
                 key={row.category}
-                className="bg-white rounded-[16px] px-4 py-3.5 shadow-sm flex items-center gap-3"
+                onClick={() => setSelectedCategory(row.category)}
+                className="w-full bg-white rounded-[16px] px-4 py-3.5 shadow-sm flex items-center gap-3 text-left transition-colors active:bg-[#F9FAFB]"
               >
                 <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${iconInfo.bg}`}>
                   {iconInfo.icon}
