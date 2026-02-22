@@ -378,7 +378,7 @@ export default function ChecklistPage() {
       {/* Edit Bottom Sheet */}
       <BottomSheet open={showEditSheet} onOpenChange={setShowEditSheet} className="bg-white z-[60]" overlayClassName="z-[60]">
         <div className="flex items-center justify-between px-5 pt-2 pb-4 border-b border-[#F2F4F6]">
-          <h3 className="text-[17px] font-bold text-[#191F28]">할 일 수정</h3>
+          <h3 className="text-[17px] font-bold text-[#191F28]">체크리스트 수정</h3>
           <button
             onClick={() => setShowEditSheet(false)}
             className="w-8 h-8 rounded-full hover:bg-[#F2F4F6] flex items-center justify-center transition-colors"
@@ -425,12 +425,13 @@ export default function ChecklistPage() {
 
           {/* Due Date */}
           <div>
-            <label className="block text-[13px] font-medium text-[#4E5968] mb-2">마감일</label>
-            <input
-              type="date"
+            <label className="block text-[13px] font-medium text-[#4E5968] mb-2">날짜</label>
+            <WheelDatePicker
               value={editForm.dueDate}
-              onChange={(e) => setEditForm({ ...editForm, dueDate: e.target.value })}
-              className="w-full px-4 py-3.5 bg-[#F2F4F6] rounded-[12px] text-[15px] text-[#191F28] focus:outline-none focus:ring-2 focus:ring-[#3182F6] appearance-none"
+              onChange={(val) => setEditForm({ ...editForm, dueDate: val })}
+              placeholder="날짜 선택"
+              className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px]"
+              label="날짜"
             />
           </div>
 
