@@ -27,7 +27,8 @@
       "Bash(grep -r \"setTheme\\\\|useTheme\\\\|dark\\\\|theme\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/app --include=\"*.tsx\" 2>/dev/null | grep -i \"dark\\\\|setTheme\" | head -20)",
       "Bash(grep -r \"Moon\\\\|Sun\\\\|darkMode\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | grep -v node_modules | head -20)",
       "Bash(grep -r \"ThemeProvider\\\\|useTheme\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/app --include=\"*.tsx\" 2>/dev/null | head -10)",
-      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npm run build 2>&1 | tail -20)"
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npm run build 2>&1 | tail -20)",
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npm run build 2>&1 | tail -15)"
     ]
   }
 }

@@ -1197,6 +1197,12 @@
   --tw-ring-color: rgba(255, 255, 255, 0.15) !important;
 }
 
+/* ---- Date picker button dark override ---- */
+.dark [data-testid="button-date-picker"] {
+  border: none !important;
+  background-color: #222224 !important;
+}
+
 /* ---- Missing vintage/editor border ---- */
 .dark .border-\[\#D4CEBD\] {
   border-color: #4A4035 !important;
