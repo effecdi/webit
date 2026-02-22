@@ -9,7 +9,5 @@ export const MUSIC_TRACKS = [
   { name: "The Toy Soldier's Secret Dance", file: "/music/The_Toy_Soldiers_Secret_Dance.mp3" },
   { name: "Under the Fairy Lights", file: "/music/Under_the_Fairy_Lights.mp3" },
   { name: "Vibrant Day", file: "/music/Vibrant_Day.mp3" },
-  { name: "Vibrant Day 2", file: "/music/Vibrant_Day_2.mp3" },
-  { name: "Vibrant Day 3", file: "/music/Vibrant_Day_3.mp3" },
   { name: "Warmth in the Middle", file: "/music/Warmth_in_the_Middle.mp3" },
 ];
