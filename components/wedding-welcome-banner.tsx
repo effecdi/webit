@@ -1,10 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Gift, X, Sparkles } from "lucide-react"
 
 export function WeddingWelcomeBanner() {
+  const router = useRouter()
   const [isVisible, setIsVisible] = useState(false)
   const [hasSeenBanner, setHasSeenBanner] = useState(true)
 
@@ -24,6 +25,12 @@ export function WeddingWelcomeBanner() {
       localStorage.setItem("weve-wedding-welcome-seen", "true")
       setHasSeenBanner(true)
     }, 300)
+  }
+
+  const handleNavigateToInvitation = () => {
+    localStorage.setItem("weve-wedding-welcome-seen", "true")
+    setHasSeenBanner(true)
+    router.push("/wedding/invitation")
   }
 
   if (hasSeenBanner) return null
@@ -60,7 +67,7 @@ export function WeddingWelcomeBanner() {
               <Sparkles className="w-3.5 h-3.5 text-white" />
             </div>
           </div>
-          
+
           <h2 className="text-[22px] font-bold text-[#191F28] mb-2">
             결혼을 축하드려요!
           </h2>
@@ -70,13 +77,12 @@ export function WeddingWelcomeBanner() {
             무료로 만들어 드릴게요
           </p>
 
-          <Link
-            href="/wedding/invitation"
-            onClick={handleDismiss}
+          <button
+            onClick={handleNavigateToInvitation}
             className="block w-full bg-[#3182F6] rounded-[16px] py-4 px-6 text-[17px] font-semibold text-white hover:bg-[#1B64DA] active:scale-[0.98] transition-all"
           >
             청첩장 만들기
-          </Link>
+          </button>
 
           <button
             onClick={handleDismiss}
