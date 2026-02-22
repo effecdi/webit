@@ -143,18 +143,49 @@ export default function WeddingVendorsProgressPage() {
     }
   }
 
-  const parsePaymentMemo = (memo: string | null) => {
-    if (!memo) return { deposit: "", balance: "", note: "" }
+  type PaymentInfo = {
+    deposit: string
+    balance: string
+    note: string
+    method: string
+    paidBy: string
+  }
+
+  const emptyPayment: PaymentInfo = { deposit: "", balance: "", note: "", method: "", paidBy: "" }
+
+  const parsePaymentMemo = (memo: string | null): PaymentInfo => {
+    if (!memo) return { ...emptyPayment }
     try {
-      const parsed = JSON.parse(memo) as { deposit?: string; balance?: string; note?: string }
-      return { deposit: parsed.deposit || "", balance: parsed.balance || "", note: parsed.note || "" }
+      const parsed = JSON.parse(memo)
+      return {
+        deposit: parsed.deposit || "",
+        balance: parsed.balance || "",
+        note: parsed.note || "",
+        method: parsed.method || "",
+        paidBy: parsed.paidBy || "",
+      }
     } catch {
-      return { deposit: "", balance: "", note: memo }
+      return { ...emptyPayment, note: memo }
     }
   }
 
-  const buildPaymentMemo = (info: { deposit?: string; balance?: string; note?: string }) => {
-    return JSON.stringify({ deposit: info.deposit || "", balance: info.balance || "", note: info.note || "" })
+  const buildPaymentMemo = (info: Partial<PaymentInfo>) => {
+    return JSON.stringify({
+      deposit: info.deposit || "",
+      balance: info.balance || "",
+      note: info.note || "",
+      method: info.method || "",
+      paidBy: info.paidBy || "",
+    })
+  }
+
+  const parseAmount = (str: string) => {
+    const num = Number(str.replace(/[^0-9]/g, ""))
+    return isNaN(num) ? 0 : num
+  }
+
+  const calcTotal = (deposit: string, balance: string) => {
+    return parseAmount(deposit) + parseAmount(balance)
   }
 
   const getVendorExpense = (vendorId: number) => {
