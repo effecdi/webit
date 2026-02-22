@@ -425,7 +425,7 @@ export function FamilyCalendar() {
               value={newEvent.time}
               onChange={(val) => setNewEvent({ ...newEvent, time: val })}
               placeholder="시간 선택"
-              className="!px-4 !py-3.5 !bg-[#F2F4F6] !rounded-[12px] !text-[15px] !border-0"
+              className="!px-4 !py-3.5 !rounded-[12px] !text-[15px] !border-0"
             />
           </div>
 
