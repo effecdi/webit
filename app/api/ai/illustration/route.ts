@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
 import { requireAuth, isUnauthorized } from "@/lib/api-auth";
 
 export async function POST(request: NextRequest) {
@@ -39,16 +37,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const buffer = Buffer.from(imageData.b64_json, "base64");
-
-    const uploadDir = path.join(process.cwd(), "public", "uploads");
-    await mkdir(uploadDir, { recursive: true });
-
-    const uniqueName = `illustration-${Date.now()}-${Math.random().toString(36).slice(2)}.png`;
-    const filePath = path.join(uploadDir, uniqueName);
-    await writeFile(filePath, buffer);
-
-    const url = `/uploads/${uniqueName}`;
+    const url = `data:image/png;base64,${imageData.b64_json}`;
     return NextResponse.json({ url });
   } catch (error) {
     console.error("AI illustration generation error:", error);
