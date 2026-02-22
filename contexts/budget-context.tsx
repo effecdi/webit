@@ -2,6 +2,12 @@
 
 import React, { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 
+export interface PaymentRecord {
+  amount: number
+  date: string
+  memo?: string
+}
+
 export interface Expense {
   id: string
   title: string
@@ -18,6 +24,7 @@ export interface Expense {
   dueDate?: string
   reminder?: boolean
   memo?: string
+  payments?: PaymentRecord[]
 }
 
 interface BudgetContextType {

@@ -32,7 +32,11 @@
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npm run build 2>&1 | tail -10)",
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npm run build 2>&1)",
       "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npm run build 2>&1 | grep -E \"\\(error|Error|✓|✗\\)\" | head -10)",
-      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npm run build 2>&1 | tail -30)"
+      "Bash(cd \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" && npm run build 2>&1 | tail -30)",
+      "Bash(find \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow/app/api\" -type f -name \"*.ts\" 2>/dev/null | head -20)",
+      "Bash(grep -r \"중간결제\\\\|intermediate\\\\|partial.?payment\\\\|deposit\\\\|balance\" \"/Volumes/Macintosh HD - Data1/사이드프로젝트/Family-Flow\" --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | head -30)",
+      "Bash(grep -r \"결제\\\\|payment\\\\|deposit\\\\|balance\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/lib --include=\"*.ts\" --include=\"*.tsx\" 2>/dev/null | head -20)",
+      "Bash(grep -rl \"expense\\\\|budget\\\\|예산\" /Volumes/Macintosh\\\\ HD\\\\ -\\\\ Data1/사이드프로젝트/Family-Flow/components --include=\"*.tsx\" --include=\"*.ts\" 2>/dev/null | sort | uniq)"
     ]
   }
 }
