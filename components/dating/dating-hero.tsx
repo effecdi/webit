@@ -71,7 +71,7 @@ export function DatingHero() {
               </div>
               <div className="flex items-center gap-1 bg-[#FFE4EC] border-2 border-secondary px-2 py-0.5">
                 <Sparkles className="w-3 h-3" />
-                <span className="text-xs font-bold">민지 & 준호</span>
+                <span className="text-xs font-bold">We:Beat</span>
               </div>
             </div>
           </div>
