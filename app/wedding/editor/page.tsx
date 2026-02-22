@@ -156,6 +156,7 @@ export interface InvitationData {
   nameDisplayStyle: "horizontal" | "vertical";
   fontKorean: string;
   fontEnglish: string;
+  illustrationImage: string;
 }
 
 const initialData: InvitationData = {
@@ -262,6 +263,7 @@ const initialData: InvitationData = {
   nameDisplayStyle: "horizontal",
   fontKorean: "",
   fontEnglish: "",
+  illustrationImage: "",
 };
 
 const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
@@ -1235,6 +1237,25 @@ function InvitationEditorContent() {
   const generateNoticeTitle = () => generateAIText("noticeTitle", "noticeTitle");
   const generateEndingContent = () => generateAIText("endingContent", "endingContent");
 
+  const generateIllustration = async () => {
+    if (aiLoading) return;
+    setAiLoading("illustration");
+    try {
+      const res = await fetch("/api/ai/illustration", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      const result = await res.json();
+      if (res.ok && result.url) {
+        updateField("illustrationImage", result.url);
+      }
+    } catch (err) {
+      console.error("AI illustration generation failed:", err);
+    } finally {
+      setAiLoading(null);
+    }
+  };
+
   const handleGalleryUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
@@ -1636,6 +1657,46 @@ function InvitationEditorContent() {
                       이 템플릿은 프리미엄 템플릿입니다. 청첩장 발행 시 구매가
                       필요합니다.
                     </span>
+                  </div>
+                )}
+
+                {data.mainTemplate === "polaroid" && (
+                  <div>
+                    <label className="text-[14px] text-[#4E5968] mb-2 block">
+                      커플 일러스트
+                    </label>
+                    <div className="flex items-center gap-2 mb-3">
+                      <button
+                        onClick={generateIllustration}
+                        disabled={!!aiLoading}
+                        className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full text-[12px] font-medium shadow-sm hover:shadow-md transition-all disabled:opacity-50"
+                      >
+                        {aiLoading === "illustration" ? (
+                          <Loader2 className="w-3 h-3 animate-spin" />
+                        ) : (
+                          <Sparkles className="w-3 h-3" />
+                        )}
+                        AI 일러스트 생성
+                      </button>
+                    </div>
+                    {data.illustrationImage && (
+                      <div className="relative w-[120px] h-[120px]">
+                        <img
+                          src={data.illustrationImage}
+                          alt="커플 일러스트"
+                          className="w-full h-full object-contain rounded-[8px] border border-[#E5E8EB]"
+                        />
+                        <button
+                          onClick={() => updateField("illustrationImage", "")}
+                          className="absolute -top-1 -right-1 w-5 h-5 bg-black/60 rounded-full flex items-center justify-center"
+                        >
+                          <X className="w-3 h-3 text-white" />
+                        </button>
+                      </div>
+                    )}
+                    <p className="text-[12px] text-[#8B95A1] mt-2">
+                      AI로 수채화 스타일의 커플 일러스트를 생성합니다. 기본 일러스트를 대체할 수 있어요.
+                    </p>
                   </div>
                 )}
 

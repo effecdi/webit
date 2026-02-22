@@ -28,7 +28,7 @@ const LeafDivider = ({ color = "#C5BFB5" }: { color?: string }) => (
   </div>
 )
 
-export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
+export function PolaroidLayout({ data, state, helpers, onRsvpClick, onGuestSnapUpload }: LayoutProps) {
   const pageBg = "#FAF8F5"
   const cardBg = "#FFFFFF"
   const textPrimary = "#2C2720"
@@ -92,7 +92,7 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
             {/* Illustration couple - hero size */}
             <div className="flex justify-center my-6">
               <img
-                src="/illustration-couple.png"
+                src={data.illustrationImage || "/illustration-couple.png"}
                 alt="Couple illustration"
                 className="w-full h-auto object-contain"
                 style={{ maxWidth: "340px", mixBlendMode: 'multiply' }}
@@ -587,7 +587,17 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
           )}
           <button className="px-10 py-3 text-[12px] tracking-[0.15em]"
             style={{ border: `1px solid ${accent}`, color: accent, backgroundColor: "transparent" }}
-            data-testid="button-guest-snap">사진 업로드</button>
+            data-testid="button-guest-snap"
+            onClick={onGuestSnapUpload}>사진 업로드</button>
+          {state.guestSnapPhotos.length > 0 && (
+            <div className="grid grid-cols-3 gap-2 mt-6">
+              {state.guestSnapPhotos.map((photo, i) => (
+                <div key={i} className="aspect-square rounded-lg overflow-hidden">
+                  <img src={photo} alt={`Guest snap ${i + 1}`} className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -621,7 +631,7 @@ export function PolaroidLayout({ data, state, helpers, onRsvpClick }: LayoutProp
             {/* Illustration couple again at ending */}
             <div className="flex justify-center my-6">
               <img
-                src="/illustration-couple.png"
+                src={data.illustrationImage || "/illustration-couple.png"}
                 alt="Couple illustration"
                 className="w-[180px] h-auto object-contain"
                 style={{ mixBlendMode: 'multiply', opacity: 0.5 }}
