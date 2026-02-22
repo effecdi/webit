@@ -4,12 +4,11 @@ import { useEffect, useState } from "react"
 import { Bell } from "lucide-react"
 import { ModeSwitch } from "@/components/mode-switch"
 
-// Dummy Data
 const coupleData = {
-  groomName: "민준",
-  brideName: "서연",
-  weddingDate: "2025-06-15",
-  venue: "더채플앳청담",
+  groomName: "",
+  brideName: "",
+  weddingDate: "",
+  venue: "",
 }
 
 function calculateDday(targetDate: string) {
