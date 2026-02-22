@@ -54,6 +54,7 @@ export interface PreviewState {
   copiedToast: string
   expandedAccordion: string | null
   setExpandedAccordion: (v: string | null) => void
+  guestSnapPhotos: string[]
 }
 
 export interface LayoutProps {
@@ -61,4 +62,5 @@ export interface LayoutProps {
   state: PreviewState
   helpers: PreviewHelpers
   onRsvpClick?: () => void
+  onGuestSnapUpload?: () => void
 }

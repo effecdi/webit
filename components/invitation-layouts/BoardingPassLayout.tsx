@@ -22,7 +22,7 @@ const GlobeIcon = ({ size = 60, color = "#1E2D4A" }: { size?: number; color?: st
   </svg>
 )
 
-export function BoardingPassLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
+export function BoardingPassLayout({ data, state, helpers, onRsvpClick, onGuestSnapUpload }: LayoutProps) {
   const navyBg = "#1E2D4A"
   const navyDark = "#152238"
   const ticketBg = "#FFFFFF"
@@ -819,9 +819,19 @@ export function BoardingPassLayout({ data, state, helpers, onRsvpClick }: Layout
                 className="w-full py-3 rounded-[8px] text-[13px] font-medium"
                 style={{ border: `1.5px solid ${accent}`, color: accent }}
                 data-testid="button-guest-snap"
+                onClick={onGuestSnapUpload}
               >
                 사진 업로드
               </button>
+              {state.guestSnapPhotos.length > 0 && (
+                <div className="grid grid-cols-3 gap-2 mt-6">
+                  {state.guestSnapPhotos.map((photo, i) => (
+                    <div key={i} className="aspect-square rounded-lg overflow-hidden">
+                      <img src={photo} alt={`Guest snap ${i + 1}`} className="w-full h-full object-cover" />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <ScallopBottom />
           </div>

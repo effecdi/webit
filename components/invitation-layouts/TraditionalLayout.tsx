@@ -5,7 +5,7 @@ import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 import { getKoreanFont, getEnglishFont } from "./font-utils"
 
-export function TraditionalLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
+export function TraditionalLayout({ data, state, helpers, onRsvpClick, onGuestSnapUpload }: LayoutProps) {
   const sectionBg1 = "#1e2a3a"
   const sectionBg2 = "#162335"
   const textPrimary = "#E8DED0"
@@ -684,9 +684,19 @@ export function TraditionalLayout({ data, state, helpers, onRsvpClick }: LayoutP
             className="w-full py-3.5 text-[14px]"
             style={{ border: `1px solid ${borderColor}`, color: accent, backgroundColor: buttonBg }}
             data-testid="button-guest-snap"
+            onClick={onGuestSnapUpload}
           >
             사진 업로드
           </button>
+          {state.guestSnapPhotos.length > 0 && (
+            <div className="grid grid-cols-3 gap-2 mt-6">
+              {state.guestSnapPhotos.map((photo, i) => (
+                <div key={i} className="aspect-square rounded-lg overflow-hidden">
+                  <img src={photo} alt={`Guest snap ${i + 1}`} className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 

@@ -211,6 +211,7 @@ export function PosterLayout({
   state,
   helpers,
   onRsvpClick,
+  onGuestSnapUpload,
 }: LayoutProps) {
   const pageBg = "#FDF8F0";
   const sectionBg1 = "#FDF8F0";
@@ -1594,9 +1595,19 @@ export function PosterLayout({
               fontFamily: sansFont,
             }}
             data-testid="button-guest-snap"
+            onClick={onGuestSnapUpload}
           >
             사진 업로드
           </button>
+          {state.guestSnapPhotos.length > 0 && (
+            <div className="grid grid-cols-3 gap-2 mt-6">
+              {state.guestSnapPhotos.map((photo, i) => (
+                <div key={i} className="aspect-square rounded-lg overflow-hidden">
+                  <img src={photo} alt={`Guest snap ${i + 1}`} className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 

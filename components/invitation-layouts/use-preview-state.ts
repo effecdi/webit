@@ -19,6 +19,7 @@ export function usePreviewState(data: InvitationData & { date?: string; time?: s
   const [copiedToast, setCopiedToast] = useState("")
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [expandedAccordion, setExpandedAccordion] = useState<string | null>(null)
+  const [guestSnapPhotos, setGuestSnapPhotos] = useState<string[]>(data.guestSnapPhotos || [])
   const slideInterval = useRef<NodeJS.Timeout | null>(null)
 
   const coverStyle = data.coverDisplayStyle || "slide"
@@ -158,6 +159,7 @@ export function usePreviewState(data: InvitationData & { date?: string; time?: s
     copiedToast,
     expandedAccordion,
     setExpandedAccordion,
+    guestSnapPhotos,
   }
 
   const helpers: PreviewHelpers = {
@@ -171,5 +173,9 @@ export function usePreviewState(data: InvitationData & { date?: string; time?: s
     submitGuestbook,
   }
 
-  return { state, helpers }
+  const addGuestSnapPhoto = useCallback((url: string) => {
+    setGuestSnapPhotos((prev) => [...prev, url])
+  }, [])
+
+  return { state, helpers, addGuestSnapPhoto }
 }

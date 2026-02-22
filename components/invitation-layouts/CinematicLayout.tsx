@@ -5,7 +5,7 @@ import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 import { getKoreanFont, getEnglishFont } from "./font-utils"
 
-export function CinematicLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
+export function CinematicLayout({ data, state, helpers, onRsvpClick, onGuestSnapUpload }: LayoutProps) {
   const deepBlack = "#080808"
   const darkSurface = "#111111"
   const darkCard = "#171717"
@@ -604,7 +604,17 @@ export function CinematicLayout({ data, state, helpers, onRsvpClick }: LayoutPro
           )}
           <button className="px-10 py-3 text-[11px] tracking-[0.2em] uppercase"
             style={{ border: `1px solid ${borderDark}`, color: textMuted, backgroundColor: "transparent" }}
-            data-testid="button-guest-snap">사진 업로드</button>
+            data-testid="button-guest-snap"
+            onClick={onGuestSnapUpload}>사진 업로드</button>
+          {state.guestSnapPhotos.length > 0 && (
+            <div className="grid grid-cols-3 gap-2 mt-6">
+              {state.guestSnapPhotos.map((photo, i) => (
+                <div key={i} className="aspect-square rounded-lg overflow-hidden">
+                  <img src={photo} alt={`Guest snap ${i + 1}`} className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 

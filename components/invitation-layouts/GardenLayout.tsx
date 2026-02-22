@@ -5,7 +5,7 @@ import type { LayoutProps } from "./types"
 import { MapEmbed, openNaverDirections, openKakaoTransfer, openKakaoGift } from "./MapEmbed"
 import { getKoreanFont, getEnglishFont } from "./font-utils"
 
-export function GardenLayout({ data, state, helpers, onRsvpClick }: LayoutProps) {
+export function GardenLayout({ data, state, helpers, onRsvpClick, onGuestSnapUpload }: LayoutProps) {
   const sectionBg1 = "#FFFFFF"
   const sectionBg2 = "#F9FAF7"
   const textPrimary = "#5C7A5C"
@@ -724,9 +724,19 @@ export function GardenLayout({ data, state, helpers, onRsvpClick }: LayoutProps)
             className="w-full py-3.5 rounded-full text-[14px]"
             style={{ backgroundColor: buttonBg, color: buttonText }}
             data-testid="button-guest-snap"
+            onClick={onGuestSnapUpload}
           >
             사진 업로드
           </button>
+          {state.guestSnapPhotos.length > 0 && (
+            <div className="grid grid-cols-3 gap-2 mt-6">
+              {state.guestSnapPhotos.map((photo, i) => (
+                <div key={i} className="aspect-square rounded-lg overflow-hidden">
+                  <img src={photo} alt={`Guest snap ${i + 1}`} className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 

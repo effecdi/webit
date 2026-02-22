@@ -47,7 +47,8 @@ function getLayoutPageBg(template: string): string {
 }
 
 export function InvitationPreview({ data, isShared = false, autoPlayMusic = false, showMusicControls = false, onTextScaleChange, textScale: externalTextScale, shareId }: InvitationPreviewProps) {
-  const { state, helpers } = usePreviewState(data)
+  const { state, helpers, addGuestSnapPhoto } = usePreviewState(data)
+  const guestSnapInputRef = useRef<HTMLInputElement>(null)
   const [openingDone, setOpeningDone] = useState(!data.showOpening)
   const [showRsvpModal, setShowRsvpModal] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -184,8 +185,22 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
     setShowRsvpModal(true)
   }
 
+  const handleGuestSnapUpload = useCallback(() => {
+    guestSnapInputRef.current?.click()
+  }, [])
+
+  const handleGuestSnapFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (!files || files.length === 0) return
+    Array.from(files).forEach((file) => {
+      const url = URL.createObjectURL(file)
+      addGuestSnapPhoto(url)
+    })
+    e.target.value = ""
+  }, [addGuestSnapPhoto])
+
   const renderLayout = () => {
-    const props = { data, state, helpers, onRsvpClick: handleRsvpClick }
+    const props = { data, state, helpers, onRsvpClick: handleRsvpClick, onGuestSnapUpload: handleGuestSnapUpload }
     switch (data.mainTemplate) {
       case "cinematic": return <CinematicLayout {...props} />
       case "classic": return <ClassicLayout {...props} />
@@ -272,6 +287,14 @@ export function InvitationPreview({ data, isShared = false, autoPlayMusic = fals
       }}
     >
       <audio ref={audioRef} preload="none" />
+      <input
+        ref={guestSnapInputRef}
+        type="file"
+        accept="image/*"
+        multiple
+        onChange={handleGuestSnapFileChange}
+        className="hidden"
+      />
 
       {(shouldShowMusicControls || isShared) && (
         <div
