@@ -100,6 +100,17 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
         setExpenses([])
         return
       }
+      const parseNum = (s?: string) => {
+        if (!s) return 0
+        const n = Number(s.replace(/[^0-9]/g, ""))
+        return isNaN(n) ? 0 : n
+      }
+      const paidByMap: Record<string, "groom" | "bride" | "shared" | "parents"> = {
+        groom: "groom", bride: "bride", both: "shared",
+      }
+      const methodMap: Record<string, "cash" | "card" | "transfer"> = {
+        card: "card", cash: "cash", transfer: "transfer",
+      }
       setExpenses(
         data.map(
           (e: {
@@ -112,19 +123,25 @@ export function BudgetProvider({ children }: { children: ReactNode }) {
             memo: string
             vendorId?: number | null
             vendorName?: string | null
-          }) => ({
-            id: String(e.id),
-            title: e.title,
-            amount: Number(e.amount),
-            category: e.category,
-            vendorId: e.vendorId ?? undefined,
-            vendorName: e.vendorName ?? undefined,
-            date: e.date.split("T")[0],
-            payer: "shared",
-            status: e.isPaid ? "paid" : "scheduled",
-            method: "card",
-            memo: e.memo,
-          })
+          }) => {
+            let parsed: { deposit?: string; balance?: string; note?: string; method?: string; paidBy?: string } = {}
+            try { if (e.memo) parsed = JSON.parse(e.memo) } catch { /* not JSON, ignore */ }
+            return {
+              id: String(e.id),
+              title: e.title,
+              amount: Number(e.amount),
+              category: e.category,
+              vendorId: e.vendorId ?? undefined,
+              vendorName: e.vendorName ?? undefined,
+              date: e.date.split("T")[0],
+              payer: paidByMap[parsed.paidBy || ""] || "shared",
+              status: (e.isPaid ? "paid" : "scheduled") as "paid" | "scheduled",
+              method: methodMap[parsed.method || ""] || "card",
+              deposit: parseNum(parsed.deposit),
+              balance: parseNum(parsed.balance),
+              memo: parsed.note || (typeof parsed.deposit === "undefined" ? e.memo : ""),
+            }
+          }
         )
       )
     } catch (error) {
