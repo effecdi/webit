@@ -471,8 +471,10 @@ export default function WeddingVendorsProgressPage() {
                               <div>
                                 <p className="text-[11px] text-[#8B95A1] mb-1">계약금</p>
                                 <input
-                                  defaultValue={payments.deposit}
+                                  defaultValue={formatAmountInput(payments.deposit)}
+                                  onChange={(e) => { e.target.value = formatAmountInput(e.target.value) }}
                                   onBlur={(e) => handlePaymentUpdate(vendor, { field: "deposit", value: e.target.value })}
+                                  inputMode="numeric"
                                   className="w-full px-3 py-2 rounded-[10px] bg-white border-0 text-[13px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
                                   placeholder="예: 300,000"
                                 />
@@ -480,8 +482,10 @@ export default function WeddingVendorsProgressPage() {
                               <div>
                                 <p className="text-[11px] text-[#8B95A1] mb-1">잔금</p>
                                 <input
-                                  defaultValue={payments.balance}
+                                  defaultValue={formatAmountInput(payments.balance)}
+                                  onChange={(e) => { e.target.value = formatAmountInput(e.target.value) }}
                                   onBlur={(e) => handlePaymentUpdate(vendor, { field: "balance", value: e.target.value })}
+                                  inputMode="numeric"
                                   className="w-full px-3 py-2 rounded-[10px] bg-white border-0 text-[13px] text-[#191F28] placeholder:text-[#B0B8C1] focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
                                   placeholder="예: 700,000"
                                 />
