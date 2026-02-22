@@ -1065,6 +1065,143 @@
   background-color: #2A1515 !important;
 }
 
+/* ---- Missing hex bg colors on buttons/badges ---- */
+.dark .bg-\[\#F3E8FF\] {
+  background-color: #1E182E !important;
+}
+.dark .bg-\[\#FEE500\] {
+  background-color: #3A3515 !important;
+}
+.dark .bg-\[\#3B82F6\] {
+  background-color: #2563EB !important;
+}
+.dark .bg-\[\#3B82F6\]\/10 {
+  background-color: rgba(37, 99, 235, 0.15) !important;
+}
+.dark .bg-\[\#E5FFF4\] {
+  background-color: #0F3A2A !important;
+}
+.dark .bg-\[\#FFF4E6\] {
+  background-color: #3A2A0F !important;
+}
+
+/* ---- Tailwind named bg colors on buttons ---- */
+.dark .bg-blue-400 {
+  background-color: #3B82F6 !important;
+}
+.dark .bg-blue-500 {
+  background-color: #2563EB !important;
+}
+.dark .bg-blue-600 {
+  background-color: #1D4ED8 !important;
+}
+.dark .bg-pink-400 {
+  background-color: #F472B6 !important;
+}
+.dark .bg-pink-500 {
+  background-color: #EC4899 !important;
+}
+.dark .bg-pink-600 {
+  background-color: #DB2777 !important;
+}
+.dark .bg-green-400 {
+  background-color: #4ADE80 !important;
+}
+.dark .bg-green-500 {
+  background-color: #22C55E !important;
+}
+.dark .bg-green-600 {
+  background-color: #16A34A !important;
+}
+.dark .bg-green-700 {
+  background-color: #15803D !important;
+}
+.dark .bg-red-500 {
+  background-color: #EF4444 !important;
+}
+.dark .bg-amber-500 {
+  background-color: #F59E0B !important;
+}
+
+/* ---- Missing hover bg overrides on buttons ---- */
+.dark .hover\:bg-\[\#F5DC00\]:hover {
+  background-color: #3A3510 !important;
+}
+.dark .hover\:bg-\[\#1B64DA\]:hover {
+  background-color: #1D4ED8 !important;
+}
+.dark .hover\:bg-\[\#2563EB\]:hover {
+  background-color: #1D4ED8 !important;
+}
+.dark .hover\:bg-\[\#c030d8\]:hover {
+  background-color: #a020b0 !important;
+}
+.dark .hover\:bg-blue-600:hover {
+  background-color: #1D4ED8 !important;
+}
+.dark .hover\:bg-pink-600:hover {
+  background-color: #DB2777 !important;
+}
+.dark .hover\:bg-green-600:hover {
+  background-color: #16A34A !important;
+}
+.dark .hover\:bg-green-700:hover {
+  background-color: #15803D !important;
+}
+
+/* ---- Missing hover text overrides ---- */
+.dark .hover\:text-\[\#8B95A1\]:hover {
+  color: #888888 !important;
+}
+.dark .hover\:text-\[\#3B82F6\]:hover {
+  color: #60A5FA !important;
+}
+.dark .hover\:text-\[\#1B64DA\]:hover {
+  color: #3B82F6 !important;
+}
+
+/* ---- Missing hover border overrides ---- */
+.dark .hover\:border-\[\#3B82F6\]:hover {
+  border-color: #3B82F6 !important;
+}
+
+/* ---- Missing focus border overrides (inputs) ---- */
+.dark .focus\:border-\[\#3182F6\]:focus {
+  border-color: #60A5FA !important;
+}
+.dark .focus\:border-\[\#3B82F6\]:focus {
+  border-color: #60A5FA !important;
+}
+
+/* ---- Missing focus ring overrides ---- */
+.dark .focus\:ring-\[\#3B82F6\]:focus {
+  --tw-ring-color: rgba(59, 130, 246, 0.5) !important;
+}
+.dark .focus\:ring-\[\#e0b3f5\]:focus {
+  --tw-ring-color: rgba(224, 179, 245, 0.4) !important;
+}
+
+/* ---- Missing disabled bg overrides ---- */
+.dark .disabled\:bg-\[\#B0B8C1\]:disabled {
+  background-color: #48484A !important;
+}
+
+/* ---- Opacity-based white bg (overlays/modals) ---- */
+.dark .bg-white\/20 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+.dark .hover\:bg-white\/30:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+.dark .focus\:ring-white\/30:focus {
+  --tw-ring-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ---- Missing vintage/editor border ---- */
+.dark .border-\[\#D4CEBD\] {
+  border-color: #4A4035 !important;
+}
+
 /* ===== END DARK MODE OVERRIDES ===== */
 
 /* Marquee Animation */
