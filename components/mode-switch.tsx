@@ -9,14 +9,30 @@ interface ModeSwitchProps {
   currentMode: "dating" | "wedding" | "family";
 }
 
+function isAfterWeddingDay(): boolean {
+  if (typeof window === "undefined") return false;
+  const weddingDate = localStorage.getItem("wedding_date");
+  if (!weddingDate) return false;
+  const target = new Date(weddingDate);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  target.setHours(0, 0, 0, 0);
+  const diff = Math.ceil((target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+  return diff < 0;
+}
+
 export function ModeSwitch({ currentMode }: ModeSwitchProps) {
   const router = useRouter();
   const [showCongratulations, setShowCongratulations] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [showFamilyButton, setShowFamilyButton] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    if (currentMode === "wedding" || currentMode === "family") {
+      setShowFamilyButton(isAfterWeddingDay());
+    }
+  }, [currentMode]);
 
   const handleWeddingClick = (e: React.MouseEvent) => {
     e.preventDefault();
