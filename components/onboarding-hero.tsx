@@ -28,7 +28,7 @@ export function OnboardingHero() {
         {/* Main Photo Frame */}
         <div className="w-full h-full rounded-[32px] overflow-hidden bg-gradient-to-br from-purple-100 to-pink-100">
           <img
-            src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&q=80"
+            src="/placeholder.svg"
             alt="Couple"
             className="w-full h-full object-cover"
           />
