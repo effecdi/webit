@@ -53,15 +53,20 @@ function calculateDday(targetDate: string) {
 }
 
 const categoryIcons: Record<string, { icon: React.ReactNode; bg: string }> = {
-  "예식장": { icon: <Building2 className="w-4 h-4" />, bg: "bg-pink-50 text-pink-500" },
-  "드레스": { icon: <Shirt className="w-4 h-4" />, bg: "bg-purple-50 text-purple-500" },
+  "웨딩홀": { icon: <Building2 className="w-4 h-4" />, bg: "bg-pink-50 text-pink-500" },
   "스튜디오": { icon: <Camera className="w-4 h-4" />, bg: "bg-indigo-50 text-indigo-500" },
-  "스냅": { icon: <Camera className="w-4 h-4" />, bg: "bg-cyan-50 text-cyan-500" },
-  "청첩장": { icon: <Mail className="w-4 h-4" />, bg: "bg-rose-50 text-rose-500" },
-  "허니문": { icon: <Diamond className="w-4 h-4" />, bg: "bg-blue-50 text-blue-500" },
-  "예물": { icon: <Diamond className="w-4 h-4" />, bg: "bg-amber-50 text-amber-500" },
-  "혼수": { icon: <Building2 className="w-4 h-4" />, bg: "bg-green-50 text-green-500" },
-  "기타": { icon: <Diamond className="w-4 h-4" />, bg: "bg-gray-50 text-gray-500" },
+  "드레스": { icon: <Shirt className="w-4 h-4" />, bg: "bg-purple-50 text-purple-500" },
+  "2부드레스": { icon: <Shirt className="w-4 h-4" />, bg: "bg-fuchsia-50 text-fuchsia-500" },
+  "메이크업": { icon: <Sparkles className="w-4 h-4" />, bg: "bg-rose-50 text-rose-500" },
+  "예복": { icon: <Shirt className="w-4 h-4" />, bg: "bg-slate-50 text-slate-500" },
+  "예물": { icon: <Gift className="w-4 h-4" />, bg: "bg-amber-50 text-amber-500" },
+  "본식스냅": { icon: <Camera className="w-4 h-4" />, bg: "bg-cyan-50 text-cyan-500" },
+  "DVD": { icon: <Film className="w-4 h-4" />, bg: "bg-violet-50 text-violet-500" },
+  "식전영상": { icon: <Video className="w-4 h-4" />, bg: "bg-teal-50 text-teal-500" },
+  "식중영상": { icon: <Video className="w-4 h-4" />, bg: "bg-emerald-50 text-emerald-500" },
+  "청첩장": { icon: <Mail className="w-4 h-4" />, bg: "bg-blue-50 text-blue-500" },
+  "사회자": { icon: <Mic className="w-4 h-4" />, bg: "bg-orange-50 text-orange-500" },
+  "기타": { icon: <MoreHorizontal className="w-4 h-4" />, bg: "bg-gray-50 text-gray-500" },
 }
 
 const quickActions = [
