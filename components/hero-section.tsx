@@ -34,7 +34,7 @@ export function HeroSection() {
             <span className="text-secondary-foreground text-xs uppercase tracking-wider font-bold">2026 February Edition</span>
             <div className="flex items-center gap-2">
               <span className="text-primary text-xs font-bold">♥</span>
-              <span className="text-secondary-foreground text-xs">민지 & 준호</span>
+              <span className="text-secondary-foreground text-xs">We:Beat</span>
             </div>
           </div>
         </div>
@@ -50,7 +50,7 @@ export function HeroSection() {
             </div>
           </div>
           <div className="flex-1">
-            <p className="font-serif text-lg font-bold text-foreground">민지 & 준호</p>
+            <p className="font-serif text-lg font-bold text-foreground">We:Beat</p>
             <p className="text-xs text-muted-foreground uppercase tracking-wider">D+365 함께한 날</p>
           </div>
           <button className="px-4 py-2 bg-primary border-2 border-secondary text-secondary font-bold text-sm uppercase tracking-wider hover:bg-accent transition-colors">
