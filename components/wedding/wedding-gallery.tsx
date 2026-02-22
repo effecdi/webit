@@ -19,16 +19,7 @@ const CATEGORIES = [
   { id: "daily", label: "일상", icon: Heart },
 ]
 
-const DUMMY_PHOTOS: Photo[] = [
-  { id: "1", url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80", category: "engagement", date: "2025.01.15", caption: "스드메 촬영", liked: true },
-  { id: "2", url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80", category: "studio", date: "2025.01.20", caption: "스튜디오 촬영" },
-  { id: "3", url: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&q=80", category: "engagement", date: "2025.01.15", liked: true },
-  { id: "4", url: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&q=80", category: "daily", date: "2025.02.01", caption: "데이트" },
-  { id: "5", url: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400&q=80", category: "studio", date: "2025.01.20" },
-  { id: "6", url: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&q=80", category: "engagement", date: "2025.01.15", caption: "야외 촬영" },
-  { id: "7", url: "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=400&q=80", category: "daily", date: "2025.02.03", liked: true },
-  { id: "8", url: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=400&q=80", category: "studio", date: "2025.01.20", caption: "한복 촬영" },
-]
+const DUMMY_PHOTOS: Photo[] = []
 
 export function WeddingGallery() {
   const [activeCategory, setActiveCategory] = useState("all")
